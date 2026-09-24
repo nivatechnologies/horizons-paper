@@ -274,7 +274,10 @@ def main():
     ap.add_argument("--out", default=str(config.RUNS / "headline"))
     ap.add_argument("--res", default=str(config.RESULTS / "headline"))
     ap.add_argument("--force", action="store_true")
+    ap.add_argument("--system", default="lorenz28", help="subset systems (Task 4) reuse this script")
     a = ap.parse_args()
+    global SYSTEM
+    SYSTEM = a.system
     out, res = Path(a.out), Path(a.res)
     t0 = time.time()
     if a.cmd in ("run", "all"):

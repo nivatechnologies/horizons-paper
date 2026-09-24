@@ -1,7 +1,7 @@
 {
  "task": "2.2 headline bound and references",
  "system": "lorenz28",
- "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty",
+ "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty",
  "labels": {
   "bound": "bound",
   "DI": "reference",
@@ -570,7 +570,7 @@
     -2.785656935845
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -1117,7 +1117,7 @@
     -3.5103035706875003
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -1694,7 +1694,7 @@
     0.09070425218749993
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -2241,7 +2241,7 @@
     -4.801294899825001
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -2788,7 +2788,7 @@
     -25.156769890904997
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -3335,7 +3335,7 @@
     -25.455348547975
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -3882,7 +3882,7 @@
     -25.717788789037503
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -4429,7 +4429,7 @@
     -25.50986912553
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -4976,7 +4976,7 @@
     -25.497078637706252
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -5553,7 +5553,7 @@
     0.24806452999999976
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -6100,7 +6100,3379 @@
     -25.4604585641375
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+  },
+  {
+   "system": "lorenz28",
+   "bits": 10,
+   "delta": 0.02,
+   "dt": 0.01,
+   "particles": 1500,
+   "n_states": 1000,
+   "n_hist": 300,
+   "pf_seed": 8002020,
+   "pf_context_frames": 160,
+   "pf_fallback_events": 4616,
+   "pf_steps": 48000,
+   "pf_fallback_rate": 0.09616666666666666,
+   "labels_vs_encode_mismatch": 0.0,
+   "panel_sha": "40acf31e00e702a6",
+   "history_ref_label": "unreliable",
+   "p0_eps0.3": 0.0,
+   "p0_eps0.3_hist": 0.0,
+   "p0_eps0.1": 0.002,
+   "p0_eps0.1_hist": 0.0033333333333333335,
+   "p0_eps0.5": 0.0,
+   "p0_eps0.5_hist": 0.0,
+   "bound_eps0.3_future_mean": 27.0,
+   "bound_eps0.3_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_nocross": 1.0,
+   "bound_eps0.3_future_hist_mean": 27.0,
+   "bound_eps0.3_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_hist_nocross": 1.0,
+   "DI_eps0.3_future_mean": 1.4943262432,
+   "DI_eps0.3_future_ci95": [
+    1.4282686506199997,
+    1.56149378875
+   ],
+   "DI_eps0.3_future_nocross": 0.0,
+   "DI_eps0.3_future_hist_mean": 1.6380708866666667,
+   "DI_eps0.3_future_hist_ci95": [
+    1.5104489287416667,
+    1.774459602008333
+   ],
+   "DI_eps0.3_future_hist_nocross": 0.0,
+   "persistence_eps0.3_future_mean": 0.0667782472,
+   "persistence_eps0.3_future_ci95": [
+    0.064822702,
+    0.06884243379999999
+   ],
+   "persistence_eps0.3_future_nocross": 0.0,
+   "persistence_eps0.3_future_hist_mean": 0.06705588633333333,
+   "persistence_eps0.3_future_hist_ci95": [
+    0.06343450633333333,
+    0.07073762266666667
+   ],
+   "persistence_eps0.3_future_hist_nocross": 0.0,
+   "climatology_eps0.3_future_mean": 0.024299459799999992,
+   "climatology_eps0.3_future_ci95": [
+    0.023050083699999998,
+    0.025639370399999997
+   ],
+   "climatology_eps0.3_future_nocross": 0.0,
+   "climatology_eps0.3_future_hist_mean": 0.026073935999999995,
+   "climatology_eps0.3_future_hist_ci95": [
+    0.02353897,
+    0.028789970999999994
+   ],
+   "climatology_eps0.3_future_hist_nocross": 0.0,
+   "PF_eps0.3_future_mean": 3.7417908850000003,
+   "PF_eps0.3_future_ci95": [
+    3.468492880941667,
+    4.0323704162
+   ],
+   "PF_eps0.3_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_future": 0.0,
+   "ties_PF_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future": 0.0,
+   "ties_DI_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_future": -23.258209115,
+   "diff_PF_minus_bound_eps0.3_future_ci90": [
+    -23.48383014245,
+    -23.022243012016666
+   ],
+   "diff_PF_minus_bound_eps0.3_future_ci95": [
+    -23.531507119058332,
+    -22.967629583799997
+   ],
+   "diff_PF_minus_DI_eps0.3_future": 2.1037199983333337,
+   "diff_PF_minus_DI_eps0.3_future_ci90": [
+    1.8567298110666663,
+    2.3553002847499998
+   ],
+   "diff_PF_minus_DI_eps0.3_future_ci95": [
+    1.8268820953249998,
+    2.400588659466667
+   ],
+   "diff_DI_minus_bound_eps0.3_future": -25.5056737568,
+   "diff_DI_minus_bound_eps0.3_future_ci90": [
+    -25.562280452925002,
+    -25.448976526175
+   ],
+   "diff_DI_minus_bound_eps0.3_future_ci95": [
+    -25.57173134938,
+    -25.43850621125
+   ],
+   "bound_eps0.3_from_t0_mean": 27.0,
+   "bound_eps0.3_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_nocross": 1.0,
+   "bound_eps0.3_from_t0_hist_mean": 27.0,
+   "bound_eps0.3_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_hist_nocross": 1.0,
+   "DI_eps0.3_from_t0_mean": 1.4943262432,
+   "DI_eps0.3_from_t0_ci95": [
+    1.4282686506199997,
+    1.56149378875
+   ],
+   "DI_eps0.3_from_t0_nocross": 0.0,
+   "DI_eps0.3_from_t0_hist_mean": 1.6380708866666667,
+   "DI_eps0.3_from_t0_hist_ci95": [
+    1.5104489287416667,
+    1.774459602008333
+   ],
+   "DI_eps0.3_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.3_from_t0_mean": 0.0667782472,
+   "persistence_eps0.3_from_t0_ci95": [
+    0.064822702,
+    0.06884243379999999
+   ],
+   "persistence_eps0.3_from_t0_nocross": 0.0,
+   "persistence_eps0.3_from_t0_hist_mean": 0.06705588633333333,
+   "persistence_eps0.3_from_t0_hist_ci95": [
+    0.06343450633333333,
+    0.07073762266666667
+   ],
+   "persistence_eps0.3_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.3_from_t0_mean": 0.0060114908,
+   "climatology_eps0.3_from_t0_ci95": [
+    0.0048159827275,
+    0.007333747172499998
+   ],
+   "climatology_eps0.3_from_t0_nocross": 0.0,
+   "climatology_eps0.3_from_t0_hist_mean": 0.007785966999999999,
+   "climatology_eps0.3_from_t0_hist_ci95": [
+    0.005190644666666667,
+    0.010562358333333334
+   ],
+   "climatology_eps0.3_from_t0_hist_nocross": 0.0,
+   "PF_eps0.3_from_t0_mean": 3.7411269653333328,
+   "PF_eps0.3_from_t0_ci95": [
+    3.4675905537583325,
+    4.0319449040499995
+   ],
+   "PF_eps0.3_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_from_t0": -23.258873034666667,
+   "diff_PF_minus_bound_eps0.3_from_t0_ci90": [
+    -23.48480187941667,
+    -23.02302462653333
+   ],
+   "diff_PF_minus_bound_eps0.3_from_t0_ci95": [
+    -23.53240944624167,
+    -22.96805509595
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0": 2.103056078666666,
+   "diff_PF_minus_DI_eps0.3_from_t0_ci90": [
+    1.8558818045833334,
+    2.3547148283166677
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0_ci95": [
+    1.8265033593333329,
+    2.400102790983333
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0": -25.5056737568,
+   "diff_DI_minus_bound_eps0.3_from_t0_ci90": [
+    -25.562280452925002,
+    -25.448976526175
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0_ci95": [
+    -25.57173134938,
+    -25.43850621125
+   ],
+   "bound_eps0.1_future_mean": 16.0110005465,
+   "bound_eps0.1_future_ci95": [
+    15.430733350442502,
+    16.619974378084997
+   ],
+   "bound_eps0.1_future_nocross": 0.30900000000000005,
+   "bound_eps0.1_future_hist_mean": 16.20952048166667,
+   "bound_eps0.1_future_hist_ci95": [
+    15.084703885825002,
+    17.234196609508334
+   ],
+   "bound_eps0.1_future_hist_nocross": 0.31666666666666665,
+   "DI_eps0.1_future_mean": 0.7693440740999999,
+   "DI_eps0.1_future_ci95": [
+    0.72408406686,
+    0.81515996317
+   ],
+   "DI_eps0.1_future_nocross": 0.0,
+   "DI_eps0.1_future_hist_mean": 0.9035946663333334,
+   "DI_eps0.1_future_hist_ci95": [
+    0.8095474277333333,
+    1.0091760002333332
+   ],
+   "DI_eps0.1_future_hist_nocross": 0.0,
+   "persistence_eps0.1_future_mean": 0.0275949156,
+   "persistence_eps0.1_future_ci95": [
+    0.0268344258,
+    0.028391619200000003
+   ],
+   "persistence_eps0.1_future_nocross": 0.0,
+   "persistence_eps0.1_future_hist_mean": 0.028488189333333334,
+   "persistence_eps0.1_future_hist_ci95": [
+    0.027039637333333328,
+    0.029876385000000005
+   ],
+   "persistence_eps0.1_future_hist_nocross": 0.0,
+   "climatology_eps0.1_future_mean": 0.0181069,
+   "climatology_eps0.1_future_ci95": [
+    0.0181069,
+    0.0181069
+   ],
+   "climatology_eps0.1_future_nocross": 0.0,
+   "climatology_eps0.1_future_hist_mean": 0.018106900000000002,
+   "climatology_eps0.1_future_hist_ci95": [
+    0.018106900000000002,
+    0.018106900000000002
+   ],
+   "climatology_eps0.1_future_hist_nocross": 0.0,
+   "PF_eps0.1_future_mean": 2.8557599116666665,
+   "PF_eps0.1_future_ci95": [
+    2.6127819116583333,
+    3.1041307500583333
+   ],
+   "PF_eps0.1_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_future": 0.02666666666666667,
+   "ties_PF_vs_bound_eps0.1_future": 0.0,
+   "outlast_DI_vs_bound_eps0.1_future": 0.01,
+   "ties_DI_vs_bound_eps0.1_future": 0.002,
+   "outlast_DI_vs_bound_eps0.1_future_hist": 0.01,
+   "ties_DI_vs_bound_eps0.1_future_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_future": -13.353760570000002,
+   "diff_PF_minus_bound_eps0.1_future_ci90": [
+    -14.26229953695,
+    -12.40491827405
+   ],
+   "diff_PF_minus_bound_eps0.1_future_ci95": [
+    -14.417597553133335,
+    -12.223704228416668
+   ],
+   "diff_PF_minus_DI_eps0.1_future": 1.9521652453333331,
+   "diff_PF_minus_DI_eps0.1_future_ci90": [
+    1.740510673416666,
+    2.1674653397833334
+   ],
+   "diff_PF_minus_DI_eps0.1_future_ci95": [
+    1.698784831275,
+    2.2125605742333327
+   ],
+   "diff_DI_minus_bound_eps0.1_future": -15.2416564724,
+   "diff_DI_minus_bound_eps0.1_future_ci90": [
+    -15.75191873579,
+    -14.74162343821
+   ],
+   "diff_DI_minus_bound_eps0.1_future_ci95": [
+    -15.855770157447504,
+    -14.663174544190001
+   ],
+   "bound_eps0.1_from_t0_mean": 16.0033956485,
+   "bound_eps0.1_from_t0_ci95": [
+    15.420058648424998,
+    16.6097488078525
+   ],
+   "bound_eps0.1_from_t0_nocross": 0.30900000000000005,
+   "bound_eps0.1_from_t0_hist_mean": 16.209460125333337,
+   "bound_eps0.1_from_t0_hist_ci95": [
+    15.084645038400001,
+    17.234196609508334
+   ],
+   "bound_eps0.1_from_t0_hist_nocross": 0.31666666666666665,
+   "DI_eps0.1_from_t0_mean": 0.7693078602999999,
+   "DI_eps0.1_from_t0_ci95": [
+    0.7240641492700001,
+    0.8151409509249999
+   ],
+   "DI_eps0.1_from_t0_nocross": 0.0,
+   "DI_eps0.1_from_t0_hist_mean": 0.90353431,
+   "DI_eps0.1_from_t0_hist_ci95": [
+    0.8094840535833333,
+    1.0091760002333332
+   ],
+   "DI_eps0.1_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.1_from_t0_mean": 0.027558701799999998,
+   "persistence_eps0.1_from_t0_ci95": [
+    0.026798212,
+    0.0283558580725
+   ],
+   "persistence_eps0.1_from_t0_nocross": 0.0,
+   "persistence_eps0.1_from_t0_hist_mean": 0.028427832999999996,
+   "persistence_eps0.1_from_t0_hist_ci95": [
+    0.026979280999999997,
+    0.02987638499999999
+   ],
+   "persistence_eps0.1_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.1_from_t0_mean": 0.0,
+   "climatology_eps0.1_from_t0_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_nocross": 0.0,
+   "climatology_eps0.1_from_t0_hist_mean": 0.0,
+   "climatology_eps0.1_from_t0_hist_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_hist_nocross": 0.0,
+   "PF_eps0.1_from_t0_mean": 2.8538888653333334,
+   "PF_eps0.1_from_t0_ci95": [
+    2.610741867591667,
+    3.1024377549083333
+   ],
+   "PF_eps0.1_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_from_t0": 0.02666666666666667,
+   "ties_PF_vs_bound_eps0.1_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.1_from_t0": 0.01,
+   "ties_DI_vs_bound_eps0.1_from_t0": 0.003,
+   "outlast_DI_vs_bound_eps0.1_from_t0_hist": 0.01,
+   "ties_DI_vs_bound_eps0.1_from_t0_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_from_t0": -13.355571260000003,
+   "diff_PF_minus_bound_eps0.1_from_t0_ci90": [
+    -14.263989514283336,
+    -12.4063577726
+   ],
+   "diff_PF_minus_bound_eps0.1_from_t0_ci95": [
+    -14.419636088291668,
+    -12.225465124441666
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0": 1.9503545553333335,
+   "diff_PF_minus_DI_eps0.1_from_t0_ci90": [
+    1.7380662419166664,
+    2.1660741263
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0_ci95": [
+    1.6968489018833333,
+    2.211121075683333
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0": -15.2340877882,
+   "diff_DI_minus_bound_eps0.1_from_t0_ci90": [
+    -15.74164051128,
+    -14.73528185483
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0_ci95": [
+    -15.850963356029999,
+    -14.6508693742675
+   ],
+   "bound_eps0.5_future_mean": 27.0,
+   "bound_eps0.5_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_nocross": 1.0,
+   "bound_eps0.5_future_hist_mean": 27.0,
+   "bound_eps0.5_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_hist_nocross": 1.0,
+   "DI_eps0.5_future_mean": 1.8365104393999998,
+   "DI_eps0.5_future_ci95": [
+    1.7654218446549999,
+    1.9126214355325
+   ],
+   "DI_eps0.5_future_nocross": 0.0,
+   "DI_eps0.5_future_hist_mean": 1.9991828289999998,
+   "DI_eps0.5_future_hist_ci95": [
+    1.8670190569916667,
+    2.1463526943833338
+   ],
+   "DI_eps0.5_future_hist_nocross": 0.0,
+   "persistence_eps0.5_future_mean": 0.10467598889999999,
+   "persistence_eps0.5_future_ci95": [
+    0.10156160209999998,
+    0.10786325597249999
+   ],
+   "persistence_eps0.5_future_nocross": 0.0,
+   "persistence_eps0.5_future_hist_mean": 0.10568393966666666,
+   "persistence_eps0.5_future_hist_ci95": [
+    0.10012964809166666,
+    0.11123823124166665
+   ],
+   "persistence_eps0.5_future_hist_nocross": 0.0,
+   "climatology_eps0.5_future_mean": 0.0424063598,
+   "climatology_eps0.5_future_ci95": [
+    0.039237199627500004,
+    0.0457199225
+   ],
+   "climatology_eps0.5_future_nocross": 0.0,
+   "climatology_eps0.5_future_hist_mean": 0.04333584733333333,
+   "climatology_eps0.5_future_hist_ci95": [
+    0.037601995666666665,
+    0.04894898633333333
+   ],
+   "climatology_eps0.5_future_hist_nocross": 0.0,
+   "PF_eps0.5_future_mean": 4.280772941666666,
+   "PF_eps0.5_future_ci95": [
+    4.001704872141667,
+    4.582495760908333
+   ],
+   "PF_eps0.5_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_future": 0.0,
+   "ties_PF_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future": 0.0,
+   "ties_DI_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_future": -22.719227058333335,
+   "diff_PF_minus_bound_eps0.5_future_ci90": [
+    -22.955410444116666,
+    -22.476881290916666
+   ],
+   "diff_PF_minus_bound_eps0.5_future_ci95": [
+    -22.998295127858334,
+    -22.417504239091667
+   ],
+   "diff_PF_minus_DI_eps0.5_future": 2.2815901126666667,
+   "diff_PF_minus_DI_eps0.5_future_ci90": [
+    2.028205171883333,
+    2.5437991493833327
+   ],
+   "diff_PF_minus_DI_eps0.5_future_ci95": [
+    1.9845524538000001,
+    2.5905028801166665
+   ],
+   "diff_DI_minus_bound_eps0.5_future": -25.1634895606,
+   "diff_DI_minus_bound_eps0.5_future_ci90": [
+    -25.223931298145,
+    -25.102475645015
+   ],
+   "diff_DI_minus_bound_eps0.5_future_ci95": [
+    -25.234578155345,
+    -25.0873785644675
+   ],
+   "bound_eps0.5_from_t0_mean": 27.0,
+   "bound_eps0.5_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_nocross": 1.0,
+   "bound_eps0.5_from_t0_hist_mean": 27.0,
+   "bound_eps0.5_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_hist_nocross": 1.0,
+   "DI_eps0.5_from_t0_mean": 1.8365104393999998,
+   "DI_eps0.5_from_t0_ci95": [
+    1.7654218446549999,
+    1.9126214355325
+   ],
+   "DI_eps0.5_from_t0_nocross": 0.0,
+   "DI_eps0.5_from_t0_hist_mean": 1.9991828289999998,
+   "DI_eps0.5_from_t0_hist_ci95": [
+    1.8670190569916667,
+    2.1463526943833338
+   ],
+   "DI_eps0.5_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.5_from_t0_mean": 0.10467598889999999,
+   "persistence_eps0.5_from_t0_ci95": [
+    0.10156160209999998,
+    0.10786325597249999
+   ],
+   "persistence_eps0.5_from_t0_nocross": 0.0,
+   "persistence_eps0.5_from_t0_hist_mean": 0.10568393966666666,
+   "persistence_eps0.5_from_t0_hist_ci95": [
+    0.10012964809166666,
+    0.11123823124166665
+   ],
+   "persistence_eps0.5_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.5_from_t0_mean": 0.0232673665,
+   "climatology_eps0.5_from_t0_ci95": [
+    0.0203340487,
+    0.0263459921725
+   ],
+   "climatology_eps0.5_from_t0_nocross": 0.0,
+   "climatology_eps0.5_from_t0_hist_mean": 0.026496430333333335,
+   "climatology_eps0.5_from_t0_hist_ci95": [
+    0.020702222333333336,
+    0.03241285990833332
+   ],
+   "climatology_eps0.5_from_t0_hist_nocross": 0.0,
+   "PF_eps0.5_from_t0_mean": 4.279505458666667,
+   "PF_eps0.5_from_t0_ci95": [
+    3.9991774506833337,
+    4.582076284391667
+   ],
+   "PF_eps0.5_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_from_t0": -22.720494541333334,
+   "diff_PF_minus_bound_eps0.5_from_t0_ci90": [
+    -22.95691935245,
+    -22.477723261766666
+   ],
+   "diff_PF_minus_bound_eps0.5_from_t0_ci95": [
+    -23.000822549316666,
+    -22.41792371560833
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0": 2.280322629666667,
+   "diff_PF_minus_DI_eps0.5_from_t0_ci90": [
+    2.026581586516667,
+    2.5420488157166665
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0_ci95": [
+    1.9814969144249996,
+    2.5894134483
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0": -25.1634895606,
+   "diff_DI_minus_bound_eps0.5_from_t0_ci90": [
+    -25.223931298145,
+    -25.102475645015
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0_ci95": [
+    -25.234578155345,
+    -25.0873785644675
+   ],
+   "stop_condition": "fallback > 5% at 1,500 and 3,000 particles: history reference unreliable",
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+  },
+  {
+   "system": "lorenz28",
+   "bits": 10,
+   "delta": 0.02,
+   "dt": 0.01,
+   "particles": 3000,
+   "n_states": 1000,
+   "n_hist": 300,
+   "pf_seed": 8002030,
+   "pf_context_frames": 160,
+   "pf_fallback_events": 4065,
+   "pf_steps": 48000,
+   "pf_fallback_rate": 0.0846875,
+   "labels_vs_encode_mismatch": 0.0,
+   "panel_sha": "40acf31e00e702a6",
+   "history_ref_label": "unreliable",
+   "p0_eps0.3": 0.0,
+   "p0_eps0.3_hist": 0.0,
+   "p0_eps0.1": 0.002,
+   "p0_eps0.1_hist": 0.0033333333333333335,
+   "p0_eps0.5": 0.0,
+   "p0_eps0.5_hist": 0.0,
+   "bound_eps0.3_future_mean": 27.0,
+   "bound_eps0.3_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_nocross": 1.0,
+   "bound_eps0.3_future_hist_mean": 27.0,
+   "bound_eps0.3_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_hist_nocross": 1.0,
+   "DI_eps0.3_future_mean": 1.4943262432,
+   "DI_eps0.3_future_ci95": [
+    1.4282686506199997,
+    1.56149378875
+   ],
+   "DI_eps0.3_future_nocross": 0.0,
+   "DI_eps0.3_future_hist_mean": 1.6380708866666667,
+   "DI_eps0.3_future_hist_ci95": [
+    1.5104489287416667,
+    1.774459602008333
+   ],
+   "DI_eps0.3_future_hist_nocross": 0.0,
+   "persistence_eps0.3_future_mean": 0.0667782472,
+   "persistence_eps0.3_future_ci95": [
+    0.064822702,
+    0.06884243379999999
+   ],
+   "persistence_eps0.3_future_nocross": 0.0,
+   "persistence_eps0.3_future_hist_mean": 0.06705588633333333,
+   "persistence_eps0.3_future_hist_ci95": [
+    0.06343450633333333,
+    0.07073762266666667
+   ],
+   "persistence_eps0.3_future_hist_nocross": 0.0,
+   "climatology_eps0.3_future_mean": 0.024299459799999992,
+   "climatology_eps0.3_future_ci95": [
+    0.023050083699999998,
+    0.025639370399999997
+   ],
+   "climatology_eps0.3_future_nocross": 0.0,
+   "climatology_eps0.3_future_hist_mean": 0.026073935999999995,
+   "climatology_eps0.3_future_hist_ci95": [
+    0.02353897,
+    0.028789970999999994
+   ],
+   "climatology_eps0.3_future_hist_nocross": 0.0,
+   "PF_eps0.3_future_mean": 3.903002651333333,
+   "PF_eps0.3_future_ci95": [
+    3.6659154294583334,
+    4.141671209141666
+   ],
+   "PF_eps0.3_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_future": 0.0,
+   "ties_PF_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future": 0.0,
+   "ties_DI_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_future": -23.09699734866667,
+   "diff_PF_minus_bound_eps0.3_future_ci90": [
+    -23.301550997966668,
+    -22.894734222216666
+   ],
+   "diff_PF_minus_bound_eps0.3_future_ci95": [
+    -23.334084570541666,
+    -22.858328790858334
+   ],
+   "diff_PF_minus_DI_eps0.3_future": 2.2649317646666662,
+   "diff_PF_minus_DI_eps0.3_future_ci90": [
+    2.046140056333333,
+    2.4702941888333334
+   ],
+   "diff_PF_minus_DI_eps0.3_future_ci95": [
+    2.0128625919500003,
+    2.5235043322999995
+   ],
+   "diff_DI_minus_bound_eps0.3_future": -25.5056737568,
+   "diff_DI_minus_bound_eps0.3_future_ci90": [
+    -25.562280452925002,
+    -25.448976526175
+   ],
+   "diff_DI_minus_bound_eps0.3_future_ci95": [
+    -25.57173134938,
+    -25.43850621125
+   ],
+   "bound_eps0.3_from_t0_mean": 27.0,
+   "bound_eps0.3_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_nocross": 1.0,
+   "bound_eps0.3_from_t0_hist_mean": 27.0,
+   "bound_eps0.3_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_hist_nocross": 1.0,
+   "DI_eps0.3_from_t0_mean": 1.4943262432,
+   "DI_eps0.3_from_t0_ci95": [
+    1.4282686506199997,
+    1.56149378875
+   ],
+   "DI_eps0.3_from_t0_nocross": 0.0,
+   "DI_eps0.3_from_t0_hist_mean": 1.6380708866666667,
+   "DI_eps0.3_from_t0_hist_ci95": [
+    1.5104489287416667,
+    1.774459602008333
+   ],
+   "DI_eps0.3_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.3_from_t0_mean": 0.0667782472,
+   "persistence_eps0.3_from_t0_ci95": [
+    0.064822702,
+    0.06884243379999999
+   ],
+   "persistence_eps0.3_from_t0_nocross": 0.0,
+   "persistence_eps0.3_from_t0_hist_mean": 0.06705588633333333,
+   "persistence_eps0.3_from_t0_hist_ci95": [
+    0.06343450633333333,
+    0.07073762266666667
+   ],
+   "persistence_eps0.3_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.3_from_t0_mean": 0.0060114908,
+   "climatology_eps0.3_from_t0_ci95": [
+    0.0048159827275,
+    0.007333747172499998
+   ],
+   "climatology_eps0.3_from_t0_nocross": 0.0,
+   "climatology_eps0.3_from_t0_hist_mean": 0.007785966999999999,
+   "climatology_eps0.3_from_t0_hist_ci95": [
+    0.005190644666666667,
+    0.010562358333333334
+   ],
+   "climatology_eps0.3_from_t0_hist_nocross": 0.0,
+   "PF_eps0.3_from_t0_mean": 3.9023387316666662,
+   "PF_eps0.3_from_t0_ci95": [
+    3.6653073394,
+    4.141245696991667
+   ],
+   "PF_eps0.3_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_from_t0": -23.097661268333333,
+   "diff_PF_minus_bound_eps0.3_from_t0_ci90": [
+    -23.30245332515,
+    -22.89534382118333
+   ],
+   "diff_PF_minus_bound_eps0.3_from_t0_ci95": [
+    -23.334692660600002,
+    -22.858754303008332
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0": 2.2642678449999996,
+   "diff_PF_minus_DI_eps0.3_from_t0_ci90": [
+    2.0455214039166663,
+    2.4698053025333335
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0_ci95": [
+    2.0116071802166666,
+    2.522784583025
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0": -25.5056737568,
+   "diff_DI_minus_bound_eps0.3_from_t0_ci90": [
+    -25.562280452925002,
+    -25.448976526175
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0_ci95": [
+    -25.57173134938,
+    -25.43850621125
+   ],
+   "bound_eps0.1_future_mean": 16.0110005465,
+   "bound_eps0.1_future_ci95": [
+    15.430733350442502,
+    16.619974378084997
+   ],
+   "bound_eps0.1_future_nocross": 0.30900000000000005,
+   "bound_eps0.1_future_hist_mean": 16.20952048166667,
+   "bound_eps0.1_future_hist_ci95": [
+    15.084703885825002,
+    17.234196609508334
+   ],
+   "bound_eps0.1_future_hist_nocross": 0.31666666666666665,
+   "DI_eps0.1_future_mean": 0.7693440740999999,
+   "DI_eps0.1_future_ci95": [
+    0.72408406686,
+    0.81515996317
+   ],
+   "DI_eps0.1_future_nocross": 0.0,
+   "DI_eps0.1_future_hist_mean": 0.9035946663333334,
+   "DI_eps0.1_future_hist_ci95": [
+    0.8095474277333333,
+    1.0091760002333332
+   ],
+   "DI_eps0.1_future_hist_nocross": 0.0,
+   "persistence_eps0.1_future_mean": 0.0275949156,
+   "persistence_eps0.1_future_ci95": [
+    0.0268344258,
+    0.028391619200000003
+   ],
+   "persistence_eps0.1_future_nocross": 0.0,
+   "persistence_eps0.1_future_hist_mean": 0.028488189333333334,
+   "persistence_eps0.1_future_hist_ci95": [
+    0.027039637333333328,
+    0.029876385000000005
+   ],
+   "persistence_eps0.1_future_hist_nocross": 0.0,
+   "climatology_eps0.1_future_mean": 0.0181069,
+   "climatology_eps0.1_future_ci95": [
+    0.0181069,
+    0.0181069
+   ],
+   "climatology_eps0.1_future_nocross": 0.0,
+   "climatology_eps0.1_future_hist_mean": 0.018106900000000002,
+   "climatology_eps0.1_future_hist_ci95": [
+    0.018106900000000002,
+    0.018106900000000002
+   ],
+   "climatology_eps0.1_future_hist_nocross": 0.0,
+   "PF_eps0.1_future_mean": 2.980938947,
+   "PF_eps0.1_future_ci95": [
+    2.7658546264416666,
+    3.195763735325
+   ],
+   "PF_eps0.1_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_future": 0.023333333333333334,
+   "ties_PF_vs_bound_eps0.1_future": 0.0,
+   "outlast_DI_vs_bound_eps0.1_future": 0.01,
+   "ties_DI_vs_bound_eps0.1_future": 0.002,
+   "outlast_DI_vs_bound_eps0.1_future_hist": 0.01,
+   "ties_DI_vs_bound_eps0.1_future_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_future": -13.228581534666668,
+   "diff_PF_minus_bound_eps0.1_future_ci90": [
+    -14.127979949799998,
+    -12.274314720016669
+   ],
+   "diff_PF_minus_bound_eps0.1_future_ci95": [
+    -14.285594078616667,
+    -12.102892150508332
+   ],
+   "diff_PF_minus_DI_eps0.1_future": 2.0773442806666664,
+   "diff_PF_minus_DI_eps0.1_future_ci90": [
+    1.8854654613666664,
+    2.2650585129666667
+   ],
+   "diff_PF_minus_DI_eps0.1_future_ci95": [
+    1.8590158071916671,
+    2.296025838691666
+   ],
+   "diff_DI_minus_bound_eps0.1_future": -15.2416564724,
+   "diff_DI_minus_bound_eps0.1_future_ci90": [
+    -15.75191873579,
+    -14.74162343821
+   ],
+   "diff_DI_minus_bound_eps0.1_future_ci95": [
+    -15.855770157447504,
+    -14.663174544190001
+   ],
+   "bound_eps0.1_from_t0_mean": 16.0033956485,
+   "bound_eps0.1_from_t0_ci95": [
+    15.420058648424998,
+    16.6097488078525
+   ],
+   "bound_eps0.1_from_t0_nocross": 0.30900000000000005,
+   "bound_eps0.1_from_t0_hist_mean": 16.209460125333337,
+   "bound_eps0.1_from_t0_hist_ci95": [
+    15.084645038400001,
+    17.234196609508334
+   ],
+   "bound_eps0.1_from_t0_hist_nocross": 0.31666666666666665,
+   "DI_eps0.1_from_t0_mean": 0.7693078602999999,
+   "DI_eps0.1_from_t0_ci95": [
+    0.7240641492700001,
+    0.8151409509249999
+   ],
+   "DI_eps0.1_from_t0_nocross": 0.0,
+   "DI_eps0.1_from_t0_hist_mean": 0.90353431,
+   "DI_eps0.1_from_t0_hist_ci95": [
+    0.8094840535833333,
+    1.0091760002333332
+   ],
+   "DI_eps0.1_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.1_from_t0_mean": 0.027558701799999998,
+   "persistence_eps0.1_from_t0_ci95": [
+    0.026798212,
+    0.0283558580725
+   ],
+   "persistence_eps0.1_from_t0_nocross": 0.0,
+   "persistence_eps0.1_from_t0_hist_mean": 0.028427832999999996,
+   "persistence_eps0.1_from_t0_hist_ci95": [
+    0.026979280999999997,
+    0.02987638499999999
+   ],
+   "persistence_eps0.1_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.1_from_t0_mean": 0.0,
+   "climatology_eps0.1_from_t0_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_nocross": 0.0,
+   "climatology_eps0.1_from_t0_hist_mean": 0.0,
+   "climatology_eps0.1_from_t0_hist_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_hist_nocross": 0.0,
+   "PF_eps0.1_from_t0_mean": 2.9793093259999996,
+   "PF_eps0.1_from_t0_ci95": [
+    2.7642174609,
+    3.1946094204499995
+   ],
+   "PF_eps0.1_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_from_t0": 0.023333333333333334,
+   "ties_PF_vs_bound_eps0.1_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.1_from_t0": 0.01,
+   "ties_DI_vs_bound_eps0.1_from_t0": 0.003,
+   "outlast_DI_vs_bound_eps0.1_from_t0_hist": 0.01,
+   "ties_DI_vs_bound_eps0.1_from_t0_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_from_t0": -13.230150799333337,
+   "diff_PF_minus_bound_eps0.1_from_t0_ci90": [
+    -14.130128635266669,
+    -12.275992626083335
+   ],
+   "diff_PF_minus_bound_eps0.1_from_t0_ci95": [
+    -14.287099969133333,
+    -12.104290908533331
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0": 2.0757750159999997,
+   "diff_PF_minus_DI_eps0.1_from_t0_ci90": [
+    1.8835189696166665,
+    2.263622032233333
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0_ci95": [
+    1.857265473525,
+    2.2948081496666664
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0": -15.2340877882,
+   "diff_DI_minus_bound_eps0.1_from_t0_ci90": [
+    -15.74164051128,
+    -14.73528185483
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0_ci95": [
+    -15.850963356029999,
+    -14.6508693742675
+   ],
+   "bound_eps0.5_future_mean": 27.0,
+   "bound_eps0.5_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_nocross": 1.0,
+   "bound_eps0.5_future_hist_mean": 27.0,
+   "bound_eps0.5_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_hist_nocross": 1.0,
+   "DI_eps0.5_future_mean": 1.8365104393999998,
+   "DI_eps0.5_future_ci95": [
+    1.7654218446549999,
+    1.9126214355325
+   ],
+   "DI_eps0.5_future_nocross": 0.0,
+   "DI_eps0.5_future_hist_mean": 1.9991828289999998,
+   "DI_eps0.5_future_hist_ci95": [
+    1.8670190569916667,
+    2.1463526943833338
+   ],
+   "DI_eps0.5_future_hist_nocross": 0.0,
+   "persistence_eps0.5_future_mean": 0.10467598889999999,
+   "persistence_eps0.5_future_ci95": [
+    0.10156160209999998,
+    0.10786325597249999
+   ],
+   "persistence_eps0.5_future_nocross": 0.0,
+   "persistence_eps0.5_future_hist_mean": 0.10568393966666666,
+   "persistence_eps0.5_future_hist_ci95": [
+    0.10012964809166666,
+    0.11123823124166665
+   ],
+   "persistence_eps0.5_future_hist_nocross": 0.0,
+   "climatology_eps0.5_future_mean": 0.0424063598,
+   "climatology_eps0.5_future_ci95": [
+    0.039237199627500004,
+    0.0457199225
+   ],
+   "climatology_eps0.5_future_nocross": 0.0,
+   "climatology_eps0.5_future_hist_mean": 0.04333584733333333,
+   "climatology_eps0.5_future_hist_ci95": [
+    0.037601995666666665,
+    0.04894898633333333
+   ],
+   "climatology_eps0.5_future_hist_nocross": 0.0,
+   "PF_eps0.5_future_mean": 4.444459317666667,
+   "PF_eps0.5_future_ci95": [
+    4.187861911041668,
+    4.705501968241666
+   ],
+   "PF_eps0.5_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_future": 0.0,
+   "ties_PF_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future": 0.0,
+   "ties_DI_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_future": -22.555540682333334,
+   "diff_PF_minus_bound_eps0.5_future_ci90": [
+    -22.76516728145,
+    -22.33885842785
+   ],
+   "diff_PF_minus_bound_eps0.5_future_ci95": [
+    -22.812138088958335,
+    -22.294498031758334
+   ],
+   "diff_PF_minus_DI_eps0.5_future": 2.445276488666668,
+   "diff_PF_minus_DI_eps0.5_future_ci90": [
+    2.2203646481333332,
+    2.676392960266666
+   ],
+   "diff_PF_minus_DI_eps0.5_future_ci95": [
+    2.1685668428666665,
+    2.724764034708332
+   ],
+   "diff_DI_minus_bound_eps0.5_future": -25.1634895606,
+   "diff_DI_minus_bound_eps0.5_future_ci90": [
+    -25.223931298145,
+    -25.102475645015
+   ],
+   "diff_DI_minus_bound_eps0.5_future_ci95": [
+    -25.234578155345,
+    -25.0873785644675
+   ],
+   "bound_eps0.5_from_t0_mean": 27.0,
+   "bound_eps0.5_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_nocross": 1.0,
+   "bound_eps0.5_from_t0_hist_mean": 27.0,
+   "bound_eps0.5_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_hist_nocross": 1.0,
+   "DI_eps0.5_from_t0_mean": 1.8365104393999998,
+   "DI_eps0.5_from_t0_ci95": [
+    1.7654218446549999,
+    1.9126214355325
+   ],
+   "DI_eps0.5_from_t0_nocross": 0.0,
+   "DI_eps0.5_from_t0_hist_mean": 1.9991828289999998,
+   "DI_eps0.5_from_t0_hist_ci95": [
+    1.8670190569916667,
+    2.1463526943833338
+   ],
+   "DI_eps0.5_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.5_from_t0_mean": 0.10467598889999999,
+   "persistence_eps0.5_from_t0_ci95": [
+    0.10156160209999998,
+    0.10786325597249999
+   ],
+   "persistence_eps0.5_from_t0_nocross": 0.0,
+   "persistence_eps0.5_from_t0_hist_mean": 0.10568393966666666,
+   "persistence_eps0.5_from_t0_hist_ci95": [
+    0.10012964809166666,
+    0.11123823124166665
+   ],
+   "persistence_eps0.5_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.5_from_t0_mean": 0.0232673665,
+   "climatology_eps0.5_from_t0_ci95": [
+    0.0203340487,
+    0.0263459921725
+   ],
+   "climatology_eps0.5_from_t0_nocross": 0.0,
+   "climatology_eps0.5_from_t0_hist_mean": 0.026496430333333335,
+   "climatology_eps0.5_from_t0_hist_ci95": [
+    0.020702222333333336,
+    0.03241285990833332
+   ],
+   "climatology_eps0.5_from_t0_hist_nocross": 0.0,
+   "PF_eps0.5_from_t0_mean": 4.443312547333333,
+   "PF_eps0.5_from_t0_ci95": [
+    4.186611026033332,
+    4.704664524116667
+   ],
+   "PF_eps0.5_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_from_t0": -22.556687452666665,
+   "diff_PF_minus_bound_eps0.5_from_t0_ci90": [
+    -22.766492102966666,
+    -22.339993126916667
+   ],
+   "diff_PF_minus_bound_eps0.5_from_t0_ci95": [
+    -22.813388973966667,
+    -22.295335475883334
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0": 2.4441297183333335,
+   "diff_PF_minus_DI_eps0.5_from_t0_ci90": [
+    2.2188074547333336,
+    2.6754453658333337
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0_ci95": [
+    2.1676645156833336,
+    2.7244547084999997
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0": -25.1634895606,
+   "diff_DI_minus_bound_eps0.5_from_t0_ci90": [
+    -25.223931298145,
+    -25.102475645015
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0_ci95": [
+    -25.234578155345,
+    -25.0873785644675
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.3_future": 0.16121176633333256,
+   "sens_PF_M3000_minus_M1500_eps0.3_future_ci95": [
+    -0.019384945358333492,
+    0.33522511096666613
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.3_from_t0": 0.16121176633333345,
+   "sens_PF_M3000_minus_M1500_eps0.3_from_t0_ci95": [
+    -0.019445301691666906,
+    0.3354605006666658
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.1_future": 0.1251790353333333,
+   "sens_PF_M3000_minus_M1500_eps0.1_future_ci95": [
+    -0.03413603322499936,
+    0.2775244563000003
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.1_from_t0": 0.12542046066666623,
+   "sens_PF_M3000_minus_M1500_eps0.1_from_t0_ci95": [
+    -0.03407567689166678,
+    0.2781340552666668
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.5_future": 0.16368637600000113,
+   "sens_PF_M3000_minus_M1500_eps0.5_future_ci95": [
+    -0.031871161816665515,
+    0.35147152699166656
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.5_from_t0": 0.16380708866666627,
+   "sens_PF_M3000_minus_M1500_eps0.5_from_t0_ci95": [
+    -0.031634263208332555,
+    0.3516541049000002
+   ],
+   "stop_condition": "",
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+  },
+  {
+   "system": "lorenz28",
+   "bits": 10,
+   "delta": 0.05,
+   "dt": 0.01,
+   "particles": 1500,
+   "n_states": 1000,
+   "n_hist": 300,
+   "pf_seed": 8005020,
+   "pf_context_frames": 64,
+   "pf_fallback_events": 1478,
+   "pf_steps": 19200,
+   "pf_fallback_rate": 0.07697916666666667,
+   "labels_vs_encode_mismatch": 0.0,
+   "panel_sha": "40acf31e00e702a6",
+   "history_ref_label": "unreliable",
+   "p0_eps0.3": 0.0,
+   "p0_eps0.3_hist": 0.0,
+   "p0_eps0.1": 0.002,
+   "p0_eps0.1_hist": 0.0033333333333333335,
+   "p0_eps0.5": 0.0,
+   "p0_eps0.5_hist": 0.0,
+   "bound_eps0.3_future_mean": 27.0,
+   "bound_eps0.3_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_nocross": 1.0,
+   "bound_eps0.3_future_hist_mean": 27.0,
+   "bound_eps0.3_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_hist_nocross": 1.0,
+   "DI_eps0.3_future_mean": 1.5076257612500001,
+   "DI_eps0.3_future_ci95": [
+    1.4415729217312498,
+    1.5745986576249997
+   ],
+   "DI_eps0.3_future_nocross": 0.0,
+   "DI_eps0.3_future_hist_mean": 1.6515001708333332,
+   "DI_eps0.3_future_hist_ci95": [
+    1.5239634662291666,
+    1.7891126108333333
+   ],
+   "DI_eps0.3_future_hist_nocross": 0.0,
+   "persistence_eps0.3_future_mean": 0.07831234249999998,
+   "persistence_eps0.3_future_ci95": [
+    0.07613951449999999,
+    0.08053043774999998
+   ],
+   "persistence_eps0.3_future_nocross": 0.0,
+   "persistence_eps0.3_future_hist_mean": 0.07951946916666666,
+   "persistence_eps0.3_future_hist_ci95": [
+    0.07559253522916666,
+    0.08344640310416665
+   ],
+   "persistence_eps0.3_future_hist_nocross": 0.0,
+   "climatology_eps0.3_future_mean": 0.05296268249999999,
+   "climatology_eps0.3_future_ci95": [
+    0.05146886324999998,
+    0.05454703624999999
+   ],
+   "climatology_eps0.3_future_nocross": 0.0,
+   "climatology_eps0.3_future_hist_mean": 0.05311357333333334,
+   "climatology_eps0.3_future_hist_ci95": [
+    0.05039753833333333,
+    0.05598049916666666
+   ],
+   "climatology_eps0.3_future_hist_nocross": 0.0,
+   "PF_eps0.3_future_mean": 3.5362775699999998,
+   "PF_eps0.3_future_ci95": [
+    3.3019327890208334,
+    3.7679364941458338
+   ],
+   "PF_eps0.3_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_future": 0.0,
+   "ties_PF_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future": 0.0,
+   "ties_DI_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_future": -23.46372243,
+   "diff_PF_minus_bound_eps0.3_future_ci90": [
+    -23.656161054291665,
+    -23.269654184708333
+   ],
+   "diff_PF_minus_bound_eps0.3_future_ci95": [
+    -23.69806721097917,
+    -23.232063505854168
+   ],
+   "diff_PF_minus_DI_eps0.3_future": 1.8847773991666665,
+   "diff_PF_minus_DI_eps0.3_future_ci90": [
+    1.689132344666667,
+    2.0862921070833327
+   ],
+   "diff_PF_minus_DI_eps0.3_future_ci95": [
+    1.643495412125,
+    2.1305861112083337
+   ],
+   "diff_DI_minus_bound_eps0.3_future": -25.49237423875,
+   "diff_DI_minus_bound_eps0.3_future_ci90": [
+    -25.548926614175002,
+    -25.435690588299998
+   ],
+   "diff_DI_minus_bound_eps0.3_future_ci95": [
+    -25.55842707826875,
+    -25.425401342375
+   ],
+   "bound_eps0.3_from_t0_mean": 27.0,
+   "bound_eps0.3_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_nocross": 1.0,
+   "bound_eps0.3_from_t0_hist_mean": 27.0,
+   "bound_eps0.3_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_hist_nocross": 1.0,
+   "DI_eps0.3_from_t0_mean": 1.5076257612500001,
+   "DI_eps0.3_from_t0_ci95": [
+    1.4415729217312498,
+    1.5745986576249997
+   ],
+   "DI_eps0.3_from_t0_nocross": 0.0,
+   "DI_eps0.3_from_t0_hist_mean": 1.6515001708333332,
+   "DI_eps0.3_from_t0_hist_ci95": [
+    1.5239634662291666,
+    1.7891126108333333
+   ],
+   "DI_eps0.3_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.3_from_t0_mean": 0.07831234249999998,
+   "persistence_eps0.3_from_t0_ci95": [
+    0.07613951449999999,
+    0.08053043774999998
+   ],
+   "persistence_eps0.3_from_t0_nocross": 0.0,
+   "persistence_eps0.3_from_t0_hist_mean": 0.07951946916666666,
+   "persistence_eps0.3_from_t0_hist_ci95": [
+    0.07559253522916666,
+    0.08344640310416665
+   ],
+   "persistence_eps0.3_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.3_from_t0_mean": 0.007514363500000001,
+   "climatology_eps0.3_from_t0_ci95": [
+    0.005975277000000001,
+    0.00909871725
+   ],
+   "climatology_eps0.3_from_t0_nocross": 0.0,
+   "climatology_eps0.3_from_t0_hist_mean": 0.009657013333333334,
+   "climatology_eps0.3_from_t0_hist_ci95": [
+    0.0064883058333333335,
+    0.013278393333333333
+   ],
+   "climatology_eps0.3_from_t0_hist_nocross": 0.0,
+   "PF_eps0.3_from_t0_mean": 3.5242063033333335,
+   "PF_eps0.3_from_t0_ci95": [
+    3.2904198184375,
+    3.7561292864375
+   ],
+   "PF_eps0.3_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_from_t0": -23.475793696666667,
+   "diff_PF_minus_bound_eps0.3_from_t0_ci90": [
+    -23.671061524083335,
+    -23.281567016
+   ],
+   "diff_PF_minus_bound_eps0.3_from_t0_ci95": [
+    -23.709580181562497,
+    -23.2438707135625
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0": 1.8727061325000003,
+   "diff_PF_minus_DI_eps0.3_from_t0_ci90": [
+    1.669599526291667,
+    2.076318223
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0_ci95": [
+    1.627021905395833,
+    2.124320369354166
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0": -25.49237423875,
+   "diff_DI_minus_bound_eps0.3_from_t0_ci90": [
+    -25.548926614175002,
+    -25.435690588299998
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0_ci95": [
+    -25.55842707826875,
+    -25.425401342375
+   ],
+   "bound_eps0.1_future_mean": 19.5226058245,
+   "bound_eps0.1_future_ci95": [
+    18.96263206071875,
+    20.087087725993747
+   ],
+   "bound_eps0.1_future_nocross": 0.499,
+   "bound_eps0.1_future_hist_mean": 19.361794329166667,
+   "bound_eps0.1_future_hist_ci95": [
+    18.2978025131875,
+    20.448674592187498
+   ],
+   "bound_eps0.1_future_hist_nocross": 0.5066666666666666,
+   "DI_eps0.1_future_mean": 0.7848435805,
+   "DI_eps0.1_future_ci95": [
+    0.7395174830750001,
+    0.83079097093125
+   ],
+   "DI_eps0.1_future_nocross": 0.0,
+   "DI_eps0.1_future_hist_mean": 0.9183216116666667,
+   "DI_eps0.1_future_hist_ci95": [
+    0.8235546237916667,
+    1.0242545212083332
+   ],
+   "DI_eps0.1_future_hist_nocross": 0.0,
+   "persistence_eps0.1_future_mean": 0.04639893124999999,
+   "persistence_eps0.1_future_ci95": [
+    0.04594625874999998,
+    0.04689687099999999
+   ],
+   "persistence_eps0.1_future_nocross": 0.0,
+   "persistence_eps0.1_future_hist_mean": 0.04602170416666666,
+   "persistence_eps0.1_future_hist_ci95": [
+    0.04541814083333333,
+    0.046927049166666665
+   ],
+   "persistence_eps0.1_future_hist_nocross": 0.0,
+   "climatology_eps0.1_future_mean": 0.04526724999999999,
+   "climatology_eps0.1_future_ci95": [
+    0.04526724999999999,
+    0.04526724999999999
+   ],
+   "climatology_eps0.1_future_nocross": 0.0,
+   "climatology_eps0.1_future_hist_mean": 0.045267249999999995,
+   "climatology_eps0.1_future_hist_ci95": [
+    0.045267249999999995,
+    0.045267249999999995
+   ],
+   "climatology_eps0.1_future_hist_nocross": 0.0,
+   "PF_eps0.1_future_mean": 2.562277240833333,
+   "PF_eps0.1_future_ci95": [
+    2.365466554645833,
+    2.7642333044374996
+   ],
+   "PF_eps0.1_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_future": 0.01,
+   "ties_PF_vs_bound_eps0.1_future": 0.0,
+   "outlast_DI_vs_bound_eps0.1_future": 0.003,
+   "ties_DI_vs_bound_eps0.1_future": 0.001,
+   "outlast_DI_vs_bound_eps0.1_future_hist": 0.006666666666666667,
+   "ties_DI_vs_bound_eps0.1_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.1_future": -16.799517088333335,
+   "diff_PF_minus_bound_eps0.1_future_ci90": [
+    -17.70139281870833,
+    -15.89355051833333
+   ],
+   "diff_PF_minus_bound_eps0.1_future_ci95": [
+    -17.87203998027083,
+    -15.721210131312498
+   ],
+   "diff_PF_minus_DI_eps0.1_future": 1.6439556291666664,
+   "diff_PF_minus_DI_eps0.1_future_ci90": [
+    1.4735621556250003,
+    1.8196302818749999
+   ],
+   "diff_PF_minus_DI_eps0.1_future_ci95": [
+    1.4384309973541667,
+    1.8535731748333335
+   ],
+   "diff_DI_minus_bound_eps0.1_future": -18.737762244000002,
+   "diff_DI_minus_bound_eps0.1_future_ci90": [
+    -19.224607408199997,
+    -18.247841108650004
+   ],
+   "diff_DI_minus_bound_eps0.1_future_ci95": [
+    -19.310350191987503,
+    -18.178498275143752
+   ],
+   "bound_eps0.1_from_t0_mean": 19.468605824500003,
+   "bound_eps0.1_from_t0_ci95": [
+    18.90203045794375,
+    20.041932556918752
+   ],
+   "bound_eps0.1_from_t0_nocross": 0.497,
+   "bound_eps0.1_from_t0_hist_mean": 19.271794329166667,
+   "bound_eps0.1_from_t0_hist_ci95": [
+    18.174487794458337,
+    20.3588000344375
+   ],
+   "bound_eps0.1_from_t0_hist_nocross": 0.5033333333333334,
+   "DI_eps0.1_from_t0_mean": 0.7847530460000001,
+   "DI_eps0.1_from_t0_ci95": [
+    0.7394676891000002,
+    0.8306563008625
+   ],
+   "DI_eps0.1_from_t0_nocross": 0.0,
+   "DI_eps0.1_from_t0_hist_mean": 0.9181707208333334,
+   "DI_eps0.1_from_t0_hist_ci95": [
+    0.8234075052291666,
+    1.0242469766666666
+   ],
+   "DI_eps0.1_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.1_from_t0_mean": 0.04630839674999999,
+   "persistence_eps0.1_from_t0_ci95": [
+    0.04581045699999999,
+    0.046851603749999984
+   ],
+   "persistence_eps0.1_from_t0_nocross": 0.0,
+   "persistence_eps0.1_from_t0_hist_mean": 0.04587081333333332,
+   "persistence_eps0.1_from_t0_hist_ci95": [
+    0.04511635916666666,
+    0.04677615833333333
+   ],
+   "persistence_eps0.1_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.1_from_t0_mean": 0.0,
+   "climatology_eps0.1_from_t0_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_nocross": 0.0,
+   "climatology_eps0.1_from_t0_hist_mean": 0.0,
+   "climatology_eps0.1_from_t0_hist_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_hist_nocross": 0.0,
+   "PF_eps0.1_from_t0_mean": 2.5545818083333334,
+   "PF_eps0.1_from_t0_ci95": [
+    2.3556775118333335,
+    2.760411994083333
+   ],
+   "PF_eps0.1_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_from_t0": 0.013333333333333334,
+   "ties_PF_vs_bound_eps0.1_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.1_from_t0": 0.003,
+   "ties_DI_vs_bound_eps0.1_from_t0": 0.003,
+   "outlast_DI_vs_bound_eps0.1_from_t0_hist": 0.006666666666666667,
+   "ties_DI_vs_bound_eps0.1_from_t0_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_from_t0": -16.717212520833336,
+   "diff_PF_minus_bound_eps0.1_from_t0_ci90": [
+    -17.612639286375,
+    -15.800347244958331
+   ],
+   "diff_PF_minus_bound_eps0.1_from_t0_ci95": [
+    -17.801026634291667,
+    -15.627498507479165
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0": 1.6364110875,
+   "diff_PF_minus_DI_eps0.1_from_t0_ci90": [
+    1.462735738333333,
+    1.8130061742916666
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0_ci95": [
+    1.4317276720833332,
+    1.8478959072291667
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0": -18.683852778500004,
+   "diff_DI_minus_bound_eps0.1_from_t0_ci90": [
+    -19.16722471035,
+    -18.190812285125002
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0_ci95": [
+    -19.264530491774998,
+    -18.112203811368754
+   ],
+   "bound_eps0.5_future_mean": 27.0,
+   "bound_eps0.5_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_nocross": 1.0,
+   "bound_eps0.5_future_hist_mean": 27.0,
+   "bound_eps0.5_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_hist_nocross": 1.0,
+   "DI_eps0.5_future_mean": 1.85464449975,
+   "DI_eps0.5_future_ci95": [
+    1.7845232661375,
+    1.9307908043375
+   ],
+   "DI_eps0.5_future_nocross": 0.0,
+   "DI_eps0.5_future_hist_mean": 2.0235969658333333,
+   "DI_eps0.5_future_hist_ci95": [
+    1.8876179191041667,
+    2.1683125918125
+   ],
+   "DI_eps0.5_future_hist_nocross": 0.0,
+   "persistence_eps0.5_future_mean": 0.11814752249999998,
+   "persistence_eps0.5_future_ci95": [
+    0.11484188156874997,
+    0.12149729899999999
+   ],
+   "persistence_eps0.5_future_nocross": 0.0,
+   "persistence_eps0.5_future_hist_mean": 0.11890197666666667,
+   "persistence_eps0.5_future_hist_ci95": [
+    0.11301346189583333,
+    0.12479049143749998
+   ],
+   "persistence_eps0.5_future_hist_nocross": 0.0,
+   "climatology_eps0.5_future_mean": 0.07278973799999998,
+   "climatology_eps0.5_future_ci95": [
+    0.06943996149999998,
+    0.07645751693124997
+   ],
+   "climatology_eps0.5_future_nocross": 0.0,
+   "climatology_eps0.5_future_hist_mean": 0.07393650833333332,
+   "climatology_eps0.5_future_hist_ci95": [
+    0.06759909333333333,
+    0.08027769560416666
+   ],
+   "climatology_eps0.5_future_hist_nocross": 0.0,
+   "PF_eps0.5_future_mean": 3.900377150833333,
+   "PF_eps0.5_future_ci95": [
+    3.6692916118541676,
+    4.1383659454375
+   ],
+   "PF_eps0.5_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_future": 0.0,
+   "ties_PF_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future": 0.0,
+   "ties_DI_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_future": -23.099622849166668,
+   "diff_PF_minus_bound_eps0.5_future_ci90": [
+    -23.294596439458335,
+    -22.903917438333334
+   ],
+   "diff_PF_minus_bound_eps0.5_future_ci95": [
+    -23.33070838814583,
+    -22.861634054562497
+   ],
+   "diff_PF_minus_DI_eps0.5_future": 1.8767801849999999,
+   "diff_PF_minus_DI_eps0.5_future_ci90": [
+    1.676993177125,
+    2.080490354541667
+   ],
+   "diff_PF_minus_DI_eps0.5_future_ci95": [
+    1.6332386077291667,
+    2.1330833544999996
+   ],
+   "diff_DI_minus_bound_eps0.5_future": -25.145355500249998,
+   "diff_DI_minus_bound_eps0.5_future_ci90": [
+    -25.206108676475,
+    -25.0849531452125
+   ],
+   "diff_DI_minus_bound_eps0.5_future_ci95": [
+    -25.2154767338625,
+    -25.0692091956625
+   ],
+   "bound_eps0.5_from_t0_mean": 27.0,
+   "bound_eps0.5_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_nocross": 1.0,
+   "bound_eps0.5_from_t0_hist_mean": 27.0,
+   "bound_eps0.5_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_hist_nocross": 1.0,
+   "DI_eps0.5_from_t0_mean": 1.85464449975,
+   "DI_eps0.5_from_t0_ci95": [
+    1.7845232661375,
+    1.9307908043375
+   ],
+   "DI_eps0.5_from_t0_nocross": 0.0,
+   "DI_eps0.5_from_t0_hist_mean": 2.0235969658333333,
+   "DI_eps0.5_from_t0_hist_ci95": [
+    1.8876179191041667,
+    2.1683125918125
+   ],
+   "DI_eps0.5_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.5_from_t0_mean": 0.11814752249999998,
+   "persistence_eps0.5_from_t0_ci95": [
+    0.11484188156874997,
+    0.12149729899999999
+   ],
+   "persistence_eps0.5_from_t0_nocross": 0.0,
+   "persistence_eps0.5_from_t0_hist_mean": 0.11890197666666667,
+   "persistence_eps0.5_from_t0_hist_ci95": [
+    0.11301346189583333,
+    0.12479049143749998
+   ],
+   "persistence_eps0.5_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.5_from_t0_mean": 0.02702454825,
+   "climatology_eps0.5_from_t0_ci95": [
+    0.023720039,
+    0.030419592000000002
+   ],
+   "climatology_eps0.5_from_t0_nocross": 0.0,
+   "climatology_eps0.5_from_t0_hist_mean": 0.030932620833333337,
+   "climatology_eps0.5_from_t0_hist_ci95": [
+    0.024591433562500004,
+    0.0375718175
+   ],
+   "climatology_eps0.5_from_t0_hist_nocross": 0.0,
+   "PF_eps0.5_from_t0_mean": 3.8919272641666667,
+   "PF_eps0.5_from_t0_ci95": [
+    3.657703195854167,
+    4.128558041270832
+   ],
+   "PF_eps0.5_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_from_t0": -23.108072735833332,
+   "diff_PF_minus_bound_eps0.5_from_t0_ci90": [
+    -23.302721910833334,
+    -22.914758944708332
+   ],
+   "diff_PF_minus_bound_eps0.5_from_t0_ci95": [
+    -23.342296804145835,
+    -22.871441958729168
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0": 1.8683302983333334,
+   "diff_PF_minus_DI_eps0.5_from_t0_ci90": [
+    1.6661365816666667,
+    2.0738587024166675
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0_ci95": [
+    1.624483167125,
+    2.1200539310416664
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0": -25.145355500249998,
+   "diff_DI_minus_bound_eps0.5_from_t0_ci90": [
+    -25.206108676475,
+    -25.0849531452125
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0_ci95": [
+    -25.2154767338625,
+    -25.0692091956625
+   ],
+   "stop_condition": "fallback > 5% at 1,500 and 3,000 particles: history reference unreliable",
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+  },
+  {
+   "system": "lorenz28",
+   "bits": 10,
+   "delta": 0.05,
+   "dt": 0.01,
+   "particles": 3000,
+   "n_states": 1000,
+   "n_hist": 300,
+   "pf_seed": 8005030,
+   "pf_context_frames": 64,
+   "pf_fallback_events": 1317,
+   "pf_steps": 19200,
+   "pf_fallback_rate": 0.06859375,
+   "labels_vs_encode_mismatch": 0.0,
+   "panel_sha": "40acf31e00e702a6",
+   "history_ref_label": "unreliable",
+   "p0_eps0.3": 0.0,
+   "p0_eps0.3_hist": 0.0,
+   "p0_eps0.1": 0.002,
+   "p0_eps0.1_hist": 0.0033333333333333335,
+   "p0_eps0.5": 0.0,
+   "p0_eps0.5_hist": 0.0,
+   "bound_eps0.3_future_mean": 27.0,
+   "bound_eps0.3_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_nocross": 1.0,
+   "bound_eps0.3_future_hist_mean": 27.0,
+   "bound_eps0.3_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_hist_nocross": 1.0,
+   "DI_eps0.3_future_mean": 1.5076257612500001,
+   "DI_eps0.3_future_ci95": [
+    1.4415729217312498,
+    1.5745986576249997
+   ],
+   "DI_eps0.3_future_nocross": 0.0,
+   "DI_eps0.3_future_hist_mean": 1.6515001708333332,
+   "DI_eps0.3_future_hist_ci95": [
+    1.5239634662291666,
+    1.7891126108333333
+   ],
+   "DI_eps0.3_future_hist_nocross": 0.0,
+   "persistence_eps0.3_future_mean": 0.07831234249999998,
+   "persistence_eps0.3_future_ci95": [
+    0.07613951449999999,
+    0.08053043774999998
+   ],
+   "persistence_eps0.3_future_nocross": 0.0,
+   "persistence_eps0.3_future_hist_mean": 0.07951946916666666,
+   "persistence_eps0.3_future_hist_ci95": [
+    0.07559253522916666,
+    0.08344640310416665
+   ],
+   "persistence_eps0.3_future_hist_nocross": 0.0,
+   "climatology_eps0.3_future_mean": 0.05296268249999999,
+   "climatology_eps0.3_future_ci95": [
+    0.05146886324999998,
+    0.05454703624999999
+   ],
+   "climatology_eps0.3_future_nocross": 0.0,
+   "climatology_eps0.3_future_hist_mean": 0.05311357333333334,
+   "climatology_eps0.3_future_hist_ci95": [
+    0.05039753833333333,
+    0.05598049916666666
+   ],
+   "climatology_eps0.3_future_hist_nocross": 0.0,
+   "PF_eps0.3_future_mean": 3.530241936666666,
+   "PF_eps0.3_future_ci95": [
+    3.3185307806875,
+    3.7440995147499994
+   ],
+   "PF_eps0.3_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_future": 0.0,
+   "ties_PF_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future": 0.0,
+   "ties_DI_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_future": -23.469758063333334,
+   "diff_PF_minus_bound_eps0.3_future_ci90": [
+    -23.644844241791667,
+    -23.286252176375
+   ],
+   "diff_PF_minus_bound_eps0.3_future_ci95": [
+    -23.6814692193125,
+    -23.255900485250002
+   ],
+   "diff_PF_minus_DI_eps0.3_future": 1.878741765833333,
+   "diff_PF_minus_DI_eps0.3_future_ci90": [
+    1.6895171162916665,
+    2.0681097616666664
+   ],
+   "diff_PF_minus_DI_eps0.3_future_ci95": [
+    1.6549103036666661,
+    2.107978892104167
+   ],
+   "diff_DI_minus_bound_eps0.3_future": -25.49237423875,
+   "diff_DI_minus_bound_eps0.3_future_ci90": [
+    -25.548926614175002,
+    -25.435690588299998
+   ],
+   "diff_DI_minus_bound_eps0.3_future_ci95": [
+    -25.55842707826875,
+    -25.425401342375
+   ],
+   "bound_eps0.3_from_t0_mean": 27.0,
+   "bound_eps0.3_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_nocross": 1.0,
+   "bound_eps0.3_from_t0_hist_mean": 27.0,
+   "bound_eps0.3_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_hist_nocross": 1.0,
+   "DI_eps0.3_from_t0_mean": 1.5076257612500001,
+   "DI_eps0.3_from_t0_ci95": [
+    1.4415729217312498,
+    1.5745986576249997
+   ],
+   "DI_eps0.3_from_t0_nocross": 0.0,
+   "DI_eps0.3_from_t0_hist_mean": 1.6515001708333332,
+   "DI_eps0.3_from_t0_hist_ci95": [
+    1.5239634662291666,
+    1.7891126108333333
+   ],
+   "DI_eps0.3_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.3_from_t0_mean": 0.07831234249999998,
+   "persistence_eps0.3_from_t0_ci95": [
+    0.07613951449999999,
+    0.08053043774999998
+   ],
+   "persistence_eps0.3_from_t0_nocross": 0.0,
+   "persistence_eps0.3_from_t0_hist_mean": 0.07951946916666666,
+   "persistence_eps0.3_from_t0_hist_ci95": [
+    0.07559253522916666,
+    0.08344640310416665
+   ],
+   "persistence_eps0.3_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.3_from_t0_mean": 0.007514363500000001,
+   "climatology_eps0.3_from_t0_ci95": [
+    0.005975277000000001,
+    0.00909871725
+   ],
+   "climatology_eps0.3_from_t0_nocross": 0.0,
+   "climatology_eps0.3_from_t0_hist_mean": 0.009657013333333334,
+   "climatology_eps0.3_from_t0_hist_ci95": [
+    0.0064883058333333335,
+    0.013278393333333333
+   ],
+   "climatology_eps0.3_from_t0_hist_nocross": 0.0,
+   "PF_eps0.3_from_t0_mean": 3.5198304691666666,
+   "PF_eps0.3_from_t0_ci95": [
+    3.3082060754166664,
+    3.733205196583333
+   ],
+   "PF_eps0.3_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_from_t0": -23.480169530833333,
+   "diff_PF_minus_bound_eps0.3_from_t0_ci90": [
+    -23.659133603708334,
+    -23.2948755875
+   ],
+   "diff_PF_minus_bound_eps0.3_from_t0_ci95": [
+    -23.691793924583333,
+    -23.266794803416666
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0": 1.8683302983333334,
+   "diff_PF_minus_DI_eps0.3_from_t0_ci90": [
+    1.6777400867499999,
+    2.057434235208333
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0_ci95": [
+    1.6392327460833336,
+    2.099891143437499
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0": -25.49237423875,
+   "diff_DI_minus_bound_eps0.3_from_t0_ci90": [
+    -25.548926614175002,
+    -25.435690588299998
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0_ci95": [
+    -25.55842707826875,
+    -25.425401342375
+   ],
+   "bound_eps0.1_future_mean": 19.5226058245,
+   "bound_eps0.1_future_ci95": [
+    18.96263206071875,
+    20.087087725993747
+   ],
+   "bound_eps0.1_future_nocross": 0.499,
+   "bound_eps0.1_future_hist_mean": 19.361794329166667,
+   "bound_eps0.1_future_hist_ci95": [
+    18.2978025131875,
+    20.448674592187498
+   ],
+   "bound_eps0.1_future_hist_nocross": 0.5066666666666666,
+   "DI_eps0.1_future_mean": 0.7848435805,
+   "DI_eps0.1_future_ci95": [
+    0.7395174830750001,
+    0.83079097093125
+   ],
+   "DI_eps0.1_future_nocross": 0.0,
+   "DI_eps0.1_future_hist_mean": 0.9183216116666667,
+   "DI_eps0.1_future_hist_ci95": [
+    0.8235546237916667,
+    1.0242545212083332
+   ],
+   "DI_eps0.1_future_hist_nocross": 0.0,
+   "persistence_eps0.1_future_mean": 0.04639893124999999,
+   "persistence_eps0.1_future_ci95": [
+    0.04594625874999998,
+    0.04689687099999999
+   ],
+   "persistence_eps0.1_future_nocross": 0.0,
+   "persistence_eps0.1_future_hist_mean": 0.04602170416666666,
+   "persistence_eps0.1_future_hist_ci95": [
+    0.04541814083333333,
+    0.046927049166666665
+   ],
+   "persistence_eps0.1_future_hist_nocross": 0.0,
+   "climatology_eps0.1_future_mean": 0.04526724999999999,
+   "climatology_eps0.1_future_ci95": [
+    0.04526724999999999,
+    0.04526724999999999
+   ],
+   "climatology_eps0.1_future_nocross": 0.0,
+   "climatology_eps0.1_future_hist_mean": 0.045267249999999995,
+   "climatology_eps0.1_future_hist_ci95": [
+    0.045267249999999995,
+    0.045267249999999995
+   ],
+   "climatology_eps0.1_future_hist_nocross": 0.0,
+   "PF_eps0.1_future_mean": 2.5850617566666667,
+   "PF_eps0.1_future_ci95": [
+    2.3935548832708333,
+    2.7845545274166668
+   ],
+   "PF_eps0.1_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_future": 0.006666666666666667,
+   "ties_PF_vs_bound_eps0.1_future": 0.006666666666666667,
+   "outlast_DI_vs_bound_eps0.1_future": 0.003,
+   "ties_DI_vs_bound_eps0.1_future": 0.001,
+   "outlast_DI_vs_bound_eps0.1_future_hist": 0.006666666666666667,
+   "ties_DI_vs_bound_eps0.1_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.1_future": -16.776732572500002,
+   "diff_PF_minus_bound_eps0.1_future_ci90": [
+    -17.66007264041667,
+    -15.863056688916666
+   ],
+   "diff_PF_minus_bound_eps0.1_future_ci95": [
+    -17.853898679666667,
+    -15.696180276645833
+   ],
+   "diff_PF_minus_DI_eps0.1_future": 1.666740145,
+   "diff_PF_minus_DI_eps0.1_future_ci90": [
+    1.4980140151666668,
+    1.8401137125
+   ],
+   "diff_PF_minus_DI_eps0.1_future_ci95": [
+    1.468590302666667,
+    1.8826686997708328
+   ],
+   "diff_DI_minus_bound_eps0.1_future": -18.737762244000002,
+   "diff_DI_minus_bound_eps0.1_future_ci90": [
+    -19.224607408199997,
+    -18.247841108650004
+   ],
+   "diff_DI_minus_bound_eps0.1_future_ci95": [
+    -19.310350191987503,
+    -18.178498275143752
+   ],
+   "bound_eps0.1_from_t0_mean": 19.468605824500003,
+   "bound_eps0.1_from_t0_ci95": [
+    18.90203045794375,
+    20.041932556918752
+   ],
+   "bound_eps0.1_from_t0_nocross": 0.497,
+   "bound_eps0.1_from_t0_hist_mean": 19.271794329166667,
+   "bound_eps0.1_from_t0_hist_ci95": [
+    18.174487794458337,
+    20.3588000344375
+   ],
+   "bound_eps0.1_from_t0_hist_nocross": 0.5033333333333334,
+   "DI_eps0.1_from_t0_mean": 0.7847530460000001,
+   "DI_eps0.1_from_t0_ci95": [
+    0.7394676891000002,
+    0.8306563008625
+   ],
+   "DI_eps0.1_from_t0_nocross": 0.0,
+   "DI_eps0.1_from_t0_hist_mean": 0.9181707208333334,
+   "DI_eps0.1_from_t0_hist_ci95": [
+    0.8234075052291666,
+    1.0242469766666666
+   ],
+   "DI_eps0.1_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.1_from_t0_mean": 0.04630839674999999,
+   "persistence_eps0.1_from_t0_ci95": [
+    0.04581045699999999,
+    0.046851603749999984
+   ],
+   "persistence_eps0.1_from_t0_nocross": 0.0,
+   "persistence_eps0.1_from_t0_hist_mean": 0.04587081333333332,
+   "persistence_eps0.1_from_t0_hist_ci95": [
+    0.04511635916666666,
+    0.04677615833333333
+   ],
+   "persistence_eps0.1_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.1_from_t0_mean": 0.0,
+   "climatology_eps0.1_from_t0_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_nocross": 0.0,
+   "climatology_eps0.1_from_t0_hist_mean": 0.0,
+   "climatology_eps0.1_from_t0_hist_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_hist_nocross": 0.0,
+   "PF_eps0.1_from_t0_mean": 2.5796296866666664,
+   "PF_eps0.1_from_t0_ci95": [
+    2.3885453076041663,
+    2.7793148432291663
+   ],
+   "PF_eps0.1_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_from_t0": 0.01,
+   "ties_PF_vs_bound_eps0.1_from_t0": 0.006666666666666667,
+   "outlast_DI_vs_bound_eps0.1_from_t0": 0.003,
+   "ties_DI_vs_bound_eps0.1_from_t0": 0.003,
+   "outlast_DI_vs_bound_eps0.1_from_t0_hist": 0.006666666666666667,
+   "ties_DI_vs_bound_eps0.1_from_t0_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_from_t0": -16.6921646425,
+   "diff_PF_minus_bound_eps0.1_from_t0_ci90": [
+    -17.576457772875003,
+    -15.782093545500002
+   ],
+   "diff_PF_minus_bound_eps0.1_from_t0_ci95": [
+    -17.778249178625003,
+    -15.593996753625001
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0": 1.661458965833333,
+   "diff_PF_minus_DI_eps0.1_from_t0_ci90": [
+    1.4923103416666668,
+    1.8352927503750003
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0_ci95": [
+    1.4641956071458333,
+    1.8768103631666664
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0": -18.683852778500004,
+   "diff_DI_minus_bound_eps0.1_from_t0_ci90": [
+    -19.16722471035,
+    -18.190812285125002
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0_ci95": [
+    -19.264530491774998,
+    -18.112203811368754
+   ],
+   "bound_eps0.5_future_mean": 27.0,
+   "bound_eps0.5_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_nocross": 1.0,
+   "bound_eps0.5_future_hist_mean": 27.0,
+   "bound_eps0.5_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_hist_nocross": 1.0,
+   "DI_eps0.5_future_mean": 1.85464449975,
+   "DI_eps0.5_future_ci95": [
+    1.7845232661375,
+    1.9307908043375
+   ],
+   "DI_eps0.5_future_nocross": 0.0,
+   "DI_eps0.5_future_hist_mean": 2.0235969658333333,
+   "DI_eps0.5_future_hist_ci95": [
+    1.8876179191041667,
+    2.1683125918125
+   ],
+   "DI_eps0.5_future_hist_nocross": 0.0,
+   "persistence_eps0.5_future_mean": 0.11814752249999998,
+   "persistence_eps0.5_future_ci95": [
+    0.11484188156874997,
+    0.12149729899999999
+   ],
+   "persistence_eps0.5_future_nocross": 0.0,
+   "persistence_eps0.5_future_hist_mean": 0.11890197666666667,
+   "persistence_eps0.5_future_hist_ci95": [
+    0.11301346189583333,
+    0.12479049143749998
+   ],
+   "persistence_eps0.5_future_hist_nocross": 0.0,
+   "climatology_eps0.5_future_mean": 0.07278973799999998,
+   "climatology_eps0.5_future_ci95": [
+    0.06943996149999998,
+    0.07645751693124997
+   ],
+   "climatology_eps0.5_future_nocross": 0.0,
+   "climatology_eps0.5_future_hist_mean": 0.07393650833333332,
+   "climatology_eps0.5_future_hist_ci95": [
+    0.06759909333333333,
+    0.08027769560416666
+   ],
+   "climatology_eps0.5_future_hist_nocross": 0.0,
+   "PF_eps0.5_future_mean": 3.8825720324999997,
+   "PF_eps0.5_future_ci95": [
+    3.6668886753333334,
+    4.103031084541667
+   ],
+   "PF_eps0.5_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_future": 0.0,
+   "ties_PF_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future": 0.0,
+   "ties_DI_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_future": -23.1174279675,
+   "diff_PF_minus_bound_eps0.5_future_ci90": [
+    -23.295946912416667,
+    -22.930164898791666
+   ],
+   "diff_PF_minus_bound_eps0.5_future_ci95": [
+    -23.333111324666664,
+    -22.896968915458334
+   ],
+   "diff_PF_minus_DI_eps0.5_future": 1.8589750666666665,
+   "diff_PF_minus_DI_eps0.5_future_ci90": [
+    1.6624699344166665,
+    2.0613347632499996
+   ],
+   "diff_PF_minus_DI_eps0.5_future_ci95": [
+    1.621133390625,
+    2.098159671125
+   ],
+   "diff_DI_minus_bound_eps0.5_future": -25.145355500249998,
+   "diff_DI_minus_bound_eps0.5_future_ci90": [
+    -25.206108676475,
+    -25.0849531452125
+   ],
+   "diff_DI_minus_bound_eps0.5_future_ci95": [
+    -25.2154767338625,
+    -25.0692091956625
+   ],
+   "bound_eps0.5_from_t0_mean": 27.0,
+   "bound_eps0.5_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_nocross": 1.0,
+   "bound_eps0.5_from_t0_hist_mean": 27.0,
+   "bound_eps0.5_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_hist_nocross": 1.0,
+   "DI_eps0.5_from_t0_mean": 1.85464449975,
+   "DI_eps0.5_from_t0_ci95": [
+    1.7845232661375,
+    1.9307908043375
+   ],
+   "DI_eps0.5_from_t0_nocross": 0.0,
+   "DI_eps0.5_from_t0_hist_mean": 2.0235969658333333,
+   "DI_eps0.5_from_t0_hist_ci95": [
+    1.8876179191041667,
+    2.1683125918125
+   ],
+   "DI_eps0.5_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.5_from_t0_mean": 0.11814752249999998,
+   "persistence_eps0.5_from_t0_ci95": [
+    0.11484188156874997,
+    0.12149729899999999
+   ],
+   "persistence_eps0.5_from_t0_nocross": 0.0,
+   "persistence_eps0.5_from_t0_hist_mean": 0.11890197666666667,
+   "persistence_eps0.5_from_t0_hist_ci95": [
+    0.11301346189583333,
+    0.12479049143749998
+   ],
+   "persistence_eps0.5_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.5_from_t0_mean": 0.02702454825,
+   "climatology_eps0.5_from_t0_ci95": [
+    0.023720039,
+    0.030419592000000002
+   ],
+   "climatology_eps0.5_from_t0_nocross": 0.0,
+   "climatology_eps0.5_from_t0_hist_mean": 0.030932620833333337,
+   "climatology_eps0.5_from_t0_hist_ci95": [
+    0.024591433562500004,
+    0.0375718175
+   ],
+   "climatology_eps0.5_from_t0_hist_nocross": 0.0,
+   "PF_eps0.5_from_t0_mean": 3.8816666874999997,
+   "PF_eps0.5_from_t0_ci95": [
+    3.6658362117708334,
+    4.1024237489375
+   ],
+   "PF_eps0.5_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_from_t0": -23.1183333125,
+   "diff_PF_minus_bound_eps0.5_from_t0_ci90": [
+    -23.297146494541668,
+    -22.930617571291666
+   ],
+   "diff_PF_minus_bound_eps0.5_from_t0_ci95": [
+    -23.334163788229166,
+    -22.8975762510625
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0": 1.8580697216666664,
+   "diff_PF_minus_DI_eps0.5_from_t0_ci90": [
+    1.6612929859166667,
+    2.0605878536250004
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0_ci95": [
+    1.6202242733541665,
+    2.0972430093125003
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0": -25.145355500249998,
+   "diff_DI_minus_bound_eps0.5_from_t0_ci90": [
+    -25.206108676475,
+    -25.0849531452125
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0_ci95": [
+    -25.2154767338625,
+    -25.0692091956625
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.3_future": -0.006035633333333568,
+   "sens_PF_M3000_minus_M1500_eps0.3_future_ci95": [
+    -0.14186756150000038,
+    0.1367146395416664
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.3_from_t0": -0.00437583416666687,
+   "sens_PF_M3000_minus_M1500_eps0.3_from_t0_ci95": [
+    -0.1410829291666671,
+    0.1376237568124998
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.1_future": 0.02278451583333352,
+   "sens_PF_M3000_minus_M1500_eps0.1_future_ci95": [
+    -0.1107538716666663,
+    0.15316928491666615
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.1_from_t0": 0.025047878333332996,
+   "sens_PF_M3000_minus_M1500_eps0.1_from_t0_ci95": [
+    -0.10880360764583362,
+    0.1542632434583332
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.5_future": -0.017805118333333425,
+   "sens_PF_M3000_minus_M1500_eps0.5_future_ci95": [
+    -0.15994805560416644,
+    0.12298357370833389
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.5_from_t0": -0.01026057666666702,
+   "sens_PF_M3000_minus_M1500_eps0.5_from_t0_ci95": [
+    -0.1527090678750006,
+    0.13384771370833282
+   ],
+   "stop_condition": "",
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+  },
+  {
+   "system": "lorenz28",
+   "bits": 10,
+   "delta": 0.1,
+   "dt": 0.01,
+   "particles": 1500,
+   "n_states": 1000,
+   "n_hist": 300,
+   "pf_seed": 8010020,
+   "pf_context_frames": 32,
+   "pf_fallback_events": 646,
+   "pf_steps": 9600,
+   "pf_fallback_rate": 0.06729166666666667,
+   "labels_vs_encode_mismatch": 0.0,
+   "panel_sha": "40acf31e00e702a6",
+   "history_ref_label": "unreliable",
+   "p0_eps0.3": 0.0,
+   "p0_eps0.3_hist": 0.0,
+   "p0_eps0.1": 0.002,
+   "p0_eps0.1_hist": 0.0033333333333333335,
+   "p0_eps0.5": 0.0,
+   "p0_eps0.5_hist": 0.0,
+   "bound_eps0.3_future_mean": 27.0,
+   "bound_eps0.3_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_nocross": 1.0,
+   "bound_eps0.3_future_hist_mean": 27.0,
+   "bound_eps0.3_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_hist_nocross": 1.0,
+   "DI_eps0.3_future_mean": 1.5399013105,
+   "DI_eps0.3_future_ci95": [
+    1.4720887066375,
+    1.6070846995875
+   ],
+   "DI_eps0.3_future_nocross": 0.0,
+   "DI_eps0.3_future_hist_mean": 1.684847045,
+   "DI_eps0.3_future_hist_ci95": [
+    1.5559862733333334,
+    1.8233648299999996
+   ],
+   "DI_eps0.3_future_hist_nocross": 0.0,
+   "persistence_eps0.3_future_mean": 0.10375253699999998,
+   "persistence_eps0.3_future_ci95": [
+    0.10167024349999998,
+    0.10583709386249997
+   ],
+   "persistence_eps0.3_future_nocross": 0.0,
+   "persistence_eps0.3_future_hist_mean": 0.10441645666666666,
+   "persistence_eps0.3_future_hist_ci95": [
+    0.10049329499999998,
+    0.10864139999999999
+   ],
+   "persistence_eps0.3_future_hist_nocross": 0.0,
+   "climatology_eps0.3_future_mean": 0.10139863999999997,
+   "climatology_eps0.3_future_ci95": [
+    0.09940688099999997,
+    0.10366200249999998
+   ],
+   "climatology_eps0.3_future_nocross": 0.0,
+   "climatology_eps0.3_future_hist_mean": 0.10079507666666666,
+   "climatology_eps0.3_future_hist_ci95": [
+    0.09717369666666666,
+    0.10471823833333332
+   ],
+   "climatology_eps0.3_future_hist_nocross": 0.0,
+   "PF_eps0.3_future_mean": 3.122534905,
+   "PF_eps0.3_future_ci95": [
+    2.924566131666667,
+    3.3298739990833335
+   ],
+   "PF_eps0.3_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_future": 0.0,
+   "ties_PF_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future": 0.0,
+   "ties_DI_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_future": -23.877465094999998,
+   "diff_PF_minus_bound_eps0.3_future_ci90": [
+    -24.04527079075,
+    -23.704498932750003
+   ],
+   "diff_PF_minus_bound_eps0.3_future_ci95": [
+    -24.075433868333334,
+    -23.670126000916667
+   ],
+   "diff_PF_minus_DI_eps0.3_future": 1.4376878600000003,
+   "diff_PF_minus_DI_eps0.3_future_ci90": [
+    1.2360977066666665,
+    1.6407869216666662
+   ],
+   "diff_PF_minus_DI_eps0.3_future_ci95": [
+    1.2059119954583335,
+    1.67882650075
+   ],
+   "diff_DI_minus_bound_eps0.3_future": -25.4600986895,
+   "diff_DI_minus_bound_eps0.3_future_ci90": [
+    -25.5158679415,
+    -25.40341503905
+   ],
+   "diff_DI_minus_bound_eps0.3_future_ci95": [
+    -25.5279112933625,
+    -25.3929153004125
+   ],
+   "bound_eps0.3_from_t0_mean": 27.0,
+   "bound_eps0.3_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_nocross": 1.0,
+   "bound_eps0.3_from_t0_hist_mean": 27.0,
+   "bound_eps0.3_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_hist_nocross": 1.0,
+   "DI_eps0.3_from_t0_mean": 1.5399013105,
+   "DI_eps0.3_from_t0_ci95": [
+    1.4720887066375,
+    1.6070846995875
+   ],
+   "DI_eps0.3_from_t0_nocross": 0.0,
+   "DI_eps0.3_from_t0_hist_mean": 1.684847045,
+   "DI_eps0.3_from_t0_hist_ci95": [
+    1.5559862733333334,
+    1.8233648299999996
+   ],
+   "DI_eps0.3_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.3_from_t0_mean": 0.10375253699999998,
+   "persistence_eps0.3_from_t0_ci95": [
+    0.10167024349999998,
+    0.10583709386249997
+   ],
+   "persistence_eps0.3_from_t0_nocross": 0.0,
+   "persistence_eps0.3_from_t0_hist_mean": 0.10441645666666666,
+   "persistence_eps0.3_from_t0_hist_ci95": [
+    0.10049329499999998,
+    0.10864139999999999
+   ],
+   "persistence_eps0.3_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.3_from_t0_mean": 0.009777726,
+   "climatology_eps0.3_from_t0_ci95": [
+    0.007785967,
+    0.0118600195
+   ],
+   "climatology_eps0.3_from_t0_nocross": 0.0,
+   "climatology_eps0.3_from_t0_hist_mean": 0.012976611666666665,
+   "climatology_eps0.3_from_t0_hist_ci95": [
+    0.008751668333333334,
+    0.017503336666666668
+   ],
+   "climatology_eps0.3_from_t0_hist_nocross": 0.0,
+   "PF_eps0.3_from_t0_mean": 3.1204224333333332,
+   "PF_eps0.3_from_t0_ci95": [
+    2.921842552125,
+    3.3271805977083333
+   ],
+   "PF_eps0.3_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_from_t0": -23.87957756666667,
+   "diff_PF_minus_bound_eps0.3_from_t0_ci90": [
+    -24.047383262416666,
+    -23.706339800916666
+   ],
+   "diff_PF_minus_bound_eps0.3_from_t0_ci95": [
+    -24.078157447875,
+    -23.672819402291665
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0": 1.4355753883333333,
+   "diff_PF_minus_DI_eps0.3_from_t0_ci90": [
+    1.23366836425,
+    1.6386895390833334
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0_ci95": [
+    1.2038070683333335,
+    1.6776042849999997
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0": -25.4600986895,
+   "diff_DI_minus_bound_eps0.3_from_t0_ci90": [
+    -25.5158679415,
+    -25.40341503905
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0_ci95": [
+    -25.5279112933625,
+    -25.3929153004125
+   ],
+   "bound_eps0.1_future_mean": 21.750008965,
+   "bound_eps0.1_future_ci95": [
+    21.218208699962503,
+    22.285263664875
+   ],
+   "bound_eps0.1_future_nocross": 0.638,
+   "bound_eps0.1_future_hist_mean": 21.209782856666667,
+   "bound_eps0.1_future_hist_ci95": [
+    20.167461420333336,
+    22.18247627641667
+   ],
+   "bound_eps0.1_future_hist_nocross": 0.61,
+   "DI_eps0.1_future_mean": 0.8124566030000001,
+   "DI_eps0.1_future_ci95": [
+    0.7669177495,
+    0.858814793725
+   ],
+   "DI_eps0.1_future_nocross": 0.0,
+   "DI_eps0.1_future_hist_mean": 0.9421623633333334,
+   "DI_eps0.1_future_hist_ci95": [
+    0.8473802863750001,
+    1.047793491208333
+   ],
+   "DI_eps0.1_future_hist_nocross": 0.0,
+   "persistence_eps0.1_future_mean": 0.09080610349999997,
+   "persistence_eps0.1_future_ci95": [
+    0.09053449999999998,
+    0.09116824149999997
+   ],
+   "persistence_eps0.1_future_nocross": 0.0,
+   "persistence_eps0.1_future_hist_mean": 0.09083628166666666,
+   "persistence_eps0.1_future_hist_ci95": [
+    0.09053449999999999,
+    0.09174162666666665
+   ],
+   "persistence_eps0.1_future_hist_nocross": 0.0,
+   "climatology_eps0.1_future_mean": 0.09053449999999998,
+   "climatology_eps0.1_future_ci95": [
+    0.09053449999999998,
+    0.09053449999999998
+   ],
+   "climatology_eps0.1_future_nocross": 0.0,
+   "climatology_eps0.1_future_hist_mean": 0.09053449999999999,
+   "climatology_eps0.1_future_hist_ci95": [
+    0.09053449999999999,
+    0.09053449999999999
+   ],
+   "climatology_eps0.1_future_hist_nocross": 0.0,
+   "PF_eps0.1_future_mean": 2.2799604916666665,
+   "PF_eps0.1_future_ci95": [
+    2.0943345885,
+    2.4836631166666665
+   ],
+   "PF_eps0.1_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_future": 0.0033333333333333335,
+   "ties_PF_vs_bound_eps0.1_future": 0.0033333333333333335,
+   "outlast_DI_vs_bound_eps0.1_future": 0.002,
+   "ties_DI_vs_bound_eps0.1_future": 0.002,
+   "outlast_DI_vs_bound_eps0.1_future_hist": 0.0033333333333333335,
+   "ties_DI_vs_bound_eps0.1_future_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_future": -18.929822365,
+   "diff_PF_minus_bound_eps0.1_future_ci90": [
+    -19.74315359925,
+    -18.079565442833335
+   ],
+   "diff_PF_minus_bound_eps0.1_future_ci95": [
+    -19.908481653791668,
+    -17.895714051166664
+   ],
+   "diff_PF_minus_DI_eps0.1_future": 1.3377981283333331,
+   "diff_PF_minus_DI_eps0.1_future_ci90": [
+    1.1665973888333334,
+    1.5176901798333333
+   ],
+   "diff_PF_minus_DI_eps0.1_future_ci95": [
+    1.1392031580416668,
+    1.5436283140833336
+   ],
+   "diff_DI_minus_bound_eps0.1_future": -20.937552361999998,
+   "diff_DI_minus_bound_eps0.1_future_ci90": [
+    -21.387603368550003,
+    -20.496720095825005
+   ],
+   "diff_DI_minus_bound_eps0.1_future_ci95": [
+    -21.485511741200003,
+    -20.414885675812503
+   ],
+   "bound_eps0.1_from_t0_mean": 21.696008965,
+   "bound_eps0.1_from_t0_ci95": [
+    21.157677299012498,
+    22.2293482293375
+   ],
+   "bound_eps0.1_from_t0_nocross": 0.636,
+   "bound_eps0.1_from_t0_hist_mean": 21.119782856666667,
+   "bound_eps0.1_from_t0_hist_ci95": [
+    20.09958403941667,
+    22.109123729333334
+   ],
+   "bound_eps0.1_from_t0_hist_nocross": 0.6066666666666667,
+   "DI_eps0.1_from_t0_mean": 0.8122755340000001,
+   "DI_eps0.1_from_t0_ci95": [
+    0.766646146,
+    0.858633724725
+   ],
+   "DI_eps0.1_from_t0_nocross": 0.0,
+   "DI_eps0.1_from_t0_hist_mean": 0.9418605816666666,
+   "DI_eps0.1_from_t0_hist_ci95": [
+    0.8470709601666667,
+    1.047484165
+   ],
+   "DI_eps0.1_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.1_from_t0_mean": 0.09062503449999997,
+   "persistence_eps0.1_from_t0_ci95": [
+    0.09026289649999998,
+    0.09098717249999999
+   ],
+   "persistence_eps0.1_from_t0_nocross": 0.0,
+   "persistence_eps0.1_from_t0_hist_mean": 0.09053449999999999,
+   "persistence_eps0.1_from_t0_hist_ci95": [
+    0.08962915499999999,
+    0.09143984499999999
+   ],
+   "persistence_eps0.1_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.1_from_t0_mean": 0.0,
+   "climatology_eps0.1_from_t0_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_nocross": 0.0,
+   "climatology_eps0.1_from_t0_hist_mean": 0.0,
+   "climatology_eps0.1_from_t0_hist_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_hist_nocross": 0.0,
+   "PF_eps0.1_from_t0_mean": 2.261250028333334,
+   "PF_eps0.1_from_t0_ci95": [
+    2.072613853041667,
+    2.467366906666667
+   ],
+   "PF_eps0.1_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_from_t0": 0.006666666666666667,
+   "ties_PF_vs_bound_eps0.1_from_t0": 0.0033333333333333335,
+   "outlast_DI_vs_bound_eps0.1_from_t0": 0.002,
+   "ties_DI_vs_bound_eps0.1_from_t0": 0.004,
+   "outlast_DI_vs_bound_eps0.1_from_t0_hist": 0.0033333333333333335,
+   "ties_DI_vs_bound_eps0.1_from_t0_hist": 0.006666666666666667,
+   "diff_PF_minus_bound_eps0.1_from_t0": -18.858532828333335,
+   "diff_PF_minus_bound_eps0.1_from_t0_ci90": [
+    -19.68776750058333,
+    -17.999470183833335
+   ],
+   "diff_PF_minus_bound_eps0.1_from_t0_ci95": [
+    -19.86229057929167,
+    -17.816126145541663
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0": 1.3193894466666674,
+   "diff_PF_minus_DI_eps0.1_from_t0_ci90": [
+    1.1482490635,
+    1.498708113
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0_ci95": [
+    1.1180935304583333,
+    1.5291277050000003
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0": -20.883733431,
+   "diff_DI_minus_bound_eps0.1_from_t0_ci90": [
+    -21.31773217155,
+    -20.437979260849996
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0_ci95": [
+    -21.417235961725,
+    -20.347141102712495
+   ],
+   "bound_eps0.5_future_mean": 27.0,
+   "bound_eps0.5_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_nocross": 1.0,
+   "bound_eps0.5_future_hist_mean": 27.0,
+   "bound_eps0.5_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_hist_nocross": 1.0,
+   "DI_eps0.5_future_mean": 1.8995948790000001,
+   "DI_eps0.5_future_ci95": [
+    1.8291522479125,
+    1.9770109299499998
+   ],
+   "DI_eps0.5_future_nocross": 0.0,
+   "DI_eps0.5_future_hist_mean": 2.077163211666667,
+   "DI_eps0.5_future_hist_ci95": [
+    1.9422517175833336,
+    2.222041045291667
+   ],
+   "DI_eps0.5_future_hist_nocross": 0.0,
+   "persistence_eps0.5_future_mean": 0.1384272505,
+   "persistence_eps0.5_future_ci95": [
+    0.13489640499999997,
+    0.14195809599999995
+   ],
+   "persistence_eps0.5_future_nocross": 0.0,
+   "persistence_eps0.5_future_hist_mean": 0.13972491166666667,
+   "persistence_eps0.5_future_hist_ci95": [
+    0.13368927833333336,
+    0.14545876333333335
+   ],
+   "persistence_eps0.5_future_hist_nocross": 0.0,
+   "climatology_eps0.5_future_mean": 0.12656723099999997,
+   "climatology_eps0.5_future_ci95": [
+    0.12258371299999997,
+    0.1308223525
+   ],
+   "climatology_eps0.5_future_nocross": 0.0,
+   "climatology_eps0.5_future_hist_mean": 0.12433404666666666,
+   "climatology_eps0.5_future_hist_ci95": [
+    0.11739306833333331,
+    0.13187858833333332
+   ],
+   "climatology_eps0.5_future_hist_nocross": 0.0,
+   "PF_eps0.5_future_mean": 3.5380882600000003,
+   "PF_eps0.5_future_ci95": [
+    3.3283122789583333,
+    3.7514705319583332
+   ],
+   "PF_eps0.5_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_future": 0.0,
+   "ties_PF_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future": 0.0,
+   "ties_DI_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_future": -23.461911739999998,
+   "diff_PF_minus_bound_eps0.5_future_ci90": [
+    -23.634229071666667,
+    -23.279303653499998
+   ],
+   "diff_PF_minus_bound_eps0.5_future_ci95": [
+    -23.671687721041668,
+    -23.248529468041667
+   ],
+   "diff_PF_minus_DI_eps0.5_future": 1.4609250483333334,
+   "diff_PF_minus_DI_eps0.5_future_ci90": [
+    1.2608287142499999,
+    1.6760953766666669
+   ],
+   "diff_PF_minus_DI_eps0.5_future_ci95": [
+    1.221906423791667,
+    1.7093290827083338
+   ],
+   "diff_DI_minus_bound_eps0.5_future": -25.100405121,
+   "diff_DI_minus_bound_eps0.5_future_ci90": [
+    -25.159890814225,
+    -25.039371287825
+   ],
+   "diff_DI_minus_bound_eps0.5_future_ci95": [
+    -25.1708477520875,
+    -25.02298907005
+   ],
+   "bound_eps0.5_from_t0_mean": 27.0,
+   "bound_eps0.5_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_nocross": 1.0,
+   "bound_eps0.5_from_t0_hist_mean": 27.0,
+   "bound_eps0.5_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_hist_nocross": 1.0,
+   "DI_eps0.5_from_t0_mean": 1.8995948790000001,
+   "DI_eps0.5_from_t0_ci95": [
+    1.8291522479125,
+    1.9770109299499998
+   ],
+   "DI_eps0.5_from_t0_nocross": 0.0,
+   "DI_eps0.5_from_t0_hist_mean": 2.077163211666667,
+   "DI_eps0.5_from_t0_hist_ci95": [
+    1.9422517175833336,
+    2.222041045291667
+   ],
+   "DI_eps0.5_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.5_from_t0_mean": 0.1384272505,
+   "persistence_eps0.5_from_t0_ci95": [
+    0.13489640499999997,
+    0.14195809599999995
+   ],
+   "persistence_eps0.5_from_t0_nocross": 0.0,
+   "persistence_eps0.5_from_t0_hist_mean": 0.13972491166666667,
+   "persistence_eps0.5_from_t0_hist_ci95": [
+    0.13368927833333336,
+    0.14545876333333335
+   ],
+   "persistence_eps0.5_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.5_from_t0_mean": 0.033497765,
+   "climatology_eps0.5_from_t0_ci95": [
+    0.0296047815,
+    0.03757181749999999
+   ],
+   "climatology_eps0.5_from_t0_nocross": 0.0,
+   "climatology_eps0.5_from_t0_hist_mean": 0.037722708333333334,
+   "climatology_eps0.5_from_t0_hist_ci95": [
+    0.030178166666666673,
+    0.04556903166666667
+   ],
+   "climatology_eps0.5_from_t0_hist_nocross": 0.0,
+   "PF_eps0.5_from_t0_mean": 3.5190760150000004,
+   "PF_eps0.5_from_t0_ci95": [
+    3.309005796833334,
+    3.7321715943749996
+   ],
+   "PF_eps0.5_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_from_t0": -23.480923985,
+   "diff_PF_minus_bound_eps0.5_from_t0_ci90": [
+    -23.65478040316667,
+    -23.293457213666667
+   ],
+   "diff_PF_minus_bound_eps0.5_from_t0_ci95": [
+    -23.690994203166667,
+    -23.267828405625
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0": 1.4419128033333335,
+   "diff_PF_minus_DI_eps0.5_from_t0_ci90": [
+    1.2381950892500002,
+    1.6534768407500005
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0_ci95": [
+    1.1959607449999998,
+    1.6984423090833338
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0": -25.100405121,
+   "diff_DI_minus_bound_eps0.5_from_t0_ci90": [
+    -25.159890814225,
+    -25.039371287825
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0_ci95": [
+    -25.1708477520875,
+    -25.02298907005
+   ],
+   "stop_condition": "fallback > 5% at 1,500 and 3,000 particles: history reference unreliable",
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+  },
+  {
+   "system": "lorenz28",
+   "bits": 10,
+   "delta": 0.1,
+   "dt": 0.01,
+   "particles": 3000,
+   "n_states": 1000,
+   "n_hist": 300,
+   "pf_seed": 8010030,
+   "pf_context_frames": 32,
+   "pf_fallback_events": 535,
+   "pf_steps": 9600,
+   "pf_fallback_rate": 0.05572916666666667,
+   "labels_vs_encode_mismatch": 0.0,
+   "panel_sha": "40acf31e00e702a6",
+   "history_ref_label": "unreliable",
+   "p0_eps0.3": 0.0,
+   "p0_eps0.3_hist": 0.0,
+   "p0_eps0.1": 0.002,
+   "p0_eps0.1_hist": 0.0033333333333333335,
+   "p0_eps0.5": 0.0,
+   "p0_eps0.5_hist": 0.0,
+   "bound_eps0.3_future_mean": 27.0,
+   "bound_eps0.3_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_nocross": 1.0,
+   "bound_eps0.3_future_hist_mean": 27.0,
+   "bound_eps0.3_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_future_hist_nocross": 1.0,
+   "DI_eps0.3_future_mean": 1.5399013105,
+   "DI_eps0.3_future_ci95": [
+    1.4720887066375,
+    1.6070846995875
+   ],
+   "DI_eps0.3_future_nocross": 0.0,
+   "DI_eps0.3_future_hist_mean": 1.684847045,
+   "DI_eps0.3_future_hist_ci95": [
+    1.5559862733333334,
+    1.8233648299999996
+   ],
+   "DI_eps0.3_future_hist_nocross": 0.0,
+   "persistence_eps0.3_future_mean": 0.10375253699999998,
+   "persistence_eps0.3_future_ci95": [
+    0.10167024349999998,
+    0.10583709386249997
+   ],
+   "persistence_eps0.3_future_nocross": 0.0,
+   "persistence_eps0.3_future_hist_mean": 0.10441645666666666,
+   "persistence_eps0.3_future_hist_ci95": [
+    0.10049329499999998,
+    0.10864139999999999
+   ],
+   "persistence_eps0.3_future_hist_nocross": 0.0,
+   "climatology_eps0.3_future_mean": 0.10139863999999997,
+   "climatology_eps0.3_future_ci95": [
+    0.09940688099999997,
+    0.10366200249999998
+   ],
+   "climatology_eps0.3_future_nocross": 0.0,
+   "climatology_eps0.3_future_hist_mean": 0.10079507666666666,
+   "climatology_eps0.3_future_hist_ci95": [
+    0.09717369666666666,
+    0.10471823833333332
+   ],
+   "climatology_eps0.3_future_hist_nocross": 0.0,
+   "PF_eps0.3_future_mean": 3.2888166033333333,
+   "PF_eps0.3_future_ci95": [
+    3.0896256142499996,
+    3.4991961477083326
+   ],
+   "PF_eps0.3_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_future": 0.0,
+   "ties_PF_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future": 0.0,
+   "ties_DI_vs_bound_eps0.3_future": 0.0,
+   "outlast_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_future": -23.711183396666666,
+   "diff_PF_minus_bound_eps0.3_future_ci90": [
+    -23.880196219083334,
+    -23.533418905916665
+   ],
+   "diff_PF_minus_bound_eps0.3_future_ci95": [
+    -23.91037438575,
+    -23.500803852291664
+   ],
+   "diff_PF_minus_DI_eps0.3_future": 1.6039695583333333,
+   "diff_PF_minus_DI_eps0.3_future_ci90": [
+    1.406891040916667,
+    1.7995391674166672
+   ],
+   "diff_PF_minus_DI_eps0.3_future_ci95": [
+    1.3758150737916668,
+    1.8366658569583334
+   ],
+   "diff_DI_minus_bound_eps0.3_future": -25.4600986895,
+   "diff_DI_minus_bound_eps0.3_future_ci90": [
+    -25.5158679415,
+    -25.40341503905
+   ],
+   "diff_DI_minus_bound_eps0.3_future_ci95": [
+    -25.5279112933625,
+    -25.3929153004125
+   ],
+   "bound_eps0.3_from_t0_mean": 27.0,
+   "bound_eps0.3_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_nocross": 1.0,
+   "bound_eps0.3_from_t0_hist_mean": 27.0,
+   "bound_eps0.3_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.3_from_t0_hist_nocross": 1.0,
+   "DI_eps0.3_from_t0_mean": 1.5399013105,
+   "DI_eps0.3_from_t0_ci95": [
+    1.4720887066375,
+    1.6070846995875
+   ],
+   "DI_eps0.3_from_t0_nocross": 0.0,
+   "DI_eps0.3_from_t0_hist_mean": 1.684847045,
+   "DI_eps0.3_from_t0_hist_ci95": [
+    1.5559862733333334,
+    1.8233648299999996
+   ],
+   "DI_eps0.3_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.3_from_t0_mean": 0.10375253699999998,
+   "persistence_eps0.3_from_t0_ci95": [
+    0.10167024349999998,
+    0.10583709386249997
+   ],
+   "persistence_eps0.3_from_t0_nocross": 0.0,
+   "persistence_eps0.3_from_t0_hist_mean": 0.10441645666666666,
+   "persistence_eps0.3_from_t0_hist_ci95": [
+    0.10049329499999998,
+    0.10864139999999999
+   ],
+   "persistence_eps0.3_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.3_from_t0_mean": 0.009777726,
+   "climatology_eps0.3_from_t0_ci95": [
+    0.007785967,
+    0.0118600195
+   ],
+   "climatology_eps0.3_from_t0_nocross": 0.0,
+   "climatology_eps0.3_from_t0_hist_mean": 0.012976611666666665,
+   "climatology_eps0.3_from_t0_hist_ci95": [
+    0.008751668333333334,
+    0.017503336666666668
+   ],
+   "climatology_eps0.3_from_t0_hist_nocross": 0.0,
+   "PF_eps0.3_from_t0_mean": 3.287005913333333,
+   "PF_eps0.3_from_t0_ci95": [
+    3.0878073797083334,
+    3.4982757136249996
+   ],
+   "PF_eps0.3_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.3_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.3_from_t0": -23.71299408666667,
+   "diff_PF_minus_bound_eps0.3_from_t0_ci90": [
+    -23.881705127416666,
+    -23.535244685000002
+   ],
+   "diff_PF_minus_bound_eps0.3_from_t0_ci95": [
+    -23.912192620291666,
+    -23.501724286375
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0": 1.6021588683333332,
+   "diff_PF_minus_DI_eps0.3_from_t0_ci90": [
+    1.4056386470000002,
+    1.798347129833334
+   ],
+   "diff_PF_minus_DI_eps0.3_from_t0_ci95": [
+    1.3739817501666667,
+    1.8351569486249992
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0": -25.4600986895,
+   "diff_DI_minus_bound_eps0.3_from_t0_ci90": [
+    -25.5158679415,
+    -25.40341503905
+   ],
+   "diff_DI_minus_bound_eps0.3_from_t0_ci95": [
+    -25.5279112933625,
+    -25.3929153004125
+   ],
+   "bound_eps0.1_future_mean": 21.750008965,
+   "bound_eps0.1_future_ci95": [
+    21.218208699962503,
+    22.285263664875
+   ],
+   "bound_eps0.1_future_nocross": 0.638,
+   "bound_eps0.1_future_hist_mean": 21.209782856666667,
+   "bound_eps0.1_future_hist_ci95": [
+    20.167461420333336,
+    22.18247627641667
+   ],
+   "bound_eps0.1_future_hist_nocross": 0.61,
+   "DI_eps0.1_future_mean": 0.8124566030000001,
+   "DI_eps0.1_future_ci95": [
+    0.7669177495,
+    0.858814793725
+   ],
+   "DI_eps0.1_future_nocross": 0.0,
+   "DI_eps0.1_future_hist_mean": 0.9421623633333334,
+   "DI_eps0.1_future_hist_ci95": [
+    0.8473802863750001,
+    1.047793491208333
+   ],
+   "DI_eps0.1_future_hist_nocross": 0.0,
+   "persistence_eps0.1_future_mean": 0.09080610349999997,
+   "persistence_eps0.1_future_ci95": [
+    0.09053449999999998,
+    0.09116824149999997
+   ],
+   "persistence_eps0.1_future_nocross": 0.0,
+   "persistence_eps0.1_future_hist_mean": 0.09083628166666666,
+   "persistence_eps0.1_future_hist_ci95": [
+    0.09053449999999999,
+    0.09174162666666665
+   ],
+   "persistence_eps0.1_future_hist_nocross": 0.0,
+   "climatology_eps0.1_future_mean": 0.09053449999999998,
+   "climatology_eps0.1_future_ci95": [
+    0.09053449999999998,
+    0.09053449999999998
+   ],
+   "climatology_eps0.1_future_nocross": 0.0,
+   "climatology_eps0.1_future_hist_mean": 0.09053449999999999,
+   "climatology_eps0.1_future_hist_ci95": [
+    0.09053449999999999,
+    0.09053449999999999
+   ],
+   "climatology_eps0.1_future_hist_nocross": 0.0,
+   "PF_eps0.1_future_mean": 2.4610294916666664,
+   "PF_eps0.1_future_ci95": [
+    2.2727177316666665,
+    2.64903947
+   ],
+   "PF_eps0.1_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_future": 0.0033333333333333335,
+   "ties_PF_vs_bound_eps0.1_future": 0.0033333333333333335,
+   "outlast_DI_vs_bound_eps0.1_future": 0.002,
+   "ties_DI_vs_bound_eps0.1_future": 0.002,
+   "outlast_DI_vs_bound_eps0.1_future_hist": 0.0033333333333333335,
+   "ties_DI_vs_bound_eps0.1_future_hist": 0.0033333333333333335,
+   "diff_PF_minus_bound_eps0.1_future": -18.748753365,
+   "diff_PF_minus_bound_eps0.1_future_ci90": [
+    -19.570845647000002,
+    -17.887992115916667
+   ],
+   "diff_PF_minus_bound_eps0.1_future_ci95": [
+    -19.721788539958332,
+    -17.717773893416666
+   ],
+   "diff_PF_minus_DI_eps0.1_future": 1.518867128333333,
+   "diff_PF_minus_DI_eps0.1_future_ci90": [
+    1.3534304186666664,
+    1.6848772231666669
+   ],
+   "diff_PF_minus_DI_eps0.1_future_ci95": [
+    1.3196685947083326,
+    1.715326993333333
+   ],
+   "diff_DI_minus_bound_eps0.1_future": -20.937552361999998,
+   "diff_DI_minus_bound_eps0.1_future_ci90": [
+    -21.387603368550003,
+    -20.496720095825005
+   ],
+   "diff_DI_minus_bound_eps0.1_future_ci95": [
+    -21.485511741200003,
+    -20.414885675812503
+   ],
+   "bound_eps0.1_from_t0_mean": 21.696008965,
+   "bound_eps0.1_from_t0_ci95": [
+    21.157677299012498,
+    22.2293482293375
+   ],
+   "bound_eps0.1_from_t0_nocross": 0.636,
+   "bound_eps0.1_from_t0_hist_mean": 21.119782856666667,
+   "bound_eps0.1_from_t0_hist_ci95": [
+    20.09958403941667,
+    22.109123729333334
+   ],
+   "bound_eps0.1_from_t0_hist_nocross": 0.6066666666666667,
+   "DI_eps0.1_from_t0_mean": 0.8122755340000001,
+   "DI_eps0.1_from_t0_ci95": [
+    0.766646146,
+    0.858633724725
+   ],
+   "DI_eps0.1_from_t0_nocross": 0.0,
+   "DI_eps0.1_from_t0_hist_mean": 0.9418605816666666,
+   "DI_eps0.1_from_t0_hist_ci95": [
+    0.8470709601666667,
+    1.047484165
+   ],
+   "DI_eps0.1_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.1_from_t0_mean": 0.09062503449999997,
+   "persistence_eps0.1_from_t0_ci95": [
+    0.09026289649999998,
+    0.09098717249999999
+   ],
+   "persistence_eps0.1_from_t0_nocross": 0.0,
+   "persistence_eps0.1_from_t0_hist_mean": 0.09053449999999999,
+   "persistence_eps0.1_from_t0_hist_ci95": [
+    0.08962915499999999,
+    0.09143984499999999
+   ],
+   "persistence_eps0.1_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.1_from_t0_mean": 0.0,
+   "climatology_eps0.1_from_t0_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_nocross": 0.0,
+   "climatology_eps0.1_from_t0_hist_mean": 0.0,
+   "climatology_eps0.1_from_t0_hist_ci95": [
+    0.0,
+    0.0
+   ],
+   "climatology_eps0.1_from_t0_hist_nocross": 0.0,
+   "PF_eps0.1_from_t0_mean": 2.448958225,
+   "PF_eps0.1_from_t0_ci95": [
+    2.260314505166667,
+    2.6396993274166665
+   ],
+   "PF_eps0.1_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.1_from_t0": 0.006666666666666667,
+   "ties_PF_vs_bound_eps0.1_from_t0": 0.0033333333333333335,
+   "outlast_DI_vs_bound_eps0.1_from_t0": 0.002,
+   "ties_DI_vs_bound_eps0.1_from_t0": 0.004,
+   "outlast_DI_vs_bound_eps0.1_from_t0_hist": 0.0033333333333333335,
+   "ties_DI_vs_bound_eps0.1_from_t0_hist": 0.006666666666666667,
+   "diff_PF_minus_bound_eps0.1_from_t0": -18.67082463166667,
+   "diff_PF_minus_bound_eps0.1_from_t0_ci90": [
+    -19.50406023591666,
+    -17.799466048083335
+   ],
+   "diff_PF_minus_bound_eps0.1_from_t0_ci95": [
+    -19.65907256575,
+    -17.640405524625
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0": 1.5070976433333336,
+   "diff_PF_minus_DI_eps0.1_from_t0_ci90": [
+    1.3425964568333335,
+    1.6746770028333335
+   ],
+   "diff_PF_minus_DI_eps0.1_from_t0_ci95": [
+    1.30881199925,
+    1.7032557266666661
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0": -20.883733431,
+   "diff_DI_minus_bound_eps0.1_from_t0_ci90": [
+    -21.31773217155,
+    -20.437979260849996
+   ],
+   "diff_DI_minus_bound_eps0.1_from_t0_ci95": [
+    -21.417235961725,
+    -20.347141102712495
+   ],
+   "bound_eps0.5_future_mean": 27.0,
+   "bound_eps0.5_future_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_nocross": 1.0,
+   "bound_eps0.5_future_hist_mean": 27.0,
+   "bound_eps0.5_future_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_future_hist_nocross": 1.0,
+   "DI_eps0.5_future_mean": 1.8995948790000001,
+   "DI_eps0.5_future_ci95": [
+    1.8291522479125,
+    1.9770109299499998
+   ],
+   "DI_eps0.5_future_nocross": 0.0,
+   "DI_eps0.5_future_hist_mean": 2.077163211666667,
+   "DI_eps0.5_future_hist_ci95": [
+    1.9422517175833336,
+    2.222041045291667
+   ],
+   "DI_eps0.5_future_hist_nocross": 0.0,
+   "persistence_eps0.5_future_mean": 0.1384272505,
+   "persistence_eps0.5_future_ci95": [
+    0.13489640499999997,
+    0.14195809599999995
+   ],
+   "persistence_eps0.5_future_nocross": 0.0,
+   "persistence_eps0.5_future_hist_mean": 0.13972491166666667,
+   "persistence_eps0.5_future_hist_ci95": [
+    0.13368927833333336,
+    0.14545876333333335
+   ],
+   "persistence_eps0.5_future_hist_nocross": 0.0,
+   "climatology_eps0.5_future_mean": 0.12656723099999997,
+   "climatology_eps0.5_future_ci95": [
+    0.12258371299999997,
+    0.1308223525
+   ],
+   "climatology_eps0.5_future_nocross": 0.0,
+   "climatology_eps0.5_future_hist_mean": 0.12433404666666666,
+   "climatology_eps0.5_future_hist_ci95": [
+    0.11739306833333331,
+    0.13187858833333332
+   ],
+   "climatology_eps0.5_future_hist_nocross": 0.0,
+   "PF_eps0.5_future_mean": 3.7647262916666673,
+   "PF_eps0.5_future_ci95": [
+    3.5507480009166668,
+    3.984777938458332
+   ],
+   "PF_eps0.5_future_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_future": 0.0,
+   "ties_PF_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future": 0.0,
+   "ties_DI_vs_bound_eps0.5_future": 0.0,
+   "outlast_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_future_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_future": -23.23527370833333,
+   "diff_PF_minus_bound_eps0.5_future_ci90": [
+    -23.41696136075,
+    -23.048169075
+   ],
+   "diff_PF_minus_bound_eps0.5_future_ci95": [
+    -23.449251999083334,
+    -23.015222061541667
+   ],
+   "diff_PF_minus_DI_eps0.5_future": 1.6875630800000003,
+   "diff_PF_minus_DI_eps0.5_future_ci90": [
+    1.49132955125,
+    1.894057185416666
+   ],
+   "diff_PF_minus_DI_eps0.5_future_ci95": [
+    1.4443195121249996,
+    1.9286941762083325
+   ],
+   "diff_DI_minus_bound_eps0.5_future": -25.100405121,
+   "diff_DI_minus_bound_eps0.5_future_ci90": [
+    -25.159890814225,
+    -25.039371287825
+   ],
+   "diff_DI_minus_bound_eps0.5_future_ci95": [
+    -25.1708477520875,
+    -25.02298907005
+   ],
+   "bound_eps0.5_from_t0_mean": 27.0,
+   "bound_eps0.5_from_t0_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_nocross": 1.0,
+   "bound_eps0.5_from_t0_hist_mean": 27.0,
+   "bound_eps0.5_from_t0_hist_ci95": [
+    27.0,
+    27.0
+   ],
+   "bound_eps0.5_from_t0_hist_nocross": 1.0,
+   "DI_eps0.5_from_t0_mean": 1.8995948790000001,
+   "DI_eps0.5_from_t0_ci95": [
+    1.8291522479125,
+    1.9770109299499998
+   ],
+   "DI_eps0.5_from_t0_nocross": 0.0,
+   "DI_eps0.5_from_t0_hist_mean": 2.077163211666667,
+   "DI_eps0.5_from_t0_hist_ci95": [
+    1.9422517175833336,
+    2.222041045291667
+   ],
+   "DI_eps0.5_from_t0_hist_nocross": 0.0,
+   "persistence_eps0.5_from_t0_mean": 0.1384272505,
+   "persistence_eps0.5_from_t0_ci95": [
+    0.13489640499999997,
+    0.14195809599999995
+   ],
+   "persistence_eps0.5_from_t0_nocross": 0.0,
+   "persistence_eps0.5_from_t0_hist_mean": 0.13972491166666667,
+   "persistence_eps0.5_from_t0_hist_ci95": [
+    0.13368927833333336,
+    0.14545876333333335
+   ],
+   "persistence_eps0.5_from_t0_hist_nocross": 0.0,
+   "climatology_eps0.5_from_t0_mean": 0.033497765,
+   "climatology_eps0.5_from_t0_ci95": [
+    0.0296047815,
+    0.03757181749999999
+   ],
+   "climatology_eps0.5_from_t0_nocross": 0.0,
+   "climatology_eps0.5_from_t0_hist_mean": 0.037722708333333334,
+   "climatology_eps0.5_from_t0_hist_ci95": [
+    0.030178166666666673,
+    0.04556903166666667
+   ],
+   "climatology_eps0.5_from_t0_hist_nocross": 0.0,
+   "PF_eps0.5_from_t0_mean": 3.7490336450000004,
+   "PF_eps0.5_from_t0_ci95": [
+    3.534700760791667,
+    3.972699127249999
+   ],
+   "PF_eps0.5_from_t0_nocross": 0.0,
+   "outlast_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_PF_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0": 0.0,
+   "outlast_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "ties_DI_vs_bound_eps0.5_from_t0_hist": 0.0,
+   "diff_PF_minus_bound_eps0.5_from_t0": -23.250966355,
+   "diff_PF_minus_bound_eps0.5_from_t0_ci90": [
+    -23.43570200225,
+    -23.063258158333333
+   ],
+   "diff_PF_minus_bound_eps0.5_from_t0_ci95": [
+    -23.46529923920833,
+    -23.02730087275
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0": 1.6718704333333334,
+   "diff_PF_minus_DI_eps0.5_from_t0_ci90": [
+    1.4723474844166669,
+    1.8813069100000002
+   ],
+   "diff_PF_minus_DI_eps0.5_from_t0_ci95": [
+    1.4313353559166668,
+    1.9142237452916668
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0": -25.100405121,
+   "diff_DI_minus_bound_eps0.5_from_t0_ci90": [
+    -25.159890814225,
+    -25.039371287825
+   ],
+   "diff_DI_minus_bound_eps0.5_from_t0_ci95": [
+    -25.1708477520875,
+    -25.02298907005
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.3_future": 0.16628169833333306,
+   "sens_PF_M3000_minus_M1500_eps0.3_future_ci95": [
+    0.022920317583333173,
+    0.31631999845833325
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.3_from_t0": 0.1665834799999999,
+   "sens_PF_M3000_minus_M1500_eps0.3_from_t0_ci95": [
+    0.0235314254583335,
+    0.31662932466666627
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.1_future": 0.18106899999999992,
+   "sens_PF_M3000_minus_M1500_eps0.1_future_ci95": [
+    0.03017816666666695,
+    0.32418141087499974
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.1_from_t0": 0.18770819666666627,
+   "sens_PF_M3000_minus_M1500_eps0.1_from_t0_ci95": [
+    0.03710405591666636,
+    0.33679588454166665
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.5_future": 0.22663803166666696,
+   "sens_PF_M3000_minus_M1500_eps0.5_future_ci95": [
+    0.07844814425000038,
+    0.37936218862499993
+   ],
+   "sens_PF_M3000_minus_M1500_eps0.5_from_t0": 0.2299576299999999,
+   "sens_PF_M3000_minus_M1500_eps0.5_from_t0_ci95": [
+    0.0820695242499997,
+    0.381165334083333
+   ],
+   "stop_condition": "",
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -6797,7 +10169,7 @@
     0.15988996263333383
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -7494,7 +10866,7 @@
     0.10367709158333338
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -8191,7 +11563,7 @@
     0.10231152954166688
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -8888,7 +12260,7 @@
     0.3982431585999992
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -9585,7 +12957,7 @@
     0.18092565370833313
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -10282,7 +13654,7 @@
     0.289733033625
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -10979,7 +14351,7 @@
     0.20352759163333342
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -11676,7 +15048,7 @@
     0.27674510514583295
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   },
   {
    "system": "lorenz28",
@@ -12373,7 +15745,7 @@
     0.14914049966666673
    ],
    "stop_condition": "",
-   "git_sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty"
+   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
   }
  ]
 }
