@@ -75,7 +75,7 @@ decomposition:
   system: lorenz28
   rates: [4, 6, 8, 10]
   horizon_time: 6.0
-  known_zero_ratio: 1.0e-10
+  known_zero_ratio: 1.0e-6        # AMENDED 2026-09-24 (was 1.0e-10, a WO authoring error); see FREEZE.md 'Amendment 1'
 
 exchange_law:
   deff_fit_rates: [6, 8, 10, 12]
@@ -137,5 +137,5 @@ pins:
   tf32: "TF32 matmuls enabled for training and rollout"
   bootstrap: "states are independent trajectories, so resampling states resamples trajectories; learned arms resample model seeds too"
   climatology_null: "added per gate check 7: forecast = calibration mean at every frame, scored like persistence"
-  decomposition_status: "NOT EXECUTED: known-zero test fails at 4 bits under the frozen k-means stopping rule (plug-in O(0)/I(0) = 8.6e-10 > 1e-10); see gate/GATE_REPORT.md"
+  decomposition_status: "Amendment 1: under the original 1e-10 threshold the known-zero test failed at 4 bits (plug-in O(0)/I(0) = 8.6e-10) and the decomposition was not run; the threshold is amended to 1e-6 (WO authoring error, Todd 2026-09-24); k-means settings and codebooks unchanged; decomposition run under the amended threshold"
   second_author_law: "fixed-slope comparator H(R) = a + (ln 2 / D_KY) R (per the blinded second author), intercept fit on {6, 8, 10, 12}; reported beside, never replacing, the WO criterion"

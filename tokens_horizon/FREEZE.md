@@ -54,8 +54,7 @@ references: their state estimate). p_0 is reported at every rate. Every comparis
 
 ## 2.5 Bounds and references
 - Output-support bound: d_C(x_t) on the true future; T_out = first frame with d_C > εσ_A; per-state strict outlast, ties reported.
-- Single-frame decomposition: specified as in WO 2.5. **Not executed.** The known-zero test fails at 4 bits under the frozen
-  tokenizer (plug-in O(0)/I(0) = 8.6e-10 against the 1e-10 threshold), measured on calibration codebooks before this commit. See `gate/GATE_REPORT.md`.
+- Single-frame decomposition: specified as in WO 2.5, known-zero threshold as amended below (Amendment 1).
 - Decode-and-integrate; persistence; **climatology (added, gate check 7)**.
 - Particle filter: 1,500 particles, context 3.2 tu, initialized from calibration members of the first observed cell, indicator
   likelihood, Gaussian fallback exp(−d²/δ_cell²) to the observed prototype (counted), systematic resampling, jitter 5% of
@@ -84,3 +83,15 @@ Well below: difference ≥ 0.25 and the 95% CI excludes 0. Near: upper 95% limit
 
 ## Readings and stop conditions
 WO §4 and §5 verbatim apply. Labels: bound, reference, learned, estimate.
+
+## Amendment 1 (2026-09-24): known-zero threshold
+
+**Error stated.** The WO's known-zero threshold O(0) < 1e-10·I(0) was an authoring error: the preliminary reference
+table already shows O(0)/I(0) = 1.8e-9 at 4 bits under the same k-means settings (n_init 1, max_iter 300, tol 1e-8),
+so the test could not pass at 4 bits with the frozen tokenizer. Under the original threshold the test failed at 4 bits
+on the frozen calibration codebooks (plug-in O(0)/I(0) = 8.6e-10; 6, 8, 10 bits about 3e-28) and the decomposition was
+not run (freeze `f750ca1`, gate/GATE_REPORT.md).
+
+**Amendment** (directed by Todd): the threshold becomes **O(0) < 1e-6·I(0)**, plug-in O on all members. The k-means
+settings and every codebook are unchanged. The decomposition (Task 2.3, F3) runs under the amended threshold; both
+the original failure and the amended result are reported.
