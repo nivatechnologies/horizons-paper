@@ -58,6 +58,17 @@ def ref_series(bits, delta):
     return out
 
 
+def _probe_outlast(bits, delta):
+    """Per-state outlast of the A-probe (MLP) over the bound, pooled over seeds; nan where no probe exists."""
+    runs = sorted((config.RUNS / "learned" / "main").glob(f"{SYSTEM}_A_b{bits}_D{delta}_s*"))
+    p = config.RUNS / "headline" / f"{SYSTEM}_b{bits}_D{delta:g}_dt0.01_M1500.npz"
+    H = [np.load(r / "eval.npz")[f"Hprobe_mlp_{P}"] for r in runs if (r / "done").exists() and
+         f"Hprobe_mlp_{P}" in np.load(r / "eval.npz").files]
+    if not H or not p.exists():
+        return np.nan
+    return score.outlast(np.stack(H), np.load(p)[f"H_bound_{P}"])["outlast"]
+
+
 def main():
     cells = read_csv(config.RESULTS / "learned" / "cells.csv")
     extra = read_csv(config.RESULTS / "learned" / "extra.csv")
@@ -97,19 +108,16 @@ def main():
                 continue
             x, y, lo, hi = pts[ok].T
             ax.errorbar(x, y, yerr=[y - lo, hi - y], marker=m, ls=ls, lw=lw, color="k", mfc="k" if fill == "full" else "white",
-                        ms=5, capsize=2, elinewidth=0.6)
+                        ms=5, capsize=2, elinewidth=0.6, label=lab)
             for xi, yi, l_, h_ in pts[ok]:
                 rows.append(dict(delta=delta, bits=int(xi), series=nm, mean=yi, ci95_lo=l_, ci95_hi=h_,
                                  label={"bound": "bound", "A": "learned", "B": "learned", "D": "learned",
                                         "A-probe": "learned"}.get(nm, "reference")))
-            ax.annotate(lab if c == len(DELTAS) - 1 else "", (x[-1], y[-1]), xytext=(4, 0),
-                        textcoords="offset points", fontsize=6, va="center")
         C0 = [r for r in cells if r["system"] == SYSTEM and r["arm"] == "C" and float(r["delta"]) == delta
               and float(r["noise"]) == 0.0]
         if C0:
             yc = float(C0[0][f"H_{P}"])
-            ax.axhline(yc, color="k", lw=0.8, ls=(0, (8, 3)))
-            ax.text(BITS[0], yc * 1.08, "C continuous (σ=0)", fontsize=6)
+            ax.axhline(yc, color="k", lw=0.8, ls=(0, (8, 3)), label="C continuous input (σ=0)")
             rows.append(dict(delta=delta, bits=0, series="C(sigma=0)", mean=yc, ci95_lo=float(C0[0][f"H_{P}_lo"]),
                              ci95_hi=float(C0[0][f"H_{P}_hi"]), label="learned"))
         ax.set_yscale("log")
@@ -120,14 +128,17 @@ def main():
             ax.set_ylabel("restricted mean horizon (Lyapunov times)")
         # bottom: outlast fractions
         ax2 = axes[1, c]
-        arms = [("history ref", "o", "////"), ("A", "^", ""), ("B", "D", "...."), ("D", "v", "xxxx")]
-        w = 0.4
+        arms = [("history ref", "o", "////"), ("A", "^", ""), ("B", "D", "...."), ("D", "v", "xxxx"),
+                ("A-probe", "P", "\\\\")]
+        w = 0.36
         for i, (nm, m, hatch) in enumerate(arms):
             vals = []
             for b in BITS:
                 if nm == "history ref":
                     rs = ref_series(b, delta)
                     v = rs.get("_outlast_history", np.nan)
+                elif nm == "A-probe":
+                    v = _probe_outlast(b, delta)
                 else:
                     e = [r for r in extra if r["kind"] == "outlast_vs_bound" and r["arm"] == nm and r["system"] == SYSTEM
                          and int(r["bits"]) == b and float(r["delta"]) == delta and r["score"] == P]
@@ -135,7 +146,7 @@ def main():
                 vals.append(v)
                 rows.append(dict(delta=delta, bits=b, series=f"outlast_vs_bound:{nm}", mean=v, ci95_lo="", ci95_hi="",
                                  label="estimate"))
-            xs = np.arange(len(BITS)) + (i - 1.5) * w / 2
+            xs = np.arange(len(BITS)) + (i - 2) * w / 2
             ax2.bar(xs, vals, width=w / 2, facecolor="white" if hatch else "black", edgecolor="k", hatch=hatch, lw=0.6,
                     label=nm)
         ax2.set_xticks(np.arange(len(BITS)))
@@ -146,6 +157,8 @@ def main():
             ax2.set_ylabel("fraction of states\noutlasting the bound")
         if c == len(DELTAS) - 1:
             ax2.legend(fontsize=6, frameon=False)
+    h, l = axes[0, 0].get_legend_handles_labels()
+    fig.legend(h, l, loc="outside lower center", ncol=5, fontsize=6, frameon=False)
     fig.suptitle("Lorenz-63 ρ = 28: output-support bound, references and learned arms (ε = 0.3, future frames)",
                  fontsize=8)
     OUT.parent.mkdir(parents=True, exist_ok=True)

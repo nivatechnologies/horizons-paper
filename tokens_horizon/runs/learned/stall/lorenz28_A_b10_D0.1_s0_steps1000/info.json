@@ -1,0 +1,45 @@
+{
+ "tag": "lorenz28_A_b10_D0.1_s0",
+ "best_val": 0.750904269516468,
+ "history": [
+  {
+   "step": 500,
+   "train": 0.8210821151733398,
+   "val": 0.8833620771765709,
+   "secs": 8.135017156600952
+  },
+  {
+   "step": 1000,
+   "train": 0.6853315234184265,
+   "val": 0.750904269516468,
+   "secs": 16.293080806732178
+  }
+ ],
+ "secs": 16.297828674316406,
+ "steps": 1000,
+ "params": {
+  "total": 1060736,
+  "backbone": 797568,
+  "head": 132096,
+  "adapter": 131072
+ },
+ "train_flops": 47979233280000.0,
+ "job": {
+  "system": "lorenz28",
+  "arm": "A",
+  "bits": 10,
+  "delta": 0.1,
+  "seed": 0,
+  "steps": 1000,
+  "panel": "validation"
+ },
+ "sha": "f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty",
+ "eval": {
+  "rollout_frames_run": 103,
+  "repeat_fraction": 0.0,
+  "true_repeat_fraction": 0.0002898550724637681,
+  "current_token_rmse_rel": 0.04124712333913834
+ },
+ "panel": "validation",
+ "wall": 17.188756227493286
+}
