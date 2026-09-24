@@ -137,6 +137,15 @@ def main():
            ("95%", ci("eps0.3_future_lo95", "eps0.3_future_hi95")), "err0_rms_rel", "err0_median_rel", "fallback_rate"],
           rows, sha, where=lambda r: r.get("canonical", "True") == "True")
 
+    p = R / "postfreeze" / "codebook_seeds_spread.csv"
+    if p.exists():
+        rows, sha = read_csv(p)
+        table(out, "P", "POST-FREEZE robustness: k-means random_state 0-4 at 4 and 6 bits (frozen-seed codebook primary)", p,
+              ["bits", "quantity", "frozen", "refit_min", "refit_max", "refit_mean", "refit_sd"], rows, sha,
+              note="Post-freeze check, not pre-registered. At 4 bits random_state 4 is the frozen seed, so the refit set "
+                   "contains the frozen codebook. decomp_* columns are **estimate**, bound_* are **bound** for their own "
+                   "codebook. Per-codebook rows: results/postfreeze/codebook_seeds_rows.csv.")
+
     lj = R / "learned" / "learned.json"
     if lj.exists():
         rows, sha = read_csv(R / "learned" / "cells.csv")

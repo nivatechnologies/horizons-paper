@@ -71,12 +71,14 @@ def summarize(I, O, Obc, E, sA, lam):
     return out
 
 
-def run_rate(bits, reps):
+def run_rate(bits, reps, cb=None, lab=None, out_run=None, name=None):
+    """Frozen codebook unless `cb`/`lab` are supplied (post-freeze robustness check only)."""
     sysm = get_system(SYS)
     lam, sA = config.lam(SYS), data.sigma_A(SYS)
     X, traj = data.calibration(SYS)
-    cb = kmeans_codebook(SYS, bits)
-    lab = kmeans_labels(SYS, bits)
+    if cb is None:
+        cb = kmeans_codebook(SYS, bits)
+        lab = kmeans_labels(SYS, bits)
     C, K = cb.C, cb.K
     ntr = int(traj.max()) + 1
     steps = int(round(DC["horizon_time"] / DT))
@@ -123,8 +125,9 @@ def run_rate(bits, reps):
             vals = np.array([b[e][k] for b in boots]) if boots else np.array([np.nan])
             ci[e][k] = [float(np.quantile(vals, 0.025)), float(np.quantile(vals, 0.975))]
     cells = dict(min=int(cnt.min()), median=float(np.median(cnt)), max=int(cnt.max()))
-    OUT_RUN.mkdir(parents=True, exist_ok=True)
-    np.savez_compressed(OUT_RUN / f"{SYS}_b{bits}.npz", I=I, O=O, Obc=Obc, E=E, t=np.arange(steps + 1) * DT,
+    out_run = out_run or OUT_RUN
+    out_run.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(out_run / (name or f"{SYS}_b{bits}.npz"), I=I, O=O, Obc=Obc, E=E, t=np.arange(steps + 1) * DT,
                         lam=lam, sigma_A=sA)
     return dict(bits=bits, known_zero=kz, point=point, ci95=ci, cell_members=cells, bootstrap_reps=reps)
 

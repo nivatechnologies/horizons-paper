@@ -30,6 +30,7 @@ label (bound / reference / learned / estimate), source file and commit.
 | `scripts/t2_system_table.py` | System table with D_eff and intervals → `results/system_table.*` |
 | `scripts/t2_headline.py` | Output-support bound, history reference, decode-and-integrate, persistence, climatology; p_0; outlast fractions; step-halving; particle sensitivity → `runs/headline/`, `results/headline/`, `results/headline_subsets/` |
 | `scripts/t2_decomposition.py` | Single-frame decomposition (I, O, bias-corrected O, projected-DI excess), known-zero test, trajectory bootstrap → `runs/decomposition/`, `results/decomposition/` |
+| `scripts/postfreeze_codebook_seeds.py` | Post-freeze robustness: decomposition and output-support bound for k-means random_state 0–4 (4, 6 bits) → `results/postfreeze/` |
 | `scripts/t2_exchange_law.py` | Calibration map h, held-out-rate predictions and criterion, r by orientation, FSLE → `runs/exchange_law/`, `results/exchange_law/` |
 | `scripts/t2_dimension.py` | Distortion curves, scalar quantization, residual-VQ oracle horizons → `results/dimension/` |
 | `scripts/t2_history.py` | Context sweep, timing jitter, observation noise → `runs/history/`, `results/history/` |

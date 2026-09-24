@@ -40,6 +40,7 @@ TABLES = [
     ["scripts/t2_dimension.py"],
     ["scripts/t2_history.py", "--aggregate-only"],
     ["scripts/t2_decomposition.py"],
+    ["scripts/postfreeze_codebook_seeds.py"],
     ["scripts/t3_analysis.py"],
     ["scripts/fig_F1.py"],
     ["scripts/fig_F2_F4_F5.py"],
