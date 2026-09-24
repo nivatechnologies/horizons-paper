@@ -157,9 +157,19 @@ def main():
               ["kind", "arm", "system", "bits", "delta", "score", "outlast", "ties", "ratio",
                ("95%", ci("ci95_lo", "ci95_hi")), "ref_minus_model", "upper95", "near", "current_token_rmse_rel",
                "probe_rmse_rel_per_seed", "probe_below_baseline_all_seeds"], rows, sha)
-    out.append("\n## Not executed\n\nSingle-frame decomposition (Task 2.3, F3): the known-zero test fails at 4 bits "
-               "under the frozen tokenizer (plug-in O(0)/I(0) = 8.6e-10 against 1e-10); see gate/GATE_REPORT.md. "
-               "No decomposition number exists for the paper.\n")
+    p = R / "decomposition" / "decomposition.csv"
+    if p.exists():
+        rows, sha = read_csv(p)
+        table(out, "M", "Single-frame decomposition, lorenz28 (Amendment 1; 150,000 calibration states)", p,
+              ["bits", "eps", "O0_over_I0", "passes_original_1e-10", "passes_amended_1e-6",
+               "T_info", ("95%", ci("T_info_lo", "T_info_hi")), "T_codebook", ("95%", ci("T_codebook_lo", "T_codebook_hi")),
+               "T_codebook_bc", "T_projected_DI", ("95%", ci("T_projected_DI_lo", "T_projected_DI_hi")),
+               "O_share_at_Tinfo", ("95%", ci("O_share_at_Tinfo_lo", "O_share_at_Tinfo_hi")), "Obc_share_at_Tinfo",
+               ("95%", ci("Obc_share_at_Tinfo_lo", "Obc_share_at_Tinfo_hi")), "E_share_at_Tinfo",
+               ("95%", ci("E_share_at_Tinfo_lo", "E_share_at_Tinfo_hi")), "min_cell", "median_cell"], rows, sha,
+              note="T_info is a **bound** (single-frame information bound on ensemble RMSE); T_codebook, T_projected_DI "
+                   "and the shares are **estimate**. Known-zero test: original threshold 1e-10 fails at 4 bits; "
+                   "amended threshold 1e-6 (FREEZE.md Amendment 1) passes at every rate.")
     (PKG / "NUMBERS.md").write_text("\n".join(out) + "\n")
     print("wrote NUMBERS.md", sum(1 for l in out if l.startswith("| ") and not l.startswith("| id")), "rows")
 

@@ -26,6 +26,7 @@ COMPUTE = [
     ["scripts/t2_headline.py", "all", "--system", "l96_5", "--bits", "6", "10", "--deltas", "0.05", "--dts", "0.01",
      "--res", "results/headline_subsets/l96_5"],
     ["scripts/t2_history.py"],
+    ["scripts/t2_decomposition.py"],
     ["scripts/t3_learned.py", "run", "--grid", "stall"],
     ["scripts/t3_learned.py", "run", "--grid", "main"],
 ]
@@ -38,9 +39,11 @@ TABLES = [
     ["scripts/t2_exchange_law.py"],
     ["scripts/t2_dimension.py"],
     ["scripts/t2_history.py", "--aggregate-only"],
+    ["scripts/t2_decomposition.py"],
     ["scripts/t3_analysis.py"],
     ["scripts/fig_F1.py"],
     ["scripts/fig_F2_F4_F5.py"],
+    ["scripts/fig_F3.py"],
     ["scripts/fig_F6.py"],
     ["scripts/make_numbers.py"],
 ]

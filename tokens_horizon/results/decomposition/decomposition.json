@@ -1,0 +1,575 @@
+{
+ "git_sha": "747a8c73909fe12d4164ca435c53035380da88b1-dirty",
+ "system": "lorenz28",
+ "rates": [
+  {
+   "bits": 4,
+   "known_zero": {
+    "O0_over_I0": 8.560414757106094e-10,
+    "threshold_amended": 1e-06,
+    "passes_amended": true,
+    "threshold_original": 1e-10,
+    "passes_original": false,
+    "Obc0_over_I0": 0.0,
+    "kmeans_n_iter": 102
+   },
+   "point": {
+    "eps0.3": {
+     "T_info": 0.0724276,
+     "T_codebook": 0.0181069,
+     "T_codebook_bc": 0.0181069,
+     "T_projected_DI": 0.0181069,
+     "O_share_at_Tinfo": 0.3072142424191855,
+     "Obc_share_at_Tinfo": 0.3071073373889506,
+     "E_share_at_Tinfo": 2.451109129177838e-18,
+     "info_crossed": true
+    },
+    "eps0.1": {
+     "T_info": 0.0,
+     "T_codebook": 0.0,
+     "T_codebook_bc": 0.0,
+     "T_projected_DI": 0.0,
+     "O_share_at_Tinfo": 8.560414757106094e-10,
+     "Obc_share_at_Tinfo": 0.0,
+     "E_share_at_Tinfo": -5.424887815928631e-28,
+     "info_crossed": true
+    },
+    "eps0.5": {
+     "T_info": 0.20822934999999998,
+     "T_codebook": 0.18106899999999998,
+     "T_codebook_bc": 0.18106899999999998,
+     "T_projected_DI": 0.18106899999999998,
+     "O_share_at_Tinfo": 0.14563707098176376,
+     "Obc_share_at_Tinfo": 0.1455454503288084,
+     "E_share_at_Tinfo": 0.02861033211428803,
+     "info_crossed": true
+    }
+   },
+   "ci95": {
+    "eps0.3": {
+     "T_info": [
+      0.0724276,
+      0.0724276
+     ],
+     "T_codebook": [
+      0.0181069,
+      0.0181069
+     ],
+     "T_codebook_bc": [
+      0.0181069,
+      0.0181069
+     ],
+     "T_projected_DI": [
+      0.0181069,
+      0.0181069
+     ],
+     "O_share_at_Tinfo": [
+      0.30349693121341986,
+      0.3114534719156291
+     ],
+     "Obc_share_at_Tinfo": [
+      0.3033900974033424,
+      0.31134654481984747
+     ],
+     "E_share_at_Tinfo": [
+      -2.1141315655760926e-17,
+      2.2039017388781417e-17
+     ]
+    },
+    "eps0.1": {
+     "T_info": [
+      0.0,
+      0.0
+     ],
+     "T_codebook": [
+      0.0,
+      0.0
+     ],
+     "T_codebook_bc": [
+      0.0,
+      0.0
+     ],
+     "T_projected_DI": [
+      0.0,
+      0.0
+     ],
+     "O_share_at_Tinfo": [
+      4.38711686097892e-05,
+      0.0005249360973910534
+     ],
+     "Obc_share_at_Tinfo": [
+      1.0750250692020162e-06,
+      0.0004261338156386684
+     ],
+     "E_share_at_Tinfo": [
+      -1.4536062014001622e-20,
+      1.3531880069759896e-20
+     ]
+    },
+    "eps0.5": {
+     "T_info": [
+      0.20822934999999998,
+      0.20822934999999998
+     ],
+     "T_codebook": [
+      0.18106899999999998,
+      0.18106899999999998
+     ],
+     "T_codebook_bc": [
+      0.18106899999999998,
+      0.18106899999999998
+     ],
+     "T_projected_DI": [
+      0.18106899999999998,
+      0.18106899999999998
+     ],
+     "O_share_at_Tinfo": [
+      0.14271593628096618,
+      0.14880515323964189
+     ],
+     "Obc_share_at_Tinfo": [
+      0.14262400775820236,
+      0.14871364377951252
+     ],
+     "E_share_at_Tinfo": [
+      0.02759794865540226,
+      0.029708822100689612
+     ]
+    }
+   },
+   "cell_members": {
+    "min": 6739,
+    "median": 8530.0,
+    "max": 15074
+   },
+   "bootstrap_reps": 2000
+  },
+  {
+   "bits": 6,
+   "known_zero": {
+    "O0_over_I0": 3.092584846229731e-29,
+    "threshold_amended": 1e-06,
+    "passes_amended": true,
+    "threshold_original": 1e-10,
+    "passes_original": true,
+    "Obc0_over_I0": 0.0,
+    "kmeans_n_iter": 108
+   },
+   "point": {
+    "eps0.3": {
+     "T_info": 0.2172828,
+     "T_codebook": 0.1991759,
+     "T_codebook_bc": 0.1991759,
+     "T_projected_DI": 0.19012245,
+     "O_share_at_Tinfo": 0.20044091721678164,
+     "Obc_share_at_Tinfo": 0.200053237941795,
+     "E_share_at_Tinfo": 0.04492213294455527,
+     "info_crossed": true
+    },
+    "eps0.1": {
+     "T_info": 0.0,
+     "T_codebook": 0.0,
+     "T_codebook_bc": 0.0,
+     "T_projected_DI": 0.0,
+     "O_share_at_Tinfo": 3.092584846229731e-29,
+     "Obc_share_at_Tinfo": 0.0,
+     "E_share_at_Tinfo": -1.7265028418679262e-46,
+     "info_crossed": true
+    },
+    "eps0.5": {
+     "T_info": 0.3440311,
+     "T_codebook": 0.3259242,
+     "T_codebook_bc": 0.33497764999999996,
+     "T_projected_DI": 0.31687075,
+     "O_share_at_Tinfo": 0.06806845628221742,
+     "Obc_share_at_Tinfo": 0.0677324524718645,
+     "E_share_at_Tinfo": 0.15940418086960678,
+     "info_crossed": true
+    }
+   },
+   "ci95": {
+    "eps0.3": {
+     "T_info": [
+      0.2172828,
+      0.2172828
+     ],
+     "T_codebook": [
+      0.1991759,
+      0.1991759
+     ],
+     "T_codebook_bc": [
+      0.1991759,
+      0.1991759
+     ],
+     "T_projected_DI": [
+      0.19012245,
+      0.1991759
+     ],
+     "O_share_at_Tinfo": [
+      0.1954279148018032,
+      0.20467202271501522
+     ],
+     "Obc_share_at_Tinfo": [
+      0.19504026234153488,
+      0.20428514155057956
+     ],
+     "E_share_at_Tinfo": [
+      0.03779719015069986,
+      0.05280245140605182
+     ]
+    },
+    "eps0.1": {
+     "T_info": [
+      0.0,
+      0.0
+     ],
+     "T_codebook": [
+      0.0,
+      0.0
+     ],
+     "T_codebook_bc": [
+      0.0,
+      0.0
+     ],
+     "T_projected_DI": [
+      0.0,
+      0.0
+     ],
+     "O_share_at_Tinfo": [
+      0.0002748115344213677,
+      0.000917752661686558
+     ],
+     "Obc_share_at_Tinfo": [
+      4.8295438581242285e-05,
+      0.0005696830412406019
+     ],
+     "E_share_at_Tinfo": [
+      -2.3834371869020062e-20,
+      2.2220088978434845e-20
+     ]
+    },
+    "eps0.5": {
+     "T_info": [
+      0.33497764999999996,
+      0.3440311
+     ],
+     "T_codebook": [
+      0.3259242,
+      0.33497764999999996
+     ],
+     "T_codebook_bc": [
+      0.3259242,
+      0.33497764999999996
+     ],
+     "T_projected_DI": [
+      0.31687075,
+      0.31687075
+     ],
+     "O_share_at_Tinfo": [
+      0.06606833033728046,
+      0.0704920607258182
+     ],
+     "Obc_share_at_Tinfo": [
+      0.06573158738493093,
+      0.07015657486006069
+     ],
+     "E_share_at_Tinfo": [
+      0.12583004347550342,
+      0.16487731326482905
+     ]
+    }
+   },
+   "cell_members": {
+    "min": 1128,
+    "median": 2143.5,
+    "max": 4811
+   },
+   "bootstrap_reps": 2000
+  },
+  {
+   "bits": 8,
+   "known_zero": {
+    "O0_over_I0": 9.350606140273844e-29,
+    "threshold_amended": 1e-06,
+    "passes_amended": true,
+    "threshold_original": 1e-10,
+    "passes_original": true,
+    "Obc0_over_I0": 0.0,
+    "kmeans_n_iter": 130
+   },
+   "point": {
+    "eps0.3": {
+     "T_info": 0.3440311,
+     "T_codebook": 0.33497764999999996,
+     "T_codebook_bc": 0.3440311,
+     "T_projected_DI": 0.33497764999999996,
+     "O_share_at_Tinfo": 0.054750635829239606,
+     "Obc_share_at_Tinfo": 0.0533386281140367,
+     "E_share_at_Tinfo": 0.07173551167974548,
+     "info_crossed": true
+    },
+    "eps0.1": {
+     "T_info": 0.12674829999999998,
+     "T_codebook": 0.0181069,
+     "T_codebook_bc": 0.0181069,
+     "T_projected_DI": 0.0181069,
+     "O_share_at_Tinfo": 0.4616460050933518,
+     "Obc_share_at_Tinfo": 0.4598011221489706,
+     "E_share_at_Tinfo": 0.0012906451850477698,
+     "info_crossed": true
+    },
+    "eps0.5": {
+     "T_info": 0.5069931999999999,
+     "T_codebook": 0.5069931999999999,
+     "T_codebook_bc": 0.5069931999999999,
+     "T_projected_DI": 0.4526725,
+     "O_share_at_Tinfo": 0.0252864665629721,
+     "Obc_share_at_Tinfo": 0.02403061777825499,
+     "E_share_at_Tinfo": 0.4298399795775609,
+     "info_crossed": true
+    }
+   },
+   "ci95": {
+    "eps0.3": {
+     "T_info": [
+      0.3440311,
+      0.3440311
+     ],
+     "T_codebook": [
+      0.33497764999999996,
+      0.3440311
+     ],
+     "T_codebook_bc": [
+      0.33497764999999996,
+      0.3440311
+     ],
+     "T_projected_DI": [
+      0.33497764999999996,
+      0.33497764999999996
+     ],
+     "O_share_at_Tinfo": [
+      0.053106486956930855,
+      0.05623253979981696
+     ],
+     "Obc_share_at_Tinfo": [
+      0.05169851700614522,
+      0.054822267147909366
+     ],
+     "E_share_at_Tinfo": [
+      0.06686963215244797,
+      0.08143477368402019
+     ]
+    },
+    "eps0.1": {
+     "T_info": [
+      0.11769484999999999,
+      0.12674829999999998
+     ],
+     "T_codebook": [
+      0.00905345,
+      0.0181069
+     ],
+     "T_codebook_bc": [
+      0.00905345,
+      0.0181069
+     ],
+     "T_projected_DI": [
+      0.00905345,
+      0.0181069
+     ],
+     "O_share_at_Tinfo": [
+      0.45655173223068685,
+      0.5089833447059418
+     ],
+     "Obc_share_at_Tinfo": [
+      0.45469812525983955,
+      0.507120881940398
+     ],
+     "E_share_at_Tinfo": [
+      0.0005023266496503009,
+      0.005016683987741946
+     ]
+    },
+    "eps0.5": {
+     "T_info": [
+      0.5069931999999999,
+      0.5160466499999999
+     ],
+     "T_codebook": [
+      0.49793974999999996,
+      0.5069931999999999
+     ],
+     "T_codebook_bc": [
+      0.49793974999999996,
+      0.5069931999999999
+     ],
+     "T_projected_DI": [
+      0.4526725,
+      0.4526725
+     ],
+     "O_share_at_Tinfo": [
+      0.024444692562749556,
+      0.02678697062641691
+     ],
+     "Obc_share_at_Tinfo": [
+      0.02317378293761126,
+      0.025498011412059127
+     ],
+     "E_share_at_Tinfo": [
+      0.4243123762048431,
+      0.455649684560943
+     ]
+    }
+   },
+   "cell_members": {
+    "min": 171,
+    "median": 569.0,
+    "max": 1223
+   },
+   "bootstrap_reps": 2000
+  },
+  {
+   "bits": 10,
+   "known_zero": {
+    "O0_over_I0": 2.149176189079174e-28,
+    "threshold_amended": 1e-06,
+    "passes_amended": true,
+    "threshold_original": 1e-10,
+    "passes_original": true,
+    "Obc0_over_I0": 0.0,
+    "kmeans_n_iter": 111
+   },
+   "point": {
+    "eps0.3": {
+     "T_info": 0.47983285,
+     "T_codebook": 0.47983285,
+     "T_codebook_bc": 0.47983285,
+     "T_projected_DI": 0.4526725,
+     "O_share_at_Tinfo": 0.016869972144619078,
+     "Obc_share_at_Tinfo": 0.01309699630341722,
+     "E_share_at_Tinfo": 0.2372863799405994,
+     "info_crossed": true
+    },
+    "eps0.1": {
+     "T_info": 0.25349659999999996,
+     "T_codebook": 0.23538969999999998,
+     "T_codebook_bc": 0.23538969999999998,
+     "T_projected_DI": 0.23538969999999998,
+     "O_share_at_Tinfo": 0.13765951230835488,
+     "Obc_share_at_Tinfo": 0.1317867687636038,
+     "E_share_at_Tinfo": 0.005008613987930394,
+     "info_crossed": true
+    },
+    "eps0.5": {
+     "T_info": 1.1407346999999999,
+     "T_codebook": 1.1407346999999999,
+     "T_codebook_bc": 1.1407346999999999,
+     "T_projected_DI": 0.7695432499999999,
+     "O_share_at_Tinfo": 0.01243906397465635,
+     "Obc_share_at_Tinfo": 0.008765266075541692,
+     "E_share_at_Tinfo": 0.35424146654068756,
+     "info_crossed": true
+    }
+   },
+   "ci95": {
+    "eps0.3": {
+     "T_info": [
+      0.47983285,
+      0.48888629999999994
+     ],
+     "T_codebook": [
+      0.47077939999999996,
+      0.47983285
+     ],
+     "T_codebook_bc": [
+      0.47077939999999996,
+      0.47983285
+     ],
+     "T_projected_DI": [
+      0.44361904999999996,
+      0.4526725
+     ],
+     "O_share_at_Tinfo": [
+      0.016239063022612223,
+      0.01787248108345946
+     ],
+     "Obc_share_at_Tinfo": [
+      0.012503436575196893,
+      0.014097081872219244
+     ],
+     "E_share_at_Tinfo": [
+      0.22880971336368222,
+      0.25895475989535194
+     ]
+    },
+    "eps0.1": {
+     "T_info": [
+      0.25349659999999996,
+      0.25349659999999996
+     ],
+     "T_codebook": [
+      0.23538969999999998,
+      0.24444314999999997
+     ],
+     "T_codebook_bc": [
+      0.23538969999999998,
+      0.24444314999999997
+     ],
+     "T_projected_DI": [
+      0.23538969999999998,
+      0.24444314999999997
+     ],
+     "O_share_at_Tinfo": [
+      0.1353239769702418,
+      0.14341258724684494
+     ],
+     "Obc_share_at_Tinfo": [
+      0.12958033750730039,
+      0.13738013119596168
+     ],
+     "E_share_at_Tinfo": [
+      0.007364327118787589,
+      0.015664198453394174
+     ]
+    },
+    "eps0.5": {
+     "T_info": [
+      1.1407346999999999,
+      1.14978815
+     ],
+     "T_codebook": [
+      1.1407346999999999,
+      1.14978815
+     ],
+     "T_codebook_bc": [
+      1.1407346999999999,
+      1.14978815
+     ],
+     "T_projected_DI": [
+      0.75143635,
+      0.80575705
+     ],
+     "O_share_at_Tinfo": [
+      0.011991887662628323,
+      0.013353254809521865
+     ],
+     "Obc_share_at_Tinfo": [
+      0.00828905937351932,
+      0.009664381308165616
+     ],
+     "E_share_at_Tinfo": [
+      0.3546080750482312,
+      0.3910423076444405
+     ]
+    }
+   },
+   "cell_members": {
+    "min": 18,
+    "median": 148.0,
+    "max": 305
+   },
+   "bootstrap_reps": 2000
+  }
+ ],
+ "stop_known_zero_amended": []
+}

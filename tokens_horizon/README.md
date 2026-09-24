@@ -3,7 +3,7 @@
 Code, raw run outputs and figures for *How Much Horizon Does a Bit Buy? What token histories reveal, what
 vocabularies can express, and what forecasters learn*.
 
-Affiliation: Niva Technologies.
+Affiliation: Niva Platforms, Inc.
 
 A chaotic flow (Lorenz-63, Lorenz-96) is observed through a k-means tokenizer at a fixed frame interval.
 We measure forecast horizon (restricted mean of λ·T, capped at 27 Lyapunov times, where T is the first frame with
@@ -29,18 +29,20 @@ label (bound / reference / learned / estimate), source file and commit.
 | `scripts/t0_pilot.py` | Training-speed pilot that set the step budget → `runs/pilot/` |
 | `scripts/t2_system_table.py` | System table with D_eff and intervals → `results/system_table.*` |
 | `scripts/t2_headline.py` | Output-support bound, history reference, decode-and-integrate, persistence, climatology; p_0; outlast fractions; step-halving; particle sensitivity → `runs/headline/`, `results/headline/`, `results/headline_subsets/` |
+| `scripts/t2_decomposition.py` | Single-frame decomposition (I, O, bias-corrected O, projected-DI excess), known-zero test, trajectory bootstrap → `runs/decomposition/`, `results/decomposition/` |
 | `scripts/t2_exchange_law.py` | Calibration map h, held-out-rate predictions and criterion, r by orientation, FSLE → `runs/exchange_law/`, `results/exchange_law/` |
 | `scripts/t2_dimension.py` | Distortion curves, scalar quantization, residual-VQ oracle horizons → `results/dimension/` |
 | `scripts/t2_history.py` | Context sweep, timing jitter, observation noise → `runs/history/`, `results/history/` |
 | `scripts/t3_learned.py` | Stall check, then train, select and evaluate every learned arm → `runs/learned/` |
 | `scripts/t3_analysis.py` | Learned arms against bounds and references (paired, frozen readings) → `results/learned/` |
-| `scripts/fig_F1.py`, `fig_F2_F4_F5.py`, `fig_F6.py` | Figures (SVG, PNG and CSV, greyscale-safe) → `figures/` |
+| `scripts/fig_F1.py`, `fig_F2_F4_F5.py`, `fig_F3.py`, `fig_F6.py` | Figures (SVG, PNG and CSV, greyscale-safe) → `figures/` |
 | `scripts/make_numbers.py` | `NUMBERS.md` |
 | `reproduce.py` | Runs the table, figure and NUMBERS steps from raw runs. `--full` also recomputes missing raw runs |
 | `prelim/` | Preliminary exploratory scripts, verbatim, with the reproduction check that preceded the freeze |
 
-Figure F3 (single-frame decomposition) does not exist. Its pre-registered known-zero test fails at 4 bits under
-the frozen tokenizer, so the decomposition was not run. See `gate/GATE_REPORT.md`.
+The single-frame decomposition (F3) runs under Amendment 1 to the freeze (`FREEZE.md`). The known-zero threshold
+was amended from 1e-10 to 1e-6 after the original threshold proved unattainable at 4 bits with the frozen k-means
+settings. Both outcomes are reported in `results/decomposition/`.
 
 ## Reproduce
 
