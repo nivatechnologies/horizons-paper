@@ -1,0 +1,141 @@
+{
+ "delta": 0.02,
+ "tau": 3.2,
+ "window_lyap": 27.0,
+ "n_ic": 300,
+ "particles": 1500,
+ "rows": [
+  {
+   "bits": 4,
+   "p0_outside_tolerance": 0.26666666666666666,
+   "out_bound": {
+    "restricted_mean": 0.10175716232495982,
+    "frac_no_cross": 0.0
+   },
+   "history_ref": {
+    "restricted_mean": 2.9254431971779544,
+    "frac_no_cross": 0.0,
+    "median": 2.7801188050935206
+   },
+   "decode_integrate": {
+    "restricted_mean": 0.2667590186792116,
+    "frac_no_cross": 0.0
+   },
+   "persistence": {
+    "restricted_mean": 0.043206175369202335
+   },
+   "frac_history_exceeds_out_bound": 0.9966666666666667,
+   "gap_history_minus_bound": 2.8236860348529946,
+   "future_only": {
+    "out_bound": {
+     "restricted_mean": 0.12287884415586513,
+     "frac_no_cross": 0.0
+    },
+    "history_ref": {
+     "restricted_mean": 2.9255033729096667,
+     "frac_no_cross": 0.0,
+     "median": 2.7801188050935206
+    },
+    "decode_integrate": {
+     "restricted_mean": 0.2785534620947599,
+     "frac_no_cross": 0.0
+    },
+    "persistence": {
+     "restricted_mean": 0.05283429244311929
+    },
+    "frac_history_exceeds_out_bound": 0.9933333333333333,
+    "gap_history_minus_bound": 2.8026245287538014
+   },
+   "pf_fallback_events": 93,
+   "pf_fallback_rate": 0.0019375
+  },
+  {
+   "bits": 6,
+   "p0_outside_tolerance": 0.0033333333333333335,
+   "out_bound": {
+    "restricted_mean": 7.683478127912577,
+    "frac_no_cross": 0.02
+   },
+   "history_ref": {
+    "restricted_mean": 3.827657942735685,
+    "frac_no_cross": 0.0,
+    "median": 3.791071097854801
+   },
+   "decode_integrate": {
+    "restricted_mean": 0.6378627561469983,
+    "frac_no_cross": 0.0
+   },
+   "persistence": {
+    "restricted_mean": 0.05806958110206164
+   },
+   "frac_history_exceeds_out_bound": 0.16,
+   "gap_history_minus_bound": -3.8558201851768916,
+   "future_only": {
+    "out_bound": {
+     "restricted_mean": 7.683538303644288,
+     "frac_no_cross": 0.02
+    },
+    "history_ref": {
+     "restricted_mean": 3.833675515906883,
+     "frac_no_cross": 0.0,
+     "median": 3.791071097854801
+    },
+    "decode_integrate": {
+     "restricted_mean": 0.6379229318787103,
+     "frac_no_cross": 0.0
+    },
+    "persistence": {
+     "restricted_mean": 0.058129756833773624
+    },
+    "frac_history_exceeds_out_bound": 0.16,
+    "gap_history_minus_bound": -3.849862787737405
+   },
+   "pf_fallback_events": 106,
+   "pf_fallback_rate": 0.0022083333333333334
+  },
+  {
+   "bits": 8,
+   "p0_outside_tolerance": 0.0,
+   "out_bound": {
+    "restricted_mean": 25.83957954858805,
+    "frac_no_cross": 0.9266666666666666
+   },
+   "history_ref": {
+    "restricted_mean": 4.247142968499905,
+    "frac_no_cross": 0.0,
+    "median": 4.233362725937861
+   },
+   "decode_integrate": {
+    "restricted_mean": 1.0696236311804617,
+    "frac_no_cross": 0.0
+   },
+   "persistence": {
+    "restricted_mean": 0.06192082793162842
+   },
+   "frac_history_exceeds_out_bound": 0.0,
+   "gap_history_minus_bound": -21.592436580088144,
+   "future_only": {
+    "out_bound": {
+     "restricted_mean": 25.83957954858805,
+     "frac_no_cross": 0.9266666666666666
+    },
+    "history_ref": {
+     "restricted_mean": 4.247443847158464,
+     "frac_no_cross": 0.0,
+     "median": 4.233362725937861
+    },
+    "decode_integrate": {
+     "restricted_mean": 1.0696236311804617,
+     "frac_no_cross": 0.0
+    },
+    "persistence": {
+     "restricted_mean": 0.06192082793162842
+    },
+    "frac_history_exceeds_out_bound": 0.0,
+    "gap_history_minus_bound": -21.592135701429584
+   },
+   "pf_fallback_events": 611,
+   "pf_fallback_rate": 0.012729166666666666
+  }
+ ]
+}
