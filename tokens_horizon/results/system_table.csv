@@ -1,0 +1,62 @@
+# git_sha=f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty
+system,quantity,dt,value,ci95_lo,ci95_hi,label,source
+lorenz28,lam_max,0.01,0.9053451643,,,estimate,results/lyapunov.json
+lorenz28,lam_max_se,0.01,0.00150795266,,,estimate,results/lyapunov.json
+lorenz28,sum_error,0.01,0.0001022423533,,,estimate,results/lyapunov.json
+lorenz28,d_ky,0.01,2.062083963,,,estimate,results/lyapunov.json
+lorenz28,lam_max,0.005,0.903639634,,,estimate,results/lyapunov.json
+lorenz28,lam_max_se,0.005,0.001479135531,,,estimate,results/lyapunov.json
+lorenz28,sum_error,0.005,6.192814872e-06,,,estimate,results/lyapunov.json
+lorenz28,d_ky,0.005,2.061945466,,,estimate,results/lyapunov.json
+lorenz28,sigma_A,0.01,14.77968148,,,estimate,calibration block
+lorenz28,d_eff,0.01,2.029837084,2.025525008,2.03437392,estimate,k-means R in {6,8,10,12}; bootstrap over 150 calibration trajectories
+lorenz45,lam_max,0.01,1.215287678,,,estimate,results/lyapunov.json
+lorenz45,lam_max_se,0.01,0.00176856983,,,estimate,results/lyapunov.json
+lorenz45,sum_error,0.01,0.0001155205555,,,estimate,results/lyapunov.json
+lorenz45,d_ky,0.01,2.081589384,,,estimate,results/lyapunov.json
+lorenz45,lam_max,0.005,1.219394,,,estimate,results/lyapunov.json
+lorenz45,lam_max_se,0.005,0.002199808292,,,estimate,results/lyapunov.json
+lorenz45,sum_error,0.005,7.539289713e-06,,,estimate,results/lyapunov.json
+lorenz45,d_ky,0.005,2.081884859,,,estimate,results/lyapunov.json
+lorenz45,sigma_A,0.01,19.68908082,,,estimate,calibration block
+lorenz45,d_eff,0.01,2.030232884,2.02615017,2.03449093,estimate,k-means R in {6,8,10,12}; bootstrap over 150 calibration trajectories
+l96_5,lam_max,0.01,0.4735762058,,,estimate,results/lyapunov.json
+l96_5,lam_max_se,0.01,0.007727097024,,,estimate,results/lyapunov.json
+l96_5,sum_error,0.01,2.901318821e-06,,,estimate,results/lyapunov.json
+l96_5,d_ky,0.01,2.909389906,,,estimate,results/lyapunov.json
+l96_5,lam_max,0.005,0.4876017702,,,estimate,results/lyapunov.json
+l96_5,lam_max_se,0.005,0.006445812282,,,estimate,results/lyapunov.json
+l96_5,sum_error,0.005,2.337888532e-07,,,estimate,results/lyapunov.json
+l96_5,d_ky,0.005,2.926862002,,,estimate,results/lyapunov.json
+l96_5,sigma_A,0.01,8.100873449,,,estimate,calibration block
+l96_5,d_eff,0.01,2.686008705,2.666983431,2.705929253,estimate,k-means R in {6,8,10,12}; bootstrap over 150 calibration trajectories
+l96_6,lam_max,0.01,0.9463896377,,,estimate,results/lyapunov.json
+l96_6,lam_max_se,0.01,0.007820169866,,,estimate,results/lyapunov.json
+l96_6,sum_error,0.01,3.49127891e-06,,,estimate,results/lyapunov.json
+l96_6,d_ky,0.01,4.035784181,,,estimate,results/lyapunov.json
+l96_6,lam_max,0.005,0.9583337776,,,estimate,results/lyapunov.json
+l96_6,lam_max_se,0.005,0.008324138091,,,estimate,results/lyapunov.json
+l96_6,sum_error,0.005,2.733817759e-07,,,estimate,results/lyapunov.json
+l96_6,d_ky,0.005,4.036534622,,,estimate,results/lyapunov.json
+l96_6,sigma_A,0.01,8.988014895,,,estimate,calibration block
+l96_6,d_eff,0.01,3.863124787,3.849681719,3.876874121,estimate,k-means R in {6,8,10,12}; bootstrap over 150 calibration trajectories
+l96_10,lam_max,0.01,1.168334323,,,estimate,results/lyapunov.json
+l96_10,lam_max_se,0.01,0.01349884807,,,estimate,results/lyapunov.json
+l96_10,sum_error,0.01,6.717545418e-06,,,estimate,results/lyapunov.json
+l96_10,d_ky,0.01,6.482770962,,,estimate,results/lyapunov.json
+l96_10,lam_max,0.005,1.179560479,,,estimate,results/lyapunov.json
+l96_10,lam_max_se,0.005,0.01361432202,,,estimate,results/lyapunov.json
+l96_10,sum_error,0.005,4.84254965e-07,,,estimate,results/lyapunov.json
+l96_10,d_ky,0.005,6.50339578,,,estimate,results/lyapunov.json
+l96_10,sigma_A,0.01,11.4632709,,,estimate,calibration block
+l96_10,d_eff,0.01,6.313024735,6.294464659,6.331971648,estimate,k-means R in {6,8,10,12}; bootstrap over 150 calibration trajectories
+l96_20,lam_max,0.01,1.553688883,,,estimate,results/lyapunov.json
+l96_20,lam_max_se,0.01,0.01477384725,,,estimate,results/lyapunov.json
+l96_20,sum_error,0.01,1.272205695e-05,,,estimate,results/lyapunov.json
+l96_20,d_ky,0.01,13.47171113,,,estimate,results/lyapunov.json
+l96_20,lam_max,0.005,1.563458748,,,estimate,results/lyapunov.json
+l96_20,lam_max_se,0.005,0.007217516153,,,estimate,results/lyapunov.json
+l96_20,sum_error,0.005,9.44060897e-07,,,estimate,results/lyapunov.json
+l96_20,d_ky,0.005,13.45480186,,,estimate,results/lyapunov.json
+l96_20,sigma_A,0.01,16.28613991,,,estimate,calibration block
+l96_20,d_eff,0.01,11.33744602,11.30553267,11.36901231,estimate,k-means R in {6,8,10,12}; bootstrap over 150 calibration trajectories

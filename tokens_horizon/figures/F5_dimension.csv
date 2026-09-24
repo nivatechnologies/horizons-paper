@@ -1,0 +1,128 @@
+# git_sha=f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty; distortion = estimate; horizons = reference
+panel,system,x_bits,series,value,lo,hi,label
+a,lorenz28,4,k-means distortion,0.2673409119,,,estimate
+a,lorenz28,5,k-means distortion,0.1992137298,,,estimate
+a,lorenz28,6,k-means distortion,0.1431245402,,,estimate
+a,lorenz28,7,k-means distortion,0.1029925166,,,estimate
+a,lorenz28,8,k-means distortion,0.07412087861,,,estimate
+a,lorenz28,9,k-means distortion,0.0528321712,,,estimate
+a,lorenz28,10,k-means distortion,0.03753801715,,,estimate
+a,lorenz28,11,k-means distortion,0.0264482701,,,estimate
+a,lorenz28,12,k-means distortion,0.01842978406,,,estimate
+a,lorenz45,4,k-means distortion,0.3134537351,,,estimate
+a,lorenz45,5,k-means distortion,0.2264109578,,,estimate
+a,lorenz45,6,k-means distortion,0.1646073289,,,estimate
+a,lorenz45,7,k-means distortion,0.1186480255,,,estimate
+a,lorenz45,8,k-means distortion,0.08516093752,,,estimate
+a,lorenz45,9,k-means distortion,0.06084467583,,,estimate
+a,lorenz45,10,k-means distortion,0.04319554916,,,estimate
+a,lorenz45,11,k-means distortion,0.03044222904,,,estimate
+a,lorenz45,12,k-means distortion,0.0211946114,,,estimate
+a,l96_5,4,k-means distortion,0.3768792832,,,estimate
+a,l96_5,5,k-means distortion,0.2911158407,,,estimate
+a,l96_5,6,k-means distortion,0.2239855232,,,estimate
+a,l96_5,7,k-means distortion,0.168172739,,,estimate
+a,l96_5,8,k-means distortion,0.1301774077,,,estimate
+a,l96_5,9,k-means distortion,0.09972597381,,,estimate
+a,l96_5,10,k-means distortion,0.07770084,,,estimate
+a,l96_5,11,k-means distortion,0.06142036099,,,estimate
+a,l96_5,12,k-means distortion,0.04761760849,,,estimate
+a,l96_6,4,k-means distortion,0.5383858117,,,estimate
+a,l96_6,5,k-means distortion,0.4449230506,,,estimate
+a,l96_6,6,k-means distortion,0.375282852,,,estimate
+a,l96_6,7,k-means distortion,0.3142689935,,,estimate
+a,l96_6,8,k-means distortion,0.2657230818,,,estimate
+a,l96_6,9,k-means distortion,0.2236189225,,,estimate
+a,l96_6,10,k-means distortion,0.1868849021,,,estimate
+a,l96_6,11,k-means distortion,0.1552836772,,,estimate
+a,l96_6,12,k-means distortion,0.1275901996,,,estimate
+a,l96_10,4,k-means distortion,0.6681389385,,,estimate
+a,l96_10,5,k-means distortion,0.600367831,,,estimate
+a,l96_10,6,k-means distortion,0.5390202521,,,estimate
+a,l96_10,7,k-means distortion,0.4847154865,,,estimate
+a,l96_10,8,k-means distortion,0.4370769526,,,estimate
+a,l96_10,9,k-means distortion,0.3933668392,,,estimate
+a,l96_10,10,k-means distortion,0.3528010077,,,estimate
+a,l96_10,11,k-means distortion,0.3149580836,,,estimate
+a,l96_10,12,k-means distortion,0.278433447,,,estimate
+a,l96_20,4,k-means distortion,0.8275063777,,,estimate
+a,l96_20,5,k-means distortion,0.7843138656,,,estimate
+a,l96_20,6,k-means distortion,0.7403820364,,,estimate
+a,l96_20,7,k-means distortion,0.7003074636,,,estimate
+a,l96_20,8,k-means distortion,0.6615974421,,,estimate
+a,l96_20,9,k-means distortion,0.6240986258,,,estimate
+a,l96_20,10,k-means distortion,0.5876675848,,,estimate
+a,l96_20,11,k-means distortion,0.5506175413,,,estimate
+a,l96_20,12,k-means distortion,0.5123864863,,,estimate
+b,lorenz28,4,k-means decode-and-integrate,0.2911770589,0.264957815,0.3203128717,reference
+b,lorenz28,5,k-means decode-and-integrate,0.4723728072,0.4397224451,0.5067424194,reference
+b,lorenz28,6,k-means decode-and-integrate,0.6150551792,0.5756663343,0.6555068991,reference
+b,lorenz28,7,k-means decode-and-integrate,0.7993472074,0.7587995209,0.8421383388,reference
+b,lorenz28,8,k-means decode-and-integrate,1.074065094,1.019778797,1.126107946,reference
+b,lorenz28,9,k-means decode-and-integrate,1.266070662,1.206369496,1.326777213,reference
+b,lorenz28,10,k-means decode-and-integrate,1.494326243,1.428268651,1.561493789,reference
+b,lorenz28,11,k-means decode-and-integrate,1.757817852,1.686563579,1.828076245,reference
+b,lorenz28,12,k-means decode-and-integrate,1.962407715,1.887277208,2.035197906,reference
+b,lorenz28,8,RVQ oracle decode-and-integrate,1.017915597,0.9685611673,1.069196601,reference
+b,lorenz28,16,RVQ oracle decode-and-integrate,2.493718482,2.412588706,2.575415457,reference
+b,lorenz28,24,RVQ oracle decode-and-integrate,3.920976767,3.825370525,4.013035868,reference
+b,lorenz45,4,k-means decode-and-integrate,0.2663668238,0.2418660101,0.292884408,reference
+b,lorenz45,5,k-means decode-and-integrate,0.4905145426,0.4554006187,0.5269999189,reference
+b,lorenz45,6,k-means decode-and-integrate,0.6497901878,0.6107259704,0.6897038916,reference
+b,lorenz45,7,k-means decode-and-integrate,0.9125111477,0.8638261028,0.9597639757,reference
+b,lorenz45,8,k-means decode-and-integrate,1.123655285,1.073535592,1.177302351,reference
+b,lorenz45,9,k-means decode-and-integrate,1.378233815,1.314645086,1.440469929,reference
+b,lorenz45,10,k-means decode-and-integrate,1.617086519,1.552667748,1.68561114,reference
+b,lorenz45,11,k-means decode-and-integrate,1.836640449,1.768725294,1.907596861,reference
+b,lorenz45,12,k-means decode-and-integrate,2.075882044,2.003519543,2.14722978,reference
+b,lorenz45,8,RVQ oracle decode-and-integrate,1.097040478,1.047210631,1.148905931,reference
+b,lorenz45,16,RVQ oracle decode-and-integrate,2.556795812,2.481907335,2.635331368,reference
+b,lorenz45,24,RVQ oracle decode-and-integrate,4.0091865,3.920267523,4.109163383,reference
+b,l96_5,4,k-means decode-and-integrate,0.0921578896,0.08004334194,0.1042736212,reference
+b,l96_5,5,k-means decode-and-integrate,0.1521789118,0.137383924,0.1671067377,reference
+b,l96_5,6,k-means decode-and-integrate,0.2993663326,0.2731584,0.3296849049,reference
+b,l96_5,7,k-means decode-and-integrate,0.3874988262,0.3629315977,0.4136700567,reference
+b,l96_5,8,k-means decode-and-integrate,0.5662927093,0.5305550068,0.6070041437,reference
+b,l96_5,9,k-means decode-and-integrate,0.7457685418,0.7046898492,0.7876011674,reference
+b,l96_5,10,k-means decode-and-integrate,0.9325279731,0.8793823272,0.9877185202,reference
+b,l96_5,11,k-means decode-and-integrate,1.083901806,1.028563977,1.144748508,reference
+b,l96_5,12,k-means decode-and-integrate,1.36022393,1.284677429,1.431660265,reference
+b,l96_5,8,RVQ oracle decode-and-integrate,0.5475769858,0.5152743668,0.5821785794,reference
+b,l96_5,16,RVQ oracle decode-and-integrate,1.210450784,1.147455468,1.276253933,reference
+b,l96_5,24,RVQ oracle decode-and-integrate,2.085533989,1.995349964,2.175942962,reference
+b,l96_6,4,k-means decode-and-integrate,0.0460324096,0.0365495818,0.0573133784,reference
+b,l96_6,5,k-means decode-and-integrate,0.0799320994,0.06386192401,0.0963808308,reference
+b,l96_6,6,k-means decode-and-integrate,0.1419017166,0.1223668074,0.1634798818,reference
+b,l96_6,7,k-means decode-and-integrate,0.213505584,0.1921360978,0.2361829812,reference
+b,l96_6,8,k-means decode-and-integrate,0.3102834254,0.284084511,0.3374339349,reference
+b,l96_6,9,k-means decode-and-integrate,0.4705640358,0.4336898422,0.5090480388,reference
+b,l96_6,10,k-means decode-and-integrate,0.6018851122,0.5627410022,0.6421663098,reference
+b,l96_6,11,k-means decode-and-integrate,0.711022807,0.668510495,0.756070971,reference
+b,l96_6,12,k-means decode-and-integrate,0.8986162328,0.8482678116,0.9531770359,reference
+b,l96_6,8,RVQ oracle decode-and-integrate,0.320542293,0.2953299902,0.3481030626,reference
+b,l96_6,16,RVQ oracle decode-and-integrate,1.085547186,1.023406745,1.15240538,reference
+b,l96_6,24,RVQ oracle decode-and-integrate,1.820778649,1.740722572,1.899386749,reference
+b,l96_10,4,k-means decode-and-integrate,0.02579681472,0.02392748032,0.02822694944,reference
+b,l96_10,5,k-means decode-and-integrate,0.03752688808,0.02937191676,0.04832696758,reference
+b,l96_10,6,k-means decode-and-integrate,0.03670905428,0.03166126723,0.04299585953,reference
+b,l96_10,7,k-means decode-and-integrate,0.06213200212,0.05084414318,0.0740741281,reference
+b,l96_10,8,k-means decode-and-integrate,0.09839708948,0.07881581164,0.1195246574,reference
+b,l96_10,9,k-means decode-and-integrate,0.133119976,0.1110115917,0.1566326977,reference
+b,l96_10,10,k-means decode-and-integrate,0.172399365,0.1495929012,0.1971949175,reference
+b,l96_10,11,k-means decode-and-integrate,0.2190859917,0.1946199094,0.2455177959,reference
+b,l96_10,12,k-means decode-and-integrate,0.290330999,0.2623318747,0.3187735061,reference
+b,l96_10,8,RVQ oracle decode-and-integrate,0.0925320528,0.07526349211,0.1095698675,reference
+b,l96_10,16,RVQ oracle decode-and-integrate,0.323628518,0.2964460592,0.3524705953,reference
+b,l96_10,24,RVQ oracle decode-and-integrate,0.7272645483,0.6838954061,0.7717833312,reference
+b,l96_20,4,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,5,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,6,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,7,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,8,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,9,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,10,k-means decode-and-integrate,0.03181955072,0.03107378,0.0330935757,reference
+b,l96_20,11,k-means decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,12,k-means decode-and-integrate,0.03228565742,0.03116700134,0.03368397752,reference
+b,l96_20,8,RVQ oracle decode-and-integrate,0.03150881292,0.03107378,0.03234780498,reference
+b,l96_20,16,RVQ oracle decode-and-integrate,0.03107378,0.03107378,0.03107378,reference
+b,l96_20,24,RVQ oracle decode-and-integrate,0.03834504452,0.03567269944,0.04142134874,reference

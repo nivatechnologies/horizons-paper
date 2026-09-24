@@ -2,3 +2,7 @@
 __pycache__/
 *.pyc
 tokens_horizon/runs/cache/
+# logs carry absolute host paths; kept on the build host only
+tokens_horizon/runs/**/*.log
+# model weights: manifest committed instead (runs/learned/MANIFEST.csv)
+tokens_horizon/runs/learned/**/*.pt

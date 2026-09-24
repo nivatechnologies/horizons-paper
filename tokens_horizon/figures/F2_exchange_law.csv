@@ -1,0 +1,34 @@
+# git_sha=f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty; predicted = estimate; measured = reference
+system,rate_bits,role,measured,measured_label,predicted,predicted_label,outcome
+lorenz28,5,heldout,0.4723728072,reference,0.3867432825,estimate,criterion not met
+lorenz28,6,fit,0.6150551792,reference,0.5699737559,estimate,criterion met
+lorenz28,7,heldout,0.7993472074,reference,0.7317937062,estimate,criterion met
+lorenz28,8,fit,1.074065094,reference,0.9256110772,estimate,criterion met
+lorenz28,9,heldout,1.266070662,reference,1.132176238,estimate,criterion met
+lorenz28,10,fit,1.494326243,reference,1.357812623,estimate,criterion met
+lorenz28,11,heldout,1.757817852,reference,1.593292747,estimate,criterion met
+lorenz28,12,fit,1.962407715,reference,1.84046662,estimate,criterion met
+lorenz45,5,heldout,0.4905145426,reference,0.4101746989,estimate,criterion not met
+lorenz45,6,fit,0.6497901878,reference,0.6532201511,estimate,criterion met
+lorenz45,7,heldout,0.9125111477,reference,0.8828370079,estimate,criterion met
+lorenz45,8,fit,1.123655285,reference,1.097730101,estimate,criterion met
+lorenz45,9,heldout,1.378233815,reference,1.296520882,estimate,criterion met
+lorenz45,10,fit,1.617086519,reference,1.529828899,estimate,criterion met
+lorenz45,11,heldout,1.836640449,reference,1.778531147,estimate,criterion met
+lorenz45,12,fit,2.075882044,reference,2.04459551,estimate,criterion met
+l96_5,5,heldout,0.1521789118,reference,0.07713510065,estimate,criterion not met
+l96_5,6,fit,0.2993663326,reference,0.2188573858,estimate,criterion not met
+l96_5,7,heldout,0.3874988262,reference,0.3730128415,estimate,criterion met
+l96_5,8,fit,0.5662927093,reference,0.5078635306,estimate,criterion met
+l96_5,9,heldout,0.7457685418,reference,0.6489368959,estimate,criterion met
+l96_5,10,fit,0.9325279731,reference,0.8492533076,estimate,criterion met
+l96_5,11,heldout,1.083901806,reference,1.037982725,estimate,criterion met
+l96_5,12,fit,1.36022393,reference,1.268082425,estimate,criterion met
+l96_6,5,heldout,0.0799320994,reference,,estimate,criterion not met (no prediction: delta_hat outside the frozen h range)
+l96_6,6,fit,0.1419017166,reference,,estimate,criterion not met (no prediction: delta_hat outside the frozen h range)
+l96_6,7,heldout,0.213505584,reference,0.05629876519,estimate,criterion not met
+l96_6,8,fit,0.3102834254,reference,0.2072892307,estimate,criterion not met
+l96_6,9,heldout,0.4705640358,reference,0.3625241154,estimate,criterion not met
+l96_6,10,fit,0.6018851122,reference,0.5240031502,estimate,criterion met
+l96_6,11,heldout,0.711022807,reference,0.7005556301,estimate,criterion met
+l96_6,12,fit,0.8986162328,reference,0.8916071751,estimate,criterion met
