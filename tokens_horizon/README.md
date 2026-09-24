@@ -60,6 +60,11 @@ The default mode rebuilds the calibration and codebook caches (about 20 min on 1
 table and figure from the committed per-state arrays. Trained weights are not committed. `runs/learned/MANIFEST.csv`
 lists their SHA-256 hashes, and `--full` retrains any model whose run directory is missing.
 
+Verified on 2026-09-24: a fresh clone of commit `48cc7cc` with a new venv built from the lockfile ran `reproduce.py`
+with no failed step in 35 min 48 s. Every regenerated number matches the committed value to within a relative
+2.9e-12. The only differences are floating-point summation order, including in the decomposition, which is
+recomputed from codebooks refit from scratch.
+
 ## Hardware and runtime (build host)
 
 128-core x86 server, 503 GB RAM, 3 × NVIDIA CMP 170HX (sm_80), Python 3.12.3, torch 2.13.0+cu130.
