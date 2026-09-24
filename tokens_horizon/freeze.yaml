@@ -1,0 +1,141 @@
+# Frozen protocol. Machine-readable twin of FREEZE.md; all code reads this file.
+# Values marked MEASURED were filled from runs that touch no confirmation data.
+version: 1
+
+integration:
+  dt: 0.01
+  dt_half: 0.005                # step-halving check
+  burn_in_steps: 5000
+  dtype: float64
+  spectrum_sum_tolerance: 1.0e-3
+
+systems:
+  lorenz28: {family: lorenz63, rho: 28.0, sigma: 10.0, beta: 2.6666666666666665}
+  lorenz45: {family: lorenz63, rho: 45.0, sigma: 10.0, beta: 2.6666666666666665}
+  l96_5:  {family: lorenz96, d: 5,  F: 8.0}
+  l96_6:  {family: lorenz96, d: 6,  F: 8.0}
+  l96_10: {family: lorenz96, d: 10, F: 8.0}
+  l96_20: {family: lorenz96, d: 20, F: 8.0}
+
+lyapunov:   # MEASURED at dt = 0.01, 16 starts, lyapunov seed block (results/lyapunov.json)
+  lorenz28: {lam_max: 0.905345, lam_max_se: 0.001508, d_ky: 2.0621, spectrum_sum_error: 1.022e-04}
+  lorenz45: {lam_max: 1.215288, lam_max_se: 0.001769, d_ky: 2.0816, spectrum_sum_error: 1.155e-04}
+  l96_5: {lam_max: 0.473576, lam_max_se: 0.007727, d_ky: 2.9094, spectrum_sum_error: 2.901e-06}
+  l96_6: {lam_max: 0.946390, lam_max_se: 0.007820, d_ky: 4.0358, spectrum_sum_error: 3.491e-06}
+  l96_10: {lam_max: 1.168334, lam_max_se: 0.013499, d_ky: 6.4828, spectrum_sum_error: 6.718e-06}
+  l96_20: {lam_max: 1.553689, lam_max_se: 0.014774, d_ky: 13.4717, spectrum_sum_error: 1.272e-05}
+
+seeds:
+  # Integer seed = block_base + 100 * system_index + stream. Ranges are disjoint by construction.
+  system_index: {lorenz28: 0, lorenz45: 1, l96_5: 2, l96_6: 3, l96_10: 4, l96_20: 5}
+  block_base: {calibration: 10000, training: 20000, validation: 30000, confirmation: 40000, lyapunov: 50000}
+  model_seeds: [0, 1, 2]
+  headline_extra_model_seeds: [3, 4]
+  bootstrap_seed: 777
+  bootstrap_reps: 2000
+
+blocks:
+  calibration: {n_traj: 150, samples_per_traj: 1000, sample_every_steps: 10}     # 150,000 states, every 0.1 tu
+  training: {n_traj: 100, traj_time: 20.0, n_traj_data_axis: 1000}              # 2,000 tu; data axis 20,000 tu
+  validation: {n_traj: 50, traj_time: 20.0, panel_states: 300}
+  confirmation: {panel_states: 1000, history_panel_states: 300, pre_history_time: 6.5}
+
+tokenizers:
+  kmeans: {n_init: 1, max_iter: 300, tol: 1.0e-8, random_state: bits}
+  attribution_rates: [4, 6, 8, 10]
+  exchange_rates_extra: [5, 7, 9, 11, 12]
+  scalar_levels: [2, 3, 4, 5, 6, 8, 10, 12, 16]
+  rvq_bits_per_stage: 8
+  rvq_stages: [1, 2, 3]
+  rvq_random_state_base: 1000
+
+scoring:
+  eps_primary: 0.3
+  eps_secondary: [0.1, 0.5]
+  frame_intervals: [0.02, 0.05, 0.1]
+  window_lyapunov_times: 27.0
+  primary_start_frame: 1        # future frames only, t >= Delta
+  secondary_start_frame: 0
+  outlast: strictly_greater     # per-state: forecaster lambda*T > bound lambda*T; ties reported
+  sigma_A: rms_distance_to_calibration_mean
+
+references:
+  particle_filter:
+    particles: 1500
+    context_time: 3.2
+    init: calibration_members_of_first_observed_cell
+    likelihood: indicator_on_observed_cell
+    fallback: gaussian_in_distance_to_observed_prototype   # w = exp(-d^2 / delta_cell^2), counted
+    resampling: systematic
+    jitter_fraction_of_spread: 0.05
+    fallback_rate_limit: 0.05
+    sensitivity: {particles: 3000, bits: [4, 8], delta: 0.05}
+
+decomposition:
+  system: lorenz28
+  rates: [4, 6, 8, 10]
+  horizon_time: 6.0
+  known_zero_ratio: 1.0e-10
+
+exchange_law:
+  deff_fit_rates: [6, 8, 10, 12]
+  heldout_rates: [5, 7, 9, 11]
+  calibration_codebook_bits: 10
+  calibration_states: 1000
+  delta_grid: {log10_start: -0.5, log10_stop: -4.0, n: 15}
+  saturation_limit: 0.05
+  criterion: {relative: 0.15, absolute_below_half: 0.075, split_at: 0.5}
+  systems: [lorenz28, lorenz45, l96_5, l96_6]
+  aligned_tangent_time: 10.0
+
+learned:
+  backbone: {layers: 4, width: 128, heads: 4, ff: 512, dropout: 0.0, positional: learned}
+  context_time: 3.3
+  context_frames: {"0.02": 166, "0.05": 66, "0.1": 33}
+  optimizer: {name: adamw, lr: 3.0e-4, schedule: cosine, weight_decay: 0.01, batch: 256}
+  steps: 10000                 # MEASURED: Task 0 pilot projects ~7.5 GPU-h (< 24 h), so the default stands
+  val_every: 500
+  c_noise_levels: [0.0, 0.03]  # x sigma_A, per coordinate, training inputs only
+
+margins:
+  approx_equal: {ci: 0.90, half_width: 0.10}
+  well_below: {min_diff: 0.25, ci: 0.95}
+  near: {ci: 0.95, upper_limit: 0.15}
+
+stop:
+  stall_repeat_fraction: 0.90
+
+# ---------------------------------------------------------------------------------------------
+# Executor pins: details the WO leaves open, fixed here before any confirmation or training result.
+pins:
+  panels: "one independent burned-in confirmation trajectory per test state; 6.5 tu of history before t = 0 and W/lambda + 0.2 tu after, stored every dt; the 300-state history panel is the first 300 of the 1,000-state panel"
+  window: "W = 27 / lam_max (frozen lambda above); scores capped at W; non-crossing states score W"
+  frame_zero: "t = 0 is the last observed frame; primary score counts frames j >= 1"
+  kmeans_assign: "exact nearest prototype (KD-tree); ties are measure-zero"
+  sigma_A: "RMS distance of calibration states to their mean"
+  delta_035: "Delta = 0.035 is not a multiple of dt = 0.01; the history sweep (all five Delta) is integrated at dt = 0.005, truth and particle filter alike, on its own panel from the same burned-in starts"
+  history_sweep: {context_times: [0.0, 0.2, 0.8, 1.6, 3.2, 6.4], rates: [4, 6], deltas: [0.02, 0.035, 0.05, 0.07, 0.1], states: 300, particles: 1500, dt: 0.005}
+  timing_jitter: "observation k is the true state at t_k + u_k, u_k ~ U(-Delta/4, Delta/4), reached by one RK4 substep from the grid state; the filter assumes t_k"
+  observation_noise: "N(0, (0.02 sigma_A)^2) per coordinate added before tokenization; filter unchanged"
+  sensitivity_context: 3.2
+  exchange_law:
+    delta_hat: "RMS quantization error of the rate-R codebook on the calibration block (its own fitting states)"
+    h_states: "1,000 calibration states (fixed random subset, seed = calibration seed stream 7)"
+    h_score: "decode-style perturbation integrated with the true system, scored on the Delta = 0.02 frame grid, future frames, eps = 0.3"
+    measured: "decode-and-integrate reference with the rate-R codebook on the 1,000-state confirmation panel, Delta = 0.02, future frames, eps = 0.3"
+    d_eff_interval: "bootstrap over calibration trajectories (150), codebooks fixed, 2,000 reps, 95%"
+    r_estimate: "central finite differences of H_W against ln(1/delta) on the 15-point grid; also a least-squares slope over the range"
+    fsle: "doubling-time crossings from 1e-9 sigma_A, 1,000 calibration states, codebook-direction start"
+  learned_arch: "pre-LN transformer encoder layers, GELU, final LayerNorm; continuous heads residual on the decoded current input frame (B, D: prototype of the current token; C, E: the current state) in coordinates standardized by calibration mean and std"
+  learned_eval: "context = last context_frames frames ending at t = 0; greedy rollout; sliding window; forecasts stop once every state has exceeded eps = 0.5 (first crossings unaffected)"
+  c_noise: "training inputs only; evaluation context is clean for both C variants; at t = 0 C and E output the observed current state"
+  e_arm: "soft projection w = softmax(-||y - c_j||^2 / tau) over standardized prototypes, tau = 1e-3 + softplus(theta) learned; MSE on the projected output; projected output fed back"
+  probes: "on frozen A final hidden state (after final LayerNorm), all positions of training windows, target = current state; linear and 2-layer MLP (hidden 256, GELU); AdamW lr 1e-3 cosine, 3,000 steps, batch 256; selection by validation MSE"
+  extra_seeds: "seeds 3 and 4 for A, B, D (4 and 6 bits) and C (both noise levels) at lorenz28, Delta = 0.02; A-probes on those A models"
+  stall_check: "A at 4 rates x 3 Delta, seed 0, trained for the pilot budget (1,000 steps), rolled out on the 300-state VALIDATION panel; fraction of rollout steps repeating the current token"
+  data_axis: "A at 6 and 10 bits, Delta = 0.05, seeds 0-2, trained on all 1,000 training trajectories (20,000 tu); same step budget"
+  tf32: "TF32 matmuls enabled for training and rollout"
+  bootstrap: "states are independent trajectories, so resampling states resamples trajectories; learned arms resample model seeds too"
+  climatology_null: "added per gate check 7: forecast = calibration mean at every frame, scored like persistence"
+  decomposition_status: "NOT EXECUTED: known-zero test fails at 4 bits under the frozen k-means stopping rule (plug-in O(0)/I(0) = 8.6e-10 > 1e-10); see gate/GATE_REPORT.md"
+  second_author_law: "fixed-slope comparator H(R) = a + (ln 2 / D_KY) R (per the blinded second author), intercept fit on {6, 8, 10, 12}; reported beside, never replacing, the WO criterion"
