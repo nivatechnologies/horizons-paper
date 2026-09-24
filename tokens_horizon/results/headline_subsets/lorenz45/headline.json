@@ -1,7 +1,7 @@
 {
  "task": "2.2 headline bound and references",
  "system": "lorenz45",
- "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty",
+ "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959",
  "labels": {
   "bound": "bound",
   "DI": "reference",
@@ -570,7 +570,7 @@
     -1.3728348981000005
    ],
    "stop_condition": "",
-   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+   "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959"
   },
   {
    "system": "lorenz45",
@@ -1117,7 +1117,7 @@
     -21.56940339102
    ],
    "stop_condition": "",
-   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+   "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959"
   },
   {
    "system": "lorenz45",
@@ -1664,7 +1664,7 @@
     -25.369416261630004
    ],
    "stop_condition": "",
-   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+   "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959"
   },
   {
    "system": "lorenz45",
@@ -2211,7 +2211,7 @@
     -24.892250066099997
    ],
    "stop_condition": "fallback > 5% at 1,500 and 3,000 particles: history reference unreliable",
-   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+   "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959"
   },
   {
    "system": "lorenz45",
@@ -2788,7 +2788,7 @@
     0.36339643049999926
    ],
    "stop_condition": "",
-   "git_sha": "cb613f1f65ce3a8f6caa8ec259d6b8d07a2280ff-dirty"
+   "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959"
   }
  ]
 }

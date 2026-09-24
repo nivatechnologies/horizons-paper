@@ -1,4 +1,4 @@
-# git_sha=098ed10edea325a70cd3e0547818f829cd5da5f8
+# git_sha=424c7ed903113826fdf49ed3edb67961138fa959
 comparison,a,b,system,bits,delta,score,n_states,diff_a_minus_b,ci90_lo,ci90_hi,ci95_lo,ci95_hi,label,reading
 A vs output-support bound,A,bound,lorenz28,4,0.02,eps0.3_future,1000,-0.015206174619999971,-0.017832218327,-0.012692755830999993,-0.018418429214500005,-0.01238475746200001,estimate,reported as gap only (WO section 4)
 A vs history reference,A,history ref (reference),lorenz28,4,0.02,eps0.3_future,300,-2.940645058866666,-3.09720516259,-2.8019154231366667,-3.1162475857566667,-2.7797338670733334,estimate,a well below b

@@ -1,4 +1,4 @@
-# git_sha=f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty; RVQ decode-and-integrate horizons, confirmation panel, Delta 0.02, future frames, eps 0.3; H = reference, delta = estimate
+# git_sha=424c7ed903113826fdf49ed3edb67961138fa959; RVQ decode-and-integrate horizons, confirmation panel, Delta 0.02, future frames, eps 0.3; H = reference, delta = estimate
 system,stages,bits,delta_calib_over_sigma_A,delta_panel_over_sigma_A,H_mean,H_ci95_lo,H_ci95_hi,frac_no_cross,lam,label
 lorenz28,1,8,0.0739605137,0.07331095764,1.017915597,0.9685611673,1.069196601,0,0.905345,reference
 lorenz28,2,16,0.01227772478,0.01202211099,2.493718482,2.412588706,2.575415457,0,0.905345,reference

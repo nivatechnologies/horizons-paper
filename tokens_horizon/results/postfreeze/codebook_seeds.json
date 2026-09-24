@@ -1,5 +1,5 @@
 {
- "git_sha": "6cbe3bca73440c62f602e8b47cf9666ee1598eab-dirty",
+ "git_sha": "424c7ed903113826fdf49ed3edb67961138fa959",
  "note": "POST-FREEZE robustness check (requested 2026-09-24, after the freeze and after the Task 2 results).\n\nQuestion: how much do the single-frame decomposition and the output-support bound depend on the k-means\ninitialization? On the same 150,000 lorenz28 calibration states, refit the 4- and 6-bit codebooks with\nrandom_state 0-4, every other k-means setting as frozen (n_init 1, max_iter 300, tol 1e-8). For each codebook:\nthe single-frame decomposition (same estimator, same trajectory bootstrap) and the output-support bound on the\nTask 2 headline panel (1,000 confirmation states, Delta 0.02 / 0.05 / 0.1, eps 0.1 / 0.3 / 0.5, both scores).\nThe frozen-seed codebook (random_state = bits) stays primary. No history reference, no learned model.\n\nThe refitted codebooks live only under runs/postfreeze/codebook_seeds/ and never touch the frozen caches.\nLabels: every number here is tagged \"post-freeze robustness\"; bound values are bounds for their own codebook.\n",
  "rows": [
   {

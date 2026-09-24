@@ -1,4 +1,4 @@
-# git_sha=f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty
+# git_sha=424c7ed903113826fdf49ed3edb67961138fa959
 system,quantity,dt,value,ci95_lo,ci95_hi,label,source
 lorenz28,lam_max,0.01,0.9053451643,,,estimate,results/lyapunov.json
 lorenz28,lam_max_se,0.01,0.00150795266,,,estimate,results/lyapunov.json

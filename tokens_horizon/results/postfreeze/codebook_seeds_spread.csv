@@ -1,4 +1,4 @@
-# git_sha=6cbe3bca73440c62f602e8b47cf9666ee1598eab-dirty; POST-FREEZE robustness check; frozen-seed codebook is primary
+# git_sha=424c7ed903113826fdf49ed3edb67961138fa959; POST-FREEZE robustness check; frozen-seed codebook is primary
 bits,quantity,frozen,refit_min,refit_max,refit_mean,refit_sd,frozen_minus_refit_mean,label
 4,inertia,2341813.2484008754,2333431.6029784353,2345353.3214268736,2340630.048480408,4369.446870914596,1183.1999204675667,post-freeze robustness
 4,delta_rel,0.2673409119283658,0.2668620596295817,0.26754290261994335,0.26727327325657174,0.0002495634695957277,6.763867179404581e-05,post-freeze robustness

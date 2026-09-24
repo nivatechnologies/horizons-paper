@@ -1,4 +1,4 @@
-# git_sha=f750ca1fe9437d18a4ab0ece91862bab9a299969-dirty; pred/second_author = estimate; meas = reference (decode-and-integrate)
+# git_sha=424c7ed903113826fdf49ed3edb67961138fa959; pred/second_author = estimate; meas = reference (decode-and-integrate)
 system,rate_bits,role,delta_hat_over_sigma_A,pred,pred_ci95_lo,pred_ci95_hi,pred_label,meas,meas_ci95_lo,meas_ci95_hi,meas_frac_no_cross,meas_label,err,tol,outcome,second_author_pred,second_author_err,second_author_label
 lorenz28,4,other,0.2673409119,0.1886782758,0.1750100745,0.2041731494,estimate,0.2911770589,0.264957815,0.3203128717,0,reference,-0.1024987831,0.075,criterion not met,-0.394219194,-0.6853962529,estimate
 lorenz28,5,heldout,0.1992137298,0.3867432825,0.3629219672,0.4126272805,estimate,0.4723728072,0.4397224451,0.5067424194,0,reference,-0.08562952473,0.075,criterion not met,-0.05808264364,-0.5304554508,estimate
