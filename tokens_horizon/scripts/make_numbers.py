@@ -232,6 +232,41 @@ def main():
             rows, sha = read_csv(p)
             table(out, sec, title, p, cols, rows, sha, note=note)
 
+    # ---- POST-FREEZE EXTENSION, section K2 (learned cells and controls; EXT_FREEZE part 1 and Amendment 1)
+    ext = R / "ext"
+    for fname, sec, title, cols, note in (
+            ("e5_probe_control.csv", "K2A", "POST-FREEZE EXTENSION K2: E5.1 probe control (Lorenz-63; trained vs untrained A, "
+             "token-history MLP)",
+             ["kind", "cell", "forecaster", "seed", "recon_rmse_rel", "H_restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")),
+              "reading"],
+             "Probe reading follows Amendment 1 A8.5 ('beats' applied under the frozen well-below margin): the paper may "
+             "say only 'training makes the precision more recoverable by the tested readout'; never that the untrained "
+             "representation lacks it."),
+            ("e5_tie_baselines.csv", "K2B", "POST-FREEZE EXTENSION K2: E5.2 ties under Amendment 1 A8.2 (4 bits)",
+             ["cell", "forecaster", "seed", "H_restricted_mean", ("95%", ci("H_ci95_lo", "H_ci95_hi")),
+              "share_Tout_eq_Delta", "tie_given_Tout_gt_Delta", ("95%", ci("tie_cond_ci95_lo", "tie_cond_ci95_hi")),
+              "tie_all"],
+             "Ties = P(VPT = T_out | T_out > Delta); the share with T_out = Delta is where a tie is automatic under "
+             "future-only scoring. The pre-amendment tie table is superseded and kept only as "
+             "results/ext/e5_tie_baselines_SUPERSEDED_pre_amendment1.csv (not in NUMBERS)."),
+            ("e5_b_snapped.csv", "K2C", "POST-FREEZE EXTENSION K2: A8.1 B re-scored after snapping to the nearest prototype",
+             ["cell", "score", "row", "seeds", "value", ("95%", ci("ci95_lo", "ci95_hi")), "reading",
+              "tie_given_Tout_gt_Delta", "share_Tout_eq_Delta", "outlast_over_bound"],
+             "Same rollouts and fed-back codes as B; each re-rollout reproduces B's stored horizons exactly."),
+            ("a8_same_panel.csv", "K2D", "POST-FREEZE EXTENSION K2: A8.3 same-panel headline (first 300 states)",
+             ["bits", "delta", "series", "n_states", "mean", ("95%", ci("ci95_lo", "ci95_hi")), "diff_vs_pf",
+              ("95%", ci("diff_ci95_lo", "diff_ci95_hi")), "reading"],
+             "Paired differences to the particle filter on the same 300 states. C reads exact states and is not capped "
+             "by a token-history reference."),
+            ("a8_protocol_facts.csv", "K2E", "POST-FREEZE EXTENSION K2: A8.4 confirmation-block protocol facts",
+             ["system", "confirmation_trajectories", "history_panel_states", "steps_per_trajectory", "dt",
+              "pre_history_time", "post_time", "window_time_W_over_lambda", "start_spacing", "bootstrap_unit"],
+             "")):
+        p = ext / fname
+        if p.exists():
+            rows, sha = read_csv(p)
+            table(out, sec, title, p, cols, rows, sha, note=note)
+
     lj = R / "learned" / "learned.json"
     if lj.exists():
         rows, sha = read_csv(R / "learned" / "cells.csv")

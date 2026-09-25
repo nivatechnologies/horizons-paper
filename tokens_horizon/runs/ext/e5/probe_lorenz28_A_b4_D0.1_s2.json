@@ -1,0 +1,30 @@
+{
+ "tag": "lorenz28_A_b4_D0.1_s2",
+ "weight_check": {
+  "deterministic": true,
+  "keys_match_trained": true,
+  "tensors_differing_from_trained": 54,
+  "tensors_total": 55,
+  "max_abs_diff_from_trained": 0.33580324053764343
+ },
+ "label": "post-freeze extension",
+ "sha": "f82a59e2e7e1cd05c4c32f463ee57956d9c84464-dirty",
+ "untrained_probes": {
+  "linear": {
+   "best_val": 0.06747640110552311,
+   "kind": "linear",
+   "recon_rmse_rel": 0.26474210472218374
+  },
+  "mlp": {
+   "best_val": 0.031107921851798892,
+   "kind": "mlp",
+   "recon_rmse_rel": 0.2047099272653787
+  }
+ },
+ "tokhist": {
+  "best_val": 0.006463894329499453,
+  "best_step": 2750,
+  "recon_rmse_rel": 0.07854722272115382
+ },
+ "wall": 50.5470826625824
+}

@@ -1,0 +1,23 @@
+{
+ "tag": "lorenz28_B_b6_D0.02_s2",
+ "label": "post-freeze extension",
+ "sha": "bae790d6dad7b0e02e63f225ec050b2ecbb08fb6-dirty",
+ "frames_run": 378,
+ "reproduces_stored_H": {
+  "eps0.3_future": true,
+  "eps0.3_from_t0": true,
+  "eps0.1_future": true,
+  "eps0.1_from_t0": true,
+  "eps0.5_future": true,
+  "eps0.5_from_t0": true
+ },
+ "max_abs_diff_stored_H": {
+  "eps0.3_future": 0.0,
+  "eps0.3_from_t0": 0.0,
+  "eps0.1_future": 0.0,
+  "eps0.1_from_t0": 0.0,
+  "eps0.5_future": 0.0,
+  "eps0.5_from_t0": 0.0
+ },
+ "wall": 15.9234778881073
+}
