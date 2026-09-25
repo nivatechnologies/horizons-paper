@@ -197,3 +197,42 @@ differs from Amendment 1, it wins. It adds no new experiments and no grid change
   - **So the check fails for those intervals.** They are rerun with the calibration trajectory as the resampling unit
     (the same units on both sides of every paired difference). NUMBERS is regenerated, and every frozen reading whose
     outcome changes is listed.
+
+## Part 2a: Kuramoto–Sivashinsky (before any KS tokenizer, bound or decode-and-integrate result)
+
+`ext_freeze.yaml` key `ks` is the full specification. The main points:
+
+- **Systems.** u_t = −u u_x − u_xx − u_xxxx, periodic, pseudo-spectral with the 2/3 rule, ETDRK4, float64.
+  - L = 22: N = 64, dt = 0.0025, λ = 0.048956 ± 0.00036, D_KY = 4.24.
+  - L = 100: N = 256, dt = 0.005, λ = 0.091014 ± 0.00042, D_KY = 21.48.
+  - Frame intervals: L = 22 uses 0.37 / 0.92 / 1.84, and L = 100 uses 0.2 / 0.495 / 0.99. Both give λΔ ≈ 0.018 / 0.045 / 0.090.
+  - W = 27 Lyapunov times. The context is about 3 Lyapunov times.
+- **Spectrum check (sum versus trace).**
+  - The extension WO sets no tolerance, and the original absolute 1e-3 cannot apply at KS trace magnitudes (about 10^4).
+  - The frozen tolerance is the original's, taken relatively: 7.3e-5.
+  - That tolerance was chosen after the pilot values were seen. To make the outcome independent of the choice,
+    production uses dt values at which the check gives 2.0e-6 (L = 22) and 1.3e-5 (L = 100).
+- **The WO's D_KY is wrong for this system.** The WO quotes D_KY ≈ 5.2 for L = 22; the measured value is 4.24. The
+  exponents agree with Cvitanović, Davidchack & Siminos (2010). **[Hypothesis]** Edson et al. (2019) keep the
+  conserved mean mode, which adds one neutral exponent.
+- **Output contract (A2).**
+  - The scored field is real-space u on the grid.
+  - True states are zero-mean and band-limited.
+  - Decoded fields are scored as is. A stays codebook-valued.
+  - The decode-and-integrate reference's own projection is stated wherever it is reported.
+- **Tokenizers.**
+  - Whole-state k-means at 4–16 bits (L = 22, 3.3 M fit states, 50 per code at 2^16).
+  - Shared patch codebooks with P ∈ {8, 16, 32} and b ∈ {8, 10, 12, 14, 16}, on both domains, capped at 16 M patches (≥ 244 per code).
+  - Residual VQ with 1–4 stages of 8 bits; **no bound for these (A1)**.
+  - Calibration adequacy follows A5: a held-out split, and refits on half the trajectories at the two largest b.
+- **E3 and A9.**
+  - Bounds come from the certified exact routine.
+  - Survival, p_0 and the A3 threshold rule apply.
+  - D_eff is fitted per P.
+  - The whole-state odd rates 7, 9 and 11 are skipped until the A9 predictor, fitted at 6, 8, 10 and 12 bits with Δ = 0.92, is committed.
+- **E4.**
+  - Candidates: P ∈ {16, 32} and b ∈ {10, …, 16}, on both domains, at all Δ.
+  - The validation bound is computed on 300 validation-block states.
+  - Selection and contrast follow A6 and B2.
+  - Token-level sequence with a block-causal mask (B3), one shared categorical head (A7), and the frozen backbone and budget.
+  - The prefix-invariance test is committed and passes before any training.

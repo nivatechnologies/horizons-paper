@@ -80,3 +80,23 @@ The trace is 2 Σ_{m≤M}(k²−k⁴): −11,663.74 for L = 22 (N = 64, 42 expon
   - Panel: 73 s for L = 22 and 122 s for L = 100.
   - Decode-and-integrate: 24 s and 42 s per tokenizer.
   - Calibration integration: 130 s and 212 s.
+
+## Production dt = 0.005 (coordinator decision; `ks_pilot.json` key `dt0005`, proposal `ks_pilot_proposal_dt0005.yaml`)
+
+| | L = 22 (N 64) | L = 100 (N 256) |
+|---|---|---|
+| λ1 ± s.e. at dt 0.005 | 0.04896 ± 0.00036 (16 × 16,000 tu, 42 exponents) | 0.09101 ± 0.00042 (16 × 10,000 tu, 40 exponents) |
+| λ1 at dt 0.1 | 0.04845 ± 0.00032 | 0.09063 ± 0.00034 |
+| D_KY at dt 0.005 / dt 0.1 | 4.239 / 4.241 | 21.48 / 21.48 |
+| sum − trace, relative | 1.29e-4 (on the same runs) | 1.30e-5 (170 exponents, same starts, 200 tu) |
+
+- **dt 0.1 against dt 0.005:** λ1 differs by 1.05 combined s.e. at L = 22 and by 0.7 s.e. at L = 100.
+- **Stop condition:** λ1(L = 22) lies inside [0.040, 0.050].
+- **Sum error:** at L = 22 it is systematic, 1.51 on every start, and falls to 2e-6 at dt 0.0025.
+
+**Trajectory halving at dt 0.005.** Values are max relative differences over 64 starts, at t = 1 / 10 / 50 / 100.
+
+| comparison | L = 22 | L = 100 |
+|---|---|---|
+| dt/2 | 1.4e-10 / 7.5e-10 / 3.5e-8 / 9.7e-7 | 2.4e-10 / 1.6e-9 / 1.1e-6 / 1.3e-4 |
+| 2N | 5.4e-8 / 6.4e-8 / 6.3e-8 / 4.6e-8 | 6.3e-7 / 6.2e-7 / 6.2e-7 / 7.8e-5 |

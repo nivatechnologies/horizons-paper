@@ -82,3 +82,91 @@ amendment_2:                 # WO amendment 2 (2026-09-25); verbatim in gate/ext
   ties: "P(VPT_model = T_out | Delta < T_out <= W, failure observed); report automatic first-frame cases (T_out = Delta) and jointly censored cases separately (not ties)"
   superseded_by_B4: ["NUMBERS K2B tie columns (A8.2)", "NUMBERS K2C tie columns (A8.1)"]
   b5_release_gate: "confirmation panels: independent trajectories, state resampling valid; calibration-state CIs (h curve, predictions, r, FSLE, post-freeze variants) resample states sharing trajectories with overlapping windows -> rerun with calibration trajectory as unit; list frozen readings whose outcome changes; record outcome in results note before release"
+
+# =============================================================================================================
+# PART 2a: Kuramoto-Sivashinsky (committed before any KS tokenizer, bound or decode-and-integrate result)
+# Source proposals: results/ext/ks_pilot_proposal_dt0005.yaml (pilot values are system properties, not results).
+ks:
+  module: th/ks.py
+  equation: "u_t = -u u_x - u_xx - u_xxxx on [0, L), periodic"
+  discretization: "Fourier pseudo-spectral Galerkin on N grid points; Orszag 2/3 rule (modes 1..M, M = floor((N-1)/3)); mode 0 = 0; ETDRK4 (Cox-Matthews), contour-integral coefficients (Kassam-Trefethen, 64 points, radius 1); float64"
+  output_contract:            # Amendment 1 A2
+    scored_field: "real-space u on the N grid points; Euclidean norm over the N points; sigma_A in the same norm, recomputed on the calibration fit block"
+    true_states: "zero-mean and exactly band-limited to modes 1..M"
+    decoded_states: "concatenation of decoded patches (or whole-state prototype / residual-VQ sum) scored as is: no filtering, projection, dealiasing or mean correction; A remains codebook-valued"
+    decode_and_integrate: "the integrator projects its initial condition onto modes 1..M; this applies only to the reference trajectory and is stated wherever it is reported"
+  spectrum_check:
+    tolerance_relative: 7.3e-5    # the original freeze's 1e-3 absolute on |trace| 13.67 (Lorenz-63), expressed relatively
+    note: "tolerance chosen after the pilot values were seen; production dt is chosen so the outcome does not depend on it: L=22 dt 0.0025 gives 2.0e-6, L=100 dt 0.005 gives 1.30e-5 (both pass at any relative tolerance >= 2e-5)"
+  systems:
+    ks22:
+      system_index: 6
+      L: 22.0
+      N: 64
+      dt: 0.0025                  # sum-vs-trace relative error 2.0e-6; trajectories vs dt 0.005 differ by <= 9.7e-7 at 100 tu
+      burn_in_time: 1000.0
+      lyapunov: {lam_max: 0.048956, lam_max_se: 0.000363, d_ky: 4.2392, d_ky_se: 0.0032, measured_at_dt: 0.005, note: "16 starts x 16,000 tu, full 42-exponent spectrum; dt 0.1 gives 0.04845 +- 0.00032 (1.05 combined s.e. apart), so lambda is converged in dt; D_KY 4.24, not the WO's 5.2 (Edson et al. convention likely keeps the mean mode: hypothesis)"}
+      frame_intervals: [0.37, 0.92, 1.84]   # lambda*Delta = 0.0181, 0.0450, 0.0901; multiples of dt
+      primary_delta: 0.92
+      window_time: 551.52
+      pre_history_time: 120.25
+      post_time: 555.25
+      context_frames: {"0.37": 166, "0.92": 67, "1.84": 33}
+      patch_length_points: {8: 8, 16: 4, 32: 2}
+    ks100:
+      system_index: 7
+      L: 100.0
+      N: 256
+      dt: 0.005                   # sum-vs-trace relative error 1.30e-5
+      burn_in_time: 500.0
+      lyapunov: {lam_max: 0.091014, lam_max_se: 0.000422, d_ky: 21.481, d_ky_se: 0.010, measured_at_dt: 0.005}
+      frame_intervals: [0.2, 0.495, 0.99]
+      primary_delta: 0.495
+      window_time: 296.66
+      pre_history_time: 64.66
+      post_time: 298.65
+      context_frames: {"0.2": 165, "0.495": 67, "0.99": 33}
+      patch_length_points: {8: 32, 16: 16, 32: 8}
+  seeds: "freeze.yaml scheme block_base + 100 * system_index + stream; ks22 = 6, ks100 = 7; streams: calibration fit 0, calibration held-out 1, all others 0"
+  blocks:
+    calibration:
+      ks22: {fit: {n_traj: 1650, samples_per_traj: 2000, sample_every: 1.84}, heldout: {n_traj: 165, samples_per_traj: 2000, sample_every: 1.84}}
+      ks100: {fit: {n_traj: 1000, samples_per_traj: 500, sample_every: 0.99}, heldout: {n_traj: 100, samples_per_traj: 500, sample_every: 0.99}}
+    training: {ks22: {n_traj: 100, traj_time: 370.0, lyapunov_times: 1811}, ks100: {n_traj: 100, traj_time: 199.0, lyapunov_times: 1811}}
+    validation: {ks22: {n_traj: 50, traj_time: 370.0, panel_states: 300}, ks100: {n_traj: 50, traj_time: 199.0, panel_states: 300}}
+    confirmation: {panel_states: 1000, storage: "one integration per state, stored as the three subsampled frame grids; no interpolation"}
+  tokenizers:
+    whole_state_kmeans: {system: ks22, bits: [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16], fit: "all 3.3M calibration fit states"}
+    patch_product: {systems: [ks22, ks100], P: [8, 16, 32], b: [8, 10, 12, 14, 16], fit: "shared codebook on patches of calibration fit states; capped at 16,000,000 patches = all patches of a seeded random subset of whole fit states (seed = calibration seed stream 2); patches and independent trajectories reported separately"}
+    residual_vq: {systems: [ks22, ks100], bits_per_stage: 8, stages: [1, 2, 3, 4], fit: "whole-state residual k-means on calibration fit states (capped at 1,000,000 states, seeded subset)", bound: "NONE (Amendment 1 A1): distortion, decode-and-integrate and persistence only"}
+    kmeans: "th/patchvq.gpu_kmeans: Lloyd, float32 GPU with float64 centroid accumulation, init = seeded sample of distinct points (seed = total bits for whole-state, 1000*P + b for patches, 5000 + stage for RVQ), max_iter 300, rtol 1e-6, empty clusters re-seeded from farthest points and counted; report inertia, iterations, converged, empty and duplicate code fractions (stop rule: > 1% or not converged -> report and use, labelled)"
+    calibration_adequacy: "A5: samples per code (achieved), fit and held-out distortion, held-out occupancy and unused-code rate; at b = 14 and 16 (patch) and 15, 16 (whole-state) refit on the first half of the fit trajectories and report the change in distortion and bound"
+  e3:
+    panel: "confirmation, 1,000 states; all three frame intervals; eps 0.3 primary, 0.1, 0.5; future frames primary, from t=0 secondary"
+    bound: "exact output-support bound via th/patchvq.certified_bound_crossings (Amendment 1 A1); whole-state and patch k-means only; restricted mean, no-cross fraction, p_0, S_out(1, 3, 10) (Amendment 2 B4)"
+    references: "decode-and-integrate (integrate the decoded current state) and persistence (hold the decoded current state), every tokenizer"
+    d_eff: "whole-state ks22: -1/slope(log2 delta vs R) over R in {6,8,10,12} (as the original freeze) and also over {8,...,16} even; patch families: separately for each (system, P), log2 delta against total rate P*b over b in {8,...,16}; D_eff(P) estimates P*d_patch; delta = RMS error on the held-out calibration split; 95% interval by bootstrap over held-out trajectories"
+    di_slope: "least-squares decode-and-integrate restricted mean against total bits per frame, per system and family, primary Delta, eps 0.3; bootstrap over panel states"
+    thresholds: "Amendment 1 A3 rule (smallest tested nominal rate; monotone flag; lower-95%-limit variant; 'not reached within the tested grid')"
+    skip_until_a9: "whole-state ks22 rates 7, 9, 11: decode-and-integrate not computed until the A9 prediction commit exists (Amendment 2 B1.1)"
+  a9:
+    tokenizer: "whole-state k-means, ks22"
+    even_rates: [6, 8, 10, 12]
+    odd_rates: [7, 9, 11]
+    delta: 0.92
+    score: "restricted-mean decode-and-integrate horizon, eps 0.3, future frames, confirmation panel of 1,000 states, W = 27"
+    predictor: "OLS H_hat(R) = a + s R, intercept free; exclude an even rate only if > 5% of its states are censored at W"
+    pass: "per odd rate: 90% bootstrap CI (states) of (observed - H_hat) within +-0.10, H_hat fixed"
+    scope: "tests prospective interpolation across held-out rates within the specified system, tokenizer family and rate range; not extrapolation or cross-system transfer"
+  e4:
+    candidates: "patch-product configurations with >= 2^10 codes per token and >= 16 tokens per frame: P in {16, 32}, b in {10, 12, 14, 16}, both KS systems, all three Delta"
+    validation_panel: "validation block, 300 states, same pre/post construction; certified exact bound, eps 0.3, future frames"
+    selection: "smallest total bits per frame P*b among candidates whose validation restricted-mean bound < 1 Lyapunov time; equal-rate order (Amendment 2 B2.2): L=22 first, primary Delta, lower validation mean, configuration ID lexical; none -> no learned cell (B2.1 wording)"
+    contrast: "support-permissive contrast (B2.3): smallest-bits config, same system/family/P/Delta, more total bits, validation mean >= 3 and validation S_out(1) >= 0.9; none -> none (B2.4)"
+    contract: "token-level sequence of context_frames x P patch tokens; input = token embedding (A, B) or linear patch adapter (C) + learned patch-position embedding + learned frame(time) embedding; block-causal attention: every token of frame f attends to all tokens of frames <= f (full within an observed frame, none into later frames); the output at patch p of frame t predicts patch p of frame t+1 (targets shifted by one whole frame)"
+    heads: "A: one shared categorical head over the 2^b codes for all patch positions (Amendment 1 A7), greedy argmax per patch fed back, scored on decoded prototypes; B: one shared linear head to d_patch, residual on the current patch prototype, nearest codes fed back; C: linear patch adapter in, shared linear head out, residual on the current patch, own predictions fed back"
+    backbone_and_budget: "frozen: 4 layers, width 128, 4 heads, FF 512, pre-LN, GELU, no dropout; AdamW lr 3e-4 cosine, weight decay 0.01, 10,000 steps, batch 256 windows (gradient accumulation allowed, mathematically identical); validation-loss checkpoint selection on the validation block"
+    seeds: [0, 1, 2]
+    prefix_invariance_test: "Amendment 2 B3: committed and passing before any E4 training"
+    reports: "A vs bound (ratio H_A/U_C, gap, B4 ties, automatic and jointly censored cases), A vs B and B vs C (frozen margins), MLP probe of A's hidden state against the current-token reconstruction, adapter/backbone/head parameters and training compute per arm"
+  numbers_section: "K (systems, tokenizers, bounds), K2 (learned cells, controls)"
