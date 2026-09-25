@@ -1,10 +1,14 @@
-# git_sha=5b9a4c43198bbd8553b4d834eeab88f6e27233d7; POST-FREEZE (Todd 2026-09-25), not pre-registered
+# git_sha=472f4bbd5b429655117278ca7ec49d3557801758; POST-FREEZE (Todd 2026-09-25), not pre-registered
 bits,delta,cell,n_seeds,H,ci95_lo,ci95_hi,runs,label
 6,0.05,B 20k,3,1.564043843833333,1.5009533686,1.6264092886125,lorenz28_B_b6_D0.05_s0_traj1000 lorenz28_B_b6_D0.05_s1_traj1000 lorenz28_B_b6_D0.05_s2_traj1000,learned (post-freeze)
 6,0.05,A 20k,3,1.7844349950000002,1.7193305043687501,1.8498782355520833,lorenz28_A_b6_D0.05_s0_traj1000 lorenz28_A_b6_D0.05_s1_traj1000 lorenz28_A_b6_D0.05_s2_traj1000,learned (frozen grid)
 6,0.05,B 2k,3,1.5235296550833333,1.4601223091000002,1.5923287077687498,lorenz28_B_b6_D0.05_s0 lorenz28_B_b6_D0.05_s1 lorenz28_B_b6_D0.05_s2,learned (frozen grid)
 6,0.05,A 2k,3,1.5371550973333337,1.47335732131875,1.6058274017187502,lorenz28_A_b6_D0.05_s0 lorenz28_A_b6_D0.05_s1 lorenz28_A_b6_D0.05_s2,learned (frozen grid)
+6,0.05,"C 20k (sigma=0, no rate)",3,3.114100107416667,3.0191626128999998,3.213849510608333,lorenz28_C_b0_D0.05_s0_n0.0_traj1000 lorenz28_C_b0_D0.05_s1_n0.0_traj1000 lorenz28_C_b0_D0.05_s2_n0.0_traj1000,learned (post-freeze)
+6,0.05,"C 2k (sigma=0, no rate)",3,3.0794253939166665,2.9462465038270835,3.2137337018937497,lorenz28_C_b0_D0.05_s0_n0.0 lorenz28_C_b0_D0.05_s1_n0.0 lorenz28_C_b0_D0.05_s2_n0.0,learned (frozen grid)
 10,0.05,B 20k,3,1.5308025932499998,1.4755874878354167,1.5851719555437498,lorenz28_B_b10_D0.05_s0_traj1000 lorenz28_B_b10_D0.05_s1_traj1000 lorenz28_B_b10_D0.05_s2_traj1000,learned (post-freeze)
 10,0.05,A 20k,3,2.9953339325000004,2.890906913475,3.09822978679375,lorenz28_A_b10_D0.05_s0_traj1000 lorenz28_A_b10_D0.05_s1_traj1000 lorenz28_A_b10_D0.05_s2_traj1000,learned (frozen grid)
 10,0.05,B 2k,3,1.4847808890833336,1.4402220715458334,1.5311986816874998,lorenz28_B_b10_D0.05_s0 lorenz28_B_b10_D0.05_s1 lorenz28_B_b10_D0.05_s2,learned (frozen grid)
 10,0.05,A 2k,3,2.3098821439166666,2.2412754770437497,2.3804303985875,lorenz28_A_b10_D0.05_s0 lorenz28_A_b10_D0.05_s1 lorenz28_A_b10_D0.05_s2,learned (frozen grid)
+10,0.05,"C 20k (sigma=0, no rate)",3,3.114100107416667,3.0191626128999998,3.213849510608333,lorenz28_C_b0_D0.05_s0_n0.0_traj1000 lorenz28_C_b0_D0.05_s1_n0.0_traj1000 lorenz28_C_b0_D0.05_s2_n0.0_traj1000,learned (post-freeze)
+10,0.05,"C 2k (sigma=0, no rate)",3,3.0794253939166665,2.9462465038270835,3.2137337018937497,lorenz28_C_b0_D0.05_s0_n0.0 lorenz28_C_b0_D0.05_s1_n0.0 lorenz28_C_b0_D0.05_s2_n0.0,learned (frozen grid)

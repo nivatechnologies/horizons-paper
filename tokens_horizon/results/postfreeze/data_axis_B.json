@@ -1,6 +1,6 @@
 {
- "git_sha": "5b9a4c43198bbd8553b4d834eeab88f6e27233d7",
- "note": "POST-FREEZE (requested by Todd, 2026-09-25; not pre-registered). NUMBERS.md section P.\n\nB trained on the 20,000 tu data axis (1,000 training trajectories) at 6 and 10 bits, Delta 0.05, seeds 0-2\n(runs/learned/postfreeze/), reported next to A's frozen data-axis cells and the 2,000 tu B and A cells, on the same\n1,000 confirmation states, primary score. Paired differences use the frozen margins, for information.\nLabels: cells are learned; differences are estimates.\n",
+ "git_sha": "472f4bbd5b429655117278ca7ec49d3557801758",
+ "note": "POST-FREEZE (requested by Todd, 2026-09-25; not pre-registered). NUMBERS.md section P.\n\nAlso C (sigma = 0) trained on the 20,000 tu data axis (Delta 0.05, seeds 0-2), paired with A on 20,000 tu at\n10 bits (and 6 bits for context), and with C on 2,000 tu.\n\nB trained on the 20,000 tu data axis (1,000 training trajectories) at 6 and 10 bits, Delta 0.05, seeds 0-2\n(runs/learned/postfreeze/), reported next to A's frozen data-axis cells and the 2,000 tu B and A cells, on the same\n1,000 confirmation states, primary score. Paired differences use the frozen margins, for information.\nLabels: cells are learned; differences are estimates.\n",
  "cells": [
   {
    "bits": 6,
@@ -47,6 +47,28 @@
    "label": "learned (frozen grid)"
   },
   {
+   "bits": 6,
+   "delta": 0.05,
+   "cell": "C 20k (sigma=0, no rate)",
+   "n_seeds": 3,
+   "H": 3.114100107416667,
+   "ci95_lo": 3.0191626128999998,
+   "ci95_hi": 3.213849510608333,
+   "runs": "lorenz28_C_b0_D0.05_s0_n0.0_traj1000 lorenz28_C_b0_D0.05_s1_n0.0_traj1000 lorenz28_C_b0_D0.05_s2_n0.0_traj1000",
+   "label": "learned (post-freeze)"
+  },
+  {
+   "bits": 6,
+   "delta": 0.05,
+   "cell": "C 2k (sigma=0, no rate)",
+   "n_seeds": 3,
+   "H": 3.0794253939166665,
+   "ci95_lo": 2.9462465038270835,
+   "ci95_hi": 3.2137337018937497,
+   "runs": "lorenz28_C_b0_D0.05_s0_n0.0 lorenz28_C_b0_D0.05_s1_n0.0 lorenz28_C_b0_D0.05_s2_n0.0",
+   "label": "learned (frozen grid)"
+  },
+  {
    "bits": 10,
    "delta": 0.05,
    "cell": "B 20k",
@@ -89,6 +111,28 @@
    "ci95_hi": 2.3804303985875,
    "runs": "lorenz28_A_b10_D0.05_s0 lorenz28_A_b10_D0.05_s1 lorenz28_A_b10_D0.05_s2",
    "label": "learned (frozen grid)"
+  },
+  {
+   "bits": 10,
+   "delta": 0.05,
+   "cell": "C 20k (sigma=0, no rate)",
+   "n_seeds": 3,
+   "H": 3.114100107416667,
+   "ci95_lo": 3.0191626128999998,
+   "ci95_hi": 3.213849510608333,
+   "runs": "lorenz28_C_b0_D0.05_s0_n0.0_traj1000 lorenz28_C_b0_D0.05_s1_n0.0_traj1000 lorenz28_C_b0_D0.05_s2_n0.0_traj1000",
+   "label": "learned (post-freeze)"
+  },
+  {
+   "bits": 10,
+   "delta": 0.05,
+   "cell": "C 2k (sigma=0, no rate)",
+   "n_seeds": 3,
+   "H": 3.0794253939166665,
+   "ci95_lo": 2.9462465038270835,
+   "ci95_hi": 3.2137337018937497,
+   "runs": "lorenz28_C_b0_D0.05_s0_n0.0 lorenz28_C_b0_D0.05_s1_n0.0 lorenz28_C_b0_D0.05_s2_n0.0",
+   "label": "learned (frozen grid)"
   }
  ],
  "comparisons": [
@@ -103,6 +147,7 @@
    "ci95_lo": -0.02983602170208304,
    "ci95_hi": 0.1148875260458331,
    "reading": "no frozen reading applies (a non-significant difference is not equivalence)",
+   "a_near_b": "",
    "label": "post-freeze estimate"
   },
   {
@@ -116,6 +161,7 @@
    "ci95_lo": 0.17621899138958352,
    "ci95_hi": 0.31596993172499976,
    "reading": "no frozen reading applies (a non-significant difference is not equivalence)",
+   "a_near_b": "",
    "label": "post-freeze estimate"
   },
   {
@@ -129,6 +175,7 @@
    "ci95_lo": 0.13955025552708336,
    "ci95_hi": 0.2990724217541669,
    "reading": "no frozen reading applies (a non-significant difference is not equivalence)",
+   "a_near_b": "",
    "label": "post-freeze estimate"
   },
   {
@@ -142,6 +189,63 @@
    "ci95_lo": -0.06842937014375014,
    "ci95_hi": 0.09862828429999988,
    "reading": "approximately equal",
+   "a_near_b": "",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 6,
+   "delta": 0.05,
+   "a": "C 20k",
+   "b": "C 2k",
+   "diff_a_minus_b": 0.03467471350000073,
+   "ci90_lo": -0.10023149940416694,
+   "ci90_hi": 0.16850809257916688,
+   "ci95_lo": -0.12213368108958342,
+   "ci95_hi": 0.1944605614583329,
+   "reading": "no frozen reading applies (a non-significant difference is not equivalence)",
+   "a_near_b": "near (upper 95% of b - a <= 0.15)",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 6,
+   "delta": 0.05,
+   "a": "A 20k",
+   "b": "C 20k",
+   "diff_a_minus_b": -1.329665112416667,
+   "ci90_lo": -1.4352434284999995,
+   "ci90_hi": -1.2322635705916662,
+   "ci95_lo": -1.454110441072917,
+   "ci95_hi": -1.2193974864604171,
+   "reading": "a well below b",
+   "a_near_b": "not near",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 6,
+   "delta": 0.05,
+   "a": "B 20k",
+   "b": "C 20k",
+   "diff_a_minus_b": -1.5500562635833341,
+   "ci90_lo": -1.6531048948458331,
+   "ci90_hi": -1.458110934291667,
+   "ci95_lo": -1.668147956475,
+   "ci95_hi": -1.4423866005500001,
+   "reading": "a well below b",
+   "a_near_b": "not near",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 6,
+   "delta": 0.05,
+   "a": "A 2k",
+   "b": "C 2k",
+   "diff_a_minus_b": -1.5422702965833328,
+   "ci90_lo": -1.6768377595666666,
+   "ci90_hi": -1.4142024562458337,
+   "ci95_lo": -1.6980224553395835,
+   "ci95_hi": -1.3915299768562504,
+   "reading": "a well below b",
+   "a_near_b": "not near",
    "label": "post-freeze estimate"
   },
   {
@@ -155,6 +259,7 @@
    "ci95_lo": -0.010746445150000077,
    "ci95_hi": 0.0983246164979166,
    "reading": "approximately equal",
+   "a_near_b": "",
    "label": "post-freeze estimate"
   },
   {
@@ -168,6 +273,7 @@
    "ci95_lo": 0.578987366081249,
    "ci95_hi": 0.7971981447062498,
    "reading": "b well below a",
+   "a_near_b": "",
    "label": "post-freeze estimate"
   },
   {
@@ -181,6 +287,7 @@
    "ci95_lo": 1.3607569230791665,
    "ci95_hi": 1.5774652062312502,
    "reading": "b well below a",
+   "a_near_b": "",
    "label": "post-freeze estimate"
   },
   {
@@ -194,6 +301,63 @@
    "ci95_lo": 0.7504951684270833,
    "ci95_hi": 0.8955687829083335,
    "reading": "b well below a",
+   "a_near_b": "",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 10,
+   "delta": 0.05,
+   "a": "C 20k",
+   "b": "C 2k",
+   "diff_a_minus_b": 0.03467471350000073,
+   "ci90_lo": -0.10023149940416694,
+   "ci90_hi": 0.16850809257916688,
+   "ci95_lo": -0.12213368108958342,
+   "ci95_hi": 0.1944605614583329,
+   "reading": "no frozen reading applies (a non-significant difference is not equivalence)",
+   "a_near_b": "near (upper 95% of b - a <= 0.15)",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 10,
+   "delta": 0.05,
+   "a": "A 20k",
+   "b": "C 20k",
+   "diff_a_minus_b": -0.11876617491666686,
+   "ci90_lo": -0.23427084447083302,
+   "ci90_hi": -0.012628053841666188,
+   "ci95_lo": -0.2628974761437501,
+   "ci95_hi": 0.013332714033332234,
+   "reading": "no frozen reading applies (a non-significant difference is not equivalence)",
+   "a_near_b": "not near",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 10,
+   "delta": 0.05,
+   "a": "B 20k",
+   "b": "C 20k",
+   "diff_a_minus_b": -1.5832975141666674,
+   "ci90_lo": -1.6814142785416661,
+   "ci90_hi": -1.4973229351500006,
+   "ci95_lo": -1.7019901298020828,
+   "ci95_hi": -1.4805106785000008,
+   "reading": "a well below b",
+   "a_near_b": "not near",
+   "label": "post-freeze estimate"
+  },
+  {
+   "bits": 10,
+   "delta": 0.05,
+   "a": "A 2k",
+   "b": "C 2k",
+   "diff_a_minus_b": -0.7695432499999999,
+   "ci90_lo": -0.9057403339833334,
+   "ci90_hi": -0.6448282039791665,
+   "ci95_lo": -0.9254545985854166,
+   "ci95_hi": -0.6166059597395837,
+   "reading": "a well below b",
+   "a_near_b": "not near",
    "label": "post-freeze estimate"
   }
  ]
