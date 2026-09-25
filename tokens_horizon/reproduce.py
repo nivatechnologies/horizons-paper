@@ -31,7 +31,10 @@ COMPUTE = [
     ["scripts/t3_learned.py", "run", "--grid", "main"],
     ["scripts/t3_learned.py", "run", "--grid", "postfreeze_dataB"],
     ["scripts/t3_learned.py", "run", "--grid", "postfreeze_dataC"],
+    ["scripts/t3_learned.py", "run", "--grid", "ext_large"],
 ]
+# Post-freeze extension pipelines (KS, Kolmogorov, E5 controls) are multi-stage and GPU/CPU heavy; their scripts and
+# stage order are documented in README.md ("Post-freeze extension") and are not run by this driver.
 
 TABLES = [
     ["scripts/t2_system_table.py"],
@@ -46,10 +49,14 @@ TABLES = [
     ["scripts/postfreeze_exchange_extra.py"],
     ["scripts/postfreeze_data_axis_B.py"],
     ["scripts/t3_analysis.py"],
+    ["scripts/ext_a8_same_panel.py"],
+    ["scripts/ext_e53_analysis.py"],
     ["scripts/fig_F1.py"],
     ["scripts/fig_F2_F4_F5.py"],
     ["scripts/fig_F3.py"],
     ["scripts/fig_F6.py"],
+    ["scripts/fig_F7.py"],
+    ["scripts/fig_F8.py"],
     ["scripts/make_numbers.py"],
 ]
 
