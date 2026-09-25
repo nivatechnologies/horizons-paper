@@ -173,7 +173,7 @@ def run_job(j, device):
     info["eval"] = res
     info["panel"] = panel_block
     if j["arm"] == "A" and j["bits"] in (4, 6) and j["system"] == "lorenz28" and not j.get("n_traj") \
-            and panel_block == "confirmation":
+            and panel_block == "confirmation" and not j.get("backbone"):   # probes are not part of E5.3
         pnl = data.panel(task.system, "confirmation")
         hist, fut = data.frames(pnl, task.delta)
         F = min(data.n_future_frames(task.system, task.delta), fut.shape[0] - 1)
