@@ -1,0 +1,50 @@
+# POST-FREEZE EXTENSION protocol (WO_AIConf-Tokens-Horizon-Extension 2026-09-25). Machine-readable twin of
+# EXT_FREEZE.md. The original freeze (freeze.yaml, f750ca1, Amendment 1 747a8c7) is untouched.
+# Staged commits: part 1 (this block: general, E5 controls on Lorenz-63, readings) is committed before any E5 result;
+# part 2 (KS, Kolmogorov, tokenizers, E3 grid, E4 cell) is committed before any result in those systems.
+# Every extension row in NUMBERS.md goes in section K (systems, tokenizers, bounds) or K2 (learned and controls).
+version: ext-1
+label: "post-freeze extension"
+
+general:
+  scoring: "as freeze.yaml: VPT at eps*sigma_A, eps 0.3 primary (0.1, 0.5 reported), restricted mean within W = 27 Lyapunov times, future frames primary, paired comparisons, bootstrap over whole trajectories and seeds"
+  margins: "freeze.yaml margins (approx equal, well below, near)"
+  labels: [bound, reference, learned, estimate]
+  bootstrap: {seed: 777, reps: 2000}
+
+e5_controls:                 # Lorenz-63 rho = 28, frozen data blocks, frozen codebooks, frozen backbone unless stated
+  probe_control:
+    cells: [{bits: 4, delta: 0.02}, {bits: 4, delta: 0.05}, {bits: 4, delta: 0.1}, {bits: 6, delta: 0.02}]
+    seeds: [0, 1, 2]
+    untrained_A: "identical architecture and the identical initial weights the trained A of that seed started from (model_seed(tag, 'init')); no training"
+    probes: "linear and 2-layer MLP on the final hidden state, exactly the frozen probe protocol (pins.probes)"
+    token_history_baseline: "MLP on the concatenated one-hot tokens of the last k frames, k = the frozen context_frames for that Delta; hidden 256, GELU, 2 hidden layers; AdamW lr 1e-3 cosine, 3,000 steps, batch 256; target = current state (standardized); selection by validation MSE; seed = model seed"
+    evaluation: "confirmation panel (1,000 states); reconstruction RMSE / sigma_A at t = 0 and decode-and-integrate horizon of the reconstruction; beside the trained-A probe of the same seed and cell"
+  tie_baselines:
+    cells: [{bits: 4, delta: 0.02}, {bits: 4, delta: 0.05}, {bits: 4, delta: 0.1}]
+    tie: "per state, forecaster lambda*T equal to the bound's lambda*T (future frames, eps 0.3), 1,000 states"
+    persistence: "hold the current token's prototype"
+    random_code: "at every future frame an independent uniformly random codeword; rng seed 4242 + bits*100 + round(100*Delta); 5 independent draws averaged"
+    A: "trained A (frozen grid, seeds 0-2); tie rate over all states and over states with d_C(x0) <= eps sigma_A (p_0 states excluded)"
+  larger_model:
+    cells: "A and B at 4 and 10 bits, C (sigma = 0); Delta = 0.05; seeds 0-2 (15 models)"
+    backbone: {layers: 6, width: 256, heads: 4, ff: 1024, dropout: 0.0, positional: learned}
+    steps: 40000               # 4x the frozen 10,000
+    optimizer: "frozen: AdamW lr 3e-4 cosine, weight decay 0.01, batch 256; validation every 500 steps, best validation checkpoint"
+    comparison: "paired with the frozen-size cell of the same arm, bits, Delta, seeds (frozen margins)"
+
+readings:                    # WO section 6, committed before results
+  bounds: "descriptive only: smallest total bits per frame at which the bound's restricted mean exceeds 1, 3 and 10 Lyapunov times (bootstrap intervals over trajectories); and whether the bound falls below 1 Lyapunov time at any configuration with >= 2^12 codes per token and >= 64 tokens per frame (yes/no, with the configuration)"
+  learned: "the frozen margins of the original WO"
+  probe_control: "'training put the precision in A's hidden state' only if the untrained-A probe is well below the trained-A probe on horizon (frozen margin) AND worse on reconstruction in every seed; otherwise only 'the hidden state holds it'"
+
+stop_conditions:
+  ks22_lambda: [0.040, 0.050]
+  kolmogorov: "not chaotic, or grid-halving moves lambda by more than 5%: stop Kolmogorov"
+  kmeans: "empty or duplicate codes above 1%, or not converged: report and use the best converged codebook, labelled"
+  impossible: "any A beating the output-support bound: find the bug before anything else"
+
+cuts_order: ["Kolmogorov 16x16-patch rows", "E4 learned KS cell", "E5.3 larger model"]
+never_cut: ["E0", "E1-E3 on KS L = 22 and the larger KS domain", "E5.1", "E5.2"]
+
+# part 2 (systems, tokenizers, E3 grid, E4) is appended below in its own commit before any result in those systems
