@@ -1,4 +1,4 @@
-# git_sha=472f4bbd5b429655117278ca7ec49d3557801758; POST-FREEZE (Todd 2026-09-25), not pre-registered
+# git_sha=100b1597e175f81284be2faf5d5bf08b505ef6f3-dirty; POST-FREEZE (Todd 2026-09-25), not pre-registered
 system,fit,rates,slope_lyap_per_bit,ci95_lo,ci95_hi,H_by_rate,label
 lorenz28,R4-12,4 5 6 7 8 9 10 11 12,0.2127753890266666,0.20390608619966646,0.22183611196483347,0.2912 0.4724 0.6151 0.7993 1.0741 1.2661 1.4943 1.7578 1.9624,post-freeze estimate (decode-and-integrate is a reference)
 lorenz28,fit_rates_6-12,6 8 10 12,0.22311593783500003,0.21032911665849977,0.23623787246325006,0.6151 1.0741 1.4943 1.9624,post-freeze estimate (decode-and-integrate is a reference)

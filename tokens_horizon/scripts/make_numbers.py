@@ -242,22 +242,32 @@ def main():
              "Probe reading follows Amendment 1 A8.5 ('beats' applied under the frozen well-below margin): the paper may "
              "say only 'training makes the precision more recoverable by the tested readout'; never that the untrained "
              "representation lacks it."),
-            ("e5_tie_baselines.csv", "K2B", "POST-FREEZE EXTENSION K2: E5.2 ties under Amendment 1 A8.2 (4 bits)",
-             ["cell", "forecaster", "seed", "H_restricted_mean", ("95%", ci("H_ci95_lo", "H_ci95_hi")),
-              "share_Tout_eq_Delta", "tie_given_Tout_gt_Delta", ("95%", ci("tie_cond_ci95_lo", "tie_cond_ci95_hi")),
-              "tie_all"],
-             "Ties = P(VPT = T_out | T_out > Delta); the share with T_out = Delta is where a tie is automatic under "
-             "future-only scoring. The pre-amendment tie table is superseded and kept only as "
-             "results/ext/e5_tie_baselines_SUPERSEDED_pre_amendment1.csv (not in NUMBERS)."),
+            ("e5_tie_baselines.csv", "K2B", "POST-FREEZE EXTENSION K2: E5.2 ties and bound survival under Amendment 2 B4 (4 bits)",
+             ["cell", "forecaster", "seed", "H_restricted_mean", ("95%", ci("H_ci95_lo", "H_ci95_hi")), "n_cond",
+              "tie_given_obs_failure", ("95%", ci("tie_ci95_lo", "tie_ci95_hi")), "n_auto_first_frame",
+              "share_auto_first_frame", "n_jointly_censored", "n_support_censored", "S_out(1)", "S_out(3)", "S_out(10)",
+              "tie_all_context"],
+             "Tie = P(VPT = T_out | Delta < T_out <= W, failure observed) (Amendment 2 B4). Automatic first-frame cases "
+             "(T_out = Delta) and jointly censored cases are reported separately and are not ties. S_out(tau) = "
+             "P(lambda T_out > tau), censored states survive. Superseded tables are kept as "
+             "results/ext/e5_tie_baselines_SUPERSEDED_pre_amendment{1,2}.csv (not in NUMBERS)."),
             ("e5_b_snapped.csv", "K2C", "POST-FREEZE EXTENSION K2: A8.1 B re-scored after snapping to the nearest prototype",
-             ["cell", "score", "row", "seeds", "value", ("95%", ci("ci95_lo", "ci95_hi")), "reading",
-              "tie_given_Tout_gt_Delta", "share_Tout_eq_Delta", "outlast_over_bound"],
-             "Same rollouts and fed-back codes as B; each re-rollout reproduces B's stored horizons exactly."),
+             ["cell", "score", "row", "seeds", "value", ("95%", ci("ci95_lo", "ci95_hi")), "reading", "n_cond",
+              "tie_given_obs_failure", ("95%", ci("tie_ci95_lo", "tie_ci95_hi")), "n_auto_first_frame",
+              "n_jointly_censored", "outlast_over_bound", "S_out(1)", "S_out(3)", "S_out(10)"],
+             "Same rollouts and fed-back codes as B; each re-rollout reproduces B's stored horizons exactly. Tie "
+             "statistics under Amendment 2 B4; the pre-B4 table is kept as "
+             "results/ext/e5_b_snapped_SUPERSEDED_pre_amendment2.csv (not in NUMBERS)."),
             ("a8_same_panel.csv", "K2D", "POST-FREEZE EXTENSION K2: A8.3 same-panel headline (first 300 states)",
              ["bits", "delta", "series", "n_states", "mean", ("95%", ci("ci95_lo", "ci95_hi")), "diff_vs_pf",
               ("95%", ci("diff_ci95_lo", "diff_ci95_hi")), "reading"],
              "Paired differences to the particle filter on the same 300 states. C reads exact states and is not capped "
              "by a token-history reference."),
+            ("b5_gate.csv", "K2F", "RELEASE GATE B5: bootstrap resampling unit read from the code, per interval family",
+             ["interval_family", "resampling_unit_in_code", "states", "independence", "gate", "effect"],
+             "Gate outcome: FAIL for the calibration-state interval families (h curve, predictions, r, FSLE, P2 variants), "
+             "rerun with the calibration trajectory as the unit (100b159); no frozen reading changed. All other families "
+             "pass. Release may proceed on this gate once it is recorded in the results note."),
             ("a8_protocol_facts.csv", "K2E", "POST-FREEZE EXTENSION K2: A8.4 confirmation-block protocol facts",
              ["system", "confirmation_trajectories", "history_panel_states", "steps_per_trajectory", "dt",
               "pre_history_time", "post_time", "window_time_W_over_lambda", "start_spacing", "bootstrap_unit"],

@@ -1,0 +1,1095 @@
+{
+ "note": "SUPERSEDED by Amendment 2 B4 (d960d0b): tie statistic now conditions on Delta < T_out <= W with the failure observed; jointly censored cases reported separately",
+ "tie_baselines_a8_2": {
+  "amendment": "Amendment 1 A8.2 (f7fedcb)",
+  "definition": "P(VPT = T_out | T_out > Delta) and share with T_out = Delta, for A, persistence and random-code (supersedes part 1 'A tie rate excluding p_0')",
+  "b4_D0.02": {
+   "p0": 0.291,
+   "bound": {
+    "label": "bound",
+    "H_restricted_mean": [
+     0.13705112609999998,
+     0.1283955752275,
+     0.1463404184725
+    ]
+   },
+   "persistence": {
+    "label": "reference (null)",
+    "tie_rate_all": [
+     0.556,
+     0.524,
+     0.586
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.40161725067385445,
+     0.36792452830188677,
+     0.4353099730458221
+    ],
+    "share_Tout_eq_Delta": [
+     0.258,
+     0.231,
+     0.285
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 742,
+    "H_restricted_mean": [
+     0.0510433511,
+     0.048725667900000005,
+     0.053397700772499994
+    ]
+   },
+   "random_code": {
+    "label": "reference (null)",
+    "draws": "0-4 averaged per state",
+    "tie_rate_all": [
+     0.2636,
+     0.236795,
+     0.29000499999999996
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0075471698113207565,
+     0.004851752021563342,
+     0.010512129380053909
+    ],
+    "share_Tout_eq_Delta": [
+     0.258,
+     0.231,
+     0.285
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 742,
+    "H_restricted_mean": [
+     0.01900500224,
+     0.018885496699999997,
+     0.01913175054
+    ]
+   },
+   "A": {
+    "label": "learned",
+    "seed0": {
+     "tie_rate_all": [
+      0.901,
+      0.882,
+      0.92
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.866576819407008,
+      0.8423180592991913,
+      0.889487870619946
+     ],
+     "share_Tout_eq_Delta": [
+      0.258,
+      0.231,
+      0.285
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 742,
+     "H_restricted_mean": [
+      0.1215878335,
+      0.11430840702750002,
+      0.1293561462725
+     ]
+    },
+    "seed1": {
+     "tie_rate_all": [
+      0.9,
+      0.881,
+      0.918
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.8652291105121294,
+      0.8409703504043127,
+      0.889487870619946
+     ],
+     "share_Tout_eq_Delta": [
+      0.258,
+      0.231,
+      0.285
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 742,
+     "H_restricted_mean": [
+      0.12138865760000002,
+      0.11401869662750001,
+      0.1295191083725
+     ]
+    },
+    "seed2": {
+     "tie_rate_all": [
+      0.894,
+      0.873,
+      0.912
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.8571428571428571,
+      0.8315363881401617,
+      0.8814016172506739
+     ],
+     "share_Tout_eq_Delta": [
+      0.258,
+      0.231,
+      0.285
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 742,
+     "H_restricted_mean": [
+      0.12213104049999998,
+      0.114398488855,
+      0.130461119845
+     ]
+    },
+    "pooled": {
+     "tie_rate_all": [
+      0.8983333333333333,
+      0.8809916666666667,
+      0.9153333333333333
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.8629829290206649,
+      0.839622641509434,
+      0.8854447439353099
+     ],
+     "share_Tout_eq_Delta": [
+      0.258,
+      0.231,
+      0.285
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 742,
+     "H_restricted_mean": [
+      0.12170251053333334,
+      0.11421711807333335,
+      0.12963936836666667
+     ]
+    }
+   },
+   "note": "tie rates and shares are estimates; horizons carry the forecaster's label; (point, lo95, hi95)"
+  },
+  "b4_D0.05": {
+   "p0": 0.291,
+   "bound": {
+    "label": "bound",
+    "H_restricted_mean": [
+     0.263274326,
+     0.24661597800000004,
+     0.27993493736249997
+    ]
+   },
+   "persistence": {
+    "label": "reference (null)",
+    "tie_rate_all": [
+     0.373,
+     0.342,
+     0.402
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.13636363636363635,
+     0.11019283746556474,
+     0.16391184573002754
+    ],
+    "share_Tout_eq_Delta": [
+     0.274,
+     0.245,
+     0.3
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 726,
+    "H_restricted_mean": [
+     0.06835354749999999,
+     0.06613545224999999,
+     0.07061690999999999
+    ]
+   },
+   "random_code": {
+    "label": "reference (null)",
+    "draws": "0-4 averaged per state",
+    "tie_rate_all": [
+     0.2806,
+     0.25179500000000005,
+     0.307
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.00909090909090909,
+     0.00578512396694215,
+     0.012672176308539946
+    ],
+    "share_Tout_eq_Delta": [
+     0.274,
+     0.245,
+     0.3
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 726,
+    "H_restricted_mean": [
+     0.04746723834999999,
+     0.04716847449999999,
+     0.0477660022
+    ]
+   },
+   "A": {
+    "label": "learned",
+    "seed0": {
+     "tie_rate_all": [
+      0.872,
+      0.851,
+      0.892
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.8236914600550964,
+      0.7974862258953169,
+      0.8512396694214877
+     ],
+     "share_Tout_eq_Delta": [
+      0.274,
+      0.245,
+      0.3
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 726,
+     "H_restricted_mean": [
+      0.23031976800000004,
+      0.21610471981875004,
+      0.24435487886249999
+     ]
+    },
+    "seed1": {
+     "tie_rate_all": [
+      0.851,
+      0.828,
+      0.873
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.7947658402203857,
+      0.7658402203856749,
+      0.8250688705234159
+     ],
+     "share_Tout_eq_Delta": [
+      0.274,
+      0.245,
+      0.3
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 726,
+     "H_restricted_mean": [
+      0.22534037050000003,
+      0.21130752300000002,
+      0.2396470848625
+     ]
+    },
+    "seed2": {
+     "tie_rate_all": [
+      0.874,
+      0.854,
+      0.895
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.8264462809917356,
+      0.7975206611570248,
+      0.8539944903581267
+     ],
+     "share_Tout_eq_Delta": [
+      0.274,
+      0.245,
+      0.3
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 726,
+     "H_restricted_mean": [
+      0.23231152700000002,
+      0.21836468727500005,
+      0.24679817868125
+     ]
+    },
+    "pooled": {
+     "tie_rate_all": [
+      0.8656666666666667,
+      0.8413250000000001,
+      0.8880166666666666
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.8149678604224059,
+      0.7846648301193756,
+      0.8448117539026629
+     ],
+     "share_Tout_eq_Delta": [
+      0.274,
+      0.245,
+      0.3
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 726,
+     "H_restricted_mean": [
+      0.2293238885,
+      0.21529028654583335,
+      0.2433288211958333
+     ]
+    }
+   },
+   "note": "tie rates and shares are estimates; horizons carry the forecaster's label; (point, lo95, hi95)"
+  },
+  "b4_D0.1": {
+   "p0": 0.291,
+   "bound": {
+    "label": "bound",
+    "H_restricted_mean": [
+     0.47150367600000004,
+     0.44687376527500006,
+     0.4985757548625
+    ]
+   },
+   "persistence": {
+    "label": "reference (null)",
+    "tie_rate_all": [
+     0.298,
+     0.268,
+     0.327
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.05263157894736842,
+     0.037786774628879895,
+     0.06882591093117409
+    ],
+    "share_Tout_eq_Delta": [
+     0.259,
+     0.23,
+     0.287
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 741,
+    "H_restricted_mean": [
+     0.10103650199999999,
+     0.09913301413749998,
+     0.10302826099999998
+    ]
+   },
+   "random_code": {
+    "label": "reference (null)",
+    "draws": "0-4 averaged per state",
+    "tie_rate_all": [
+     0.2676,
+     0.2394,
+     0.295605
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.011605937921727398,
+     0.007827260458839407,
+     0.015654520917678813
+    ],
+    "share_Tout_eq_Delta": [
+     0.259,
+     0.23,
+     0.287
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 741,
+    "H_restricted_mean": [
+     0.095061225,
+     0.09449991109999999,
+     0.09565920537249999
+    ]
+   },
+   "A": {
+    "label": "learned",
+    "seed0": {
+     "tie_rate_all": [
+      0.818,
+      0.793,
+      0.841
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.7543859649122807,
+      0.7233468286099866,
+      0.7854251012145749
+     ],
+     "share_Tout_eq_Delta": [
+      0.259,
+      0.23,
+      0.287
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 741,
+     "H_restricted_mean": [
+      0.39536416150000003,
+      0.37454122650000005,
+      0.4164609633625
+     ]
+    },
+    "seed1": {
+     "tie_rate_all": [
+      0.826,
+      0.803,
+      0.849
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.7651821862348178,
+      0.7354925775978407,
+      0.796221322537112
+     ],
+     "share_Tout_eq_Delta": [
+      0.259,
+      0.23,
+      0.287
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 741,
+     "H_restricted_mean": [
+      0.401792111,
+      0.38051197677500004,
+      0.4243374648625
+     ]
+    },
+    "seed2": {
+     "tie_rate_all": [
+      0.827,
+      0.804,
+      0.8500249999999998
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.766531713900135,
+      0.7354588394062078,
+      0.7975708502024291
+     ],
+     "share_Tout_eq_Delta": [
+      0.259,
+      0.23,
+      0.287
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 741,
+     "H_restricted_mean": [
+      0.4042365425,
+      0.3826870681375001,
+      0.426598564
+     ]
+    },
+    "pooled": {
+     "tie_rate_all": [
+      0.8236666666666667,
+      0.8003333333333333,
+      0.846
+     ],
+     "tie_rate_given_Tout_gt_Delta": [
+      0.7620332883490778,
+      0.7327935222672065,
+      0.7903846153846154
+     ],
+     "share_Tout_eq_Delta": [
+      0.259,
+      0.23,
+      0.287
+     ],
+     "n": 1000,
+     "n_Tout_gt_Delta": 741,
+     "H_restricted_mean": [
+      0.4004642716666667,
+      0.3795500477125,
+      0.42207636572499996
+     ]
+    }
+   },
+   "note": "tie rates and shares are estimates; horizons carry the forecaster's label; (point, lo95, hi95)"
+  }
+ },
+ "b_snapped_a8_1_tie_columns": {
+  "b4_D0.02": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.861,
+     0.8406,
+     0.8804049999999999
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.8126684636118598,
+     0.7862466307277628,
+     0.8382816711590295
+    ],
+    "share_Tout_eq_Delta": [
+     0.258,
+     0.231,
+     0.285
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 742,
+    "H_restricted_mean": [
+     0.11800628868000002,
+     0.11087551985650002,
+     0.12556908813749998
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.005,
+     0.0018,
+     0.009404999999999972
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.006738544474393531,
+     0.002425876010781671,
+     0.012944743935309937
+    ],
+    "share_Tout_eq_Delta": [
+     0.258,
+     0.231,
+     0.285
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 742,
+    "H_restricted_mean": [
+     1.54035760438,
+     1.473443374361,
+     1.612794982106
+    ]
+   }
+  },
+  "b4_D0.05": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.8163333333333334,
+     0.7933333333333333,
+     0.8383333333333334
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.7470156106519743,
+     0.716712580348944,
+     0.7764003673094583
+    ],
+    "share_Tout_eq_Delta": [
+     0.274,
+     0.245,
+     0.3
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 726,
+    "H_restricted_mean": [
+     0.21440078508333332,
+     0.20174104416666666,
+     0.22769841699791665
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.03,
+     0.021333333333333333,
+     0.03933333333333333
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.03535353535353535,
+     0.024793388429752067,
+     0.047750229568411386
+    ],
+    "share_Tout_eq_Delta": [
+     0.274,
+     0.245,
+     0.3
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 726,
+    "H_restricted_mean": [
+     1.3774371502499998,
+     1.3215705736624999,
+     1.4312659461333337
+    ]
+   }
+  },
+  "b4_D0.1": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.773,
+     0.7446583333333334,
+     0.8
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.6936572199730094,
+     0.6590193432298695,
+     0.7278452541610436
+    ],
+    "share_Tout_eq_Delta": [
+     0.259,
+     0.23,
+     0.287
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 741,
+    "H_restricted_mean": [
+     0.37390748500000004,
+     0.35398914054583336,
+     0.3942483237875
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.09533333333333334,
+     0.07833333333333334,
+     0.11233333333333333
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.09761583445793973,
+     0.07872244714349977,
+     0.11786999550157438
+    ],
+    "share_Tout_eq_Delta": [
+     0.259,
+     0.23,
+     0.287
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 741,
+    "H_restricted_mean": [
+     1.2647066086666665,
+     1.2079407227125,
+     1.3205377259083335
+    ]
+   }
+  },
+  "b6_D0.02": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0438,
+     0.032,
+     0.057
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.03218623481781376,
+     0.022267206477732792,
+     0.04211032388663965
+    ],
+    "share_Tout_eq_Delta": [
+     0.012,
+     0.006,
+     0.019
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 988,
+    "H_restricted_mean": [
+     0.9289600189799999,
+     0.8918385200830001,
+     0.9698435884899997
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0036,
+     0.001,
+     0.0066
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0036437246963562753,
+     0.0012145748987854252,
+     0.0066801619433198385
+    ],
+    "share_Tout_eq_Delta": [
+     0.012,
+     0.006,
+     0.019
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 988,
+    "H_restricted_mean": [
+     1.55724047794,
+     1.4919085193775001,
+     1.632199060422
+    ]
+   }
+  },
+  "b6_D0.05": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.035,
+     0.023666666666666666,
+     0.04666666666666667
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.026236125126135216,
+     0.017490750084090144,
+     0.03632694248234107
+    ],
+    "share_Tout_eq_Delta": [
+     0.009,
+     0.004,
+     0.015
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 991,
+    "H_restricted_mean": [
+     1.1140270225,
+     1.0655325948020833,
+     1.1670979691729166
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.004333333333333333,
+     0.001,
+     0.009
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.004372687521022536,
+     0.0010090817356205853,
+     0.009081735620585268
+    ],
+    "share_Tout_eq_Delta": [
+     0.009,
+     0.004,
+     0.015
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 991,
+    "H_restricted_mean": [
+     1.5235296550833333,
+     1.4601223091000002,
+     1.5923287077687498
+    ]
+   }
+  },
+  "b6_D0.1": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.03933333333333333,
+     0.028,
+     0.051666666666666666
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.02668017561634583,
+     0.01789935832489024,
+     0.037149611617696726
+    ],
+    "share_Tout_eq_Delta": [
+     0.013,
+     0.0069750000000000445,
+     0.020024999999999862
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 987,
+    "H_restricted_mean": [
+     1.3749474515000002,
+     1.3238218648958333,
+     1.4288169879083337
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.016,
+     0.008333333333333333,
+     0.025
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.013508949679162444,
+     0.0070921985815602835,
+     0.02127659574468085
+    ],
+    "share_Tout_eq_Delta": [
+     0.013,
+     0.0069750000000000445,
+     0.020024999999999862
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 987,
+    "H_restricted_mean": [
+     1.6454041811666666,
+     1.5848939391833334,
+     1.7059159320583333
+    ]
+   }
+  },
+  "b8_D0.02": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.1117878025333332,
+     1.05554716757,
+     1.1781877664141667
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.2481870802333332,
+     1.19033674186,
+     1.3128597967450002
+    ]
+   }
+  },
+  "b8_D0.05": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.3532946169166669,
+     1.2907465942291665,
+     1.41147812225
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.4591294474166667,
+     1.3998482112708337,
+     1.51657622825625
+    ]
+   }
+  },
+  "b8_D0.1": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.562565113666667,
+     1.5018157097125002,
+     1.624649901495833
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.6059311391666666,
+     1.5384316337833333,
+     1.6739896950875002
+    ]
+   }
+  },
+  "b10_D0.02": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.0254903171333334,
+     0.9852177046075,
+     1.0679452637816667
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.0681501735333332,
+     1.0243507895600001,
+     1.113727353305
+    ]
+   }
+  },
+  "b10_D0.05": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.4695107367499998,
+     1.4237338529604164,
+     1.516140530975
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.4847808890833336,
+     1.4402220715458334,
+     1.5311986816874998
+    ]
+   }
+  },
+  "b10_D0.1": {
+   "ties_snapped": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.6534919298333335,
+     1.5887831504124998,
+     1.7208880749958333
+    ]
+   },
+   "ties_B": {
+    "tie_rate_all": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "tie_rate_given_Tout_gt_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "share_Tout_eq_Delta": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "n": 1000,
+    "n_Tout_gt_Delta": 1000,
+    "H_restricted_mean": [
+     1.6536729988333334,
+     1.5880845258541667,
+     1.7208835482708333
+    ]
+   }
+  }
+ }
+}

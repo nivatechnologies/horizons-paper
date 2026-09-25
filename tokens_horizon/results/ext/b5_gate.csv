@@ -1,0 +1,13 @@
+# git_sha=100b1597e175f81284be2faf5d5bf08b505ef6f3-dirty; RELEASE GATE B5 (Amendment 2): resampling unit read from the code
+interval_family,resampling_unit_in_code,states,independence,gate,effect,label
+headline bound / references (runs/headline),"th/score.py bootstrap_mean, paired_diff: resample states","confirmation panel: 1,000 independent trajectories (th/data.py panel: separate Gaussian starts, each burned in)",independent (one state per trajectory),pass,none,gate record
+learned cells and comparisons (results/learned),th/score.py: resample states jointly with model seeds,same confirmation panel,independent,pass,none,gate record
+history sweep (runs/history),th/score.py: resample states,"dt = 0.005 confirmation panel, first 300 states; independent trajectories",independent,pass,none,gate record
+decomposition (results/decomposition),scripts/t2_decomposition.py: resample the 150 calibration trajectories (per-trajectory cell sums),calibration block,cluster = trajectory,pass,none,gate record
+D_eff (system table),scripts/t2_system_table.py: resample the 150 calibration trajectories,calibration block,cluster = trajectory,pass,none,gate record
+"exchange-law h curve, predictions, r by orientation (results/exchange_law)",was: resample individual h states; now th/score.py cluster_boot_indices over calibration trajectories,"1,000 h states from 150 calibration trajectories, median 7 per trajectory, ~14 tu apart, scoring window ~30 tu (overlapping)",NOT independent at state level,fail -> rerun with trajectory unit (commit 100b159),point estimates unchanged; CI widths x0.84-1.43 (median x1.03); no frozen reading changes,gate record
+classical FSLE (results/exchange_law/fsle.csv),was: resample states; now calibration-trajectory clusters,"same 1,000 h states",NOT independent at state level,fail -> rerun with trajectory unit (100b159),CI widths median x1.01; no reading depends on it,gate record
+post-freeze exchange-law variants (P2),h side was state-level; now calibration-trajectory clusters; panel side resamples confirmation states,h states as above; confirmation panel,h side not independent,fail -> rerun (100b159),CI widths median x1.02; frozen criterion outcomes and flags unchanged,gate record
+"post-freeze DI slopes, slope x D_eff (P5, P6)",panel states (slope) x calibration trajectories (D_eff),confirmation panel; calibration block,independent / cluster,pass,none (widths unchanged),gate record
+post-freeze codebook seeds (P),decomposition: calibration trajectories; bound: confirmation states,as above,independent / cluster,pass,none,gate record
+"extension K2 (E5, A8)",th/score.py: resample confirmation states (and seeds),confirmation panel,independent,pass,none,gate record

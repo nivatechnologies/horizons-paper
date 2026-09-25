@@ -9,7 +9,9 @@ Usage (from tokens_horizon/):
   ext_e5_controls.py bsnap  --device cuda:2 [--only TAG]   Amendment 1 A8.1: B re-scored snapped (skip-if-done)
   ext_e5_controls.py report                       CSVs + JSON from the saved arrays
 
-Amendment 1 (f7fedcb) applied: ties reported as P(VPT = T_out | T_out > Delta) and share T_out = Delta (A8.2);
+Amendment 2 B4 (d960d0b) applied to ties: P(VPT = T_out | Delta < T_out <= W, failure observed), automatic
+first-frame and jointly censored cases separate, bound survival S_out(1, 3, 10) (A8.2 tie output superseded, kept as
+*_SUPERSEDED_pre_amendment2.csv). Amendment 1 (f7fedcb) applied:
 probe reading A8.5 ("training makes the precision more recoverable by the tested readout", read under the frozen
 margin); B snapped to the nearest prototype (A8.1). The part-1 tie output is kept as
 results/ext/e5_tie_baselines_SUPERSEDED_pre_amendment1.csv and e5.json key superseded_pre_amendment1.
@@ -383,50 +385,92 @@ def report():
                                          for kind, b in d.items()} for k, d in per_cell.items()},
         never_say="the untrained representation lacks it", label="estimate")
     _write_csv(RES / "e5_probe_control.csv", rows, sha)
-    sup = OUT / "superseded_pre_amendment1.json"
-    if sup.exists():
-        out["superseded_pre_amendment1"] = json.loads(sup.read_text())
+    for nm in ("superseded_pre_amendment1", "superseded_pre_amendment2"):
+        sup = OUT / f"{nm}.json"
+        if sup.exists():
+            out[nm] = json.loads(sup.read_text())
     tie_report(out, sha)
     bsnap_report(out, sha)
     (RES / "e5.json").write_text(json.dumps(out, indent=1, default=float))
     return out
 
 
-def _tie_stats(Hf, Hb, lam, delta, per_draw_avg=False):
-    """Amendment 1 A8.2. Hf (S, n) forecaster, Hb (n,) bound; future frames, eps 0.3.
+def _bound_flags(Hb, lam, delta, W, crossed_ref=None):
+    """Bound first-crossing frame and crossed flag (crossed <=> H < W, as th.score.horizon); checked against the
+    headline's stored crossed flags when given."""
+    crossed = Hb < W
+    if crossed_ref is not None:
+        assert np.array_equal(crossed, np.asarray(crossed_ref, bool)), "bound crossed flags disagree with headline"
+    jb = np.where(crossed, np.rint(Hb / (lam * delta)), -1).astype(int)
+    return crossed, jb
 
-    Returns unconditional tie rate, P(VPT = T_out | T_out > Delta), share with T_out = Delta (all with
-    bootstrap intervals; states, and seeds when S > 1 and not per_draw_avg) and the restricted mean."""
+
+def survival(Hb, W, taus=(1, 3, 10)):
+    """Amendment 2 B4: S_out(tau) = P(lambda T_out > tau); a frame exactly at tau counts as through tau; censored
+    states (H = W) survive for tau <= W; tau > W not reported."""
+    return {f"S_out({t})": boot_ci((Hb >= t - 1e-12).astype(float)) for t in taus if t <= W}
+
+
+def _tie_stats(Hf, Hb, lam, delta, W, crossed_ref=None, per_draw_avg=False):
+    """Amendment 2 B4. Hf (S, n) forecaster, Hb (n,) bound; future frames, eps 0.3.
+
+    tie = P(VPT = T_out | Delta < T_out <= W, support failure observed); automatic first-frame cases (T_out = Delta)
+    and jointly censored cases (forecaster and support both survive W; not ties) reported separately. Bootstrap over
+    states, and seeds when S > 1 and not per_draw_avg. The unconditional tie rate is kept for context."""
     Hf = np.atleast_2d(Hf)
-    jb = np.rint(Hb / (lam * delta)).astype(int)          # bound's first crossing frame (W-capped states large)
-    first = jb == 1
+    cb_, jb = _bound_flags(Hb, lam, delta, W, crossed_ref)
+    auto = cb_ & (jb == 1)
+    cond = cb_ & (jb >= 2)
+    cf = Hf < W
     ties = (Hf == Hb[None]).astype(float)
+    joint_cens = ((~cb_)[None] & ~cf).astype(float)
     red = (lambda A: A.mean(0)) if per_draw_avg else (lambda A: A)
-    t_all = boot_ci(red(ties))
-    t_cond = boot_ci(red(ties[:, ~first]))
-    share = boot_ci(first.astype(float))
-    Hm = boot_ci(red(Hf))
-    return dict(tie_rate_all=t_all, tie_rate_given_Tout_gt_Delta=t_cond, share_Tout_eq_Delta=share,
-                n=int(len(Hb)), n_Tout_gt_Delta=int((~first).sum()), H_restricted_mean=Hm)
+    return dict(tie_given_obs_failure=boot_ci(red(ties[:, cond])),
+                share_auto_first_frame=boot_ci(auto.astype(float)),
+                share_jointly_censored=boot_ci(red(joint_cens)),
+                share_support_censored=float((~cb_).mean()),
+                tie_rate_all_context=boot_ci(red(ties)),
+                n=int(len(Hb)), n_cond=int(cond.sum()), n_auto=int(auto.sum()),
+                n_support_censored=int((~cb_).sum()),
+                n_jointly_censored_mean_over_rows=float(red(joint_cens).sum() / (1 if per_draw_avg else
+                                                                                   joint_cens.shape[0])),
+                H_restricted_mean=boot_ci(red(Hf)))
+
+
+def _tie_cols(st):
+    def g(k, i):
+        if k == "tie_given_obs_failure" and st["n_cond"] == 0:
+            return "undefined (no observed support failure in window)"
+        return st[k][i]
+    return dict(n=st["n"], n_cond=st["n_cond"], tie_given_obs_failure=g("tie_given_obs_failure", 0),
+                tie_ci95_lo=g("tie_given_obs_failure", 1), tie_ci95_hi=g("tie_given_obs_failure", 2),
+                n_auto_first_frame=st["n_auto"], share_auto_first_frame=g("share_auto_first_frame", 0),
+                share_auto_ci95_lo=g("share_auto_first_frame", 1), share_auto_ci95_hi=g("share_auto_first_frame", 2),
+                n_jointly_censored=st["n_jointly_censored_mean_over_rows"],
+                share_jointly_censored=g("share_jointly_censored", 0),
+                share_jc_ci95_lo=g("share_jointly_censored", 1), share_jc_ci95_hi=g("share_jointly_censored", 2),
+                tie_all_context=g("tie_rate_all_context", 0))
+
+
+def _surv_cols(sv):
+    out = {}
+    for k, v in sv.items():
+        out[k] = v[0]
+        out[k + "_ci95_lo"], out[k + "_ci95_hi"] = v[1], v[2]
+    return out
 
 
 def _tie_rows(rows, cell, bits, delta, name, seed, label, st):
     rows.append(dict(cell=cell, bits=bits, delta=delta, forecaster=name, seed=seed, label=label,
-                     n=st["n"], n_Tout_gt_Delta=st["n_Tout_gt_Delta"],
-                     share_Tout_eq_Delta=st["share_Tout_eq_Delta"][0],
-                     share_ci95_lo=st["share_Tout_eq_Delta"][1], share_ci95_hi=st["share_Tout_eq_Delta"][2],
-                     tie_given_Tout_gt_Delta=st["tie_rate_given_Tout_gt_Delta"][0],
-                     tie_cond_ci95_lo=st["tie_rate_given_Tout_gt_Delta"][1],
-                     tie_cond_ci95_hi=st["tie_rate_given_Tout_gt_Delta"][2],
-                     tie_all=st["tie_rate_all"][0], tie_all_ci95_lo=st["tie_rate_all"][1],
-                     tie_all_ci95_hi=st["tie_rate_all"][2], H_restricted_mean=st["H_restricted_mean"][0],
-                     H_ci95_lo=st["H_restricted_mean"][1], H_ci95_hi=st["H_restricted_mean"][2],
-                     stat_label="estimate"))
+                     H_restricted_mean=st["H_restricted_mean"][0], H_ci95_lo=st["H_restricted_mean"][1],
+                     H_ci95_hi=st["H_restricted_mean"][2], **_tie_cols(st), stat_label="estimate"))
 
 
 def tie_report(out, sha):
     trows = []
-    out["tie_baselines_a8_2"] = dict(amendment="Amendment 1 A8.2 (f7fedcb)", definition=EXT["amendment_1"]["e5_ties"])
+    W = config.freeze()["scoring"]["window_lyapunov_times"]
+    out["tie_baselines_b4"] = dict(amendment="Amendment 2 B4 (d960d0b)", definition=EXT["amendment_2"]["ties"],
+                                   survival_definition=EXT["amendment_2"]["survival"], W=W)
     for c in E5["tie_baselines"]["cells"]:
         bits, delta = c["bits"], c["delta"]
         p = OUT / f"tie_b{bits}_D{delta}.npz"
@@ -435,28 +479,34 @@ def tie_report(out, sha):
         z = np.load(p)
         Hb, lam = z["H_bound"], float(z["lam"])
         cell = f"b{bits}_D{delta}"
-        cj = dict(p0=float((z["dC0"] > 0.3).mean()), bound=dict(label="bound", H_restricted_mean=boot_ci(Hb)))
+        cref = np.load(HEAD / f"{SYSTEM}_b{bits}_D{delta}_dt0.01_M1500.npz")["crossed_bound_eps0.3_future"]
+        sv = survival(Hb, W)
+        cj = dict(p0=float((z["dC0"] > 0.3).mean()),
+                  bound=dict(label="bound", H_restricted_mean=boot_ci(Hb), survival=sv,
+                             n_censored=int((Hb >= W).sum())))
         trows.append(dict(cell=cell, bits=bits, delta=delta, forecaster="bound", seed="", label="bound",
                           n=len(Hb), H_restricted_mean=cj["bound"]["H_restricted_mean"][0],
-                          H_ci95_lo=cj["bound"]["H_restricted_mean"][1], H_ci95_hi=cj["bound"]["H_restricted_mean"][2]))
-        st = _tie_stats(z["H_persistence"], Hb, lam, delta)
+                          H_ci95_lo=cj["bound"]["H_restricted_mean"][1], H_ci95_hi=cj["bound"]["H_restricted_mean"][2],
+                          n_support_censored=cj["bound"]["n_censored"], **_surv_cols(sv)))
+        st = _tie_stats(z["H_persistence"], Hb, lam, delta, W, cref)
         cj["persistence"] = dict(label="reference (null)", **st)
         _tie_rows(trows, cell, bits, delta, "persistence", "", "reference (null)", st)
-        st = _tie_stats(z["H_random_code"], Hb, lam, delta, per_draw_avg=True)
+        st = _tie_stats(z["H_random_code"], Hb, lam, delta, W, cref, per_draw_avg=True)
         cj["random_code"] = dict(label="reference (null)", draws="0-4 averaged per state", **st)
         _tie_rows(trows, cell, bits, delta, "random_code", "draws 0-4 averaged", "reference (null)", st)
         cj["A"] = dict(label="learned")
         for s in range(3):
-            st = _tie_stats(z["H_A"][s], Hb, lam, delta)
+            st = _tie_stats(z["H_A"][s], Hb, lam, delta, W, cref)
             cj["A"][f"seed{s}"] = st
             _tie_rows(trows, cell, bits, delta, "A", str(s), "learned", st)
-        st = _tie_stats(z["H_A"], Hb, lam, delta)
+        st = _tie_stats(z["H_A"], Hb, lam, delta, W, cref)
         cj["A"]["pooled"] = st
         _tie_rows(trows, cell, bits, delta, "A", "0-2 pooled", "learned", st)
         cj["note"] = "tie rates and shares are estimates; horizons carry the forecaster's label; (point, lo95, hi95)"
-        out["tie_baselines_a8_2"][cell] = cj
-    _write_csv(RES / "e5_tie_baselines.csv", trows, sha,
-               extra="# Amendment 1 A8.2: P(VPT = T_out | T_out > Delta), share T_out = Delta, unconditional tie")
+        out["tie_baselines_b4"][cell] = cj
+    _write_csv(RES / "e5_tie_baselines.csv", trows, sha, tag=" (Amendment 2 B4)",
+               extra="# tie = P(VPT = T_out | Delta < T_out <= W, failure observed); automatic first-frame and "
+                     "jointly censored cases separate; S_out(tau) on bound rows; tie_all_context = unconditional")
 
 
 # ------------------------------------------------------------------ A8.1: B snapped to nearest prototype
@@ -542,8 +592,10 @@ def bsnap_job(bits, delta, seed, device):
 
 def bsnap_report(out, sha):
     rows = []
-    res = dict(amendment="Amendment 1 A8.1 (f7fedcb)", definition=EXT["amendment_1"]["e5_b_snapped"], cells={})
+    res = dict(amendment="Amendment 1 A8.1 (f7fedcb); tie statistics Amendment 2 B4 (d960d0b)",
+               definition=EXT["amendment_1"]["e5_b_snapped"], cells={})
     lam = config.lam(SYSTEM)
+    Wl = config.freeze()["scoring"]["window_lyapunov_times"]
     by_cell = {}
     for b, d, s in b_jobs():
         by_cell.setdefault((b, d), []).append(s)
@@ -573,8 +625,10 @@ def bsnap_report(out, sha):
                      B_per_seed=HB.mean(1).tolist(), B_snapped_per_seed=HS.mean(1).tolist(),
                      snapped_minus_B=_pd(HS, HB), snapped_minus_bound=_pd(HS, Hb))
             if tagk == "eps0.3_future":
-                e["ties_snapped"] = _tie_stats(HS, Hb, lam, delta)
-                e["ties_B"] = _tie_stats(HB, Hb, lam, delta)
+                cref = hz["crossed_bound_eps0.3_future"]
+                e["ties_snapped"] = _tie_stats(HS, Hb, lam, delta, Wl, cref)
+                e["ties_B"] = _tie_stats(HB, Hb, lam, delta, Wl, cref)
+                e["bound_survival"] = survival(Hb, Wl)
             cj[tagk] = e
             for name, lab, v in (("B", "learned", e["B"]), ("B_snapped", "learned", e["B_snapped"]),
                                  ("bound", "bound", e["bound"])):
@@ -582,10 +636,9 @@ def bsnap_report(out, sha):
                          value=v[0], ci95_lo=v[1], ci95_hi=v[2], reading="")
                 if name != "bound" and tagk == "eps0.3_future":
                     t = e["ties_snapped" if name == "B_snapped" else "ties_B"]
-                    r.update(tie_given_Tout_gt_Delta=t["tie_rate_given_Tout_gt_Delta"][0],
-                             tie_cond_ci95_lo=t["tie_rate_given_Tout_gt_Delta"][1],
-                             tie_cond_ci95_hi=t["tie_rate_given_Tout_gt_Delta"][2],
-                             share_Tout_eq_Delta=t["share_Tout_eq_Delta"][0], tie_all=t["tie_rate_all"][0])
+                    r.update(_tie_cols(t))
+                if name == "bound" and tagk == "eps0.3_future":
+                    r.update(n_support_censored=int((Hb >= Wl).sum()), **_surv_cols(e["bound_survival"]))
                 if name == "B_snapped":
                     r["outlast_over_bound"] = outl[tagk]
                 rows.append(r)
@@ -602,10 +655,11 @@ def bsnap_report(out, sha):
             if k not in keys:
                 keys.append(k)
     rows = [{k: r.get(k, "") for k in keys} for r in rows]
-    _write_csv(RES / "e5_b_snapped.csv", rows, sha, extra="# Amendment 1 A8.1: B outputs snapped to nearest prototype")
+    _write_csv(RES / "e5_b_snapped.csv", rows, sha, tag=" (Amendment 2 B4)",
+               extra="# Amendment 1 A8.1: B outputs snapped to nearest prototype; tie columns per Amendment 2 B4")
 
 
-def _write_csv(path, rows, sha, extra=None):
+def _write_csv(path, rows, sha, extra=None, tag=""):
     import csv
     import io
     buf = io.StringIO()
@@ -615,7 +669,7 @@ def _write_csv(path, rows, sha, extra=None):
         w.writeheader()
         for r in rows:
             w.writerow({k: (f"{v:.6g}" if isinstance(v, float) else v) for k, v in r.items()})
-    head = f"# git_sha={sha}; POST-FREEZE EXTENSION\n" + (extra + "\n" if extra else "")
+    head = f"# git_sha={sha}; POST-FREEZE EXTENSION{tag}\n" + (extra + "\n" if extra else "")
     path.write_text(head + buf.getvalue())
 
 

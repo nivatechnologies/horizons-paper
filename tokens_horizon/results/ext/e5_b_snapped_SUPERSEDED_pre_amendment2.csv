@@ -1,0 +1,124 @@
+# SUPERSEDED by Amendment 2 B4 (d960d0b): tie statistic now conditions on Delta < T_out <= W with the failure observed; jointly censored cases reported separately
+# git_sha=bae790d6dad7b0e02e63f225ec050b2ecbb08fb6-dirty; POST-FREEZE EXTENSION
+# Amendment 1 A8.1: B outputs snapped to nearest prototype
+cell,bits,delta,score,row,seeds,label,value,ci95_lo,ci95_hi,reading,tie_given_Tout_gt_Delta,tie_cond_ci95_lo,tie_cond_ci95_hi,share_Tout_eq_Delta,tie_all,outlast_over_bound
+b4_D0.02,4,0.02,eps0.3_future,B,5,learned,1.54036,1.47344,1.61279,,0.00673854,0.00242588,0.0129447,0.258,0.005,
+b4_D0.02,4,0.02,eps0.3_future,B_snapped,5,learned,0.118006,0.110876,0.125569,,0.812668,0.786247,0.838282,0.258,0.861,0
+b4_D0.02,4,0.02,eps0.3_future,bound,5,bound,0.137051,0.128396,0.14634,,,,,,,
+b4_D0.02,4,0.02,eps0.3_future,B_snapped - B,5,estimate,-1.42235,-1.49333,-1.35286,"a well below b | ci90 [-1.479, -1.363]",,,,,,
+b4_D0.02,4,0.02,eps0.3_future,B_snapped - bound,5,estimate,-0.0190448,-0.0228044,-0.0157962,"approximately equal | ci90 [-0.022, -0.016]",,,,,,
+b4_D0.02,4,0.02,eps0.3_from_t0,B,5,learned,0.982719,0.923408,1.04111,,,,,,,
+b4_D0.02,4,0.02,eps0.3_from_t0,B_snapped,5,learned,0.0967126,0.0897402,0.10437,,,,,,,0
+b4_D0.02,4,0.02,eps0.3_from_t0,bound,5,bound,0.113802,0.104982,0.122693,,,,,,,
+b4_D0.02,4,0.02,eps0.3_from_t0,B_snapped - B,5,estimate,-0.886007,-0.943724,-0.827556,"a well below b | ci90 [-0.935, -0.838]",,,,,,
+b4_D0.02,4,0.02,eps0.3_from_t0,B_snapped - bound,5,estimate,-0.0170893,-0.0203304,-0.0140762,"approximately equal | ci90 [-0.020, -0.014]",,,,,,
+b4_D0.05,4,0.05,eps0.3_future,B,3,learned,1.37744,1.32157,1.43127,,0.0353535,0.0247934,0.0477502,0.274,0.03,
+b4_D0.05,4,0.05,eps0.3_future,B_snapped,3,learned,0.214401,0.201741,0.227698,,0.747016,0.716713,0.7764,0.274,0.816333,0
+b4_D0.05,4,0.05,eps0.3_future,bound,3,bound,0.263274,0.246616,0.279935,,,,,,,
+b4_D0.05,4,0.05,eps0.3_future,B_snapped - B,3,estimate,-1.16304,-1.21984,-1.10707,"a well below b | ci90 [-1.210, -1.114]",,,,,,
+b4_D0.05,4,0.05,eps0.3_future,B_snapped - bound,3,estimate,-0.0488735,-0.0568421,-0.0409216,"approximately equal | ci90 [-0.056, -0.042]",,,,,,
+b4_D0.05,4,0.05,eps0.3_from_t0,B,3,learned,0.856517,0.807083,0.908247,,,,,,,
+b4_D0.05,4,0.05,eps0.3_from_t0,B_snapped,3,learned,0.168409,0.156323,0.181598,,,,,,,0
+b4_D0.05,4,0.05,eps0.3_from_t0,bound,3,bound,0.20574,0.190256,0.221539,,,,,,,
+b4_D0.05,4,0.05,eps0.3_from_t0,B_snapped - B,3,estimate,-0.688107,-0.735849,-0.642129,"a well below b | ci90 [-0.728, -0.650]",,,,,,
+b4_D0.05,4,0.05,eps0.3_from_t0,B_snapped - bound,3,estimate,-0.0373304,-0.0445298,-0.0304943,"approximately equal | ci90 [-0.043, -0.032]",,,,,,
+b4_D0.1,4,0.1,eps0.3_future,B,3,learned,1.26471,1.20794,1.32054,,0.0976158,0.0787224,0.11787,0.259,0.0953333,
+b4_D0.1,4,0.1,eps0.3_future,B_snapped,3,learned,0.373907,0.353989,0.394248,,0.693657,0.659019,0.727845,0.259,0.773,0
+b4_D0.1,4,0.1,eps0.3_future,bound,3,bound,0.471504,0.446874,0.498576,,,,,,,
+b4_D0.1,4,0.1,eps0.3_future,B_snapped - B,3,estimate,-0.890799,-0.949352,-0.831706,"a well below b | ci90 [-0.941, -0.840]",,,,,,
+b4_D0.1,4,0.1,eps0.3_future,B_snapped - bound,3,estimate,-0.0975962,-0.113261,-0.0825667,"no frozen reading applies (a non-significant difference is not equivalence) | ci90 [-0.111, -0.085]",,,,,,
+b4_D0.1,4,0.1,eps0.3_from_t0,B,3,learned,0.815655,0.763809,0.868027,,,,,,,
+b4_D0.1,4,0.1,eps0.3_from_t0,B_snapped,3,learned,0.28292,0.262186,0.303598,,,,,,,0
+b4_D0.1,4,0.1,eps0.3_from_t0,bound,3,bound,0.362591,0.337418,0.39021,,,,,,,
+b4_D0.1,4,0.1,eps0.3_from_t0,B_snapped - B,3,estimate,-0.532735,-0.576646,-0.490357,"a well below b | ci90 [-0.570, -0.496]",,,,,,
+b4_D0.1,4,0.1,eps0.3_from_t0,B_snapped - bound,3,estimate,-0.0796704,-0.0947625,-0.0662984,"approximately equal | ci90 [-0.092, -0.068]",,,,,,
+b6_D0.02,6,0.02,eps0.3_future,B,5,learned,1.55724,1.49191,1.6322,,0.00364372,0.00121457,0.00668016,0.012,0.0036,
+b6_D0.02,6,0.02,eps0.3_future,B_snapped,5,learned,0.92896,0.891839,0.969844,,0.0321862,0.0222672,0.0421103,0.012,0.0438,0
+b6_D0.02,6,0.02,eps0.3_future,bound,5,bound,8.82304,8.35396,9.29305,,,,,,,
+b6_D0.02,6,0.02,eps0.3_future,B_snapped - B,5,estimate,-0.62828,-0.702779,-0.558345,"a well below b | ci90 [-0.688, -0.568]",,,,,,
+b6_D0.02,6,0.02,eps0.3_future,B_snapped - bound,5,estimate,-7.89408,-8.38407,-7.42068,"a well below b | ci90 [-8.286, -7.504]",,,,,,
+b6_D0.02,6,0.02,eps0.3_from_t0,B,5,learned,1.5317,1.46525,1.60782,,,,,,,
+b6_D0.02,6,0.02,eps0.3_from_t0,B_snapped,5,learned,0.928688,0.891547,0.969698,,,,,,,0
+b6_D0.02,6,0.02,eps0.3_from_t0,bound,5,bound,8.82277,8.3536,9.29275,,,,,,,
+b6_D0.02,6,0.02,eps0.3_from_t0,B_snapped - B,5,estimate,-0.603014,-0.679855,-0.534981,"a well below b | ci90 [-0.664, -0.545]",,,,,,
+b6_D0.02,6,0.02,eps0.3_from_t0,B_snapped - bound,5,estimate,-7.89408,-8.38407,-7.42068,"a well below b | ci90 [-8.286, -7.504]",,,,,,
+b6_D0.05,6,0.05,eps0.3_future,B,3,learned,1.52353,1.46012,1.59233,,0.00437269,0.00100908,0.00908174,0.009,0.00433333,
+b6_D0.05,6,0.05,eps0.3_future,B_snapped,3,learned,1.11403,1.06553,1.1671,,0.0262361,0.0174908,0.0363269,0.009,0.035,0
+b6_D0.05,6,0.05,eps0.3_future,bound,3,bound,10.3457,9.82644,10.8604,,,,,,,
+b6_D0.05,6,0.05,eps0.3_future,B_snapped - B,3,estimate,-0.409503,-0.472754,-0.337069,"a well below b | ci90 [-0.464, -0.350]",,,,,,
+b6_D0.05,6,0.05,eps0.3_future,B_snapped - bound,3,estimate,-9.23167,-9.74143,-8.71851,"a well below b | ci90 [-9.656, -8.795]",,,,,,
+b6_D0.05,6,0.05,eps0.3_from_t0,B,3,learned,1.49982,1.43435,1.57151,,,,,,,
+b6_D0.05,6,0.05,eps0.3_from_t0,B_snapped,3,learned,1.1069,1.05752,1.15963,,,,,,,0
+b6_D0.05,6,0.05,eps0.3_from_t0,bound,3,bound,10.3141,9.79332,10.8335,,,,,,,
+b6_D0.05,6,0.05,eps0.3_from_t0,B_snapped - B,3,estimate,-0.39292,-0.457519,-0.321608,"a well below b | ci90 [-0.448, -0.334]",,,,,,
+b6_D0.05,6,0.05,eps0.3_from_t0,B_snapped - bound,3,estimate,-9.2072,-9.71594,-8.68397,"a well below b | ci90 [-9.631, -8.767]",,,,,,
+b6_D0.1,6,0.1,eps0.3_future,B,3,learned,1.6454,1.58489,1.70592,,0.0135089,0.0070922,0.0212766,0.013,0.016,
+b6_D0.1,6,0.1,eps0.3_future,B_snapped,3,learned,1.37495,1.32382,1.42882,,0.0266802,0.0178994,0.0371496,0.013,0.0393333,0
+b6_D0.1,6,0.1,eps0.3_future,bound,3,bound,11.8868,11.3454,12.4639,,,,,,,
+b6_D0.1,6,0.1,eps0.3_future,B_snapped - B,3,estimate,-0.270457,-0.321342,-0.222007,"a well below b | ci90 [-0.314, -0.230]",,,,,,
+b6_D0.1,6,0.1,eps0.3_future,B_snapped - bound,3,estimate,-10.5118,-11.0807,-9.94904,"a well below b | ci90 [-10.979, -10.038]",,,,,,
+b6_D0.1,6,0.1,eps0.3_from_t0,B,3,learned,1.619,1.55902,1.67973,,,,,,,
+b6_D0.1,6,0.1,eps0.3_from_t0,B_snapped,3,learned,1.36191,1.30915,1.41572,,,,,,,0
+b6_D0.1,6,0.1,eps0.3_from_t0,bound,3,bound,11.8279,11.2873,12.4031,,,,,,,
+b6_D0.1,6,0.1,eps0.3_from_t0,B_snapped - B,3,estimate,-0.257088,-0.307791,-0.208974,"a well below b | ci90 [-0.300, -0.216]",,,,,,
+b6_D0.1,6,0.1,eps0.3_from_t0,B_snapped - bound,3,estimate,-10.466,-11.032,-9.90333,"a well below b | ci90 [-10.929, -9.991]",,,,,,
+b8_D0.02,8,0.02,eps0.3_future,B,3,learned,1.24819,1.19034,1.31286,,0,0,0,0,0,
+b8_D0.02,8,0.02,eps0.3_future,B_snapped,3,learned,1.11179,1.05555,1.17819,,0,0,0,0,0,0
+b8_D0.02,8,0.02,eps0.3_future,bound,3,bound,26.2841,26.0508,26.4947,,,,,,,
+b8_D0.02,8,0.02,eps0.3_future,B_snapped - B,3,estimate,-0.136399,-0.207685,-0.0600257,"no frozen reading applies (a non-significant difference is not equivalence) | ci90 [-0.195, -0.073]",,,,,,
+b8_D0.02,8,0.02,eps0.3_future,B_snapped - bound,3,estimate,-25.1723,-25.3973,-24.9283,"a well below b | ci90 [-25.358, -24.973]",,,,,,
+b8_D0.02,8,0.02,eps0.3_from_t0,B,3,learned,1.24819,1.19034,1.31286,,,,,,,
+b8_D0.02,8,0.02,eps0.3_from_t0,B_snapped,3,learned,1.11179,1.05555,1.17819,,,,,,,0
+b8_D0.02,8,0.02,eps0.3_from_t0,bound,3,bound,26.2841,26.0508,26.4947,,,,,,,
+b8_D0.02,8,0.02,eps0.3_from_t0,B_snapped - B,3,estimate,-0.136399,-0.207685,-0.0600257,"no frozen reading applies (a non-significant difference is not equivalence) | ci90 [-0.195, -0.073]",,,,,,
+b8_D0.02,8,0.02,eps0.3_from_t0,B_snapped - bound,3,estimate,-25.1723,-25.3973,-24.9283,"a well below b | ci90 [-25.358, -24.973]",,,,,,
+b8_D0.05,8,0.05,eps0.3_future,B,3,learned,1.45913,1.39985,1.51658,,0,0,0,0,0,
+b8_D0.05,8,0.05,eps0.3_future,B_snapped,3,learned,1.35329,1.29075,1.41148,,0,0,0,0,0,0
+b8_D0.05,8,0.05,eps0.3_future,bound,3,bound,26.5294,26.3331,26.7053,,,,,,,
+b8_D0.05,8,0.05,eps0.3_future,B_snapped - B,3,estimate,-0.105835,-0.173458,-0.0397137,"no frozen reading applies (a non-significant difference is not equivalence) | ci90 [-0.161, -0.054]",,,,,,
+b8_D0.05,8,0.05,eps0.3_future,B_snapped - bound,3,estimate,-25.1761,-25.3493,-24.9758,"a well below b | ci90 [-25.330, -25.008]",,,,,,
+b8_D0.05,8,0.05,eps0.3_from_t0,B,3,learned,1.45913,1.39985,1.51658,,,,,,,
+b8_D0.05,8,0.05,eps0.3_from_t0,B_snapped,3,learned,1.35329,1.29075,1.41148,,,,,,,0
+b8_D0.05,8,0.05,eps0.3_from_t0,bound,3,bound,26.5294,26.3331,26.7053,,,,,,,
+b8_D0.05,8,0.05,eps0.3_from_t0,B_snapped - B,3,estimate,-0.105835,-0.173458,-0.0397137,"no frozen reading applies (a non-significant difference is not equivalence) | ci90 [-0.161, -0.054]",,,,,,
+b8_D0.05,8,0.05,eps0.3_from_t0,B_snapped - bound,3,estimate,-25.1761,-25.3493,-24.9758,"a well below b | ci90 [-25.330, -25.008]",,,,,,
+b8_D0.1,8,0.1,eps0.3_future,B,3,learned,1.60593,1.53843,1.67399,,0,0,0,0,0,
+b8_D0.1,8,0.1,eps0.3_future,B_snapped,3,learned,1.56257,1.50182,1.62465,,0,0,0,0,0,0
+b8_D0.1,8,0.1,eps0.3_future,bound,3,bound,26.6592,26.4918,26.8081,,,,,,,
+b8_D0.1,8,0.1,eps0.3_future,B_snapped - B,3,estimate,-0.043366,-0.10988,0.0205249,"approximately equal | ci90 [-0.096, 0.008]",,,,,,
+b8_D0.1,8,0.1,eps0.3_future,B_snapped - bound,3,estimate,-25.0966,-25.2584,-24.9171,"a well below b | ci90 [-25.229, -24.950]",,,,,,
+b8_D0.1,8,0.1,eps0.3_from_t0,B,3,learned,1.60593,1.53843,1.67399,,,,,,,
+b8_D0.1,8,0.1,eps0.3_from_t0,B_snapped,3,learned,1.56257,1.50182,1.62465,,,,,,,0
+b8_D0.1,8,0.1,eps0.3_from_t0,bound,3,bound,26.6592,26.4918,26.8081,,,,,,,
+b8_D0.1,8,0.1,eps0.3_from_t0,B_snapped - B,3,estimate,-0.043366,-0.10988,0.0205249,"approximately equal | ci90 [-0.096, 0.008]",,,,,,
+b8_D0.1,8,0.1,eps0.3_from_t0,B_snapped - bound,3,estimate,-25.0966,-25.2584,-24.9171,"a well below b | ci90 [-25.229, -24.950]",,,,,,
+b10_D0.02,10,0.02,eps0.3_future,B,3,learned,1.06815,1.02435,1.11373,,0,0,0,0,0,
+b10_D0.02,10,0.02,eps0.3_future,B_snapped,3,learned,1.02549,0.985218,1.06795,,0,0,0,0,0,0
+b10_D0.02,10,0.02,eps0.3_future,bound,3,bound,27,27,27,,,,,,,
+b10_D0.02,10,0.02,eps0.3_future,B_snapped - B,3,estimate,-0.0426599,-0.0902068,0.00684139,"approximately equal | ci90 [-0.078, -0.005]",,,,,,
+b10_D0.02,10,0.02,eps0.3_future,B_snapped - bound,3,estimate,-25.9745,-26.0145,-25.9333,"a well below b | ci90 [-26.008, -25.939]",,,,,,
+b10_D0.02,10,0.02,eps0.3_from_t0,B,3,learned,1.06815,1.02435,1.11373,,,,,,,
+b10_D0.02,10,0.02,eps0.3_from_t0,B_snapped,3,learned,1.02549,0.985218,1.06795,,,,,,,0
+b10_D0.02,10,0.02,eps0.3_from_t0,bound,3,bound,27,27,27,,,,,,,
+b10_D0.02,10,0.02,eps0.3_from_t0,B_snapped - B,3,estimate,-0.0426599,-0.0902068,0.00684139,"approximately equal | ci90 [-0.078, -0.005]",,,,,,
+b10_D0.02,10,0.02,eps0.3_from_t0,B_snapped - bound,3,estimate,-25.9745,-26.0145,-25.9333,"a well below b | ci90 [-26.008, -25.939]",,,,,,
+b10_D0.05,10,0.05,eps0.3_future,B,3,learned,1.48478,1.44022,1.5312,,0,0,0,0,0,
+b10_D0.05,10,0.05,eps0.3_future,B_snapped,3,learned,1.46951,1.42373,1.51614,,0,0,0,0,0,0
+b10_D0.05,10,0.05,eps0.3_future,bound,3,bound,27,27,27,,,,,,,
+b10_D0.05,10,0.05,eps0.3_future,B_snapped - B,3,estimate,-0.0152702,-0.0539065,0.0239332,"approximately equal | ci90 [-0.045, 0.014]",,,,,,
+b10_D0.05,10,0.05,eps0.3_future,B_snapped - bound,3,estimate,-25.5305,-25.5777,-25.4824,"a well below b | ci90 [-25.569, -25.491]",,,,,,
+b10_D0.05,10,0.05,eps0.3_from_t0,B,3,learned,1.48478,1.44022,1.5312,,,,,,,
+b10_D0.05,10,0.05,eps0.3_from_t0,B_snapped,3,learned,1.46951,1.42373,1.51614,,,,,,,0
+b10_D0.05,10,0.05,eps0.3_from_t0,bound,3,bound,27,27,27,,,,,,,
+b10_D0.05,10,0.05,eps0.3_from_t0,B_snapped - B,3,estimate,-0.0152702,-0.0539065,0.0239332,"approximately equal | ci90 [-0.045, 0.014]",,,,,,
+b10_D0.05,10,0.05,eps0.3_from_t0,B_snapped - bound,3,estimate,-25.5305,-25.5777,-25.4824,"a well below b | ci90 [-25.569, -25.491]",,,,,,
+b10_D0.1,10,0.1,eps0.3_future,B,3,learned,1.65367,1.58808,1.72088,,0,0,0,0,0,
+b10_D0.1,10,0.1,eps0.3_future,B_snapped,3,learned,1.65349,1.58878,1.72089,,0,0,0,0,0,0
+b10_D0.1,10,0.1,eps0.3_future,bound,3,bound,27,27,27,,,,,,,
+b10_D0.1,10,0.1,eps0.3_future,B_snapped - B,3,estimate,-0.000181069,-0.0679801,0.0666387,"approximately equal | ci90 [-0.056, 0.057]",,,,,,
+b10_D0.1,10,0.1,eps0.3_future,B_snapped - bound,3,estimate,-25.3465,-25.4087,-25.2803,"a well below b | ci90 [-25.401, -25.291]",,,,,,
+b10_D0.1,10,0.1,eps0.3_from_t0,B,3,learned,1.65367,1.58808,1.72088,,,,,,,
+b10_D0.1,10,0.1,eps0.3_from_t0,B_snapped,3,learned,1.65349,1.58878,1.72089,,,,,,,0
+b10_D0.1,10,0.1,eps0.3_from_t0,bound,3,bound,27,27,27,,,,,,,
+b10_D0.1,10,0.1,eps0.3_from_t0,B_snapped - B,3,estimate,-0.000181069,-0.0679801,0.0666387,"approximately equal | ci90 [-0.056, 0.057]",,,,,,
+b10_D0.1,10,0.1,eps0.3_from_t0,B_snapped - bound,3,estimate,-25.3465,-25.4087,-25.2803,"a well below b | ci90 [-25.401, -25.291]",,,,,,
