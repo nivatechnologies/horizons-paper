@@ -59,3 +59,88 @@ A frozen extension value found to be wrong is fixed in a new commit that states 
 - **Check 7: null baseline.** Persistence, and the new random-code forecaster, which is a second null.
 - **Check 9: selector.** The WO's author chose Kuramoto–Sivashinsky L = 22. The blinded second author proposed the same system independently in the original gate (`gate/check9_blinded_selector_codex.md`), which is overlap. Kolmogorov flow was chosen by one author only, so it is labelled selector-dependent.
 - **Errors in the WO:** see part 2 and the session review.
+
+## Amendment 1 (2026-09-25)
+
+Source: the vault note `02-Projects/WO_AIConf-Tokens-Horizon-Extension-Amendment-1-2026-09-25.md`, read from Drive
+(6,661 bytes, md5 4f1d4cd429ff59e958a49b122e53690b). Copied verbatim to `gate/ext_amendment1_verbatim.md`. Where the
+two differ, it governs over part 1 above. It was applied before any further extension result.
+
+### What changed and why
+- **A1 (validity).** A bound needs the exact support distance, or a certified lower bound on it. An encoder round-trip
+  error is an upper bound and cannot certify a bound. Consequences:
+  - Residual-VQ rows report no bound.
+  - Neural or convolutional decoders get no bound.
+  - Nearest-code searches used for a bound are exact brute force, with no approximate index.
+
+  Executor pin on `th/patchvq.py`:
+  - The float32 GPU brute force is certified. The float64 distances of the float32 top-k candidates are checked
+    against a rigorous float32 rounding margin; any row not certified is recomputed by float64 brute force over all
+    codes on the CPU.
+  - The code-neighbour candidate set is used only to *certify non-crossing*. If UB = Σ_p min over a candidate subset
+    is ≤ T², then d_C² ≤ UB ≤ T². This is exact logic in the valid direction.
+  - A crossing is only ever declared from an exact brute-force d_C. No reported d_C and no crossing comes from an
+    approximate search.
+- **A2 (output contract).** Scored fields are pinned in part 2.
+  - KS: the real-space field u on the N-point grid.
+  - Kolmogorov: the vorticity field on the N×N grid.
+  - The decoded state is the concatenation of decoded patches, scored as is, with no filtering, projection,
+    dealiasing or mean correction.
+  - A's outputs are decoded prototypes, so codebook-valued.
+  - The decode-and-integrate reference is not a bound. Its integrator's own Galerkin projection applies only to the
+    reference trajectory, and this is stated where it is reported.
+- **A3 (wording and rates).**
+  - The patch family is described as "spatially distributed tokenization at practical per-token vocabulary sizes,
+    with an exactly analyzable product decoder".
+  - Rates are nominal P·b bits per frame.
+  - D_eff is fitted separately for each P.
+  - Threshold reporting is frozen as follows. For each tokenizer family and threshold (1, 3, 10 Lyapunov times) we
+    report three things: the smallest tested nominal rate whose restricted mean reaches the threshold; whether every
+    higher tested rate in that family also reaches it (a "monotone" flag, with any exceptions listed); and the
+    smallest tested rate whose lower 95% bootstrap limit reaches it.
+  - If no tested rate reaches the threshold, we report "not reached within the tested grid".
+  - These are "the smallest tested rate for this tokenizer family", never minimum bit requirements.
+- **A4.** Every bound row also reports the survival fractions P(T_out ≥ t) for t = 1, 3, 10 Lyapunov times.
+- **A5 (calibration).**
+  - Target ≥ 50 calibration samples per code, or report the achieved number.
+  - Report fitting and held-out distortion, held-out occupancy and the unused-code rate.
+  - Halve the calibration set at the two largest b.
+  - For patch codebooks, report patches and independent trajectories separately.
+  - Sizes are frozen in part 2.
+- **A6, A7 (E4).** Frozen in part 2:
+  - Selection runs on the validation block only, with the smallest-bits rule given in the amendment and one
+    non-binding contrast.
+  - "No qualifying cell" is a valid result.
+  - Context is about 3 Lyapunov times.
+  - Frame-as-step input with patch-position and time embeddings.
+  - One shared categorical head across patch positions.
+  - Parameters and compute are reported per arm.
+- **A8 (E5 additions).** These supersede the part-1 tie item and extend the controls.
+  1. B's existing rollouts are re-scored with each output snapped to its nearest prototype, using the same rollout
+     and the same fed-back codes.
+  2. Ties become P(VPT = T_out | T_out > Δ), plus the share of states with T_out = Δ, for A, persistence and the
+     random-code forecaster.
+  3. Same-panel headline: the means of the bound, A, B, C and D on the first 300 states, with paired differences to
+     the particle filter.
+  4. Protocol facts go into NUMBERS.
+  5. The probe-control reading becomes: "training makes the precision more recoverable by the tested readout" when
+     the trained probe beats the untrained one. The paper never says the untrained representation lacks it.
+- **A9.** Predictive test on KS L = 22 with whole-state k-means:
+  1. Compute decode-and-integrate at 6, 8, 10 and 12 bits.
+  2. Fit the slope and commit the predictions for 7, 9 and 11 bits.
+  3. Only then compute the odd rates.
+- **A10.** The cut order is now: Kolmogorov 16×16 patches, then E5.3, then the rest of Kolmogorov.
+  Never cut: E0, E1–E3 on KS, E4 if a qualifying cell exists, E5.1, E5.2, A8 and A9.
+- **A11.** `make_numbers.py` fails on duplicate IDs and on unresolved lookups.
+
+### Results already produced that the amendment affects
+- **Superseded:** `results/ext/e5_tie_baselines.csv` and the tie part of `results/ext/e5.json` (produced 04:37,
+  before this amendment). They report A's tie rate excluding p_0 states, which A8.2 replaces. The files are kept
+  with a SUPERSEDED marker and rerun under A8.2.
+- **Reading superseded:** the E5.1 probe-control numbers (reconstruction RMSE, horizon) are unaffected. The reading
+  sentence from part 1 is replaced by A8.5.
+- **Unaffected:**
+  - the E5.3 training (configuration unchanged; only its cut rank moves);
+  - the KS and Kolmogorov pilots (system properties, not results);
+  - the E0 fixes and figures;
+  - every original-freeze result.

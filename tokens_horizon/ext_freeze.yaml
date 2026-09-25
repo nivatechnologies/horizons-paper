@@ -44,7 +44,24 @@ stop_conditions:
   kmeans: "empty or duplicate codes above 1%, or not converged: report and use the best converged codebook, labelled"
   impossible: "any A beating the output-support bound: find the bug before anything else"
 
-cuts_order: ["Kolmogorov 16x16-patch rows", "E4 learned KS cell", "E5.3 larger model"]
-never_cut: ["E0", "E1-E3 on KS L = 22 and the larger KS domain", "E5.1", "E5.2"]
+cuts_order: ["Kolmogorov 16x16-patch rows", "E5.3 larger model", "rest of the Kolmogorov family"]   # Amendment 1, A10
+never_cut: ["E0", "E1-E3 on KS", "E4 if a qualifying cell exists", "E5.1", "E5.2", "A8", "A9"]         # Amendment 1, A10
 
 # part 2 (systems, tokenizers, E3 grid, E4) is appended below in its own commit before any result in those systems
+
+amendment_1:                 # WO amendment 1 (2026-09-25); verbatim in gate/ext_amendment1_verbatim.md; governs over part 1
+  source_md5: 4f1d4cd429ff59e958a49b122e53690b
+  exact_support_distance: "bound from exact brute-force d_C only (certified float32 GPU top-k with float64 recheck and rigorous rounding margin, else CPU float64 brute force); code-neighbour candidate sets only certify non-crossing via an upper bound; crossings declared only from exact d_C; no bound for residual VQ or neural decoders"
+  output_contract: "scored field pinned per system in part 2; decoded state = concatenated decoded patches scored as is; A codebook-valued"
+  rates: "nominal P*b bits per frame; D_eff fitted per P, never pooled"
+  thresholds: "per family and threshold in {1,3,10} Lyapunov times: smallest tested nominal rate with restricted mean >= threshold; monotone flag (all higher tested rates also reach it; exceptions listed); smallest tested rate whose lower 95% limit reaches it; else 'not reached within the tested grid'"
+  survival: "every bound row reports P(T_out >= t) for t = 1, 3, 10 Lyapunov times"
+  calibration: "target >= 50 samples per code or report achieved; fit and held-out distortion; held-out occupancy; unused-code rate; halved-calibration check at the two largest b; patches and independent trajectories reported separately"
+  e5_ties: "P(VPT = T_out | T_out > Delta) and share with T_out = Delta, for A, persistence and random-code (supersedes part 1 'A tie rate excluding p_0')"
+  e5_b_snapped: "re-score existing B rollouts with each output snapped to its nearest prototype (same rollout, same fed-back codes)"
+  e5_same_panel: "means of bound, A, B, C, D on the first 300 states with paired differences to the particle filter"
+  e5_protocol_facts: "confirmation block trajectory count, lengths, spacing between starts, bootstrap resampling unit into NUMBERS"
+  probe_reading: "if trained-A probe beats untrained-A probe: 'training makes the precision more recoverable by the tested readout'; never 'the untrained representation lacks it'"
+  a9_predictive: "KS L = 22 whole-state k-means: DI at {6,8,10,12} bits, fit slope, commit predictions for {7,9,11}, then compute them and report errors"
+  make_numbers: "fail on duplicate IDs and unresolved lookups"
+  superseded_results: ["results/ext/e5_tie_baselines.csv (tie excluding p_0)", "results/ext/e5.json tie part", "E5.1 reading sentence (numbers unaffected)"]
