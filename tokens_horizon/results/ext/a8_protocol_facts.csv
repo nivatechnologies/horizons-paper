@@ -1,4 +1,4 @@
-# git_sha=bae790d6dad7b0e02e63f225ec050b2ecbb08fb6-dirty; POST-FREEZE EXTENSION (Amendment 1 a8_protocol_facts)
+# git_sha=3d57072b6324df884cbcf97b485b6b519f9c29b8; POST-FREEZE EXTENSION (Amendment 1 a8_protocol_facts)
 system,confirmation_trajectories,history_panel_states,steps_per_trajectory,dt,pre_history_time,post_time,window_time_W_over_lambda,burn_in_steps,start_spacing,seed,bootstrap_unit,label
 lorenz28,1000,300,3654,0.01,6.5,30.03,29.822885198460256,5000,"independent trajectories: each from its own Gaussian start, burned in 5,000 steps; not segments of one long trajectory, so starts share no path",40000,"one confirmation state = one independent trajectory (learned arms: model seeds too); 2000 reps, seed 777",protocol fact
 lorenz45,1000,300,2893,0.01,6.5,22.42,22.216955980804553,5000,"independent trajectories: each from its own Gaussian start, burned in 5,000 steps; not segments of one long trajectory, so starts share no path",40100,"one confirmation state = one independent trajectory (learned arms: model seeds too); 2000 reps, seed 777",protocol fact
