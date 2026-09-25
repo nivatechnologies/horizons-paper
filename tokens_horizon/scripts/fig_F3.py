@@ -32,7 +32,7 @@ def main():
     sha = config.git_sha()
     rows = []
     plt.rcParams.update({"font.size": 8, "axes.linewidth": 0.6, "font.family": "DejaVu Sans"})
-    fig, ax = plt.subplots(1, 3, figsize=(7.2, 2.6), constrained_layout=True)
+    fig, ax = plt.subplots(1, 3, figsize=(7.2, 3.0), constrained_layout=True)
     series = [("T_info", "information bound I", "o", "-", 2.0, "k", "bound"),
               ("T_codebook", "codebook-valued, I + O", "s", (0, (5, 2)), 1.2, "white", "estimate"),
               ("T_codebook_bc", "I + O (bias-corrected)", "D", (0, (1, 1.5)), 1.0, "white", "estimate"),
@@ -49,7 +49,9 @@ def main():
     ax[0].set_xlabel("token rate (bits)")
     ax[0].set_ylabel("ensemble-RMSE horizon (Lyapunov times)")
     ax[0].set_xticks(bits)
-    ax[0].legend(fontsize=5.5, frameon=False, loc="upper left")
+    h0, l0 = ax[0].get_legend_handles_labels()
+    fig.legend(h0, ["(a) " + t for t in l0], loc="outside lower center", ncol=4, fontsize=6, frameon=False,
+               handlelength=2.6)
     ax[0].set_title("(a) single-frame horizons", fontsize=8)
     for key, lab, m, ls, fc in (("O_share_at_Tinfo", "O / I (plug-in)", "s", (0, (5, 2)), "white"),
                                 ("Obc_share_at_Tinfo", "O_bc / I", "D", (0, (1, 1.5)), "white"),
@@ -64,9 +66,11 @@ def main():
     ax[1].set_xlabel("token rate (bits)")
     ax[1].set_ylabel("share of I at the information-bound crossing")
     ax[1].set_xticks(bits)
-    ax[1].legend(fontsize=5.5, frameon=False)
+    ax[1].set_ylim(top=0.37)
+    ax[1].legend(fontsize=5.5, frameon=False, loc="upper center", bbox_to_anchor=(0.58, 1.0))
     ax[1].set_title("(b) output and excess terms", fontsize=8)
     dashes = {4: "-", 6: (0, (5, 2)), 8: (0, (1, 1.5)), 10: (0, (6, 2, 1, 2))}
+    ends = []
     for r in rates:
         z = np.load(config.RUNS / "decomposition" / f"{J['system']}_b{r['bits']}.npz")
         lt = z["lam"] * z["t"]
@@ -74,9 +78,20 @@ def main():
         n = np.searchsorted(lt, 1.2)
         for curve, lw in ((z["I"], 1.6), (z["I"] + z["O"] + z["E"], 0.7)):
             ax[2].plot(lt[:n], np.sqrt(np.maximum(curve[:n], 0)) / sA, ls=dashes[r["bits"]], color="k", lw=lw)
-        ax[2].text(lt[n - 1], np.sqrt(z["I"][n - 1]) / sA, f"{r['bits']} b", fontsize=6, va="center")
-    ax[2].axhline(0.3, color="k", lw=0.5, ls=":")
-    ax[2].text(0.02, 0.31, "ε = 0.3", fontsize=6)
+        ends.append((np.sqrt(z["I"][n - 1]) / sA, r["bits"], lt[n - 1]))
+    # direct labels for the thick curves in the right margin (past every curve end), spread to avoid overlap
+    ends.sort(reverse=True)
+    x_max = max(e[2] for e in ends)
+    x_lab = x_max + 0.07
+    placed = []
+    for y, b, x_end in ends:
+        y_lab = min(y, placed[-1] - 0.11) if placed else y
+        placed.append(y_lab)
+        ax[2].annotate(f"{b} b", xy=(x_end, y), xytext=(x_lab, y_lab), fontsize=6, va="center", ha="left",
+                       arrowprops=dict(arrowstyle="-", lw=0.4, color="0.4") if abs(y_lab - y) > 0.02 else None)
+    ax[2].plot([0, x_max], [0.3, 0.3], color="k", lw=0.5, ls=":")
+    ax[2].text(x_lab, 0.3, "ε = 0.3", fontsize=6, va="center", ha="left")
+    ax[2].set_xlim(right=x_lab + 0.36)
     ax[2].set_xlabel("λ t")
     ax[2].set_ylabel("RMSE / σ_A")
     ax[2].set_title("(c) thick: √I; thin: √(I+O+E)", fontsize=8)

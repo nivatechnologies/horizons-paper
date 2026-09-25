@@ -4,6 +4,8 @@ per-state fraction of states on which each forecaster outlasts the output-suppor
 Primary score (eps = 0.3, future frames). 95% intervals.
 
 Greyscale-safe: every series has its own marker shape and dash pattern and a direct label; no colour.
+History reference: filled circles; hollow circles mark settings whose filter fallback rate exceeds 5% at
+1,500 particles and again at 3,000 particles (unreliable; the 3,000-particle value is plotted).
 Reads runs/headline/*.npz and results/learned/{cells,extra}.csv; writes figures/F1_headline.{svg,png,csv}.
 """
 from __future__ import annotations
@@ -45,16 +47,28 @@ def read_csv(p):
         return list(csv.DictReader(l for l in fh if not l.startswith("#")))
 
 
+FALLBACK_LIMIT = 0.05
+
+
 def ref_series(bits, delta):
+    """Reference series at 1,500 particles. Where the filter fallback rate exceeds 5%, the history reference
+    (and its outlast fraction) is taken from the 3,000-particle rerun if one exists; the setting is marked
+    unreliable when the rate of the file used still exceeds 5% (as history_ref_label in headline.csv)."""
     p = config.RUNS / "headline" / f"{SYSTEM}_b{bits}_D{delta:g}_dt0.01_M1500.npz"
     if not p.exists():
         return {}
     z = np.load(p)
+    zpf = z
+    if float(z["PF_fallback_rate"]) > FALLBACK_LIMIT:
+        p3 = p.with_name(p.name.replace("_M1500", "_M3000"))
+        if p3.exists():
+            zpf = np.load(p3)
     out = {}
-    for nm, key in (("bound", "bound"), ("history ref", "PF"), ("decode-and-integrate", "DI"),
-                    ("persistence", "persistence")):
+    for nm, key in (("bound", "bound"), ("decode-and-integrate", "DI"), ("persistence", "persistence")):
         out[nm] = score.bootstrap_mean(z[f"H_{key}_{P}"])
-    out["_outlast_history"] = score.outlast(z[f"H_PF_{P}"], z[f"H_bound_{P}"][:len(z[f"H_PF_{P}"])])["outlast"]
+    out["history ref"] = score.bootstrap_mean(zpf[f"H_PF_{P}"])
+    out["_history_reliable"] = float(zpf["PF_fallback_rate"]) <= FALLBACK_LIMIT
+    out["_outlast_history"] = score.outlast(zpf[f"H_PF_{P}"], z[f"H_bound_{P}"][:len(zpf[f"H_PF_{P}"])])["outlast"]
     return out
 
 
@@ -88,8 +102,10 @@ def main():
     for c, delta in enumerate(DELTAS):
         ax = axes[0, c]
         series = {k: [] for k in STY}
+        reliable = {}
         for b in BITS:
             rs = ref_series(b, delta)
+            reliable[b] = rs.get("_history_reliable", True)
             for nm in ("bound", "history ref", "decode-and-integrate", "persistence"):
                 series[nm].append((b,) + rs[nm] if nm in rs else (b, np.nan, np.nan, np.nan))
             for nm in ("A", "B", "D"):
@@ -107,12 +123,23 @@ def main():
             if not ok.any():
                 continue
             x, y, lo, hi = pts[ok].T
-            ax.errorbar(x, y, yerr=[y - lo, hi - y], marker=m, ls=ls, lw=lw, color="k", mfc="k" if fill == "full" else "white",
-                        ms=5, capsize=2, elinewidth=0.6, label=lab)
+            if nm == "history ref":
+                # filled = reliable reference; hollow = fallback > 5% even at 3,000 particles (as in F6)
+                ax.errorbar(x, y, yerr=[y - lo, hi - y], marker="none", ls=ls, lw=lw, color="k", capsize=2,
+                            elinewidth=0.6)
+                for xi, yi in zip(x, y):
+                    ax.plot(xi, yi, marker=m, ms=5, ls="none", mec="k", mfc="k" if reliable[int(xi)] else "white",
+                            zorder=4)
+                ax.errorbar([], [], yerr=[[], []], marker=m, ls=ls, lw=lw, color="k", mfc="k", ms=5, capsize=2,
+                            elinewidth=0.6, label="history reference (unreliable: hollow)")
+            else:
+                ax.errorbar(x, y, yerr=[y - lo, hi - y], marker=m, ls=ls, lw=lw, color="k",
+                            mfc="k" if fill == "full" else "white", ms=5, capsize=2, elinewidth=0.6, label=lab)
             for xi, yi, l_, h_ in pts[ok]:
                 rows.append(dict(delta=delta, bits=int(xi), series=nm, mean=yi, ci95_lo=l_, ci95_hi=h_,
                                  label={"bound": "bound", "A": "learned", "B": "learned", "D": "learned",
-                                        "A-probe": "learned"}.get(nm, "reference")))
+                                        "A-probe": "learned"}.get(nm, "reference"),
+                                 reliable=reliable[int(xi)] if nm == "history ref" else ""))
         C0 = [r for r in cells if r["system"] == SYSTEM and r["arm"] == "C" and float(r["delta"]) == delta
               and float(r["noise"]) == 0.0]
         if C0:
@@ -145,7 +172,7 @@ def main():
                     v = float(e[0]["outlast"]) if e else np.nan
                 vals.append(v)
                 rows.append(dict(delta=delta, bits=b, series=f"outlast_vs_bound:{nm}", mean=v, ci95_lo="", ci95_hi="",
-                                 label="estimate"))
+                                 label="estimate", reliable=reliable[b] if nm == "history ref" else ""))
             xs = np.arange(len(BITS)) + (i - 2) * w / 2
             ax2.bar(xs, vals, width=w / 2, facecolor="white" if hatch else "black", edgecolor="k", hatch=hatch, lw=0.6,
                     label=nm)
@@ -166,7 +193,8 @@ def main():
     fig.savefig(OUT.with_suffix(".png"), dpi=200)
     with open(OUT.with_suffix(".csv"), "w", newline="") as fh:
         fh.write(f"# git_sha={sha}\n")
-        w_ = csv.DictWriter(fh, fieldnames=["delta", "bits", "series", "mean", "ci95_lo", "ci95_hi", "label"])
+        w_ = csv.DictWriter(fh, fieldnames=["delta", "bits", "series", "mean", "ci95_lo", "ci95_hi", "label",
+                                            "reliable"], restval="")
         w_.writeheader()
         w_.writerows(rows)
     print("wrote", OUT)

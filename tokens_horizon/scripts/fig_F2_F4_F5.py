@@ -1,4 +1,5 @@
-"""Figures F2 (exchange law), F4 (r by orientation, with FSLE), F5 (dimension). Greyscale-safe: categories are
+"""Figures F2 (exchange law), F4 (r by orientation, with classical FSLE/lambda), F5 (dimension).
+Greyscale-safe: categories are
 encoded by marker shape, fill, dash pattern and direct labels, never by colour alone (all ink is black/grey).
 Each figure ships as SVG + PNG + CSV; the CSV's first line carries the git SHA.
 """
@@ -91,11 +92,13 @@ def f4():
                                  quantity="r central difference", label="estimate"))
         fs = el[s]["fsle"]
         sc = np.array([f["scale_rel"] for f in fs])
-        inv = 1 / np.array([f["fsle_over_lambda"] for f in fs])      # plot lambda/FSLE on the r axis
-        ax.plot(sc, inv, color="0.45", lw=1.6, ls="-", label="$\\lambda$/FSLE")
-        for d, v in zip(sc, inv):
+        # FSLE/lambda is a growth rate relative to lambda, the same quantity as r = lambda_eff/lambda, so it is
+        # plotted as stored (fsle_over_lambda = ln 2 / <doubling time> / lambda), not inverted
+        fl = np.array([f["fsle_over_lambda"] for f in fs])
+        ax.plot(sc, fl, color="0.45", lw=1.6, ls="-", label="classical FSLE / $\\lambda$")
+        for d, v in zip(sc, fl):
             rows.append(dict(system=s, series="FSLE", delta_or_scale_over_sigma_A=float(d), value=float(v),
-                             quantity="lambda/FSLE (FSLE/lambda inverted)", label="estimate"))
+                             quantity="FSLE/lambda", label="estimate"))
         ax.axhline(1, color="0.5", lw=0.5)
         ax.set_xscale("log")
         ax.set_xlim(5e-5, 0.5)
@@ -104,8 +107,12 @@ def f4():
         ax.set_title(s, fontsize=8)
         ax.set_xlabel("$\\delta/\\sigma_A$")
     axes[0].set_ylabel("$r = (dH_W/d\\ln(1/\\delta))^{-1}$")
-    axes[-1].legend(fontsize=6, frameon=False, loc="upper left")
-    save(fig, "F4_r_orientation", rows, "all estimates; FSLE row stores lambda/FSLE so it shares the r axis")
+    h, l = axes[-1].get_legend_handles_labels()
+    order = ["fresh", "aligned", "aligned endpoint", "isotropic", "classical FSLE / $\\lambda$"]
+    hl = dict(zip(l, h))
+    axes[-1].legend([hl[k] for k in order if k in hl], [k for k in order if k in hl], fontsize=6, frameon=False,
+                    loc="upper left")
+    save(fig, "F4_r_orientation", rows, "all estimates; FSLE rows store FSLE/lambda (same axis as r = lambda_eff/lambda)")
 
 
 def f5():
@@ -117,17 +124,22 @@ def f5():
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(7.0, 2.8), constrained_layout=True)
     rows = []
     rates = dist["rates"]
+    dims = []
     for s in systems:
         v = dist["systems"][s]
         a1.plot(rates, v["delta_over_sigma_A"], color="black", marker=marks[s], mfc=fills[s], ms=3.5, lw=0.8)
-        a1.annotate(f"{s}  $D_{{eff}}$={v['d_eff']:.2f} [{v['d_eff_ci95'][0]:.3f},{v['d_eff_ci95'][1]:.3f}]"
-                    f"  $D_{{KY}}$={v['d_ky']:.2f}", (rates[-1], v["delta_over_sigma_A"][-1]), xytext=(4, 4 if s == "lorenz45" else -2),
-                    textcoords="offset points", fontsize=5.5, va="center")
+        a1.annotate(s, (rates[-1], v["delta_over_sigma_A"][-1]),
+                    xytext=(5, {"lorenz45": 4, "lorenz28": -4}.get(s, 0)), textcoords="offset points", fontsize=6,
+                    va="center", annotation_clip=False)
+        dims.append(f"{s}: {v['d_eff']:.2f} [{v['d_eff_ci95'][0]:.3f}, {v['d_eff_ci95'][1]:.3f}]; {v['d_ky']:.2f}")
         for R_, d in zip(rates, v["delta_over_sigma_A"]):
             rows.append(dict(panel="a", system=s, x_bits=R_, series="k-means distortion", value=d, lo=None, hi=None,
                              label="estimate"))
     a1.set_yscale("log", base=2)
-    a1.set_xlim(3.5, 19)
+    a1.set_xlim(rates[0] - 0.4, rates[-1] + 0.4)
+    a1.set_xticks(rates)
+    a1.text(0.02, 0.02, "$D_{eff}$ [95%]; $D_{KY}$\n" + "\n".join(dims), transform=a1.transAxes, fontsize=5, va="bottom", ha="left",
+            linespacing=1.3)
     a1.set_xlabel("rate R (bits)")
     a1.set_ylabel("$\\delta(R)/\\sigma_A$ (calibration RMS)")
     a1.set_title("a  k-means distortion", fontsize=8, loc="left")
@@ -144,7 +156,8 @@ def f5():
             a2.plot([r["bits"] for r in q], [r["H_mean"] for r in q], color="0.35", marker=marks[s], mfc=fills[s],
                     ms=4.5, lw=0.8, ls="--")
         last = q[-1] if q else d[-1]
-        a2.annotate(s, ((last.get("bits") or last.get("rate_bits")), last["H_mean"]), xytext=(4, 0),
+        a2.annotate(s, ((last.get("bits") or last.get("rate_bits")), last["H_mean"]),
+                    xytext=(4, {"lorenz45": 3, "lorenz28": -4}.get(s, 0)),
                     textcoords="offset points", fontsize=6, va="center")
         for r in d:
             rows.append(dict(panel="b", system=s, x_bits=r["rate_bits"], series="k-means decode-and-integrate",
@@ -155,7 +168,7 @@ def f5():
     a2.set_xlim(3, 29)
     a2.set_xlabel("rate (bits)")
     a2.set_ylabel("$H_W$ (Lyapunov times)")
-    a2.set_title("b  horizons: k-means (solid), residual VQ (dashed)", fontsize=8, loc="left")
+    a2.set_title("b  horizons: k-means (solid),\n    residual VQ (dashed)", fontsize=8, loc="left")
     save(fig, "F5_dimension", rows, "distortion = estimate; horizons = reference")
 
 
