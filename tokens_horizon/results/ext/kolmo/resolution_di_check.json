@@ -1,0 +1,101 @@
+{
+ "tokenizer": "kolmo_patch_L8_b12",
+ "delta": 0.35,
+ "states": 300,
+ "stop_frame": 153,
+ "rows": [
+  {
+   "eps": 0.1,
+   "start": "future",
+   "mean_64": 0.22727935999999999,
+   "mean_128": 0.22727935999999999,
+   "rel_change": 0.0,
+   "frac_no_cross_128": 0.0
+  },
+  {
+   "eps": 0.1,
+   "start": "from_t0",
+   "mean_64": 0.0,
+   "mean_128": 0.0,
+   "rel_change": NaN,
+   "frac_no_cross_128": 0.0
+  },
+  {
+   "eps": 0.3,
+   "start": "future",
+   "mean_64": 1.4307058149999996,
+   "mean_128": 1.4307058149999996,
+   "rel_change": 0.0,
+   "frac_no_cross_128": 0.0
+  },
+  {
+   "eps": 0.3,
+   "start": "from_t0",
+   "mean_64": 1.4197561583333331,
+   "mean_128": 1.4197561583333331,
+   "rel_change": 0.0,
+   "frac_no_cross_128": 0.0
+  },
+  {
+   "eps": 0.5,
+   "start": "future",
+   "mean_64": 2.1825329166666667,
+   "mean_128": 2.182680885,
+   "rel_change": 6.779661016942384e-05,
+   "frac_no_cross_128": 0.0
+  },
+  {
+   "eps": 0.5,
+   "start": "from_t0",
+   "mean_64": 2.1825329166666667,
+   "mean_128": 2.182680885,
+   "rel_change": 6.779661016942384e-05,
+   "frac_no_cross_128": 0.0
+  }
+ ],
+ "git_sha": "468cabcd2ad7429c767ce068cd6bd796bb491265-dirty",
+ "label": "post-freeze extension; reference (decode-and-integrate), resolution check",
+ "note": "128^2 truth and reference both from spectrally zero-padded 64^2 initial fields; errors on the 64^2 points",
+ "primary": {
+  "mean_64": 1.4307058149999996,
+  "mean_128": 1.4307058149999996,
+  "diff": 0.0,
+  "diff_ci95": [
+   0.0,
+   0.0
+  ],
+  "rel_change": 0.0,
+  "rel_change_ci95": [
+   0.0,
+   0.0
+  ],
+  "per_state_equal_frac": 1.0
+ },
+ "seconds": 89.83393812179565,
+ "difference_size": {
+  "note": "added at the coordinator's request; the frozen check is unchanged. Up to each state's 64^2 crossing frame (eps 0.3, future); normalized by sigma_A on the 64^2 points; x_64 = stored panel truth, x_128 = 128^2 integration of the zero-padded t = 0 state",
+  "crossing_frame_median": 28.0,
+  "crossing_time_median": 9.799999999999999,
+  "max_t_abs_e128_minus_e64": {
+   "max": 0.0001927665699864023,
+   "median": 7.899588659099344e-06,
+   "p95": 5.2724819573110704e-05
+  },
+  "abs_e128_minus_e64_at_crossing": {
+   "max": 0.0001927665699864023,
+   "median": 6.10430049075017e-06,
+   "p95": 4.522420297616855e-05
+  },
+  "truth_diff_at_crossing": {
+   "max": 0.00449852299170988,
+   "median": 0.00024182401716156174,
+   "p95": 0.0013786764937132013
+  },
+  "truth_diff_max_up_to_crossing": {
+   "max": 0.004793046484354925,
+   "median": 0.0006175216582070041,
+   "p95": 0.0017571215970326425
+  },
+  "git_sha": "338a7ef3b83b5002c56d296925672c7e956bda25-dirty"
+ }
+}

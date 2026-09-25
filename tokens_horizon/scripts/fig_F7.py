@@ -64,7 +64,13 @@ def main():
                 y = np.array([float(r["restricted_mean"]) for r in rr])
                 lo = np.array([float(r["ci95_lo"]) for r in rr])
                 hi = np.array([float(r["ci95_hi"]) for r in rr])
-                lab = {"whole": "whole-state k-means", "rvq": "residual VQ"}.get(fam, f"patches P = {fam}")
+                if fam in ("whole", "rvq"):
+                    lab = {"whole": "whole-state k-means", "rvq": "residual VQ"}[fam]
+                elif "x" in fam:
+                    side = int(fam.split("x")[0])
+                    lab = f"Kolmogorov layout {fam} ({side * side} patches)"
+                else:
+                    lab = f"KS {fam} patches"
                 ax.errorbar(x, y, yerr=[y - lo, hi - y], marker=MARK.get(fam, "o"), ls=ls, lw=1.0, color="k",
                             mfc="k" if fill else "white", ms=4, capsize=1.5, elinewidth=0.5,
                             label=f"{lab}: {'bound' if kind == 'bound' else 'decode-and-integrate'}")

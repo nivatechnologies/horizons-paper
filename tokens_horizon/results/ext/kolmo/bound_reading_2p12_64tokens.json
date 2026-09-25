@@ -1,0 +1,100 @@
+{
+ "label": "bound; descriptive only (EXT_FREEZE readings)",
+ "eps": 0.3,
+ "start": "future",
+ "configurations_tested": [
+  [
+   "kolmo_patch_L16_b12",
+   0.14,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b12",
+   0.35,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b12",
+   0.7,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b14",
+   0.14,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b14",
+   0.35,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b14",
+   0.7,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b16",
+   0.14,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b16",
+   0.35,
+   27.0
+  ],
+  [
+   "kolmo_patch_L16_b16",
+   0.7,
+   27.0
+  ],
+  [
+   "kolmo_patch_L8_b12",
+   0.14,
+   13.904211379400001
+  ],
+  [
+   "kolmo_patch_L8_b12",
+   0.35,
+   13.9650669705
+  ],
+  [
+   "kolmo_patch_L8_b12",
+   0.7,
+   14.125168754999999
+  ],
+  [
+   "kolmo_patch_L8_b14",
+   0.14,
+   15.4891806268
+  ],
+  [
+   "kolmo_patch_L8_b14",
+   0.35,
+   15.591150698999998
+  ],
+  [
+   "kolmo_patch_L8_b14",
+   0.7,
+   15.868284907
+  ],
+  [
+   "kolmo_patch_L8_b16",
+   0.14,
+   18.645319547
+  ],
+  [
+   "kolmo_patch_L8_b16",
+   0.35,
+   19.032538022
+  ],
+  [
+   "kolmo_patch_L8_b16",
+   0.7,
+   19.332776442
+  ]
+ ],
+ "below_one_lyapunov_time": "no",
+ "configurations_below": [],
+ "git_sha": "338a7ef3b83b5002c56d296925672c7e956bda25-dirty"
+}

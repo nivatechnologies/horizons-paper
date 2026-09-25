@@ -1,0 +1,14 @@
+{
+ "tokenizer": "kolmo_patch_L16_b16_half",
+ "delta": 0.35,
+ "eps": 0.3,
+ "start": "future",
+ "restricted_mean": 27.0,
+ "frac_no_cross": 1.0,
+ "p0": 0.0,
+ "S1": 1.0,
+ "S3": 1.0,
+ "S10": 1.0,
+ "git_sha": "468cabcd2ad7429c767ce068cd6bd796bb491265-dirty",
+ "label": "post-freeze extension"
+}

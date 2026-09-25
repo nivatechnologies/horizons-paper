@@ -302,6 +302,41 @@ def main():
             rows, sha = read_csv(p)
             table(out, sec, title, p, cols, rows, sha, label_col=lab, note=note)
 
+    kdir = R / "ext" / "kolmo"
+    for fname, sec, title, cols, lab, note in (
+            ("e3_rows.csv", "KKE3", "POST-FREEZE EXTENSION K: Kolmogorov E3 bound and references, every tokenizer, Delta, eps, score",
+             ["tokenizer", "family", "layout", "P", "b", "total_bits", "delta", "eps", "start", "kind", "restricted_mean",
+              ("95%", ci("ci95_lo", "ci95_hi")), "frac_no_cross", "median", "p0", "S1", "S3", "S10", "n"], "label",
+             "As KE3. Scored field: vorticity on the 64 x 64 grid. Residual VQ has no bound (A1)."),
+            ("thresholds_a3.csv", "KKTH", "POST-FREEZE EXTENSION K: Kolmogorov smallest tested rate reaching 1, 3, 10 (A3 rule)",
+             ["family", "quantity", "delta", "eps", "tau", "smallest_tested_rate", "monotone", "exceptions",
+              "smallest_rate_lower95"], "label", "'Smallest tested rate for this tokenizer family'; blank = not reached within the tested grid."),
+            ("d_eff.csv", "KKDE", "POST-FREEZE EXTENSION K: Kolmogorov D_eff per layout (never pooled)",
+             ["family", "rates", "D_eff", ("95%", ci("ci95_lo", "ci95_hi")), "heldout_trajectories", "note"], None,
+             "**estimate**; D_eff(layout) estimates P*d_patch for that factorization."),
+            ("di_slope.csv", "KKDS", "POST-FREEZE EXTENSION K: Kolmogorov decode-and-integrate slope per bit",
+             ["family", "delta", "primary", "rates", "slope_lyap_per_bit", ("95%", ci("ci95_lo", "ci95_hi"))], None,
+             "**estimate** (decode-and-integrate is a reference)."),
+            ("calibration_adequacy.csv", "KKCA", "POST-FREEZE EXTENSION K: Kolmogorov calibration adequacy (A5)",
+             ["codebook", "half", "K", "n_train", "samples_per_code", "patches", "states_used", "independent_trajectories",
+              "iterations", "converged", "empty_frac", "duplicate_frac", "stop_rule_flag", "delta_fit_over_sigmaA",
+              "delta_heldout_over_sigmaA", "heldout_occupancy", "heldout_unused_rate", "bound_full", "bound_half",
+              "bound_change", "method"], None, "**estimate**; 'not converged' codebooks are used and labelled (stop rule).")):
+        p = kdir / fname
+        if p.exists():
+            rows, sha = read_csv(p)
+            table(out, sec, title, p, cols, rows, sha, label_col=lab, note=note)
+    br = kdir / "bound_reading_2p12_64tokens.json"
+    if br.exists():
+        bj = json.loads(br.read_text())
+        brow = [dict(reading="bound below 1 Lyapunov time at any configuration with >= 2^12 codes per token and >= 64 "
+                             "tokens per frame (eps 0.3, future frames)",
+                     answer=bj["below_one_lyapunov_time"],
+                     smallest=json.dumps(min(bj["configurations_tested"], key=lambda c: c[2])),
+                     configurations=len(bj.get("configurations_tested", [])), label="bound (descriptive reading)")]
+        table(out, "KKRD", "POST-FREEZE EXTENSION K: EXT_FREEZE bound reading (Kolmogorov 8x8 and 16x16 layouts, b >= 12)",
+              br, ["reading", "answer", "smallest", "configurations"], brow, bj.get("git_sha", ""))
+
     # ---- POST-FREEZE EXTENSION, section K2 (learned cells and controls; EXT_FREEZE part 1 and Amendment 1)
     ext = R / "ext"
     for fname, sec, title, cols, note in (

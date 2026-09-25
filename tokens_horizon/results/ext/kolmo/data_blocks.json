@@ -1,0 +1,39 @@
+{
+ "calibration_fit": {
+  "n_traj": 256,
+  "samples_per_traj": 800,
+  "sample_every": 1.4,
+  "seed": 10800,
+  "states": 204800,
+  "seconds": 460.5943138599396
+ },
+ "sigma_A": 131.84331099346767,
+ "sigma_A_note": "RMS Euclidean distance (over the 4,096 grid values) of calibration fit states to their mean",
+ "calibration_mean_norm": 42.571851249792196,
+ "sigma_A_per_traj_sd": 2.736305669021406,
+ "sigma_A_per_traj_range": [
+  126.46875099323073,
+  141.1588202500205
+ ],
+ "git_sha": "468cabcd2ad7429c767ce068cd6bd796bb491265-dirty",
+ "label": "post-freeze extension",
+ "calibration_heldout": {
+  "n_traj": 64,
+  "samples_per_traj": 800,
+  "sample_every": 1.4,
+  "seed": 10801,
+  "states": 51200,
+  "seconds": 345.09637784957886
+ },
+ "panel_confirmation": {
+  "states": 1000,
+  "seed": 40800,
+  "units": 3731,
+  "unit_time": 0.07,
+  "pre_units": 660,
+  "post_units": 3070,
+  "burn_in_time": 500.0,
+  "storage": "retained Fourier coefficients (43 x 22 complex128), frame-major",
+  "seconds": 3437.5141096115112
+ }
+}

@@ -1,0 +1,101 @@
+# git_sha=338a7ef3b83b5002c56d296925672c7e956bda25-dirty; POST-FREEZE EXTENSION
+family,quantity,label,delta,eps,start,tau,tested_rates,smallest_tested_rate,monotone,exceptions,smallest_rate_lower95
+16x16,bound,bound,0.14,0.3,future,1.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.14,0.3,future,3.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.14,0.3,future,10.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.35,0.3,future,1.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.35,0.3,future,3.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.35,0.3,future,10.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.7,0.3,future,1.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.7,0.3,future,3.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,bound,bound,0.7,0.3,future,10.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,decode_and_integrate,reference,0.14,0.3,future,1.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,decode_and_integrate,reference,0.14,0.3,future,3.0,2048 2560 3072 3584 4096,4096,True,,4096
+16x16,decode_and_integrate,reference,0.14,0.3,future,10.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,decode_and_integrate,reference,0.35,0.3,future,1.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,decode_and_integrate,reference,0.35,0.3,future,3.0,2048 2560 3072 3584 4096,4096,True,,4096
+16x16,decode_and_integrate,reference,0.35,0.3,future,10.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,decode_and_integrate,reference,0.7,0.3,future,1.0,2048 2560 3072 3584 4096,2048,True,,2048
+16x16,decode_and_integrate,reference,0.7,0.3,future,3.0,2048 2560 3072 3584 4096,3584,True,,4096
+16x16,decode_and_integrate,reference,0.7,0.3,future,10.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.14,0.3,future,1.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.14,0.3,future,3.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.14,0.3,future,10.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.35,0.3,future,1.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.35,0.3,future,3.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.35,0.3,future,10.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.7,0.3,future,1.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.7,0.3,future,3.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+16x16,persistence,reference,0.7,0.3,future,10.0,2048 2560 3072 3584 4096,not reached within the tested grid,,,not reached within the tested grid
+4x4,bound,bound,0.14,0.3,future,1.0,128 160 192 224 256,160,True,,160
+4x4,bound,bound,0.14,0.3,future,3.0,128 160 192 224 256,192,True,,192
+4x4,bound,bound,0.14,0.3,future,10.0,128 160 192 224 256,256,True,,256
+4x4,bound,bound,0.35,0.3,future,1.0,128 160 192 224 256,160,True,,160
+4x4,bound,bound,0.35,0.3,future,3.0,128 160 192 224 256,192,True,,192
+4x4,bound,bound,0.35,0.3,future,10.0,128 160 192 224 256,224,True,,256
+4x4,bound,bound,0.7,0.3,future,1.0,128 160 192 224 256,160,True,,160
+4x4,bound,bound,0.7,0.3,future,3.0,128 160 192 224 256,192,True,,192
+4x4,bound,bound,0.7,0.3,future,10.0,128 160 192 224 256,224,True,,256
+4x4,decode_and_integrate,reference,0.14,0.3,future,1.0,128 160 192 224 256,256,True,,256
+4x4,decode_and_integrate,reference,0.14,0.3,future,3.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,decode_and_integrate,reference,0.14,0.3,future,10.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,decode_and_integrate,reference,0.35,0.3,future,1.0,128 160 192 224 256,256,True,,256
+4x4,decode_and_integrate,reference,0.35,0.3,future,3.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,decode_and_integrate,reference,0.35,0.3,future,10.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,decode_and_integrate,reference,0.7,0.3,future,1.0,128 160 192 224 256,256,True,,256
+4x4,decode_and_integrate,reference,0.7,0.3,future,3.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,decode_and_integrate,reference,0.7,0.3,future,10.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.14,0.3,future,1.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.14,0.3,future,3.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.14,0.3,future,10.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.35,0.3,future,1.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.35,0.3,future,3.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.35,0.3,future,10.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.7,0.3,future,1.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.7,0.3,future,3.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+4x4,persistence,reference,0.7,0.3,future,10.0,128 160 192 224 256,not reached within the tested grid,,,not reached within the tested grid
+8x8,bound,bound,0.14,0.3,future,1.0,512 640 768 896 1024,512,True,,512
+8x8,bound,bound,0.14,0.3,future,3.0,512 640 768 896 1024,640,True,,640
+8x8,bound,bound,0.14,0.3,future,10.0,512 640 768 896 1024,640,True,,640
+8x8,bound,bound,0.35,0.3,future,1.0,512 640 768 896 1024,512,True,,512
+8x8,bound,bound,0.35,0.3,future,3.0,512 640 768 896 1024,640,True,,640
+8x8,bound,bound,0.35,0.3,future,10.0,512 640 768 896 1024,640,True,,640
+8x8,bound,bound,0.7,0.3,future,1.0,512 640 768 896 1024,512,True,,512
+8x8,bound,bound,0.7,0.3,future,3.0,512 640 768 896 1024,640,True,,640
+8x8,bound,bound,0.7,0.3,future,10.0,512 640 768 896 1024,640,True,,640
+8x8,decode_and_integrate,reference,0.14,0.3,future,1.0,512 640 768 896 1024,640,True,,640
+8x8,decode_and_integrate,reference,0.14,0.3,future,3.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,decode_and_integrate,reference,0.14,0.3,future,10.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,decode_and_integrate,reference,0.35,0.3,future,1.0,512 640 768 896 1024,640,True,,640
+8x8,decode_and_integrate,reference,0.35,0.3,future,3.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,decode_and_integrate,reference,0.35,0.3,future,10.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,decode_and_integrate,reference,0.7,0.3,future,1.0,512 640 768 896 1024,640,True,,640
+8x8,decode_and_integrate,reference,0.7,0.3,future,3.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,decode_and_integrate,reference,0.7,0.3,future,10.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.14,0.3,future,1.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.14,0.3,future,3.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.14,0.3,future,10.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.35,0.3,future,1.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.35,0.3,future,3.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.35,0.3,future,10.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.7,0.3,future,1.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.7,0.3,future,3.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+8x8,persistence,reference,0.7,0.3,future,10.0,512 640 768 896 1024,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.14,0.3,future,1.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.14,0.3,future,3.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.14,0.3,future,10.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.35,0.3,future,1.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.35,0.3,future,3.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.35,0.3,future,10.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.7,0.3,future,1.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.7,0.3,future,3.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,decode_and_integrate,reference,0.7,0.3,future,10.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.14,0.3,future,1.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.14,0.3,future,3.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.14,0.3,future,10.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.35,0.3,future,1.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.35,0.3,future,3.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.35,0.3,future,10.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.7,0.3,future,1.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.7,0.3,future,3.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
+rvq,persistence,reference,0.7,0.3,future,10.0,8 16 24 32,not reached within the tested grid,,,not reached within the tested grid
