@@ -100,6 +100,23 @@ def main():
     table(out, "H0", "Headline, secondary score (from t = 0)", R / "headline" / "headline.csv", cols2, rows, sha,
           label_col=None)
 
+    # H2: subset systems at Delta = 0.05 (added 2026-09-25, WO extension E0.2), bits 6 and 10, every particle count run
+    h2 = []
+    sha2 = ""
+    for sysn in ("lorenz45", "l96_5"):
+        rr, sha2 = read_csv(R / "headline_subsets" / sysn / "headline.csv")
+        h2 += [r for r in rr if r["bits"] in ("6", "10") and r["dt"] == "0.01"]
+    if h2:
+        table(out, "H2", "Subset systems at Delta = 0.05: bound and references (lorenz45, l96_5; 6 and 10 bits)",
+              R / "headline_subsets" / "lorenz45" / "headline.csv",
+              ["system", "bits", "delta", "particles", "p0_eps0.3", "bound_eps0.3_future_mean", "bound_eps0.3_future_ci95",
+               "bound_eps0.3_future_nocross", "PF_eps0.3_future_mean", "PF_eps0.3_future_ci95", "pf_fallback_rate",
+               "history_ref_label", "DI_eps0.3_future_mean", "DI_eps0.3_future_ci95", "persistence_eps0.3_future_mean"],
+              h2, sha2, label_col=None,
+              note="Rows from results/headline_subsets/{lorenz45,l96_5}/headline.csv. bound_* = **bound**; PF_* (history "
+                   "reference), DI_*, persistence_* = **reference**; history_ref_label marks rows above the 5% fallback "
+                   "limit as unreliable (the 10-bit rows at both 1,500 and 3,000 particles); p0 = **estimate**.")
+
     p = R / "exchange_law" / "predicted_vs_measured.csv"
     rows, sha = read_csv(p)
     table(out, "X", "Exchange law: predicted vs measured (Δ = 0.02, 1,000 states)", p,
@@ -128,7 +145,11 @@ def main():
               "delta_heldout_over_sigma_A", "heldout_unseen_frac"])):
         p = R / "dimension" / f"{name}.csv"
         rows, sha = read_csv(p)
-        table(out, f"D{name[:2].upper()}", title, p, cols, rows, sha)
+        # section codes are fixed: DDI distortion, DDH decode-and-integrate vs rate (was a duplicate DDI before
+        # 2026-09-25, WO extension E0.1), DRV residual VQ, DSC scalar quantization
+        code = {"distortion_kmeans": "DDI", "di_vs_kmeans_rate": "DDH", "rvq_oracle": "DRV",
+                "scalar_quantization": "DSC"}[name]
+        table(out, code, title, p, cols, rows, sha)
 
     p = R / "history" / "history.csv"
     rows, sha = read_csv(p)
