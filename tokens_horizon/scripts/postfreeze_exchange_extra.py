@@ -30,7 +30,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 import numpy as np  # noqa: E402
 
-from th import config  # noqa: E402
+from th import config, score  # noqa: E402
 
 FZ = config.freeze()
 EL = FZ["exchange_law"]
@@ -67,7 +67,9 @@ def exchange_variants():
         Hs = h["H"][::-1]                         # (15, n_h) aligned with x
         Hm = Hs.mean(1)
         rng = np.random.default_rng(FZ["seeds"]["bootstrap_seed"])
-        hb = rng.integers(0, Hs.shape[1], (REPS, Hs.shape[1]))
+        # release gate B5 (Amendment 2): resample h states by calibration trajectory
+        from th import exchange as ex
+        hb = score.cluster_boot_indices(ex.h_states(system)[2], REPS, rng)
         Hb = np.stack([Hs[:, b].mean(1) for b in hb])            # (REPS, 15)
         for R in RATES:
             z = np.load(RUNS / f"di_{system}_R{R}.npz")

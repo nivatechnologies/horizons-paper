@@ -108,3 +108,17 @@ def outlast(H_forecaster, H_bound):
     """Per-state strict outlast fraction and tie fraction (forecaster vs bound, same states)."""
     Ha, Hb = np.atleast_2d(H_forecaster), np.asarray(H_bound)
     return dict(outlast=float((Ha > Hb[None]).mean()), ties=float((Ha == Hb[None]).mean()))
+
+
+def cluster_boot_indices(groups, reps, rng):
+    """Release gate B5 (Amendment 2): bootstrap by cluster. groups (n,) cluster id per state (e.g. calibration
+    trajectory). Each replicate resamples clusters with replacement and keeps every state of each drawn cluster.
+    Returns a list of index arrays (variable length)."""
+    groups = np.asarray(groups)
+    uniq, inv = np.unique(groups, return_inverse=True)
+    members = [np.flatnonzero(inv == g) for g in range(len(uniq))]
+    out = []
+    for _ in range(reps):
+        draw = rng.integers(0, len(uniq), len(uniq))
+        out.append(np.concatenate([members[g] for g in draw]))
+    return out

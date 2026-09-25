@@ -160,6 +160,8 @@ def analyse(system, lyap_dky):
     delta_hat = {int(R): float(np.sqrt(dist["sq_by_traj"][drates.index(R)].sum() / dist["count"].sum()) / sA)
                  for R in RATES}
     h = {o: np.load(RUNS / f"h_{system}_{o}.npz") for o in ORIENTS}
+    global H_TRAJ
+    H_TRAJ = ex.h_states(system)[2]                  # calibration trajectory id of each h state (B5 cluster unit)
     dl = h["fresh"]["rel_deltas"]
     x = np.log(1 / dl)
     res = dict(system=system, lam=lam, sigma_A=sA, d_ky=lyap_dky, rel_deltas=dl.tolist(), delta_hat=delta_hat)
@@ -169,7 +171,9 @@ def analyse(system, lyap_dky):
         H, c = h[o]["H"], h[o]["crossed"]
         Hm = H.mean(1)
         rng = np.random.default_rng(FZ["seeds"]["bootstrap_seed"])
-        bi = boot_idx(H.shape[1], reps, rng)
+        # release gate B5 (Amendment 2): h states share calibration trajectories with overlapping windows, so the
+        # resampling unit is the calibration trajectory (every h state of each drawn trajectory)
+        bi = score.cluster_boot_indices(H_TRAJ, reps, rng)
         Hb = np.stack([H[:, b].mean(1) for b in bi])                     # (reps, 15)
         slope_cd = np.gradient(Hm, x)
         slope_cd_b = np.gradient(Hb, x, axis=1)
@@ -244,7 +248,8 @@ def analyse(system, lyap_dky):
         if ok.sum() < 10:
             continue
         t = tau[i][ok]
-        bs = np.array([np.log(2) / t[rng.integers(0, len(t), len(t))].mean() for _ in range(reps)]) / lam
+        g = H_TRAJ[ok]                                # B5: resample calibration trajectories
+        bs = np.array([np.log(2) / t[b].mean() for b in score.cluster_boot_indices(g, reps, rng)]) / lam
         fsle_rows.append(dict(system=system, scale_rel=float(levels[i]), fsle_over_lambda=float(np.log(2) / t.mean() / lam),
                               ci95_lo=float(np.quantile(bs, 0.025)), ci95_hi=float(np.quantile(bs, 0.975)),
                               frac_reached=float(ok.mean()), label="estimate"))
