@@ -268,6 +268,13 @@ def main():
              "Gate outcome: FAIL for the calibration-state interval families (h curve, predictions, r, FSLE, P2 variants), "
              "rerun with the calibration trajectory as the unit (100b159); no frozen reading changed. All other families "
              "pass. Release may proceed on this gate once it is recorded in the results note."),
+            ("e53_larger_model.csv", "K2G", "POST-FREEZE EXTENSION K2: E5.3 larger and longer model (width 256, 6 layers, "
+             "40,000 steps) vs frozen size (Lorenz-63, Delta 0.05)",
+             ["arm", "bits", "H_frozen_size", "H_frozen_ci95", "H_large", "H_large_ci95", "diff_large_minus_frozen",
+              ("90%", ci("diff_ci90_lo", "diff_ci90_hi")), ("95%", ci("diff_ci95_lo", "diff_ci95_hi")), "reading",
+              "params_frozen", "params_large", "train_flops_frozen", "train_flops_large", "large_fraction_of_bound",
+              "large_outlast_bound"],
+             "Paired on the same 1,000 states, seeds 0-2 per arm; frozen margins. Cells **learned**, differences **estimate**."),
             ("a8_protocol_facts.csv", "K2E", "POST-FREEZE EXTENSION K2: A8.4 confirmation-block protocol facts",
              ["system", "confirmation_trajectories", "history_panel_states", "steps_per_trajectory", "dt",
               "pre_history_time", "post_time", "window_time_W_over_lambda", "start_spacing", "bootstrap_unit"],
