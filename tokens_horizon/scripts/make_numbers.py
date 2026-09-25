@@ -232,6 +232,76 @@ def main():
             rows, sha = read_csv(p)
             table(out, sec, title, p, cols, rows, sha, note=note)
 
+    # ---- POST-FREEZE EXTENSION, section K (systems, tokenizers, bounds); values read from files, never retyped
+    import yaml as _yaml
+    efz = _yaml.safe_load((PKG / "ext_freeze.yaml").read_text())
+    ks_dir = R / "ext" / "ks"
+    if (ks_dir / "data_blocks.json").exists():
+        blocks = json.loads((ks_dir / "data_blocks.json").read_text())
+        sysrows = []
+        for name, spec in efz["ks"]["systems"].items():
+            ly = spec["lyapunov"]
+            bj = blocks.get(name, {})
+            sig = bj.get("sigma_A") if isinstance(bj, dict) else None
+            sysrows.append(dict(system=name, L=spec["L"], N=spec["N"], dt=spec["dt"], lam_max=ly["lam_max"],
+                                lam_max_se=ly["lam_max_se"], d_ky=ly["d_ky"], window_time=spec["window_time"],
+                                frame_intervals=" ".join(map(str, spec["frame_intervals"])), sigma_A_calibration=sig,
+                                label="estimate (system property)"))
+        kz = efz.get("kolmogorov")
+        if kz:
+            kb = R / "ext" / "kolmo" / "data_blocks.json"
+            ksig = None
+            if kb.exists():
+                kj = json.loads(kb.read_text())
+                ksig = kj.get("sigma_A") or (kj.get("kolmo40") or {}).get("sigma_A")
+            sysrows.append(dict(system=kz["name"], L="2pi x 2pi", N=kz["numerics"]["N"], dt=kz["numerics"]["dt"],
+                                lam_max=kz["lyapunov"]["lam_max"], lam_max_se=kz["lyapunov"]["lam_max_se"], d_ky="",
+                                window_time=kz["window_time"], frame_intervals=" ".join(map(str, kz["frame_intervals"])),
+                                sigma_A_calibration=ksig, label="estimate (system property)"))
+        table(out, "KSYS", "POST-FREEZE EXTENSION K: extension systems (from ext_freeze.yaml and data_blocks.json)",
+              PKG / "ext_freeze.yaml", ["system", "L", "N", "dt", "lam_max", "lam_max_se", "d_ky", "window_time",
+                                        "frame_intervals", "sigma_A_calibration"], sysrows, blocks.get("git_sha", ""))
+    for fname, sec, title, cols, lab, note in (
+            ("e3_rows.csv", "KE3", "POST-FREEZE EXTENSION K: KS E3 bound and references, every tokenizer, Delta, eps, score",
+             ["tokenizer", "family", "P", "b", "total_bits", "delta", "eps", "start", "kind", "restricted_mean",
+              ("95%", ci("ci95_lo", "ci95_hi")), "frac_no_cross", "median", "p0", "S1", "S3", "S10", "n"], "label",
+             "kind = bound (**bound**), di (decode-and-integrate) and persistence (**reference**). Residual VQ has no bound "
+             "(Amendment 1 A1). Rates are nominal P*b bits per frame. Patch family: 'spatially distributed tokenization at "
+             "practical per-token vocabulary sizes, with an exactly analyzable product decoder'. The decode-and-integrate "
+             "integrator projects its decoded initial condition onto the retained modes (reference trajectory only)."),
+            ("a9_result.csv", "KA9", "POST-FREEZE EXTENSION K: A9 prospective test (KS L=22 whole-state, committed predictor 468cabc)",
+             ["R", "observed", ("95%", ci("observed_ci95_lo", "observed_ci95_hi")), "censored_frac", "H_hat", "diff",
+              ("90%", ci("diff_ci90_lo", "diff_ci90_hi")), "criterion", "n"], None,
+             "observed = **reference** (decode-and-integrate), H_hat and diff = **estimate**. This tests prospective "
+             "interpolation across held-out rates within the specified system, tokenizer family and rate range; it does "
+             "not test extrapolation or cross-system transfer."),
+            ("d_eff.csv", "KDEF", "POST-FREEZE EXTENSION K: D_eff per system and family (per P, never pooled)",
+             ["system", "family", "P", "fit", "rates", "d_eff", ("95%", ci("ci95_lo", "ci95_hi")), "d_patch",
+              "P_times_d_patch", "n_heldout_traj"], None,
+             "**estimate**. For patch families D_eff estimates P*d_patch for that factorization, not the attractor dimension."),
+            ("di_slopes.csv", "KDIS", "POST-FREEZE EXTENSION K: decode-and-integrate slope per bit",
+             ["system", "family", "P", "delta", "eps", "rates", "di_slope_per_bit", ("95%", ci("ci95_lo", "ci95_hi"))],
+             "label", ""),
+            ("thresholds.csv", "KTHR", "POST-FREEZE EXTENSION K: smallest tested rate reaching 1, 3, 10 Lyapunov times (A3 rule)",
+             ["system", "family", "P", "kind", "delta", "eps", "tau", "smallest_tested_rate", "restricted_mean_at_rate",
+              "ci95_lo_at_rate", "monotone", "monotone_exceptions", "smallest_tested_rate_lower95", "S1", "S3", "S10", "p0"],
+             "label", "'Smallest tested rate for this tokenizer family', not a minimum bit requirement; blank = not reached "
+             "within the tested grid."),
+            ("calibration_adequacy.csv", "KCAL", "POST-FREEZE EXTENSION K: calibration adequacy (A5)",
+             ["codebook", "half", "K", "n_train", "samples_per_code", "patches", "independent_trajectories", "iterations",
+              "converged", "empty_frac", "duplicate_frac", "stop_rule_flag", "delta_fit_over_sigmaA",
+              "delta_heldout_over_sigmaA", "heldout_occupancy", "heldout_unused_rate", "bound_full", "bound_half",
+              "bound_change", "method"], None, "**estimate**. Codebooks flagged 'not converged' are used and labelled "
+             "(stop rule)."),
+            ("e4_candidates_validation.csv", "KE4", "POST-FREEZE EXTENSION K: E4 candidates on the validation panel (300 states)",
+             ["config_id", "system", "P", "b", "total_bits", "delta", "val_restricted_mean", "val_S1", "val_p0"], None,
+             "**bound** on the validation block only. Selection: none; contrast: none. 'No tested configuration satisfying "
+             "the E4 size requirements had a validation restricted-mean support horizon below one Lyapunov time.'")):
+        p = ks_dir / fname
+        if p.exists():
+            rows, sha = read_csv(p)
+            table(out, sec, title, p, cols, rows, sha, label_col=lab, note=note)
+
     # ---- POST-FREEZE EXTENSION, section K2 (learned cells and controls; EXT_FREEZE part 1 and Amendment 1)
     ext = R / "ext"
     for fname, sec, title, cols, note in (
