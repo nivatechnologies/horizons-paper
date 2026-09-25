@@ -49,7 +49,35 @@ def fmt(v):
     return f"{f:.4f}"
 
 
+SECTIONS = []
+
+
+class NumbersError(RuntimeError):
+    pass
+
+
+def ci(lo, hi):
+    f = lambda r: f"[{fmt(r.get(lo))}, {fmt(r.get(hi))}]" if r.get(lo) not in (None, "") else ""
+    f.needs = (lo, hi)
+    return f
+
+
 def table(out, sec, title, path, cols, rows, sha, where=None, label_col="label", note=""):
+    """Amendment 1 (A11): a duplicate section code, an empty table, or a requested column absent from the source
+    file raises NumbersError instead of silently yielding blanks or picking one occurrence."""
+    if sec in SECTIONS:
+        raise NumbersError(f"duplicate section code {sec}")
+    SECTIONS.append(sec)
+    if not rows:
+        raise NumbersError(f"section {sec}: no rows in {path}")
+    header = set(rows[0].keys())
+    for c in cols:
+        needed = (c,) if isinstance(c, str) else getattr(c[1], "needs", ())
+        missing = [k for k in needed if k not in header]
+        if missing:
+            raise NumbersError(f"section {sec}: unresolved column(s) {missing} in {path}")
+    if label_col and label_col not in header:
+        raise NumbersError(f"section {sec}: unresolved label column {label_col} in {path}")
     rows = [r for r in rows if (where is None or where(r))]
     rel = Path(path).relative_to(PKG)
     out.append(f"\n## {sec}. {title}\n\nSource `{rel}` · SHA `{sha}`" + (f"\n\n{note}" if note else "") + "\n")
@@ -65,10 +93,6 @@ def table(out, sec, title, path, cols, rows, sha, where=None, label_col="label",
                 vals.append(c[1](r))
         lab = r.get(label_col, "") if label_col else ""
         out.append(f"| {sec}-{i} | " + " | ".join(vals) + f" | {lab} |")
-
-
-def ci(lo, hi):
-    return lambda r: f"[{fmt(r.get(lo))}, {fmt(r.get(hi))}]" if r.get(lo) not in (None, "") else ""
 
 
 def main():
@@ -88,8 +112,9 @@ def main():
             "bound_eps0.3_future_nocross", "PF_eps0.3_future_mean", "PF_eps0.3_future_ci95", "DI_eps0.3_future_mean",
             "DI_eps0.3_future_ci95", "persistence_eps0.3_future_mean", "climatology_eps0.3_future_mean",
             "pf_fallback_rate", "history_ref_label"]
-    cols = [c for c in cols if rows and c in rows[0]]
-    extra = [c for c in (rows[0].keys() if rows else []) if "outlast" in c and "eps0.3_future" in c][:3]
+    extra = [c for c in rows[0].keys() if "outlast" in c and "eps0.3_future" in c][:3]
+    if not extra:
+        raise NumbersError("headline: no outlast columns found")
     table(out, "H", "Headline, lorenz28, primary score (bound: 1,000 states; history reference: 300)",
           R / "headline" / "headline.csv", cols + extra, rows, sha, label_col=None,
           note="Columns bound_* are **bound**; PF_* (history reference), DI_*, persistence_*, climatology_* are "
@@ -240,6 +265,11 @@ def main():
               note="T_info is a **bound** (single-frame information bound on ensemble RMSE); T_codebook, T_projected_DI "
                    "and the shares are **estimate**. Known-zero test: original threshold 1e-10 fails at 4 bits; "
                    "amended threshold 1e-6 (FREEZE.md Amendment 1) passes at every rate.")
+    import re as _re
+    ids = [m.group(1) for l in out for m in [_re.match(r"^\| ([A-Z0-9]+-\d+) \|", l)] if m]
+    dup = sorted({i for i in ids if ids.count(i) > 1})
+    if dup:
+        raise NumbersError(f"duplicate IDs: {dup[:10]} ({len(dup)} total)")
     (PKG / "NUMBERS.md").write_text("\n".join(out) + "\n")
     print("wrote NUMBERS.md", sum(1 for l in out if l.startswith("| ") and not l.startswith("| id")), "rows")
 

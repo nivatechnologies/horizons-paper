@@ -10,7 +10,10 @@ attained by patch-wise nearest decoding.
 
 k-means runs on the GPU in float32 with float64 accumulation of centroids (Lloyd iterations; init by a seeded sample
 of distinct data points; empty clusters re-seeded from the points farthest from their centroid, and counted).
-Distances for the bound are recomputed in float64 on the CPU from the frozen codebook.
+Distances for the bound are exact (Amendment 1, A1): brute force over all codes, float32 ranking certified by a
+rigorous rounding margin with float64 re-scoring, else float64 brute force (exact_nn). Code-neighbour candidate sets
+serve only to certify NON-crossing through an upper bound (d_C^2 <= UB <= T^2); a crossing is declared only from an
+exact d_C (certified_bound_crossings).
 """
 from __future__ import annotations
 
@@ -155,25 +158,50 @@ def code_neighbours(C, m=32, device="cuda:0", chunk=2048):
     return out
 
 
-def exact_nn(Xp, C_t, device="cuda:0", chunk=8192):
-    """Exact nearest code for rows of Xp (n, d) float64: brute force in float32 on the GPU for the argmin candidate
-    set (top-4), then the squared distance recomputed in float64 over those candidates on the CPU. Returns
-    (idx (n,), d2 (n,) float64)."""
+def exact_nn(Xp, C_t, device="cuda:0", chunk=8192, k=8):
+    """Exact nearest code (Amendment 1, A1): brute force over all codes.
+
+    Float32 GPU distances rank all codes; the top-k candidates are re-scored in float64. The float64 winner is
+    accepted only if its distance is below the (k+1)-th float32 distance minus a rigorous float32 rounding margin
+    err = 4 (d + 2) u (||x|| + max_j ||c_j||)^2, u = 2^-24, which bounds |d2_float32 - d2_exact| for every code; then
+    no code outside the candidate set can be nearer. Rows that fail the certificate are recomputed by float64 brute
+    force over all codes on the CPU. Returns (idx (n,), d2 (n,) float64, n_fallback)."""
     C64 = C_t["C64"]
     Ct, cn = C_t["C32"], C_t["cn"]
+    K, d = C64.shape
+    kk = min(k + 1, K)
+    cmax = float(np.sqrt((C64 ** 2).sum(1).max()))
+    u = 2.0 ** -24
     n = len(Xp)
     idx = np.empty(n, np.int64)
     d2o = np.empty(n)
+    n_fb = 0
     for s in range(0, n, chunk):
         xb64 = Xp[s:s + chunk]
         xb = torch.as_tensor(xb64, dtype=torch.float32, device=device)
         d2 = (xb * xb).sum(1, keepdim=True) - 2 * xb @ Ct.T + cn[None]
-        cand = d2.topk(min(4, Ct.shape[0]), largest=False).indices.cpu().numpy()      # (b, 4)
-        dd = ((xb64[:, None, :] - C64[cand]) ** 2).sum(-1)                              # float64 on candidates
-        k = dd.argmin(1)
-        idx[s:s + chunk] = cand[np.arange(len(k)), k]
-        d2o[s:s + chunk] = dd[np.arange(len(k)), k]
-    return idx, d2o
+        vals, cand = d2.topk(kk, largest=False)
+        vals, cand = vals.double().cpu().numpy(), cand.cpu().numpy()
+        cand_k = cand[:, :min(k, K)]
+        dd = ((xb64[:, None, :] - C64[cand_k]) ** 2).sum(-1)
+        j = dd.argmin(1)
+        best = dd[np.arange(len(j)), j]
+        bi = cand_k[np.arange(len(j)), j]
+        if kk > min(k, K):
+            xn = np.sqrt((xb64 ** 2).sum(1))
+            err = 4 * (d + 2) * u * (xn + cmax) ** 2
+            ok = best < vals[:, -1] - err
+        else:
+            ok = np.ones(len(j), bool)               # every code was a candidate
+        bad = np.flatnonzero(~ok)
+        for r in bad:                                # float64 brute force over all codes
+            full = ((C64 - xb64[r]) ** 2).sum(1)
+            bi[r] = full.argmin()
+            best[r] = full[bi[r]]
+        n_fb += len(bad)
+        idx[s:s + chunk] = bi
+        d2o[s:s + chunk] = best
+    return idx, d2o, n_fb
 
 
 def certified_bound_crossings(frame_patches, n_frames, C, thresholds, nbr=None, device="cuda:0", log=None):
@@ -198,13 +226,13 @@ def certified_bound_crossings(frame_patches, n_frames, C, thresholds, nbr=None, 
     n, P, d = X0.shape
     T2 = np.asarray(thresholds, float) ** 2
     nT = len(T2)
-    idx0, d20 = exact_nn(X0.reshape(-1, d), C_t, device)
+    idx0, d20, fb0 = exact_nn(X0.reshape(-1, d), C_t, device)
     codes = idx0.reshape(n, P)
     dC0 = np.sqrt(d20.reshape(n, P).sum(1))
     first = np.full((n, nT), n_frames + 1, np.int64)
     for k in range(nT):
         first[dC0 ** 2 > T2[k], k] = np.minimum(first[dC0 ** 2 > T2[k], k], 0)
-    n_exact, n_cert = n * P, 0
+    n_exact, n_cert, n_fb = n * P, 0, fb0
     for j in range(1, n_frames + 1):
         alive = (first == n_frames + 1).any(1)                       # still needs some threshold
         if not alive.any():
@@ -225,7 +253,8 @@ def certified_bound_crossings(frame_patches, n_frames, C, thresholds, nbr=None, 
         n_cert += int((~need).sum())
         d2 = ub.copy()
         if need.any():
-            ex_idx, ex_d2 = exact_nn(Xj[need].reshape(-1, d), C_t, device)
+            ex_idx, ex_d2, fb = exact_nn(Xj[need].reshape(-1, d), C_t, device)
+            n_fb += fb
             n_exact += int(need.sum()) * P
             d2[need] = ex_d2.reshape(-1, P).sum(1)
             new_codes[need] = ex_idx.reshape(-1, P)
@@ -238,4 +267,4 @@ def certified_bound_crossings(frame_patches, n_frames, C, thresholds, nbr=None, 
         if log and j % 200 == 0:
             log(f"  frame {j}/{n_frames}: alive {int(alive.sum())}, exact states so far {n_exact // P}, "
                 f"certified {n_cert}")
-    return first, dC0, dict(exact_patch_evals=n_exact, certified_state_frames=n_cert)
+    return first, dC0, dict(exact_patch_evals=n_exact, certified_state_frames=n_cert, float64_fallback_rows=n_fb)
