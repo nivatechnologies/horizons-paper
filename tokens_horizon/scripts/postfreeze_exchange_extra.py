@@ -14,7 +14,7 @@
     also over the frozen fit rates {6, 8, 10, 12}. 95% interval: bootstrap over panel states, paired across rates.
 (b) Every per-state and geometric-mean prediction carries the share of panel states whose initial error lies
     outside the calibrated h range (clamped share). Cells with a clamped share above 25% are marked uninformative.
-(a) slope x D_eff per system for both fit ranges, with a 95% interval propagated from both: the slope bootstrap
+(a) slope x D_eff per system for every fit range (4-12; even 6-12; all 6-12; all 8-12), with a 95% interval propagated from both: the slope bootstrap
     (panel states) and the D_eff bootstrap (150 calibration trajectories, the frozen system-table method) are
     independent, so each replicate multiplies one draw of each. Implied r = ln 2 / (slope x D_eff), interval from the
     same replicates. Shown beside section R's local r (fresh orientation, central differences) at codebook scales,
@@ -110,6 +110,10 @@ def exchange_variants():
 
 
 SLOPE_BOOTS = {}
+# fit ranges: all rates 4-12; the frozen even D_eff fit rates; and all rates starting at 6 and at 8 bits
+# (added 2026-09-25 so the paper can show whether the per-bit rate has settled)
+FITS = (("R4-12", RATES), ("fit_rates_6-12", EL["deff_fit_rates"]), ("R6-12", list(range(6, 13))),
+        ("R8-12", list(range(8, 13))))
 
 
 def di_slopes():
@@ -119,7 +123,7 @@ def di_slopes():
         H = np.stack([np.load(RUNS / f"di_{system}_R{R}.npz")["H"] for R in RATES])     # (9, n)
         n = H.shape[1]
         idx = lam_rng.integers(0, n, (REPS, n))
-        for name, rates in (("R4-12", RATES), ("fit_rates_6-12", EL["deff_fit_rates"])):
+        for name, rates in FITS:
             sel = [RATES.index(r) for r in rates]
             y = H[sel].mean(1)
             s = float(np.polyfit(rates, y, 1)[0])
@@ -167,12 +171,22 @@ def slope_times_deff():
         fr = [r for r in rrows if r["system"] == system and r["orientation"] == "fresh"]
         lo_d, hi_d = dhat[max(RATES)], dhat[min(RATES)]
         rloc = [float(r["r_central"]) for r in fr if lo_d <= float(r["delta_over_sigma_A"]) <= hi_d]
-        for name in ("R4-12", "fit_rates_6-12"):
+        rb_by_fit = {}
+        for name, _ in FITS:
             s0, sb = SLOPE_BOOTS[(system, name)]
             prod, prod_b = s0 * d0, sb * db
             r_impl = np.log(2) / prod if prod > 0 else float("nan")
             with np.errstate(divide="ignore"):
                 rb = np.where(prod_b > 0, np.log(2) / prod_b, np.nan)
+            rb_by_fit[name] = (r_impl, rb)
+            # settling check: paired difference of implied r, fit from 8 bits minus fit from 6 bits
+            # (both fits share the same bootstrap replicates of panel states and calibration trajectories)
+            settle = {}
+            if name == "R8-12":
+                r6, rb6 = rb_by_fit["R6-12"]
+                dd = rb - rb6
+                settle = dict(implied_r_R8_minus_R6=r_impl - r6, settle_ci95_lo=float(np.nanquantile(dd, .025)),
+                              settle_ci95_hi=float(np.nanquantile(dd, .975)))
             note = ("" if below_tol else
                     "calibration distortion never falls below the 0.3 sigma_A tolerance within 4-12 bits "
                     f"(12-bit delta = {dhat[12]:.3f} sigma_A); slope and r not meaningful as an exchange rate")
@@ -187,6 +201,8 @@ def slope_times_deff():
                             local_r_scale_range=f"{lo_d:.4f}-{hi_d:.4f} sigma_A" if rloc else "no h curve (section R covers 4 systems)",
                             local_r_ls_whole_range=float(fr[0]["r_ls_whole_range"]) if fr else float("nan"),
                             rates_below_tolerance=" ".join(map(str, below_tol)) or "none", note=note,
+                            implied_r_R8_minus_R6=settle.get("implied_r_R8_minus_R6", ""),
+                            settle_ci95_lo=settle.get("settle_ci95_lo", ""), settle_ci95_hi=settle.get("settle_ci95_hi", ""),
                             label="post-freeze estimate"))
     return out
 

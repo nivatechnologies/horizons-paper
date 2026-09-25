@@ -157,12 +157,12 @@ def main():
              "outcomes are unchanged; the tolerance column is informational. Per-state errors outside the calibrated "
              "h range are clamped to its end (clamped share shown next to every prediction), which biases those "
              "predictions upward; cells with more than 25% clamped are marked UNINFORMATIVE."),
-            ("data_axis_B_cells.csv", "P3", "POST-FREEZE: B on the 20,000 tu data axis next to A (Delta 0.05)",
+            ("data_axis_B_cells.csv", "P3", "POST-FREEZE: B and C (sigma = 0) on the 20,000 tu data axis next to A (Delta 0.05)",
              ["bits", "cell", "n_seeds", "H", ("95%", ci("ci95_lo", "ci95_hi"))],
              "Post-freeze, not pre-registered. Cells are **learned**."),
             ("data_axis_B_comparisons.csv", "P4", "POST-FREEZE: data-axis paired differences",
              ["bits", "a", "b", "diff_a_minus_b", ("90%", ci("ci90_lo", "ci90_hi")), ("95%", ci("ci95_lo", "ci95_hi")),
-              "reading"], "Post-freeze **estimate**; readings use the frozen margins, for information."),
+              "reading", "a_near_b"], "Post-freeze **estimate**; readings use the frozen margins, for information. \"near\" applies the frozen near margin with C (sigma = 0) as the reference."),
             ("di_slope.csv", "P5", "POST-FREEZE: least-squares decode-and-integrate slope (Lyapunov times per bit)",
              ["system", "fit", "rates", "slope_lyap_per_bit", ("95%", ci("ci95_lo", "ci95_hi")), "H_by_rate"],
              "Post-freeze **estimate**. Decode-and-integrate on the 1,000-state confirmation panel, Delta 0.02, future "
@@ -172,9 +172,12 @@ def main():
              ["system", "fit", "slope_lyap_per_bit", "d_eff", "slope_x_deff", ("95%", ci("slope_x_deff_lo", "slope_x_deff_hi")),
               "implied_r", ("95%", ci("implied_r_lo", "implied_r_hi")), "local_r_codebook_scales_median",
               "local_r_codebook_scales_min", "local_r_codebook_scales_max", "local_r_scale_range",
-              "local_r_ls_whole_range", "rates_below_tolerance", "note"],
+              "local_r_ls_whole_range", "rates_below_tolerance", "implied_r_R8_minus_R6",
+              ("95%", ci("settle_ci95_lo", "settle_ci95_hi")), "note"],
              "Post-freeze **estimate**. Intervals propagate the slope bootstrap (panel states) and the D_eff bootstrap "
-             "(calibration trajectories) jointly. Local r: fresh orientation, central differences at h-grid points "
+             "(calibration trajectories) jointly. Fits: all rates 4-12; the frozen even rates {6,8,10,12}; all rates 6-12; "
+             "all rates 8-12. The R8-12 rows carry the paired difference of implied r against the R6-12 fit (settling "
+             "check; shared bootstrap replicates). Local r: fresh orientation, central differences at h-grid points "
              "between the 12-bit and 4-bit calibration distortions. l96_10 reaches below the 0.3 sigma_A tolerance only "
              "at 12 bits and l96_20 never within 4-12 bits, so their slopes and implied r are not meaningful as "
              "exchange rates.")):

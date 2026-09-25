@@ -30,6 +30,7 @@ COMPUTE = [
     ["scripts/t3_learned.py", "run", "--grid", "stall"],
     ["scripts/t3_learned.py", "run", "--grid", "main"],
     ["scripts/t3_learned.py", "run", "--grid", "postfreeze_dataB"],
+    ["scripts/t3_learned.py", "run", "--grid", "postfreeze_dataC"],
 ]
 
 TABLES = [

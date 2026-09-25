@@ -1,5 +1,8 @@
 """POST-FREEZE (requested by Todd, 2026-09-25; not pre-registered). NUMBERS.md section P.
 
+Also C (sigma = 0) trained on the 20,000 tu data axis (Delta 0.05, seeds 0-2), paired with A on 20,000 tu at
+10 bits (and 6 bits for context), and with C on 2,000 tu.
+
 B trained on the 20,000 tu data axis (1,000 training trajectories) at 6 and 10 bits, Delta 0.05, seeds 0-2
 (runs/learned/postfreeze/), reported next to A's frozen data-axis cells and the 2,000 tu B and A cells, on the same
 1,000 confirmation states, primary score. Paired differences use the frozen margins, for information.
@@ -21,8 +24,10 @@ OUT = config.RESULTS / "postfreeze"
 
 
 def stack(sub, arm, bits, traj):
-    tag = f"lorenz28_{arm}_b{bits}_D0.05_s*" + ("_traj1000" if traj else "")
-    runs = [d for d in sorted((L / sub).glob(tag)) if (d / "done").exists() and (("_traj1000" in d.name) == traj)]
+    import re
+    noise = r"_n0\.0" if arm == "C" else ""
+    pat = re.compile(rf"^lorenz28_{arm}_b{bits}_D0\.05_s\d+{noise}" + ("_traj1000$" if traj else "$"))
+    runs = [d for d in sorted((L / sub).iterdir()) if pat.match(d.name) and (d / "done").exists()]
     return np.stack([np.load(d / "eval.npz")[f"H_{P}"] for d in runs]), [d.name for d in runs]
 
 
@@ -38,11 +43,22 @@ def main():
             cells.append(dict(bits=bits, delta=0.05, cell=key, n_seeds=len(names), H=m, ci95_lo=lo, ci95_hi=hi,
                               runs=" ".join(names),
                               label="learned" + (" (post-freeze)" if key == "B 20k" else " (frozen grid)")))
-        for a, b in (("B 20k", "B 2k"), ("A 20k", "A 2k"), ("A 20k", "B 20k"), ("A 2k", "B 2k")):
+        for key, sub, traj in (("C 20k", "postfreeze", True), ("C 2k", "main", False)):
+            H[key], names = stack(sub, "C", 0, traj)
+            m, lo, hi = score.bootstrap_mean(H[key])
+            cells.append(dict(bits=bits, delta=0.05, cell=key + " (sigma=0, no rate)", n_seeds=len(names), H=m,
+                              ci95_lo=lo, ci95_hi=hi, runs=" ".join(names),
+                              label="learned" + (" (post-freeze)" if key == "C 20k" else " (frozen grid)")))
+        for a, b in (("B 20k", "B 2k"), ("A 20k", "A 2k"), ("A 20k", "B 20k"), ("A 2k", "B 2k"),
+                     ("C 20k", "C 2k"), ("A 20k", "C 20k"), ("B 20k", "C 20k"), ("A 2k", "C 2k")):
             pd = score.paired_diff(H[a], H[b])
+            near = score.near(score.paired_diff(H[b], H[a])) if b.startswith("C") else ""
             comps.append(dict(bits=bits, delta=0.05, a=a, b=b, diff_a_minus_b=pd["diff"], ci90_lo=pd["ci90"][0],
                               ci90_hi=pd["ci90"][1], ci95_lo=pd["ci95"][0], ci95_hi=pd["ci95"][1],
-                              reading="; ".join(score.reading(pd)), label="post-freeze estimate"))
+                              reading="; ".join(score.reading(pd)),
+                              a_near_b=("near (upper 95% of b - a <= 0.15)" if near is True else
+                                        ("not near" if near is False else "")),
+                              label="post-freeze estimate"))
     sha = config.git_sha()
     for name, rows in (("data_axis_B_cells", cells), ("data_axis_B_comparisons", comps)):
         with open(OUT / f"{name}.csv", "w", newline="") as fh:

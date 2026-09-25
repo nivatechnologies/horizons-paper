@@ -36,6 +36,10 @@ def jobs(grid):
         # POST-FREEZE (Todd, 2026-09-25): B on the 20,000 tu data axis, beside A's frozen data-axis cells
         return [dict(system="lorenz28", arm="B", bits=b, delta=0.05, seed=s, n_traj=1000, outdir="postfreeze")
                 for b in (6, 10) for s in seeds]
+    if grid == "postfreeze_dataC":
+        # POST-FREEZE (Todd, 2026-09-25): C (sigma = 0) on the 20,000 tu data axis, paired with A 20k at 10 bits
+        return [dict(system="lorenz28", arm="C", bits=0, delta=0.05, seed=s, noise=0.0, n_traj=1000,
+                     outdir="postfreeze") for s in seeds]
     if grid == "stall":
         for b in (4, 6, 8, 10):
             for d in D:
