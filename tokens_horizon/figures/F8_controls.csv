@@ -1,0 +1,45 @@
+# git_sha=03727fd9e782c8597253c912295fa76051d17597-dirty; POST-FREEZE EXTENSION F8
+panel,cell,series,value,ci95_lo,ci95_hi,label
+a,b4_D0.02,trained_mlp,1.13631,1.08939,1.1846,learned
+a,b4_D0.05,trained_mlp,1.08536,1.03403,1.13573,learned
+a,b4_D0.1,trained_mlp,1.0183,0.960193,1.07421,learned
+a,b6_D0.02,trained_mlp,1.08259,1.02239,1.14992,learned
+a,b4_D0.02,untrained_mlp,0.569607,0.528447,0.613028,learned
+a,b4_D0.05,untrained_mlp,0.520091,0.483982,0.5609,learned
+a,b4_D0.1,untrained_mlp,0.51321,0.482298,0.548586,learned
+a,b6_D0.02,untrained_mlp,0.869071,0.81944,0.921497,learned
+a,b4_D0.02,tokhist,2.20721,2.13339,2.27961,learned
+a,b4_D0.05,tokhist,1.83429,1.76003,1.90625,learned
+a,b4_D0.1,tokhist,1.4455,1.38764,1.50924,learned
+a,b6_D0.02,tokhist,2.42884,2.3586,2.50354,learned
+b,b4_D0.02,A,0.862983,0.839623,0.885445,estimate
+b,b4_D0.05,A,0.814968,0.784665,0.844812,estimate
+b,b4_D0.1,A,0.762033,0.732794,0.790385,estimate
+b,b4_D0.02,persistence,0.401617,0.367925,0.43531,estimate
+b,b4_D0.05,persistence,0.136364,0.110193,0.163912,estimate
+b,b4_D0.1,persistence,0.0526316,0.0377868,0.0688259,estimate
+b,b4_D0.02,random_code,0.00754717,0.00485175,0.0105121,estimate
+b,b4_D0.05,random_code,0.00909091,0.00578512,0.0126722,estimate
+b,b4_D0.1,random_code,0.0116059,0.00782726,0.0156545,estimate
+b,b4_D0.02,B_snapped,0.812668,0.786247,0.838282,estimate
+b,b4_D0.05,B_snapped,0.747016,0.716713,0.7764,estimate
+b,b4_D0.1,B_snapped,0.693657,0.659019,0.727845,estimate
+c,b4_D0.02,B,1.54036,1.47344,1.61279,learned
+c,b4_D0.05,B,1.37744,1.32157,1.43127,learned
+c,b4_D0.1,B,1.26471,1.20794,1.32054,learned
+c,b4_D0.02,B_snapped,0.118006,0.110876,0.125569,learned
+c,b4_D0.05,B_snapped,0.214401,0.201741,0.227698,learned
+c,b4_D0.1,B_snapped,0.373907,0.353989,0.394248,learned
+c,b4_D0.02,bound,0.137051,0.128396,0.14634,bound
+c,b4_D0.05,bound,0.263274,0.246616,0.279935,bound
+c,b4_D0.1,bound,0.471504,0.446874,0.498576,bound
+d,A 4 b,H_frozen_size,0.2293238885,0.2153,0.2433,learned
+d,B 4 b,H_frozen_size,1.3774371502499998,1.3216,1.4313,learned
+d,A 10 b,H_frozen_size,2.3098821439166666,2.2413,2.3804,learned
+d,B 10 b,H_frozen_size,1.4847808890833336,1.4402,1.5312,learned
+d,C,H_frozen_size,3.0794253939166665,2.9462,3.2137,learned
+d,A 4 b,H_large,0.23566130350000003,0.2223,0.2501,learned
+d,B 4 b,H_large,1.994656104,1.9205,2.0696,learned
+d,A 10 b,H_large,2.2913376605,2.2203,2.364,learned
+d,B 10 b,H_large,2.598687198916667,2.5001,2.6921,learned
+d,C,H_large,4.07753807825,3.8984,4.2956,learned
