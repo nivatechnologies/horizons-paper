@@ -144,3 +144,56 @@ two differ, it governs over part 1 above. It was applied before any further exte
   - the KS and Kolmogorov pilots (system properties, not results);
   - the E0 fixes and figures;
   - every original-freeze result.
+
+## Amendment 2 (2026-09-25)
+
+Source: the vault note `02-Projects/WO_AIConf-Tokens-Horizon-Extension-Amendment-2-2026-09-25.md`, read from Drive
+(7,073 bytes, md5 800ec1f5c905cb40c7a5cefc2c675dff). Copied verbatim to `gate/ext_amendment2_verbatim.md`. Where it
+differs from Amendment 1, it wins. It adds no new experiments and no grid changes.
+
+### What changed and why
+- **B1 (A9).**
+  - The KS L = 22 whole-state odd-rate (7, 9, 11) decode-and-integrate cells are skipped by all bulk E3 evaluation
+    until the A9 prediction artifact is committed.
+  - The committed predictor is Ĥ(R) = â + ŝR, fitted by OLS with the intercept free, to the per-rate restricted-mean
+    decode-and-integrate horizons at R ∈ {6, 8, 10, 12}, using E3's frozen Δ, ε = 0.3, W, panel and future-frame score.
+  - An even rate is excluded only if more than 5% of its states are censored at W.
+  - Pass per odd rate: the 90% bootstrap CI of (observed − Ĥ) lies within ±0.10, with Ĥ held fixed.
+  - Claim scope: "This tests prospective interpolation across held-out rates within the specified system, tokenizer
+    family and rate range; it does not test extrapolation or cross-system transfer."
+  - **Exposure record (B1.2), checked 2026-09-25 before any A9 work: NO.** No KS L = 22 whole-state odd-rate (or any)
+    decode-and-integrate horizon has been computed, logged or inspected. No KS tokenizer or codebook exists. The only
+    KS outputs are the pilots' system properties (λ, spectrum, resolution, σ_A) in `results/ext/ks_pilot.json`. This
+    record is repeated in the A9 prediction commit.
+- **B2 (E4 selection).**
+  - Negative wording: "No tested configuration satisfying the E4 size requirements had a validation restricted-mean
+    support horizon below one Lyapunov time."
+  - **Equal-rate candidate order, frozen now, before any validation bound exists or is inspected (none has been):**
+    (a) L = 22 before the larger domain; (b) the primary frame interval (λΔ ≈ 0.045) before the others; (c) the lower
+    validation mean support horizon; (d) the configuration ID in lexical order.
+  - "Support-permissive contrast": the smallest-bits configuration in the same family, domain, patching and Δ, with
+    more total bits, a validation restricted-mean support horizon ≥ 3 Lyapunov times and validation S_out(1) ≥ 0.9.
+    If none exists, train no contrast and say so. The grid is not extended.
+- **B3 (E4 masking contract, added to A7).**
+  - Predictions for frame t+1 use only frames through t, and targets are shifted by one whole frame.
+  - Full attention within an observed input frame is allowed; no attention reaches frame t+1 or later.
+  - Required test, committed and passing before any E4 training: change every token (or state) in frames t+1 onward
+    and assert that all predictions from the unchanged prefix are bitwise identical, for A, B and C. The pass is logged.
+- **B4 (survival and ties).**
+  - Survival: S_out(τ) = P(λT_out > τ), where a frame exactly at τ counts as "through τ". Censored states survive for
+    τ ≤ W, and τ > W is not reported. τ = 1, 3, 10 (10 only where W ≥ 10).
+  - Tie statistic: P(VPT_model = T_out | Δ < T_out ≤ W, failure observed). Reported separately: automatic first-frame
+    cases (T_out = Δ), and jointly censored cases, which are not ties.
+  - Applies to A, persistence, random-code, snapped B, and every E4 cell.
+  - **This supersedes the tie columns already produced in NUMBERS K2B (A8.2) and K2C (A8.1).** They are kept, marked
+    superseded, and recomputed under B4.
+- **B5 (release gate, bootstrap unit).** Checked against the code before release; see the results note and the session
+  review for the outcome. A first reading of the code:
+  - **Confirmation panels:** one state per independent trajectory (`th/data.py` `panel`: n Gaussian starts, each burned
+    in, integrated separately), and `th/score.py` resamples states. Independent.
+  - **Calibration-state CIs:** the exchange-law h curve and prediction intervals, r by orientation, FSLE, and the
+    post-freeze per-state/geometric variants resample individual calibration states. Several of these come from the
+    same calibration trajectory, 0.1 tu apart, with overlapping ~30 tu scoring windows.
+  - **So the check fails for those intervals.** They are rerun with the calibration trajectory as the resampling unit
+    (the same units on both sides of every paired difference). NUMBERS is regenerated, and every frozen reading whose
+    outcome changes is listed.

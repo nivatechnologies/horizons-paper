@@ -65,3 +65,20 @@ amendment_1:                 # WO amendment 1 (2026-09-25); verbatim in gate/ext
   a9_predictive: "KS L = 22 whole-state k-means: DI at {6,8,10,12} bits, fit slope, commit predictions for {7,9,11}, then compute them and report errors"
   make_numbers: "fail on duplicate IDs and unresolved lookups"
   superseded_results: ["results/ext/e5_tie_baselines.csv (tie excluding p_0)", "results/ext/e5.json tie part", "E5.1 reading sentence (numbers unaffected)"]
+
+amendment_2:                 # WO amendment 2 (2026-09-25); verbatim in gate/ext_amendment2_verbatim.md; wins over amendment 1
+  source_md5: 800ec1f5c905cb40c7a5cefc2c675dff
+  a9_order: "bulk E3 skips KS L=22 whole-state odd rates {7,9,11} until the A9 prediction artifact is committed"
+  a9_exposure_record: "NO (checked 2026-09-25): no KS tokenizer, codebook or decode-and-integrate output exists; only pilot system properties"
+  a9_predictor: "H_hat(R) = a + s R, OLS, intercept free, per-rate restricted-mean DI horizon (Lyapunov times) at R in {6,8,10,12}; E3 frozen Delta, eps 0.3, W, panel, future frames; exclude an even rate only if > 5% of states censored at W"
+  a9_pass: "per odd rate: 90% bootstrap CI of (observed - H_hat) within +-0.10 Lyapunov times, H_hat fixed"
+  a9_scope: "tests prospective interpolation across held-out rates within the specified system, tokenizer family and rate range; not extrapolation or cross-system transfer"
+  e4_negative_wording: "No tested configuration satisfying the E4 size requirements had a validation restricted-mean support horizon below one Lyapunov time."
+  e4_equal_rate_order: ["L = 22 before larger domain", "primary frame interval (lambda*Delta ~ 0.045) before others", "lower validation mean support horizon", "configuration ID, lexical"]
+  e4_validation_bounds_inspected_before_order_frozen: false
+  e4_contrast: "support-permissive contrast: smallest-bits config, same family/domain/patching/Delta, more total bits, validation restricted-mean support horizon >= 3 and validation S_out(1) >= 0.9; none -> no contrast, no grid extension"
+  e4_masking: "predictions for frame t+1 use frames <= t only; targets shifted by one whole frame; full attention within an observed input frame; no attention into frame t+1 or later; bitwise prefix-invariance test for A, B, C committed and passing before any E4 training"
+  survival: "S_out(tau) = P(lambda T_out > tau), frame at tau counts as through tau; censored states survive for tau <= W; tau in {1,3,10}, 10 only if W >= 10"
+  ties: "P(VPT_model = T_out | Delta < T_out <= W, failure observed); report automatic first-frame cases (T_out = Delta) and jointly censored cases separately (not ties)"
+  superseded_by_B4: ["NUMBERS K2B tie columns (A8.2)", "NUMBERS K2C tie columns (A8.1)"]
+  b5_release_gate: "confirmation panels: independent trajectories, state resampling valid; calibration-state CIs (h curve, predictions, r, FSLE, post-freeze variants) resample states sharing trajectories with overlapping windows -> rerun with calibration trajectory as unit; list frozen readings whose outcome changes; record outcome in results note before release"
