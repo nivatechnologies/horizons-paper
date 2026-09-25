@@ -1,0 +1,58 @@
+{
+ "label": "post-freeze extension; A9 result (Amendment 2 B1), reference (decode-and-integrate)",
+ "git_sha": "468cabcd2ad7429c767ce068cd6bd796bb491265-dirty",
+ "prediction_commit": "468cabc",
+ "predictor": {
+  "form": "H_hat(R) = a + s R (OLS, intercept free)",
+  "a": -0.2535544817919998,
+  "s": 0.053592524848
+ },
+ "delta": 0.92,
+ "eps": 0.3,
+ "score": "restricted-mean decode-and-integrate horizon, future frames, W = 27 Lyapunov times, confirmation panel 1,000 states (Lyapunov times)",
+ "rule": "per odd rate: 90% bootstrap CI (states) of (observed - H_hat) within +-0.10, H_hat fixed",
+ "rows": [
+  {
+   "R": 7,
+   "observed": 0.1247594704,
+   "observed_ci95_lo": 0.115029808092,
+   "observed_ci95_hi": 0.13521089101599995,
+   "censored_frac": 0.0,
+   "H_hat": 0.12159319214400022,
+   "diff": 0.003166278255999786,
+   "diff_ci90_lo": -0.005211072464000216,
+   "diff_ci90_hi": 0.01182062202399978,
+   "criterion": "criterion met",
+   "n": 1000
+  },
+  {
+   "R": 9,
+   "observed": 0.17966264528,
+   "observed_ci95_lo": 0.167634841464,
+   "observed_ci95_hi": 0.192049639268,
+   "censored_frac": 0.0,
+   "H_hat": 0.22877824184000017,
+   "diff": -0.049115596560000176,
+   "diff_ci90_lo": -0.059429646640000174,
+   "diff_ci90_hi": -0.038889373544000176,
+   "criterion": "criterion met",
+   "n": 1000
+  },
+  {
+   "R": 11,
+   "observed": 0.31928515728,
+   "observed_ci95_lo": 0.298113204916,
+   "observed_ci95_hi": 0.339599106788,
+   "censored_frac": 0.0,
+   "H_hat": 0.33596329153600024,
+   "diff": -0.016678134256000246,
+   "diff_ci90_lo": -0.03375036431200024,
+   "diff_ci90_hi": -0.00010359089600024691,
+   "criterion": "criterion met",
+   "n": 1000
+  }
+ ],
+ "scope": "tests prospective interpolation across held-out rates within the specified system, tokenizer family and rate range; not extrapolation or cross-system transfer",
+ "scope_sentence": "This tests prospective interpolation across held-out rates within the specified system, tokenizer family and rate range; it does not test extrapolation or cross-system transfer.",
+ "decode_and_integrate_note": "the integrator projects the decoded initial condition onto modes 1..M (reference trajectory only)"
+}

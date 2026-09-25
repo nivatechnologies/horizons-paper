@@ -133,6 +133,12 @@ def assemble():
 if __name__ == "__main__":
     if sys.argv[1] == "assemble":
         assemble()
+    elif sys.argv[1] == "run_odd":
+        # after the A9 prediction commit (468cabc): whole-state odd rates with decode-and-integrate
+        device, nproc = sys.argv[2], int(sys.argv[3])
+        for name in sys.argv[4:]:
+            assert name.startswith("ks22_whole_b") and int(name.split("_b")[1]) in ODD
+            run(name, device, nproc, allow_odd_di=True)
     else:
         device, nproc = sys.argv[2], int(sys.argv[3])
         for name in sys.argv[4:]:

@@ -1,0 +1,168 @@
+{
+ "ks22": {
+  "system": "ks22",
+  "dt": 0.0025,
+  "N": 64,
+  "L": 22.0,
+  "burn_in_time": 1000.0,
+  "calibration_fit": {
+   "n_traj": 1650,
+   "samples_per_traj": 2000,
+   "sample_every": 1.84,
+   "seed": 10600,
+   "states": 3300000
+  },
+  "sigma_A": 9.485974215525127,
+  "sigma_A_note": "RMS Euclidean distance (over the N grid points) of calibration fit states to their mean",
+  "calibration_mean_norm": 0.013018054608035443,
+  "sigma_A_traj_spread": 0.0454790237404528,
+  "calibration_heldout": {
+   "n_traj": 165,
+   "samples_per_traj": 2000,
+   "sample_every": 1.84,
+   "seed": 10601,
+   "states": 330000
+  },
+  "training": {
+   "n_traj": 100,
+   "traj_time": 370.0,
+   "lyapunov_times": 1811,
+   "n_traj_stored": 1000,
+   "seed": 20600,
+   "frames": {
+    "0.37": 1001,
+    "0.92": 403,
+    "1.84": 202
+   }
+  },
+  "validation": {
+   "n_traj": 50,
+   "traj_time": 370.0,
+   "panel_states": 300,
+   "n_traj_stored": 50,
+   "seed": 30600,
+   "frames": {
+    "0.37": 1001,
+    "0.92": 403,
+    "1.84": 202
+   }
+  },
+  "panel_validation": {
+   "states": 300,
+   "seed": 30600,
+   "pre_frames": {
+    "0.37": 325,
+    "0.92": 130,
+    "1.84": 65
+   },
+   "frames": {
+    "0.37": 1826,
+    "0.92": 734,
+    "1.84": 367
+   },
+   "pre_time": 120.25,
+   "post_time": 555.25
+  },
+  "panel_confirmation": {
+   "states": 1000,
+   "seed": 40600,
+   "pre_frames": {
+    "0.37": 325,
+    "0.92": 130,
+    "1.84": 65
+   },
+   "frames": {
+    "0.37": 1826,
+    "0.92": 734,
+    "1.84": 367
+   },
+   "pre_time": 120.25,
+   "post_time": 555.25
+  },
+  "seconds": 1784.2101910114288
+ },
+ "git_sha": "fd992f14f775ec7dcf7aa436a08d3d776b639a10-dirty",
+ "label": "post-freeze extension",
+ "ks100": {
+  "system": "ks100",
+  "dt": 0.005,
+  "N": 256,
+  "L": 100.0,
+  "burn_in_time": 500.0,
+  "calibration_fit": {
+   "n_traj": 1000,
+   "samples_per_traj": 500,
+   "sample_every": 0.99,
+   "seed": 10700,
+   "states": 500000
+  },
+  "sigma_A": 21.001434013273187,
+  "sigma_A_note": "RMS Euclidean distance (over the N grid points) of calibration fit states to their mean",
+  "calibration_mean_norm": 0.12521238619798636,
+  "sigma_A_traj_spread": 0.21243161359270582,
+  "calibration_heldout": {
+   "n_traj": 100,
+   "samples_per_traj": 500,
+   "sample_every": 0.99,
+   "seed": 10701,
+   "states": 50000
+  },
+  "training": {
+   "n_traj": 100,
+   "traj_time": 199.0,
+   "lyapunov_times": 1811,
+   "n_traj_stored": 1000,
+   "seed": 20700,
+   "frames": {
+    "0.2": 996,
+    "0.495": 403,
+    "0.99": 202
+   }
+  },
+  "validation": {
+   "n_traj": 50,
+   "traj_time": 199.0,
+   "panel_states": 300,
+   "n_traj_stored": 50,
+   "seed": 30700,
+   "frames": {
+    "0.2": 996,
+    "0.495": 403,
+    "0.99": 202
+   }
+  },
+  "panel_validation": {
+   "states": 300,
+   "seed": 30700,
+   "pre_frames": {
+    "0.2": 323,
+    "0.495": 130,
+    "0.99": 65
+   },
+   "frames": {
+    "0.2": 1817,
+    "0.495": 734,
+    "0.99": 367
+   },
+   "pre_time": 64.66,
+   "post_time": 298.65
+  },
+  "panel_confirmation": {
+   "states": 1000,
+   "seed": 40700,
+   "pre_frames": {
+    "0.2": 323,
+    "0.495": 130,
+    "0.99": 65
+   },
+   "frames": {
+    "0.2": 1817,
+    "0.495": 734,
+    "0.99": 367
+   },
+   "pre_time": 64.66,
+   "post_time": 298.65
+  },
+  "seconds": 408.9668040275574
+ }
+}

@@ -6,3 +6,6 @@ tokens_horizon/runs/cache/
 tokens_horizon/runs/**/*.log
 # model weights: manifest committed instead (runs/learned/MANIFEST.csv)
 tokens_horizon/runs/learned/**/*.pt
+# KS/Kolmogorov codebooks (large): manifest committed instead (runs/ext/*/CODEBOOK_MANIFEST.csv)
+tokens_horizon/runs/ext/ks/codebooks/
+tokens_horizon/runs/ext/kolmo/codebooks/

@@ -1,0 +1,21 @@
+{
+ "config_id": "ks22_P32_b16_d1.84",
+ "system": "ks22",
+ "P": 32,
+ "b": 16,
+ "total_bits": 512,
+ "delta": 1.84,
+ "primary_delta": false,
+ "n_states": 300,
+ "val_restricted_mean": 27.0,
+ "val_frac_no_cross": 1.0,
+ "val_p0": 0.0,
+ "val_S1": 1.0,
+ "val_S3": 1.0,
+ "val_S10": 1.0,
+ "counters": {
+  "exact_patch_evals": 2718624,
+  "certified_state_frames": 5043,
+  "float64_fallback_rows": 0
+ }
+}
