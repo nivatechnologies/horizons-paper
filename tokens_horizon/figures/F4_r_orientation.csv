@@ -1,4 +1,4 @@
-# git_sha=424c7ed903113826fdf49ed3edb67961138fa959; all estimates; FSLE row stores lambda/FSLE so it shares the r axis
+# git_sha=5eec8b8e9aee4a077042b72ed041109041cd8a97-dirty; all estimates; FSLE rows store FSLE/lambda (same axis as r = lambda_eff/lambda)
 system,series,delta_or_scale_over_sigma_A,value,quantity,label
 lorenz28,fresh,0.316227766,1.485100298,r central difference,estimate
 lorenz28,fresh,0.177827941,1.7165596,r central difference,estimate
@@ -60,35 +60,35 @@ lorenz28,aligned_endpoint,0.0005623413252,1.034880927,r central difference,estim
 lorenz28,aligned_endpoint,0.000316227766,1.038006435,r central difference,estimate
 lorenz28,aligned_endpoint,0.000177827941,1.072733907,r central difference,estimate
 lorenz28,aligned_endpoint,0.0001,1.069090429,r central difference,estimate
-lorenz28,FSLE,1e-09,0.5191762935,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,2e-09,0.5267780093,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,4e-09,0.6672138318,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,8e-09,0.6764090345,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,1.6e-08,0.7644426509,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,3.2e-08,0.831565018,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,6.4e-08,0.9661624093,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,1.28e-07,0.9324248972,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,2.56e-07,1.015482133,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,5.12e-07,0.9499924364,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,1.024e-06,0.99835868,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,2.048e-06,1.044700412,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,4.096e-06,1.004602014,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,8.192e-06,0.9278272959,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,1.6384e-05,0.9628317606,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,3.2768e-05,1.013888646,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,6.5536e-05,1.001624022,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.000131072,1.005464064,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.000262144,0.9989203188,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.000524288,1.043289784,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.001048576,1.09234828,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.002097152,0.9586260003,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.004194304,0.9872173335,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.008388608,0.9472364879,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.016777216,0.9809086931,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.033554432,0.9740514752,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.067108864,0.9768335465,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.134217728,1.014110689,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz28,FSLE,0.268435456,1.04114772,lambda/FSLE (FSLE/lambda inverted),estimate
+lorenz28,FSLE,1e-09,1.926128008,FSLE/lambda,estimate
+lorenz28,FSLE,2e-09,1.89833285,FSLE/lambda,estimate
+lorenz28,FSLE,4e-09,1.498769888,FSLE/lambda,estimate
+lorenz28,FSLE,8e-09,1.478395392,FSLE/lambda,estimate
+lorenz28,FSLE,1.6e-08,1.308142604,FSLE/lambda,estimate
+lorenz28,FSLE,3.2e-08,1.202551789,FSLE/lambda,estimate
+lorenz28,FSLE,6.4e-08,1.035022674,FSLE/lambda,estimate
+lorenz28,FSLE,1.28e-07,1.072472435,FSLE/lambda,estimate
+lorenz28,FSLE,2.56e-07,0.9847539094,FSLE/lambda,estimate
+lorenz28,FSLE,5.12e-07,1.05263996,FSLE/lambda,estimate
+lorenz28,FSLE,1.024e-06,1.001644018,FSLE/lambda,estimate
+lorenz28,FSLE,2.048e-06,0.9572122198,FSLE/lambda,estimate
+lorenz28,FSLE,4.096e-06,0.9954190679,FSLE/lambda,estimate
+lorenz28,FSLE,8.192e-06,1.077786787,FSLE/lambda,estimate
+lorenz28,FSLE,1.6384e-05,1.038603047,FSLE/lambda,estimate
+lorenz28,FSLE,3.2768e-05,0.9863016063,FSLE/lambda,estimate
+lorenz28,FSLE,6.5536e-05,0.9983786114,FSLE/lambda,estimate
+lorenz28,FSLE,0.000131072,0.9945656299,FSLE/lambda,estimate
+lorenz28,FSLE,0.000262144,1.001080848,FSLE/lambda,estimate
+lorenz28,FSLE,0.000524288,0.9585064624,FSLE/lambda,estimate
+lorenz28,FSLE,0.001048576,0.9154589414,FSLE/lambda,estimate
+lorenz28,FSLE,0.002097152,1.043159689,FSLE/lambda,estimate
+lorenz28,FSLE,0.004194304,1.012948179,FSLE/lambda,estimate
+lorenz28,FSLE,0.008388608,1.055702576,FSLE/lambda,estimate
+lorenz28,FSLE,0.016777216,1.019462879,FSLE/lambda,estimate
+lorenz28,FSLE,0.033554432,1.026639788,FSLE/lambda,estimate
+lorenz28,FSLE,0.067108864,1.023715866,FSLE/lambda,estimate
+lorenz28,FSLE,0.134217728,0.986085652,FSLE/lambda,estimate
+lorenz28,FSLE,0.268435456,0.9604785,FSLE/lambda,estimate
 lorenz45,fresh,0.316227766,1.278877541,r central difference,estimate
 lorenz45,fresh,0.177827941,1.348375028,r central difference,estimate
 lorenz45,fresh,0.1,1.547286001,r central difference,estimate
@@ -149,35 +149,35 @@ lorenz45,aligned_endpoint,0.0005623413252,1.018208649,r central difference,estim
 lorenz45,aligned_endpoint,0.000316227766,1.073693588,r central difference,estimate
 lorenz45,aligned_endpoint,0.000177827941,0.9986941817,r central difference,estimate
 lorenz45,aligned_endpoint,0.0001,0.9449223258,r central difference,estimate
-lorenz45,FSLE,1e-09,0.726545831,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,2e-09,0.6421775176,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,4e-09,0.6714048614,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,8e-09,0.6897092087,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,1.6e-08,0.7867538086,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,3.2e-08,0.8597958688,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,6.4e-08,0.886866666,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,1.28e-07,0.9421654316,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,2.56e-07,1.071470567,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,5.12e-07,0.9951323217,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,1.024e-06,1.031986477,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,2.048e-06,1.084515044,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,4.096e-06,0.8981753863,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,8.192e-06,0.9754604082,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,1.6384e-05,0.9786513959,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,3.2768e-05,0.8990169655,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,6.5536e-05,1.070138067,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.000131072,1.050659015,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.000262144,0.9781604747,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.000524288,0.9630646481,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.001048576,1.061406683,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.002097152,0.9643445498,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.004194304,0.9864360034,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.008388608,0.9727778745,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.016777216,1.060565103,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.033554432,1.06501846,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.067108864,0.9561040869,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.134217728,0.8775040975,lambda/FSLE (FSLE/lambda inverted),estimate
-lorenz45,FSLE,0.268435456,1.121649726,lambda/FSLE (FSLE/lambda inverted),estimate
+lorenz45,FSLE,1e-09,1.376375663,FSLE/lambda,estimate
+lorenz45,FSLE,2e-09,1.557201821,FSLE/lambda,estimate
+lorenz45,FSLE,4e-09,1.489414297,FSLE/lambda,estimate
+lorenz45,FSLE,8e-09,1.449886398,FSLE/lambda,estimate
+lorenz45,FSLE,1.6e-08,1.271045642,FSLE/lambda,estimate
+lorenz45,FSLE,3.2e-08,1.163066765,FSLE/lambda,estimate
+lorenz45,FSLE,6.4e-08,1.127565212,FSLE/lambda,estimate
+lorenz45,FSLE,1.28e-07,1.061384728,FSLE/lambda,estimate
+lorenz45,FSLE,2.56e-07,0.933296752,FSLE/lambda,estimate
+lorenz45,FSLE,5.12e-07,1.004891489,FSLE/lambda,estimate
+lorenz45,FSLE,1.024e-06,0.9690049457,FSLE/lambda,estimate
+lorenz45,FSLE,2.048e-06,0.9220711185,FSLE/lambda,estimate
+lorenz45,FSLE,4.096e-06,1.113368297,FSLE/lambda,estimate
+lorenz45,FSLE,8.192e-06,1.025156933,FSLE/lambda,estimate
+lorenz45,FSLE,1.6384e-05,1.021814309,FSLE/lambda,estimate
+lorenz45,FSLE,3.2768e-05,1.112326061,FSLE/lambda,estimate
+lorenz45,FSLE,6.5536e-05,0.9344588621,FSLE/lambda,estimate
+lorenz45,FSLE,0.000131072,0.9517835812,FSLE/lambda,estimate
+lorenz45,FSLE,0.000262144,1.022327139,FSLE/lambda,estimate
+lorenz45,FSLE,0.000524288,1.038351893,FSLE/lambda,estimate
+lorenz45,FSLE,0.001048576,0.9421459431,FSLE/lambda,estimate
+lorenz45,FSLE,0.002097152,1.036973767,FSLE/lambda,estimate
+lorenz45,FSLE,0.004194304,1.013750508,FSLE/lambda,estimate
+lorenz45,FSLE,0.008388608,1.027983907,FSLE/lambda,estimate
+lorenz45,FSLE,0.016777216,0.9428935544,FSLE/lambda,estimate
+lorenz45,FSLE,0.033554432,0.9389508611,FSLE/lambda,estimate
+lorenz45,FSLE,0.067108864,1.045911228,FSLE/lambda,estimate
+lorenz45,FSLE,0.134217728,1.139595818,FSLE/lambda,estimate
+lorenz45,FSLE,0.268435456,0.8915439258,FSLE/lambda,estimate
 l96_5,fresh,0.316227766,1.84967272,r central difference,estimate
 l96_5,fresh,0.177827941,1.874055172,r central difference,estimate
 l96_5,fresh,0.1,1.504612035,r central difference,estimate
@@ -238,35 +238,35 @@ l96_5,aligned_endpoint,0.0005623413252,1.036390779,r central difference,estimate
 l96_5,aligned_endpoint,0.000316227766,1.043374184,r central difference,estimate
 l96_5,aligned_endpoint,0.000177827941,0.9936978228,r central difference,estimate
 l96_5,aligned_endpoint,0.0001,0.9610307592,r central difference,estimate
-l96_5,FSLE,1e-09,0.4928175633,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,2e-09,0.6054609922,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,4e-09,0.930792596,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,8e-09,0.9629178706,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,1.6e-08,0.8878176965,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,3.2e-08,0.9456322592,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,6.4e-08,0.9194032228,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,1.28e-07,1.067266939,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,2.56e-07,1.017760401,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,5.12e-07,0.9695588249,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,1.024e-06,0.9917568294,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,2.048e-06,1.046305573,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,4.096e-06,1.020862246,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,8.192e-06,0.9785569079,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,1.6384e-05,0.9738699793,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,3.2768e-05,0.8927574187,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,6.5536e-05,1.014091479,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.000131072,1.037778916,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.000262144,0.9814674496,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.000524288,0.9949406614,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.001048576,0.9812761464,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.002097152,0.8744606332,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.004194304,1.005817615,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.008388608,0.9861885395,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.016777216,0.9755302179,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.033554432,0.9854984815,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.067108864,0.9078772045,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.134217728,0.8575712927,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_5,FSLE,0.268435456,1.065408565,lambda/FSLE (FSLE/lambda inverted),estimate
+l96_5,FSLE,1e-09,2.029148461,FSLE/lambda,estimate
+l96_5,FSLE,2e-09,1.651634065,FSLE/lambda,estimate
+l96_5,FSLE,4e-09,1.074353196,FSLE/lambda,estimate
+l96_5,FSLE,8e-09,1.038510168,FSLE/lambda,estimate
+l96_5,FSLE,1.6e-08,1.126357364,FSLE/lambda,estimate
+l96_5,FSLE,3.2e-08,1.057493534,FSLE/lambda,estimate
+l96_5,FSLE,6.4e-08,1.087662056,FSLE/lambda,estimate
+l96_5,FSLE,1.28e-07,0.9369727137,FSLE/lambda,estimate
+l96_5,FSLE,2.56e-07,0.9825495261,FSLE/lambda,estimate
+l96_5,FSLE,5.12e-07,1.031396935,FSLE/lambda,estimate
+l96_5,FSLE,1.024e-06,1.008311685,FSLE/lambda,estimate
+l96_5,FSLE,2.048e-06,0.9557437386,FSLE/lambda,estimate
+l96_5,FSLE,4.096e-06,0.9795640927,FSLE/lambda,estimate
+l96_5,FSLE,8.192e-06,1.021912974,FSLE/lambda,estimate
+l96_5,FSLE,1.6384e-05,1.026831118,FSLE/lambda,estimate
+l96_5,FSLE,3.2768e-05,1.120125108,FSLE/lambda,estimate
+l96_5,FSLE,6.5536e-05,0.9861043315,FSLE/lambda,estimate
+l96_5,FSLE,0.000131072,0.9635963739,FSLE/lambda,estimate
+l96_5,FSLE,0.000262144,1.018882491,FSLE/lambda,estimate
+l96_5,FSLE,0.000524288,1.005085066,FSLE/lambda,estimate
+l96_5,FSLE,0.001048576,1.019081126,FSLE/lambda,estimate
+l96_5,FSLE,0.002097152,1.143562056,FSLE/lambda,estimate
+l96_5,FSLE,0.004194304,0.9942160337,FSLE/lambda,estimate
+l96_5,FSLE,0.008388608,1.014004888,FSLE/lambda,estimate
+l96_5,FSLE,0.016777216,1.025083572,FSLE/lambda,estimate
+l96_5,FSLE,0.033554432,1.014714907,FSLE/lambda,estimate
+l96_5,FSLE,0.067108864,1.101470546,FSLE/lambda,estimate
+l96_5,FSLE,0.134217728,1.16608381,FSLE/lambda,estimate
+l96_5,FSLE,0.268435456,0.9386070593,FSLE/lambda,estimate
 l96_6,fresh,0.316227766,1.111292458,r central difference,estimate
 l96_6,fresh,0.177827941,1.06810686,r central difference,estimate
 l96_6,fresh,0.1,1.014823588,r central difference,estimate
@@ -327,32 +327,32 @@ l96_6,aligned_endpoint,0.0005623413252,0.9863858166,r central difference,estimat
 l96_6,aligned_endpoint,0.000316227766,1.027283928,r central difference,estimate
 l96_6,aligned_endpoint,0.000177827941,1.045812166,r central difference,estimate
 l96_6,aligned_endpoint,0.0001,1.000320386,r central difference,estimate
-l96_6,FSLE,1e-09,0.8114697491,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,2e-09,0.9762131407,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,4e-09,1.021870517,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,8e-09,0.9126833047,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,1.6e-08,0.960620819,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,3.2e-08,1.062749161,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,6.4e-08,1.014169931,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,1.28e-07,0.9673246981,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,2.56e-07,0.9727178392,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,5.12e-07,1.046173785,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,1.024e-06,1.047634712,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,2.048e-06,0.9687446644,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,4.096e-06,1.010620015,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,8.192e-06,1.01533048,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,1.6384e-05,1.018115798,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,3.2768e-05,1.047143185,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,6.5536e-05,1.001376581,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.000131072,0.9336414604,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.000262144,1.041995808,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.000524288,0.9806368817,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.001048576,0.9974170597,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.002097152,0.9899485834,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.004194304,0.9817291634,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.008388608,0.9606754331,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.016777216,0.9897983947,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.033554432,0.9696048362,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.067108864,1.035155393,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.134217728,0.8990297831,lambda/FSLE (FSLE/lambda inverted),estimate
-l96_6,FSLE,0.268435456,1.026772131,lambda/FSLE (FSLE/lambda inverted),estimate
+l96_6,FSLE,1e-09,1.232331829,FSLE/lambda,estimate
+l96_6,FSLE,2e-09,1.024366461,FSLE/lambda,estimate
+l96_6,FSLE,4e-09,0.9785975654,FSLE/lambda,estimate
+l96_6,FSLE,8e-09,1.095670311,FSLE/lambda,estimate
+l96_6,FSLE,1.6e-08,1.04099347,FSLE/lambda,estimate
+l96_6,FSLE,3.2e-08,0.9409558126,FSLE/lambda,estimate
+l96_6,FSLE,6.4e-08,0.9860280508,FSLE/lambda,estimate
+l96_6,FSLE,1.28e-07,1.033779042,FSLE/lambda,estimate
+l96_6,FSLE,2.56e-07,1.028047353,FSLE/lambda,estimate
+l96_6,FSLE,5.12e-07,0.9558641346,FSLE/lambda,estimate
+l96_6,FSLE,1.024e-06,0.9545311819,FSLE/lambda,estimate
+l96_6,FSLE,2.048e-06,1.03226375,FSLE/lambda,estimate
+l96_6,FSLE,4.096e-06,0.9894915844,FSLE/lambda,estimate
+l96_6,FSLE,8.192e-06,0.9849009949,FSLE/lambda,estimate
+l96_6,FSLE,1.6384e-05,0.9822065442,FSLE/lambda,estimate
+l96_6,FSLE,3.2768e-05,0.9549792368,FSLE/lambda,estimate
+l96_6,FSLE,6.5536e-05,0.9986253114,FSLE/lambda,estimate
+l96_6,FSLE,0.000131072,1.071074971,FSLE/lambda,estimate
+l96_6,FSLE,0.000262144,0.9596967594,FSLE/lambda,estimate
+l96_6,FSLE,0.000524288,1.019745452,FSLE/lambda,estimate
+l96_6,FSLE,0.001048576,1.002589629,FSLE/lambda,estimate
+l96_6,FSLE,0.002097152,1.010153473,FSLE/lambda,estimate
+l96_6,FSLE,0.004194304,1.018610873,FSLE/lambda,estimate
+l96_6,FSLE,0.008388608,1.04093429,FSLE/lambda,estimate
+l96_6,FSLE,0.016777216,1.010306751,FSLE/lambda,estimate
+l96_6,FSLE,0.033554432,1.031347991,FSLE/lambda,estimate
+l96_6,FSLE,0.067108864,0.9660385352,FSLE/lambda,estimate
+l96_6,FSLE,0.134217728,1.112310202,FSLE/lambda,estimate
+l96_6,FSLE,0.268435456,0.9739259273,FSLE/lambda,estimate

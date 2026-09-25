@@ -1,4 +1,4 @@
-# git_sha=424c7ed903113826fdf49ed3edb67961138fa959; predicted = estimate; measured = reference
+# git_sha=5eec8b8e9aee4a077042b72ed041109041cd8a97-dirty; predicted = estimate; measured = reference
 system,rate_bits,role,measured,measured_label,predicted,predicted_label,outcome
 lorenz28,5,heldout,0.4723728072,reference,0.3867432825,estimate,criterion not met
 lorenz28,6,fit,0.6150551792,reference,0.5699737559,estimate,criterion met
