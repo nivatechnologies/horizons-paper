@@ -32,6 +32,10 @@ def jobs(grid):
     extra = fz["seeds"]["headline_extra_model_seeds"]
     D = fz["scoring"]["frame_intervals"]
     J = []
+    if grid == "postfreeze_dataB":
+        # POST-FREEZE (Todd, 2026-09-25): B on the 20,000 tu data axis, beside A's frozen data-axis cells
+        return [dict(system="lorenz28", arm="B", bits=b, delta=0.05, seed=s, n_traj=1000, outdir="postfreeze")
+                for b in (6, 10) for s in seeds]
     if grid == "stall":
         for b in (4, 6, 8, 10):
             for d in D:
@@ -133,7 +137,7 @@ def _recon_eval(task, rec, fut, sub, F, prefix):
 
 def run_job(j, device):
     tag = tag_of(j)
-    grid_dir = OUT / ("stall" if j.get("panel") == "validation" else "main") / tag
+    grid_dir = OUT / (j.get("outdir") or ("stall" if j.get("panel") == "validation" else "main")) / tag
     if (grid_dir / "done").exists():
         return "skip"
     grid_dir.mkdir(parents=True, exist_ok=True)

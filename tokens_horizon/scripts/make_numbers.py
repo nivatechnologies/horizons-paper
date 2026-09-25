@@ -146,6 +146,43 @@ def main():
                    "contains the frozen codebook. decomp_* columns are **estimate**, bound_* are **bound** for their own "
                    "codebook. Per-codebook rows: results/postfreeze/codebook_seeds_rows.csv.")
 
+    for fname, sec, title, cols, note in (
+            ("exchange_law_variants.csv", "P2", "POST-FREEZE: exchange-law predictions by per-state h and by geometric-mean "
+             "distortion, next to the frozen RMS prediction (criterion outcomes stay as frozen)",
+             ["system", "rate_bits", "role", "meas", "frozen_pred_rms", "frozen_err", "frozen_outcome", "pred_per_state",
+              ("95%", ci("pred_per_state_lo", "pred_per_state_hi")), "err_per_state", "clamped_share_per_state",
+              "per_state_flag", "pred_geomean", ("95%", ci("pred_geomean_lo", "pred_geomean_hi")), "err_geomean",
+              "clamped_share_geomean_states", "geomean_flag", "frozen_tolerance_info_only"],
+             "Post-freeze, not pre-registered. meas = **reference**; predictions = **estimate**. The frozen criterion "
+             "outcomes are unchanged; the tolerance column is informational. Per-state errors outside the calibrated "
+             "h range are clamped to its end (clamped share shown next to every prediction), which biases those "
+             "predictions upward; cells with more than 25% clamped are marked UNINFORMATIVE."),
+            ("data_axis_B_cells.csv", "P3", "POST-FREEZE: B on the 20,000 tu data axis next to A (Delta 0.05)",
+             ["bits", "cell", "n_seeds", "H", ("95%", ci("ci95_lo", "ci95_hi"))],
+             "Post-freeze, not pre-registered. Cells are **learned**."),
+            ("data_axis_B_comparisons.csv", "P4", "POST-FREEZE: data-axis paired differences",
+             ["bits", "a", "b", "diff_a_minus_b", ("90%", ci("ci90_lo", "ci90_hi")), ("95%", ci("ci95_lo", "ci95_hi")),
+              "reading"], "Post-freeze **estimate**; readings use the frozen margins, for information."),
+            ("di_slope.csv", "P5", "POST-FREEZE: least-squares decode-and-integrate slope (Lyapunov times per bit)",
+             ["system", "fit", "rates", "slope_lyap_per_bit", ("95%", ci("ci95_lo", "ci95_hi")), "H_by_rate"],
+             "Post-freeze **estimate**. Decode-and-integrate on the 1,000-state confirmation panel, Delta 0.02, future "
+             "frames, eps 0.3; interval by bootstrap over panel states, paired across rates."),
+            ("slope_x_deff.csv", "P6", "POST-FREEZE: slope x D_eff and implied r = ln2/(slope x D_eff), beside local r "
+             "at codebook scales (section R)",
+             ["system", "fit", "slope_lyap_per_bit", "d_eff", "slope_x_deff", ("95%", ci("slope_x_deff_lo", "slope_x_deff_hi")),
+              "implied_r", ("95%", ci("implied_r_lo", "implied_r_hi")), "local_r_codebook_scales_median",
+              "local_r_codebook_scales_min", "local_r_codebook_scales_max", "local_r_scale_range",
+              "local_r_ls_whole_range", "rates_below_tolerance", "note"],
+             "Post-freeze **estimate**. Intervals propagate the slope bootstrap (panel states) and the D_eff bootstrap "
+             "(calibration trajectories) jointly. Local r: fresh orientation, central differences at h-grid points "
+             "between the 12-bit and 4-bit calibration distortions. l96_10 reaches below the 0.3 sigma_A tolerance only "
+             "at 12 bits and l96_20 never within 4-12 bits, so their slopes and implied r are not meaningful as "
+             "exchange rates.")):
+        p = R / "postfreeze" / fname
+        if p.exists():
+            rows, sha = read_csv(p)
+            table(out, sec, title, p, cols, rows, sha, note=note)
+
     lj = R / "learned" / "learned.json"
     if lj.exists():
         rows, sha = read_csv(R / "learned" / "cells.csv")

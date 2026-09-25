@@ -29,6 +29,7 @@ COMPUTE = [
     ["scripts/t2_decomposition.py"],
     ["scripts/t3_learned.py", "run", "--grid", "stall"],
     ["scripts/t3_learned.py", "run", "--grid", "main"],
+    ["scripts/t3_learned.py", "run", "--grid", "postfreeze_dataB"],
 ]
 
 TABLES = [
@@ -41,6 +42,8 @@ TABLES = [
     ["scripts/t2_history.py", "--aggregate-only"],
     ["scripts/t2_decomposition.py"],
     ["scripts/postfreeze_codebook_seeds.py"],
+    ["scripts/postfreeze_exchange_extra.py"],
+    ["scripts/postfreeze_data_axis_B.py"],
     ["scripts/t3_analysis.py"],
     ["scripts/fig_F1.py"],
     ["scripts/fig_F2_F4_F5.py"],
