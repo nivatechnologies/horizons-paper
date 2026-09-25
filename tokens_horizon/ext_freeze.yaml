@@ -177,3 +177,37 @@ ks_fix_1:
   change: "patch-product codebooks are fitted with a Lloyd routine identical to gpu_kmeans in init (seeded sample of distinct points), float64 centroid accumulation, farthest-point re-seeding of empty clusters (counted), max_iter 300, rtol 1e-6 and reported statistics, except that the assignment step is exact float64 nearest-code search (scipy cKDTree) on the CPU; whole-state ks22 codebooks and residual-VQ stages keep gpu_kmeans exactly as frozen"
   effect_on_bounds: "none: bounds use th/patchvq.exact_nn / certified_bound_crossings on the frozen codebooks (Amendment 1 A1); codebook fitting may use any method (A1)"
   future_score_implementation: "the future-frames bound is the first crossing at frame j >= 1 even when frame 0 already crosses: certified_bound_crossings is called on frames 1..F (shifted by one); the from-t0 score is 0 where exact d_C(x_0) > eps*sigma_A and otherwise equals the future score; p_0 from the same exact d_C(x_0)"
+
+# =============================================================================================================
+# PART 2b: 2D Kolmogorov flow (committed before any Kolmogorov tokenizer, bound or decode-and-integrate result)
+# Source proposal: results/ext/kolmogorov_pilot_proposal.yaml (pilot values are system properties).
+kolmogorov:
+  name: kolmo40
+  system_index: 8
+  module: th/kolmogorov.py
+  equations: "omega_t + u.grad omega = (1/Re) lap omega - n cos(n y), lap psi = -omega, u = psi_y, v = -psi_x; forcing sin(n y) e_x"
+  regime: {Re: 40.0, n: 4, domain: "[0, 2 pi)^2", citation: "Chandler & Kerswell 2013, J. Fluid Mech. 722, 554-595, sec. 2"}
+  numerics: {N: 64, dealiasing: "2/3 rule, square |kx|,|ky| <= 21; k = 0 and Nyquist zero", scheme: "pseudo-spectral, integrating-factor RK4", dt: 0.01, dtype: float64, burn_in_time: 500.0}
+  lyapunov: {lam_max: 0.12683, lam_max_se: 0.00079, method: "renormalized twins, tau 1, delta0 1e-6 ||omega||, 128 starts x 2,000 tu", n128_rel_change: -0.0078, dt_half_rel_change: 0.0011, stop_condition: "not triggered"}
+  output_contract:            # Amendment 1 A2
+    scored_field: "vorticity omega on the 64 x 64 grid; Euclidean norm over the 4,096 values; sigma_A in the same norm on the calibration fit split"
+    true_states: "band-limited (|kx|,|ky| <= 21) and zero-mean up to float64 rounding"
+    decoded_states: "concatenation of decoded patches (or residual-VQ sum) scored as is; nothing applied; A codebook-valued"
+    decode_and_integrate: "the integrator's Galerkin projection (dealias mask, mean removal) acts on the decoded initial state of the reference trajectory only; stated where reported"
+  frame_intervals: [0.14, 0.35, 0.70]   # lambda*Delta = 0.0178, 0.0444, 0.0888; multiples of the 0.07 storage unit
+  primary_delta: 0.35
+  window_time: 212.88
+  pre_history_time: 46.2
+  post_time: 214.9
+  seeds: "freeze.yaml scheme, system index 8; streams: calibration fit 0, held-out 1, confirmation 0"
+  blocks:
+    calibration: {fit: {n_traj: 256, samples_per_traj: 800, sample_every: 1.4}, heldout: {n_traj: 64, samples_per_traj: 800, sample_every: 1.4}}
+    confirmation: {panel_states: 1000, storage: "retained Fourier coefficients every 0.07 tu (exact integrator state), grids by irfft2 in float64"}
+  tokenizers:
+    patch_product: {layouts: ["4x4", "8x8", "16x16"], patch_sizes: ["16x16", "8x8", "4x4"], b: [8, 10, 12, 14, 16], fit: "shared codebook; th/patchvq.gpu_kmeans (frozen settings, seed 1000*P + b); patch fit set = all patches of calibration fit states capped at 3,276,800 patches (50 per code at 2^16), as all patches of a seeded random subset of whole fit states (seed = calibration seed stream 2); samples per code, patches and independent trajectories reported"}
+    residual_vq: {bits_per_stage: 8, stages: [1, 2, 3, 4], fit: "whole-state (4,096-dim) gpu_kmeans on the calibration fit states", bound: "NONE (Amendment 1 A1)"}
+    calibration_adequacy: "A5 as for KS (held-out distortion and occupancy, unused-code rate, halved-calibration refits at b = 14 and 16)"
+  e3: "as ks.e3 (bound via certified exact search, p_0, no-cross, S_out(1,3,10), decode-and-integrate, persistence, all Delta, eps 0.1/0.3/0.5, future and from-t0; D_eff per layout; DI slope; A3 thresholds)"
+  resolution_di_check: "decode-and-integrate horizon halving (E1): for the 8x8-layout b = 12 codebook at the primary Delta, on the first 300 confirmation states, integrate truth and the decoded initial state at 128^2 (both spectrally zero-padded from the 64^2 initial fields) and compare the restricted mean with the 64^2 result on the same states; report the relative change and its paired interval"
+  readings_note: "the '>= 2^12 codes per token and >= 64 tokens per frame' bound reading is answerable only by the 8x8 (64 tokens) and 16x16 (256 tokens) layouts at b >= 12"
+  cut_order: "Kolmogorov 16x16 layout rows first (A10), then the rest of Kolmogorov after E5.3"

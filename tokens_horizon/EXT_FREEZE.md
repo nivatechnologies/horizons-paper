@@ -247,3 +247,23 @@ differs from Amendment 1, it wins. It adds no new experiments and no grid change
   (Amendment 1 A1).
 - **Future-frame bound.** It is computed on frames 1..F, so that frame 0 cannot pre-empt it. The from-t=0 score and
   p_0 come from the exact d_C(x_0).
+
+## Part 2b: 2D Kolmogorov flow (before any Kolmogorov tokenizer, bound or decode-and-integrate result)
+
+`ext_freeze.yaml` key `kolmogorov` has the full specification. The main points:
+
+- **Regime.** Re = 40 and n = 4 on the 2π torus, as in Chandler & Kerswell (2013). The grid is 64², with the 2/3 rule, integrating-factor RK4, dt = 0.01 and float64.
+- **Chaos.** λ₁ = 0.1268 ± 0.0008 from renormalized twins over 128 starts, and every start is positive.
+  - Grid halving (64² → 128²) moves λ₁ by −0.8%, against the 5% stop limit.
+  - Halving dt moves it by +0.1%.
+- **Timing.**
+  - Frame intervals: 0.14 / 0.35 / 0.70. The primary is 0.35.
+  - W = 212.9 time units.
+  - Pre-history: 46.2 time units.
+- **Scored field (A2).** Vorticity on the 64² grid. Decoded patch concatenations are scored as is.
+- **Tokenizers.**
+  - Patch layouts 4×4, 8×8 and 16×16, with b ∈ {8, …, 16}. Fitting uses GPU k-means, capped at 50 samples per code at 2^16.
+  - Residual VQ with 1–4 stages. These get no bound.
+- **Resolution check on decode-and-integrate.** Frozen above: the 8×8, b = 12 codebook, integrated at 128² against 64², on 300 states.
+- **The "≥ 2^12 codes, ≥ 64 tokens" reading.** Only the 8×8 and 16×16 layouts can answer it.
+- **Cuts.** The 16×16 layout is first in the cut order.

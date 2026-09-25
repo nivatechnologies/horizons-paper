@@ -1,0 +1,104 @@
+# Kolmogorov flow Phase A pilot: PROPOSED values for EXT_FREEZE part 2 (post-freeze extension).
+# Every number here is an estimate (pilot). Nothing here is frozen until part 2 is committed.
+# No confirmation data, tokenizer, bound or decode-and-integrate result was produced.
+# Sources: results/ext/kolmogorov_pilot/*.json (scripts/ext_kolmogorov_pilot.py, th/kolmogorov.py).
+label: "estimate (pilot)"
+system:
+  name: kolmo40
+  system_index: 8                 # KS pilot took 6 (ks22) and 7 (ks100) and suggested 8 for Kolmogorov
+  equations: "omega_t + u.grad omega = (1/Re) lap omega - n cos(n y); lap psi = -omega, u = psi_y, v = -psi_x"
+  forcing: "sin(n y) e_x in the x-momentum equation (vorticity forcing -n cos(n y)); unit amplitude"
+  domain: "[0, 2 pi)^2 doubly periodic"
+  Re: 40.0
+  n: 4
+  citation: "Chandler & Kerswell 2013, J. Fluid Mech. 722, 554-595 (sec. 2: forcing sin(4y) x_hat on the 2 pi torus, Re = 40); same equations restated in arXiv:2408.05079"
+  laminar: "u = (Re/n^2) sin(n y), omega = -(Re/n) cos(n y), E_lam = 1.5625, D_lam = I_lam = 1.25 (unstable at Re = 40)"
+numerics:
+  N: 64
+  dealiasing: "2/3 rule, square truncation |kx|, |ky| <= N/3 = 21; Nyquist and k = 0 zero; state kept in the dealiased subspace"
+  scheme: "Fourier pseudo-spectral, integrating-factor RK4 (exact exp(-|k|^2 dt/Re) on viscosity)"
+  scheme_reason: "diagonal, mildly stiff linear term (max |k|^2 dt/Re = 0.11 at N 64, dt 0.01); IF is exact for it, no ETDRK4 contour coefficients; accuracy shown by dt halving"
+  dt: 0.01
+  dtype: float64                  # float32 not needed: GPU float64 is fast on this card (see compute)
+  device: "cuda:0 recommended (CPU possible)"
+  burn_in_time: 500.0             # 50,000 steps = 63 Lyapunov times; ensemble E, D settle by ~50-100 tu (pilot)
+  initial_conditions: "random vorticity on modes 0 < |k| <= 8, Gaussian coefficients, rescaled to grid-RMS 5 (same field on every N for a seed)"
+lyapunov:                         # renormalized twins, tau = 1.0, delta0 = 1e-6 x ||omega||, 128 starts, 2,000 tu each after 20 tu discarded
+  lam_max: 0.12683
+  lam_max_se: 0.00079
+  lyapunov_time: 7.885
+  all_starts_positive: true       # min per-start 0.106
+  checks:
+    n128: {lam: 0.12584, se: 0.00078, rel_diff: -0.0078}          # stop limit 5%
+    dt_half: {lam: 0.12697, se: 0.00077, rel_diff: 0.0011}
+    float32_delta0_1e-4: {lam: 0.12612, se: 0.00075, rel_diff: -0.0056}
+    float64_delta0_1e-4: {lam: 0.12683, se: 0.00079, rel_diff: -0.0001}
+  stop_condition: "not triggered (chaotic; 64^2 -> 128^2 moves lambda by -0.8%, 0.9 s.e.)"
+state_contract:                   # Amendment 1, A2
+  scored_field: "vorticity omega on the 64 x 64 collocation grid (x_j = 2 pi j / 64), grid values, Euclidean norm over 4,096 values"
+  preprocessing: "none; the stored true state is the integrator's field as produced (irfft2 of the dealiased spectral state)"
+  true_state_properties: "exactly band-limited (|kx|, |ky| <= 21) and exactly zero-mean in exact arithmetic; grid values carry only float64 rounding (~1e-15 relative)"
+  before_scoring: "nothing is applied to truth or decoded state; decoded = concatenation of decoded patches, not band-limited or zero-mean in general, scored as is"
+  decode_and_integrate: "the integrator's rfft2 + dealias mask (Galerkin projection, incl. mean removal) acts on the decoded initial state of the reference trajectory only; stated where reported"
+scoring:
+  frame_unit: 0.07                # 7 dt; every Delta is a multiple of it; storage spacing of the panel
+  frame_intervals: [0.14, 0.35, 0.70]           # 14, 35, 70 dt
+  lambda_delta: [0.01776, 0.04439, 0.08878]
+  W_lyapunov_times: 27.0
+  window_time: 212.88             # 27 / 0.12683
+  frames_in_window: {"0.14": 1521, "0.35": 609, "0.70": 305}
+panels:
+  pre_history_time: 46.2          # 5.86 Lyapunov times (Lorenz: 6.5 tu = 5.88); multiple of 0.14, 0.35, 0.70
+  post_time: 214.9                # W/lambda + ~0.18 Lyapunov times (Lorenz: + 0.2 tu), rounded up to a multiple of 0.70
+  stored_frames: 3731             # every 0.07 tu, t = -46.2 .. +214.9
+  storage: "float64 retained Fourier coefficients (43 x 22 complex, 15.1 KB/frame, exact integrator state; grid reconstructed by irfft2 in float64): 56 GB for 1,000 panels; float32 grid alternative 61 GB"
+  confirmation_states: 1000
+  history_panel: "first 300 of the 1,000 (as frozen)"
+sigma_A:
+  value: 131.68                   # grid-Euclidean norm (per-point RMS 2.06), 10,000 states, 100 trajectories x 100 states every 5 tu
+  states_bootstrap_sd: 0.19
+  per_trajectory_range: [98.2, 136.7]
+  note: "pilot only; the frozen sigma_A is computed on the calibration fit split, as frozen for Lorenz"
+calibration:                      # Amendment 1, A5
+  patch_layouts:
+    "4x4": {tokens: 16, patch_points: "16x16", dim: 256}
+    "8x8": {tokens: 64, patch_points: "8x8", dim: 64}
+    "16x16": {tokens: 256, patch_points: "4x4", dim: 16}
+  codebook: "one shared codebook per layout and rate across patch positions"
+  target: "50 samples per code at 2^16 codes = 3,276,800 patch vectors; binding layout 4x4 (16 patches per state) -> 204,800 states"
+  fit_split: {trajectories: 256, states_per_traj: 800, sample_every: 1.4, states: 204800,
+              patches: {"4x4": 3276800, "8x8": 13107200, "16x16": 52428800},
+              samples_per_code_at_2_16: {"4x4": 50, "8x8": 200, "16x16": 800}, seed_stream: 0}
+  heldout_split: {trajectories: 64, states_per_traj: 800, sample_every: 1.4, states: 51200,
+                  patches: {"4x4": 819200, "8x8": 3276800, "16x16": 13107200}, seed_stream: 1,
+                  use: "held-out distortion, occupancy, unused-code rate"}
+  independent_trajectories: 320   # 256 fit + 64 held-out; each 1,120 tu (142 Lyapunov times) after burn-in
+  memory: "fit split 3.36 GB float32 (6.7 GB float64); held-out 0.84 GB float32"
+seeds:
+  scheme: "block_base + 100 * 8 + stream (freeze.yaml block bases)"
+  calibration: {fit: 10800, heldout: 10801}
+  training: 20800
+  validation: 30800
+  confirmation: 40800
+  lyapunov: {ic: 50800, perturbation: 50801, pilot_sigma_A_sample: 50802, pilot_scratch_tests: [50890, 50891]}
+compute:                          # measured on cuda:0 (CMP 170HX) and 32 CPU threads; contended = with other GPU jobs running
+  stepping_us_per_state_step:
+    gpu_f64_B1000: {uncontended: 7.4, contended: 27.5}
+    gpu_f32_B1000: {uncontended: 3.8, contended: 14.1}
+    cpu32_f64_B256: 213.5
+    gpu_f64_N128_B1024: 25.8
+  gemm_tflops_cuda0: {f32: 3.57, f64: 3.33}       # while other jobs ran; f64 is not crippled on this card
+  confirmation_panel: {steps_per_state: 76110, gpu_f64: "9.4 min (35 min contended)", cpu32: "4.5 h", storage_GB: 56}
+  calibration_generation: {gpu_f64: "~7 min (320 trajectories x 162,000 steps, latency-bound)", cpu32: "~3 h"}
+  decode_and_integrate: {per_tokenizer: "1,000 states x 21,300 steps: 2.6 min GPU f64 (10 min contended), 1.3 h CPU32",
+                         fifteen_tokenizers: "40 min GPU (2.4 h contended); 19 h CPU32",
+                         note: "early stop once all states pass eps 0.5 shortens this"}
+  kmeans_per_iteration_at_2_16: "2 x n_vec x K x dim flops; with all fit patches n_vec x dim = 8.39e8 for every layout -> 1.1e14 flop, ~31 s at 3.5 TFLOPS"
+  kmeans_per_layout_2_16_codebook_300_iter:
+    "4x4": "2.6 GPU-h (all fit patches = 50/code)"
+    "8x8": "2.6 GPU-h with all patches; 0.65 GPU-h on a fixed 50/code subset (3.28M patches)"
+    "16x16": "2.6 GPU-h nominal with all patches (dim 16 GEMMs are memory-bound: likely 2-3x more); 0.16 GPU-h nominal (~0.5 h) on a 50/code subset"
+  kmeans_per_layout_total: "about 1.6x the 2^16 cost if b steps by 2 bits up to 16 (plus A5 half-set refits at the two largest b); about 2x if b steps by 1"
+  exact_bound_assignment: "union of the three frame grids = 1,825 frames/state -> 1.83M states x 4,096 x K x 2 = 9.8e14 flop at 2^16: ~5 min GPU f32 per codebook plus float64 certification (A1)"
+  kmeans_gpu_memory: "distance block 8,192 x 65,536 x 4 B = 2.1 GB, codebook <= 67 MB, fit data resident 3.4 GB: < 6 GB of the 20 GB now allowed"
+  gpu_needed: "yes for k-means at 2^14-2^16 (CPU ~10x slower: ~26 h per 4x4 2^16 codebook) and recommended for decode-and-integrate; panel and calibration generation are feasible on CPU"
