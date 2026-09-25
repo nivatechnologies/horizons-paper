@@ -1,0 +1,67 @@
+{
+ "label": "post-freeze extension; A9 prediction (Amendment 2 B1), estimate",
+ "git_sha": "ef2d9f0e1fc55e8d750fec5bb6d9d22102acc963-dirty",
+ "system": "ks22",
+ "tokenizer": "whole-state k-means",
+ "delta": 0.92,
+ "eps": 0.3,
+ "score": "restricted-mean decode-and-integrate horizon, future frames, W = 27 Lyapunov times, confirmation panel 1,000 states (Lyapunov times)",
+ "even_rates": [
+  {
+   "R": 6,
+   "restricted_mean": 0.09651969135999999,
+   "ci95_lo": 0.08949352624,
+   "ci95_hi": 0.10408858269599998,
+   "censored_frac": 0.0,
+   "excluded": false,
+   "n": 1000
+  },
+  {
+   "R": 8,
+   "restricted_mean": 0.1538099608,
+   "ci95_lo": 0.140071781212,
+   "ci95_hi": 0.17110513648,
+   "censored_frac": 0.0,
+   "excluded": false,
+   "n": 1000
+  },
+  {
+   "R": 10,
+   "restricted_mean": 0.23956520687999996,
+   "ci95_lo": 0.22429568361199997,
+   "ci95_hi": 0.25533129085600004,
+   "censored_frac": 0.0,
+   "excluded": false,
+   "n": 1000
+  },
+  {
+   "R": 12,
+   "restricted_mean": 0.42521810832,
+   "ci95_lo": 0.397022242812,
+   "ci95_hi": 0.45318765023999996,
+   "censored_frac": 0.0,
+   "excluded": false,
+   "n": 1000
+  }
+ ],
+ "fit_rates": [
+  6,
+  8,
+  10,
+  12
+ ],
+ "predictor": {
+  "form": "H_hat(R) = a + s R (OLS, intercept free)",
+  "a": -0.2535544817919998,
+  "s": 0.053592524848
+ },
+ "predictions": {
+  "7": 0.12159319214400022,
+  "9": 0.22877824184000017,
+  "11": 0.33596329153600024
+ },
+ "pass_rule": "per odd rate: 90% bootstrap CI (states) of (observed - H_hat) within +-0.10, H_hat fixed",
+ "scope": "tests prospective interpolation across held-out rates within the specified system, tokenizer family and rate range; not extrapolation or cross-system transfer",
+ "exposure_record": "no odd-rate DI computed or inspected: whole-state ks22 rates 7, 9, 11 were run through E3 with decode-and-integrate skipped by code (scripts/ext_ks_e3.py, ODD set); their per-state files hold bound and persistence arrays only; odd-rate files containing decode-and-integrate arrays at prediction time: none",
+ "decode_and_integrate_note": "the integrator projects the decoded initial condition onto modes 1..M (reference trajectory only)"
+}

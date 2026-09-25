@@ -203,9 +203,9 @@ def ext_freeze() -> dict:
 def ks_spec(system: str) -> dict:
     """The frozen KS settings for `system` (ext_freeze.yaml part 2 key `ks`)."""
     ef = ext_freeze()
-    if "ks" not in ef or system not in ef["ks"]:
+    if "ks" not in ef or system not in ef["ks"].get("systems", {}):
         raise RuntimeError("KS settings are not frozen yet (ext_freeze.yaml part 2 missing)")
-    return ef["ks"][system]
+    return ef["ks"]["systems"][system]
 
 
 def make(spec: dict, dt=None, N=None) -> KS:
@@ -255,3 +255,23 @@ def panel(ks: KS, seed: int, n: int, pre_time: float, post_time: float, store_ev
 def patch_len(N: int, P: int) -> int:
     assert N % P == 0, (N, P)
     return N // P
+
+
+def integrate_record(ks: KS, v, n_steps: int, record: dict):
+    """Integrate spectral states v (B, K) for n_steps steps and record real-space states at given step indices.
+
+    record: name -> sorted int array of step indices in [0, n_steps] (0 = the initial state). Returns
+    (dict name -> (B, len(idx), N) float64, final v). Frames are exact integrator states: no interpolation."""
+    out = {k: np.empty((v.shape[0], len(ix), ks.N)) for k, ix in record.items()}
+    ptr = {k: 0 for k in record}
+    for s in range(0, n_steps + 1):
+        if s > 0:
+            v = ks.step(v)
+        for k, ix in record.items():
+            p = ptr[k]
+            if p < len(ix) and ix[p] == s:
+                out[k][:, p] = ks.to_real(v)
+                ptr[k] = p + 1
+    for k in record:
+        assert ptr[k] == len(record[k]), k
+    return out, v
