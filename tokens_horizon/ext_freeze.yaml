@@ -170,3 +170,10 @@ ks:
     prefix_invariance_test: "Amendment 2 B3: committed and passing before any E4 training"
     reports: "A vs bound (ratio H_A/U_C, gap, B4 ties, automatic and jointly censored cases), A vs B and B vs C (frozen margins), MLP probe of A's hidden state against the current-token reconstruction, adapter/backbone/head parameters and training compute per arm"
   numbers_section: "K (systems, tokenizers, bounds), K2 (learned cells, controls)"
+
+# ---- Part 2a fix 1 (2026-09-25), committed before any KS codebook was fitted
+ks_fix_1:
+  error: "ks.tokenizers.kmeans named th/patchvq.gpu_kmeans for every codebook; measured cost for the patch codebooks is ~1.1e-10 s per point-code pair on a shared GPU, ~90 GPU-hours at max_iter 300 for the frozen set: not executable in the time available"
+  change: "patch-product codebooks are fitted with a Lloyd routine identical to gpu_kmeans in init (seeded sample of distinct points), float64 centroid accumulation, farthest-point re-seeding of empty clusters (counted), max_iter 300, rtol 1e-6 and reported statistics, except that the assignment step is exact float64 nearest-code search (scipy cKDTree) on the CPU; whole-state ks22 codebooks and residual-VQ stages keep gpu_kmeans exactly as frozen"
+  effect_on_bounds: "none: bounds use th/patchvq.exact_nn / certified_bound_crossings on the frozen codebooks (Amendment 1 A1); codebook fitting may use any method (A1)"
+  future_score_implementation: "the future-frames bound is the first crossing at frame j >= 1 even when frame 0 already crosses: certified_bound_crossings is called on frames 1..F (shifted by one); the from-t0 score is 0 where exact d_C(x_0) > eps*sigma_A and otherwise equals the future score; p_0 from the same exact d_C(x_0)"

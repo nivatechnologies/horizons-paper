@@ -236,3 +236,14 @@ differs from Amendment 1, it wins. It adds no new experiments and no grid change
   - Selection and contrast follow A6 and B2.
   - Token-level sequence with a block-causal mask (B3), one shared categorical head (A7), and the frozen backbone and budget.
   - The prefix-invariance test is committed and passes before any training.
+
+### Part 2a, fix 1 (before any KS codebook was fitted)
+- **The error.** Part 2a named the GPU k-means routine for every KS codebook. At the patch-codebook sizes it costs
+  about 90 GPU-hours on the shared GPUs, which cannot run in the time available.
+- **The change.** Patch codebooks are fitted with the same Lloyd routine, identical in every respect except that the
+  assignment step is exact float64 nearest-code search on the CPU. Whole-state and residual-VQ codebooks are
+  unchanged.
+- **Effect on bounds.** None. Bounds are computed only from the frozen codebooks, with the certified exact search
+  (Amendment 1 A1).
+- **Future-frame bound.** It is computed on frames 1..F, so that frame 0 cannot pre-empt it. The from-t=0 score and
+  p_0 come from the exact d_C(x_0).
