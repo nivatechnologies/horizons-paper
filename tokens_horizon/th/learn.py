@@ -51,8 +51,9 @@ def windows(T, delta, L, n, rng):
 class Task:
     """Everything one learned-arm run needs, on one device."""
 
-    def __init__(self, system, arm, bits, delta, seed, device, noise=0.0, n_traj=None, steps=None):
+    def __init__(self, system, arm, bits, delta, seed, device, noise=0.0, n_traj=None, steps=None, backbone=None):
         fz = config.freeze()
+        self.backbone_override = backbone     # post-freeze extension E5.3 only (larger model); None = frozen backbone
         self.fz, self.system, self.arm, self.bits, self.delta, self.seed = fz, system, arm, bits, delta, seed
         self.noise, self.device = noise, device
         self.L = ctx_frames(delta)
@@ -71,12 +72,14 @@ class Task:
                 g["tok"] = torch.as_tensor(self.cb.encode(T), device=device)
             self._gpu[name] = g
         self.tag = f"{system}_{arm}_b{bits}_D{delta}_s{seed}" + (f"_n{noise}" if arm == "C" else "") + \
-                   (f"_traj{n_traj}" if n_traj else "")
+                   (f"_traj{n_traj}" if n_traj else "") + \
+                   (f"_w{backbone['width']}L{backbone['layers']}" if backbone else "")
 
     def build(self):
         torch.manual_seed(model_seed(self.tag, "init"))
         m = ArmModel(self.arm, self.d, self.cb.K if self.cb else 0, self.L,
-                     protos_std=self.protos, **{k: v for k, v in self.fz["learned"]["backbone"].items()
+                     protos_std=self.protos, **{k: v for k, v in (self.backbone_override or
+                                                                  self.fz["learned"]["backbone"]).items()
                                                 if k in ("width", "layers", "heads", "ff")})
         return m.to(self.device)
 

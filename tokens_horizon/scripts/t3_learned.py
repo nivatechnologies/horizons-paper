@@ -40,6 +40,20 @@ def jobs(grid):
         # POST-FREEZE (Todd, 2026-09-25): C (sigma = 0) on the 20,000 tu data axis, paired with A 20k at 10 bits
         return [dict(system="lorenz28", arm="C", bits=0, delta=0.05, seed=s, noise=0.0, n_traj=1000,
                      outdir="postfreeze") for s in seeds]
+    if grid == "ext_large":
+        # POST-FREEZE EXTENSION E5.3 (ext_freeze.yaml e5_controls.larger_model)
+        import yaml
+        ez = yaml.safe_load((config.PKG / "ext_freeze.yaml").read_text())["e5_controls"]["larger_model"]
+        bb = {k: ez["backbone"][k] for k in ("width", "layers", "heads", "ff")}
+        J = []
+        for s in seeds:
+            for b in (4, 10):
+                for arm in ("A", "B"):
+                    J.append(dict(system="lorenz28", arm=arm, bits=b, delta=0.05, seed=s, steps=ez["steps"],
+                                  backbone=bb, outdir="ext_large"))
+            J.append(dict(system="lorenz28", arm="C", bits=0, delta=0.05, seed=s, noise=0.0, steps=ez["steps"],
+                          backbone=bb, outdir="ext_large"))
+        return J
     if grid == "stall":
         for b in (4, 6, 8, 10):
             for d in D:
@@ -80,6 +94,8 @@ def tag_of(j):
         t += f"_traj{j['n_traj']}"
     if j.get("steps"):
         t += f"_steps{j['steps']}"
+    if j.get("backbone"):
+        t += f"_w{j['backbone']['width']}L{j['backbone']['layers']}"
     return t
 
 
@@ -147,7 +163,7 @@ def run_job(j, device):
     grid_dir.mkdir(parents=True, exist_ok=True)
     t0 = time.time()
     task = Task(j["system"], j["arm"], j["bits"], j["delta"], j["seed"], device, noise=j.get("noise", 0.0),
-                n_traj=j.get("n_traj"), steps=j.get("steps"))
+                n_traj=j.get("n_traj"), steps=j.get("steps"), backbone=j.get("backbone"))
     m, info = task.train()
     torch.save(m.state_dict(), grid_dir / "model.pt")
     info["job"] = j
