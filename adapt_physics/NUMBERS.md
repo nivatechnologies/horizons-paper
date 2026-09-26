@@ -1598,7 +1598,7 @@ Source `results/chaos_gate.json` · SHA `cf181137eeeaa20576dddfb368856d5a5945bb7
 
 ## APVO. Pivot: pre-committed outcome (w 11, eps 0.1, 300 states)
 
-Source `pivot/results/pv_outcome.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_outcome.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 Precedence KILL -> PASS -> MIDDLE -> otherwise (gate pin).
 
@@ -1608,7 +1608,7 @@ Precedence KILL -> PASS -> MIDDLE -> otherwise (gate pin).
 
 ## APVK. Pivot: every pre-committed criterion
 
-Source `pivot/results/pv_conditions.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_conditions.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 | id | criterion | world | Re | value | threshold | holds | label |
 |---|---|---|---|---|---|---|---|
@@ -1636,7 +1636,7 @@ Source `pivot/results/pv_conditions.csv` · SHA `49d060feb9e37c1781676fb8b4946ab
 
 ## APVH. Pivot: horizons per world, arm, test Re, window, tolerance
 
-Source `pivot/results/pv_rows.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_rows.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 World D Re 36/40/44/50 stage-1 arms are the stage-1 evaluations (identical panels and code).
 
@@ -2325,7 +2325,7 @@ World D Re 36/40/44/50 stage-1 arms are the stage-1 evaluations (identical panel
 
 ## APVD. Pivot: paired differences a - b and frozen readings
 
-Source `pivot/results/pv_paired.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_paired.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 | id | world | Re | w | eps | a | b | n | mean_a | mean_b | ratio | diff | 90% | 95% | reading | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -2932,7 +2932,7 @@ Source `pivot/results/pv_paired.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165
 
 ## APVR. Pivot: time to 90% of the oracle
 
-Source `pivot/results/pv_recovery.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_recovery.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 | id | world | Re | eps | arm | w_tested | w_to_90pct_oracle | label |
 |---|---|---|---|---|---|---|---|
@@ -3109,7 +3109,7 @@ Source `pivot/results/pv_recovery.csv` · SHA `49d060feb9e37c1781676fb8b4946ab71
 
 ## APVW. Pivot: window-drift detector (identified Re against w; reported only)
 
-Source `pivot/results/pv_detector.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_detector.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 | id | world | Re | arm | re_hat_w3 | re_hat_w6 | re_hat_w11 | re_hat_w23 | slope_per_frame | 95% | slope_per_lyapunov_time | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3146,7 +3146,7 @@ Source `pivot/results/pv_detector.csv` · SHA `49d060feb9e37c1781676fb8b4946ab71
 
 ## APVC. Pivot: online cost
 
-Source `pivot/results/pv_cost.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_cost.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 | id | world | Re | arm | w | n | wall_seconds_per_state | solver_steps_identify | objective_evals | forecast_steps | gradient_steps | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3493,7 +3493,7 @@ Source `pivot/results/pv_cost.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc
 
 ## APVT. Pivot: training cost (conditions = distinct Re in the training data)
 
-Source `pivot/results/pv_training.csv` · SHA `49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty`
+Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef7195d06-dirty`
 
 | id | model | params | steps | batch | train_seconds | best_step | training_conditions | training_states | label |
 |---|---|---|---|---|---|---|---|---|---|
