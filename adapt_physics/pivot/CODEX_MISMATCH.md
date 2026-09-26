@@ -5,16 +5,16 @@ work.
 
 ## Invocation
 
-- **Tool:** OpenAI Codex CLI (), run non-interactively.
+- **Tool:** OpenAI Codex CLI `codex-cli 0.156.0`, run non-interactively.
 - **Started:** Sat Sep 26 08:27:26 AM UTC 2026.
-- **Command:** 
+- **Command:** `codex exec --skip-git-repo-check --ephemeral --ignore-rules -s read-only -C <new empty directory> --json -o answer.md "<prompt>" < /dev/null`
 - **Blinding:** the working directory was new and empty, and the session was ephemeral. The only input was the
   prompt below, with no repository, method, arm or result information.
 - **What Codex did:** its tools were web search only. The event log shows no shell commands. Item and event counts:
   {"thread.started": 1, "turn.started": 1, "agent_message": 2, "web_search": 6, "turn.completed": 1}.
 - **Earlier attempts:**
   - The first attempt blocked waiting on stdin and produced no output. It was killed.
-  - A rerun was killed by the executor's own  before it produced any output.
+  - A rerun was killed by the executor's own `pkill -f` before it produced any output.
   - The answer below is from the first run that completed.
 
 ## Prompt (exact)
