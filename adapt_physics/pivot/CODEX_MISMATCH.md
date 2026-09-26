@@ -35,3 +35,51 @@ With \(\omega=\Delta\psi\), \(\mathbf u=(-\psi_y,\psi_x)\), and \(J(a,b)=a_xb_y-
 Here \(-\alpha\omega\) is the solver’s existing drag. The added term follows from advecting \(q=\omega+\beta_Ty\), the linearized potential vorticity. For a tank with mean depth \(H(y)\), \(\beta_T\simeq-f_0\,\partial_y\ln H\), where \(f_0\) is the rotation frequency parameter.
 
 As a **starting magnitude**, use \(\hat\beta_T=\beta_T/(U_f k_f^2)=0.1\), with \(k_f=4\) and \(U_f\) the velocity scale used to define the forcing-scale Reynolds number. This makes the topographic term about 10% of the advective vorticity term at the forcing scale. It is a plausible order-of-magnitude setting, not a guaranteed 10–15% dissipation shift: \(\beta_T\) changes the flow and therefore changes viscous enstrophy dissipation indirectly. Measure \(\bar\eta=\langle\nu|\nabla\omega|^2\rangle\) and tune around this setting until its time average differs from the baseline by 10–15%; also check that the chaotic dynamics persist. Re=40 alone cannot determine the matching value, since the forcing amplitude and drag coefficient also affect the response.
+
+
+## Clarifying question (the single one allowed by the WO)
+
+**Why:** the answer's magnitude depended on an undefined velocity scale U_f, and "10–15%" is a range, not a target.
+
+**How it was asked:**
+- A fresh ephemeral Codex session was run in a new empty directory, with the same flags.
+- The input was the original prompt, Codex's first answer (both verbatim) and the question below.
+- It contained no method, arm or result information. The question states only the solver's nondimensional units and
+  sign convention.
+- Event counts: {"thread.started": 1, "turn.started": 1, "agent_message": 1, "turn.completed": 1}. No shell commands were run.
+
+### Question (exact)
+
+The solver is nondimensional: the forcing term in the vorticity equation is exactly -4 cos(4y) (i.e. body force sin(4y) in x with amplitude 1), viscosity nu = 1/Re = 1/40, linear drag coefficient alpha = 0.0773, velocity u = psi_y, v = -psi_x with lap psi = -omega. In these units, what single numeric value of beta_T (with sign, for the term as it should appear in this sign convention) should be used, and what single tuning target should replace "10-15%" (for example: a 12.5% change in the time-averaged <nu |grad omega|^2> relative to the same flow with beta_T = 0)?
+
+### Answer (verbatim)
+
+Using the base laminar shear speed as \(U_f\), the given unit body force gives
+
+\[
+U_f=\frac{1}{\nu(4)^2+\alpha}
+=\frac{1}{0.025\cdot16+0.0773}
+\approx 2.095.
+\]
+
+So the nominal choice \(\beta_T=0.1\,U_f(4)^2\) is **\(+3.35\)**. Since \(q=\omega+\beta_T y\) and \(v=-\psi_x\), add **\(-3.35\,\partial_x\psi\)** to the left-hand side of the vorticity equation.
+
+Use this single target: after spin-up, the long-time enstrophy dissipation satisfies
+
+\[
+\left|\frac{\bar\eta(\beta_T=+3.35)}{\bar\eta(0)}-1\right|=0.125,
+\qquad
+\bar\eta=\left\langle\nu|\nabla\omega|^2\right\rangle,
+\]
+
+with chaotic dynamics persisting. The value \(+3.35\) is a scale-based starting choice; the stated parameters alone cannot guarantee it will produce exactly that shift.
+
+## Implementation (executor)
+
+- **Term:** in this solver's convention (∇²ψ = −ω, u = ψ_y, v = −ψ_x), the added term is +β_T·v on the left-hand
+  side, i.e. −β_T·v on the right-hand side. This is identical to "−β_T ∂_x ψ on the left-hand side" as Codex states.
+- **Starting value:** β_T = +3.35.
+- **Tuning:** tuned with the same sign until |η̄(β_T)/η̄(0) − 1| = 0.125 ± 0.005 at Re 40 with drag. Here
+  η̄ = ⟨ν|∇ω|²⟩ averaged over time and ensemble, and η̄(0) is World D.
+- **Chaos gate at Re 40:** if it fails, the gate result is sent back to Codex once, asking for a smaller magnitude,
+  as the WO requires.
