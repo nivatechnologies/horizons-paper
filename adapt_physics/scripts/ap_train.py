@@ -27,7 +27,9 @@ BATCH, UNROLL, VAL_EVERY = 32, 4, 1000
 STEPS = {"L0": 30000, "L0big": 60000, "L_range": 30000, "L_param": 30000}
 
 
-def scale():
+def scale(world="D"):
+    if world == "C":     # pivot World C: its own sigma_A(Re 40)
+        return 64.0 / json.loads((config.PKG / "pivot" / "results" / "chaos_gate_C.json").read_text())["Re40"]["sigma_A"]
     return 64.0 / json.loads((config.RESULTS / "chaos_gate.json").read_text())["Re40"]["sigma_A"]
 
 
@@ -49,8 +51,10 @@ def loss_fn(model, x, y, r):
 
 
 def main(arm, device, steps=None):
-    steps = steps or STEPS[arm]
-    n_in, _, _, data = ARMS[arm]
+    base, world = (arm[:-2], "C") if arm.endswith("_C") else (arm, "D")      # pivot: <arm>_C = World C data
+    steps = steps or STEPS[base]
+    n_in, _, _, data = ARMS[base]
+    data = data + ("_C" if world == "C" else "")
     d = OUT / arm
     if (d / "info.json").exists() or (d / "running").exists():
         raise FileExistsError(f"{d} already holds a run")
@@ -58,7 +62,7 @@ def main(arm, device, steps=None):
     (d / "running").write_text(f"{time.time()}\n")
     torch.manual_seed(0)
     rng = np.random.default_rng(0)
-    sc = scale()
+    sc = scale(world)
     X = np.load(config.CACHE / f"train_{data}.npy", mmap_mode="r")
     R = np.load(config.CACHE / f"train_{data}_re.npy")
     V = np.load(config.CACHE / f"val_{data}.npy", mmap_mode="r")
@@ -68,7 +72,7 @@ def main(arm, device, steps=None):
     vt = vr.integers(0, V.shape[0], 512)
     vk = vr.integers(0, V.shape[1] - n_in - UNROLL + 1, 512)
     vnoise = (vr.standard_normal((512, n_in, 64, 64)) * 0.02).astype(np.float32)
-    model = build(arm).to(device)
+    model = build(base).to(device)
     opt = torch.optim.AdamW(model.parameters(), lr=1e-3, weight_decay=1e-4)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: 0.5 * (1 + math.cos(math.pi * min(s, steps) / steps)))
     logf = open(d / "train.log", "a")
@@ -104,7 +108,7 @@ def main(arm, device, steps=None):
                 torch.save(model.state_dict(), d / "best.pt")
             logf.write(json.dumps(curve[-1]) + "\n")
             logf.flush()
-    info = dict(arm=arm, n_in=n_in, width=ARMS[arm][1], re_channel=ARMS[arm][2], data=data, params=model.n_params(),
+    info = dict(arm=arm, n_in=n_in, width=ARMS[base][1], re_channel=ARMS[base][2], data=data, world=world, params=model.n_params(),
                 steps=steps, batch=BATCH, unroll=UNROLL, train_seconds=time.time() - t0, best_val=best,
                 best_step=best_step, gradient_steps=steps, curve=curve, git_sha=config.git_sha())
     (d / "info.json").write_text(json.dumps(info, indent=1))

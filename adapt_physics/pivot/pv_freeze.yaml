@@ -1,0 +1,86 @@
+# PV FREEZE: Adapt the Physics pivot kill test (WO_Adapt-The-Physics-Pivot-Kill-Test-2026-09-26).
+# Committed after step 0 (Codex, 5b6bdd1 / 6f30a74) and before any pivot test data. Gate report: PV_GATE.md.
+# Stage-1 conventions (ap_freeze.yaml) apply unless overridden here.
+
+worlds:
+  D: "stage-1 truth: Kolmogorov n = 4, 64^2, drag alpha = 0.0773273 (ap_freeze.yaml)"
+  C: "World D + the blinded Codex term: topographic beta, rhs - beta_T * v (v = -psi_x), beta_T tuned below"
+  physics_family: "no drag, no beta (stage-1 no-drag family) in both worlds"
+
+codex_term:
+  source: pivot/CODEX_MISMATCH.md
+  start: 3.35
+  target: "|eta(beta)/eta(0) - 1| = 0.125 +- 0.005, eta = <nu |grad omega|^2>, Re 40 with drag"
+  beta_T: 1.4694400100602425
+  achieved_rel_change: 0.12214698258287093
+  iterations: "beta 3.35 -> +0.398; 1.053 -> -0.065; 1.469 -> +0.122 (results/beta_calibration.json)"
+  chaos_at_Re40: "chaotic: lambda 0.1948 [0.1934, 0.1962]; no smaller-magnitude request needed"
+
+chaos_gate:
+  rule: "as stage 1 (64 starts x 800 tu, 95% interval over starts; chaotic iff lower limit > 0); Re 56 replaced by 54 if not chaotic"
+  D: "Re 36/40/44/50 from the stage-1 gate (results/chaos_gate.json); Re 56 new (pivot/results/chaos_gate_D.json)"
+  C: "pivot/results/chaos_gate_C.json"
+  values:
+    D:
+      Re36: {lam: 0.09389, lam_ci95: [0.07912, 0.10865], sigma_A: 140.879, chaotic: true}
+      Re40: {lam: 0.16793, lam_ci95: [0.15900, 0.17686], sigma_A: 154.757, chaotic: true}
+      Re44: {lam: 0.21968, lam_ci95: [0.21358, 0.22578], sigma_A: 164.655, chaotic: true}
+      Re50: {lam: 0.25835, lam_ci95: [0.25326, 0.26344], sigma_A: 175.258, chaotic: true}
+      Re56: {lam: 0.29240, lam_ci95: [0.28891, 0.29589], sigma_A: 182.396, chaotic: true}
+    C:
+      Re36: {lam: 0.14101, lam_ci95: [0.13970, 0.14232], sigma_A: 148.221, chaotic: true}
+      Re40: {lam: 0.19481, lam_ci95: [0.19342, 0.19620], sigma_A: 160.488, chaotic: true}
+      Re44: {lam: 0.23943, lam_ci95: [0.23758, 0.24127], sigma_A: 170.897, chaotic: true}
+      Re50: {lam: 0.28297, lam_ci95: [0.28150, 0.28444], sigma_A: 182.248, chaotic: true}
+      Re56: {lam: 0.31308, lam_ci95: [0.31156, 0.31460], sigma_A: 190.389, chaotic: true}
+  outcome: "every Re chaotic in both worlds; Re 56 kept (no replacement)"
+
+test_panels:
+  test_re: [36, 40, 44, 50, 56]
+  D: "Re 36/40/44/50: stage-1 panels reused (identical truth); Re 56: new panel, test stream 5, noise stream 5"
+  C: "all Re new; test and noise streams = stage-1 stream + 10 (Re 36: 10, 40: 12, 44: 13, 50: 14, 56: 15)"
+  observation: "stage 1: every 0.35, 2% sigma_A(test) white noise, t_c uniform in the interval after frame 0, windows w in {3, 6, 11, 23}, 300 states"
+
+hybrid:
+  name: H
+  form: "continuous-time: d omega/dt = no-drag physics RHS(omega; Re) + g_theta(omega), g evaluated at every IFRK4 stage and dealiased (the solver is differentiable in torch)"
+  g_theta: "FNO: 1 input frame (omega x 64/sigma_A(Re 40, world)) + coordinate channels, width 32, 12 x 12 modes, 4 Fourier layers, projection 128, non-residual tendency output, last layer zero-initialized; 2,368,065 parameters; no Re input"
+  precision: float32
+  training_data: "nominal Re 40 truth of the same world only (train_nominal[_C]: 512 trajectories x 200 frames = 102,400 states; the frozen FNO's data)"
+  loss: "1-frame rollout through the hybrid (35 IFRK4 steps, gradient checkpointing per step) from a noisy frame (2% sigma_A(Re 40)); mean ||x_hat - x||^2 / sigma_A(Re 40)^2"
+  optimizer: "AdamW lr 1e-3, weight decay 1e-4, cosine to 0, clip 1.0, batch 64, 2,000 steps, seed 0"
+  selection: "validation every 100 steps on 64 fixed windows of val_nominal[_C]; minimum kept; step 0 (pure physics) recorded"
+  timing_pilot: "training data only, before the freeze: batch 8/16/32/64 at 2-frame and 1-frame rollouts (launch-bound, 2.2 s per 1-frame step at batch 64); inference 2.5 s per frame for 300 states"
+  identification: "stage-1 golden-section search on the hybrid, Re in [25, 80], exactly 30 evaluations, same misfit; H forecasts at the identified Re"
+  H_true: "hybrid at the true Re (diagnostic)"
+  note: "H_D training started before this commit (training data only; settings as in pivot/scripts/pv_train_h.py, committed here unchanged)"
+
+arms:
+  L_range: "World D: stage-1 model; World C: retrained (L_range_C) with stage-1 settings on World C range data"
+  L0: "World D: stage-1 model; World C: retrained (L0_C)"
+  L0big: "World D only (stage-1 model)"
+  O: "truth family (drag; + beta in C) at the true Re"
+  P1x: "truth family (drag; + beta in C) with Re identified on [25, 70] (stage-1 search)"
+  P1: "no-drag family, Re identified on [25, 70] (stage 1)"
+  persistence: "hold the last observation"
+  L_ft: "dropped (WO)"
+  scaling_world_C: "FNO inputs x 64/sigma_A(Re 40, World C)"
+  reuse_D: "stage-1 evaluations of O, P1, P1x, persistence, L0, L_range, L0big at Re 36/40/44/50 are used as is"
+
+measurements:
+  report: "restricted mean (Lyapunov, physical time) [95%], S(1), S(3), paired differences (bootstrap over trajectories; 2,000 reps, seed 777), retention = arm / O, ratio to L_range, time to 90% of O (tested w), online cost, training cost (conditions = distinct Re values in training data; states)"
+  detector: "identified Re for H and P1 (and P1x) at each w; per-state least-squares slope of Re_hat on w, mean with 95% bootstrap interval; reported only"
+  eps: [0.1, 0.3]
+  window: "W = 10 Lyapunov times of the test system (world-specific lambda)"
+
+outcomes:
+  cell: "w = 11, eps = 0.1, 300 states; ratios of restricted means"
+  precedence: "KILL -> PASS -> MIDDLE -> otherwise (gate: the WO categories overlap)"
+  KILL: ["H/L_range <= 1.0 at Re 50 or 56 in either world", "H/O < 0.70 at Re 50 in World D"]
+  PASS: ["D: H/O >= 0.85 at Re 36, 44, 50, 56", "D: H/L_range >= 1.5 at Re 36, 50, 56", "D: H >= 0.95 max(L0, L0big) at Re 40",
+         "C: H/O >= 0.70 at Re 50, 56", "C: H/L_range >= 1.2 at Re 50, 56"]
+  MIDDLE: "PASS fails and H/L_range >= 1.3 at Re 50 and 56 in both worlds (publishable; no retest)"
+  otherwise: "report; Todd decides"
+
+cut_order: ["w = 3 and 23", "eps = 0.3", "L0big", "Re 36"]
+never_cut: [H, L_range, O, P1x, "World C", "Re 50", "Re 56", "Codex step"]

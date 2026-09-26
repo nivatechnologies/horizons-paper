@@ -24,7 +24,7 @@ from .solver import KolmoDrag, STEPS_PER_OBS
 GOLD = (math.sqrt(5) - 1) / 2
 
 
-def solver_errors(y0, truth_frames, re, alpha, sA, device, eps_stop=0.3, chunk=600):
+def solver_errors(y0, truth_frames, re, alpha, sA, device, eps_stop=0.3, chunk=600, beta=0.0, make=None):
     """y0 (n, 64, 64) start grids; truth_frames(j) -> (n, 64, 64) truth at j = 1..F (callable, F = its .F);
     re (n,) per-state Re. Returns err (F+1, n) (row 0 = start error), with +inf after the integration stops (every
     state has crossed eps_stop at some j >= 1). Also the number of integrator steps."""
@@ -32,14 +32,15 @@ def solver_errors(y0, truth_frames, re, alpha, sA, device, eps_stop=0.3, chunk=6
     n = len(y0)
     err = np.full((F + 1, n), np.inf)
     err[0] = np.sqrt(((y0 - truth_frames(0)) ** 2).sum((-2, -1))) / sA
-    m = KolmoDrag(re, alpha=alpha, device=device)
+    m = make(re) if make else KolmoDrag(re, alpha=alpha, beta=beta, device=device)
     wh = m.to_spec(torch.as_tensor(y0))
     done = np.zeros(n, bool)
     steps = 0
     for j in range(1, F + 1):
-        wh = m.flow(wh, STEPS_PER_OBS)
+        with torch.no_grad():
+            wh = m.flow(wh, STEPS_PER_OBS)
         steps += STEPS_PER_OBS
-        e = np.sqrt(((m.to_phys(wh).cpu().numpy() - truth_frames(j)) ** 2).sum((-2, -1))) / sA
+        e = np.sqrt(((m.to_phys(wh).double().cpu().numpy() - truth_frames(j)) ** 2).sum((-2, -1))) / sA
         err[j] = e
         done |= e > eps_stop
         if done.all():
@@ -47,19 +48,20 @@ def solver_errors(y0, truth_frames, re, alpha, sA, device, eps_stop=0.3, chunk=6
     return err, steps
 
 
-def identify(Y, w, alpha, sA, device, lo=25.0, hi=70.0, n_eval=30):
+def identify(Y, w, alpha, sA, device, lo=25.0, hi=70.0, n_eval=30, beta=0.0, make=None):
     """Golden-section search for Re per state. Y (w, n, 64, 64): window frames k = 1..w (noisy).
     Returns (Re_hat (n,), objective evaluations per state, integrator steps per state)."""
     n = Y.shape[1]
     Yt = torch.as_tensor(np.asarray(Y), device=device)
 
     def obj(re):
-        m = KolmoDrag(re, alpha=alpha, device=device)
+        m = make(re) if make else KolmoDrag(re, alpha=alpha, beta=beta, device=device)
         wh = m.to_spec(Yt[0])
         tot = torch.zeros(n, dtype=torch.float64, device=device)
         for k in range(1, w):
-            wh = m.flow(wh, STEPS_PER_OBS)
-            tot += ((m.to_phys(wh) - Yt[k]) ** 2).sum((-2, -1))
+            with torch.no_grad():
+                wh = m.flow(wh, STEPS_PER_OBS)
+            tot += ((m.to_phys(wh).double() - Yt[k]) ** 2).sum((-2, -1))
         return (tot / max(w - 1, 1) / sA ** 2).cpu().numpy()
 
     a = np.full(n, lo)

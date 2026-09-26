@@ -6,6 +6,9 @@ The truth has alpha > 0 (ap_freeze.yaml drag.alpha); the physics arms' model fam
 Re may differ per batch element (tensor of shape (B,)): the integrating factor exp((-|k|^2/Re_b - alpha) dt / 2)
 is built per element. set_re() changes Re in place (the drift switch at t_c).
 
+Pivot World C adds the blinded Codex term (pivot/CODEX_MISMATCH.md): topographic beta, +beta v on the left-hand side
+(v = -psi_x), i.e. rhs - beta * v.
+
 Enstrophy budget (Z = <omega^2>/2, grid means): viscous loss nu <|grad omega|^2>, drag loss alpha <omega^2>.
 """
 from __future__ import annotations
@@ -25,8 +28,9 @@ STEPS_PER_OBS = 35   # dt = 0.01
 
 
 class KolmoDrag(Kolmogorov):
-    def __init__(self, Re, alpha=0.0, device="cpu", dtype=torch.float64, N=64, n=4, dt=0.01):
+    def __init__(self, Re, alpha=0.0, device="cpu", dtype=torch.float64, N=64, n=4, dt=0.01, beta=0.0):
         self.alpha = float(alpha)
+        self.beta = float(beta)          # topographic beta (pivot World C; pivot/CODEX_MISMATCH.md): RHS - beta * v
         self._re = None
         super().__init__(N=N, Re=40.0, n=n, dt=dt, device=device, dtype=dtype)
         self.set_re(Re)
@@ -42,6 +46,13 @@ class KolmoDrag(Kolmogorov):
         self.dt = float(dt)
         if self._re is not None:
             self.set_re(self._re.cpu().numpy())
+
+    def rhs(self, wh):
+        r = super().rhs(wh)
+        if self.beta:
+            _, vh = self.velocity_hat(wh)
+            r = r - self.beta * vh * self.mask
+        return r
 
     # enstrophy budget terms per element
     def grad_sq(self, wh):
