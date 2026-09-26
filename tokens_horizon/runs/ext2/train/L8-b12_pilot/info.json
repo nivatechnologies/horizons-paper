@@ -1,0 +1,49 @@
+{
+ "config": "L8-b12",
+ "levels": [
+  7,
+  5,
+  5,
+  5,
+  5
+ ],
+ "latent_side": 8,
+ "steps": 300,
+ "lr": 0.0003,
+ "batch": 64,
+ "amp": "None",
+ "params": {
+  "encoder": 4222597,
+  "decoder": 4222209,
+  "quantizer": 0,
+  "total": 8444806
+ },
+ "train_seconds": 42.01149082183838,
+ "best_val_loss": 0.019815559946000576,
+ "best_val_rel_rms": 0.14076775179706671,
+ "best_step": 300,
+ "diverged": false,
+ "curve": [
+  {
+   "step": 100,
+   "train_loss": 0.1555364665016532,
+   "val_loss": 0.03271300010383129,
+   "seconds": 14.445229530334473
+  },
+  {
+   "step": 200,
+   "train_loss": 0.02494681326672435,
+   "val_loss": 0.021733798459172247,
+   "seconds": 28.157857418060303
+  },
+  {
+   "step": 300,
+   "train_loss": 0.020086111929267646,
+   "val_loss": 0.019815559946000576,
+   "seconds": 41.96085238456726
+  }
+ ],
+ "pool_states": 409600,
+ "git_sha": "5b1678775090fd5f0e0430d1d71e4524d41d5f73",
+ "label": "EXT2 learned-tokenizer kill test"
+}

@@ -1,0 +1,24 @@
+{
+ "training": {
+  "n_traj": 256,
+  "samples_per_traj": 800,
+  "sample_every": 1.4,
+  "seed": 20800,
+  "states": 204800,
+  "seconds": 346.67104148864746,
+  "storage": "float32 grids",
+  "burn_in_time": 500.0
+ },
+ "git_sha": "5b1678775090fd5f0e0430d1d71e4524d41d5f73",
+ "label": "EXT2 learned-tokenizer kill test",
+ "validation": {
+  "n_traj": 64,
+  "samples_per_traj": 100,
+  "sample_every": 1.4,
+  "seed": 30800,
+  "states": 6400,
+  "seconds": 98.06435346603394,
+  "storage": "float32 grids",
+  "burn_in_time": 500.0
+ }
+}

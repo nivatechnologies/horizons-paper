@@ -1,0 +1,90 @@
+# EXT2 FREEZE: learned-tokenizer kill test (WO "Learned-tokenizer kill test", issued 2026-09-25).
+# Committed before any training beyond the timing pilot (<= 1,000 steps). Results commits postdate this file.
+# Gate report: ext2/EXT2_GATE.md. Labels: bound / reference / learned / estimate.
+
+system: kolmo40                      # ext_freeze.yaml kolmogorov (Re 40, n 4, 64^2, IFRK4 dt 0.01, lambda 0.12683)
+sigma_A: "results/ext/kolmo/data_blocks.json sigma_A (131.843; calibration fit split, Euclidean over 4,096 values)"
+
+data:
+  blocks:
+    calibration_fit: {use: training, states: 204800, n_traj: 256, seed: 10800, file: runs/cache/ext_kolmo/calib_fit.npy}
+    training: {use: training, n_traj: 256, samples_per_traj: 800, sample_every: 1.4, seed: 20800, stream: 0,
+               burn_in_time: 500.0, storage: float32, script: ext2/scripts/ext2_data.py}
+    validation: {use: "checkpoint selection only", n_traj: 64, samples_per_traj: 100, sample_every: 1.4, seed: 30800,
+                 stream: 0, burn_in_time: 500.0, storage: float32}
+    calibration_heldout: {use: "held-out reconstruction, code utilization and level usage report only", states: 51200,
+                          n_traj: 64, seed: 10801}
+    confirmation: {use: "measurement only", states: 1000, n_traj: 1000, seed: 40800, note: "the KKE3 panel"}
+  training_pool: "calibration fit + training = 409,600 states from 512 independent trajectories"
+  seeds_note: "freeze.yaml scheme block_base + 100 * 8 + stream; training and validation streams unused before EXT2"
+
+tokenizer:
+  type: "FSQ autoencoder (Mentzer et al. 2023, arXiv:2309.15505); module ext2/fsq_ae.py"
+  input_scaling: "vorticity / (sigma_A / 64): mean over grid values of the squared error = ||x - x_hat||^2 / sigma_A^2"
+  encoder: "conv3x3(1 -> 64); per level: 2 ResBlocks, stride-2 conv3x3; bottom 2 ResBlocks; GN(32), SiLU, conv3x3 -> d"
+  decoder: "conv3x3(d -> top); 2 ResBlocks; per level: nearest x2 upsample, conv3x3, 2 ResBlocks; GN(32), SiLU, conv3x3 -> 1"
+  resblock: "GN(32)-SiLU-conv3x3-GN(32)-SiLU-conv3x3 + identity (1x1 conv on channel change)"
+  padding: "circular on every 3x3 convolution (periodic domain)"
+  channels: {base: 64, mults_latent8: [1, 2, 2, 4], mults_latent16: [1, 2, 4]}
+  attention: none
+  quantizer: "FSQ: tanh bound with even-level offset (arctanh shift; eps 1e-3), round with straight-through gradient, / floor(L/2)"
+  loss: "MSE on scaled vorticity only; no adversarial, perceptual or commitment term"
+  configs:
+    L8-b10:  {latent: 8,  tokens: 64,  levels: [8, 5, 5, 5],       codes: 1000,  bits_per_frame: 637.8}
+    L8-b12:  {latent: 8,  tokens: 64,  levels: [7, 5, 5, 5, 5],    codes: 4375,  bits_per_frame: 774.1}
+    L8-b16:  {latent: 8,  tokens: 64,  levels: [8, 8, 8, 5, 5, 5], codes: 64000, bits_per_frame: 1021.8}
+    L16-b10: {latent: 16, tokens: 256, levels: [8, 5, 5, 5],       codes: 1000,  bits_per_frame: 2551.1}
+    L16-b12: {latent: 16, tokens: 256, levels: [7, 5, 5, 5, 5],    codes: 4375,  bits_per_frame: 3096.3}
+  level_set_source: "FSQ paper Table 1 (recommended L per target |C|: 2^10 [8,5,5,5], 2^12 [7,5,5,5,5], 2^16 [8,8,8,5,5,5])"
+
+training:
+  script: ext2/scripts/ext2_train.py
+  steps: 30000
+  batch: 64
+  sampling: "uniform with replacement from the training pool, numpy default_rng(0)"
+  optimizer: {name: AdamW, lr: 3.0e-4, betas: [0.9, 0.999], weight_decay: 0.01}
+  schedule: "cosine decay to 0 over 30,000 steps, no warm-up"
+  grad_clip_norm: 1.0
+  precision: float32
+  model_seed: 0
+  validation: "every 1,000 steps and at the end, on the full validation block; checkpoint = minimum validation loss"
+  divergence: "a non-finite training loss, or best validation loss >= 1.0 (the zero-prediction null)"
+  fallback: "one rerun at lr 1.0e-4, otherwise identical; no other tuning"
+  timing_pilot: "300 steps (L8-b12) on the training pool before this freeze: 0.14 s/step with data loading, float32 (synthetic benchmark: bf16 autocast 15% faster, not used); pilot validation loss 0.0198 at step 300, no divergence; the pilot checkpoint is not used"
+
+measurements:
+  script: ext2/scripts/ext2_measure.py (M1-M4), ext2/scripts/ext2_analysis.py (M5, M6, readings)
+  panel: "the 1,000 KKE3 confirmation states (panel_confirmation.npy)"
+  deltas: {primary: 0.35, secondary: [0.14, 0.70]}
+  eps: [0.1, 0.3, 0.5]
+  window_lyapunov_times: 27
+  scores: {primary: "future frames (first scored frame 1)", secondary: "from t = 0 (first scored frame 0)"}
+  horizon: "th.score.horizon: lambda * j * Delta at the first scored frame j with error > eps, restricted to W"
+  M1: "e_0 = ||x_0 - D(E(x_0))|| / sigma_A; RMS over states; share with e_0 <= eps; null: zero field"
+  M2: "perfect next-token prediction (reference; NOT a bound): e_j = ||x_j - D(E(x_j))|| / sigma_A on true frames"
+  M3: "decode-and-integrate (reference): th.kolmo_eval.di_errors on D(E(x_0)), E3 pipeline and projection"
+  M4: "persistence (reference): hold D(E(x_0))"
+  M5: "paired M3 - M2 per state: th.score.paired_diff (2,000 reps, seed 777, states = trajectories), 90% and 95%
+       intervals; share with H(M3) > H(M2) strictly; S(1), S(3), S(10) (th.kolmo_eval.survival) for M2 and M3"
+  M6: "descriptive, beside KKE3 k-means patch rows at the same layout and nearest bits: 8x8 b10/b12/b16 and 16x16
+       b10/b12 (ceiling = the k-means perfect-token horizon; decode-and-integrate); no reading"
+
+readings:
+  scope: "per configuration, Delta, eps and score; primary = future frames at Delta 0.35; secondary beside it"
+  R1: "the vocabulary binds: frozen 'well below' on d = M3 - M2: d >= 0.25 and lower 95% limit > 0"
+  R2: "the vocabulary does not bind: 90% interval of d within [-0.10, 0.10] (approximately equal), or upper 95% limit of d < 0 (T_pt above)"
+  none: "otherwise no reading applies (a non-significant difference is not equivalence)"
+  kill_criterion: >
+    WO text (frozen): if R1 fails at eps = 0.1 for every configuration with at least 2^10 codes per token, the
+    tight-tolerance practical claim is dropped. GATE: the eligible set is unpinned (1,000 < 1,024 excludes the b10
+    configs literally; the FSQ paper matches b10 approximately). The verdict is not issued by the executor; R1 at eps
+    0.1 (primary score, Delta 0.35) is reported per configuration with both eligible sets:
+    literal {L8-b12, L8-b16, L16-b12}; nominal {all five}. Decision: Todd.
+
+cut_order: ["Delta 0.14 and 0.70", "L16-b12", "L8-b16"]
+never_cut: [L8-b12, L16-b10]
+
+deliverables:
+  numbers: "NUMBERS.md section K3 (K3A tokenizers, K3B horizons, K3C paired readings, K3D k-means comparison, K3E kill table)"
+  figure: "F9 (F8 already exists): FSQ T_pt and decode-and-integrate beside the k-means ceiling and its DI, F7 axes, eps 0.1 and 0.3 panels, Delta 0.35, future frames"
+  note: "results-note section generated by ext2/scripts/ext2_results_note.py"
