@@ -1,4 +1,5 @@
-"""EXT2 per-configuration runner: wait for the frozen training run's info.json (timeout 6 h); if it diverged, run the
+"""EXT2 per-configuration runner: wait for the frozen training run to finish (info.json present and no `running`
+marker; ext2_train.py refuses to reuse a directory that already holds a run; timeout 6 h); if it diverged, run the
 single frozen fallback (lr 1e-4, tag _lr1e-4); then run the M1-M4 measurements on the selected checkpoint.
 
 Usage: python ext2/scripts/ext2_pipeline.py <config> <device>
@@ -19,7 +20,7 @@ TRAIN = config.RUNS / "ext2" / "train"
 def main(name, device):
     info = TRAIN / name / "info.json"
     t0 = time.time()
-    while not info.exists():
+    while not info.exists() or (TRAIN / name / "running").exists():
         if time.time() - t0 > 6 * 3600:
             raise TimeoutError(name)
         time.sleep(30)

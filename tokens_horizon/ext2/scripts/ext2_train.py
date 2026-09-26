@@ -69,7 +69,10 @@ def main(name, device, steps=30000, lr=3e-4, tag=""):
     opt = torch.optim.AdamW(model.parameters(), lr=lr, betas=(0.9, 0.999), weight_decay=0.01)
     sched = torch.optim.lr_scheduler.LambdaLR(opt, lambda s: 0.5 * (1 + math.cos(math.pi * min(s, steps) / steps)))
     d = OUT / f"{name}{tag}"
+    if (d / "info.json").exists() or (d / "running").exists():
+        raise FileExistsError(f"{d} already holds a run; use a fresh tag (frozen runs are never overwritten)")
     d.mkdir(parents=True, exist_ok=True)
+    (d / "running").write_text(f"{time.time()}\n")
     logf = open(d / "train.log", "a")
     curve, best, best_step, diverged = [], float("inf"), None, False
     t0 = time.time()
@@ -107,6 +110,7 @@ def main(name, device, steps=30000, lr=3e-4, tag=""):
     (d / "info.json").write_text(json.dumps(info, indent=1))
     if not diverged:
         (d / "done").write_text("ok\n")
+    (d / "running").unlink()
     print(name, "done", round(time.time() - t0), "s best val", best, "at", best_step, "diverged", diverged, flush=True)
 
 
