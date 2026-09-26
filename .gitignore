@@ -11,3 +11,7 @@ tokens_horizon/runs/ext/ks/codebooks/
 tokens_horizon/runs/ext/kolmo/codebooks/
 # EXT2 FSQ weights: manifest committed instead (runs/ext2/train/MANIFEST.csv)
 tokens_horizon/runs/ext2/**/*.pt
+adapt_physics/runs/cache/
+adapt_physics/runs/**/*.pt
+adapt_physics/runs/**/*.log
+adapt_physics/results/.*.lock

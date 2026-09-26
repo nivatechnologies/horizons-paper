@@ -1,0 +1,30 @@
+{
+ "alpha": 0.0773273136075609,
+ "share": 0.14886006710258637,
+ "target": 0.15,
+ "iterations": [
+  {
+   "alpha": 0.0,
+   "share": 0.0
+  },
+  {
+   "alpha": 0.05,
+   "share": 0.09699030847059799,
+   "viscous": 2.29401831478778,
+   "drag": 0.24639552163790218
+  },
+  {
+   "alpha": 0.0773273136075609,
+   "share": 0.14886006710258637,
+   "viscous": 3.4151812354591744,
+   "drag": 0.5972979156874092
+  }
+ ],
+ "B": 64,
+ "burn": 300.0,
+ "avg": 300.0,
+ "seed": 10900,
+ "seconds": 278.5952503681183,
+ "git_sha": "cf181137eeeaa20576dddfb368856d5a5945bb70-dirty",
+ "definition": "drag share of enstrophy dissipation alpha<w^2>/(alpha<w^2> + <|grad w|^2>/Re) at Re 40"
+}

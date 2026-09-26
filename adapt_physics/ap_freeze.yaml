@@ -1,0 +1,109 @@
+# AP FREEZE: Adapt the Physics, stage-1 kill test (WO_Adapt-The-Physics-Kill-Test-2026-09-26).
+# Committed before any test-panel data or result and before any learned-arm training beyond a timing pilot.
+# Gate report: AP_GATE.md. Labels: reference / learned / estimate (no bound in this study).
+
+system:
+  name: kolmo_drag
+  equations: "omega_t + u.grad omega = (1/Re) lap omega - alpha omega - n cos(n y); n = 4; [0, 2 pi)^2"
+  numerics: "64 x 64, 2/3 dealiasing, integrating-factor RK4, dt 0.01, float64 (tokens_horizon/th/kolmogorov.py; ap/solver.py adds drag and per-trajectory Re)"
+  seeds: "ap.config.seed(block, stream) = block base + 100 * 9 + stream; bases calibration 10000, training 20000, validation 30000, test 40000, lyapunov 50000, noise 60000"
+
+drag:
+  alpha: 0.0773273136075609
+  share_achieved: 0.14886
+  definition: "alpha<w^2> / (alpha<w^2> + <|grad w|^2>/Re) at Re 40 = 0.15 +- 0.002; calibration block stream 0, 64 trajectories, burn-in 300 tu, average 300 tu (every 1 tu); secant iteration"
+  source: results/drag_calibration.json
+  physics_family: "P0, P1: alpha = 0 (model mismatch); P1x and O: alpha known"
+
+chaos_gate:
+  rule: "lambda (renormalized twins, 64 starts x 800 tu after 500-tu burn-in, 20-tu transient) with 95% interval over starts; chaotic iff lower limit > 0; if Re 36 is not chaotic it is replaced by Re 38"
+  source: results/chaos_gate.json
+  values:
+    Re36: {lam: 0.09389, lam_ci95: [0.07912, 0.10865], sigma_A: 140.879, chaotic: true, lam_min_start: -0.0019, F_frames: 305}
+    Re38: {lam: 0.14305, lam_ci95: [0.13192, 0.15418], sigma_A: 150.223, chaotic: true, lam_min_start: 0.0703, F_frames: 200}
+    Re40: {lam: 0.16793, lam_ci95: [0.15900, 0.17686], sigma_A: 154.757, chaotic: true, lam_min_start: 0.0999, F_frames: 171}
+    Re44: {lam: 0.21968, lam_ci95: [0.21358, 0.22578], sigma_A: 164.655, chaotic: true, lam_min_start: 0.1685, F_frames: 131}
+    Re50: {lam: 0.25835, lam_ci95: [0.25326, 0.26344], sigma_A: 175.258, chaotic: true, lam_min_start: 0.1977, F_frames: 111}
+  outcome: "all tested Re chaotic (lower 95% limit > 0); Re 36 kept (Re 38 measured, not used); one Re 36 start has lambda -0.002 (reported)"
+  windows_in_lyapunov_times_at_Re40: "w = 3, 6, 11, 23 frames = 0.18, 0.35, 0.65, 1.35 (lambda 0.168 with drag; the WO's 0.125/0.25/0.5/1 assumed the no-drag 0.127)"
+
+drift:
+  nominal_re: 40
+  test_re: [36, 40, 44, 50]           # Re 36 replaced by 38 if not chaotic (chaos_gate)
+  change_time: "t_c = t_0 + u * 0.35, u ~ U(0,1) per trajectory (rounded to the 0.01 step, at least 1 step); frames k <= 0 at Re 40, k >= 1 after the change"
+  burn_in: "500 tu at Re 40 (with drag) from random initial conditions"
+  pre_change_frames: 10               # k = -9 .. 0 plus k = -10
+
+observation:
+  interval: 0.35
+  noise: "additive white noise, Euclidean norm 0.02 sigma_A(test Re) RMS over the 4,096 grid values, every observed frame (noise block stream = test stream)"
+  windows_w: [3, 6, 11, 23]           # frames k = 1..w after the change
+  forecast_start: "the noisy observation at k = w"
+
+panel:
+  n: 300
+  streams: {36: 0, 38: 1, 40: 2, 44: 3, 50: 4}
+  independent: "one trajectory per state"
+  label: "screening panel (stage 1); stage 2 confirms on fresh trajectories"
+
+scoring:
+  eps: [0.1, 0.3]                     # sigma_A of the test system; primary 0.1
+  window: "W = 10 Lyapunov times of the test system: F = ceil(10 / (lambda_test * 0.35)) future frames"
+  horizon: "th.score.horizon(err, lambda_test, 0.35, 10, eps, start=1): lambda * j * 0.35 at the first future frame j with error > eps, restricted to 10; physical time = horizon / lambda_test"
+  survival: "S(tau) = P(lambda T > tau), censored states survive; tau = 1, 3"
+  bootstrap: "th.score.bootstrap_mean / paired_diff (2,000 reps, seed 777; resampling unit = trajectory = state)"
+  integration_stop: "solver and rollouts stop once every state has exceeded 0.3 at some future frame (all first crossings fixed)"
+
+arms:
+  O: "truth family (alpha) at the true test Re, from the projected last observation (reference)"
+  P0: "no-drag family at Re 40 (null)"
+  persistence: "hold the last observation (null)"
+  P1: "no-drag family at Re from golden-section search on [25, 70], exactly 30 objective evaluations; objective = mean over window frames k = 2..w of ||x_model(k) - y_k||^2 / sigma_A^2 from the projected y_1; estimate = midpoint of the final bracket; then integrate from y_w"
+  P1x: "as P1 with the drag family (alpha known) (diagnostic)"
+  L_param_P1: "L_param given P1's Re estimate (identification arm)"
+  L_param_true: "L_param given the true Re (diagnostic)"
+  L_range: "history-conditioned FNO, 8 input frames, trained on Re ~ U[34, 46] (opponent)"
+  L_ft: "L0 fine-tuned per state on the w one-step pairs whose target is a window frame (inputs may be earlier observations; targets are noisy observations): AdamW lr 1e-4, weight decay 0, full batch, one-step MSE, 200 steps; first 100 states of each panel (opponent)"
+  L0big: "nominal FNO, width 156 (99.8 M parameters, 5.94x L0), same data, 2x steps (opponent)"
+  L0: "frozen nominal FNO, 4 input frames, Re 40 data (diagnostic)"
+  lorenz63: "NOT EXECUTED (gate check 3: arms and score unspecified; first in the cut order)"
+
+learned:
+  module: ap/fno.py
+  fno: "modes 16 x 16 (both ky half-planes), width 64, 4 Fourier layers, GELU, lift and projection (128) 1x1 convs, coordinate channels sin/cos x, y; residual output; L_param adds channel (Re - 40)/6"
+  params: {L0: 16802881, L0big: 99799853, L_range: 16803137, L_param: 16802945}
+  data:
+    nominal: {train: "512 trajectories at Re 40, 200 frames every 0.35 after 500-tu burn-in (training stream 0)", val: "64 x 100 (validation stream 0)"}
+    range: {train: "1,024 trajectories, Re ~ U[34, 46] per trajectory, 200 frames (training stream 1)", val: "128 x 100 (validation stream 1)"}
+    truth: "with drag alpha (all learned arms see the true system)"
+  scaling: "fields x 64 / sigma_A(Re 40)"
+  input_noise: "N(0, 0.02^2) per scaled grid value on input frames (= the observation noise); targets clean"
+  loss: "one-step MSE + mean over a 4-step unrolled rollout of the per-step MSE"
+  optimizer: "AdamW lr 1e-3, weight decay 1e-4, cosine to 0, no warm-up, clip 1.0, batch 32, seed 0"
+  steps: {L0: 30000, L_range: 30000, L_param: 30000, L0big: 60000}
+  selection: "validation loss every 1,000 steps on 512 fixed windows; minimum kept"
+
+measurements:
+  per: "arm x test Re x w x eps"
+  report: "restricted mean (Lyapunov and physical time) with 95% interval, S(1), S(3), paired differences with 90/95% intervals, online cost (wall seconds per state, solver steps or objective evaluations, gradient steps), training cost separately"
+  recovery_curve: "horizon against w per arm"
+  time_to_90pct_oracle: "smallest tested w with restricted mean >= 0.9 x O (same states); 'not reached' otherwise"
+  no_drift_ratio: "I*/A* at Re 40 beside each drift ratio"
+
+readings:
+  well_below: "difference >= 0.25 with the 95% interval excluding 0"
+  approximately_equal: "90% interval within +-0.10"
+  otherwise: "no reading"
+
+kill_rule:
+  cell: "Re 44, eps 0.1, w = 11, restricted means (Lyapunov times of the test system) on the first 100 states of the panel"
+  I_star: "max(P1, L_param_P1)"
+  A_star: "max(L_range, L_ft, L0big)"
+  pass: "I* >= 2 A* at Re 44 and at Re 50 (same cell otherwise)"
+  kill: "A* >= 0.75 I* at Re 44"
+  between: "report; Todd decides"
+  flag: "I*/A* at Re 40 >= I*/A* at Re 44 -> advantage not attributable to adaptation (reported prominently)"
+  beside: "300-state ratios with A* = max(L_range, L0big); paired differences I*-arm minus A*-arm with bootstrap intervals"
+
+cut_order: ["Lorenz-63 (cut at the gate)", "Re 36", "w = 3", "L0big"]
+never_cut: [O, P0, P1, L0, L_range, L_ft, L_param_P1, "Re 44", "Re 50", drag]
