@@ -70,6 +70,16 @@ rates skipped) → `ext_ks_a9_predict` (commit) → `ext_ks_e3 run_odd` → `ext
 `ext_kolmo_adequacy` → `ext_kolmo_rescheck` → `ext_kolmo_summary`. Codebooks are not committed (KS 206 MB, Kolmogorov
 466 MB); `runs/ext/*/CODEBOOK_MANIFEST.csv` lists their SHA-256.
 
+## EXT2: learned-tokenizer kill test
+
+Governed by `ext2/EXT2_FREEZE.md` / `ext2/ext2_freeze.yaml`; spec integrity gate `ext2/EXT2_GATE.md`. FSQ
+autoencoders (`ext2/fsq_ae.py`; VQGAN-style residual convolutions, circular padding, FSQ levels from Mentzer et al.
+2023, Table 1) at the Kolmogorov 8x8 and 16x16 layouts, measured on the KKE3 confirmation panel. Numbers are in
+NUMBERS.md section K3; figure `figures/F9_learned_tokenizer.*`. The perfect-token horizon T_pt is a reference
+(perfect next-token prediction), not a bound. Order: `ext2/scripts/ext2_data.py` (training, validation) →
+`ext2_train.py` → `ext2_measure.py` (or `ext2_pipeline.py`) → `ext2_tokstats.py` → `ext2_analysis.py` → `fig_F9.py` →
+`ext2_results_note.py`. Weights are not committed; `runs/ext2/train/MANIFEST.csv` lists their SHA-256.
+
 ## Reproduce
 
 ```

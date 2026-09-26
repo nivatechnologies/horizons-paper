@@ -389,6 +389,46 @@ def main():
             rows, sha = read_csv(p)
             table(out, sec, title, p, cols, rows, sha, note=note)
 
+    # ---- EXT2 learned-tokenizer kill test, section K3 (ext2/EXT2_FREEZE.md; gate report ext2/EXT2_GATE.md)
+    e2 = R / "ext2"
+    for fname, sec, title, cols, lab, note in (
+            ("k3_tokenizers.csv", "K3A", "EXT2 K3: FSQ autoencoders (parameters, training, held-out reconstruction, "
+             "code utilization, level usage)",
+             ["config", "latent", "tokens", "levels", "codes_per_token", "bits_per_frame", "params_encoder",
+              "params_decoder", "params_quantizer", "train_steps", "lr", "train_seconds", "best_step", "best_val_rel_rms",
+              "heldout_states", "heldout_traj", "heldout_rel_rms", "heldout_rel_median", "heldout_share_within_eps0.1",
+              "heldout_share_within_eps0.3", "code_utilization", "codes_used", "code_perplexity", "level_usage",
+              "level_entropy_norm", "null_mean_rel_rms", "null_zero_rel_rms"], "label",
+             "Held-out = calibration held-out split (64 trajectories; never trained on or used for selection). One seed "
+             "per configuration; checkpoint selected on the validation block."),
+            ("k3_recon.csv", "K3B", "EXT2 K3: M1 reconstruction on the 1,000 confirmation states (t = 0)",
+             ["config", "bits_per_frame", "recon_rms", "recon_mean", "recon_median", "share_within_eps0.1",
+              "share_within_eps0.3", "share_within_eps0.5", "null_zero_rms"], "label", ""),
+            ("k3_rows.csv", "K3C", "EXT2 K3: M2 perfect next-token prediction, M3 decode-and-integrate, M4 persistence",
+             ["config", "bits_per_frame", "delta", "eps", "start", "kind", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")),
+              "frac_no_cross", "median", "S1", "S3", "S10"], "label",
+             "M2 (kind perfect_token) is **perfect next-token prediction (reference)**: the horizon of a model that "
+             "predicts every future token exactly as the encoder assigns it. It is not a bound."),
+            ("k3_paired.csv", "K3D", "EXT2 K3: M5 paired d = decode-and-integrate minus T_pt, readings R1 / R2",
+             ["config", "delta", "eps", "start", "T_pt", "DI", "diff_DI_minus_Tpt", ("90%", ci("ci90_lo", "ci90_hi")),
+              ("95%", ci("ci95_lo", "ci95_hi")), "reading", "outlast_DI_over_Tpt", "ties", "Tpt_S1", "Tpt_S3", "Tpt_S10",
+              "DI_S1", "DI_S3", "DI_S10"], "label",
+             "Paired bootstrap over the 1,000 confirmation trajectories (one state per trajectory). R1 = d >= 0.25 and "
+             "lower 95% > 0; R2 = 90% within +-0.10 or upper 95% < 0; otherwise none. Primary: future frames, Delta 0.35."),
+            ("k3_kmeans.csv", "K3E", "EXT2 K3: M6 FSQ beside k-means patch rows (same layout, nearest bits)",
+             ["config", "fsq_bits", "kmeans", "kmeans_bits", "delta", "eps", "start", "fsq_T_pt", "fsq_DI",
+              "kmeans_ceiling", "kmeans_ceiling_ci95", "kmeans_p0", "kmeans_DI", "kmeans_DI_ci95"], "label",
+             "Descriptive; no reading applies."),
+            ("k3_kill.csv", "K3F", "EXT2 K3: R1 at eps 0.1 (primary score, Delta 0.35) and the kill-criterion eligible sets",
+             ["config", "codes_per_token", "in_literal_set", "in_nominal_set", "R1_eps0_1_primary",
+              "reading_eps0_1_primary", "diff_eps0_1_primary", "ci95_eps0_1_primary", "reading_eps0_1_secondary"], "label",
+             "The paper-level kill verdict is not issued by the executor: the WO's eligible set ('at least 2^10 codes "
+             "per token') excludes the b10 FSQ configurations (1,000 codes) literally (gate check 3). Decision: Todd.")):
+        p = e2 / fname
+        if p.exists():
+            rows, sha = read_csv(p)
+            table(out, sec, title, p, cols, rows, sha, label_col=lab, note=note)
+
     lj = R / "learned" / "learned.json"
     if lj.exists():
         rows, sha = read_csv(R / "learned" / "cells.csv")

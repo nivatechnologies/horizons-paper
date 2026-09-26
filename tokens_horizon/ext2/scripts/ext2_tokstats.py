@@ -5,11 +5,12 @@ Per configuration: parameters (encoder, decoder, quantizer = 0: FSQ has no learn
 steps, selected checkpoint, held-out reconstruction ||x - D(E(x))|| / sigma_A (RMS, mean, median, share within
 eps), code utilization (distinct codes used on held-out tokens / codebook size), per-dimension level usage
 (levels used / levels and normalized entropy), and the reconstruction null (calibration mean, zero field).
-Writes results/ext2/k3_tokenizers.csv.
+Writes results/ext2/k3_tokenizers.csv and runs/ext2/train/MANIFEST.csv (sha256 of each selected checkpoint).
 
 Usage: python ext2/scripts/ext2_tokstats.py <device> [config ...]
 """
 import csv
+import hashlib
 import json
 import sys
 from pathlib import Path
@@ -82,6 +83,16 @@ def main(device, names):
                          label="learned"))
         print(name, "held-out rel RMS", round(rows[-1]["heldout_rel_rms"], 4), "util", round(rows[-1]["code_utilization"], 4),
               rows[-1]["level_usage"], flush=True)
+    man = []
+    for name in names:
+        for d in sorted(TRAIN.glob(f"{name}*")):
+            if (d / "best.pt").exists() and not d.name.endswith("_pilot"):
+                man.append(dict(run=d.name, file=f"runs/ext2/train/{d.name}/best.pt", bytes=(d / "best.pt").stat().st_size,
+                                sha256=hashlib.sha256((d / "best.pt").read_bytes()).hexdigest()))
+    with open(TRAIN / "MANIFEST.csv", "w", newline="") as fh:
+        w = csv.DictWriter(fh, fieldnames=["run", "file", "bytes", "sha256"])
+        w.writeheader()
+        w.writerows(man)
     RES.mkdir(parents=True, exist_ok=True)
     with open(RES / "k3_tokenizers.csv", "w", newline="") as fh:
         fh.write(f"# git_sha={config.git_sha()}; EXT2 learned-tokenizer kill test; held-out = calibration held-out split\n")

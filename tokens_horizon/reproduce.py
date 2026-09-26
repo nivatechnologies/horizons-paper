@@ -35,6 +35,8 @@ COMPUTE = [
 ]
 # Post-freeze extension pipelines (KS, Kolmogorov, E5 controls) are multi-stage and GPU/CPU heavy; their scripts and
 # stage order are documented in README.md ("Post-freeze extension") and are not run by this driver.
+# EXT2 (learned-tokenizer kill test, ext2/EXT2_FREEZE.md) GPU stages, in order: ext2/scripts/ext2_data.py training|validation,
+# ext2_train.py <config>, ext2_measure.py <config> (or ext2_pipeline.py <config> <device>), ext2_tokstats.py.
 
 TABLES = [
     ["scripts/t2_system_table.py"],
@@ -57,6 +59,9 @@ TABLES = [
     ["scripts/fig_F6.py"],
     ["scripts/fig_F7.py"],
     ["scripts/fig_F8.py"],
+    ["ext2/scripts/ext2_analysis.py"],
+    ["ext2/scripts/fig_F9.py"],
+    ["ext2/scripts/ext2_results_note.py"],
     ["scripts/make_numbers.py"],
 ]
 
