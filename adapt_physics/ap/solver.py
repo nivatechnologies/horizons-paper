@@ -28,12 +28,20 @@ STEPS_PER_OBS = 35   # dt = 0.01
 
 
 class KolmoDrag(Kolmogorov):
-    def __init__(self, Re, alpha=0.0, device="cpu", dtype=torch.float64, N=64, n=4, dt=0.01, beta=0.0):
+    def __init__(self, Re, alpha=0.0, device="cpu", dtype=torch.float64, N=64, n=4, dt=0.01, beta=0.0, amp=None):
         self.alpha = float(alpha)
         self.beta = float(beta)          # topographic beta (pivot World C; pivot/CODEX_MISMATCH.md): RHS - beta * v
         self._re = None
         super().__init__(N=N, Re=40.0, n=n, dt=dt, device=device, dtype=dtype)
+        self.F_hat0 = self.F_hat
         self.set_re(Re)
+        if amp is not None:
+            self.set_amp(amp)
+
+    def set_amp(self, amp):
+        """Forcing amplitude per element (stage 2 item 3): F_hat = amp_b * F_hat0; amp = 1 is the nominal forcing."""
+        a = torch.as_tensor(np.atleast_1d(np.asarray(amp, dtype=np.float64)), device=self.device, dtype=self.dtype)
+        self.F_hat = self.F_hat0[None] * a[:, None, None]
 
     def set_re(self, Re):
         re = torch.as_tensor(np.atleast_1d(np.asarray(Re, dtype=np.float64)), device=self.device, dtype=self.dtype)

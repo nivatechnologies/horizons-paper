@@ -1,0 +1,47 @@
+# S2 FREEZE: Adapt the Physics stage 2 (confirmation and robustness). Committed before any fresh test panel.
+# Arms and settings identical to the pivot (pivot/pv_freeze.yaml) except where stated. Gate: S2_GATE.md.
+
+part_A:
+  panels: "300 fresh independent trajectories per Re in {36, 40, 44, 50, 56} per world; test and noise streams = pivot + 20 (D 20,22,23,24,25; C 30,32,33,34,35)"
+  seeds:
+    H: [0, 1, 2]          # per world; seed 0 = pivot model; seeds set torch.manual_seed and the sampling generator
+    L_range: [0, 1, 2]
+    L0: [0, 1, 2]
+    L0big: [0]            # World D, reused; extra seeds first in the cut order (not run unless time allows)
+  arms: [O, P1, P1x, persistence, H, L_range, L0, L0big, L_range_wide]
+  windows: [3, 6, 11]     # w = 23 not repeated on fresh panels (gate)
+  eps: [0.1, 0.3]
+  estimator: "per-state mean over seeds, then mean over states; bootstrap 2,000 reps (seed 777): resample trajectories, then within each trajectory resample each arm's seeds with replacement; percentile 95% (and 90%) intervals for means, paired differences and ratios"
+  criteria: "pivot WO KILL, PASS, MIDDLE unchanged (pivot/pv_freeze.yaml outcomes), precedence KILL -> PASS -> MIDDLE -> otherwise, at w = 11, eps = 0.1, fresh panels; point ratios decide, intervals reported"
+  report: "outcome, every criterion value with its 95% interval, per-seed values, screening (pivot) values beside"
+
+part_B:
+  item1_wide:
+    arm: L_range_wide
+    data: "Re ~ U[30, 60] per trajectory, 1,024 x 200 frames (training stream 2 in D, 12 in C), validation 128 x 100 (stream 2 / 12)"
+    training: "identical to L_range (ap_train.py settings, 30,000 steps), seed 0, both worlds"
+    evaluation: "fresh panels, every Re, w in {3, 6, 11}"
+  item2_straddle:
+    worlds_re: {D: [44, 50], C: [44, 50]}
+    windows: "11 frames ending 8, 5, 2 frames after t_c (start 3, 6, 9 frames before)"
+    arms: ["H seed 0 (identification on the window as is, no change detector)", "L_range seed 0 (last 8 frames)"]
+  item3_two_parameter:
+    world: D
+    cases: {Re44_A1.1: {Re: 44, amp: 1.1, stream: 26}, Re50_A0.9: {Re: 50, amp: 0.9, stream: 27}}
+    chaos_gate: "lambda and sigma_A per case (64 starts x 800 tu), stage2/results/chaos_2p.json"
+    H: "seed 0; Nelder-Mead on (Re, amp) per state: start (40, 1.0), initial simplex steps (+5, +0.1), coefficients 1 / 2 / 0.5 / 0.5, exactly 60 objective evaluations, clip Re to [25, 80] and amp to [0.5, 1.5], estimate = best vertex; same misfit as the Re search"
+    H_Re_only: "diagnostic: golden-section on Re only (amp fixed at 1), 30 evaluations, [25, 80]"
+    arms: [O, H, H_Re_only, L_range]
+    window: 11
+  item4_noise:
+    noise: "5% sigma_A(test) white noise, same truth as the fresh panels, noise stream = test stream + 50"
+    worlds_re: {D: [44, 50], C: [44, 50]}
+    arms: [O, "H seed 0", "L_range seed 0"]
+    window: 11
+  item5_recovery: "w in {3, 6, 11} for every arm on the fresh panels (part A evaluations)"
+  item6_scoring: "part-A cell rescored from t = 0 (start frame 0) and at eps = 0.3"
+  item7_detector: "identified-Re slope on w (3, 6, 11) for H (seed-averaged) and P1, both worlds; World C per-state Spearman correlation between H's slope and its oracle shortfall (O - H, w 11, eps 0.1), 95% bootstrap interval over trajectories"
+  label: "reported, not criteria; single-seed where stated; selector-dependent (gate check 9)"
+
+cut_order: ["L0big extra seeds", "item 4", "item 6", "item 2 at 9 frames", "item 3 Re 50 case"]
+never_cut: ["part A", "item 1", "item 3 at Re 44"]

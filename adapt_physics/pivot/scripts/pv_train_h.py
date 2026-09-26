@@ -8,7 +8,7 @@ AdamW lr 1e-3, weight decay 1e-4, cosine to 0, no warm-up, clip 1.0, batch 64, 2
 100 steps on 64 fixed windows of val_nominal[_C] (fixed noise), same loss; checkpoint = minimum validation loss;
 step 0 (pure physics, zero-initialized output) is evaluated and recorded.
 
-Usage: python pivot/scripts/pv_train_h.py <D|C> <device>
+Usage: python pivot/scripts/pv_train_h.py <D|C> <device> [seed]
 """
 import json
 import math
@@ -33,15 +33,15 @@ def sigma40(world):
     return json.loads((config.PKG / "pivot" / "results" / "chaos_gate_C.json").read_text())["Re40"]["sigma_A"]
 
 
-def main(world, device):
+def main(world, device, seed=0):
     sfx = "" if world == "D" else "_C"
-    d = config.RUNS / "train" / f"H_{world}"
+    d = config.RUNS / "train" / (f"H_{world}" if seed == 0 else f"H_{world}_s{seed}")   # stage 2 seeds 1, 2
     if (d / "info.json").exists() or (d / "running").exists():
         raise FileExistsError(d)
     d.mkdir(parents=True, exist_ok=True)
     (d / "running").write_text(f"{time.time()}\n")
-    torch.manual_seed(0)
-    rng = np.random.default_rng(0)
+    torch.manual_seed(seed)
+    rng = np.random.default_rng(seed)
     sA = sigma40(world)
     X = np.load(config.CACHE / f"train_nominal{sfx}.npy", mmap_mode="r")
     V = np.load(config.CACHE / f"val_nominal{sfx}.npy", mmap_mode="r")
@@ -96,7 +96,7 @@ def main(world, device):
     info = dict(arm=f"H_{world}", world=world, params=g.n_params(), steps=STEPS, batch=BATCH, rollout_frames=1,
                 solver_steps_per_sample=35, train_seconds=time.time() - t0, val_loss_pure_physics=v0, best_val=best,
                 best_step=best_step, curve=curve, training_conditions=1, training_states=int(X.shape[0] * X.shape[1]),
-                git_sha=config.git_sha())
+                seed=seed, git_sha=config.git_sha())
     (d / "info.json").write_text(json.dumps(info, indent=1))
     (d / "running").unlink()
     print("H", world, "done", round(time.time() - t0), "pure-physics val", v0, "best", best, "at", best_step, flush=True)
@@ -104,4 +104,4 @@ def main(world, device):
 
 if __name__ == "__main__":
     torch.set_num_threads(8)
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else 0)

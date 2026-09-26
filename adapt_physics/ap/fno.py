@@ -70,6 +70,7 @@ ARMS = {  # name: (n_in, width, re_channel, data)
     "L0big": (4, 156, False, "nominal"),
     "L_range": (8, 64, False, "range"),
     "L_param": (4, 64, True, "range"),
+    "L_range_wide": (8, 64, False, "range_wide"),   # stage 2 item 1: Re ~ U[30, 60]
 }
 
 

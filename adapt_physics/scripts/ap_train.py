@@ -7,7 +7,7 @@ AdamW lr 1e-3, weight decay 1e-4, cosine decay to 0, no warm-up, gradient-norm c
 Validation every 1,000 steps on 512 fixed validation windows (fixed noise); checkpoint = minimum validation loss.
 A run directory that already holds a run is never reused.
 
-Usage: python scripts/ap_train.py <arm> <device> [steps]
+Usage: python scripts/ap_train.py <arm> <device> [steps|-] [seed]
 """
 import json
 import math
@@ -24,7 +24,7 @@ from ap.fno import ARMS, build  # noqa: E402
 
 OUT = config.RUNS / "train"
 BATCH, UNROLL, VAL_EVERY = 32, 4, 1000
-STEPS = {"L0": 30000, "L0big": 60000, "L_range": 30000, "L_param": 30000}
+STEPS = {"L0": 30000, "L0big": 60000, "L_range": 30000, "L_param": 30000, "L_range_wide": 30000}
 
 
 def scale(world="D"):
@@ -50,18 +50,18 @@ def loss_fn(model, x, y, r):
     return losses[0] + sum(losses) / UNROLL
 
 
-def main(arm, device, steps=None):
+def main(arm, device, steps=None, seed=0):
     base, world = (arm[:-2], "C") if arm.endswith("_C") else (arm, "D")      # pivot: <arm>_C = World C data
     steps = steps or STEPS[base]
     n_in, _, _, data = ARMS[base]
     data = data + ("_C" if world == "C" else "")
-    d = OUT / arm
+    d = OUT / (arm if seed == 0 else f"{arm}_s{seed}")          # stage 2: seeds 1, 2 in <arm>_s<seed>
     if (d / "info.json").exists() or (d / "running").exists():
         raise FileExistsError(f"{d} already holds a run")
     d.mkdir(parents=True, exist_ok=True)
     (d / "running").write_text(f"{time.time()}\n")
-    torch.manual_seed(0)
-    rng = np.random.default_rng(0)
+    torch.manual_seed(seed)
+    rng = np.random.default_rng(seed)
     sc = scale(world)
     X = np.load(config.CACHE / f"train_{data}.npy", mmap_mode="r")
     R = np.load(config.CACHE / f"train_{data}_re.npy")
@@ -110,7 +110,7 @@ def main(arm, device, steps=None):
             logf.flush()
     info = dict(arm=arm, n_in=n_in, width=ARMS[base][1], re_channel=ARMS[base][2], data=data, world=world, params=model.n_params(),
                 steps=steps, batch=BATCH, unroll=UNROLL, train_seconds=time.time() - t0, best_val=best,
-                best_step=best_step, gradient_steps=steps, curve=curve, git_sha=config.git_sha())
+                best_step=best_step, gradient_steps=steps, curve=curve, seed=seed, git_sha=config.git_sha())
     (d / "info.json").write_text(json.dumps(info, indent=1))
     (d / "running").unlink()
     print(arm, "done", round(time.time() - t0), "best", best, "at", best_step, flush=True)
@@ -118,4 +118,5 @@ def main(arm, device, steps=None):
 
 if __name__ == "__main__":
     torch.set_num_threads(8)
-    main(sys.argv[1], sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 else None)
+    main(sys.argv[1], sys.argv[2], int(sys.argv[3]) if len(sys.argv) > 3 and sys.argv[3] != "-" else None,
+         int(sys.argv[4]) if len(sys.argv) > 4 else 0)
