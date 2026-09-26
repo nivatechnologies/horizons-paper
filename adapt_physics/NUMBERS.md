@@ -5,7 +5,7 @@ Every number the paper may use. Labels: **reference** (solver arms and persisten
 
 ## APK. Kill rule on the frozen cell (Re 44, eps 0.1, w 11, first 100 states)
 
-Source `results/ap_kill_verdict.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_kill_verdict.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 Pass: I* >= 2 A* at Re 44 and Re 50. Kill: A* >= 0.75 I* at Re 44. Flag: ratio at Re 40 >= ratio at Re 44.
 
@@ -15,7 +15,7 @@ Pass: I* >= 2 A* at Re 44 and Re 50. Kill: A* >= 0.75 I* at Re 44. Flag: ratio a
 
 ## APKT. I*, A* and ratios for every Re, w, eps (first 100 states; 300-state ratio without L_ft)
 
-Source `results/ap_kill.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_kill.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 | id | Re | w | eps | O | P1 | L_param_P1 | L_range | L_ft | L0big | I_star | I_arm | A_star | A_arm | ratio | ratio_300_without_Lft | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -54,7 +54,7 @@ Source `results/ap_kill.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-di
 
 ## APH. Horizons per arm, test Re, window and tolerance
 
-Source `results/ap_rows.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_rows.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 panel all = every state the arm ran on (300; L_ft 100); first100 = the kill-rule subset.
 
@@ -767,7 +767,7 @@ panel all = every state the arm ran on (300; L_ft 100); first100 = the kill-rule
 
 ## APD. Paired differences a - b (same states) and frozen readings
 
-Source `results/ap_paired.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_paired.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 Readings: well below = difference >= 0.25 with the 95% interval excluding 0; approximately equal = 90% interval within +-0.10; otherwise no reading.
 
@@ -1256,7 +1256,7 @@ Readings: well below = difference >= 0.25 with the 95% interval excluding 0; app
 
 ## APR. Time to 90% of the oracle (smallest tested w)
 
-Source `results/ap_recovery.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_recovery.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 | id | Re | eps | arm | w_tested | w_to_90pct_oracle | label |
 |---|---|---|---|---|---|---|
@@ -1351,7 +1351,7 @@ Source `results/ap_recovery.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0
 
 ## API. Identified Re (P1: no-drag family; P1x: drag known)
 
-Source `results/ap_identify.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_identify.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 | id | Re | arm | w | n | re_hat_mean | re_hat_sd | re_hat_median | median_abs_error | frac_at_bounds | label |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -1390,7 +1390,7 @@ Source `results/ap_identify.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0
 
 ## APC. Online adaptation cost per arm
 
-Source `results/ap_cost.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_cost.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 Wall-clock on one CMP 170HX (shared); solver steps are dt = 0.01 IFRK4 steps of one 64^2 state.
 
@@ -1575,7 +1575,7 @@ Wall-clock on one CMP 170HX (shared); solver steps are dt = 0.01 IFRK4 steps of 
 
 ## APT. Training cost of the learned models
 
-Source `results/ap_training.csv` · SHA `db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty`
+Source `results/ap_training.csv` · SHA `374bdcd9a9d81970d24687d7c5bc050b214582ec-dirty`
 
 | id | model | params | steps | batch | train_seconds | best_step | best_val | label |
 |---|---|---|---|---|---|---|---|---|
