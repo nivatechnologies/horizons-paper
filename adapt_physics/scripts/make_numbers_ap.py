@@ -27,7 +27,7 @@ def check(lines):
             sec = l
         if l.startswith("Source ") and ("SHA ``" in l):
             raise MN.NumbersError(f"{sec}: empty SHA")
-        if l.startswith("| AP") and l.rstrip().endswith("|  |"):
+        if l.startswith("| AP") and l.rstrip().endswith("|  |"):  # covers AP* and APV*
             raise MN.NumbersError(f"{sec}: unlabelled row {l[:40]}")
 
 
@@ -83,6 +83,35 @@ def main():
     MN.table(out, "APS", "Systems: drag calibration and chaos gate (with drag)", R / "chaos_gate.json",
              ["Re", "alpha", "lam", "lam_ci95", "lam_min_start", "sigma_A", "chaotic", "drag_share_at_Re40"], srows,
              cg.get("git_sha", ""))
+    # ---- pivot sections APV* (pivot/PV_FREEZE.md)
+    PR = config.PKG / "pivot" / "results"
+    for fname, sec, title, cols, note in (
+            ("pv_outcome.csv", "APVO", "Pivot: pre-committed outcome (w 11, eps 0.1, 300 states)",
+             ["outcome", "kill_any", "pass_all", "middle_all", "complete", "precedence"],
+             "Precedence KILL -> PASS -> MIDDLE -> otherwise (gate pin)."),
+            ("pv_conditions.csv", "APVK", "Pivot: every pre-committed criterion",
+             ["criterion", "world", "Re", "value", "threshold", "holds"], ""),
+            ("pv_rows.csv", "APVH", "Pivot: horizons per world, arm, test Re, window, tolerance",
+             ["world", "Re", "arm", "w", "eps", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")), "phys_time",
+              "S1", "S3", "retention", "ratio_to_L_range", "lam_test"],
+             "World D Re 36/40/44/50 stage-1 arms are the stage-1 evaluations (identical panels and code)."),
+            ("pv_paired.csv", "APVD", "Pivot: paired differences a - b and frozen readings",
+             ["world", "Re", "w", "eps", "a", "b", "n", "mean_a", "mean_b", "ratio", "diff", ("90%", ci("ci90_lo", "ci90_hi")),
+              ("95%", ci("ci95_lo", "ci95_hi")), "reading"], ""),
+            ("pv_recovery.csv", "APVR", "Pivot: time to 90% of the oracle", ["world", "Re", "eps", "arm", "w_tested",
+                                                                          "w_to_90pct_oracle"], ""),
+            ("pv_detector.csv", "APVW", "Pivot: window-drift detector (identified Re against w; reported only)",
+             ["world", "Re", "arm", "re_hat_w3", "re_hat_w6", "re_hat_w11", "re_hat_w23", "slope_per_frame",
+              ("95%", ci("slope_ci95_lo", "slope_ci95_hi")), "slope_per_lyapunov_time"], ""),
+            ("pv_cost.csv", "APVC", "Pivot: online cost", ["world", "Re", "arm", "w", "n", "wall_seconds_per_state",
+                                                            "solver_steps_identify", "objective_evals", "forecast_steps",
+                                                            "gradient_steps"], ""),
+            ("pv_training.csv", "APVT", "Pivot: training cost (conditions = distinct Re in the training data)",
+             ["model", "params", "steps", "batch", "train_seconds", "best_step", "training_conditions", "training_states"], "")):
+        p = PR / fname
+        if p.exists():
+            rows, sha = MN.read_csv(p)
+            MN.table(out, sec, title, p, cols, rows, sha, note=note)
     check(out)
     (config.PKG / "NUMBERS.md").write_text("\n".join(out) + "\n")
     print("wrote NUMBERS.md", sum(1 for l in out if l.startswith("| AP")), "rows")

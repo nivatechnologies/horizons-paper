@@ -1,0 +1,35 @@
+# name | deps | command   (cwd adapt_physics)
+train_H_C | runs/cache/val_nominal_C_re.npy pivot/results/chaos_gate_C.json | ../.venv/bin/python pivot/scripts/pv_train_h.py C {dev} > runs/logs/train_H_C.log 2>&1
+train_L0_C | runs/cache/val_nominal_C_re.npy runs/cache/train_nominal_C_re.npy | ../.venv/bin/python scripts/ap_train.py L0_C {dev} > runs/logs/train_L0_C.log 2>&1
+train_L_range_C | runs/cache/train_range_C_re.npy runs/cache/val_range_C_re.npy | ../.venv/bin/python scripts/ap_train.py L_range_C {dev} > runs/logs/train_L_range_C.log 2>&1
+D56_base | runs/cache/test_Re56_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 56 {dev} persistence O P1 P1x L0 L_range L0big >> runs/logs/pv_eval.log 2>&1
+C50_base | runs/cache/test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 50 {dev} persistence O P1 P1x >> runs/logs/pv_eval.log 2>&1
+C56_base | runs/cache/test_Re56_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 56 {dev} persistence O P1 P1x >> runs/logs/pv_eval.log 2>&1
+C44_base | runs/cache/test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 44 {dev} persistence O P1 P1x >> runs/logs/pv_eval.log 2>&1
+C40_base | runs/cache/test_Re40_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 40 {dev} persistence O P1 P1x >> runs/logs/pv_eval.log 2>&1
+C36_base | runs/cache/test_Re36_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 36 {dev} persistence O P1 P1x >> runs/logs/pv_eval.log 2>&1
+D50_H | runs/train/H_D/info.json runs/cache/test_Re50_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 50 {dev} H >> runs/logs/pv_eval.log 2>&1
+D56_H | runs/train/H_D/info.json runs/cache/test_Re56_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 56 {dev} H >> runs/logs/pv_eval.log 2>&1
+C50_H | runs/train/H_C/info.json runs/cache/test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 50 {dev} H >> runs/logs/pv_eval.log 2>&1
+C56_H | runs/train/H_C/info.json runs/cache/test_Re56_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 56 {dev} H >> runs/logs/pv_eval.log 2>&1
+C50_fno | runs/train/L0_C/info.json runs/train/L_range_C/info.json runs/cache/test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 50 {dev} L0 L_range >> runs/logs/pv_eval.log 2>&1
+C56_fno | runs/train/L0_C/info.json runs/train/L_range_C/info.json runs/cache/test_Re56_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 56 {dev} L0 L_range >> runs/logs/pv_eval.log 2>&1
+C44_fno | runs/train/L0_C/info.json runs/train/L_range_C/info.json runs/cache/test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 44 {dev} L0 L_range >> runs/logs/pv_eval.log 2>&1
+C40_fno | runs/train/L0_C/info.json runs/train/L_range_C/info.json runs/cache/test_Re40_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 40 {dev} L0 L_range >> runs/logs/pv_eval.log 2>&1
+C36_fno | runs/train/L0_C/info.json runs/train/L_range_C/info.json runs/cache/test_Re36_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 36 {dev} L0 L_range >> runs/logs/pv_eval.log 2>&1
+D44_H | runs/train/H_D/info.json | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 44 {dev} H >> runs/logs/pv_eval.log 2>&1
+D36_H | runs/train/H_D/info.json | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 36 {dev} H >> runs/logs/pv_eval.log 2>&1
+D40_H | runs/train/H_D/info.json | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 40 {dev} H >> runs/logs/pv_eval.log 2>&1
+C44_H | runs/train/H_C/info.json runs/cache/test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 44 {dev} H >> runs/logs/pv_eval.log 2>&1
+C36_H | runs/train/H_C/info.json runs/cache/test_Re36_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 36 {dev} H >> runs/logs/pv_eval.log 2>&1
+C40_H | runs/train/H_C/info.json runs/cache/test_Re40_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 40 {dev} H >> runs/logs/pv_eval.log 2>&1
+D50_Htrue | runs/train/H_D/info.json runs/cache/test_Re50_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 50 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+D56_Htrue | runs/train/H_D/info.json runs/cache/test_Re56_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 56 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+D44_Htrue | runs/train/H_D/info.json runs/cache/test_Re44_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 44 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+D36_Htrue | runs/train/H_D/info.json runs/cache/test_Re36_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 36 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+D40_Htrue | runs/train/H_D/info.json runs/cache/test_Re40_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py D 40 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+C50_Htrue | runs/train/H_C/info.json runs/cache/test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 50 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+C56_Htrue | runs/train/H_C/info.json runs/cache/test_Re56_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 56 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+C44_Htrue | runs/train/H_C/info.json runs/cache/test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 44 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+C36_Htrue | runs/train/H_C/info.json runs/cache/test_Re36_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 36 {dev} H_true >> runs/logs/pv_eval.log 2>&1
+C40_Htrue | runs/train/H_C/info.json runs/cache/test_Re40_C_obs.npy | sleep 20; ../.venv/bin/python pivot/scripts/pv_eval.py C 40 {dev} H_true >> runs/logs/pv_eval.log 2>&1

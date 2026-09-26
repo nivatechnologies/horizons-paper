@@ -44,3 +44,50 @@ The full list is in the gate report, `adapt_physics/AP_GATE.md`.
     checked and holds all five Re.
   - The analysis's reading function hard-codes the frozen margins (0.25 and 0.10), the same values as `ap_freeze.yaml`.
 - **GPUs:** the Qwen vLLM services were stopped for the GPU work (approved in the WO) and restarted at the end.
+
+## Pivot kill test (physics plus learned correction): session review (2026-09-26)
+
+### Order
+
+1. Step 0, blinded Codex: answer committed in `5b6bdd1`.
+   - The first invocation hung waiting on stdin and was killed.
+   - The rerun was killed by the executor's own `pkill -f`, which matched its own shell.
+   - The third run completed. The single clarifying question and its answer are in `6f30a74`.
+   - Codex had no repository access; the event logs show web search only.
+2. β calibration and the chaos gates.
+3. Freeze, `49d060f`, before any pivot test data. H_D training began shortly before the freeze, on training data
+   only, with the settings committed unchanged. This is recorded in the freeze.
+4. Test panels, training and evaluation.
+
+### Spec errors found in the WO
+
+The full list is in `pivot/PV_GATE.md`.
+
+1. **The outcome categories overlap.** A KILL input can also meet MIDDLE, and the WO gives no precedence. Pinned:
+   KILL → PASS → MIDDLE → otherwise.
+2. **The World D thresholds are not independent (check 2).** They were written after the stage-1 values of O,
+   L_range, L0 and L0-big on the same panels were known. Only H was new information in World D. World C and Re 56
+   were fresh.
+3. **Codex's clarified starting magnitude overshoots.** β_T = 3.35 changes η̄ by +39.8%. It was tuned with the same
+   sign to Codex's own target, reaching β_T = 1.469 and +12.2%. η̄(β) is not monotone: β = 1.05 gives −6.5%.
+4. **"Training conditions" is unpinned.** Pinned as distinct Re values plus training states.
+5. **The search range differs between arms.** It is [25, 80] for H and [25, 70] for P1 and P1x, kept for continuity
+   with stage 1.
+6. **The hybrid budget was the executor's choice.** It was set by a timing pilot on training data (launch-bound:
+   2.2 s per step at batch 64), not by the WO.
+
+### Executor slips
+
+- The `pkill -f` self-kill during step 0. It cost one Codex rerun and affected no result. The memory note has been
+  updated.
+- An unquoted heredoc in the generator that wrote `CODEX_MISMATCH.md` let bash substitute backticks in the
+  Invocation lines. It was fixed in `6a2d298`. The prompt and answer were verified verbatim.
+- A placeholder wait on a file that would never exist was launched by mistake and killed within a minute.
+- The World D Re 56 chaos job wrote its entry into the committed stage-1 `results/chaos_gate.json`. The entry was
+  moved to `pivot/results/chaos_gate_D.json`, and the stage-1 file was restored unchanged.
+
+### Scope
+
+- One seed per model, on a 300-trajectory screening panel.
+- The mismatch terms are drag (from stage 1) and one Codex term.
+- Check 9 is satisfied only for the mismatch selector. The thresholds and arms are selector-dependent.

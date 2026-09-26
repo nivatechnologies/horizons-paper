@@ -1,0 +1,3 @@
+# git_sha=49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty; Adapt the Physics pivot; outcome
+outcome,kill_any,pass_all,middle_all,complete,precedence,label
+PASS (headline A),False,True,True,True,KILL -> PASS -> MIDDLE -> otherwise,estimate (frozen outcome rule)

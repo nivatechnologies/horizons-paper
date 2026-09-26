@@ -1,0 +1,93 @@
+{
+ "H_w3": {
+  "arm": "H",
+  "w": 3,
+  "n": 300,
+  "seconds": 422.0426287651062,
+  "solver_steps": 2100,
+  "objective_evals": 30,
+  "identify_seconds_per_state": 0.4956325737635295,
+  "forecast_steps": 3815,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 1.406808762550354
+ },
+ "world": "D",
+ "Re": 50,
+ "sigma_A": 175.25781769804016,
+ "F": 111,
+ "lam": 0.2583510217898125,
+ "beta": 0.0,
+ "git_sha": "49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty",
+ "H_w6": {
+  "arm": "H",
+  "w": 6,
+  "n": 300,
+  "seconds": 654.4190566539764,
+  "solver_steps": 5250,
+  "objective_evals": 30,
+  "identify_seconds_per_state": 1.2528266469637552,
+  "forecast_steps": 3885,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 2.181396855513255
+ },
+ "H_w11": {
+  "arm": "H",
+  "w": 11,
+  "n": 300,
+  "seconds": 1023.2014045715332,
+  "solver_steps": 10500,
+  "objective_evals": 30,
+  "identify_seconds_per_state": 2.507379890282949,
+  "forecast_steps": 3780,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 3.4106713485717775
+ },
+ "H_w23": {
+  "arm": "H",
+  "w": 23,
+  "n": 300,
+  "seconds": 1923.477929353714,
+  "solver_steps": 23100,
+  "objective_evals": 30,
+  "identify_seconds_per_state": 5.508874990145365,
+  "forecast_steps": 3780,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 6.411593097845714
+ },
+ "H_true_w3": {
+  "arm": "H_true",
+  "w": 3,
+  "n": 300,
+  "seconds": 277.2234220504761,
+  "forecast_steps": 3885,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.9240780735015869
+ },
+ "H_true_w6": {
+  "arm": "H_true",
+  "w": 6,
+  "n": 300,
+  "seconds": 279.23952054977417,
+  "forecast_steps": 3885,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.9307984018325806
+ },
+ "H_true_w11": {
+  "arm": "H_true",
+  "w": 11,
+  "n": 300,
+  "seconds": 279.24435353279114,
+  "forecast_steps": 3885,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.9308145117759704
+ },
+ "H_true_w23": {
+  "arm": "H_true",
+  "w": 23,
+  "n": 300,
+  "seconds": 249.21240949630737,
+  "forecast_steps": 3465,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.8307080316543579
+ }
+}

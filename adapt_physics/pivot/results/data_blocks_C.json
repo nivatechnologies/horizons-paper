@@ -10,5 +10,44 @@
   "beta": 1.4694400100602425,
   "seconds": 276.3757543563843
  },
- "git_sha": "6f30a7433a2b3c3e3658261f4d4e30a1c93e44c8-dirty"
+ "git_sha": "49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty",
+ "val_nominal": {
+  "block": "validation",
+  "stream": 10,
+  "seed": 30910,
+  "n_traj": 64,
+  "n_frames": 100,
+  "re": 40.0,
+  "alpha": 0.0773273136075609,
+  "beta": 1.4694400100602425,
+  "seconds": 102.07405090332031
+ },
+ "val_range": {
+  "block": "validation",
+  "stream": 11,
+  "seed": 30911,
+  "n_traj": 128,
+  "n_frames": 100,
+  "re": [
+   34.0,
+   46.0
+  ],
+  "alpha": 0.0773273136075609,
+  "beta": 1.4694400100602425,
+  "seconds": 160.67917799949646
+ },
+ "train_range": {
+  "block": "training",
+  "stream": 11,
+  "seed": 20911,
+  "n_traj": 1024,
+  "n_frames": 200,
+  "re": [
+   34.0,
+   46.0
+  ],
+  "alpha": 0.0773273136075609,
+  "beta": 1.4694400100602425,
+  "seconds": 1266.3090059757233
+ }
 }

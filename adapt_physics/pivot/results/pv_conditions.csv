@@ -1,0 +1,23 @@
+# git_sha=49d060feb9e37c1781676fb8b4946ab7165cc75e-dirty; Adapt the Physics pivot; pre-committed criteria at w 11, eps 0.1, 300 states
+criterion,world,Re,value,threshold,holds,label
+KILL: H/L_range <= 1.0,D,50,1.8762410133515919,1.0,False,estimate
+KILL: H/L_range <= 1.0,D,56,2.244164332399627,1.0,False,estimate
+KILL: H/L_range <= 1.0,C,50,1.5086923658352231,1.0,False,estimate
+KILL: H/L_range <= 1.0,C,56,1.7871788216973787,1.0,False,estimate
+KILL: H/O < 0.70 at Re 50 (D),D,50,0.9810256869238342,0.7,False,estimate
+PASS: H/O >= 0.85 (D),D,36,0.9157634109977434,0.85,True,estimate
+PASS: H/O >= 0.85 (D),D,44,0.981770833333333,0.85,True,estimate
+PASS: H/O >= 0.85 (D),D,50,0.9810256869238342,0.85,True,estimate
+PASS: H/O >= 0.85 (D),D,56,0.983529411764706,0.85,True,estimate
+PASS: H/L_range >= 1.5 (D),D,36,1.7724079001253388,1.5,True,estimate
+PASS: H/L_range >= 1.5 (D),D,50,1.8762410133515919,1.5,True,estimate
+PASS: H/L_range >= 1.5 (D),D,56,2.244164332399627,1.5,True,estimate
+"PASS: H/max(L0, L0big) >= 0.95 at Re 40 (D)",D,40,1.1025154687729248,0.95,True,estimate
+PASS: H/O >= 0.70 (C),C,50,0.8482787930301743,0.7,True,estimate
+PASS: H/L_range >= 1.2 (C),C,50,1.5086923658352231,1.2,True,estimate
+PASS: H/O >= 0.70 (C),C,56,0.8226018396846255,0.7,True,estimate
+PASS: H/L_range >= 1.2 (C),C,56,1.7871788216973787,1.2,True,estimate
+MIDDLE: H/L_range >= 1.3,D,50,1.8762410133515919,1.3,True,estimate
+MIDDLE: H/L_range >= 1.3,D,56,2.244164332399627,1.3,True,estimate
+MIDDLE: H/L_range >= 1.3,C,50,1.5086923658352231,1.3,True,estimate
+MIDDLE: H/L_range >= 1.3,C,56,1.7871788216973787,1.3,True,estimate
