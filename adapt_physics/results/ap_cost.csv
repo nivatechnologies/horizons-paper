@@ -1,4 +1,4 @@
-# git_sha=7ae83afbfb6889f9acaa38781a5a592318baef9a-dirty; Adapt the Physics stage 1; online cost
+# git_sha=db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty; Adapt the Physics stage 1; online cost
 Re,arm,w,n,wall_seconds_per_state,identify_seconds_per_state,solver_steps_identify,objective_evals,gradient_steps,forecast_steps,label
 36,O,3,300,0.20368193387985228,,0,,0,10675,estimate
 36,O,6,300,0.20330384413401287,,0,,0,10675,estimate
@@ -28,6 +28,10 @@ Re,arm,w,n,wall_seconds_per_state,identify_seconds_per_state,solver_steps_identi
 36,L_ft,6,100,3.0412798285484315,,0,,200,,estimate
 36,L_ft,11,100,2.7737389278411864,,0,,200,,estimate
 36,L_ft,23,100,2.956515064239502,,0,,200,,estimate
+36,L0big,3,300,0.04148193359375,,0,,0,,estimate
+36,L0big,6,300,0.03406331459681193,,0,,0,,estimate
+36,L0big,11,300,0.038867509365081786,,0,,0,,estimate
+36,L0big,23,300,0.0363832171758016,,0,,0,,estimate
 36,L0,3,300,0.024434646765391033,,0,,0,,estimate
 36,L0,6,300,0.020909930070241292,,0,,0,,estimate
 36,L0,11,300,0.019400007724761963,,0,,0,,estimate
@@ -68,6 +72,10 @@ Re,arm,w,n,wall_seconds_per_state,identify_seconds_per_state,solver_steps_identi
 40,L_ft,6,100,3.0576572227478027,,0,,200,,estimate
 40,L_ft,11,100,3.0172554993629457,,0,,200,,estimate
 40,L_ft,23,100,3.6034042859077453,,0,,200,,estimate
+40,L0big,3,300,0.06977949539820354,,0,,0,,estimate
+40,L0big,6,300,0.06441725810368856,,0,,0,,estimate
+40,L0big,11,300,0.06472995360692342,,0,,0,,estimate
+40,L0big,23,300,0.06465319315592448,,0,,0,,estimate
 40,L0,3,300,0.041249220371246335,,0,,0,,estimate
 40,L0,6,300,0.038622068564097084,,0,,0,,estimate
 40,L0,11,300,0.038478668530782065,,0,,0,,estimate
@@ -108,6 +116,10 @@ Re,arm,w,n,wall_seconds_per_state,identify_seconds_per_state,solver_steps_identi
 44,L_ft,6,100,2.9977208304405214,,0,,200,,estimate
 44,L_ft,11,100,3.007693200111389,,0,,200,,estimate
 44,L_ft,23,100,3.614524369239807,,0,,200,,estimate
+44,L0big,3,300,0.040648383299509684,,0,,0,,estimate
+44,L0big,6,300,0.0320242706934611,,0,,0,,estimate
+44,L0big,11,300,0.03339993635813395,,0,,0,,estimate
+44,L0big,23,300,0.033805522918701175,,0,,0,,estimate
 44,L0,3,300,0.02544670502344767,,0,,0,,estimate
 44,L0,6,300,0.020027465025583904,,0,,0,,estimate
 44,L0,11,300,0.019994866053263345,,0,,0,,estimate
@@ -148,6 +160,10 @@ Re,arm,w,n,wall_seconds_per_state,identify_seconds_per_state,solver_steps_identi
 50,L_ft,6,100,3.0011132311820985,,0,,200,,estimate
 50,L_ft,11,100,2.972049472332001,,0,,200,,estimate
 50,L_ft,23,100,2.946830611228943,,0,,200,,estimate
+50,L0big,3,300,0.023436654408772788,,0,,0,,estimate
+50,L0big,6,300,0.015909502506256102,,0,,0,,estimate
+50,L0big,11,300,0.014565226236979166,,0,,0,,estimate
+50,L0big,23,300,0.013881784280141194,,0,,0,,estimate
 50,L0,3,300,0.013308285077412923,,0,,0,,estimate
 50,L0,6,300,0.009737184842427572,,0,,0,,estimate
 50,L0,11,300,0.008805758953094482,,0,,0,,estimate

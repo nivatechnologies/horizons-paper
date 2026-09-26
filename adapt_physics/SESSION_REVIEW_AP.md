@@ -42,5 +42,5 @@ The full list is in the gate report, `adapt_physics/AP_GATE.md`.
   - The JSON updates of the data jobs and the eval jobs were made locked read-modify-write. Without that, concurrent
     processes on the same file would drop each other's entries. No written entry was lost; the chaos-gate file was
     checked and holds all five Re.
-  - The analysis's reading function reads the frozen margins from the freeze.
+  - The analysis's reading function hard-codes the frozen margins (0.25 and 0.10), the same values as `ap_freeze.yaml`.
 - **GPUs:** the Qwen vLLM services were stopped for the GPU work (approved in the WO) and restarted at the end.

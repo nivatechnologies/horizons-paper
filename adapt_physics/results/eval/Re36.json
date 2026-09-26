@@ -12,7 +12,7 @@
  "sigma_A": 140.87936183692818,
  "F": 305,
  "lam": 0.09388505770489337,
- "git_sha": "7ae83afbfb6889f9acaa38781a5a592318baef9a-dirty",
+ "git_sha": "db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty",
  "L0_w6": {
   "arm": "L0",
   "w": 6,
@@ -407,5 +407,41 @@
   "solver_steps": 0,
   "gradient_steps": 0,
   "wall_seconds_per_state": 0.04385745445887248
+ },
+ "L0big_w3": {
+  "arm": "L0big",
+  "w": 3,
+  "n": 300,
+  "seconds": 12.444580078125,
+  "solver_steps": 0,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.04148193359375
+ },
+ "L0big_w6": {
+  "arm": "L0big",
+  "w": 6,
+  "n": 300,
+  "seconds": 10.218994379043579,
+  "solver_steps": 0,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.03406331459681193
+ },
+ "L0big_w11": {
+  "arm": "L0big",
+  "w": 11,
+  "n": 300,
+  "seconds": 11.660252809524536,
+  "solver_steps": 0,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.038867509365081786
+ },
+ "L0big_w23": {
+  "arm": "L0big",
+  "w": 23,
+  "n": 300,
+  "seconds": 10.914965152740479,
+  "solver_steps": 0,
+  "gradient_steps": 0,
+  "wall_seconds_per_state": 0.0363832171758016
  }
 }

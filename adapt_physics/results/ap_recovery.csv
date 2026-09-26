@@ -1,4 +1,4 @@
-# git_sha=7ae83afbfb6889f9acaa38781a5a592318baef9a-dirty; Adapt the Physics stage 1; time to 90% of oracle
+# git_sha=db87fc7f4790d83bfa30be3d7fcddc4359286a0c-dirty; Adapt the Physics stage 1; time to 90% of oracle
 Re,eps,arm,w_tested,w_to_90pct_oracle,label
 36,0.1,O,"3,6,11,23",3,estimate
 36,0.1,P1,"3,6,11,23",not reached,estimate
@@ -7,6 +7,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 36,0.1,L_param_true,"3,6,11,23",not reached,estimate
 36,0.1,L_range,"3,6,11,23",not reached,estimate
 36,0.1,L_ft,"3,6,11,23",not reached,estimate
+36,0.1,L0big,"3,6,11,23",not reached,estimate
 36,0.1,L0,"3,6,11,23",not reached,estimate
 36,0.1,P0,"3,6,11,23",not reached,estimate
 36,0.1,persistence,"3,6,11,23",not reached,estimate
@@ -17,6 +18,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 36,0.3,L_param_true,"3,6,11,23",3,estimate
 36,0.3,L_range,"3,6,11,23",not reached,estimate
 36,0.3,L_ft,"3,6,11,23",not reached,estimate
+36,0.3,L0big,"3,6,11,23",not reached,estimate
 36,0.3,L0,"3,6,11,23",not reached,estimate
 36,0.3,P0,"3,6,11,23",not reached,estimate
 36,0.3,persistence,"3,6,11,23",not reached,estimate
@@ -27,6 +29,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 40,0.1,L_param_true,"3,6,11,23",not reached,estimate
 40,0.1,L_range,"3,6,11,23",not reached,estimate
 40,0.1,L_ft,"3,6,11,23",not reached,estimate
+40,0.1,L0big,"3,6,11,23",3,estimate
 40,0.1,L0,"3,6,11,23",not reached,estimate
 40,0.1,P0,"3,6,11,23",not reached,estimate
 40,0.1,persistence,"3,6,11,23",not reached,estimate
@@ -37,6 +40,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 40,0.3,L_param_true,"3,6,11,23",3,estimate
 40,0.3,L_range,"3,6,11,23",not reached,estimate
 40,0.3,L_ft,"3,6,11,23",not reached,estimate
+40,0.3,L0big,"3,6,11,23",3,estimate
 40,0.3,L0,"3,6,11,23",3,estimate
 40,0.3,P0,"3,6,11,23",not reached,estimate
 40,0.3,persistence,"3,6,11,23",not reached,estimate
@@ -47,6 +51,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 44,0.1,L_param_true,"3,6,11,23",not reached,estimate
 44,0.1,L_range,"3,6,11,23",not reached,estimate
 44,0.1,L_ft,"3,6,11,23",not reached,estimate
+44,0.1,L0big,"3,6,11,23",not reached,estimate
 44,0.1,L0,"3,6,11,23",not reached,estimate
 44,0.1,P0,"3,6,11,23",not reached,estimate
 44,0.1,persistence,"3,6,11,23",not reached,estimate
@@ -57,6 +62,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 44,0.3,L_param_true,"3,6,11,23",not reached,estimate
 44,0.3,L_range,"3,6,11,23",not reached,estimate
 44,0.3,L_ft,"3,6,11,23",not reached,estimate
+44,0.3,L0big,"3,6,11,23",not reached,estimate
 44,0.3,L0,"3,6,11,23",not reached,estimate
 44,0.3,P0,"3,6,11,23",not reached,estimate
 44,0.3,persistence,"3,6,11,23",not reached,estimate
@@ -67,6 +73,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 50,0.1,L_param_true,"3,6,11,23",not reached,estimate
 50,0.1,L_range,"3,6,11,23",not reached,estimate
 50,0.1,L_ft,"3,6,11,23",not reached,estimate
+50,0.1,L0big,"3,6,11,23",not reached,estimate
 50,0.1,L0,"3,6,11,23",not reached,estimate
 50,0.1,P0,"3,6,11,23",not reached,estimate
 50,0.1,persistence,"3,6,11,23",not reached,estimate
@@ -77,6 +84,7 @@ Re,eps,arm,w_tested,w_to_90pct_oracle,label
 50,0.3,L_param_true,"3,6,11,23",not reached,estimate
 50,0.3,L_range,"3,6,11,23",not reached,estimate
 50,0.3,L_ft,"3,6,11,23",not reached,estimate
+50,0.3,L0big,"3,6,11,23",not reached,estimate
 50,0.3,L0,"3,6,11,23",not reached,estimate
 50,0.3,P0,"3,6,11,23",not reached,estimate
 50,0.3,persistence,"3,6,11,23",not reached,estimate
