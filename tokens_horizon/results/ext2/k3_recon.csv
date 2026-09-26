@@ -1,4 +1,4 @@
-# git_sha=9f120649dac170e554cef661c258d7fa216af9d8-dirty; EXT2 learned-tokenizer kill test; M1 on the 1,000 confirmation states at t = 0
+# git_sha=d1d5d7a5a0e6f7025755d8d0056b93e52b60b297; EXT2 learned-tokenizer kill test; M1 on the 1,000 confirmation states at t = 0
 config,latent,codes_per_token,bits_per_frame,recon_rms,recon_mean,recon_median,share_within_eps0.1,share_within_eps0.3,share_within_eps0.5,null_zero_rms,fallback_lr,label
 L8-b10,8x8,1000,637.8101942183736,0.04621245805151881,0.03934375332212239,0.031186660606426685,0.95,1.0,1.0,1.0508430009277911,False,learned
 L8-b12,8x8,4375,774.0843073028515,0.043612850732757974,0.03734867473408034,0.02955102521741663,0.958,1.0,1.0,1.0508430009277911,False,learned

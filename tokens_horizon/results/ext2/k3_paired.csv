@@ -1,4 +1,4 @@
-# git_sha=9f120649dac170e554cef661c258d7fa216af9d8-dirty; EXT2 learned-tokenizer kill test; M5; d = M3 - M2; readings per ext2_freeze.yaml
+# git_sha=d1d5d7a5a0e6f7025755d8d0056b93e52b60b297; EXT2 learned-tokenizer kill test; M5; d = M3 - M2; readings per ext2_freeze.yaml
 config,latent,codes_per_token,bits_per_frame,delta,eps,start,primary_score,T_pt,DI,diff_DI_minus_Tpt,ci90_lo,ci90_hi,ci95_lo,ci95_hi,reading,outlast_DI_over_Tpt,ties,Tpt_S1,Tpt_S3,Tpt_S10,DI_S1,DI_S3,DI_S10,label
 L8-b10,8x8,1000,637.8101942183736,0.35,0.1,future,True,14.0530659205,1.317776383,-12.7352895375,-13.258197008049999,-12.246291660799999,-13.342421925425,-12.153995623725002,R2 (T_pt above decode-and-integrate),0.011,0.048,0.904,0.819,0.561,0.592,0.05,0.0,estimate
 L8-b10,8x8,1000,637.8101942183736,0.35,0.1,from_t0,False,14.049603461499999,1.3143583145,-12.735245146999999,-13.2553467604,-12.24414918605,-13.342568644537499,-12.154600028637502,R2 (T_pt above decode-and-integrate),0.006,0.055,0.903,0.819,0.561,0.592,0.05,0.0,estimate

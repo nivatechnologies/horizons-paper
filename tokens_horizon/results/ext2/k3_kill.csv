@@ -1,4 +1,4 @@
-# git_sha=9f120649dac170e554cef661c258d7fa216af9d8-dirty; EXT2 learned-tokenizer kill test; R1 at eps 0.1, Delta 0.35, future frames; verdict not issued
+# git_sha=d1d5d7a5a0e6f7025755d8d0056b93e52b60b297; EXT2 learned-tokenizer kill test; R1 at eps 0.1, Delta 0.35, future frames; verdict not issued
 config,latent,codes_per_token,bits_per_frame,levels,in_literal_set,in_nominal_set,R1_eps0_1_primary,reading_eps0_1_primary,diff_eps0_1_primary,ci95_eps0_1_primary,reading_eps0_1_secondary,label
 L8-b10,8x8,1000,637.8101942183736,"[8, 5, 5, 5]",False,True,False,R2 (T_pt above decode-and-integrate),-12.7352895375,"[-13.3424, -12.1540]",R2 (T_pt above decode-and-integrate),estimate (reading); verdict not issued
 L8-b12,8x8,4375,774.0843073028515,"[7, 5, 5, 5, 5]",True,True,False,R2 (T_pt above decode-and-integrate),-13.193714547499999,"[-13.7999, -12.6061]",R2 (T_pt above decode-and-integrate),estimate (reading); verdict not issued

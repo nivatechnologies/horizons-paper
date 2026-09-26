@@ -1,4 +1,4 @@
-# git_sha=9f120649dac170e554cef661c258d7fa216af9d8-dirty; EXT2 learned-tokenizer kill test; M6 descriptive
+# git_sha=d1d5d7a5a0e6f7025755d8d0056b93e52b60b297; EXT2 learned-tokenizer kill test; M6 descriptive
 config,fsq_bits,kmeans,kmeans_bits,delta,eps,start,fsq_T_pt,fsq_DI,kmeans_ceiling,kmeans_ceiling_ci95,kmeans_p0,kmeans_DI,kmeans_DI_ci95,label
 L8-b10,637.8101942183736,8x8 b10,640.0,0.35,0.1,future,14.0530659205,1.317776383,0.044390500000000006,"[0.0444, 0.0444]",1.0,0.0486963785,"[0.0460, 0.0523]",descriptive (k-means ceiling = bound; T_pt and DI = reference); no reading
 L8-b10,637.8101942183736,8x8 b10,640.0,0.35,0.1,from_t0,14.049603461499999,1.3143583145,0.0,"[0.0000, 0.0000]",1.0,0.0,"[0.0000, 0.0000]",descriptive (k-means ceiling = bound; T_pt and DI = reference); no reading

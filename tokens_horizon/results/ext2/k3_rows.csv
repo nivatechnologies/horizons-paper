@@ -1,4 +1,4 @@
-# git_sha=9f120649dac170e554cef661c258d7fa216af9d8-dirty; EXT2 learned-tokenizer kill test; M2 perfect next-token prediction (reference, not a bound), M3, M4
+# git_sha=d1d5d7a5a0e6f7025755d8d0056b93e52b60b297; EXT2 learned-tokenizer kill test; M2 perfect next-token prediction (reference, not a bound), M3, M4
 config,latent,codes_per_token,bits_per_frame,delta,eps,start,kind,label,restricted_mean,ci95_lo,ci95_hi,frac_no_cross,median,S1,S3,S10,n
 L8-b10,8x8,1000,637.8101942183736,0.14,0.1,future,perfect_token,reference (perfect next-token prediction),13.8217051096,13.230681074880001,14.441181307935,0.248,12.056459800000003,0.897,0.811,0.549,1000
 L8-b10,8x8,1000,637.8101942183736,0.14,0.1,from_t0,perfect_token,reference (perfect next-token prediction),13.7912604068,13.20214007331,14.4174524962,0.247,12.0120693,0.895,0.81,0.548,1000
