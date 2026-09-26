@@ -10,7 +10,7 @@
   "unit": 0.35,
   "seconds": 234.19945454597473
  },
- "git_sha": "cf181137eeeaa20576dddfb368856d5a5945bb70-dirty",
+ "git_sha": "7ae83afbfb6889f9acaa38781a5a592318baef9a-dirty",
  "val_nominal": {
   "block": "validation",
   "stream": 0,
@@ -35,5 +35,19 @@
   "burn_in": 500.0,
   "unit": 0.35,
   "seconds": 80.81847095489502
+ },
+ "train_range": {
+  "block": "training",
+  "stream": 1,
+  "seed": 20901,
+  "n_traj": 1024,
+  "n_frames": 200,
+  "re": [
+   34.0,
+   46.0
+  ],
+  "burn_in": 500.0,
+  "unit": 0.35,
+  "seconds": 473.41797947883606
  }
 }

@@ -8,6 +8,7 @@ or gradient steps per state. Writes runs/eval/Re<Re>/<arm>_w<w>.npz and results/
 
 Usage: python scripts/ap_eval.py <Re> <device> [arm ...]
 """
+import fcntl
 import json
 import sys
 import time
@@ -76,7 +77,6 @@ def main(Re, device, arms):
     out.mkdir(parents=True, exist_ok=True)
     resf = config.RESULTS / "eval" / f"Re{Re}.json"
     resf.parent.mkdir(parents=True, exist_ok=True)
-    meta = json.loads(resf.read_text()) if resf.exists() else {}
     models = {}
     for w in WS:
         tr = Truth(T, w, F)
@@ -140,9 +140,12 @@ def main(Re, device, arms):
             sec = time.time() - t0
             cost["wall_seconds_per_state"] = sec / err.shape[1]
             np.savez(f, err=err.astype(np.float32), **extra)
-            meta[f"{arm}_w{w}"] = dict(arm=arm, w=w, n=int(err.shape[1]), seconds=sec, **cost)
-            resf.write_text(json.dumps(dict(meta, Re=Re, sigma_A=sA, F=F, lam=info["lam"], git_sha=config.git_sha()),
-                                       indent=1, default=float))
+            with open(resf.parent / f".Re{Re}.lock", "w") as lk:      # several eval processes may share a Re
+                fcntl.flock(lk, fcntl.LOCK_EX)
+                meta = json.loads(resf.read_text()) if resf.exists() else {}
+                meta[f"{arm}_w{w}"] = dict(arm=arm, w=w, n=int(err.shape[1]), seconds=sec, **cost)
+                resf.write_text(json.dumps(dict(meta, Re=Re, sigma_A=sA, F=F, lam=info["lam"], git_sha=config.git_sha()),
+                                           indent=1, default=float))
             print(f"Re{Re} {arm} w{w} {sec:.0f}s", flush=True)
 
 

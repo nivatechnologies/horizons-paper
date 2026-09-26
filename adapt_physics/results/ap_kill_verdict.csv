@@ -1,0 +1,3 @@
+# git_sha=7ae83afbfb6889f9acaa38781a5a592318baef9a-dirty; Adapt the Physics stage 1; frozen kill rule on the primary cell
+cell,I_star,I_arm,A_star,A_arm,ratio_44,ratio_50,ratio_40,pass_condition,kill_condition,outcome,flag_no_drift_ratio_ge_drift,opponents_present,label
+"Re 44, eps 0.1, w 11, first 100 states",0.49669339762844233,P1,2.394277461633079,L_range,0.2074502247912653,0.30470645317806905,0.17269076305220887,False,True,KILL,False,"L_ft,L_range",estimate (frozen kill rule)

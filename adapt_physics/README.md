@@ -11,4 +11,4 @@ Order: `scripts/ap_drag_calibrate.py` → `scripts/ap_data.py chaos <Re>` → `a
 `scripts/ap_train.py <arm>` → `ap_data.py test <Re>` → `scripts/ap_eval.py <Re>` → `scripts/ap_analysis.py` →
 figures → `scripts/make_numbers_ap.py`. Caches and weights (runs/cache, *.pt) are not committed.
 
-License: Apache-2.0 (see ../LICENSE if present at the repository root, else tokens_horizon/LICENSE).
+License: Apache-2.0 (tokens_horizon/LICENSE).
