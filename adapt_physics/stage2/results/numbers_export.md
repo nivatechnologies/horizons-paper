@@ -1,11 +1,11 @@
 # Adapt the Physics: NUMBERS sections APV* and APS*
 
-Copied from `adapt_physics/NUMBERS.md` at `d79a5f6` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
+Copied from `adapt_physics/NUMBERS.md` at `2b566a9` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
 
 **Checker status:**
-- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5536 rows.
+- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5558 rows.
 - Negative test (a duplicate section code must raise): passed (raised NumbersError: duplicate section code APS_NEGTEST).
-- APV\*/APS\* rows: 4019.
+- APV\*/APS\* rows: 4041.
 
 ## APS. Systems: drag calibration and chaos gate (with drag)
 
@@ -1939,7 +1939,7 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 
 ## APSO. Stage 2 part A: outcome of the pivot criteria on fresh panels (3 seeds)
 
-Source `stage2/results/s2_outcome.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_outcome.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 | id | outcome | kill_any | pass_all | middle_all | complete | all_three_seeds | precedence | label |
 |---|---|---|---|---|---|---|---|---|
@@ -1948,7 +1948,7 @@ Source `stage2/results/s2_outcome.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da
 
 ## APSK. Stage 2 part A: every pivot criterion on fresh panels, with 95% intervals
 
-Source `stage2/results/s2_conditions.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_conditions.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 Point ratio decides; interval = bootstrap over trajectories with seeds resampled within trajectories.
 
@@ -1979,7 +1979,7 @@ Point ratio decides; interval = bootstrap over trajectories with seeds resampled
 
 ## APSH. Stage 2 part A: seed-pooled horizons on fresh panels
 
-Source `stage2/results/s2_rows.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_rows.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 score future = frames 1.. (primary); from_t0 = frame 0 included (item 6).
 
@@ -3009,7 +3009,7 @@ score future = frames 1.. (primary); from_t0 = frame 0 included (item 6).
 
 ## APSD. Stage 2: paired differences H - b (seed-pooled) and frozen readings
 
-Source `stage2/results/s2_paired.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_paired.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 | id | world | Re | w | eps | a | b | mean_a | mean_b | ratio | diff | 90% | 95% | reading | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3407,7 +3407,7 @@ Source `stage2/results/s2_paired.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da9
 
 ## APSR. Stage 2: time to 90% of the oracle (w in 3, 6, 11)
 
-Source `stage2/results/s2_recovery.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_recovery.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 | id | world | Re | eps | arm | w_tested | w_to_90pct_oracle | label |
 |---|---|---|---|---|---|---|---|
@@ -3585,7 +3585,7 @@ Source `stage2/results/s2_recovery.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54d
 
 ## APSW. Stage 2: window-drift detector and the World C slope-shortfall correlation
 
-Source `stage2/results/s2_detector.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_detector.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 Reported only.
 
@@ -3625,7 +3625,7 @@ Reported only.
 
 ## APSB. Stage 2 part B: robustness items 1-4 (reported, not criteria)
 
-Source `stage2/results/s2_partB.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_partB.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 Single seed (seed 0) where stated in the freeze.
 
@@ -3648,37 +3648,48 @@ Single seed (seed 0) where stated in the freeze.
 | APSB-15 | 2 straddle | s2_test_Re44_D | H | straddle | 2 | 300 | 1.1244 | [1.0795, 1.1746] |  |  | 0.2953 |  |  |  |  |  | 9 | hybrid (learned correction) (single seed) |
 | APSB-16 | 2 straddle | s2_test_Re44_D | L_range | straddle | 2 | 300 | 1.7802 | [1.6969, 1.8650] |  |  | 0.4676 |  |  |  |  |  | 9 | learned (single seed) |
 | APSB-17 | 4 noise 5% | s2_test_Re44_D | O | noise5 | 11 | 300 | 2.7382 | [2.5947, 2.8876] |  |  |  | 1.0000 |  |  |  |  |  | reference |
-| APSB-18 | 2 straddle | s2_test_Re50_D | H | straddle | 8 | 300 | 1.2686 | [1.2201, 1.3178] |  |  | 0.3746 |  |  |  |  |  | 3 | hybrid (learned correction) (single seed) |
-| APSB-19 | 2 straddle | s2_test_Re50_D | L_range | straddle | 8 | 300 | 1.6924 | [1.6237, 1.7623] |  |  | 0.4997 |  |  |  |  |  | 3 | learned (single seed) |
-| APSB-20 | 2 straddle | s2_test_Re50_D | L_range | straddle | 5 | 300 | 1.4983 | [1.4359, 1.5592] |  |  | 0.4424 |  |  |  |  |  | 6 | learned (single seed) |
-| APSB-21 | 2 straddle | s2_test_Re50_D | L_range | straddle | 2 | 300 | 1.0037 | [0.9633, 1.0447] |  |  | 0.2964 |  |  |  |  |  | 9 | learned (single seed) |
-| APSB-22 | 4 noise 5% | s2_test_Re50_D | O | noise5 | 11 | 300 | 2.3444 | [2.2455, 2.4544] |  |  |  | 1.0000 |  |  |  |  |  | reference |
-| APSB-23 | 4 noise 5% | s2_test_Re50_D | H | noise5 | 11 | 300 | 2.3109 | [2.2117, 2.4191] |  |  |  | 0.9857 |  |  |  |  |  | hybrid (learned correction) (single seed) |
-| APSB-24 | 4 noise 5% | s2_test_Re50_D | L_range | noise5 | 11 | 300 | 1.6246 | [1.5595, 1.6903] |  |  |  | 0.6930 |  |  |  |  |  | learned (single seed) |
-| APSB-25 | 2 straddle | s2_test_Re44_C | H | straddle | 8 | 300 | 1.8095 | [1.7656, 1.8545] |  |  | 0.5617 |  |  |  |  |  | 3 | hybrid (learned correction) (single seed) |
-| APSB-26 | 2 straddle | s2_test_Re44_C | L_range | straddle | 8 | 300 | 2.2271 | [2.1707, 2.2796] |  |  | 0.6913 |  |  |  |  |  | 3 | learned (single seed) |
-| APSB-27 | 2 straddle | s2_test_Re44_C | L_range | straddle | 5 | 300 | 2.0344 | [1.9844, 2.0821] |  |  | 0.6315 |  |  |  |  |  | 6 | learned (single seed) |
-| APSB-28 | 2 straddle | s2_test_Re44_C | L_range | straddle | 2 | 300 | 1.5324 | [1.4916, 1.5721] |  |  | 0.4757 |  |  |  |  |  | 9 | learned (single seed) |
-| APSB-29 | 4 noise 5% | s2_test_Re44_C | O | noise5 | 11 | 300 | 2.3179 | [2.2525, 2.3835] |  |  |  | 1.0000 |  |  |  |  |  | reference |
-| APSB-30 | 4 noise 5% | s2_test_Re44_C | H | noise5 | 11 | 300 | 2.1606 | [2.1045, 2.2157] |  |  |  | 0.9322 |  |  |  |  |  | hybrid (learned correction) (single seed) |
-| APSB-31 | 4 noise 5% | s2_test_Re44_C | L_range | noise5 | 11 | 300 | 1.9969 | [1.9461, 2.0444] |  |  |  | 0.8615 |  |  |  |  |  | learned (single seed) |
-| APSB-32 | 2 straddle | s2_test_Re50_C | H | straddle | 8 | 300 | 1.2561 | [1.2231, 1.2892] |  |  | 0.4061 |  |  |  |  |  | 3 | hybrid (learned correction) (single seed) |
-| APSB-33 | 2 straddle | s2_test_Re50_C | L_range | straddle | 8 | 300 | 1.7362 | [1.6965, 1.7784] |  |  | 0.5613 |  |  |  |  |  | 3 | learned (single seed) |
-| APSB-34 | 2 straddle | s2_test_Re50_C | L_range | straddle | 5 | 300 | 1.5407 | [1.5074, 1.5764] |  |  | 0.4981 |  |  |  |  |  | 6 | learned (single seed) |
-| APSB-35 | 2 straddle | s2_test_Re50_C | L_range | straddle | 2 | 300 | 0.9590 | [0.9326, 0.9848] |  |  | 0.3100 |  |  |  |  |  | 9 | learned (single seed) |
-| APSB-36 | 4 noise 5% | s2_test_Re50_C | O | noise5 | 11 | 300 | 2.2290 | [2.1683, 2.2868] |  |  |  | 1.0000 |  |  |  |  |  | reference |
-| APSB-37 | 3 two parameters | s2_test2p_Re44_A1.1 | O | 2p | 11 | 300 | 3.3680 | [3.2068, 3.5337] | 1.0000 | 4.1422 |  |  |  |  |  |  |  | reference |
-| APSB-38 | 3 two parameters | s2_test2p_Re44_A1.1 | H | 2p | 11 | 300 | 3.2494 | [3.0962, 3.3978] | 0.9648 | 3.9962 |  |  |  |  | 43.9817 | 1.1002 |  | hybrid (learned correction) (single seed) |
-| APSB-39 | 3 two parameters | s2_test2p_Re44_A1.1 | H_Re_only | 2p | 11 | 300 | 0.9657 | [0.8976, 1.0282] | 0.2867 | 1.1876 |  |  |  |  | 47.8476 |  |  | hybrid (learned correction) (single seed) |
-| APSB-40 | 3 two parameters | s2_test2p_Re44_A1.1 | L_range | 2p | 11 | 300 | 0.8131 | [0.7962, 0.8303] | 0.2414 | 1.0000 |  |  |  |  |  |  |  | learned (single seed) |
-| APSB-41 | 3 two parameters | s2_test2p_Re50_A0.9 | O | 2p | 11 | 300 | 3.8078 | [3.6497, 3.9704] | 1.0000 | 5.9088 |  |  |  |  |  |  |  | reference |
-| APSB-42 | 3 two parameters | s2_test2p_Re50_A0.9 | H_Re_only | 2p | 11 | 300 | 0.9146 | [0.8466, 0.9847] | 0.2402 | 1.4193 |  |  |  |  | 45.2175 |  |  | hybrid (learned correction) (single seed) |
-| APSB-43 | 3 two parameters | s2_test2p_Re50_A0.9 | L_range | 2p | 11 | 300 | 0.6444 | [0.6321, 0.6565] | 0.1692 | 1.0000 |  |  |  |  |  |  |  | learned (single seed) |
+| APSB-18 | 4 noise 5% | s2_test_Re44_D | H | noise5 | 11 | 300 | 2.6831 | [2.5468, 2.8264] |  |  |  | 0.9799 |  |  |  |  |  | hybrid (learned correction) (single seed) |
+| APSB-19 | 4 noise 5% | s2_test_Re44_D | L_range | noise5 | 11 | 300 | 2.1180 | [2.0285, 2.2157] |  |  |  | 0.7735 |  |  |  |  |  | learned (single seed) |
+| APSB-20 | 2 straddle | s2_test_Re50_D | H | straddle | 8 | 300 | 1.2686 | [1.2201, 1.3178] |  |  | 0.3746 |  |  |  |  |  | 3 | hybrid (learned correction) (single seed) |
+| APSB-21 | 2 straddle | s2_test_Re50_D | L_range | straddle | 8 | 300 | 1.6924 | [1.6237, 1.7623] |  |  | 0.4997 |  |  |  |  |  | 3 | learned (single seed) |
+| APSB-22 | 2 straddle | s2_test_Re50_D | H | straddle | 5 | 300 | 0.6770 | [0.6501, 0.7029] |  |  | 0.1999 |  |  |  |  |  | 6 | hybrid (learned correction) (single seed) |
+| APSB-23 | 2 straddle | s2_test_Re50_D | L_range | straddle | 5 | 300 | 1.4983 | [1.4359, 1.5592] |  |  | 0.4424 |  |  |  |  |  | 6 | learned (single seed) |
+| APSB-24 | 2 straddle | s2_test_Re50_D | H | straddle | 2 | 300 | 0.5058 | [0.4868, 0.5248] |  |  | 0.1493 |  |  |  |  |  | 9 | hybrid (learned correction) (single seed) |
+| APSB-25 | 2 straddle | s2_test_Re50_D | L_range | straddle | 2 | 300 | 1.0037 | [0.9633, 1.0447] |  |  | 0.2964 |  |  |  |  |  | 9 | learned (single seed) |
+| APSB-26 | 4 noise 5% | s2_test_Re50_D | O | noise5 | 11 | 300 | 2.3444 | [2.2455, 2.4544] |  |  |  | 1.0000 |  |  |  |  |  | reference |
+| APSB-27 | 4 noise 5% | s2_test_Re50_D | H | noise5 | 11 | 300 | 2.3109 | [2.2117, 2.4191] |  |  |  | 0.9857 |  |  |  |  |  | hybrid (learned correction) (single seed) |
+| APSB-28 | 4 noise 5% | s2_test_Re50_D | L_range | noise5 | 11 | 300 | 1.6246 | [1.5595, 1.6903] |  |  |  | 0.6930 |  |  |  |  |  | learned (single seed) |
+| APSB-29 | 2 straddle | s2_test_Re44_C | H | straddle | 8 | 300 | 1.8095 | [1.7656, 1.8545] |  |  | 0.5617 |  |  |  |  |  | 3 | hybrid (learned correction) (single seed) |
+| APSB-30 | 2 straddle | s2_test_Re44_C | L_range | straddle | 8 | 300 | 2.2271 | [2.1707, 2.2796] |  |  | 0.6913 |  |  |  |  |  | 3 | learned (single seed) |
+| APSB-31 | 2 straddle | s2_test_Re44_C | H | straddle | 5 | 300 | 1.2129 | [1.1838, 1.2416] |  |  | 0.3765 |  |  |  |  |  | 6 | hybrid (learned correction) (single seed) |
+| APSB-32 | 2 straddle | s2_test_Re44_C | L_range | straddle | 5 | 300 | 2.0344 | [1.9844, 2.0821] |  |  | 0.6315 |  |  |  |  |  | 6 | learned (single seed) |
+| APSB-33 | 2 straddle | s2_test_Re44_C | H | straddle | 2 | 300 | 1.0285 | [1.0050, 1.0534] |  |  | 0.3193 |  |  |  |  |  | 9 | hybrid (learned correction) (single seed) |
+| APSB-34 | 2 straddle | s2_test_Re44_C | L_range | straddle | 2 | 300 | 1.5324 | [1.4916, 1.5721] |  |  | 0.4757 |  |  |  |  |  | 9 | learned (single seed) |
+| APSB-35 | 4 noise 5% | s2_test_Re44_C | O | noise5 | 11 | 300 | 2.3179 | [2.2525, 2.3835] |  |  |  | 1.0000 |  |  |  |  |  | reference |
+| APSB-36 | 4 noise 5% | s2_test_Re44_C | H | noise5 | 11 | 300 | 2.1606 | [2.1045, 2.2157] |  |  |  | 0.9322 |  |  |  |  |  | hybrid (learned correction) (single seed) |
+| APSB-37 | 4 noise 5% | s2_test_Re44_C | L_range | noise5 | 11 | 300 | 1.9969 | [1.9461, 2.0444] |  |  |  | 0.8615 |  |  |  |  |  | learned (single seed) |
+| APSB-38 | 2 straddle | s2_test_Re50_C | H | straddle | 8 | 300 | 1.2561 | [1.2231, 1.2892] |  |  | 0.4061 |  |  |  |  |  | 3 | hybrid (learned correction) (single seed) |
+| APSB-39 | 2 straddle | s2_test_Re50_C | L_range | straddle | 8 | 300 | 1.7362 | [1.6965, 1.7784] |  |  | 0.5613 |  |  |  |  |  | 3 | learned (single seed) |
+| APSB-40 | 2 straddle | s2_test_Re50_C | H | straddle | 5 | 300 | 0.7019 | [0.6807, 0.7236] |  |  | 0.2269 |  |  |  |  |  | 6 | hybrid (learned correction) (single seed) |
+| APSB-41 | 2 straddle | s2_test_Re50_C | L_range | straddle | 5 | 300 | 1.5407 | [1.5074, 1.5764] |  |  | 0.4981 |  |  |  |  |  | 6 | learned (single seed) |
+| APSB-42 | 2 straddle | s2_test_Re50_C | H | straddle | 2 | 300 | 0.5236 | [0.5084, 0.5388] |  |  | 0.1693 |  |  |  |  |  | 9 | hybrid (learned correction) (single seed) |
+| APSB-43 | 2 straddle | s2_test_Re50_C | L_range | straddle | 2 | 300 | 0.9590 | [0.9326, 0.9848] |  |  | 0.3100 |  |  |  |  |  | 9 | learned (single seed) |
+| APSB-44 | 4 noise 5% | s2_test_Re50_C | O | noise5 | 11 | 300 | 2.2290 | [2.1683, 2.2868] |  |  |  | 1.0000 |  |  |  |  |  | reference |
+| APSB-45 | 4 noise 5% | s2_test_Re50_C | H | noise5 | 11 | 300 | 2.0808 | [2.0234, 2.1353] |  |  |  | 0.9335 |  |  |  |  |  | hybrid (learned correction) (single seed) |
+| APSB-46 | 4 noise 5% | s2_test_Re50_C | L_range | noise5 | 11 | 300 | 1.6685 | [1.6302, 1.7074] |  |  |  | 0.7485 |  |  |  |  |  | learned (single seed) |
+| APSB-47 | 3 two parameters | s2_test2p_Re44_A1.1 | O | 2p | 11 | 300 | 3.3680 | [3.2068, 3.5337] | 1.0000 | 4.1422 |  |  |  |  |  |  |  | reference |
+| APSB-48 | 3 two parameters | s2_test2p_Re44_A1.1 | H | 2p | 11 | 300 | 3.2494 | [3.0962, 3.3978] | 0.9648 | 3.9962 |  |  |  |  | 43.9817 | 1.1002 |  | hybrid (learned correction) (single seed) |
+| APSB-49 | 3 two parameters | s2_test2p_Re44_A1.1 | H_Re_only | 2p | 11 | 300 | 0.9657 | [0.8976, 1.0282] | 0.2867 | 1.1876 |  |  |  |  | 47.8476 |  |  | hybrid (learned correction) (single seed) |
+| APSB-50 | 3 two parameters | s2_test2p_Re44_A1.1 | L_range | 2p | 11 | 300 | 0.8131 | [0.7962, 0.8303] | 0.2414 | 1.0000 |  |  |  |  |  |  |  | learned (single seed) |
+| APSB-51 | 3 two parameters | s2_test2p_Re50_A0.9 | O | 2p | 11 | 300 | 3.8078 | [3.6497, 3.9704] | 1.0000 | 5.9088 |  |  |  |  |  |  |  | reference |
+| APSB-52 | 3 two parameters | s2_test2p_Re50_A0.9 | H | 2p | 11 | 300 | 3.6791 | [3.5255, 3.8320] | 0.9662 | 5.7090 |  |  |  |  | 49.9918 | 0.9000 |  | hybrid (learned correction) (single seed) |
+| APSB-53 | 3 two parameters | s2_test2p_Re50_A0.9 | H_Re_only | 2p | 11 | 300 | 0.9146 | [0.8466, 0.9847] | 0.2402 | 1.4193 |  |  |  |  | 45.2175 |  |  | hybrid (learned correction) (single seed) |
+| APSB-54 | 3 two parameters | s2_test2p_Re50_A0.9 | L_range | 2p | 11 | 300 | 0.6444 | [0.6321, 0.6565] | 0.1692 | 1.0000 |  |  |  |  |  |  |  | learned (single seed) |
 
 
 ## APSC. Stage 2: online cost
 
-Source `stage2/results/s2_cost.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_cost.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 | id | panel | key | arm | seed | variant | window | n | wall_seconds_per_state | solver_steps | objective_evals | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -3689,472 +3700,483 @@ Source `stage2/results/s2_cost.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d
 | APSC-5 | s2_test2p_Re50_A0.9 | O_s0_2p_11 | O | 0 | 2p | 11 | 300 | 0.1354 |  |  | estimate |
 | APSC-6 | s2_test2p_Re50_A0.9 | L_range_s0_2p_11 | L_range | 0 | 2p | 11 | 300 | 0.0221 |  |  | estimate |
 | APSC-7 | s2_test2p_Re50_A0.9 | H_Re_only_s0_2p_11 | H_Re_only | 0 | 2p | 11 | 300 | 11.9441 | 10500 | 30 | estimate |
-| APSC-8 | s2_test_Re36_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1440 |  |  | estimate |
-| APSC-9 | s2_test_Re36_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1506 |  |  | estimate |
-| APSC-10 | s2_test_Re36_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1396 |  |  | estimate |
-| APSC-11 | s2_test_Re36_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0612 | 2100 | 30 | estimate |
-| APSC-12 | s2_test_Re36_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1392 | 5250 | 30 | estimate |
-| APSC-13 | s2_test_Re36_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2740 | 10500 | 30 | estimate |
-| APSC-14 | s2_test_Re36_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.2111 | 2100 | 30 | estimate |
-| APSC-15 | s2_test_Re36_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.3054 | 5250 | 30 | estimate |
-| APSC-16 | s2_test_Re36_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4794 | 10500 | 30 | estimate |
-| APSC-17 | s2_test_Re36_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0013 |  |  | estimate |
-| APSC-18 | s2_test_Re36_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0013 |  |  | estimate |
-| APSC-19 | s2_test_Re36_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0013 |  |  | estimate |
-| APSC-20 | s2_test_Re36_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0380 |  |  | estimate |
-| APSC-21 | s2_test_Re36_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0442 |  |  | estimate |
-| APSC-22 | s2_test_Re36_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0550 |  |  | estimate |
-| APSC-23 | s2_test_Re36_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0248 |  |  | estimate |
-| APSC-24 | s2_test_Re36_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0218 |  |  | estimate |
-| APSC-25 | s2_test_Re36_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0193 |  |  | estimate |
-| APSC-26 | s2_test_Re36_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 5.6544 | 2100 | 30 | estimate |
-| APSC-27 | s2_test_Re36_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.8264 | 5250 | 30 | estimate |
-| APSC-28 | s2_test_Re36_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.7146 | 10500 | 30 | estimate |
-| APSC-29 | s2_test_Re36_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0128 |  |  | estimate |
-| APSC-30 | s2_test_Re36_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0159 |  |  | estimate |
-| APSC-31 | s2_test_Re36_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0176 |  |  | estimate |
-| APSC-32 | s2_test_Re36_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0085 |  |  | estimate |
-| APSC-33 | s2_test_Re36_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0063 |  |  | estimate |
-| APSC-34 | s2_test_Re36_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0056 |  |  | estimate |
-| APSC-35 | s2_test_Re36_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0132 |  |  | estimate |
-| APSC-36 | s2_test_Re36_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0154 |  |  | estimate |
-| APSC-37 | s2_test_Re36_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0164 |  |  | estimate |
-| APSC-38 | s2_test_Re36_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0078 |  |  | estimate |
-| APSC-39 | s2_test_Re36_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0065 |  |  | estimate |
-| APSC-40 | s2_test_Re36_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0054 |  |  | estimate |
-| APSC-41 | s2_test_Re36_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0119 |  |  | estimate |
-| APSC-42 | s2_test_Re36_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0159 |  |  | estimate |
-| APSC-43 | s2_test_Re36_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0166 |  |  | estimate |
-| APSC-44 | s2_test_Re36_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 1.7917 | 2100 | 30 | estimate |
-| APSC-45 | s2_test_Re36_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 2.5274 | 5250 | 30 | estimate |
-| APSC-46 | s2_test_Re36_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 3.8387 | 10500 | 30 | estimate |
-| APSC-47 | s2_test_Re36_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 5.9018 | 2100 | 30 | estimate |
-| APSC-48 | s2_test_Re36_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 8.3055 | 5250 | 30 | estimate |
-| APSC-49 | s2_test_Re36_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 13.5002 | 10500 | 30 | estimate |
-| APSC-50 | s2_test_Re36_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.3276 |  |  | estimate |
-| APSC-51 | s2_test_Re36_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.3232 |  |  | estimate |
-| APSC-52 | s2_test_Re36_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.3230 |  |  | estimate |
-| APSC-53 | s2_test_Re36_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0954 | 2100 | 30 | estimate |
-| APSC-54 | s2_test_Re36_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1893 | 5250 | 30 | estimate |
-| APSC-55 | s2_test_Re36_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3466 | 10500 | 30 | estimate |
-| APSC-56 | s2_test_Re36_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.3889 | 2100 | 30 | estimate |
-| APSC-57 | s2_test_Re36_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.4764 | 5250 | 30 | estimate |
-| APSC-58 | s2_test_Re36_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.6301 | 10500 | 30 | estimate |
-| APSC-59 | s2_test_Re36_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0023 |  |  | estimate |
-| APSC-60 | s2_test_Re36_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0020 |  |  | estimate |
-| APSC-61 | s2_test_Re36_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0020 |  |  | estimate |
-| APSC-62 | s2_test_Re36_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0816 |  |  | estimate |
-| APSC-63 | s2_test_Re36_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0865 |  |  | estimate |
-| APSC-64 | s2_test_Re36_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0807 |  |  | estimate |
-| APSC-65 | s2_test_Re36_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0261 |  |  | estimate |
-| APSC-66 | s2_test_Re36_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0260 |  |  | estimate |
-| APSC-67 | s2_test_Re36_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0376 |  |  | estimate |
-| APSC-68 | s2_test_Re36_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.1374 |  |  | estimate |
-| APSC-69 | s2_test_Re36_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.1230 |  |  | estimate |
-| APSC-70 | s2_test_Re36_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.1152 |  |  | estimate |
-| APSC-71 | s2_test_Re36_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 10.5853 | 2100 | 30 | estimate |
-| APSC-72 | s2_test_Re36_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 12.6944 | 5250 | 30 | estimate |
-| APSC-73 | s2_test_Re36_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 15.8108 | 10500 | 30 | estimate |
-| APSC-74 | s2_test_Re36_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0643 |  |  | estimate |
-| APSC-75 | s2_test_Re36_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0465 |  |  | estimate |
-| APSC-76 | s2_test_Re36_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0302 |  |  | estimate |
-| APSC-77 | s2_test_Re36_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0141 |  |  | estimate |
-| APSC-78 | s2_test_Re36_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0114 |  |  | estimate |
-| APSC-79 | s2_test_Re36_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0113 |  |  | estimate |
-| APSC-80 | s2_test_Re36_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0365 |  |  | estimate |
-| APSC-81 | s2_test_Re36_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0345 |  |  | estimate |
-| APSC-82 | s2_test_Re36_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0298 |  |  | estimate |
-| APSC-83 | s2_test_Re36_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0118 |  |  | estimate |
-| APSC-84 | s2_test_Re36_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0110 |  |  | estimate |
-| APSC-85 | s2_test_Re36_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0108 |  |  | estimate |
-| APSC-86 | s2_test_Re36_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 10.6062 | 2100 | 30 | estimate |
-| APSC-87 | s2_test_Re36_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0203 |  |  | estimate |
-| APSC-88 | s2_test_Re36_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0211 |  |  | estimate |
-| APSC-89 | s2_test_Re36_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0271 |  |  | estimate |
-| APSC-90 | s2_test_Re36_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 12.7776 | 5250 | 30 | estimate |
-| APSC-91 | s2_test_Re36_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 13.3821 | 10500 | 30 | estimate |
-| APSC-92 | s2_test_Re36_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 3.0517 | 2100 | 30 | estimate |
-| APSC-93 | s2_test_Re36_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 3.8083 | 5250 | 30 | estimate |
-| APSC-94 | s2_test_Re36_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 5.0656 | 10500 | 30 | estimate |
-| APSC-95 | s2_test_Re40_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1123 |  |  | estimate |
-| APSC-96 | s2_test_Re40_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1061 |  |  | estimate |
-| APSC-97 | s2_test_Re40_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1085 |  |  | estimate |
-| APSC-98 | s2_test_Re40_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0645 | 2100 | 30 | estimate |
-| APSC-99 | s2_test_Re40_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1476 | 5250 | 30 | estimate |
-| APSC-100 | s2_test_Re40_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2891 | 10500 | 30 | estimate |
-| APSC-101 | s2_test_Re40_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1839 | 2100 | 30 | estimate |
-| APSC-102 | s2_test_Re40_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2747 | 5250 | 30 | estimate |
-| APSC-103 | s2_test_Re40_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4369 | 10500 | 30 | estimate |
-| APSC-104 | s2_test_Re40_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0012 |  |  | estimate |
-| APSC-105 | s2_test_Re40_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0010 |  |  | estimate |
-| APSC-106 | s2_test_Re40_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0011 |  |  | estimate |
-| APSC-107 | s2_test_Re40_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 4.7148 | 2100 | 30 | estimate |
-| APSC-108 | s2_test_Re40_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.0361 | 5250 | 30 | estimate |
-| APSC-109 | s2_test_Re40_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0437 |  |  | estimate |
-| APSC-110 | s2_test_Re40_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0389 |  |  | estimate |
-| APSC-111 | s2_test_Re40_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0406 |  |  | estimate |
-| APSC-112 | s2_test_Re40_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0478 |  |  | estimate |
-| APSC-113 | s2_test_Re40_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0431 |  |  | estimate |
-| APSC-114 | s2_test_Re40_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0406 |  |  | estimate |
-| APSC-115 | s2_test_Re40_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 10.4003 | 10500 | 30 | estimate |
-| APSC-116 | s2_test_Re40_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 5.1766 | 2100 | 30 | estimate |
-| APSC-117 | s2_test_Re40_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0302 |  |  | estimate |
-| APSC-118 | s2_test_Re40_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0283 |  |  | estimate |
-| APSC-119 | s2_test_Re40_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0251 |  |  | estimate |
-| APSC-120 | s2_test_Re40_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0319 |  |  | estimate |
-| APSC-121 | s2_test_Re40_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0269 |  |  | estimate |
-| APSC-122 | s2_test_Re40_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0313 |  |  | estimate |
-| APSC-123 | s2_test_Re40_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0156 |  |  | estimate |
-| APSC-124 | s2_test_Re40_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0136 |  |  | estimate |
-| APSC-125 | s2_test_Re40_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0121 |  |  | estimate |
-| APSC-126 | s2_test_Re40_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0154 |  |  | estimate |
-| APSC-127 | s2_test_Re40_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0110 |  |  | estimate |
-| APSC-128 | s2_test_Re40_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0115 |  |  | estimate |
-| APSC-129 | s2_test_Re40_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0144 |  |  | estimate |
-| APSC-130 | s2_test_Re40_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0131 |  |  | estimate |
-| APSC-131 | s2_test_Re40_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0116 |  |  | estimate |
-| APSC-132 | s2_test_Re40_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 8.1717 | 5250 | 30 | estimate |
-| APSC-133 | s2_test_Re40_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 4.0307 | 10500 | 30 | estimate |
-| APSC-134 | s2_test_Re40_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.7952 | 2100 | 30 | estimate |
-| APSC-135 | s2_test_Re40_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 4.4311 | 5250 | 30 | estimate |
-| APSC-136 | s2_test_Re40_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 3.2464 | 10500 | 30 | estimate |
-| APSC-137 | s2_test_Re40_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1612 |  |  | estimate |
-| APSC-138 | s2_test_Re40_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1581 |  |  | estimate |
-| APSC-139 | s2_test_Re40_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1580 |  |  | estimate |
-| APSC-140 | s2_test_Re40_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0796 | 2100 | 30 | estimate |
-| APSC-141 | s2_test_Re40_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1589 | 5250 | 30 | estimate |
-| APSC-142 | s2_test_Re40_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2915 | 10500 | 30 | estimate |
-| APSC-143 | s2_test_Re40_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.2128 | 2100 | 30 | estimate |
-| APSC-144 | s2_test_Re40_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2901 | 5250 | 30 | estimate |
-| APSC-145 | s2_test_Re40_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4239 | 10500 | 30 | estimate |
-| APSC-146 | s2_test_Re40_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0014 |  |  | estimate |
-| APSC-147 | s2_test_Re40_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0012 |  |  | estimate |
-| APSC-148 | s2_test_Re40_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0012 |  |  | estimate |
-| APSC-149 | s2_test_Re40_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 7.8763 | 2100 | 30 | estimate |
-| APSC-150 | s2_test_Re40_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0447 |  |  | estimate |
-| APSC-151 | s2_test_Re40_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0406 |  |  | estimate |
-| APSC-152 | s2_test_Re40_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0610 |  |  | estimate |
-| APSC-153 | s2_test_Re40_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0732 |  |  | estimate |
-| APSC-154 | s2_test_Re40_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0749 |  |  | estimate |
-| APSC-155 | s2_test_Re40_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0602 |  |  | estimate |
-| APSC-156 | s2_test_Re40_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.2328 |  |  | estimate |
-| APSC-157 | s2_test_Re40_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.2144 |  |  | estimate |
-| APSC-158 | s2_test_Re40_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.2135 |  |  | estimate |
-| APSC-159 | s2_test_Re40_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 10.6646 | 5250 | 30 | estimate |
-| APSC-160 | s2_test_Re40_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 13.9437 | 10500 | 30 | estimate |
-| APSC-161 | s2_test_Re40_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 6.1696 | 2100 | 30 | estimate |
-| APSC-162 | s2_test_Re40_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0530 |  |  | estimate |
-| APSC-163 | s2_test_Re40_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0428 |  |  | estimate |
-| APSC-164 | s2_test_Re40_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0553 |  |  | estimate |
-| APSC-165 | s2_test_Re40_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0542 |  |  | estimate |
-| APSC-166 | s2_test_Re40_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0510 |  |  | estimate |
-| APSC-167 | s2_test_Re40_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0510 |  |  | estimate |
-| APSC-168 | s2_test_Re40_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 9.2567 | 5250 | 30 | estimate |
-| APSC-169 | s2_test_Re40_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0271 |  |  | estimate |
-| APSC-170 | s2_test_Re40_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0207 |  |  | estimate |
-| APSC-171 | s2_test_Re40_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0247 |  |  | estimate |
-| APSC-172 | s2_test_Re40_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0237 |  |  | estimate |
-| APSC-173 | s2_test_Re40_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0211 |  |  | estimate |
-| APSC-174 | s2_test_Re40_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0211 |  |  | estimate |
-| APSC-175 | s2_test_Re40_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0200 |  |  | estimate |
-| APSC-176 | s2_test_Re40_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0170 |  |  | estimate |
-| APSC-177 | s2_test_Re40_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0208 |  |  | estimate |
-| APSC-178 | s2_test_Re40_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 13.5907 | 10500 | 30 | estimate |
-| APSC-179 | s2_test_Re40_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 7.8341 | 2100 | 30 | estimate |
-| APSC-180 | s2_test_Re40_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 10.9767 | 5250 | 30 | estimate |
-| APSC-181 | s2_test_Re40_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 15.9843 | 10500 | 30 | estimate |
-| APSC-182 | s2_test_Re44_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1088 |  |  | estimate |
-| APSC-183 | s2_test_Re44_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1000 |  |  | estimate |
-| APSC-184 | s2_test_Re44_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1060 |  |  | estimate |
-| APSC-185 | s2_test_Re44_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0701 | 2100 | 30 | estimate |
-| APSC-186 | s2_test_Re44_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1590 | 5250 | 30 | estimate |
-| APSC-187 | s2_test_Re44_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3153 | 10500 | 30 | estimate |
-| APSC-188 | s2_test_Re44_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1752 | 2100 | 30 | estimate |
-| APSC-189 | s2_test_Re44_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2824 | 5250 | 30 | estimate |
-| APSC-190 | s2_test_Re44_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4700 | 10500 | 30 | estimate |
-| APSC-191 | s2_test_Re44_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 9.478e-04 |  |  | estimate |
-| APSC-192 | s2_test_Re44_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 8.632e-04 |  |  | estimate |
-| APSC-193 | s2_test_Re44_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 8.607e-04 |  |  | estimate |
-| APSC-194 | s2_test_Re44_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 4.1367 | 2100 | 30 | estimate |
-| APSC-195 | s2_test_Re44_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.1291 | 5250 | 30 | estimate |
-| APSC-196 | s2_test_Re44_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.5181 | 10500 | 30 | estimate |
-| APSC-197 | s2_test_Re44_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0321 |  |  | estimate |
-| APSC-198 | s2_test_Re44_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0291 |  |  | estimate |
-| APSC-199 | s2_test_Re44_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0280 |  |  | estimate |
-| APSC-200 | s2_test_Re44_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0264 |  |  | estimate |
-| APSC-201 | s2_test_Re44_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0215 |  |  | estimate |
-| APSC-202 | s2_test_Re44_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0158 |  |  | estimate |
-| APSC-203 | s2_test_Re44_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 4.1977 | 2100 | 30 | estimate |
-| APSC-204 | s2_test_Re44_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 7.4003 | 5250 | 30 | estimate |
-| APSC-205 | s2_test_Re44_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0318 |  |  | estimate |
-| APSC-206 | s2_test_Re44_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0303 |  |  | estimate |
-| APSC-207 | s2_test_Re44_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0293 |  |  | estimate |
-| APSC-208 | s2_test_Re44_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0271 |  |  | estimate |
-| APSC-209 | s2_test_Re44_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0217 |  |  | estimate |
-| APSC-210 | s2_test_Re44_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0213 |  |  | estimate |
-| APSC-211 | s2_test_Re44_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0108 |  |  | estimate |
-| APSC-212 | s2_test_Re44_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0095 |  |  | estimate |
-| APSC-213 | s2_test_Re44_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0092 |  |  | estimate |
-| APSC-214 | s2_test_Re44_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0086 |  |  | estimate |
-| APSC-215 | s2_test_Re44_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0063 |  |  | estimate |
-| APSC-216 | s2_test_Re44_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0057 |  |  | estimate |
-| APSC-217 | s2_test_Re44_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0109 |  |  | estimate |
-| APSC-218 | s2_test_Re44_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0097 |  |  | estimate |
-| APSC-219 | s2_test_Re44_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0093 |  |  | estimate |
-| APSC-220 | s2_test_Re44_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 12.1728 | 10500 | 30 | estimate |
-| APSC-221 | s2_test_Re44_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.8895 | 2100 | 30 | estimate |
-| APSC-222 | s2_test_Re44_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 7.7295 | 5250 | 30 | estimate |
-| APSC-223 | s2_test_Re44_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 12.8490 | 10500 | 30 | estimate |
-| APSC-224 | s2_test_Re44_C | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0327 |  |  | estimate |
-| APSC-225 | s2_test_Re44_C | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0278 |  |  | estimate |
-| APSC-226 | s2_test_Re44_C | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0274 |  |  | estimate |
-| APSC-227 | s2_test_Re44_C | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.0228 |  |  | estimate |
-| APSC-228 | s2_test_Re44_C | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 12.3264 | 10500 | 30 | estimate |
-| APSC-229 | s2_test_Re44_C | H_s0_noise5_11 | H | 0 | noise5 | 11 | 300 | 3.0052 | 10500 | 30 | estimate |
-| APSC-230 | s2_test_Re44_C | L_range_s0_noise5_11 | L_range | 0 | noise5 | 11 | 300 | 0.0115 |  |  | estimate |
-| APSC-231 | s2_test_Re44_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1312 |  |  | estimate |
-| APSC-232 | s2_test_Re44_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1285 |  |  | estimate |
-| APSC-233 | s2_test_Re44_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1273 |  |  | estimate |
-| APSC-234 | s2_test_Re44_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0840 | 2100 | 30 | estimate |
-| APSC-235 | s2_test_Re44_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1669 | 5250 | 30 | estimate |
-| APSC-236 | s2_test_Re44_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3082 | 10500 | 30 | estimate |
-| APSC-237 | s2_test_Re44_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1893 | 2100 | 30 | estimate |
-| APSC-238 | s2_test_Re44_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2702 | 5250 | 30 | estimate |
-| APSC-239 | s2_test_Re44_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4119 | 10500 | 30 | estimate |
-| APSC-240 | s2_test_Re44_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0012 |  |  | estimate |
-| APSC-241 | s2_test_Re44_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 9.451e-04 |  |  | estimate |
-| APSC-242 | s2_test_Re44_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 9.638e-04 |  |  | estimate |
-| APSC-243 | s2_test_Re44_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 5.4912 | 2100 | 30 | estimate |
-| APSC-244 | s2_test_Re44_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 8.0459 | 5250 | 30 | estimate |
-| APSC-245 | s2_test_Re44_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0456 |  |  | estimate |
-| APSC-246 | s2_test_Re44_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0522 |  |  | estimate |
-| APSC-247 | s2_test_Re44_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0553 |  |  | estimate |
-| APSC-248 | s2_test_Re44_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0298 |  |  | estimate |
-| APSC-249 | s2_test_Re44_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0245 |  |  | estimate |
-| APSC-250 | s2_test_Re44_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0222 |  |  | estimate |
-| APSC-251 | s2_test_Re44_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.0860 |  |  | estimate |
-| APSC-252 | s2_test_Re44_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.1048 |  |  | estimate |
-| APSC-253 | s2_test_Re44_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.0956 |  |  | estimate |
-| APSC-254 | s2_test_Re44_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 12.5432 | 10500 | 30 | estimate |
-| APSC-255 | s2_test_Re44_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 5.1043 | 2100 | 30 | estimate |
-| APSC-256 | s2_test_Re44_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 7.4415 | 5250 | 30 | estimate |
-| APSC-257 | s2_test_Re44_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0513 |  |  | estimate |
-| APSC-258 | s2_test_Re44_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0557 |  |  | estimate |
-| APSC-259 | s2_test_Re44_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0552 |  |  | estimate |
-| APSC-260 | s2_test_Re44_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0405 |  |  | estimate |
-| APSC-261 | s2_test_Re44_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0370 |  |  | estimate |
-| APSC-262 | s2_test_Re44_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0432 |  |  | estimate |
-| APSC-263 | s2_test_Re44_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0165 |  |  | estimate |
-| APSC-264 | s2_test_Re44_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0189 |  |  | estimate |
-| APSC-265 | s2_test_Re44_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0168 |  |  | estimate |
-| APSC-266 | s2_test_Re44_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0122 |  |  | estimate |
-| APSC-267 | s2_test_Re44_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0096 |  |  | estimate |
-| APSC-268 | s2_test_Re44_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0118 |  |  | estimate |
-| APSC-269 | s2_test_Re44_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0187 |  |  | estimate |
-| APSC-270 | s2_test_Re44_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0162 |  |  | estimate |
-| APSC-271 | s2_test_Re44_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0188 |  |  | estimate |
-| APSC-272 | s2_test_Re44_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 12.3595 | 10500 | 30 | estimate |
-| APSC-273 | s2_test_Re44_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 6.4574 | 2100 | 30 | estimate |
-| APSC-274 | s2_test_Re44_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 9.6317 | 5250 | 30 | estimate |
-| APSC-275 | s2_test_Re44_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 14.7357 | 10500 | 30 | estimate |
-| APSC-276 | s2_test_Re44_D | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0626 |  |  | estimate |
-| APSC-277 | s2_test_Re44_D | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0580 |  |  | estimate |
-| APSC-278 | s2_test_Re44_D | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0545 |  |  | estimate |
-| APSC-279 | s2_test_Re44_D | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 3.4783 | 10500 | 30 | estimate |
-| APSC-280 | s2_test_Re44_D | H_s0_straddle_5 | H | 0 | straddle | 5 | 300 | 3.2413 | 10500 | 30 | estimate |
-| APSC-281 | s2_test_Re44_D | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.1479 |  |  | estimate |
-| APSC-282 | s2_test_Re44_D | H_s0_straddle_2 | H | 0 | straddle | 2 | 300 | 3.2237 | 10500 | 30 | estimate |
-| APSC-283 | s2_test_Re50_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.0773 |  |  | estimate |
-| APSC-284 | s2_test_Re50_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.0680 |  |  | estimate |
-| APSC-285 | s2_test_Re50_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.0750 |  |  | estimate |
-| APSC-286 | s2_test_Re50_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0603 | 2100 | 30 | estimate |
-| APSC-287 | s2_test_Re50_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1371 | 5250 | 30 | estimate |
-| APSC-288 | s2_test_Re50_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2706 | 10500 | 30 | estimate |
-| APSC-289 | s2_test_Re50_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1375 | 2100 | 30 | estimate |
-| APSC-290 | s2_test_Re50_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2250 | 5250 | 30 | estimate |
-| APSC-291 | s2_test_Re50_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.3878 | 10500 | 30 | estimate |
-| APSC-292 | s2_test_Re50_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 7.854e-04 |  |  | estimate |
-| APSC-293 | s2_test_Re50_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 7.002e-04 |  |  | estimate |
-| APSC-294 | s2_test_Re50_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 6.947e-04 |  |  | estimate |
-| APSC-295 | s2_test_Re50_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 3.8732 | 2100 | 30 | estimate |
-| APSC-296 | s2_test_Re50_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 6.4813 | 5250 | 30 | estimate |
-| APSC-297 | s2_test_Re50_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.8089 | 10500 | 30 | estimate |
-| APSC-298 | s2_test_Re50_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0229 |  |  | estimate |
-| APSC-299 | s2_test_Re50_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0199 |  |  | estimate |
-| APSC-300 | s2_test_Re50_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0208 |  |  | estimate |
-| APSC-301 | s2_test_Re50_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0133 |  |  | estimate |
-| APSC-302 | s2_test_Re50_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0081 |  |  | estimate |
-| APSC-303 | s2_test_Re50_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0096 |  |  | estimate |
-| APSC-304 | s2_test_Re50_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 3.6687 | 2100 | 30 | estimate |
-| APSC-305 | s2_test_Re50_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 6.7883 | 5250 | 30 | estimate |
-| APSC-306 | s2_test_Re50_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 11.4558 | 10500 | 30 | estimate |
-| APSC-307 | s2_test_Re50_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0231 |  |  | estimate |
-| APSC-308 | s2_test_Re50_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0219 |  |  | estimate |
-| APSC-309 | s2_test_Re50_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0210 |  |  | estimate |
-| APSC-310 | s2_test_Re50_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0168 |  |  | estimate |
-| APSC-311 | s2_test_Re50_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0121 |  |  | estimate |
-| APSC-312 | s2_test_Re50_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0147 |  |  | estimate |
-| APSC-313 | s2_test_Re50_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0082 |  |  | estimate |
-| APSC-314 | s2_test_Re50_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0064 |  |  | estimate |
-| APSC-315 | s2_test_Re50_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0064 |  |  | estimate |
-| APSC-316 | s2_test_Re50_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0058 |  |  | estimate |
-| APSC-317 | s2_test_Re50_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0034 |  |  | estimate |
-| APSC-318 | s2_test_Re50_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0042 |  |  | estimate |
-| APSC-319 | s2_test_Re50_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0086 |  |  | estimate |
-| APSC-320 | s2_test_Re50_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0077 |  |  | estimate |
-| APSC-321 | s2_test_Re50_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0079 |  |  | estimate |
-| APSC-322 | s2_test_Re50_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 3.7704 | 2100 | 30 | estimate |
-| APSC-323 | s2_test_Re50_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 6.6125 | 5250 | 30 | estimate |
-| APSC-324 | s2_test_Re50_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 11.3509 | 10500 | 30 | estimate |
-| APSC-325 | s2_test_Re50_C | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0269 |  |  | estimate |
-| APSC-326 | s2_test_Re50_C | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0222 |  |  | estimate |
-| APSC-327 | s2_test_Re50_C | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0189 |  |  | estimate |
-| APSC-328 | s2_test_Re50_C | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 11.8264 | 10500 | 30 | estimate |
-| APSC-329 | s2_test_Re50_C | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.0202 |  |  | estimate |
-| APSC-330 | s2_test_Re50_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1219 |  |  | estimate |
-| APSC-331 | s2_test_Re50_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1172 |  |  | estimate |
-| APSC-332 | s2_test_Re50_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1176 |  |  | estimate |
-| APSC-333 | s2_test_Re50_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0907 | 2100 | 30 | estimate |
-| APSC-334 | s2_test_Re50_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1773 | 5250 | 30 | estimate |
-| APSC-335 | s2_test_Re50_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3347 | 10500 | 30 | estimate |
-| APSC-336 | s2_test_Re50_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1850 | 2100 | 30 | estimate |
-| APSC-337 | s2_test_Re50_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2706 | 5250 | 30 | estimate |
-| APSC-338 | s2_test_Re50_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4268 | 10500 | 30 | estimate |
-| APSC-339 | s2_test_Re50_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 8.360e-04 |  |  | estimate |
-| APSC-340 | s2_test_Re50_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 7.761e-04 |  |  | estimate |
-| APSC-341 | s2_test_Re50_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 7.563e-04 |  |  | estimate |
-| APSC-342 | s2_test_Re50_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 4.9260 | 2100 | 30 | estimate |
-| APSC-343 | s2_test_Re50_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.4674 | 5250 | 30 | estimate |
-| APSC-344 | s2_test_Re50_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.6342 | 10500 | 30 | estimate |
-| APSC-345 | s2_test_Re50_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0256 |  |  | estimate |
-| APSC-346 | s2_test_Re50_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0216 |  |  | estimate |
-| APSC-347 | s2_test_Re50_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0303 |  |  | estimate |
-| APSC-348 | s2_test_Re50_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0228 |  |  | estimate |
-| APSC-349 | s2_test_Re50_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0166 |  |  | estimate |
-| APSC-350 | s2_test_Re50_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0125 |  |  | estimate |
-| APSC-351 | s2_test_Re50_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.0550 |  |  | estimate |
-| APSC-352 | s2_test_Re50_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.0376 |  |  | estimate |
-| APSC-353 | s2_test_Re50_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.0415 |  |  | estimate |
-| APSC-354 | s2_test_Re50_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 4.9787 | 2100 | 30 | estimate |
-| APSC-355 | s2_test_Re50_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 8.1180 | 5250 | 30 | estimate |
-| APSC-356 | s2_test_Re50_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0355 |  |  | estimate |
-| APSC-357 | s2_test_Re50_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0367 |  |  | estimate |
-| APSC-358 | s2_test_Re50_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0340 |  |  | estimate |
-| APSC-359 | s2_test_Re50_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0236 |  |  | estimate |
-| APSC-360 | s2_test_Re50_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0183 |  |  | estimate |
-| APSC-361 | s2_test_Re50_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0174 |  |  | estimate |
-| APSC-362 | s2_test_Re50_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0115 |  |  | estimate |
-| APSC-363 | s2_test_Re50_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0120 |  |  | estimate |
-| APSC-364 | s2_test_Re50_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0105 |  |  | estimate |
-| APSC-365 | s2_test_Re50_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0077 |  |  | estimate |
-| APSC-366 | s2_test_Re50_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0051 |  |  | estimate |
-| APSC-367 | s2_test_Re50_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0048 |  |  | estimate |
-| APSC-368 | s2_test_Re50_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0132 |  |  | estimate |
-| APSC-369 | s2_test_Re50_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0113 |  |  | estimate |
-| APSC-370 | s2_test_Re50_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0137 |  |  | estimate |
-| APSC-371 | s2_test_Re50_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 13.9461 | 10500 | 30 | estimate |
-| APSC-372 | s2_test_Re50_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.9392 | 2100 | 30 | estimate |
-| APSC-373 | s2_test_Re50_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 7.0959 | 5250 | 30 | estimate |
-| APSC-374 | s2_test_Re50_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 9.5906 | 10500 | 30 | estimate |
-| APSC-375 | s2_test_Re50_D | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0396 |  |  | estimate |
-| APSC-376 | s2_test_Re50_D | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0335 |  |  | estimate |
-| APSC-377 | s2_test_Re50_D | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0271 |  |  | estimate |
-| APSC-378 | s2_test_Re50_D | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.0304 |  |  | estimate |
-| APSC-379 | s2_test_Re50_D | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 11.3132 | 10500 | 30 | estimate |
-| APSC-380 | s2_test_Re50_D | H_s0_noise5_11 | H | 0 | noise5 | 11 | 300 | 3.4054 | 10500 | 30 | estimate |
-| APSC-381 | s2_test_Re50_D | L_range_s0_noise5_11 | L_range | 0 | noise5 | 11 | 300 | 0.0127 |  |  | estimate |
-| APSC-382 | s2_test_Re56_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.0666 |  |  | estimate |
-| APSC-383 | s2_test_Re56_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.0632 |  |  | estimate |
-| APSC-384 | s2_test_Re56_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.0601 |  |  | estimate |
-| APSC-385 | s2_test_Re56_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0607 | 2100 | 30 | estimate |
-| APSC-386 | s2_test_Re56_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1378 | 5250 | 30 | estimate |
-| APSC-387 | s2_test_Re56_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2725 | 10500 | 30 | estimate |
-| APSC-388 | s2_test_Re56_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1290 | 2100 | 30 | estimate |
-| APSC-389 | s2_test_Re56_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2198 | 5250 | 30 | estimate |
-| APSC-390 | s2_test_Re56_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.3736 | 10500 | 30 | estimate |
-| APSC-391 | s2_test_Re56_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 7.554e-04 |  |  | estimate |
-| APSC-392 | s2_test_Re56_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 6.643e-04 |  |  | estimate |
-| APSC-393 | s2_test_Re56_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 6.573e-04 |  |  | estimate |
-| APSC-394 | s2_test_Re56_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 3.1120 | 2100 | 30 | estimate |
-| APSC-395 | s2_test_Re56_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 5.3748 | 5250 | 30 | estimate |
-| APSC-396 | s2_test_Re56_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 10.0970 | 10500 | 30 | estimate |
-| APSC-397 | s2_test_Re56_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0178 |  |  | estimate |
-| APSC-398 | s2_test_Re56_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0154 |  |  | estimate |
-| APSC-399 | s2_test_Re56_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0144 |  |  | estimate |
-| APSC-400 | s2_test_Re56_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0138 |  |  | estimate |
-| APSC-401 | s2_test_Re56_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0091 |  |  | estimate |
-| APSC-402 | s2_test_Re56_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0087 |  |  | estimate |
-| APSC-403 | s2_test_Re56_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 3.5947 | 2100 | 30 | estimate |
-| APSC-404 | s2_test_Re56_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 6.3822 | 5250 | 30 | estimate |
-| APSC-405 | s2_test_Re56_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0180 |  |  | estimate |
-| APSC-406 | s2_test_Re56_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0163 |  |  | estimate |
-| APSC-407 | s2_test_Re56_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0164 |  |  | estimate |
-| APSC-408 | s2_test_Re56_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0134 |  |  | estimate |
-| APSC-409 | s2_test_Re56_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0095 |  |  | estimate |
-| APSC-410 | s2_test_Re56_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0085 |  |  | estimate |
-| APSC-411 | s2_test_Re56_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 10.8485 | 10500 | 30 | estimate |
-| APSC-412 | s2_test_Re56_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0066 |  |  | estimate |
-| APSC-413 | s2_test_Re56_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0056 |  |  | estimate |
-| APSC-414 | s2_test_Re56_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0051 |  |  | estimate |
-| APSC-415 | s2_test_Re56_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0051 |  |  | estimate |
-| APSC-416 | s2_test_Re56_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0025 |  |  | estimate |
-| APSC-417 | s2_test_Re56_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0024 |  |  | estimate |
-| APSC-418 | s2_test_Re56_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0069 |  |  | estimate |
-| APSC-419 | s2_test_Re56_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0057 |  |  | estimate |
-| APSC-420 | s2_test_Re56_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0060 |  |  | estimate |
-| APSC-421 | s2_test_Re56_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 3.5772 | 2100 | 30 | estimate |
-| APSC-422 | s2_test_Re56_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 6.3883 | 5250 | 30 | estimate |
-| APSC-423 | s2_test_Re56_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 11.0363 | 10500 | 30 | estimate |
-| APSC-424 | s2_test_Re56_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.0990 |  |  | estimate |
-| APSC-425 | s2_test_Re56_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.0962 |  |  | estimate |
-| APSC-426 | s2_test_Re56_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.0953 |  |  | estimate |
-| APSC-427 | s2_test_Re56_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0800 | 2100 | 30 | estimate |
-| APSC-428 | s2_test_Re56_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1637 | 5250 | 30 | estimate |
-| APSC-429 | s2_test_Re56_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3022 | 10500 | 30 | estimate |
-| APSC-430 | s2_test_Re56_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1484 | 2100 | 30 | estimate |
-| APSC-431 | s2_test_Re56_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2360 | 5250 | 30 | estimate |
-| APSC-432 | s2_test_Re56_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.3660 | 10500 | 30 | estimate |
-| APSC-433 | s2_test_Re56_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 7.588e-04 |  |  | estimate |
-| APSC-434 | s2_test_Re56_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 6.727e-04 |  |  | estimate |
-| APSC-435 | s2_test_Re56_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 7.634e-04 |  |  | estimate |
-| APSC-436 | s2_test_Re56_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 5.0729 | 2100 | 30 | estimate |
-| APSC-437 | s2_test_Re56_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 8.3604 | 5250 | 30 | estimate |
-| APSC-438 | s2_test_Re56_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0171 |  |  | estimate |
-| APSC-439 | s2_test_Re56_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0263 |  |  | estimate |
-| APSC-440 | s2_test_Re56_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0277 |  |  | estimate |
-| APSC-441 | s2_test_Re56_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0168 |  |  | estimate |
-| APSC-442 | s2_test_Re56_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0130 |  |  | estimate |
-| APSC-443 | s2_test_Re56_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0085 |  |  | estimate |
-| APSC-444 | s2_test_Re56_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.0404 |  |  | estimate |
-| APSC-445 | s2_test_Re56_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.0273 |  |  | estimate |
-| APSC-446 | s2_test_Re56_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.0247 |  |  | estimate |
-| APSC-447 | s2_test_Re56_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 13.3468 | 10500 | 30 | estimate |
-| APSC-448 | s2_test_Re56_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 4.6779 | 2100 | 30 | estimate |
-| APSC-449 | s2_test_Re56_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 7.6454 | 5250 | 30 | estimate |
-| APSC-450 | s2_test_Re56_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0263 |  |  | estimate |
-| APSC-451 | s2_test_Re56_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0261 |  |  | estimate |
-| APSC-452 | s2_test_Re56_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0302 |  |  | estimate |
-| APSC-453 | s2_test_Re56_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0160 |  |  | estimate |
-| APSC-454 | s2_test_Re56_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0134 |  |  | estimate |
-| APSC-455 | s2_test_Re56_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0121 |  |  | estimate |
-| APSC-456 | s2_test_Re56_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 10.9694 | 10500 | 30 | estimate |
-| APSC-457 | s2_test_Re56_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0084 |  |  | estimate |
-| APSC-458 | s2_test_Re56_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0096 |  |  | estimate |
-| APSC-459 | s2_test_Re56_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0098 |  |  | estimate |
-| APSC-460 | s2_test_Re56_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0055 |  |  | estimate |
-| APSC-461 | s2_test_Re56_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0038 |  |  | estimate |
-| APSC-462 | s2_test_Re56_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0034 |  |  | estimate |
-| APSC-463 | s2_test_Re56_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0083 |  |  | estimate |
-| APSC-464 | s2_test_Re56_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0091 |  |  | estimate |
-| APSC-465 | s2_test_Re56_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0118 |  |  | estimate |
-| APSC-466 | s2_test_Re56_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.6846 | 2100 | 30 | estimate |
-| APSC-467 | s2_test_Re56_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 7.6314 | 5250 | 30 | estimate |
-| APSC-468 | s2_test_Re56_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 12.4384 | 10500 | 30 | estimate |
+| APSC-8 | s2_test2p_Re50_A0.9 | H_s0_2p_11 | H | 0 | 2p | 11 | 300 | 24.5283 | 21000 | 60 | estimate |
+| APSC-9 | s2_test_Re36_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1440 |  |  | estimate |
+| APSC-10 | s2_test_Re36_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1506 |  |  | estimate |
+| APSC-11 | s2_test_Re36_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1396 |  |  | estimate |
+| APSC-12 | s2_test_Re36_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0612 | 2100 | 30 | estimate |
+| APSC-13 | s2_test_Re36_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1392 | 5250 | 30 | estimate |
+| APSC-14 | s2_test_Re36_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2740 | 10500 | 30 | estimate |
+| APSC-15 | s2_test_Re36_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.2111 | 2100 | 30 | estimate |
+| APSC-16 | s2_test_Re36_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.3054 | 5250 | 30 | estimate |
+| APSC-17 | s2_test_Re36_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4794 | 10500 | 30 | estimate |
+| APSC-18 | s2_test_Re36_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0013 |  |  | estimate |
+| APSC-19 | s2_test_Re36_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0013 |  |  | estimate |
+| APSC-20 | s2_test_Re36_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0013 |  |  | estimate |
+| APSC-21 | s2_test_Re36_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0380 |  |  | estimate |
+| APSC-22 | s2_test_Re36_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0442 |  |  | estimate |
+| APSC-23 | s2_test_Re36_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0550 |  |  | estimate |
+| APSC-24 | s2_test_Re36_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0248 |  |  | estimate |
+| APSC-25 | s2_test_Re36_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0218 |  |  | estimate |
+| APSC-26 | s2_test_Re36_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0193 |  |  | estimate |
+| APSC-27 | s2_test_Re36_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 5.6544 | 2100 | 30 | estimate |
+| APSC-28 | s2_test_Re36_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.8264 | 5250 | 30 | estimate |
+| APSC-29 | s2_test_Re36_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.7146 | 10500 | 30 | estimate |
+| APSC-30 | s2_test_Re36_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0128 |  |  | estimate |
+| APSC-31 | s2_test_Re36_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0159 |  |  | estimate |
+| APSC-32 | s2_test_Re36_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0176 |  |  | estimate |
+| APSC-33 | s2_test_Re36_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0085 |  |  | estimate |
+| APSC-34 | s2_test_Re36_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0063 |  |  | estimate |
+| APSC-35 | s2_test_Re36_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0056 |  |  | estimate |
+| APSC-36 | s2_test_Re36_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0132 |  |  | estimate |
+| APSC-37 | s2_test_Re36_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0154 |  |  | estimate |
+| APSC-38 | s2_test_Re36_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0164 |  |  | estimate |
+| APSC-39 | s2_test_Re36_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0078 |  |  | estimate |
+| APSC-40 | s2_test_Re36_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0065 |  |  | estimate |
+| APSC-41 | s2_test_Re36_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0054 |  |  | estimate |
+| APSC-42 | s2_test_Re36_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0119 |  |  | estimate |
+| APSC-43 | s2_test_Re36_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0159 |  |  | estimate |
+| APSC-44 | s2_test_Re36_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0166 |  |  | estimate |
+| APSC-45 | s2_test_Re36_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 1.7917 | 2100 | 30 | estimate |
+| APSC-46 | s2_test_Re36_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 2.5274 | 5250 | 30 | estimate |
+| APSC-47 | s2_test_Re36_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 3.8387 | 10500 | 30 | estimate |
+| APSC-48 | s2_test_Re36_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 5.9018 | 2100 | 30 | estimate |
+| APSC-49 | s2_test_Re36_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 8.3055 | 5250 | 30 | estimate |
+| APSC-50 | s2_test_Re36_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 13.5002 | 10500 | 30 | estimate |
+| APSC-51 | s2_test_Re36_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.3276 |  |  | estimate |
+| APSC-52 | s2_test_Re36_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.3232 |  |  | estimate |
+| APSC-53 | s2_test_Re36_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.3230 |  |  | estimate |
+| APSC-54 | s2_test_Re36_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0954 | 2100 | 30 | estimate |
+| APSC-55 | s2_test_Re36_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1893 | 5250 | 30 | estimate |
+| APSC-56 | s2_test_Re36_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3466 | 10500 | 30 | estimate |
+| APSC-57 | s2_test_Re36_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.3889 | 2100 | 30 | estimate |
+| APSC-58 | s2_test_Re36_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.4764 | 5250 | 30 | estimate |
+| APSC-59 | s2_test_Re36_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.6301 | 10500 | 30 | estimate |
+| APSC-60 | s2_test_Re36_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0023 |  |  | estimate |
+| APSC-61 | s2_test_Re36_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0020 |  |  | estimate |
+| APSC-62 | s2_test_Re36_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0020 |  |  | estimate |
+| APSC-63 | s2_test_Re36_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0816 |  |  | estimate |
+| APSC-64 | s2_test_Re36_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0865 |  |  | estimate |
+| APSC-65 | s2_test_Re36_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0807 |  |  | estimate |
+| APSC-66 | s2_test_Re36_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0261 |  |  | estimate |
+| APSC-67 | s2_test_Re36_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0260 |  |  | estimate |
+| APSC-68 | s2_test_Re36_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0376 |  |  | estimate |
+| APSC-69 | s2_test_Re36_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.1374 |  |  | estimate |
+| APSC-70 | s2_test_Re36_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.1230 |  |  | estimate |
+| APSC-71 | s2_test_Re36_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.1152 |  |  | estimate |
+| APSC-72 | s2_test_Re36_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 10.5853 | 2100 | 30 | estimate |
+| APSC-73 | s2_test_Re36_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 12.6944 | 5250 | 30 | estimate |
+| APSC-74 | s2_test_Re36_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 15.8108 | 10500 | 30 | estimate |
+| APSC-75 | s2_test_Re36_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0643 |  |  | estimate |
+| APSC-76 | s2_test_Re36_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0465 |  |  | estimate |
+| APSC-77 | s2_test_Re36_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0302 |  |  | estimate |
+| APSC-78 | s2_test_Re36_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0141 |  |  | estimate |
+| APSC-79 | s2_test_Re36_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0114 |  |  | estimate |
+| APSC-80 | s2_test_Re36_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0113 |  |  | estimate |
+| APSC-81 | s2_test_Re36_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0365 |  |  | estimate |
+| APSC-82 | s2_test_Re36_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0345 |  |  | estimate |
+| APSC-83 | s2_test_Re36_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0298 |  |  | estimate |
+| APSC-84 | s2_test_Re36_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0118 |  |  | estimate |
+| APSC-85 | s2_test_Re36_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0110 |  |  | estimate |
+| APSC-86 | s2_test_Re36_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0108 |  |  | estimate |
+| APSC-87 | s2_test_Re36_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 10.6062 | 2100 | 30 | estimate |
+| APSC-88 | s2_test_Re36_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0203 |  |  | estimate |
+| APSC-89 | s2_test_Re36_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0211 |  |  | estimate |
+| APSC-90 | s2_test_Re36_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0271 |  |  | estimate |
+| APSC-91 | s2_test_Re36_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 12.7776 | 5250 | 30 | estimate |
+| APSC-92 | s2_test_Re36_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 13.3821 | 10500 | 30 | estimate |
+| APSC-93 | s2_test_Re36_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 3.0517 | 2100 | 30 | estimate |
+| APSC-94 | s2_test_Re36_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 3.8083 | 5250 | 30 | estimate |
+| APSC-95 | s2_test_Re36_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 5.0656 | 10500 | 30 | estimate |
+| APSC-96 | s2_test_Re40_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1123 |  |  | estimate |
+| APSC-97 | s2_test_Re40_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1061 |  |  | estimate |
+| APSC-98 | s2_test_Re40_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1085 |  |  | estimate |
+| APSC-99 | s2_test_Re40_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0645 | 2100 | 30 | estimate |
+| APSC-100 | s2_test_Re40_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1476 | 5250 | 30 | estimate |
+| APSC-101 | s2_test_Re40_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2891 | 10500 | 30 | estimate |
+| APSC-102 | s2_test_Re40_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1839 | 2100 | 30 | estimate |
+| APSC-103 | s2_test_Re40_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2747 | 5250 | 30 | estimate |
+| APSC-104 | s2_test_Re40_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4369 | 10500 | 30 | estimate |
+| APSC-105 | s2_test_Re40_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0012 |  |  | estimate |
+| APSC-106 | s2_test_Re40_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0010 |  |  | estimate |
+| APSC-107 | s2_test_Re40_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0011 |  |  | estimate |
+| APSC-108 | s2_test_Re40_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 4.7148 | 2100 | 30 | estimate |
+| APSC-109 | s2_test_Re40_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.0361 | 5250 | 30 | estimate |
+| APSC-110 | s2_test_Re40_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0437 |  |  | estimate |
+| APSC-111 | s2_test_Re40_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0389 |  |  | estimate |
+| APSC-112 | s2_test_Re40_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0406 |  |  | estimate |
+| APSC-113 | s2_test_Re40_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0478 |  |  | estimate |
+| APSC-114 | s2_test_Re40_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0431 |  |  | estimate |
+| APSC-115 | s2_test_Re40_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0406 |  |  | estimate |
+| APSC-116 | s2_test_Re40_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 10.4003 | 10500 | 30 | estimate |
+| APSC-117 | s2_test_Re40_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 5.1766 | 2100 | 30 | estimate |
+| APSC-118 | s2_test_Re40_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0302 |  |  | estimate |
+| APSC-119 | s2_test_Re40_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0283 |  |  | estimate |
+| APSC-120 | s2_test_Re40_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0251 |  |  | estimate |
+| APSC-121 | s2_test_Re40_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0319 |  |  | estimate |
+| APSC-122 | s2_test_Re40_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0269 |  |  | estimate |
+| APSC-123 | s2_test_Re40_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0313 |  |  | estimate |
+| APSC-124 | s2_test_Re40_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0156 |  |  | estimate |
+| APSC-125 | s2_test_Re40_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0136 |  |  | estimate |
+| APSC-126 | s2_test_Re40_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0121 |  |  | estimate |
+| APSC-127 | s2_test_Re40_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0154 |  |  | estimate |
+| APSC-128 | s2_test_Re40_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0110 |  |  | estimate |
+| APSC-129 | s2_test_Re40_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0115 |  |  | estimate |
+| APSC-130 | s2_test_Re40_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0144 |  |  | estimate |
+| APSC-131 | s2_test_Re40_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0131 |  |  | estimate |
+| APSC-132 | s2_test_Re40_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0116 |  |  | estimate |
+| APSC-133 | s2_test_Re40_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 8.1717 | 5250 | 30 | estimate |
+| APSC-134 | s2_test_Re40_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 4.0307 | 10500 | 30 | estimate |
+| APSC-135 | s2_test_Re40_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.7952 | 2100 | 30 | estimate |
+| APSC-136 | s2_test_Re40_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 4.4311 | 5250 | 30 | estimate |
+| APSC-137 | s2_test_Re40_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 3.2464 | 10500 | 30 | estimate |
+| APSC-138 | s2_test_Re40_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1612 |  |  | estimate |
+| APSC-139 | s2_test_Re40_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1581 |  |  | estimate |
+| APSC-140 | s2_test_Re40_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1580 |  |  | estimate |
+| APSC-141 | s2_test_Re40_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0796 | 2100 | 30 | estimate |
+| APSC-142 | s2_test_Re40_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1589 | 5250 | 30 | estimate |
+| APSC-143 | s2_test_Re40_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2915 | 10500 | 30 | estimate |
+| APSC-144 | s2_test_Re40_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.2128 | 2100 | 30 | estimate |
+| APSC-145 | s2_test_Re40_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2901 | 5250 | 30 | estimate |
+| APSC-146 | s2_test_Re40_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4239 | 10500 | 30 | estimate |
+| APSC-147 | s2_test_Re40_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0014 |  |  | estimate |
+| APSC-148 | s2_test_Re40_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 0.0012 |  |  | estimate |
+| APSC-149 | s2_test_Re40_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 0.0012 |  |  | estimate |
+| APSC-150 | s2_test_Re40_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 7.8763 | 2100 | 30 | estimate |
+| APSC-151 | s2_test_Re40_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0447 |  |  | estimate |
+| APSC-152 | s2_test_Re40_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0406 |  |  | estimate |
+| APSC-153 | s2_test_Re40_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0610 |  |  | estimate |
+| APSC-154 | s2_test_Re40_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0732 |  |  | estimate |
+| APSC-155 | s2_test_Re40_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0749 |  |  | estimate |
+| APSC-156 | s2_test_Re40_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0602 |  |  | estimate |
+| APSC-157 | s2_test_Re40_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.2328 |  |  | estimate |
+| APSC-158 | s2_test_Re40_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.2144 |  |  | estimate |
+| APSC-159 | s2_test_Re40_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.2135 |  |  | estimate |
+| APSC-160 | s2_test_Re40_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 10.6646 | 5250 | 30 | estimate |
+| APSC-161 | s2_test_Re40_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 13.9437 | 10500 | 30 | estimate |
+| APSC-162 | s2_test_Re40_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 6.1696 | 2100 | 30 | estimate |
+| APSC-163 | s2_test_Re40_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0530 |  |  | estimate |
+| APSC-164 | s2_test_Re40_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0428 |  |  | estimate |
+| APSC-165 | s2_test_Re40_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0553 |  |  | estimate |
+| APSC-166 | s2_test_Re40_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0542 |  |  | estimate |
+| APSC-167 | s2_test_Re40_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0510 |  |  | estimate |
+| APSC-168 | s2_test_Re40_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0510 |  |  | estimate |
+| APSC-169 | s2_test_Re40_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 9.2567 | 5250 | 30 | estimate |
+| APSC-170 | s2_test_Re40_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0271 |  |  | estimate |
+| APSC-171 | s2_test_Re40_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0207 |  |  | estimate |
+| APSC-172 | s2_test_Re40_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0247 |  |  | estimate |
+| APSC-173 | s2_test_Re40_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0237 |  |  | estimate |
+| APSC-174 | s2_test_Re40_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0211 |  |  | estimate |
+| APSC-175 | s2_test_Re40_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0211 |  |  | estimate |
+| APSC-176 | s2_test_Re40_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0200 |  |  | estimate |
+| APSC-177 | s2_test_Re40_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0170 |  |  | estimate |
+| APSC-178 | s2_test_Re40_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0208 |  |  | estimate |
+| APSC-179 | s2_test_Re40_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 13.5907 | 10500 | 30 | estimate |
+| APSC-180 | s2_test_Re40_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 7.8341 | 2100 | 30 | estimate |
+| APSC-181 | s2_test_Re40_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 10.9767 | 5250 | 30 | estimate |
+| APSC-182 | s2_test_Re40_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 15.9843 | 10500 | 30 | estimate |
+| APSC-183 | s2_test_Re44_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1088 |  |  | estimate |
+| APSC-184 | s2_test_Re44_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1000 |  |  | estimate |
+| APSC-185 | s2_test_Re44_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1060 |  |  | estimate |
+| APSC-186 | s2_test_Re44_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0701 | 2100 | 30 | estimate |
+| APSC-187 | s2_test_Re44_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1590 | 5250 | 30 | estimate |
+| APSC-188 | s2_test_Re44_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3153 | 10500 | 30 | estimate |
+| APSC-189 | s2_test_Re44_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1752 | 2100 | 30 | estimate |
+| APSC-190 | s2_test_Re44_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2824 | 5250 | 30 | estimate |
+| APSC-191 | s2_test_Re44_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4700 | 10500 | 30 | estimate |
+| APSC-192 | s2_test_Re44_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 9.478e-04 |  |  | estimate |
+| APSC-193 | s2_test_Re44_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 8.632e-04 |  |  | estimate |
+| APSC-194 | s2_test_Re44_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 8.607e-04 |  |  | estimate |
+| APSC-195 | s2_test_Re44_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 4.1367 | 2100 | 30 | estimate |
+| APSC-196 | s2_test_Re44_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.1291 | 5250 | 30 | estimate |
+| APSC-197 | s2_test_Re44_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.5181 | 10500 | 30 | estimate |
+| APSC-198 | s2_test_Re44_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0321 |  |  | estimate |
+| APSC-199 | s2_test_Re44_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0291 |  |  | estimate |
+| APSC-200 | s2_test_Re44_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0280 |  |  | estimate |
+| APSC-201 | s2_test_Re44_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0264 |  |  | estimate |
+| APSC-202 | s2_test_Re44_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0215 |  |  | estimate |
+| APSC-203 | s2_test_Re44_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0158 |  |  | estimate |
+| APSC-204 | s2_test_Re44_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 4.1977 | 2100 | 30 | estimate |
+| APSC-205 | s2_test_Re44_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 7.4003 | 5250 | 30 | estimate |
+| APSC-206 | s2_test_Re44_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0318 |  |  | estimate |
+| APSC-207 | s2_test_Re44_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0303 |  |  | estimate |
+| APSC-208 | s2_test_Re44_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0293 |  |  | estimate |
+| APSC-209 | s2_test_Re44_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0271 |  |  | estimate |
+| APSC-210 | s2_test_Re44_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0217 |  |  | estimate |
+| APSC-211 | s2_test_Re44_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0213 |  |  | estimate |
+| APSC-212 | s2_test_Re44_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0108 |  |  | estimate |
+| APSC-213 | s2_test_Re44_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0095 |  |  | estimate |
+| APSC-214 | s2_test_Re44_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0092 |  |  | estimate |
+| APSC-215 | s2_test_Re44_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0086 |  |  | estimate |
+| APSC-216 | s2_test_Re44_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0063 |  |  | estimate |
+| APSC-217 | s2_test_Re44_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0057 |  |  | estimate |
+| APSC-218 | s2_test_Re44_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0109 |  |  | estimate |
+| APSC-219 | s2_test_Re44_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0097 |  |  | estimate |
+| APSC-220 | s2_test_Re44_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0093 |  |  | estimate |
+| APSC-221 | s2_test_Re44_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 12.1728 | 10500 | 30 | estimate |
+| APSC-222 | s2_test_Re44_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.8895 | 2100 | 30 | estimate |
+| APSC-223 | s2_test_Re44_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 7.7295 | 5250 | 30 | estimate |
+| APSC-224 | s2_test_Re44_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 12.8490 | 10500 | 30 | estimate |
+| APSC-225 | s2_test_Re44_C | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0327 |  |  | estimate |
+| APSC-226 | s2_test_Re44_C | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0278 |  |  | estimate |
+| APSC-227 | s2_test_Re44_C | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0274 |  |  | estimate |
+| APSC-228 | s2_test_Re44_C | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.0228 |  |  | estimate |
+| APSC-229 | s2_test_Re44_C | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 12.3264 | 10500 | 30 | estimate |
+| APSC-230 | s2_test_Re44_C | H_s0_noise5_11 | H | 0 | noise5 | 11 | 300 | 3.0052 | 10500 | 30 | estimate |
+| APSC-231 | s2_test_Re44_C | L_range_s0_noise5_11 | L_range | 0 | noise5 | 11 | 300 | 0.0115 |  |  | estimate |
+| APSC-232 | s2_test_Re44_C | H_s0_straddle_5 | H | 0 | straddle | 5 | 300 | 10.2981 | 10500 | 30 | estimate |
+| APSC-233 | s2_test_Re44_C | H_s0_straddle_2 | H | 0 | straddle | 2 | 300 | 7.6911 | 10500 | 30 | estimate |
+| APSC-234 | s2_test_Re44_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1312 |  |  | estimate |
+| APSC-235 | s2_test_Re44_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1285 |  |  | estimate |
+| APSC-236 | s2_test_Re44_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1273 |  |  | estimate |
+| APSC-237 | s2_test_Re44_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0840 | 2100 | 30 | estimate |
+| APSC-238 | s2_test_Re44_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1669 | 5250 | 30 | estimate |
+| APSC-239 | s2_test_Re44_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3082 | 10500 | 30 | estimate |
+| APSC-240 | s2_test_Re44_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1893 | 2100 | 30 | estimate |
+| APSC-241 | s2_test_Re44_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2702 | 5250 | 30 | estimate |
+| APSC-242 | s2_test_Re44_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4119 | 10500 | 30 | estimate |
+| APSC-243 | s2_test_Re44_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 0.0012 |  |  | estimate |
+| APSC-244 | s2_test_Re44_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 9.451e-04 |  |  | estimate |
+| APSC-245 | s2_test_Re44_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 9.638e-04 |  |  | estimate |
+| APSC-246 | s2_test_Re44_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 5.4912 | 2100 | 30 | estimate |
+| APSC-247 | s2_test_Re44_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 8.0459 | 5250 | 30 | estimate |
+| APSC-248 | s2_test_Re44_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0456 |  |  | estimate |
+| APSC-249 | s2_test_Re44_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0522 |  |  | estimate |
+| APSC-250 | s2_test_Re44_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0553 |  |  | estimate |
+| APSC-251 | s2_test_Re44_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0298 |  |  | estimate |
+| APSC-252 | s2_test_Re44_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0245 |  |  | estimate |
+| APSC-253 | s2_test_Re44_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0222 |  |  | estimate |
+| APSC-254 | s2_test_Re44_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.0860 |  |  | estimate |
+| APSC-255 | s2_test_Re44_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.1048 |  |  | estimate |
+| APSC-256 | s2_test_Re44_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.0956 |  |  | estimate |
+| APSC-257 | s2_test_Re44_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 12.5432 | 10500 | 30 | estimate |
+| APSC-258 | s2_test_Re44_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 5.1043 | 2100 | 30 | estimate |
+| APSC-259 | s2_test_Re44_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 7.4415 | 5250 | 30 | estimate |
+| APSC-260 | s2_test_Re44_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0513 |  |  | estimate |
+| APSC-261 | s2_test_Re44_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0557 |  |  | estimate |
+| APSC-262 | s2_test_Re44_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0552 |  |  | estimate |
+| APSC-263 | s2_test_Re44_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0405 |  |  | estimate |
+| APSC-264 | s2_test_Re44_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0370 |  |  | estimate |
+| APSC-265 | s2_test_Re44_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0432 |  |  | estimate |
+| APSC-266 | s2_test_Re44_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0165 |  |  | estimate |
+| APSC-267 | s2_test_Re44_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0189 |  |  | estimate |
+| APSC-268 | s2_test_Re44_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0168 |  |  | estimate |
+| APSC-269 | s2_test_Re44_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0122 |  |  | estimate |
+| APSC-270 | s2_test_Re44_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0096 |  |  | estimate |
+| APSC-271 | s2_test_Re44_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0118 |  |  | estimate |
+| APSC-272 | s2_test_Re44_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0187 |  |  | estimate |
+| APSC-273 | s2_test_Re44_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0162 |  |  | estimate |
+| APSC-274 | s2_test_Re44_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0188 |  |  | estimate |
+| APSC-275 | s2_test_Re44_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 12.3595 | 10500 | 30 | estimate |
+| APSC-276 | s2_test_Re44_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 6.4574 | 2100 | 30 | estimate |
+| APSC-277 | s2_test_Re44_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 9.6317 | 5250 | 30 | estimate |
+| APSC-278 | s2_test_Re44_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 14.7357 | 10500 | 30 | estimate |
+| APSC-279 | s2_test_Re44_D | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0626 |  |  | estimate |
+| APSC-280 | s2_test_Re44_D | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0580 |  |  | estimate |
+| APSC-281 | s2_test_Re44_D | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0545 |  |  | estimate |
+| APSC-282 | s2_test_Re44_D | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 3.4783 | 10500 | 30 | estimate |
+| APSC-283 | s2_test_Re44_D | H_s0_straddle_5 | H | 0 | straddle | 5 | 300 | 3.2413 | 10500 | 30 | estimate |
+| APSC-284 | s2_test_Re44_D | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.1479 |  |  | estimate |
+| APSC-285 | s2_test_Re44_D | H_s0_straddle_2 | H | 0 | straddle | 2 | 300 | 3.2237 | 10500 | 30 | estimate |
+| APSC-286 | s2_test_Re44_D | H_s0_noise5_11 | H | 0 | noise5 | 11 | 300 | 12.8674 | 10500 | 30 | estimate |
+| APSC-287 | s2_test_Re44_D | L_range_s0_noise5_11 | L_range | 0 | noise5 | 11 | 300 | 0.0426 |  |  | estimate |
+| APSC-288 | s2_test_Re50_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.0773 |  |  | estimate |
+| APSC-289 | s2_test_Re50_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.0680 |  |  | estimate |
+| APSC-290 | s2_test_Re50_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.0750 |  |  | estimate |
+| APSC-291 | s2_test_Re50_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0603 | 2100 | 30 | estimate |
+| APSC-292 | s2_test_Re50_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1371 | 5250 | 30 | estimate |
+| APSC-293 | s2_test_Re50_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2706 | 10500 | 30 | estimate |
+| APSC-294 | s2_test_Re50_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1375 | 2100 | 30 | estimate |
+| APSC-295 | s2_test_Re50_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2250 | 5250 | 30 | estimate |
+| APSC-296 | s2_test_Re50_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.3878 | 10500 | 30 | estimate |
+| APSC-297 | s2_test_Re50_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 7.854e-04 |  |  | estimate |
+| APSC-298 | s2_test_Re50_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 7.002e-04 |  |  | estimate |
+| APSC-299 | s2_test_Re50_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 6.947e-04 |  |  | estimate |
+| APSC-300 | s2_test_Re50_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 3.8732 | 2100 | 30 | estimate |
+| APSC-301 | s2_test_Re50_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 6.4813 | 5250 | 30 | estimate |
+| APSC-302 | s2_test_Re50_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.8089 | 10500 | 30 | estimate |
+| APSC-303 | s2_test_Re50_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0229 |  |  | estimate |
+| APSC-304 | s2_test_Re50_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0199 |  |  | estimate |
+| APSC-305 | s2_test_Re50_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0208 |  |  | estimate |
+| APSC-306 | s2_test_Re50_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0133 |  |  | estimate |
+| APSC-307 | s2_test_Re50_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0081 |  |  | estimate |
+| APSC-308 | s2_test_Re50_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0096 |  |  | estimate |
+| APSC-309 | s2_test_Re50_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 3.6687 | 2100 | 30 | estimate |
+| APSC-310 | s2_test_Re50_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 6.7883 | 5250 | 30 | estimate |
+| APSC-311 | s2_test_Re50_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 11.4558 | 10500 | 30 | estimate |
+| APSC-312 | s2_test_Re50_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0231 |  |  | estimate |
+| APSC-313 | s2_test_Re50_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0219 |  |  | estimate |
+| APSC-314 | s2_test_Re50_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0210 |  |  | estimate |
+| APSC-315 | s2_test_Re50_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0168 |  |  | estimate |
+| APSC-316 | s2_test_Re50_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0121 |  |  | estimate |
+| APSC-317 | s2_test_Re50_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0147 |  |  | estimate |
+| APSC-318 | s2_test_Re50_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0082 |  |  | estimate |
+| APSC-319 | s2_test_Re50_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0064 |  |  | estimate |
+| APSC-320 | s2_test_Re50_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0064 |  |  | estimate |
+| APSC-321 | s2_test_Re50_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0058 |  |  | estimate |
+| APSC-322 | s2_test_Re50_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0034 |  |  | estimate |
+| APSC-323 | s2_test_Re50_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0042 |  |  | estimate |
+| APSC-324 | s2_test_Re50_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0086 |  |  | estimate |
+| APSC-325 | s2_test_Re50_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0077 |  |  | estimate |
+| APSC-326 | s2_test_Re50_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0079 |  |  | estimate |
+| APSC-327 | s2_test_Re50_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 3.7704 | 2100 | 30 | estimate |
+| APSC-328 | s2_test_Re50_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 6.6125 | 5250 | 30 | estimate |
+| APSC-329 | s2_test_Re50_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 11.3509 | 10500 | 30 | estimate |
+| APSC-330 | s2_test_Re50_C | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0269 |  |  | estimate |
+| APSC-331 | s2_test_Re50_C | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0222 |  |  | estimate |
+| APSC-332 | s2_test_Re50_C | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0189 |  |  | estimate |
+| APSC-333 | s2_test_Re50_C | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 11.8264 | 10500 | 30 | estimate |
+| APSC-334 | s2_test_Re50_C | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.0202 |  |  | estimate |
+| APSC-335 | s2_test_Re50_C | H_s0_noise5_11 | H | 0 | noise5 | 11 | 300 | 2.9085 | 10500 | 30 | estimate |
+| APSC-336 | s2_test_Re50_C | L_range_s0_noise5_11 | L_range | 0 | noise5 | 11 | 300 | 0.0094 |  |  | estimate |
+| APSC-337 | s2_test_Re50_C | H_s0_straddle_5 | H | 0 | straddle | 5 | 300 | 8.6092 | 10500 | 30 | estimate |
+| APSC-338 | s2_test_Re50_C | H_s0_straddle_2 | H | 0 | straddle | 2 | 300 | 6.5648 | 10500 | 30 | estimate |
+| APSC-339 | s2_test_Re50_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.1219 |  |  | estimate |
+| APSC-340 | s2_test_Re50_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.1172 |  |  | estimate |
+| APSC-341 | s2_test_Re50_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.1176 |  |  | estimate |
+| APSC-342 | s2_test_Re50_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0907 | 2100 | 30 | estimate |
+| APSC-343 | s2_test_Re50_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1773 | 5250 | 30 | estimate |
+| APSC-344 | s2_test_Re50_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3347 | 10500 | 30 | estimate |
+| APSC-345 | s2_test_Re50_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1850 | 2100 | 30 | estimate |
+| APSC-346 | s2_test_Re50_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2706 | 5250 | 30 | estimate |
+| APSC-347 | s2_test_Re50_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.4268 | 10500 | 30 | estimate |
+| APSC-348 | s2_test_Re50_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 8.360e-04 |  |  | estimate |
+| APSC-349 | s2_test_Re50_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 7.761e-04 |  |  | estimate |
+| APSC-350 | s2_test_Re50_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 7.563e-04 |  |  | estimate |
+| APSC-351 | s2_test_Re50_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 4.9260 | 2100 | 30 | estimate |
+| APSC-352 | s2_test_Re50_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 7.4674 | 5250 | 30 | estimate |
+| APSC-353 | s2_test_Re50_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 11.6342 | 10500 | 30 | estimate |
+| APSC-354 | s2_test_Re50_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0256 |  |  | estimate |
+| APSC-355 | s2_test_Re50_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0216 |  |  | estimate |
+| APSC-356 | s2_test_Re50_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0303 |  |  | estimate |
+| APSC-357 | s2_test_Re50_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0228 |  |  | estimate |
+| APSC-358 | s2_test_Re50_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0166 |  |  | estimate |
+| APSC-359 | s2_test_Re50_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0125 |  |  | estimate |
+| APSC-360 | s2_test_Re50_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.0550 |  |  | estimate |
+| APSC-361 | s2_test_Re50_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.0376 |  |  | estimate |
+| APSC-362 | s2_test_Re50_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.0415 |  |  | estimate |
+| APSC-363 | s2_test_Re50_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 4.9787 | 2100 | 30 | estimate |
+| APSC-364 | s2_test_Re50_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 8.1180 | 5250 | 30 | estimate |
+| APSC-365 | s2_test_Re50_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0355 |  |  | estimate |
+| APSC-366 | s2_test_Re50_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0367 |  |  | estimate |
+| APSC-367 | s2_test_Re50_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0340 |  |  | estimate |
+| APSC-368 | s2_test_Re50_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0236 |  |  | estimate |
+| APSC-369 | s2_test_Re50_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0183 |  |  | estimate |
+| APSC-370 | s2_test_Re50_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0174 |  |  | estimate |
+| APSC-371 | s2_test_Re50_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0115 |  |  | estimate |
+| APSC-372 | s2_test_Re50_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0120 |  |  | estimate |
+| APSC-373 | s2_test_Re50_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0105 |  |  | estimate |
+| APSC-374 | s2_test_Re50_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0077 |  |  | estimate |
+| APSC-375 | s2_test_Re50_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0051 |  |  | estimate |
+| APSC-376 | s2_test_Re50_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0048 |  |  | estimate |
+| APSC-377 | s2_test_Re50_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0132 |  |  | estimate |
+| APSC-378 | s2_test_Re50_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0113 |  |  | estimate |
+| APSC-379 | s2_test_Re50_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0137 |  |  | estimate |
+| APSC-380 | s2_test_Re50_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 13.9461 | 10500 | 30 | estimate |
+| APSC-381 | s2_test_Re50_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.9392 | 2100 | 30 | estimate |
+| APSC-382 | s2_test_Re50_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 7.0959 | 5250 | 30 | estimate |
+| APSC-383 | s2_test_Re50_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 9.5906 | 10500 | 30 | estimate |
+| APSC-384 | s2_test_Re50_D | L_range_s0_straddle_8 | L_range | 0 | straddle | 8 | 300 | 0.0396 |  |  | estimate |
+| APSC-385 | s2_test_Re50_D | L_range_s0_straddle_5 | L_range | 0 | straddle | 5 | 300 | 0.0335 |  |  | estimate |
+| APSC-386 | s2_test_Re50_D | L_range_s0_straddle_2 | L_range | 0 | straddle | 2 | 300 | 0.0271 |  |  | estimate |
+| APSC-387 | s2_test_Re50_D | O_s0_noise5_11 | O | 0 | noise5 | 11 | 300 | 0.0304 |  |  | estimate |
+| APSC-388 | s2_test_Re50_D | H_s0_straddle_8 | H | 0 | straddle | 8 | 300 | 11.3132 | 10500 | 30 | estimate |
+| APSC-389 | s2_test_Re50_D | H_s0_noise5_11 | H | 0 | noise5 | 11 | 300 | 3.4054 | 10500 | 30 | estimate |
+| APSC-390 | s2_test_Re50_D | L_range_s0_noise5_11 | L_range | 0 | noise5 | 11 | 300 | 0.0127 |  |  | estimate |
+| APSC-391 | s2_test_Re50_D | H_s0_straddle_5 | H | 0 | straddle | 5 | 300 | 6.3713 | 10500 | 30 | estimate |
+| APSC-392 | s2_test_Re50_D | H_s0_straddle_2 | H | 0 | straddle | 2 | 300 | 3.0329 | 10500 | 30 | estimate |
+| APSC-393 | s2_test_Re56_C | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.0666 |  |  | estimate |
+| APSC-394 | s2_test_Re56_C | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.0632 |  |  | estimate |
+| APSC-395 | s2_test_Re56_C | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.0601 |  |  | estimate |
+| APSC-396 | s2_test_Re56_C | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0607 | 2100 | 30 | estimate |
+| APSC-397 | s2_test_Re56_C | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1378 | 5250 | 30 | estimate |
+| APSC-398 | s2_test_Re56_C | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.2725 | 10500 | 30 | estimate |
+| APSC-399 | s2_test_Re56_C | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1290 | 2100 | 30 | estimate |
+| APSC-400 | s2_test_Re56_C | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2198 | 5250 | 30 | estimate |
+| APSC-401 | s2_test_Re56_C | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.3736 | 10500 | 30 | estimate |
+| APSC-402 | s2_test_Re56_C | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 7.554e-04 |  |  | estimate |
+| APSC-403 | s2_test_Re56_C | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 6.643e-04 |  |  | estimate |
+| APSC-404 | s2_test_Re56_C | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 6.573e-04 |  |  | estimate |
+| APSC-405 | s2_test_Re56_C | H_s0_std_3 | H | 0 | std | 3 | 300 | 3.1120 | 2100 | 30 | estimate |
+| APSC-406 | s2_test_Re56_C | H_s0_std_6 | H | 0 | std | 6 | 300 | 5.3748 | 5250 | 30 | estimate |
+| APSC-407 | s2_test_Re56_C | H_s0_std_11 | H | 0 | std | 11 | 300 | 10.0970 | 10500 | 30 | estimate |
+| APSC-408 | s2_test_Re56_C | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0178 |  |  | estimate |
+| APSC-409 | s2_test_Re56_C | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0154 |  |  | estimate |
+| APSC-410 | s2_test_Re56_C | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0144 |  |  | estimate |
+| APSC-411 | s2_test_Re56_C | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0138 |  |  | estimate |
+| APSC-412 | s2_test_Re56_C | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0091 |  |  | estimate |
+| APSC-413 | s2_test_Re56_C | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0087 |  |  | estimate |
+| APSC-414 | s2_test_Re56_C | H_s1_std_3 | H | 1 | std | 3 | 300 | 3.5947 | 2100 | 30 | estimate |
+| APSC-415 | s2_test_Re56_C | H_s1_std_6 | H | 1 | std | 6 | 300 | 6.3822 | 5250 | 30 | estimate |
+| APSC-416 | s2_test_Re56_C | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0180 |  |  | estimate |
+| APSC-417 | s2_test_Re56_C | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0163 |  |  | estimate |
+| APSC-418 | s2_test_Re56_C | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0164 |  |  | estimate |
+| APSC-419 | s2_test_Re56_C | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0134 |  |  | estimate |
+| APSC-420 | s2_test_Re56_C | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0095 |  |  | estimate |
+| APSC-421 | s2_test_Re56_C | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0085 |  |  | estimate |
+| APSC-422 | s2_test_Re56_C | H_s1_std_11 | H | 1 | std | 11 | 300 | 10.8485 | 10500 | 30 | estimate |
+| APSC-423 | s2_test_Re56_C | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0066 |  |  | estimate |
+| APSC-424 | s2_test_Re56_C | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0056 |  |  | estimate |
+| APSC-425 | s2_test_Re56_C | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0051 |  |  | estimate |
+| APSC-426 | s2_test_Re56_C | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0051 |  |  | estimate |
+| APSC-427 | s2_test_Re56_C | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0025 |  |  | estimate |
+| APSC-428 | s2_test_Re56_C | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0024 |  |  | estimate |
+| APSC-429 | s2_test_Re56_C | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0069 |  |  | estimate |
+| APSC-430 | s2_test_Re56_C | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0057 |  |  | estimate |
+| APSC-431 | s2_test_Re56_C | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0060 |  |  | estimate |
+| APSC-432 | s2_test_Re56_C | H_s2_std_3 | H | 2 | std | 3 | 300 | 3.5772 | 2100 | 30 | estimate |
+| APSC-433 | s2_test_Re56_C | H_s2_std_6 | H | 2 | std | 6 | 300 | 6.3883 | 5250 | 30 | estimate |
+| APSC-434 | s2_test_Re56_C | H_s2_std_11 | H | 2 | std | 11 | 300 | 11.0363 | 10500 | 30 | estimate |
+| APSC-435 | s2_test_Re56_D | O_s0_std_3 | O | 0 | std | 3 | 300 | 0.0990 |  |  | estimate |
+| APSC-436 | s2_test_Re56_D | O_s0_std_6 | O | 0 | std | 6 | 300 | 0.0962 |  |  | estimate |
+| APSC-437 | s2_test_Re56_D | O_s0_std_11 | O | 0 | std | 11 | 300 | 0.0953 |  |  | estimate |
+| APSC-438 | s2_test_Re56_D | P1_s0_std_3 | P1 | 0 | std | 3 | 300 | 0.0800 | 2100 | 30 | estimate |
+| APSC-439 | s2_test_Re56_D | P1_s0_std_6 | P1 | 0 | std | 6 | 300 | 0.1637 | 5250 | 30 | estimate |
+| APSC-440 | s2_test_Re56_D | P1_s0_std_11 | P1 | 0 | std | 11 | 300 | 0.3022 | 10500 | 30 | estimate |
+| APSC-441 | s2_test_Re56_D | P1x_s0_std_3 | P1x | 0 | std | 3 | 300 | 0.1484 | 2100 | 30 | estimate |
+| APSC-442 | s2_test_Re56_D | P1x_s0_std_6 | P1x | 0 | std | 6 | 300 | 0.2360 | 5250 | 30 | estimate |
+| APSC-443 | s2_test_Re56_D | P1x_s0_std_11 | P1x | 0 | std | 11 | 300 | 0.3660 | 10500 | 30 | estimate |
+| APSC-444 | s2_test_Re56_D | persistence_s0_std_3 | persistence | 0 | std | 3 | 300 | 7.588e-04 |  |  | estimate |
+| APSC-445 | s2_test_Re56_D | persistence_s0_std_6 | persistence | 0 | std | 6 | 300 | 6.727e-04 |  |  | estimate |
+| APSC-446 | s2_test_Re56_D | persistence_s0_std_11 | persistence | 0 | std | 11 | 300 | 7.634e-04 |  |  | estimate |
+| APSC-447 | s2_test_Re56_D | H_s0_std_3 | H | 0 | std | 3 | 300 | 5.0729 | 2100 | 30 | estimate |
+| APSC-448 | s2_test_Re56_D | H_s0_std_6 | H | 0 | std | 6 | 300 | 8.3604 | 5250 | 30 | estimate |
+| APSC-449 | s2_test_Re56_D | L_range_s0_std_3 | L_range | 0 | std | 3 | 300 | 0.0171 |  |  | estimate |
+| APSC-450 | s2_test_Re56_D | L_range_s0_std_6 | L_range | 0 | std | 6 | 300 | 0.0263 |  |  | estimate |
+| APSC-451 | s2_test_Re56_D | L_range_s0_std_11 | L_range | 0 | std | 11 | 300 | 0.0277 |  |  | estimate |
+| APSC-452 | s2_test_Re56_D | L0_s0_std_3 | L0 | 0 | std | 3 | 300 | 0.0168 |  |  | estimate |
+| APSC-453 | s2_test_Re56_D | L0_s0_std_6 | L0 | 0 | std | 6 | 300 | 0.0130 |  |  | estimate |
+| APSC-454 | s2_test_Re56_D | L0_s0_std_11 | L0 | 0 | std | 11 | 300 | 0.0085 |  |  | estimate |
+| APSC-455 | s2_test_Re56_D | L0big_s0_std_3 | L0big | 0 | std | 3 | 300 | 0.0404 |  |  | estimate |
+| APSC-456 | s2_test_Re56_D | L0big_s0_std_6 | L0big | 0 | std | 6 | 300 | 0.0273 |  |  | estimate |
+| APSC-457 | s2_test_Re56_D | L0big_s0_std_11 | L0big | 0 | std | 11 | 300 | 0.0247 |  |  | estimate |
+| APSC-458 | s2_test_Re56_D | H_s0_std_11 | H | 0 | std | 11 | 300 | 13.3468 | 10500 | 30 | estimate |
+| APSC-459 | s2_test_Re56_D | H_s1_std_3 | H | 1 | std | 3 | 300 | 4.6779 | 2100 | 30 | estimate |
+| APSC-460 | s2_test_Re56_D | H_s1_std_6 | H | 1 | std | 6 | 300 | 7.6454 | 5250 | 30 | estimate |
+| APSC-461 | s2_test_Re56_D | L_range_s1_std_3 | L_range | 1 | std | 3 | 300 | 0.0263 |  |  | estimate |
+| APSC-462 | s2_test_Re56_D | L_range_s1_std_6 | L_range | 1 | std | 6 | 300 | 0.0261 |  |  | estimate |
+| APSC-463 | s2_test_Re56_D | L_range_s1_std_11 | L_range | 1 | std | 11 | 300 | 0.0302 |  |  | estimate |
+| APSC-464 | s2_test_Re56_D | L0_s1_std_3 | L0 | 1 | std | 3 | 300 | 0.0160 |  |  | estimate |
+| APSC-465 | s2_test_Re56_D | L0_s1_std_6 | L0 | 1 | std | 6 | 300 | 0.0134 |  |  | estimate |
+| APSC-466 | s2_test_Re56_D | L0_s1_std_11 | L0 | 1 | std | 11 | 300 | 0.0121 |  |  | estimate |
+| APSC-467 | s2_test_Re56_D | H_s1_std_11 | H | 1 | std | 11 | 300 | 10.9694 | 10500 | 30 | estimate |
+| APSC-468 | s2_test_Re56_D | L_range_s2_std_3 | L_range | 2 | std | 3 | 300 | 0.0084 |  |  | estimate |
+| APSC-469 | s2_test_Re56_D | L_range_s2_std_6 | L_range | 2 | std | 6 | 300 | 0.0096 |  |  | estimate |
+| APSC-470 | s2_test_Re56_D | L_range_s2_std_11 | L_range | 2 | std | 11 | 300 | 0.0098 |  |  | estimate |
+| APSC-471 | s2_test_Re56_D | L0_s2_std_3 | L0 | 2 | std | 3 | 300 | 0.0055 |  |  | estimate |
+| APSC-472 | s2_test_Re56_D | L0_s2_std_6 | L0 | 2 | std | 6 | 300 | 0.0038 |  |  | estimate |
+| APSC-473 | s2_test_Re56_D | L0_s2_std_11 | L0 | 2 | std | 11 | 300 | 0.0034 |  |  | estimate |
+| APSC-474 | s2_test_Re56_D | L_range_wide_s0_std_3 | L_range_wide | 0 | std | 3 | 300 | 0.0083 |  |  | estimate |
+| APSC-475 | s2_test_Re56_D | L_range_wide_s0_std_6 | L_range_wide | 0 | std | 6 | 300 | 0.0091 |  |  | estimate |
+| APSC-476 | s2_test_Re56_D | L_range_wide_s0_std_11 | L_range_wide | 0 | std | 11 | 300 | 0.0118 |  |  | estimate |
+| APSC-477 | s2_test_Re56_D | H_s2_std_3 | H | 2 | std | 3 | 300 | 4.6846 | 2100 | 30 | estimate |
+| APSC-478 | s2_test_Re56_D | H_s2_std_6 | H | 2 | std | 6 | 300 | 7.6314 | 5250 | 30 | estimate |
+| APSC-479 | s2_test_Re56_D | H_s2_std_11 | H | 2 | std | 11 | 300 | 12.4384 | 10500 | 30 | estimate |
 
 
 ## APST. Stage 2: training cost
 
-Source `stage2/results/s2_training.csv` · SHA `89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty`
+Source `stage2/results/s2_training.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
 
 | id | model | seed | params | steps | train_seconds | best_step | training_conditions | training_re_range | training_states | label |
 |---|---|---|---|---|---|---|---|---|---|---|
