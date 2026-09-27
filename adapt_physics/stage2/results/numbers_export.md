@@ -1,6 +1,6 @@
 # Adapt the Physics: NUMBERS sections APV* and APS*
 
-Copied from `adapt_physics/NUMBERS.md` at `89c9bc9` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
+Copied from `adapt_physics/NUMBERS.md` at `d79a5f6` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
 
 **Checker status:**
 - Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5536 rows.
