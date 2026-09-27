@@ -1,0 +1,40 @@
+# OBJ FREEZE: Adapt the Physics objections and edge timing WO. Committed before any World V data and any Part 2
+# evaluation. Arms and settings identical to stage-2 part A (stage2/s2_freeze.yaml) unless stated. Gate: OBJ_GATE.md.
+
+part1_world_V:
+  definition: "World D with alpha(Re) = alpha0 * 40 / Re, alpha0 = 0.0773273136075609 (alpha = 0.0618619 at Re 50); KolmoDrag(alpha_ref_re=40)"
+  justification: "laboratory Kolmogorov-flow linear drag is bottom friction in a thin viscous layer, proportional to nu; if Re drifts because nu drifts (temperature), the drag drifts with it (WO; physical hypothesis)"
+  equals_D_at_Re40: "bit-identical (checked); nominal data, H (3 seeds), L0 (3 seeds), L0-big reused"
+  chaos_gate: "Re 50 in World V: lambda (64 starts x 800 tu, Lyapunov streams 500/600) and sigma_A"
+  panel: "300 fresh trajectories, Re 40 -> 50 at t_c, stage-1 observation model; test and noise stream 40"
+  arms:
+    H: "World D correction, seeds 0-2, not retrained; golden-section [25, 80], 30 evaluations; w in {3, 6, 11, 23}"
+    H_true: "diagnostic, seeds 0-2, w in {3, 6, 11, 23}"
+    O_V: "true World V equations at Re 50"
+    L_range_V: "L_range recipe (8 frames, Re ~ U[34, 46] per trajectory, 1,024 x 200 = 204,800 states, 30,000 steps) on World V data (training/validation stream 3); seed 0, seeds 1-2 if time allows"
+    L0: "reused, seeds 0-2"
+    P1x_V: "diagnostic: identification with the true World V family (alpha(Re)), golden-section [25, 70], w in {3, 6, 11, 23}"
+  measurements: "w = 11 and eps 0.1 primary, eps 0.3 secondary; restricted mean, S(1), S(3); H/O and H/L_range_V with bootstrap intervals; H_true - H paired; detector (Re_hat at w 3, 6, 11, 23, slope [95%], mean Re_hat and bias from 50); part A World D Re 50 value beside"
+  readings: {holds: "H/O >= 0.85 and H/L_range_V >= 1.5", degrades_still_leads: "holds fails and H/L_range_V >= 1.2", loses_lead: "H/L_range_V < 1.2", detector_flags: "95% interval of H's slope excludes 0", detector_silent: "otherwise", note: "reported, not criteria; the detector reading has no effect-size floor (gate)"}
+
+part2_fno_re:
+  arm: "L_param (stage 1: World D, Re ~ U[34, 46], Re input channel), not retrained; seeds 1, 2 new with the stage-1 recipe; World C: L_param_C seed 0 (cut first)"
+  true_re: "FNO-Re + true Re at w = 11"
+  identified_re: "golden-section on Re in [25, 80], exactly 30 evaluations (the ap/arms.identify routine); misfit = mean over scored frames of ||x_hat - y||^2 / sigma_A^2, x_hat = the network's autoregressive rollout at the candidate Re, n_in = 4. w >= 5: inputs window frames 1..4, scored frames 5..w. w < 5 (w = 3): inputs = the 4 observed frames ending at frame 1 (frames -2..1), scored frames 2..w. Forecast from the 4 frames ending at k = w at the identified Re. Windows w in {3, 6, 11, 23}"
+  panels: "part A fresh panels, World D (and C) at Re 36, 40, 44, 50, 56"
+  measurements: "w = 11, eps 0.1 primary / 0.3; restricted mean, S(1), S(3), retention; paired H - FNO-Re both ways; identified Re per w with slope; online seconds per state"
+  reading: "claim 'a network given the parameter does not extrapolate' iff at Re 50 AND Re 56 in World D: H - (FNO-Re + true Re) >= 0.25 with the 95% interval excluding 0 (seed-pooled bootstrap); stated if it holds, removed otherwise"
+  L_ft: "stage-1 procedure (L0 seed 0 base, 200 AdamW steps lr 1e-4 wd 0, full batch, the w pairs with targets in the window); World D fresh panels Re 44, 50, 56; all 300 states; w = 11; reported, not a reading"
+
+part3_edge:
+  host: "Orin NX 192.168.88.109 (ssh), L4T R39.2.1 / JetPack 7.2.1, CUDA 13.2, torch 2.11.0+cu130 (NVIDIA SBSA wheel, venv ~/ap_venv; no sm_87 build, runs sm_80 kernels; numerics checked), nvpmodel MAXN, jetson_clocks off (needs sudo)"
+  code: "same code, weights and settings as the datacenter (O float64; hybrid and networks float32); batch 1; no TensorRT"
+  states: "part A World D Re 50 fresh panel, states 0-22: 0-2 warm-up, 3-22 timed; w = 11"
+  arms: ["H (identify, forecast)", "H_true (forecast)", "O", "L0", "L_range", "L0big", "FNO_Re_id (identify, forecast)", "L_ft (200 steps, forecast)"]
+  measurements: "wall per state median and p90; forecast frames per second; torch peak memory and tegrastats RAM; mean VDD_IN and energy per state; horizons vs datacenter for the same states (largest difference)"
+  datacenter_comparison: "the same harness at batch 1 on a Baccus GPU; part A batch-300 per-state costs cited beside"
+  cut_order: [L0big, L_ft, FNO_Re_id]
+  never_cut: [H, O, L0, L_range]
+
+cut_order: ["Part 2 World C (L_param_C)", "L_range_V seeds 1-2", "L_param seeds 1-2", "eps 0.3", "P1x_V", "L_ft at Re 56", "w = 3 and 23 identification runs"]
+never_cut: ["Part 1: H at w 11, O_V, L_range_V seed 0, H_true", "Part 2: FNO-Re true and identified at Re 50 and 56 in World D, seed 0"]

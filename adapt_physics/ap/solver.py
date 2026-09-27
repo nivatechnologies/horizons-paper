@@ -28,8 +28,10 @@ STEPS_PER_OBS = 35   # dt = 0.01
 
 
 class KolmoDrag(Kolmogorov):
-    def __init__(self, Re, alpha=0.0, device="cpu", dtype=torch.float64, N=64, n=4, dt=0.01, beta=0.0, amp=None):
+    def __init__(self, Re, alpha=0.0, device="cpu", dtype=torch.float64, N=64, n=4, dt=0.01, beta=0.0, amp=None,
+                 alpha_ref_re=None):
         self.alpha = float(alpha)
+        self.alpha_ref_re = alpha_ref_re   # World V (objections WO): alpha(Re) = alpha * alpha_ref_re / Re per element
         self.beta = float(beta)          # topographic beta (pivot World C; pivot/CODEX_MISMATCH.md): RHS - beta * v
         self._re = None
         super().__init__(N=N, Re=40.0, n=n, dt=dt, device=device, dtype=dtype)
@@ -46,7 +48,8 @@ class KolmoDrag(Kolmogorov):
     def set_re(self, Re):
         re = torch.as_tensor(np.atleast_1d(np.asarray(Re, dtype=np.float64)), device=self.device, dtype=self.dtype)
         self._re = re
-        L = -self.K2[None] / re[:, None, None] - self.alpha
+        self._alpha = (self.alpha * self.alpha_ref_re / re) if self.alpha_ref_re else torch.full_like(re, self.alpha)
+        L = -self.K2[None] / re[:, None, None] - self._alpha[:, None, None]
         self.E = torch.exp(L * self.dt / 2).to(self.cdtype)
         self.E2 = self.E * self.E
 
@@ -68,7 +71,7 @@ class KolmoDrag(Kolmogorov):
 
     def budget(self, wh):
         """(viscous enstrophy loss, drag enstrophy loss) per element."""
-        return self.grad_sq(wh) / self._re, self.alpha * self._mean_sq(wh)
+        return self.grad_sq(wh) / self._re, self._alpha * self._mean_sq(wh)
 
 
 def obs_noise(rng: np.random.Generator, shape, sigma_A: float, rel: float = 0.02):

@@ -29,7 +29,7 @@ STEPS = {"L0": 30000, "L0big": 60000, "L_range": 30000, "L_param": 30000, "L_ran
 
 
 def scale(world="D"):
-    if world == "C":     # pivot World C: its own sigma_A(Re 40)
+    if world == "C":     # pivot World C: its own sigma_A(Re 40); World V equals World D at Re 40 (same scaling)
         return 64.0 / json.loads((config.PKG / "pivot" / "results" / "chaos_gate_C.json").read_text())["Re40"]["sigma_A"]
     return 64.0 / json.loads((config.RESULTS / "chaos_gate.json").read_text())["Re40"]["sigma_A"]
 
@@ -52,10 +52,10 @@ def loss_fn(model, x, y, r):
 
 
 def main(arm, device, steps=None, seed=0):
-    base, world = (arm[:-2], "C") if arm.endswith("_C") else (arm, "D")      # pivot: <arm>_C = World C data
+    base, world = (arm[:-2], arm[-1]) if arm.endswith(("_C", "_V")) else (arm, "D")   # <arm>_C / _V = World C / V data
     steps = steps or STEPS[base]
     n_in, _, _, data = ARMS[base]
-    data = data + ("_C" if world == "C" else "")
+    data = data + ("" if world == "D" else f"_{world}")
     d = OUT / (arm if seed == 0 else f"{arm}_s{seed}")          # stage 2: seeds 1, 2 in <arm>_s<seed>
     if (d / "info.json").exists() or (d / "running").exists():
         raise FileExistsError(f"{d} already holds a run")
