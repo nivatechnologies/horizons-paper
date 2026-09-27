@@ -3,7 +3,7 @@ unclaimed job whose dependency files all exist, runs it with CUDA device substit
 code. Jobs file lines: `name | dep1 dep2 ... | command with {dev}`. Stops when every job is claimed; gives up after a
 timeout (8 h) if the remaining jobs' dependencies never appear. State: <jobs>.state.json (claims and exit codes).
 
-Usage: python pivot/scripts/pv_worker.py <jobs file> <device>
+Usage: python pivot/scripts/pv_worker.py <jobs file> <device> [lifetime hours, default 8]
 """
 import fcntl
 import json
@@ -13,11 +13,11 @@ import time
 from pathlib import Path
 
 
-def main(jobs_file, dev):
+def main(jobs_file, dev, hours=8.0):
     jobs_file = Path(jobs_file)
     state_file = jobs_file.with_suffix(".state.json")
     lock = jobs_file.with_suffix(".lock")
-    t_end = time.time() + 8 * 3600
+    t_end = time.time() + float(hours) * 3600
     while time.time() < t_end:
         job = None
         with open(lock, "w") as lk:
@@ -54,4 +54,4 @@ def main(jobs_file, dev):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2])
+    main(sys.argv[1], sys.argv[2], sys.argv[3] if len(sys.argv) > 3 else 8.0)

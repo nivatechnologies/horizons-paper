@@ -3,7 +3,8 @@
 Samples: a trajectory and a start k uniformly; inputs = frames k .. k+n_in-1 (+2% sigma_A(Re 40) white noise per
 frame, as the observations), targets = the next 4 clean frames. Fields scaled by 64 / sigma_A(Re 40).
 Loss = one-step MSE + mean over a 4-step unrolled rollout (predictions fed back) of the per-step MSE.
-AdamW lr 1e-3, weight decay 1e-4, cosine decay to 0, no warm-up, gradient-norm clip 1.0, batch 32, seed 0.
+AdamW lr 1e-3, weight decay 1e-4, cosine decay to 0, no warm-up, gradient-norm clip 1.0, batch 32, seed 0
+(stage 2: seeds 1 and 2 via the seed argument; seed s sets torch.manual_seed(s) and the sampling generator).
 Validation every 1,000 steps on 512 fixed validation windows (fixed noise); checkpoint = minimum validation loss.
 A run directory that already holds a run is never reused.
 

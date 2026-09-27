@@ -112,6 +112,39 @@ def main():
         if p.exists():
             rows, sha = MN.read_csv(p)
             MN.table(out, sec, title, p, cols, rows, sha, note=note)
+    # ---- stage 2 sections APS* (stage2/S2_FREEZE.md)
+    SR = config.PKG / "stage2" / "results"
+    for fname, sec, title, cols, note in (
+            ("s2_outcome.csv", "APSO", "Stage 2 part A: outcome of the pivot criteria on fresh panels (3 seeds)",
+             ["outcome", "kill_any", "pass_all", "middle_all", "complete", "all_three_seeds", "precedence"], ""),
+            ("s2_conditions.csv", "APSK", "Stage 2 part A: every pivot criterion on fresh panels, with 95% intervals",
+             ["criterion", "world", "Re", "value", ("95%", ci("ci95_lo", "ci95_hi")), "threshold", "holds", "screening_value"],
+             "Point ratio decides; interval = bootstrap over trajectories with seeds resampled within trajectories."),
+            ("s2_rows.csv", "APSH", "Stage 2 part A: seed-pooled horizons on fresh panels",
+             ["world", "Re", "arm", "w", "eps", "score", "seeds", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")),
+              "phys_time", "per_seed", "S1", "S3", "retention", "ratio_to_L_range"],
+             "score future = frames 1.. (primary); from_t0 = frame 0 included (item 6)."),
+            ("s2_paired.csv", "APSD", "Stage 2: paired differences H - b (seed-pooled) and frozen readings",
+             ["world", "Re", "w", "eps", "a", "b", "mean_a", "mean_b", "ratio", "diff", ("90%", ci("ci90_lo", "ci90_hi")),
+              ("95%", ci("ci95_lo", "ci95_hi")), "reading"], ""),
+            ("s2_recovery.csv", "APSR", "Stage 2: time to 90% of the oracle (w in 3, 6, 11)",
+             ["world", "Re", "eps", "arm", "w_tested", "w_to_90pct_oracle"], ""),
+            ("s2_detector.csv", "APSW", "Stage 2: window-drift detector and the World C slope-shortfall correlation",
+             ["world", "Re", "arm", "re_hat_w3", "re_hat_w6", "re_hat_w11", "slope_per_frame",
+              ("95%", ci("slope_ci95_lo", "slope_ci95_hi")), "spearman_slope_vs_shortfall",
+              ("95%", ci("spearman_ci95_lo", "spearman_ci95_hi"))], "Reported only."),
+            ("s2_partB.csv", "APSB", "Stage 2 part B: robustness items 1-4 (reported, not criteria)",
+             ["item", "panel", "arm", "variant", "window", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")),
+              "ratio_to_O", "ratio_to_L_range", "ratio_to_O_std", "ratio_to_O_noise5", "H_seed_pooled", "H_over_L_range_wide",
+              "re_hat_median", "amp_hat_median", "window_starts_before_tc"], "Single seed (seed 0) where stated in the freeze."),
+            ("s2_cost.csv", "APSC", "Stage 2: online cost", ["panel", "key", "arm", "seed", "variant", "window", "n",
+                                                             "wall_seconds_per_state", "solver_steps", "objective_evals"], ""),
+            ("s2_training.csv", "APST", "Stage 2: training cost", ["model", "seed", "params", "steps", "train_seconds", "best_step",
+                                                                    "training_conditions", "training_re_range", "training_states"], "")):
+        p = SR / fname
+        if p.exists():
+            rows, sha = MN.read_csv(p)
+            MN.table(out, sec, title, p, cols, rows, sha, note=note)
     check(out)
     (config.PKG / "NUMBERS.md").write_text("\n".join(out) + "\n")
     print("wrote NUMBERS.md", sum(1 for l in out if l.startswith("| AP")), "rows")

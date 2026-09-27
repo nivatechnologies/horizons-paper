@@ -1,0 +1,142 @@
+# stage-2 jobs: name | deps | command (cwd adapt_physics)
+A_base_D50 | runs/cache/s2_test_Re50_D_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_C50 | runs/cache/s2_test_Re50_C_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_D56 | runs/cache/s2_test_Re56_D_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_C56 | runs/cache/s2_test_Re56_C_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_D44 | runs/cache/s2_test_Re44_D_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_C44 | runs/cache/s2_test_Re44_C_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_D40 | runs/cache/s2_test_Re40_D_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_C40 | runs/cache/s2_test_Re40_C_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_D36 | runs/cache/s2_test_Re36_D_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_base_C36 | runs/cache/s2_test_Re36_C_obs.npy | sleep 20; for a in O P1 P1x persistence; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} $a 0 std; done >> runs/logs/s2_eval.log 2>&1
+A_H_D50_s0 | runs/cache/s2_test_Re50_D_obs.npy runs/train/H_D/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_C50_s0 | runs/cache/s2_test_Re50_C_obs.npy runs/train/H_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_D56_s0 | runs/cache/s2_test_Re56_D_obs.npy runs/train/H_D/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_C56_s0 | runs/cache/s2_test_Re56_C_obs.npy runs/train/H_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_D44_s0 | runs/cache/s2_test_Re44_D_obs.npy runs/train/H_D/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_C44_s0 | runs/cache/s2_test_Re44_C_obs.npy runs/train/H_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_D40_s0 | runs/cache/s2_test_Re40_D_obs.npy runs/train/H_D/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_C40_s0 | runs/cache/s2_test_Re40_C_obs.npy runs/train/H_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_D36_s0 | runs/cache/s2_test_Re36_D_obs.npy runs/train/H_D/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_C36_s0 | runs/cache/s2_test_Re36_C_obs.npy runs/train/H_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} H 0 std >> runs/logs/s2_eval.log 2>&1
+A_L0big_D50 | runs/cache/s2_test_Re50_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L0big 0 std >> runs/logs/s2_eval.log 2>&1
+A_L0big_D56 | runs/cache/s2_test_Re56_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L0big 0 std >> runs/logs/s2_eval.log 2>&1
+A_L0big_D44 | runs/cache/s2_test_Re44_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L0big 0 std >> runs/logs/s2_eval.log 2>&1
+A_L0big_D40 | runs/cache/s2_test_Re40_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L0big 0 std >> runs/logs/s2_eval.log 2>&1
+A_L0big_D36 | runs/cache/s2_test_Re36_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L0big 0 std >> runs/logs/s2_eval.log 2>&1
+chaos2p_Re44_A1.1 | | ../.venv/bin/python stage2/scripts/s2_data.py chaos2p Re44_A1.1 {dev} >> runs/logs/s2_chaos2p.log 2>&1
+chaos2p_Re50_A0.9 | | ../.venv/bin/python stage2/scripts/s2_data.py chaos2p Re50_A0.9 {dev} >> runs/logs/s2_chaos2p.log 2>&1
+panel2p_Re44_A1.1 | stage2/results/chaos_2p.json | sleep 5; ../.venv/bin/python stage2/scripts/s2_data.py test2p Re44_A1.1 {dev} >> runs/logs/s2_panels.log 2>&1
+panel2p_Re50_A0.9 | stage2/results/chaos_2p.json | sleep 5; ../.venv/bin/python stage2/scripts/s2_data.py test2p Re50_A0.9 {dev} >> runs/logs/s2_panels.log 2>&1
+noise5_D44 | runs/cache/s2_test_Re44_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_data.py noise5 D 44 >> runs/logs/s2_panels.log 2>&1
+noise5_D50 | runs/cache/s2_test_Re50_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_data.py noise5 D 50 >> runs/logs/s2_panels.log 2>&1
+noise5_C44 | runs/cache/s2_test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_data.py noise5 C 44 >> runs/logs/s2_panels.log 2>&1
+noise5_C50 | runs/cache/s2_test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_data.py noise5 C 50 >> runs/logs/s2_panels.log 2>&1
+wide_val_D | | ../.venv/bin/python stage2/scripts/s2_data.py wide D val_range_wide {dev} >> runs/logs/s2_wide.log 2>&1
+wide_train_D | | ../.venv/bin/python stage2/scripts/s2_data.py wide D train_range_wide {dev} >> runs/logs/s2_wide.log 2>&1
+wide_val_C | | ../.venv/bin/python stage2/scripts/s2_data.py wide C val_range_wide {dev} >> runs/logs/s2_wide.log 2>&1
+wide_train_C | | ../.venv/bin/python stage2/scripts/s2_data.py wide C train_range_wide {dev} >> runs/logs/s2_wide.log 2>&1
+train_H_D_s1 | pivot/results/chaos_gate_C.json | ../.venv/bin/python pivot/scripts/pv_train_h.py D {dev} 1 > runs/logs/s2_train_H_D_s1.log 2>&1
+train_H_D_s2 | pivot/results/chaos_gate_C.json | ../.venv/bin/python pivot/scripts/pv_train_h.py D {dev} 2 > runs/logs/s2_train_H_D_s2.log 2>&1
+train_H_C_s1 | pivot/results/chaos_gate_C.json | ../.venv/bin/python pivot/scripts/pv_train_h.py C {dev} 1 > runs/logs/s2_train_H_C_s1.log 2>&1
+train_H_C_s2 | pivot/results/chaos_gate_C.json | ../.venv/bin/python pivot/scripts/pv_train_h.py C {dev} 2 > runs/logs/s2_train_H_C_s2.log 2>&1
+train_L_range_s1 | | ../.venv/bin/python scripts/ap_train.py L_range {dev} - 1 > runs/logs/s2_train_L_range_s1.log 2>&1
+train_L_range_C_s1 | | ../.venv/bin/python scripts/ap_train.py L_range_C {dev} - 1 > runs/logs/s2_train_L_range_C_s1.log 2>&1
+train_L_range_s2 | | ../.venv/bin/python scripts/ap_train.py L_range {dev} - 2 > runs/logs/s2_train_L_range_s2.log 2>&1
+train_L_range_C_s2 | | ../.venv/bin/python scripts/ap_train.py L_range_C {dev} - 2 > runs/logs/s2_train_L_range_C_s2.log 2>&1
+train_L0_s1 | | ../.venv/bin/python scripts/ap_train.py L0 {dev} - 1 > runs/logs/s2_train_L0_s1.log 2>&1
+train_L0_C_s1 | | ../.venv/bin/python scripts/ap_train.py L0_C {dev} - 1 > runs/logs/s2_train_L0_C_s1.log 2>&1
+train_L0_s2 | | ../.venv/bin/python scripts/ap_train.py L0 {dev} - 2 > runs/logs/s2_train_L0_s2.log 2>&1
+train_L0_C_s2 | | ../.venv/bin/python scripts/ap_train.py L0_C {dev} - 2 > runs/logs/s2_train_L0_C_s2.log 2>&1
+train_L_range_wide | runs/cache/train_range_wide_re.npy runs/cache/val_range_wide_re.npy | ../.venv/bin/python scripts/ap_train.py L_range_wide {dev} > runs/logs/s2_train_wide_D.log 2>&1
+train_L_range_wide_C | runs/cache/train_range_wide_C_re.npy runs/cache/val_range_wide_C_re.npy | ../.venv/bin/python scripts/ap_train.py L_range_wide_C {dev} > runs/logs/s2_train_wide_C.log 2>&1
+A_fno_D50_s0 | runs/cache/s2_test_Re50_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C50_s0 | runs/cache/s2_test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D56_s0 | runs/cache/s2_test_Re56_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C56_s0 | runs/cache/s2_test_Re56_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D44_s0 | runs/cache/s2_test_Re44_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C44_s0 | runs/cache/s2_test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D40_s0 | runs/cache/s2_test_Re40_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C40_s0 | runs/cache/s2_test_Re40_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D36_s0 | runs/cache/s2_test_Re36_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C36_s0 | runs/cache/s2_test_Re36_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L_range 0 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L0 0 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D50_s1 | runs/cache/s2_test_Re50_D_obs.npy runs/train/L_range_s1/info.json runs/train/L0_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C50_s1 | runs/cache/s2_test_Re50_C_obs.npy runs/train/L_range_C_s1/info.json runs/train/L0_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D56_s1 | runs/cache/s2_test_Re56_D_obs.npy runs/train/L_range_s1/info.json runs/train/L0_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C56_s1 | runs/cache/s2_test_Re56_C_obs.npy runs/train/L_range_C_s1/info.json runs/train/L0_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D44_s1 | runs/cache/s2_test_Re44_D_obs.npy runs/train/L_range_s1/info.json runs/train/L0_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C44_s1 | runs/cache/s2_test_Re44_C_obs.npy runs/train/L_range_C_s1/info.json runs/train/L0_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D40_s1 | runs/cache/s2_test_Re40_D_obs.npy runs/train/L_range_s1/info.json runs/train/L0_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C40_s1 | runs/cache/s2_test_Re40_C_obs.npy runs/train/L_range_C_s1/info.json runs/train/L0_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D36_s1 | runs/cache/s2_test_Re36_D_obs.npy runs/train/L_range_s1/info.json runs/train/L0_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C36_s1 | runs/cache/s2_test_Re36_C_obs.npy runs/train/L_range_C_s1/info.json runs/train/L0_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L_range 1 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L0 1 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D50_s2 | runs/cache/s2_test_Re50_D_obs.npy runs/train/L_range_s2/info.json runs/train/L0_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C50_s2 | runs/cache/s2_test_Re50_C_obs.npy runs/train/L_range_C_s2/info.json runs/train/L0_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D56_s2 | runs/cache/s2_test_Re56_D_obs.npy runs/train/L_range_s2/info.json runs/train/L0_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C56_s2 | runs/cache/s2_test_Re56_C_obs.npy runs/train/L_range_C_s2/info.json runs/train/L0_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D44_s2 | runs/cache/s2_test_Re44_D_obs.npy runs/train/L_range_s2/info.json runs/train/L0_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C44_s2 | runs/cache/s2_test_Re44_C_obs.npy runs/train/L_range_C_s2/info.json runs/train/L0_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D40_s2 | runs/cache/s2_test_Re40_D_obs.npy runs/train/L_range_s2/info.json runs/train/L0_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C40_s2 | runs/cache/s2_test_Re40_C_obs.npy runs/train/L_range_C_s2/info.json runs/train/L0_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_D36_s2 | runs/cache/s2_test_Re36_D_obs.npy runs/train/L_range_s2/info.json runs/train/L0_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+A_fno_C36_s2 | runs/cache/s2_test_Re36_C_obs.npy runs/train/L_range_C_s2/info.json runs/train/L0_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L_range 2 std; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L0 2 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_D50 | runs/cache/s2_test_Re50_D_obs.npy runs/train/L_range_wide/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_C50 | runs/cache/s2_test_Re50_C_obs.npy runs/train/L_range_wide_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_D56 | runs/cache/s2_test_Re56_D_obs.npy runs/train/L_range_wide/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_C56 | runs/cache/s2_test_Re56_C_obs.npy runs/train/L_range_wide_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_D44 | runs/cache/s2_test_Re44_D_obs.npy runs/train/L_range_wide/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_C44 | runs/cache/s2_test_Re44_C_obs.npy runs/train/L_range_wide_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_D40 | runs/cache/s2_test_Re40_D_obs.npy runs/train/L_range_wide/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_C40 | runs/cache/s2_test_Re40_C_obs.npy runs/train/L_range_wide_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_D36 | runs/cache/s2_test_Re36_D_obs.npy runs/train/L_range_wide/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+B1_wide_C36 | runs/cache/s2_test_Re36_C_obs.npy runs/train/L_range_wide_C/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} L_range_wide 0 std >> runs/logs/s2_eval.log 2>&1
+A_H_D50_s1 | runs/cache/s2_test_Re50_D_obs.npy runs/train/H_D_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_C50_s1 | runs/cache/s2_test_Re50_C_obs.npy runs/train/H_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_D56_s1 | runs/cache/s2_test_Re56_D_obs.npy runs/train/H_D_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_C56_s1 | runs/cache/s2_test_Re56_C_obs.npy runs/train/H_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_D44_s1 | runs/cache/s2_test_Re44_D_obs.npy runs/train/H_D_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_C44_s1 | runs/cache/s2_test_Re44_C_obs.npy runs/train/H_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_D40_s1 | runs/cache/s2_test_Re40_D_obs.npy runs/train/H_D_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_C40_s1 | runs/cache/s2_test_Re40_C_obs.npy runs/train/H_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_D36_s1 | runs/cache/s2_test_Re36_D_obs.npy runs/train/H_D_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_C36_s1 | runs/cache/s2_test_Re36_C_obs.npy runs/train/H_C_s1/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} H 1 std >> runs/logs/s2_eval.log 2>&1
+A_H_D50_s2 | runs/cache/s2_test_Re50_D_obs.npy runs/train/H_D_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_C50_s2 | runs/cache/s2_test_Re50_C_obs.npy runs/train/H_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_D56_s2 | runs/cache/s2_test_Re56_D_obs.npy runs/train/H_D_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_D {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_C56_s2 | runs/cache/s2_test_Re56_C_obs.npy runs/train/H_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re56_C {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_D44_s2 | runs/cache/s2_test_Re44_D_obs.npy runs/train/H_D_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_C44_s2 | runs/cache/s2_test_Re44_C_obs.npy runs/train/H_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_D40_s2 | runs/cache/s2_test_Re40_D_obs.npy runs/train/H_D_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_D {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_C40_s2 | runs/cache/s2_test_Re40_C_obs.npy runs/train/H_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re40_C {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_D36_s2 | runs/cache/s2_test_Re36_D_obs.npy runs/train/H_D_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_D {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+A_H_C36_s2 | runs/cache/s2_test_Re36_C_obs.npy runs/train/H_C_s2/info.json | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re36_C {dev} H 2 std >> runs/logs/s2_eval.log 2>&1
+B3_O_Re44_A1.1 | runs/cache/s2_test2p_Re44_A1.1_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re44_A1.1 {dev} O 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_L_range_Re44_A1.1 | runs/cache/s2_test2p_Re44_A1.1_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re44_A1.1 {dev} L_range 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_H_Re_only_Re44_A1.1 | runs/cache/s2_test2p_Re44_A1.1_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re44_A1.1 {dev} H_Re_only 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_H_Re44_A1.1 | runs/cache/s2_test2p_Re44_A1.1_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re44_A1.1 {dev} H 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_O_Re50_A0.9 | runs/cache/s2_test2p_Re50_A0.9_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re50_A0.9 {dev} O 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_L_range_Re50_A0.9 | runs/cache/s2_test2p_Re50_A0.9_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re50_A0.9 {dev} L_range 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_H_Re_only_Re50_A0.9 | runs/cache/s2_test2p_Re50_A0.9_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re50_A0.9 {dev} H_Re_only 0 2p >> runs/logs/s2_eval.log 2>&1
+B3_H_Re50_A0.9 | runs/cache/s2_test2p_Re50_A0.9_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test2p_Re50_A0.9 {dev} H 0 2p >> runs/logs/s2_eval.log 2>&1
+B2_H_D44 | runs/cache/s2_test_Re44_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} H 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_L_range_D44 | runs/cache/s2_test_Re44_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} L_range 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_H_C44 | runs/cache/s2_test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} H 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_L_range_C44 | runs/cache/s2_test_Re44_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} L_range 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_H_D50 | runs/cache/s2_test_Re50_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} H 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_L_range_D50 | runs/cache/s2_test_Re50_D_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} L_range 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_H_C50 | runs/cache/s2_test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} H 0 straddle >> runs/logs/s2_eval.log 2>&1
+B2_L_range_C50 | runs/cache/s2_test_Re50_C_obs.npy | sleep 20; ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} L_range 0 straddle >> runs/logs/s2_eval.log 2>&1
+B4_D44 | runs/cache/s2_test_Re44_D_obs5.npy | sleep 20; for a in O H L_range; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_D {dev} $a 0 noise5; done >> runs/logs/s2_eval.log 2>&1
+B4_C44 | runs/cache/s2_test_Re44_C_obs5.npy | sleep 20; for a in O H L_range; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re44_C {dev} $a 0 noise5; done >> runs/logs/s2_eval.log 2>&1
+B4_D50 | runs/cache/s2_test_Re50_D_obs5.npy | sleep 20; for a in O H L_range; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_D {dev} $a 0 noise5; done >> runs/logs/s2_eval.log 2>&1
+B4_C50 | runs/cache/s2_test_Re50_C_obs5.npy | sleep 20; for a in O H L_range; do ../.venv/bin/python stage2/scripts/s2_eval.py s2_test_Re50_C {dev} $a 0 noise5; done >> runs/logs/s2_eval.log 2>&1
+panel_D50 | | ../.venv/bin/python stage2/scripts/s2_data.py test D 50 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_C50 | | ../.venv/bin/python stage2/scripts/s2_data.py test C 50 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_D56 | | ../.venv/bin/python stage2/scripts/s2_data.py test D 56 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_C56 | | ../.venv/bin/python stage2/scripts/s2_data.py test C 56 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_D44 | | ../.venv/bin/python stage2/scripts/s2_data.py test D 44 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_C44 | | ../.venv/bin/python stage2/scripts/s2_data.py test C 44 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_D40 | | ../.venv/bin/python stage2/scripts/s2_data.py test D 40 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_C40 | | ../.venv/bin/python stage2/scripts/s2_data.py test C 40 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_D36 | | ../.venv/bin/python stage2/scripts/s2_data.py test D 36 {dev} >> runs/logs/s2_panels.log 2>&1
+panel_C36 | | ../.venv/bin/python stage2/scripts/s2_data.py test C 36 {dev} >> runs/logs/s2_panels.log 2>&1

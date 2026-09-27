@@ -1,0 +1,59 @@
+{
+ "val_range_wide_D": {
+  "block": "validation",
+  "stream": 2,
+  "seed": 30902,
+  "n_traj": 128,
+  "n_frames": 100,
+  "re": [
+   30.0,
+   60.0
+  ],
+  "alpha": 0.0773273136075609,
+  "beta": 0.0,
+  "seconds": 237.90655088424683
+ },
+ "git_sha": "89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty",
+ "val_range_wide_C": {
+  "block": "validation",
+  "stream": 12,
+  "seed": 30912,
+  "n_traj": 128,
+  "n_frames": 100,
+  "re": [
+   30.0,
+   60.0
+  ],
+  "alpha": 0.0773273136075609,
+  "beta": 1.4694400100602425,
+  "seconds": 270.1344792842865
+ },
+ "train_range_wide_D": {
+  "block": "training",
+  "stream": 2,
+  "seed": 20902,
+  "n_traj": 1024,
+  "n_frames": 200,
+  "re": [
+   30.0,
+   60.0
+  ],
+  "alpha": 0.0773273136075609,
+  "beta": 0.0,
+  "seconds": 1743.1208436489105
+ },
+ "train_range_wide_C": {
+  "block": "training",
+  "stream": 12,
+  "seed": 20912,
+  "n_traj": 1024,
+  "n_frames": 200,
+  "re": [
+   30.0,
+   60.0
+  ],
+  "alpha": 0.0773273136075609,
+  "beta": 1.4694400100602425,
+  "seconds": 1920.5321385860443
+ }
+}

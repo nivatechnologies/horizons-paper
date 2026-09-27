@@ -4,7 +4,8 @@
 Sample: a trajectory and frame k uniformly; start = frame k + 2% sigma_A(Re 40) white noise (as the observations),
 projected by the solver; roll the hybrid (no-drag physics at Re 40 + g_theta, IFRK4 dt 0.01, float32) for 1 frame
 (35 steps, 0.35 tu) with gradient checkpointing per step; loss = mean ||x_hat - x_{k+1}||^2 / sigma_A(Re 40)^2.
-AdamW lr 1e-3, weight decay 1e-4, cosine to 0, no warm-up, clip 1.0, batch 64, 2,000 steps, seed 0. Validation every
+AdamW lr 1e-3, weight decay 1e-4, cosine to 0, no warm-up, clip 1.0, batch 64, 2,000 steps, seed 0 (stage 2: seeds
+1 and 2 via the seed argument; seed s sets torch.manual_seed(s) and the sampling generator). Validation every
 100 steps on 64 fixed windows of val_nominal[_C] (fixed noise), same loss; checkpoint = minimum validation loss;
 step 0 (pure physics, zero-initialized output) is evaluated and recorded.
 
