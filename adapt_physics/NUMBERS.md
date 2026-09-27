@@ -5765,7 +5765,7 @@ Source `stage2/results/s2_training.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b52
 
 ## APDD-R. Objections Part 1 (World V, Re 50): readings (reported, not criteria)
 
-Source `stage2/objections/results/obj_part1_readings.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_part1_readings.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 | id | eps | primary | H_over_O | 95% | H_over_L_range_V | 95% | outcome_reading | L_range_V_seeds | H_true_minus_H | 95% | partA_D_Re50_H_over_O | partA_D_Re50_H_over_L_range | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5774,7 +5774,7 @@ Source `stage2/objections/results/obj_part1_readings.csv` · SHA `565a249b497255
 
 ## APDD-H. Objections Part 1 (World V, Re 50): horizons (seed-pooled)
 
-Source `stage2/objections/results/obj_part1.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_part1.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 | id | arm | w | eps | seeds | n | restricted_mean | 95% | per_seed | S1 | S3 | phys_time | partA_worldD_Re50 | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5829,7 +5829,7 @@ Source `stage2/objections/results/obj_part1.csv` · SHA `565a249b4972553e246d13d
 
 ## APDD-W. Objections: identified-Re detectors (H and P1x_V in World V; FNO-Re identified in World D)
 
-Source `stage2/objections/results/obj_detector.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_detector.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 Detector reading (H, World V): flags iff the 95% interval excludes 0; no effect-size floor (gate).
 
@@ -5845,7 +5845,7 @@ Detector reading (H, World V): flags iff the 95% interval excludes 0; no effect-
 
 ## APFR-R. Objections Part 2: frozen claim reading (World D, Re 50 and 56)
 
-Source `stage2/objections/results/obj_part2_reading.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_part2_reading.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 | id | Re | H_minus_FNO_Re_true | 95% | seeds | holds_at_this_Re | claim | label |
 |---|---|---|---|---|---|---|---|
@@ -5855,7 +5855,7 @@ Source `stage2/objections/results/obj_part2_reading.csv` · SHA `565a249b4972553
 
 ## APFR-H. Objections Part 2: FNO-Re (true and identified Re) against H, fresh panels
 
-Source `stage2/objections/results/obj_part2.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_part2.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 | id | world | Re | arm | w | eps | seeds | n | restricted_mean | 95% | per_seed | S1 | S3 | retention | H | H_retention | H_minus_arm | 95% | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5902,7 +5902,7 @@ Source `stage2/objections/results/obj_part2.csv` · SHA `565a249b4972553e246d13d
 
 ## APFR-FT. Objections Part 2: fine-tuned FNO (L_ft) on fresh panels (reported, not a reading)
 
-Source `stage2/objections/results/obj_lft.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_lft.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 | id | world | Re | w | eps | n | restricted_mean | 95% | retention | H | H_minus_L_ft | 95% | online_seconds_per_state | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5912,7 +5912,7 @@ Source `stage2/objections/results/obj_lft.csv` · SHA `565a249b4972553e246d13dfa
 
 ## APEDGE. Objections Part 3: edge timing, Orin NX against datacenter (batch 1, reported only)
 
-Source `stage2/objections/results/obj_edge.csv` · SHA `565a249b4972553e246d13dfa05fce20a350b34f-dirty`
+Source `stage2/objections/results/obj_edge.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
 
 | id | arm | orin_result | orin_wall_median | orin_wall_p90 | dc_batch1_wall_median | orin_identify_or_adapt_median | orin_forecast_fps | dc_batch1_forecast_fps | orin_peak_torch_mem_MB | orin_tegrastats_ram_peak_MB | orin_vdd_in_mean_mW | orin_energy_per_state_J | horizon_max_abs_diff | horizon_states_identical | horizon_n | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

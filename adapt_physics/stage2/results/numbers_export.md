@@ -1,11 +1,11 @@
-# Adapt the Physics: NUMBERS sections APV* and APS*
+# Adapt the Physics: NUMBERS sections APV*, APS*, APDD*, APFR*, APEDGE*
 
-Copied from `adapt_physics/NUMBERS.md` at `2b566a9` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
+Copied from `adapt_physics/NUMBERS.md` at `a9d2d4d` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
 
 **Checker status:**
-- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5558 rows.
+- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5669 rows.
 - Negative test (a duplicate section code must raise): passed (raised NumbersError: duplicate section code APS_NEGTEST).
-- APV\*/APS\* rows: 4041.
+- Rows in these sections: 4152.
 
 ## APS. Systems: drag calibration and chaos gate (with drag)
 
@@ -4202,4 +4202,173 @@ Source `stage2/results/s2_training.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b52
 | APST-20 | L_range_s2 | 2 | 1.680e+07 | 30000 | 5657.5030 | 30000 | 1024 | 34-46 | 204800 | learned |
 | APST-21 | L_range_wide | 0 | 1.680e+07 | 30000 | 5810.4205 | 30000 | 1024 | 30-60 | 204800 | learned |
 | APST-22 | L_range_wide_C | 0 | 1.680e+07 | 30000 | 5275.7826 | 30000 | 1024 | 30-60 | 204800 | learned |
+
+
+## APDD-R. Objections Part 1 (World V, Re 50): readings (reported, not criteria)
+
+Source `stage2/objections/results/obj_part1_readings.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+| id | eps | primary | H_over_O | 95% | H_over_L_range_V | 95% | outcome_reading | L_range_V_seeds | H_true_minus_H | 95% | partA_D_Re50_H_over_O | partA_D_Re50_H_over_L_range | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APDD-R-1 | 0.1000 | True | 0.3781 | [0.3634, 0.3940] | 0.9948 | [0.9688, 1.0213] | loses its lead | 3 | -0.1204 | [-0.1332, -0.1082] | 0.9745 | 1.8389 | reading (reported, not criterion) |
+| APDD-R-2 | 0.3000 | False | 0.4671 | [0.4493, 0.4843] | 0.9219 | [0.8974, 0.9466] | loses its lead | 3 | -0.1074 | [-0.1302, -0.0837] | 0.9788 | 1.5324 | reading (reported, not criterion) |
+
+
+## APDD-H. Objections Part 1 (World V, Re 50): horizons (seed-pooled)
+
+Source `stage2/objections/results/obj_part1.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+| id | arm | w | eps | seeds | n | restricted_mean | 95% | per_seed | S1 | S3 | phys_time | partA_worldD_Re50 | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APDD-H-1 | H | 3 | 0.1000 | 3 | 300 | 1.0582 | [1.0370, 1.0793] | 1.060 1.056 1.058 | 0.5867 | 0.0000 | 5.0365 | 3.3630 | hybrid (learned correction) |
+| APDD-H-2 | H | 3 | 0.3000 | 3 | 300 | 1.7657 | [1.7242, 1.8078] | 1.770 1.762 1.765 | 1.0000 | 0.0089 | 8.4039 | 4.5591 | hybrid (learned correction) |
+| APDD-H-3 | H | 6 | 0.1000 | 3 | 300 | 1.0404 | [1.0210, 1.0612] | 1.044 1.037 1.040 | 0.5156 | 0.0000 | 4.9517 | 3.2773 | hybrid (learned correction) |
+| APDD-H-4 | H | 6 | 0.3000 | 3 | 300 | 1.7372 | [1.6974, 1.7768] | 1.744 1.734 1.734 | 1.0000 | 0.0033 | 8.2686 | 4.4815 | hybrid (learned correction) |
+| APDD-H-5 | H | 11 | 0.1000 | 3 | 300 | 1.0266 | [1.0067, 1.0467] | 1.031 1.024 1.025 | 0.4967 | 0.0000 | 4.8860 | 3.3001 | hybrid (learned correction) |
+| APDD-H-6 | H | 11 | 0.3000 | 3 | 300 | 1.7258 | [1.6869, 1.7659] | 1.732 1.719 1.727 | 1.0000 | 0.0100 | 8.2141 | 4.4870 | hybrid (learned correction) |
+| APDD-H-7 | H | 23 | 0.1000 | 3 | 300 | 0.9988 | [0.9776, 1.0211] | 1.004 0.996 0.997 | 0.3956 | 0.0000 | 4.7538 |  | hybrid (learned correction) |
+| APDD-H-8 | H | 23 | 0.3000 | 3 | 300 | 1.7207 | [1.6774, 1.7644] | 1.729 1.717 1.717 | 1.0000 | 0.0100 | 8.1900 |  | hybrid (learned correction) |
+| APDD-H-9 | H_true | 3 | 0.1000 | 3 | 300 | 0.9531 | [0.9292, 0.9770] | 0.955 0.951 0.954 | 0.3756 | 0.0000 | 4.5364 |  | hybrid (learned correction) |
+| APDD-H-10 | H_true | 3 | 0.3000 | 3 | 300 | 1.6316 | [1.5926, 1.6715] | 1.636 1.629 1.630 | 1.0000 | 0.0022 | 7.7657 |  | hybrid (learned correction) |
+| APDD-H-11 | H_true | 6 | 0.1000 | 3 | 300 | 0.9247 | [0.9028, 0.9467] | 0.928 0.923 0.923 | 0.3056 | 0.0000 | 4.4011 |  | hybrid (learned correction) |
+| APDD-H-12 | H_true | 6 | 0.3000 | 3 | 300 | 1.6213 | [1.5794, 1.6653] | 1.625 1.619 1.619 | 1.0000 | 0.0089 | 7.7167 |  | hybrid (learned correction) |
+| APDD-H-13 | H_true | 11 | 0.1000 | 3 | 300 | 0.9061 | [0.8855, 0.9266] | 0.909 0.904 0.905 | 0.2556 | 0.0000 | 4.3128 |  | hybrid (learned correction) |
+| APDD-H-14 | H_true | 11 | 0.3000 | 3 | 300 | 1.6184 | [1.5737, 1.6644] | 1.620 1.617 1.618 | 1.0000 | 0.0144 | 7.7027 |  | hybrid (learned correction) |
+| APDD-H-15 | H_true | 23 | 0.1000 | 3 | 300 | 0.8936 | [0.8712, 0.9167] | 0.894 0.893 0.893 | 0.2156 | 0.0000 | 4.2533 |  | hybrid (learned correction) |
+| APDD-H-16 | H_true | 23 | 0.3000 | 3 | 300 | 1.6044 | [1.5582, 1.6480] | 1.608 1.601 1.604 | 0.9978 | 0.0044 | 7.6362 |  | hybrid (learned correction) |
+| APDD-H-17 | L0 | 3 | 0.1000 | 3 | 300 | 0.3067 | [0.2988, 0.3148] | 0.306 0.309 0.306 | 0.0000 | 0.0000 | 1.4599 | 0.5651 | learned |
+| APDD-H-18 | L0 | 3 | 0.3000 | 3 | 300 | 1.0188 | [0.9859, 1.0514] | 1.020 1.020 1.017 | 0.4444 | 0.0000 | 4.8491 | 1.6039 | learned |
+| APDD-H-19 | L0 | 6 | 0.1000 | 3 | 300 | 0.3080 | [0.2997, 0.3165] | 0.308 0.309 0.307 | 0.0000 | 0.0000 | 1.4661 | 0.5579 | learned |
+| APDD-H-20 | L0 | 6 | 0.3000 | 3 | 300 | 0.9935 | [0.9631, 1.0250] | 0.993 0.996 0.992 | 0.4078 | 0.0000 | 4.7289 | 1.6037 | learned |
+| APDD-H-21 | L0 | 11 | 0.1000 | 3 | 300 | 0.3090 | [0.3015, 0.3164] | 0.309 0.310 0.308 | 0.0000 | 0.0000 | 1.4708 | 0.5420 | learned |
+| APDD-H-22 | L0 | 11 | 0.3000 | 3 | 300 | 0.9690 | [0.9377, 1.0024] | 0.971 0.970 0.967 | 0.4000 | 0.0000 | 4.6122 | 1.6005 | learned |
+| APDD-H-23 | L0 | 23 | 0.1000 | 3 | 300 | 0.2983 | [0.2907, 0.3060] | 0.299 0.300 0.296 | 0.0000 | 0.0000 | 1.4198 |  | learned |
+| APDD-H-24 | L0 | 23 | 0.3000 | 3 | 300 | 0.9680 | [0.9341, 1.0029] | 0.970 0.970 0.964 | 0.3567 | 0.0000 | 4.6072 |  | learned |
+| APDD-H-25 | L_range_V | 3 | 0.1000 | 3 | 300 | 0.6510 | [0.6287, 0.6738] | 0.643 0.656 0.653 | 0.0667 | 0.0000 | 3.0983 | 1.2632 | learned |
+| APDD-H-26 | L_range_V | 3 | 0.3000 | 3 | 300 | 1.4402 | [1.3929, 1.4884] | 1.437 1.441 1.443 | 0.9000 | 0.0044 | 6.8549 | 2.4559 | learned |
+| APDD-H-27 | L_range_V | 6 | 0.1000 | 3 | 300 | 0.8696 | [0.8429, 0.8952] | 0.859 0.889 0.861 | 0.2456 | 0.0000 | 4.1389 | 1.6376 | learned |
+| APDD-H-28 | L_range_V | 6 | 0.3000 | 3 | 300 | 1.6905 | [1.6374, 1.7454] | 1.675 1.719 1.678 | 0.9944 | 0.0222 | 8.0461 | 2.7838 | learned |
+| APDD-H-29 | L_range_V | 11 | 0.1000 | 3 | 300 | 1.0319 | [0.9982, 1.0677] | 1.011 1.071 1.014 | 0.4733 | 0.0000 | 4.9117 | 1.7946 | learned |
+| APDD-H-30 | L_range_V | 11 | 0.3000 | 3 | 300 | 1.8720 | [1.8086, 1.9374] | 1.852 1.918 1.846 | 0.9978 | 0.0556 | 8.9098 | 2.9281 | learned |
+| APDD-H-31 | L_range_V | 23 | 0.1000 | 3 | 300 | 1.1865 | [1.1393, 1.2323] | 1.157 1.253 1.149 | 0.5989 | 0.0011 | 5.6474 |  | learned |
+| APDD-H-32 | L_range_V | 23 | 0.3000 | 3 | 300 | 2.0813 | [2.0018, 2.1607] | 2.042 2.166 2.036 | 0.9922 | 0.1333 | 9.9062 |  | learned |
+| APDD-H-33 | O_V | 3 | 0.1000 | 1 | 300 | 2.6794 | [2.5747, 2.7846] | 2.6790 | 1.0000 | 0.2833 | 12.7528 | 3.4728 | reference |
+| APDD-H-34 | O_V | 3 | 0.3000 | 1 | 300 | 3.6709 | [3.5307, 3.8155] | 3.6710 | 1.0000 | 0.6133 | 17.4720 | 4.6610 | reference |
+| APDD-H-35 | O_V | 6 | 0.1000 | 1 | 300 | 2.7358 | [2.6279, 2.8547] | 2.7360 | 1.0000 | 0.3067 | 13.0212 | 3.3188 | reference |
+| APDD-H-36 | O_V | 6 | 0.3000 | 1 | 300 | 3.7194 | [3.5687, 3.8758] | 3.7190 | 1.0000 | 0.6233 | 17.7030 | 4.5252 | reference |
+| APDD-H-37 | O_V | 11 | 0.1000 | 1 | 300 | 2.7149 | [2.5941, 2.8375] | 2.7150 | 1.0000 | 0.3167 | 12.9220 | 3.3866 | reference |
+| APDD-H-38 | O_V | 11 | 0.3000 | 1 | 300 | 3.6949 | [3.5444, 3.8506] | 3.6950 | 1.0000 | 0.5933 | 17.5863 | 4.5843 | reference |
+| APDD-H-39 | O_V | 23 | 0.1000 | 1 | 300 | 2.6370 | [2.5316, 2.7421] | 2.6370 | 1.0000 | 0.2833 | 12.5510 |  | reference |
+| APDD-H-40 | O_V | 23 | 0.3000 | 1 | 300 | 3.6498 | [3.5054, 3.7949] | 3.6500 | 1.0000 | 0.6200 | 17.3717 |  | reference |
+| APDD-H-41 | P1x_V | 3 | 0.1000 | 1 | 300 | 2.6686 | [2.5607, 2.7745] | 2.6690 | 1.0000 | 0.2800 | 12.7015 | 3.4358 | reference |
+| APDD-H-42 | P1x_V | 3 | 0.3000 | 1 | 300 | 3.6459 | [3.5064, 3.7863] | 3.6460 | 1.0000 | 0.6167 | 17.3530 | 4.6311 | reference |
+| APDD-H-43 | P1x_V | 6 | 0.1000 | 1 | 300 | 2.7083 | [2.6053, 2.8233] | 2.7080 | 1.0000 | 0.2933 | 12.8905 | 3.3083 | reference |
+| APDD-H-44 | P1x_V | 6 | 0.3000 | 1 | 300 | 3.7001 | [3.5540, 3.8579] | 3.7000 | 1.0000 | 0.6233 | 17.6108 | 4.5233 | reference |
+| APDD-H-45 | P1x_V | 11 | 0.1000 | 1 | 300 | 2.6549 | [2.5419, 2.7664] | 2.6550 | 1.0000 | 0.3100 | 12.6362 | 3.3580 | reference |
+| APDD-H-46 | P1x_V | 11 | 0.3000 | 1 | 300 | 3.6520 | [3.5064, 3.8008] | 3.6520 | 1.0000 | 0.6000 | 17.3822 | 4.5500 | reference |
+| APDD-H-47 | P1x_V | 23 | 0.1000 | 1 | 300 | 2.5728 | [2.4774, 2.6701] | 2.5730 | 1.0000 | 0.2700 | 12.2453 |  | reference |
+| APDD-H-48 | P1x_V | 23 | 0.3000 | 1 | 300 | 3.5775 | [3.4424, 3.7118] | 3.5780 | 1.0000 | 0.5933 | 17.0275 |  | reference |
+
+
+## APDD-W. Objections: identified-Re detectors (H and P1x_V in World V; FNO-Re identified in World D)
+
+Source `stage2/objections/results/obj_detector.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+Detector reading (H, World V): flags iff the 95% interval excludes 0; no effect-size floor (gate).
+
+| id | world | Re | arm | w_tested | mean_re_hat | bias_from_true | slope_per_frame | 95% | label |
+|---|---|---|---|---|---|---|---|---|---|
+| APDD-W-1 | V | 50 | H | 3,6,11,23 | 52.4752 | 2.4752 | 0.0595 | [0.0508, 0.0678] | estimate (reported only) |
+| APDD-W-2 | V | 50 | P1x_V | 3,6,11,23 | 49.9919 | -0.0081 | -1.918e-04 | [-0.0012, 8.760e-04] | estimate (reported only) |
+| APDD-W-3 | D | 36 | FNO_Re_id | 3,6,11,23 | 35.9179 | -0.0821 | 0.0129 | [0.0119, 0.0139] | estimate (reported only) |
+| APDD-W-4 | D | 40 | FNO_Re_id | 3,6,11,23 | 40.0057 | 0.0057 | -3.628e-04 | [-0.0014, 6.286e-04] | estimate (reported only) |
+| APDD-W-5 | D | 44 | FNO_Re_id | 3,6,11,23 | 44.0776 | 0.0776 | -0.0142 | [-0.0157, -0.0127] | estimate (reported only) |
+| APDD-W-6 | D | 50 | FNO_Re_id | 3,6,11,23 | 50.4228 | 0.4228 | -0.0589 | [-0.0623, -0.0554] | estimate (reported only) |
+| APDD-W-7 | D | 56 | FNO_Re_id | 3,6,11,23 | 56.2416 | 0.2416 | -0.1316 | [-0.1372, -0.1259] | estimate (reported only) |
+
+
+## APFR-R. Objections Part 2: frozen claim reading (World D, Re 50 and 56)
+
+Source `stage2/objections/results/obj_part2_reading.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+| id | Re | H_minus_FNO_Re_true | 95% | seeds | holds_at_this_Re | claim | label |
+|---|---|---|---|---|---|---|---|
+| APFR-R-1 | 50 | 1.0445 | [0.9692, 1.1205] | 3 | True |  | reading component |
+| APFR-R-2 | 56 | 1.6033 | [1.5127, 1.6937] | 3 | True |  | reading component |
+| APFR-R-3 | 50 and 56 |  |  |  | True | A network given the parameter does not extrapolate: STATED | frozen reading (decides the claim) |
+
+
+## APFR-H. Objections Part 2: FNO-Re (true and identified Re) against H, fresh panels
+
+Source `stage2/objections/results/obj_part2.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+| id | world | Re | arm | w | eps | seeds | n | restricted_mean | 95% | per_seed | S1 | S3 | retention | H | H_retention | H_minus_arm | 95% | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APFR-H-1 | D | 36 | FNO_Re_true | 11 | 0.1000 | 3 | 300 | 2.2575 | [2.0798, 2.4367] | 2.251 2.267 2.255 | 0.9122 | 0.2200 | 0.8469 | 2.4502 | 0.9191 | 0.1927 | [0.1196, 0.2714] | learned (Re-conditioned FNO) |
+| APFR-H-2 | D | 36 | FNO_Re_id | 11 | 0.1000 | 3 | 300 | 2.2262 | [2.0525, 2.4006] | 2.247 2.240 2.192 | 0.9078 | 0.2111 | 0.8351 | 2.4502 | 0.9191 | 0.2240 | [0.1517, 0.2987] | learned (Re-conditioned FNO) |
+| APFR-H-3 | D | 36 | FNO_Re_true | 11 | 0.3000 | 3 | 300 | 3.1690 | [2.9655, 3.3800] | 3.164 3.188 3.156 | 0.9989 | 0.3378 | 0.8957 | 3.4222 | 0.9672 | 0.2532 | [0.1674, 0.3433] | learned (Re-conditioned FNO) |
+| APFR-H-4 | D | 36 | FNO_Re_id | 11 | 0.3000 | 3 | 300 | 3.1636 | [2.9616, 3.3750] | 3.161 3.183 3.146 | 0.9989 | 0.3400 | 0.8941 | 3.4222 | 0.9672 | 0.2586 | [0.1727, 0.3500] | learned (Re-conditioned FNO) |
+| APFR-H-5 | D | 40 | FNO_Re_true | 11 | 0.1000 | 3 | 300 | 2.9501 | [2.7803, 3.1293] | 2.957 2.945 2.948 | 0.9967 | 0.3556 | 0.8635 | 3.2500 | 0.9513 | 0.2999 | [0.2200, 0.3789] | learned (Re-conditioned FNO) |
+| APFR-H-6 | D | 40 | FNO_Re_id | 11 | 0.1000 | 3 | 300 | 2.9161 | [2.7550, 3.0911] | 2.922 2.904 2.922 | 0.9967 | 0.3500 | 0.8536 | 3.2500 | 0.9513 | 0.3339 | [0.2538, 0.4101] | learned (Re-conditioned FNO) |
+| APFR-H-7 | D | 40 | FNO_Re_true | 11 | 0.3000 | 3 | 300 | 4.1871 | [3.9638, 4.4225] | 4.193 4.175 4.194 | 1.0000 | 0.6044 | 0.8978 | 4.5302 | 0.9714 | 0.3431 | [0.2579, 0.4285] | learned (Re-conditioned FNO) |
+| APFR-H-8 | D | 40 | FNO_Re_id | 11 | 0.3000 | 3 | 300 | 4.1664 | [3.9527, 4.4006] | 4.180 4.144 4.175 | 1.0000 | 0.6000 | 0.8934 | 4.5302 | 0.9714 | 0.3639 | [0.2791, 0.4505] | learned (Re-conditioned FNO) |
+| APFR-H-9 | D | 44 | FNO_Re_true | 11 | 0.1000 | 3 | 300 | 3.2416 | [3.0893, 3.4130] | 3.233 3.290 3.202 | 0.9978 | 0.4222 | 0.8515 | 3.6999 | 0.9719 | 0.4583 | [0.3782, 0.5423] | learned (Re-conditioned FNO) |
+| APFR-H-10 | D | 44 | FNO_Re_id | 11 | 0.1000 | 3 | 300 | 3.2346 | [3.0773, 3.4117] | 3.247 3.276 3.181 | 0.9978 | 0.4133 | 0.8496 | 3.6999 | 0.9719 | 0.4653 | [0.3853, 0.5519] | learned (Re-conditioned FNO) |
+| APFR-H-11 | D | 44 | FNO_Re_true | 11 | 0.3000 | 3 | 300 | 4.5908 | [4.3858, 4.8159] | 4.585 4.610 4.578 | 1.0000 | 0.7456 | 0.9014 | 5.0170 | 0.9851 | 0.4262 | [0.3378, 0.5182] | learned (Re-conditioned FNO) |
+| APFR-H-12 | D | 44 | FNO_Re_id | 11 | 0.3000 | 3 | 300 | 4.5861 | [4.3775, 4.8152] | 4.595 4.598 4.566 | 1.0000 | 0.7500 | 0.9005 | 5.0170 | 0.9851 | 0.4308 | [0.3415, 0.5204] | learned (Re-conditioned FNO) |
+| APFR-H-13 | D | 50 | FNO_Re_true | 11 | 0.1000 | 3 | 300 | 2.2556 | [2.1698, 2.3388] | 2.277 2.180 2.310 | 0.9889 | 0.1744 | 0.6660 | 3.3001 | 0.9745 | 1.0445 | [0.9692, 1.1205] | learned (Re-conditioned FNO) |
+| APFR-H-14 | D | 50 | FNO_Re_id | 11 | 0.1000 | 3 | 300 | 2.2423 | [2.1607, 2.3270] | 2.270 2.161 2.297 | 0.9878 | 0.1678 | 0.6621 | 3.3001 | 0.9745 | 1.0578 | [0.9804, 1.1327] | learned (Re-conditioned FNO) |
+| APFR-H-15 | D | 50 | FNO_Re_true | 11 | 0.3000 | 3 | 300 | 3.4778 | [3.3519, 3.6023] | 3.512 3.372 3.549 | 1.0000 | 0.5456 | 0.7586 | 4.4870 | 0.9788 | 1.0092 | [0.9279, 1.0904] | learned (Re-conditioned FNO) |
+| APFR-H-16 | D | 50 | FNO_Re_id | 11 | 0.3000 | 3 | 300 | 3.4604 | [3.3333, 3.5801] | 3.498 3.338 3.546 | 1.0000 | 0.5389 | 0.7548 | 4.4870 | 0.9788 | 1.0266 | [0.9419, 1.1138] | learned (Re-conditioned FNO) |
+| APFR-H-17 | D | 56 | FNO_Re_true | 11 | 0.1000 | 3 | 300 | 1.6719 | [1.6245, 1.7215] | 1.709 1.634 1.673 | 0.9767 | 0.0056 | 0.5008 | 3.2752 | 0.9810 | 1.6033 | [1.5127, 1.6937] | learned (Re-conditioned FNO) |
+| APFR-H-18 | D | 56 | FNO_Re_id | 11 | 0.1000 | 3 | 300 | 1.6898 | [1.6421, 1.7397] | 1.710 1.632 1.727 | 0.9767 | 0.0067 | 0.5061 | 3.2752 | 0.9810 | 1.5855 | [1.4936, 1.6778] | learned (Re-conditioned FNO) |
+| APFR-H-19 | D | 56 | FNO_Re_true | 11 | 0.3000 | 3 | 300 | 2.8174 | [2.7441, 2.8969] | 2.899 2.722 2.831 | 1.0000 | 0.3333 | 0.6207 | 4.4574 | 0.9820 | 1.6400 | [1.5448, 1.7393] | learned (Re-conditioned FNO) |
+| APFR-H-20 | D | 56 | FNO_Re_id | 11 | 0.3000 | 3 | 300 | 2.8436 | [2.7686, 2.9216] | 2.899 2.725 2.906 | 1.0000 | 0.3522 | 0.6264 | 4.4574 | 0.9820 | 1.6138 | [1.5190, 1.7122] | learned (Re-conditioned FNO) |
+| APFR-H-21 | C | 36 | FNO_Re_true | 11 | 0.1000 | 1 | 300 | 2.7143 | [2.6317, 2.7956] | 2.7140 | 1.0000 | 0.3367 | 0.9179 | 2.5117 | 0.8494 | -0.2026 | [-0.2801, -0.1323] | learned (Re-conditioned FNO) |
+| APFR-H-22 | C | 36 | FNO_Re_id | 11 | 0.1000 | 1 | 300 | 2.6962 | [2.6178, 2.7762] | 2.6960 | 1.0000 | 0.3067 | 0.9118 | 2.5117 | 0.8494 | -0.1845 | [-0.2606, -0.1144] | learned (Re-conditioned FNO) |
+| APFR-H-23 | C | 36 | FNO_Re_true | 11 | 0.3000 | 1 | 300 | 3.8286 | [3.7347, 3.9244] | 3.8290 | 1.0000 | 0.8367 | 0.9288 | 3.6889 | 0.8949 | -0.1397 | [-0.2253, -0.0562] | learned (Re-conditioned FNO) |
+| APFR-H-24 | C | 36 | FNO_Re_id | 11 | 0.3000 | 1 | 300 | 3.8232 | [3.7328, 3.9158] | 3.8230 | 1.0000 | 0.8667 | 0.9275 | 3.6889 | 0.8949 | -0.1343 | [-0.2150, -0.0520] | learned (Re-conditioned FNO) |
+| APFR-H-25 | C | 40 | FNO_Re_true | 11 | 0.1000 | 1 | 300 | 2.7190 | [2.6453, 2.7858] | 2.7190 | 1.0000 | 0.3333 | 0.8785 | 2.6945 | 0.8706 | -0.0245 | [-0.0930, 0.0447] | learned (Re-conditioned FNO) |
+| APFR-H-26 | C | 40 | FNO_Re_id | 11 | 0.1000 | 1 | 300 | 2.7001 | [2.6262, 2.7658] | 2.7000 | 1.0000 | 0.3333 | 0.8724 | 2.6945 | 0.8706 | -0.0056 | [-0.0737, 0.0619] | learned (Re-conditioned FNO) |
+| APFR-H-27 | C | 40 | FNO_Re_true | 11 | 0.3000 | 1 | 300 | 3.8356 | [3.7460, 3.9183] | 3.8360 | 1.0000 | 0.8567 | 0.9089 | 3.8082 | 0.9024 | -0.0274 | [-0.1097, 0.0499] | learned (Re-conditioned FNO) |
+| APFR-H-28 | C | 40 | FNO_Re_id | 11 | 0.3000 | 1 | 300 | 3.8090 | [3.7224, 3.8922] | 3.8090 | 1.0000 | 0.8500 | 0.9026 | 3.8082 | 0.9024 | -8.334e-04 | [-0.0856, 0.0773] | learned (Re-conditioned FNO) |
+| APFR-H-29 | C | 44 | FNO_Re_true | 11 | 0.1000 | 1 | 300 | 2.7008 | [2.6313, 2.7657] | 2.7010 | 1.0000 | 0.3233 | 0.8384 | 2.7778 | 0.8623 | 0.0769 | [0.0170, 0.1421] | learned (Re-conditioned FNO) |
+| APFR-H-30 | C | 44 | FNO_Re_id | 11 | 0.1000 | 1 | 300 | 2.7050 | [2.6360, 2.7693] | 2.7050 | 1.0000 | 0.3333 | 0.8397 | 2.7778 | 0.8623 | 0.0727 | [0.0145, 0.1371] | learned (Re-conditioned FNO) |
+| APFR-H-31 | C | 44 | FNO_Re_true | 11 | 0.3000 | 1 | 300 | 3.8467 | [3.7553, 3.9319] | 3.8470 | 1.0000 | 0.8633 | 0.8835 | 3.9339 | 0.9035 | 0.0872 | [0.0170, 0.1628] | learned (Re-conditioned FNO) |
+| APFR-H-32 | C | 44 | FNO_Re_id | 11 | 0.3000 | 1 | 300 | 3.8433 | [3.7534, 3.9294] | 3.8430 | 1.0000 | 0.8600 | 0.8827 | 3.9339 | 0.9035 | 0.0906 | [0.0199, 0.1672] | learned (Re-conditioned FNO) |
+| APFR-H-33 | C | 50 | FNO_Re_true | 11 | 0.1000 | 1 | 300 | 2.2977 | [2.2452, 2.3492] | 2.2980 | 1.0000 | 0.0533 | 0.7428 | 2.6552 | 0.8584 | 0.3575 | [0.3060, 0.4065] | learned (Re-conditioned FNO) |
+| APFR-H-34 | C | 50 | FNO_Re_id | 11 | 0.1000 | 1 | 300 | 2.2911 | [2.2393, 2.3426] | 2.2910 | 1.0000 | 0.0500 | 0.7407 | 2.6552 | 0.8584 | 0.3641 | [0.3126, 0.4130] | learned (Re-conditioned FNO) |
+| APFR-H-35 | C | 50 | FNO_Re_true | 11 | 0.3000 | 1 | 300 | 3.3762 | [3.3082, 3.4459] | 3.3760 | 1.0000 | 0.7100 | 0.7986 | 3.8026 | 0.8994 | 0.4263 | [0.3633, 0.4929] | learned (Re-conditioned FNO) |
+| APFR-H-36 | C | 50 | FNO_Re_id | 11 | 0.3000 | 1 | 300 | 3.3736 | [3.3046, 3.4443] | 3.3740 | 1.0000 | 0.7100 | 0.7980 | 3.8026 | 0.8994 | 0.4289 | [0.3665, 0.4960] | learned (Re-conditioned FNO) |
+| APFR-H-37 | C | 56 | FNO_Re_true | 11 | 0.1000 | 1 | 300 | 1.6451 | [1.6050, 1.6849] | 1.6450 | 0.9767 | 0.0000 | 0.5408 | 2.5249 | 0.8301 | 0.8798 | [0.8288, 0.9312] | learned (Re-conditioned FNO) |
+| APFR-H-38 | C | 56 | FNO_Re_id | 11 | 0.1000 | 1 | 300 | 1.7485 | [1.7039, 1.7931] | 1.7490 | 0.9733 | 0.0033 | 0.5748 | 2.5249 | 0.8301 | 0.7764 | [0.7247, 0.8276] | learned (Re-conditioned FNO) |
+| APFR-H-39 | C | 56 | FNO_Re_true | 11 | 0.3000 | 1 | 300 | 2.7533 | [2.6952, 2.8107] | 2.7530 | 1.0000 | 0.2933 | 0.6624 | 3.6485 | 0.8777 | 0.8951 | [0.8304, 0.9615] | learned (Re-conditioned FNO) |
+| APFR-H-40 | C | 56 | FNO_Re_id | 11 | 0.3000 | 1 | 300 | 2.8582 | [2.7935, 2.9195] | 2.8580 | 1.0000 | 0.3533 | 0.6876 | 3.6485 | 0.8777 | 0.7903 | [0.7271, 0.8586] | learned (Re-conditioned FNO) |
+
+
+## APFR-FT. Objections Part 2: fine-tuned FNO (L_ft) on fresh panels (reported, not a reading)
+
+Source `stage2/objections/results/obj_lft.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+| id | world | Re | w | eps | n | restricted_mean | 95% | retention | H | H_minus_L_ft | 95% | online_seconds_per_state | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APFR-FT-1 | D | 44 | 11 | 0.1000 | 300 | 0.7094 | [0.6843, 0.7376] | 0.1863 | 3.6999 | 2.9905 | [2.8352, 3.1487] | 4.1905 | learned (reported, not a reading) |
+| APFR-FT-2 | D | 50 | 11 | 0.1000 | 300 | 0.7535 | [0.7291, 0.7782] | 0.2225 | 3.3001 | 2.5466 | [2.4367, 2.6574] | 3.6042 | learned (reported, not a reading) |
+| APFR-FT-3 | D | 56 | 11 | 0.1000 | 300 | 0.7549 | [0.7290, 0.7809] | 0.2261 | 3.2752 | 2.5203 | [2.4188, 2.6247] | 4.1491 | learned (reported, not a reading) |
+
+
+## APEDGE. Objections Part 3: edge timing, Orin NX against datacenter (batch 1, reported only)
+
+Source `stage2/objections/results/obj_edge.csv` · SHA `a9d2d4d5bb56275725243d742511929152bc677c-dirty`
+
+| id | arm | orin_result | orin_wall_median | orin_wall_p90 | dc_batch1_wall_median | orin_identify_or_adapt_median | orin_forecast_fps | dc_batch1_forecast_fps | orin_peak_torch_mem_MB | orin_tegrastats_ram_peak_MB | orin_vdd_in_mean_mW | orin_energy_per_state_J | horizon_max_abs_diff | horizon_states_identical | horizon_n | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APEDGE-1 | H | ok | 319.5735 | 335.9320 | 112.2071 | 280.3340 | 1.0682 | 3.0351 | 22.2876 | 2483 | 8969.9169 | 2898.4150 | 0.0904 | 17 | 20 | estimate (reported only) |
+| APEDGE-2 | H_true | ok | 38.2279 | 56.3865 | 13.7978 |  | 1.0608 | 3.0160 | 22.5684 | 2369 | 9069.5856 | 386.4519 | 0.0904 | 16 | 20 | estimate (reported only) |
+| APEDGE-3 | O | ok | 8.0879 | 11.1804 | 2.2648 |  | 5.3101 | 19.0058 | 18.4727 | 2373 | 7161.0967 | 60.7540 | 0.0000 | 20 | 20 | estimate (reported only) |
+| APEDGE-4 | L0 | ok | 0.0996 | 0.1355 | 0.0319 |  | 160.6717 | 501.1620 | 94.4014 | 2590 | 15618.9474 | 1.5408 | 0.0000 | 20 | 20 | estimate (reported only) |
+| APEDGE-5 | L_range | ok | 0.1539 | 0.2306 | 0.0544 |  | 170.3885 | 483.6747 | 94.4648 | 2567 | 18063.1875 | 3.0955 | 0.0000 | 20 | 20 | estimate (reported only) |
+| APEDGE-6 | L0big | ok | 0.7335 | 1.0172 | 0.0302 |  | 19.7626 | 480.5327 | 458.5239 | 3685 | 16288.8310 | 12.2810 | 0.0000 | 20 | 20 | estimate (reported only) |
+| APEDGE-7 | FNO_Re_id | ok | 1.4474 | 1.5963 | 0.5154 | 1.2693 | 165.7307 | 462.4877 | 94.4028 | 3720 | 18053.5603 | 26.8142 | 0.0000 | 20 | 20 | estimate (reported only) |
+| APEDGE-8 | L_ft | ok | 18.9067 | 18.9608 | 3.0445 | 18.7810 | 121.4306 | 286.8719 | 627.8438 | 3922 | 17542.0681 | 331.7720 | 0.0000 | 20 | 20 | estimate (reported only) |
 
