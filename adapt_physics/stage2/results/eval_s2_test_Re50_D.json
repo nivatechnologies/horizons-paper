@@ -12,7 +12,7 @@
   "wall_seconds_per_state": 0.12191865523656209
  },
  "panel": "s2_test_Re50_D",
- "git_sha": "89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty",
+ "git_sha": "150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty",
  "O_s0_std_6": {
   "arm": "O",
   "seed": 0,
@@ -644,5 +644,35 @@
   "n": 300,
   "seconds": 3.8044958114624023,
   "wall_seconds_per_state": 0.012681652704874674
+ },
+ "H_s0_straddle_5": {
+  "arm": "H",
+  "seed": 0,
+  "variant": "straddle",
+  "window": 5,
+  "first": -5,
+  "last": 5,
+  "n": 300,
+  "seconds": 1911.379872083664,
+  "solver_steps": 10500,
+  "objective_evals": 30,
+  "forecast_steps": 1575,
+  "identify_seconds_per_state": 5.970570707321167,
+  "wall_seconds_per_state": 6.37126624027888
+ },
+ "H_s0_straddle_2": {
+  "arm": "H",
+  "seed": 0,
+  "variant": "straddle",
+  "window": 2,
+  "first": -8,
+  "last": 2,
+  "n": 300,
+  "seconds": 909.8690502643585,
+  "solver_steps": 10500,
+  "objective_evals": 30,
+  "forecast_steps": 1435,
+  "identify_seconds_per_state": 2.6694519567489623,
+  "wall_seconds_per_state": 3.0328968342145286
  }
 }

@@ -12,7 +12,7 @@
   "wall_seconds_per_state": 0.1311801028251648
  },
  "panel": "s2_test_Re44_D",
- "git_sha": "89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty",
+ "git_sha": "150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty",
  "O_s0_std_6": {
   "arm": "O",
   "seed": 0,
@@ -648,5 +648,31 @@
   "forecast_steps": 3010,
   "identify_seconds_per_state": 2.504791447321574,
   "wall_seconds_per_state": 3.223672974904378
+ },
+ "H_s0_noise5_11": {
+  "arm": "H",
+  "seed": 0,
+  "variant": "noise5",
+  "window": 11,
+  "first": 1,
+  "last": 11,
+  "n": 300,
+  "seconds": 3860.2292404174805,
+  "solver_steps": 10500,
+  "objective_evals": 30,
+  "forecast_steps": 4585,
+  "identify_seconds_per_state": 9.484171979427337,
+  "wall_seconds_per_state": 12.8674308013916
+ },
+ "L_range_s0_noise5_11": {
+  "arm": "L_range",
+  "seed": 0,
+  "variant": "noise5",
+  "window": 11,
+  "first": 1,
+  "last": 11,
+  "n": 300,
+  "seconds": 12.787893772125244,
+  "wall_seconds_per_state": 0.04262631257375082
  }
 }

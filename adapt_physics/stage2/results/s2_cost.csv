@@ -1,4 +1,4 @@
-# git_sha=89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty; Adapt the Physics stage 2; online cost
+# git_sha=150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty; Adapt the Physics stage 2; online cost
 panel,key,arm,seed,variant,window,n,wall_seconds_per_state,solver_steps,objective_evals,forecast_steps,label
 s2_test2p_Re44_A1.1,O_s0_2p_11,O,0,2p,11,300,0.13472527742385865,,,4200,estimate
 s2_test2p_Re44_A1.1,L_range_s0_2p_11,L_range,0,2p,11,300,0.02056803067525228,,,,estimate
@@ -7,6 +7,7 @@ s2_test2p_Re44_A1.1,H_Re_only_s0_2p_11,H_Re_only,0,2p,11,300,11.79943730433782,1
 s2_test2p_Re50_A0.9,O_s0_2p_11,O,0,2p,11,300,0.1354141322771708,,,4165,estimate
 s2_test2p_Re50_A0.9,L_range_s0_2p_11,L_range,0,2p,11,300,0.022085846265157062,,,,estimate
 s2_test2p_Re50_A0.9,H_Re_only_s0_2p_11,H_Re_only,0,2p,11,300,11.944087617397308,10500,30,2870,estimate
+s2_test2p_Re50_A0.9,H_s0_2p_11,H,0,2p,11,300,24.52830766439438,21000,60,4165,estimate
 s2_test_Re36_C,O_s0_std_3,O,0,std,3,300,0.1440201179186503,,,4655,estimate
 s2_test_Re36_C,O_s0_std_6,O,0,std,6,300,0.15059001286824544,,,4970,estimate
 s2_test_Re36_C,O_s0_std_11,O,0,std,11,300,0.13962153275807698,,,4620,estimate
@@ -230,6 +231,8 @@ s2_test_Re44_C,O_s0_noise5_11,O,0,noise5,11,300,0.022776217460632325,,,2240,esti
 s2_test_Re44_C,H_s0_straddle_8,H,0,straddle,8,300,12.326423127651214,10500,30,2170,estimate
 s2_test_Re44_C,H_s0_noise5_11,H,0,noise5,11,300,3.0051591769854227,10500,30,2100,estimate
 s2_test_Re44_C,L_range_s0_noise5_11,L_range,0,noise5,11,300,0.011451817353566488,,,,estimate
+s2_test_Re44_C,H_s0_straddle_5,H,0,straddle,5,300,10.298077336947124,10500,30,1925,estimate
+s2_test_Re44_C,H_s0_straddle_2,H,0,straddle,2,300,7.69108742237091,10500,30,1400,estimate
 s2_test_Re44_D,O_s0_std_3,O,0,std,3,300,0.1311801028251648,,,4585,estimate
 s2_test_Re44_D,O_s0_std_6,O,0,std,6,300,0.12845360596974692,,,4585,estimate
 s2_test_Re44_D,O_s0_std_11,O,0,std,11,300,0.12734557310740152,,,4585,estimate
@@ -282,6 +285,8 @@ s2_test_Re44_D,H_s0_straddle_8,H,0,straddle,8,300,3.4783329725265504,10500,30,40
 s2_test_Re44_D,H_s0_straddle_5,H,0,straddle,5,300,3.2412761306762694,10500,30,3080,estimate
 s2_test_Re44_D,O_s0_noise5_11,O,0,noise5,11,300,0.14794292608896892,,,4585,estimate
 s2_test_Re44_D,H_s0_straddle_2,H,0,straddle,2,300,3.223672974904378,10500,30,3010,estimate
+s2_test_Re44_D,H_s0_noise5_11,H,0,noise5,11,300,12.8674308013916,10500,30,4585,estimate
+s2_test_Re44_D,L_range_s0_noise5_11,L_range,0,noise5,11,300,0.04262631257375082,,,,estimate
 s2_test_Re50_C,O_s0_std_3,O,0,std,3,300,0.07731333255767822,,,2450,estimate
 s2_test_Re50_C,O_s0_std_6,O,0,std,6,300,0.0679594357808431,,,2240,estimate
 s2_test_Re50_C,O_s0_std_11,O,0,std,11,300,0.0750496482849121,,,2450,estimate
@@ -329,6 +334,10 @@ s2_test_Re50_C,L_range_s0_straddle_5,L_range,0,straddle,5,300,0.0222425929705301
 s2_test_Re50_C,L_range_s0_straddle_2,L_range,0,straddle,2,300,0.018948657512664793,,,,estimate
 s2_test_Re50_C,H_s0_straddle_8,H,0,straddle,8,300,11.826373309294382,10500,30,1540,estimate
 s2_test_Re50_C,O_s0_noise5_11,O,0,noise5,11,300,0.020218538443247478,,,1960,estimate
+s2_test_Re50_C,H_s0_noise5_11,H,0,noise5,11,300,2.908453447818756,10500,30,1715,estimate
+s2_test_Re50_C,L_range_s0_noise5_11,L_range,0,noise5,11,300,0.00940632184346517,,,,estimate
+s2_test_Re50_C,H_s0_straddle_5,H,0,straddle,5,300,8.609213221073151,10500,30,1050,estimate
+s2_test_Re50_C,H_s0_straddle_2,H,0,straddle,2,300,6.564817354679108,10500,30,910,estimate
 s2_test_Re50_D,O_s0_std_3,O,0,std,3,300,0.12191865523656209,,,3885,estimate
 s2_test_Re50_D,O_s0_std_6,O,0,std,6,300,0.11722374041875204,,,3885,estimate
 s2_test_Re50_D,O_s0_std_11,O,0,std,11,300,0.11763918240865072,,,3885,estimate
@@ -381,6 +390,8 @@ s2_test_Re50_D,O_s0_noise5_11,O,0,noise5,11,300,0.030442845026652017,,,3500,esti
 s2_test_Re50_D,H_s0_straddle_8,H,0,straddle,8,300,11.313229103883108,10500,30,2135,estimate
 s2_test_Re50_D,H_s0_noise5_11,H,0,noise5,11,300,3.4053806257247925,10500,30,3780,estimate
 s2_test_Re50_D,L_range_s0_noise5_11,L_range,0,noise5,11,300,0.012681652704874674,,,,estimate
+s2_test_Re50_D,H_s0_straddle_5,H,0,straddle,5,300,6.37126624027888,10500,30,1575,estimate
+s2_test_Re50_D,H_s0_straddle_2,H,0,straddle,2,300,3.0328968342145286,10500,30,1435,estimate
 s2_test_Re56_C,O_s0_std_3,O,0,std,3,300,0.06657101154327393,,,2065,estimate
 s2_test_Re56_C,O_s0_std_6,O,0,std,6,300,0.06321807940800984,,,2065,estimate
 s2_test_Re56_C,O_s0_std_11,O,0,std,11,300,0.060070958932240806,,,1960,estimate

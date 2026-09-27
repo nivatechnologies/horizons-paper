@@ -12,7 +12,7 @@
   "wall_seconds_per_state": 0.1354141322771708
  },
  "panel": "s2_test2p_Re50_A0.9",
- "git_sha": "89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty",
+ "git_sha": "150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty",
  "L_range_s0_2p_11": {
   "arm": "L_range",
   "seed": 0,
@@ -38,5 +38,20 @@
   "forecast_steps": 2870,
   "identify_seconds_per_state": 9.364616134166717,
   "wall_seconds_per_state": 11.944087617397308
+ },
+ "H_s0_2p_11": {
+  "arm": "H",
+  "seed": 0,
+  "variant": "2p",
+  "window": 11,
+  "first": 1,
+  "last": 11,
+  "n": 300,
+  "seconds": 7358.492299318314,
+  "objective_evals": 60,
+  "solver_steps": 21000,
+  "forecast_steps": 4165,
+  "identify_seconds_per_state": 20.440158483982085,
+  "wall_seconds_per_state": 24.52830766439438
  }
 }

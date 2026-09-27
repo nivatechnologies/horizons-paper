@@ -1,4 +1,4 @@
-# git_sha=89c9bc9df14f05064b9c84b85ac7a54da95d3049-dirty; Adapt the Physics stage 2; pivot criteria on fresh panels
+# git_sha=150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty; Adapt the Physics stage 2; pivot criteria on fresh panels
 criterion,world,Re,value,ci95_lo,ci95_hi,threshold,holds,screening_value,label
 KILL: H/L_range <= 1.0,D,50,1.8389318105475312,1.7796026328909127,1.8961082633547208,1.0,False,1.8762410133515919,estimate
 KILL: H/L_range <= 1.0,D,56,2.1797336158619647,2.1145937061235385,2.2456098996598257,1.0,False,2.244164332399627,estimate
