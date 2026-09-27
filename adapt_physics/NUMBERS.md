@@ -3507,7 +3507,7 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 
 ## APVS. All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system
 
-Source `pivot/results/chaos_gate_C.json` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
+Source `pivot/results/chaos_gate_C.json` · SHA `d7a02cec591e17447faf87f128d9a96e44b052e1-dirty`
 
 World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: objections WO; two-parameter systems: stage 2 item 3.
 
