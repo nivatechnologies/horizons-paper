@@ -1,4 +1,4 @@
-# git_sha=150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty; Adapt the Physics stage 2; part B robustness (reported, not criteria)
+# git_sha=fe1909f760be03d95802d319af5b3261413f258a-dirty; Adapt the Physics stage 2; part B robustness (reported, not criteria)
 item,panel,arm,variant,window,n,restricted_mean,ci95_lo,ci95_hi,label,ratio_to_O,H_seed_pooled,H_over_L_range_wide,ratio_to_O_std,window_starts_before_tc,window_end_after_tc,ratio_to_O_noise5,ratio_to_L_range,re_hat_median,amp_hat_median
 1 train wider,s2_test_Re36_D,L_range_wide,std,11,300,1.3783578271847745,1.303968784087783,1.4482423434506329,learned,0.5170602787209483,2.450216675124659,1.7776346800519147,,,,,,,
 1 train wider,s2_test_Re40_D,L_range_wide,std,11,300,2.2209672940741014,2.121635041242806,2.326970677494955,learned,0.6501016843391366,3.2499919888165705,1.463322759181584,,,,,,,

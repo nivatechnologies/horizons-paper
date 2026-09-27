@@ -3,6 +3,7 @@ labels, source files and producing SHAs. Uses the tokens-horizon NUMBERS checker
 `table`): a duplicate section, an empty table or an unresolved column raises NumbersError. An AP-specific check
 also fails if any row lacks a label or a section lacks its source SHA.
 """
+import json
 import sys
 from pathlib import Path
 
@@ -112,6 +113,37 @@ def main():
         if p.exists():
             rows, sha = MN.read_csv(p)
             MN.table(out, sec, title, p, cols, rows, sha, note=note)
+    # ---- all worlds: chaos gates (APVS) and the drag / beta calibrations (APVB)
+    srows = []
+    for world, f in (("D", config.RESULTS / "chaos_gate.json"), ("D", PR / "chaos_gate_D.json"), ("C", PR / "chaos_gate_C.json"),
+                     ("V", config.PKG / "stage2" / "objections" / "results" / "chaos_V.json"),
+                     ("D two-parameter", config.PKG / "stage2" / "results" / "chaos_2p.json")):
+        if not f.exists():
+            continue
+        for k, v in sorted(((k, v) for k, v in json.loads(f.read_text()).items() if isinstance(v, dict)),
+                           key=lambda kv: (kv[1]["Re"], kv[1].get("amp", 1.0))):
+            srows.append(dict(world=world, system=k, Re=v["Re"], amp=v.get("amp", 1.0), alpha=v.get("alpha"),
+                              beta=v.get("beta", 0.0), lam=v["lam"], lam_ci95_lo=v["lam_ci95"][0], lam_ci95_hi=v["lam_ci95"][1],
+                              sigma_A=v["sigma_A"], chaotic=v["chaotic"], source=str(f.relative_to(config.PKG)),
+                              label="estimate (system property)"))
+    MN.table(out, "APVS", "All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system",
+             PR / "chaos_gate_C.json", ["world", "system", "Re", "amp", "alpha", "beta", "lam", ("95%", ci("lam_ci95_lo", "lam_ci95_hi")),
+                                         "sigma_A", "chaotic", "source"], srows, config.git_sha(),
+             note="World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: "
+                  "objections WO; two-parameter systems: stage 2 item 3.")
+    dcj = json.loads((R / "drag_calibration.json").read_text())
+    bcj = json.loads((PR / "beta_calibration.json").read_text())
+    crows = [dict(calibration="drag (World D truth)", parameter="alpha", value=it["alpha"], quantity="drag share of enstrophy dissipation at Re 40",
+                  result=it["share"], target=dcj["target"], selected=it["alpha"] == dcj["alpha"], label="estimate (calibration)")
+             for it in dcj["iterations"]]
+    crows += [dict(calibration="Codex topographic beta (World C truth)", parameter="beta_T", value=it["beta"],
+                   quantity="relative change of <nu |grad omega|^2> at Re 40 vs beta = 0", result=it.get("rel_change", 0.0),
+                   target=f"|change| = {bcj['target']} +- {bcj['tol']}", selected=it["beta"] == bcj["beta"], label="estimate (calibration)")
+              for it in bcj["iterations"]]
+    MN.table(out, "APVB", "Calibrations: drag share (World D) and the Codex beta term (World C), every iteration",
+             PR / "beta_calibration.json", ["calibration", "parameter", "value", "quantity", "result", "target", "selected"], crows,
+             bcj.get("git_sha", ""), note=f"Drag: alpha = {dcj['alpha']:.7f} gives share {dcj['share']:.5f}. Beta: Codex start 3.35; "
+                                        f"selected beta_T = {bcj['beta']:.7f} ({bcj['rel_change']:+.4f}).")
     # ---- stage 2 sections APS* (stage2/S2_FREEZE.md)
     SR = config.PKG / "stage2" / "results"
     for fname, sec, title, cols, note in (
@@ -140,7 +172,9 @@ def main():
             ("s2_cost.csv", "APSC", "Stage 2: online cost", ["panel", "key", "arm", "seed", "variant", "window", "n",
                                                              "wall_seconds_per_state", "solver_steps", "objective_evals"], ""),
             ("s2_training.csv", "APST", "Stage 2: training cost", ["model", "seed", "params", "steps", "train_seconds", "best_step",
-                                                                    "training_conditions", "training_re_range", "training_states"], "")):
+                                                                    "training_data", "training_conditions", "training_re_range",
+                                                                    "training_states"],
+             "Conditions = distinct Re values in the training data (range sets: one Re per trajectory).")):
         p = SR / fname
         if p.exists():
             rows, sha = MN.read_csv(p)
@@ -157,7 +191,8 @@ def main():
              ["arm", "w", "eps", "seeds", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")), "per_seed", "S1", "S3",
               "phys_time", "partA_worldD_Re50"], ""),
             ("obj_detector.csv", "APDD-W", "Objections: identified-Re detectors (H and P1x_V in World V; FNO-Re identified in World D)",
-             ["world", "Re", "arm", "w_tested", "mean_re_hat", "bias_from_true", "slope_per_frame",
+             ["world", "Re", "arm", "w_tested", "re_hat_w3", "re_hat_w6", "re_hat_w11", "re_hat_w23", "mean_re_hat", "bias_from_true",
+              "slope_per_frame",
               ("95%", ci("slope_ci95_lo", "slope_ci95_hi"))], "Detector reading (H, World V): flags iff the 95% interval excludes 0; "
                                                              "no effect-size floor (gate)."),
             ("obj_part2_reading.csv", "APFR-R", "Objections Part 2: frozen claim reading (World D, Re 50 and 56)",

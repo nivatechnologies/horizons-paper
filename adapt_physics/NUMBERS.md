@@ -3505,9 +3505,48 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 | APVT-6 | L_range | 1.680e+07 | 30000 | 32 | 2271.3695 | 30000 | 1024 | 204800 | learned |
 | APVT-7 | L_range_C | 1.680e+07 | 30000 | 32 | 4086.5509 | 30000 | 1024 | 204800 | learned |
 
+## APVS. All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system
+
+Source `pivot/results/chaos_gate_C.json` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
+
+World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: objections WO; two-parameter systems: stage 2 item 3.
+
+| id | world | system | Re | amp | alpha | beta | lam | 95% | sigma_A | chaotic | source | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APVS-1 | D | Re36 | 36.0000 | 1.0000 | 0.0773 | 0.0000 | 0.0939 | [0.0791, 0.1087] | 140.8794 | 1 | results/chaos_gate.json | estimate (system property) |
+| APVS-2 | D | Re38 | 38.0000 | 1.0000 | 0.0773 | 0.0000 | 0.1431 | [0.1319, 0.1542] | 150.2235 | 1 | results/chaos_gate.json | estimate (system property) |
+| APVS-3 | D | Re40 | 40.0000 | 1.0000 | 0.0773 | 0.0000 | 0.1679 | [0.1590, 0.1769] | 154.7570 | 1 | results/chaos_gate.json | estimate (system property) |
+| APVS-4 | D | Re44 | 44.0000 | 1.0000 | 0.0773 | 0.0000 | 0.2197 | [0.2136, 0.2258] | 164.6554 | 1 | results/chaos_gate.json | estimate (system property) |
+| APVS-5 | D | Re50 | 50.0000 | 1.0000 | 0.0773 | 0.0000 | 0.2584 | [0.2533, 0.2634] | 175.2578 | 1 | results/chaos_gate.json | estimate (system property) |
+| APVS-6 | D | Re56 | 56.0000 | 1.0000 | 0.0773 | 0.0000 | 0.2924 | [0.2889, 0.2959] | 182.3961 | 1 | pivot/results/chaos_gate_D.json | estimate (system property) |
+| APVS-7 | C | Re36 | 36.0000 | 1.0000 | 0.0773 | 1.4694 | 0.1410 | [0.1397, 0.1423] | 148.2211 | 1 | pivot/results/chaos_gate_C.json | estimate (system property) |
+| APVS-8 | C | Re40 | 40.0000 | 1.0000 | 0.0773 | 1.4694 | 0.1948 | [0.1934, 0.1962] | 160.4884 | 1 | pivot/results/chaos_gate_C.json | estimate (system property) |
+| APVS-9 | C | Re44 | 44.0000 | 1.0000 | 0.0773 | 1.4694 | 0.2394 | [0.2376, 0.2413] | 170.8966 | 1 | pivot/results/chaos_gate_C.json | estimate (system property) |
+| APVS-10 | C | Re50 | 50.0000 | 1.0000 | 0.0773 | 1.4694 | 0.2830 | [0.2815, 0.2844] | 182.2480 | 1 | pivot/results/chaos_gate_C.json | estimate (system property) |
+| APVS-11 | C | Re56 | 56.0000 | 1.0000 | 0.0773 | 1.4694 | 0.3131 | [0.3116, 0.3146] | 190.3892 | 1 | pivot/results/chaos_gate_C.json | estimate (system property) |
+| APVS-12 | V | Re50 | 50.0000 | 1.0000 | 0.0619 | 0.0000 | 0.2101 | [0.2026, 0.2176] | 160.7940 | 1 | stage2/objections/results/chaos_V.json | estimate (system property) |
+| APVS-13 | D two-parameter | Re44_A1.1 | 44 | 1.1000 | 0.0773 | 0.0000 | 0.2382 | [0.2312, 0.2452] | 175.7638 | 1 | stage2/results/chaos_2p.json | estimate (system property) |
+| APVS-14 | D two-parameter | Re50_A0.9 | 50 | 0.9000 | 0.0773 | 0.0000 | 0.2410 | [0.2370, 0.2450] | 163.1212 | 1 | stage2/results/chaos_2p.json | estimate (system property) |
+
+## APVB. Calibrations: drag share (World D) and the Codex beta term (World C), every iteration
+
+Source `pivot/results/beta_calibration.json` · SHA `6f30a7433a2b3c3e3658261f4d4e30a1c93e44c8-dirty`
+
+Drag: alpha = 0.0773273 gives share 0.14886. Beta: Codex start 3.35; selected beta_T = 1.4694400 (+0.1221).
+
+| id | calibration | parameter | value | quantity | result | target | selected | label |
+|---|---|---|---|---|---|---|---|---|
+| APVB-1 | drag (World D truth) | alpha | 0.0000 | drag share of enstrophy dissipation at Re 40 | 0.0000 | 0.1500 | 0 | estimate (calibration) |
+| APVB-2 | drag (World D truth) | alpha | 0.0500 | drag share of enstrophy dissipation at Re 40 | 0.0970 | 0.1500 | 0 | estimate (calibration) |
+| APVB-3 | drag (World D truth) | alpha | 0.0773 | drag share of enstrophy dissipation at Re 40 | 0.1489 | 0.1500 | 1 | estimate (calibration) |
+| APVB-4 | Codex topographic beta (World C truth) | beta_T | 0.0000 | relative change of <nu |grad omega|^2> at Re 40 vs beta = 0 | 0.0000 | |change| = 0.125 +- 0.005 | 0 | estimate (calibration) |
+| APVB-5 | Codex topographic beta (World C truth) | beta_T | 3.3500 | relative change of <nu |grad omega|^2> at Re 40 vs beta = 0 | 0.3978 | |change| = 0.125 +- 0.005 | 0 | estimate (calibration) |
+| APVB-6 | Codex topographic beta (World C truth) | beta_T | 1.0526 | relative change of <nu |grad omega|^2> at Re 40 vs beta = 0 | -0.0645 | |change| = 0.125 +- 0.005 | 0 | estimate (calibration) |
+| APVB-7 | Codex topographic beta (World C truth) | beta_T | 1.4694 | relative change of <nu |grad omega|^2> at Re 40 vs beta = 0 | 0.1221 | |change| = 0.125 +- 0.005 | 1 | estimate (calibration) |
+
 ## APSO. Stage 2 part A: outcome of the pivot criteria on fresh panels (3 seeds)
 
-Source `stage2/results/s2_outcome.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_outcome.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 | id | outcome | kill_any | pass_all | middle_all | complete | all_three_seeds | precedence | label |
 |---|---|---|---|---|---|---|---|---|
@@ -3515,7 +3554,7 @@ Source `stage2/results/s2_outcome.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523
 
 ## APSK. Stage 2 part A: every pivot criterion on fresh panels, with 95% intervals
 
-Source `stage2/results/s2_conditions.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_conditions.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 Point ratio decides; interval = bootstrap over trajectories with seeds resampled within trajectories.
 
@@ -3545,7 +3584,7 @@ Point ratio decides; interval = bootstrap over trajectories with seeds resampled
 
 ## APSH. Stage 2 part A: seed-pooled horizons on fresh panels
 
-Source `stage2/results/s2_rows.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_rows.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 score future = frames 1.. (primary); from_t0 = frame 0 included (item 6).
 
@@ -4574,7 +4613,7 @@ score future = frames 1.. (primary); from_t0 = frame 0 included (item 6).
 
 ## APSD. Stage 2: paired differences H - b (seed-pooled) and frozen readings
 
-Source `stage2/results/s2_paired.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_paired.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 | id | world | Re | w | eps | a | b | mean_a | mean_b | ratio | diff | 90% | 95% | reading | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -4971,7 +5010,7 @@ Source `stage2/results/s2_paired.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e
 
 ## APSR. Stage 2: time to 90% of the oracle (w in 3, 6, 11)
 
-Source `stage2/results/s2_recovery.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_recovery.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 | id | world | Re | eps | arm | w_tested | w_to_90pct_oracle | label |
 |---|---|---|---|---|---|---|---|
@@ -5148,7 +5187,7 @@ Source `stage2/results/s2_recovery.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b52
 
 ## APSW. Stage 2: window-drift detector and the World C slope-shortfall correlation
 
-Source `stage2/results/s2_detector.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_detector.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 Reported only.
 
@@ -5187,7 +5226,7 @@ Reported only.
 
 ## APSB. Stage 2 part B: robustness items 1-4 (reported, not criteria)
 
-Source `stage2/results/s2_partB.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_partB.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 Single seed (seed 0) where stated in the freeze.
 
@@ -5250,7 +5289,7 @@ Single seed (seed 0) where stated in the freeze.
 
 ## APSC. Stage 2: online cost
 
-Source `stage2/results/s2_cost.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_cost.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
 | id | panel | key | arm | seed | variant | window | n | wall_seconds_per_state | solver_steps | objective_evals | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5736,32 +5775,40 @@ Source `stage2/results/s2_cost.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e14
 
 ## APST. Stage 2: training cost
 
-Source `stage2/results/s2_training.csv` · SHA `150a5e1dddd5591c96e8f1cde7a37b523e1475e5-dirty`
+Source `stage2/results/s2_training.csv` · SHA `fe1909f760be03d95802d319af5b3261413f258a-dirty`
 
-| id | model | seed | params | steps | train_seconds | best_step | training_conditions | training_re_range | training_states | label |
-|---|---|---|---|---|---|---|---|---|---|---|
-| APST-1 | H_C | 0 | 2.368e+06 | 2000 | 5066.5005 | 2000 | 1 | 40 | 102400 | learned |
-| APST-2 | H_C_s1 | 1 | 2.368e+06 | 2000 | 15061.5040 | 1900 | 1 | 40 | 102400 | learned |
-| APST-3 | H_C_s2 | 2 | 2.368e+06 | 2000 | 14515.2824 | 2000 | 1 | 40 | 102400 | learned |
-| APST-4 | H_D | 0 | 2.368e+06 | 2000 | 7639.2598 | 2000 | 1 | 40 | 102400 | learned |
-| APST-5 | H_D_s1 | 1 | 2.368e+06 | 2000 | 14504.3772 | 2000 | 1 | 40 | 102400 | learned |
-| APST-6 | H_D_s2 | 2 | 2.368e+06 | 2000 | 13021.9114 | 2000 | 1 | 40 | 102400 | learned |
-| APST-7 | L0 | 0 | 1.680e+07 | 30000 | 2279.8707 | 30000 | 1 | 40 | 102400 | learned |
-| APST-8 | L0_C | 0 | 1.680e+07 | 30000 | 2845.1646 | 30000 | 1 | 40 | 102400 | learned |
-| APST-9 | L0_C_s1 | 1 | 1.680e+07 | 30000 | 4975.0855 | 30000 | 1 | 40 | 102400 | learned |
-| APST-10 | L0_C_s2 | 2 | 1.680e+07 | 30000 | 4843.6965 | 30000 | 1 | 40 | 102400 | learned |
-| APST-11 | L0_s1 | 1 | 1.680e+07 | 30000 | 4805.0151 | 30000 | 1 | 40 | 102400 | learned |
-| APST-12 | L0_s2 | 2 | 1.680e+07 | 30000 | 5246.8523 | 30000 | 1 | 40 | 102400 | learned |
-| APST-13 | L0big | 0 | 9.980e+07 | 60000 | 10404.6182 | 60000 | 1 | 40 | 102400 | learned |
-| APST-14 | L_param | 0 | 1.680e+07 | 30000 | 2790.7090 | 30000 | 1 | 40 | 102400 | learned |
-| APST-15 | L_range | 0 | 1.680e+07 | 30000 | 2271.3695 | 30000 | 1024 | 34-46 | 204800 | learned |
-| APST-16 | L_range_C | 0 | 1.680e+07 | 30000 | 4086.5509 | 30000 | 1024 | 34-46 | 204800 | learned |
-| APST-17 | L_range_C_s1 | 1 | 1.680e+07 | 30000 | 5857.2521 | 30000 | 1024 | 34-46 | 204800 | learned |
-| APST-18 | L_range_C_s2 | 2 | 1.680e+07 | 30000 | 5180.9306 | 30000 | 1024 | 34-46 | 204800 | learned |
-| APST-19 | L_range_s1 | 1 | 1.680e+07 | 30000 | 4993.3790 | 30000 | 1024 | 34-46 | 204800 | learned |
-| APST-20 | L_range_s2 | 2 | 1.680e+07 | 30000 | 5657.5030 | 30000 | 1024 | 34-46 | 204800 | learned |
-| APST-21 | L_range_wide | 0 | 1.680e+07 | 30000 | 5810.4205 | 30000 | 1024 | 30-60 | 204800 | learned |
-| APST-22 | L_range_wide_C | 0 | 1.680e+07 | 30000 | 5275.7826 | 30000 | 1024 | 30-60 | 204800 | learned |
+Conditions = distinct Re values in the training data (range sets: one Re per trajectory).
+
+| id | model | seed | params | steps | train_seconds | best_step | training_data | training_conditions | training_re_range | training_states | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| APST-1 | H_C | 0 | 2.368e+06 | 2000 | 5066.5005 | 2000 | nominal | 1 | 40 | 102400 | learned |
+| APST-2 | H_C_s1 | 1 | 2.368e+06 | 2000 | 15061.5040 | 1900 | nominal | 1 | 40 | 102400 | learned |
+| APST-3 | H_C_s2 | 2 | 2.368e+06 | 2000 | 14515.2824 | 2000 | nominal | 1 | 40 | 102400 | learned |
+| APST-4 | H_D | 0 | 2.368e+06 | 2000 | 7639.2598 | 2000 | nominal | 1 | 40 | 102400 | learned |
+| APST-5 | H_D_s1 | 1 | 2.368e+06 | 2000 | 14504.3772 | 2000 | nominal | 1 | 40 | 102400 | learned |
+| APST-6 | H_D_s2 | 2 | 2.368e+06 | 2000 | 13021.9114 | 2000 | nominal | 1 | 40 | 102400 | learned |
+| APST-7 | L0 | 0 | 1.680e+07 | 30000 | 2279.8707 | 30000 | nominal | 1 | 40 | 102400 | learned |
+| APST-8 | L0_C | 0 | 1.680e+07 | 30000 | 2845.1646 | 30000 | nominal_C | 1 | 40 | 102400 | learned |
+| APST-9 | L0_C_s1 | 1 | 1.680e+07 | 30000 | 4975.0855 | 30000 | nominal_C | 1 | 40 | 102400 | learned |
+| APST-10 | L0_C_s2 | 2 | 1.680e+07 | 30000 | 4843.6965 | 30000 | nominal_C | 1 | 40 | 102400 | learned |
+| APST-11 | L0_s1 | 1 | 1.680e+07 | 30000 | 4805.0151 | 30000 | nominal | 1 | 40 | 102400 | learned |
+| APST-12 | L0_s2 | 2 | 1.680e+07 | 30000 | 5246.8523 | 30000 | nominal | 1 | 40 | 102400 | learned |
+| APST-13 | L0big | 0 | 9.980e+07 | 60000 | 10404.6182 | 60000 | nominal | 1 | 40 | 102400 | learned |
+| APST-14 | L_param | 0 | 1.680e+07 | 30000 | 2790.7090 | 30000 | range | 1024 | 34-46 | 204800 | learned |
+| APST-15 | L_param_C | 0 | 1.680e+07 | 30000 | 4831.2021 | 30000 | range_C | 1024 | 34-46 | 204800 | learned |
+| APST-16 | L_param_s1 | 1 | 1.680e+07 | 30000 | 5250.9888 | 30000 | range | 1024 | 34-46 | 204800 | learned |
+| APST-17 | L_param_s2 | 2 | 1.680e+07 | 30000 | 4802.2890 | 30000 | range | 1024 | 34-46 | 204800 | learned |
+| APST-18 | L_range | 0 | 1.680e+07 | 30000 | 2271.3695 | 30000 | range | 1024 | 34-46 | 204800 | learned |
+| APST-19 | L_range_C | 0 | 1.680e+07 | 30000 | 4086.5509 | 30000 | range_C | 1024 | 34-46 | 204800 | learned |
+| APST-20 | L_range_C_s1 | 1 | 1.680e+07 | 30000 | 5857.2521 | 30000 | range_C | 1024 | 34-46 | 204800 | learned |
+| APST-21 | L_range_C_s2 | 2 | 1.680e+07 | 30000 | 5180.9306 | 30000 | range_C | 1024 | 34-46 | 204800 | learned |
+| APST-22 | L_range_V | 0 | 1.680e+07 | 30000 | 5549.1533 | 30000 | range_V | 1024 | 34-46 | 204800 | learned |
+| APST-23 | L_range_V_s1 | 1 | 1.680e+07 | 30000 | 4516.8841 | 30000 | range_V | 1024 | 34-46 | 204800 | learned |
+| APST-24 | L_range_V_s2 | 2 | 1.680e+07 | 30000 | 4105.1096 | 30000 | range_V | 1024 | 34-46 | 204800 | learned |
+| APST-25 | L_range_s1 | 1 | 1.680e+07 | 30000 | 4993.3790 | 30000 | range | 1024 | 34-46 | 204800 | learned |
+| APST-26 | L_range_s2 | 2 | 1.680e+07 | 30000 | 5657.5030 | 30000 | range | 1024 | 34-46 | 204800 | learned |
+| APST-27 | L_range_wide | 0 | 1.680e+07 | 30000 | 5810.4205 | 30000 | range_wide | 1024 | 30-60 | 204800 | learned |
+| APST-28 | L_range_wide_C | 0 | 1.680e+07 | 30000 | 5275.7826 | 30000 | range_wide_C | 1024 | 30-60 | 204800 | learned |
 
 ## APDD-R. Objections Part 1 (World V, Re 50): readings (reported, not criteria)
 
@@ -5833,15 +5880,15 @@ Source `stage2/objections/results/obj_detector.csv` · SHA `a9d2d4d5bb5627572524
 
 Detector reading (H, World V): flags iff the 95% interval excludes 0; no effect-size floor (gate).
 
-| id | world | Re | arm | w_tested | mean_re_hat | bias_from_true | slope_per_frame | 95% | label |
-|---|---|---|---|---|---|---|---|---|---|
-| APDD-W-1 | V | 50 | H | 3,6,11,23 | 52.4752 | 2.4752 | 0.0595 | [0.0508, 0.0678] | estimate (reported only) |
-| APDD-W-2 | V | 50 | P1x_V | 3,6,11,23 | 49.9919 | -0.0081 | -1.918e-04 | [-0.0012, 8.760e-04] | estimate (reported only) |
-| APDD-W-3 | D | 36 | FNO_Re_id | 3,6,11,23 | 35.9179 | -0.0821 | 0.0129 | [0.0119, 0.0139] | estimate (reported only) |
-| APDD-W-4 | D | 40 | FNO_Re_id | 3,6,11,23 | 40.0057 | 0.0057 | -3.628e-04 | [-0.0014, 6.286e-04] | estimate (reported only) |
-| APDD-W-5 | D | 44 | FNO_Re_id | 3,6,11,23 | 44.0776 | 0.0776 | -0.0142 | [-0.0157, -0.0127] | estimate (reported only) |
-| APDD-W-6 | D | 50 | FNO_Re_id | 3,6,11,23 | 50.4228 | 0.4228 | -0.0589 | [-0.0623, -0.0554] | estimate (reported only) |
-| APDD-W-7 | D | 56 | FNO_Re_id | 3,6,11,23 | 56.2416 | 0.2416 | -0.1316 | [-0.1372, -0.1259] | estimate (reported only) |
+| id | world | Re | arm | w_tested | re_hat_w3 | re_hat_w6 | re_hat_w11 | re_hat_w23 | mean_re_hat | bias_from_true | slope_per_frame | 95% | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APDD-W-1 | V | 50 | H | 3,6,11,23 | 51.9088 | 52.2475 | 52.5880 | 53.1566 | 52.4752 | 2.4752 | 0.0595 | [0.0508, 0.0678] | estimate (reported only) |
+| APDD-W-2 | V | 50 | P1x_V | 3,6,11,23 | 49.9912 | 49.9959 | 49.9912 | 49.9894 | 49.9919 | -0.0081 | -1.918e-04 | [-0.0012, 8.760e-04] | estimate (reported only) |
+| APDD-W-3 | D | 36 | FNO_Re_id | 3,6,11,23 | 35.6407 | 36.0034 | 36.0089 | 36.0185 | 35.9179 | -0.0821 | 0.0129 | [0.0119, 0.0139] | estimate (reported only) |
+| APDD-W-4 | D | 40 | FNO_Re_id | 3,6,11,23 | 40.0041 | 40.0143 | 40.0032 | 40.0012 | 40.0057 | 0.0057 | -3.628e-04 | [-0.0014, 6.286e-04] | estimate (reported only) |
+| APDD-W-5 | D | 44 | FNO_Re_id | 3,6,11,23 | 44.3724 | 43.9895 | 43.9856 | 43.9628 | 44.0776 | 0.0776 | -0.0142 | [-0.0157, -0.0127] | estimate (reported only) |
+| APDD-W-6 | D | 50 | FNO_Re_id | 3,6,11,23 | 51.4689 | 50.2282 | 50.0974 | 49.8967 | 50.4228 | 0.4228 | -0.0589 | [-0.0623, -0.0554] | estimate (reported only) |
+| APDD-W-7 | D | 56 | FNO_Re_id | 3,6,11,23 | 58.0885 | 56.2310 | 55.7303 | 54.9168 | 56.2416 | 0.2416 | -0.1316 | [-0.1372, -0.1259] | estimate (reported only) |
 
 ## APFR-R. Objections Part 2: frozen claim reading (World D, Re 50 and 56)
 

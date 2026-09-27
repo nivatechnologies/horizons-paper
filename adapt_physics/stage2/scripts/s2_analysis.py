@@ -268,12 +268,13 @@ def main():
     for d in sorted((config.RUNS / "train").glob("*/info.json")):
         i = json.loads(d.read_text())
         name = d.parent.name
-        conds_n = 1024 if "range" in name else 1
-        states = 204800 if "range" in name else 102400
+        data = i.get("data", "nominal")            # recorded training-data key (hybrids: nominal Re 40 data)
+        ranged = data.startswith("range")
+        conds_n, states = (1024, 204800) if ranged else (1, 102400)
+        re_range = "30-60" if data.startswith("range_wide") else "34-46" if ranged else "40"
         tr.append(dict(model=name, params=i["params"], steps=i["steps"], batch=i["batch"], train_seconds=i["train_seconds"],
-                       best_step=i["best_step"], seed=i.get("seed", 0), training_conditions=conds_n,
-                       training_re_range="34-46" if name.startswith("L_range") and "wide" not in name else
-                       "30-60" if "wide" in name else "40", training_states=states, label="learned"))
+                       best_step=i["best_step"], seed=i.get("seed", 0), training_data=data, training_conditions=conds_n,
+                       training_re_range=re_range, training_states=states, label="learned"))
     write("s2_rows.csv", rows, "part A horizons (seed-pooled)")
     write("s2_conditions.csv", conds, "pivot criteria on fresh panels")
     write("s2_outcome.csv", [dict(outcome=outcome, kill_any=any(kill), pass_all=all(ps), middle_all=all(mid), complete=complete,

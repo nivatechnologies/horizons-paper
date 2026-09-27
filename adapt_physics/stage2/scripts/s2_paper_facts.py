@@ -219,11 +219,11 @@ def numbers():
         neg = f"passed (raised NumbersError: {e})"
     txt = (PKG / "NUMBERS.md").read_text()
     secs = re.split(r"(?m)^## ", txt)
-    pref = ("APV", "APS", "APDD", "APFR", "APEDGE")
+    pref = ("AP",)                                   # every Adapt-the-Physics section: stage 1, pivot, stage 2, objections
     keep = ["## " + s for s in secs if s.startswith(pref)]
     rows = sum(1 for s in keep for l in s.splitlines() if l.startswith(tuple("| " + p for p in pref)))
     head = sh("git", "rev-parse", "--short", "HEAD")
-    L = ["# Adapt the Physics: NUMBERS sections APV*, APS*, APDD*, APFR*, APEDGE*", "",
+    L = ["# Adapt the Physics: NUMBERS (every AP section: stage 1 AP*, pivot APV*, stage 2 APS*, objections APDD*/APFR*/APEDGE*)", "",
          f"Copied from `adapt_physics/NUMBERS.md` at `{head}` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.", "",
          "**Checker status:**",
          f"- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): "
