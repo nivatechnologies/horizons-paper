@@ -104,6 +104,7 @@ def main(panel, device, arm, seed, windows):
     n = T.shape[1]
     out = config.RUNS / "obj_eval" / panel
     out.mkdir(parents=True, exist_ok=True)
+    RES.mkdir(parents=True, exist_ok=True)
     resf = RES / f"eval_{panel}.json"
     g = fno = base_l0 = None
     for w in [int(x) for x in windows.split(",")]:
