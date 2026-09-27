@@ -1,0 +1,29 @@
+{
+ "val_range_V": {
+  "block": "validation",
+  "stream": 3,
+  "seed": 30903,
+  "n_traj": 128,
+  "n_frames": 100,
+  "re": [
+   34.0,
+   46.0
+  ],
+  "alpha": "alpha0 * 40 / Re",
+  "seconds": 177.1915123462677
+ },
+ "git_sha": "565a249b4972553e246d13dfa05fce20a350b34f-dirty",
+ "train_range_V": {
+  "block": "training",
+  "stream": 3,
+  "seed": 20903,
+  "n_traj": 1024,
+  "n_frames": 200,
+  "re": [
+   34.0,
+   46.0
+  ],
+  "alpha": "alpha0 * 40 / Re",
+  "seconds": 1512.4540631771088
+ }
+}

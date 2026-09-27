@@ -145,6 +145,37 @@ def main():
         if p.exists():
             rows, sha = MN.read_csv(p)
             MN.table(out, sec, title, p, cols, rows, sha, note=note)
+    # ---- objections WO sections APDD* (Part 1), APFR* (Part 2), APEDGE* (Part 3) (stage2/objections/OBJ_FREEZE.md)
+    OR = config.PKG / "stage2" / "objections" / "results"
+    for fname, sec, title, cols, note in (
+            ("obj_part1_readings.csv", "APDD-R", "Objections Part 1 (World V, Re 50): readings (reported, not criteria)",
+             ["eps", "primary", "H_over_O", ("95%", ci("H_over_O_ci95_lo", "H_over_O_ci95_hi")), "H_over_L_range_V",
+              ("95%", ci("H_over_L_range_V_ci95_lo", "H_over_L_range_V_ci95_hi")), "outcome_reading", "L_range_V_seeds",
+              "H_true_minus_H", ("95%", ci("H_true_minus_H_ci95_lo", "H_true_minus_H_ci95_hi")), "partA_D_Re50_H_over_O",
+              "partA_D_Re50_H_over_L_range"], ""),
+            ("obj_part1.csv", "APDD-H", "Objections Part 1 (World V, Re 50): horizons (seed-pooled)",
+             ["arm", "w", "eps", "seeds", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")), "per_seed", "S1", "S3",
+              "phys_time", "partA_worldD_Re50"], ""),
+            ("obj_detector.csv", "APDD-W", "Objections: identified-Re detectors (H and P1x_V in World V; FNO-Re identified in World D)",
+             ["world", "Re", "arm", "w_tested", "mean_re_hat", "bias_from_true", "slope_per_frame",
+              ("95%", ci("slope_ci95_lo", "slope_ci95_hi"))], "Detector reading (H, World V): flags iff the 95% interval excludes 0; "
+                                                             "no effect-size floor (gate)."),
+            ("obj_part2_reading.csv", "APFR-R", "Objections Part 2: frozen claim reading (World D, Re 50 and 56)",
+             ["Re", "H_minus_FNO_Re_true", ("95%", ci("ci95_lo", "ci95_hi")), "seeds", "holds_at_this_Re", "claim"], ""),
+            ("obj_part2.csv", "APFR-H", "Objections Part 2: FNO-Re (true and identified Re) against H, fresh panels",
+             ["world", "Re", "arm", "w", "eps", "seeds", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")), "per_seed",
+              "S1", "S3", "retention", "H", "H_retention", "H_minus_arm", ("95%", ci("diff_ci95_lo", "diff_ci95_hi"))], ""),
+            ("obj_lft.csv", "APFR-FT", "Objections Part 2: fine-tuned FNO (L_ft) on fresh panels (reported, not a reading)",
+             ["world", "Re", "w", "eps", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")), "retention", "H",
+              "H_minus_L_ft", ("95%", ci("diff_ci95_lo", "diff_ci95_hi")), "online_seconds_per_state"], ""),
+            ("obj_edge.csv", "APEDGE", "Objections Part 3: edge timing, Orin NX against datacenter (batch 1, reported only)",
+             ["arm", "orin_result", "orin_wall_median", "orin_wall_p90", "dc_batch1_wall_median", "orin_identify_or_adapt_median",
+              "orin_forecast_fps", "dc_batch1_forecast_fps", "orin_peak_torch_mem_MB", "orin_tegrastats_ram_peak_MB",
+              "orin_vdd_in_mean_mW", "orin_energy_per_state_J", "horizon_max_abs_diff", "horizon_states_identical", "horizon_n"], "")):
+        p = OR / fname
+        if p.exists():
+            rows, sha = MN.read_csv(p)
+            MN.table(out, sec, title, p, cols, rows, sha, note=note)
     check(out)
     (config.PKG / "NUMBERS.md").write_text("\n".join(out) + "\n")
     print("wrote NUMBERS.md", sum(1 for l in out if l.startswith("| AP")), "rows")

@@ -91,3 +91,83 @@ The full list is in `pivot/PV_GATE.md`.
 - One seed per model, on a 300-trajectory screening panel.
 - The mismatch terms are drag (from stage 1) and one Codex term.
 - Check 9 is satisfied only for the mismatch selector. The thresholds and arms are selector-dependent.
+
+## Stage 2 (confirmation and robustness): session review (2026-09-27)
+
+### Order
+
+1. Freeze `89c9bc9`, before any fresh panel.
+2. Part A final at `d79a5f6` / `150a5e1`: **PASS confirmed** on fresh panels with 3 seeds.
+3. Part B final at `2b566a9` / `2f539db`.
+4. The paper-facts note and the NUMBERS export were generated from the repository after Part A and again after Part B.
+
+### Spec errors found in the WO
+
+The full list is in `stage2/S2_GATE.md`.
+
+1. **Estimator and intervals unpinned.**
+   - The seed-pooled estimator, "seeds resampled within each trajectory" and "every criterion's value with its
+     interval" had no pinned estimator.
+   - Pinned: a per-state mean over seeds, then a bootstrap over trajectories with seeds resampled within each; ratio
+     intervals under the same resampling.
+2. **The PASS Re-40 criterion mixes seed counts.** It compares seed-pooled L0 with single-seed L0-big. Applied as
+   written.
+3. **Part B left most settings unpinned.** Seeds, Re values, arms and the Nelder–Mead details were pinned before any
+   result.
+4. **w = 23 is not named for the fresh panels.** It was not repeated there because of cost, so the detector slope
+   uses 3 points.
+5. **Check 9 is not satisfied for part B's selectors.** Part B is labelled selector-dependent.
+
+### Executor slips (none changed a result)
+
+- **Wrong model path.** A model-path bug made three World D hybrid jobs fail to load. It was fixed and the jobs
+  re-queued.
+- **Dependency race.** A two-parameter panel started before its chaos entry existed, and was re-queued.
+- **Worker lifetime.** The queue workers had a hard 8 h lifetime, which stalled the queue for about 1.5 h before it
+  was noticed. They were relaunched with a 20 h lifetime.
+- **Job priority.** Training jobs outranked evaluations in the queue file. It was re-prioritized under the queue
+  lock.
+
+### Result the paper must carry
+
+- **Item 2: windows straddling the change.** H has no change detector. When its 11-frame window starts 3–9 frames
+  before the change, H falls below L_range at Re 44 and Re 50 in both worlds.
+  - World D, Re 50: H 0.51–1.27 against L_range 1.00–1.69.
+  - This is a real limitation of the method as tested.
+
+## Objections and edge timing: session review (2026-09-27)
+
+### Order
+
+1. Started after stage-2 part B was complete and exported.
+2. Freeze `1871700`, before any World V data and any Part 2 evaluation.
+3. The Orin NX timing was run by a subagent. The datacenter comparison used the same harness at batch 1 on a Baccus
+   GPU.
+
+### Spec errors found in the WO
+
+The full list is in `stage2/objections/OBJ_GATE.md`.
+
+1. **The detector reading has no effect-size floor.** It is nearly degenerate: with 900 seed-state estimates, a
+   negligible slope excludes zero. Applied as written, with the magnitude reported. In World V the slope (+0.059 per
+   frame, a +2.5 bias in Re) is large regardless.
+2. **The Part 3 datacenter comparison was unpinned.** Pinned: the same harness at batch 1.
+3. **"Same code, FP32" conflicts with the datacenter settings,** where the oracle runs in float64. The datacenter
+   settings were kept.
+4. **The Orin torch build.** No torch wheel is built for compute capability 8.7 on JetPack 7. NVIDIA's torch 2.11.0
+   SBSA wheel runs sm_80 kernels by binary compatibility; numerics were checked to machine precision. The datacenter
+   runs torch 2.13.0.
+5. **jetson_clocks** could not be enabled without sudo (power mode MAXN).
+6. **The FNO-Re identification procedure** was pinned in the freeze (inputs, scored frames, the short-window rule),
+   as the WO requires.
+
+### Executor slips (none changed a result)
+
+- The objections results directory did not exist yet for the first Part 2 evaluations. Three crashed on writing
+  their metadata; they were re-run and the crashed outputs set aside.
+- The Orin subagent ran `tegrastats` for about 3 s during the H arm to confirm the job was alive. There were 60,782
+  power samples in that arm.
+
+### Qwen services
+
+Kept stopped from stage 2 through this WO, as it requires, and restarted at its end.

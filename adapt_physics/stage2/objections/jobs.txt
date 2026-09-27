@@ -1,0 +1,61 @@
+# objections jobs: name | deps | command (cwd adapt_physics)
+chaosV | | ../.venv/bin/python stage2/objections/scripts/obj_data.py chaos {dev} >> runs/logs/obj_data.log 2>&1
+dataV_val | | ../.venv/bin/python stage2/objections/scripts/obj_data.py train val_range_V {dev} >> runs/logs/obj_data.log 2>&1
+dataV_train | | ../.venv/bin/python stage2/objections/scripts/obj_data.py train train_range_V {dev} >> runs/logs/obj_data.log 2>&1
+train_L_param_s1 | | ../.venv/bin/python scripts/ap_train.py L_param {dev} - 1 > runs/logs/obj_train_L_param_s1.log 2>&1
+train_L_param_s2 | | ../.venv/bin/python scripts/ap_train.py L_param {dev} - 2 > runs/logs/obj_train_L_param_s2.log 2>&1
+P2_true_D50_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} FNO_Re_true 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D50_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} FNO_Re_id 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D56_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} FNO_Re_true 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D56_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} FNO_Re_id 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+panelV | stage2/objections/results/chaos_V.json | sleep 5; ../.venv/bin/python stage2/objections/scripts/obj_data.py panel {dev} >> runs/logs/obj_data.log 2>&1
+train_L_range_V | runs/cache/train_range_V_re.npy runs/cache/val_range_V_re.npy | ../.venv/bin/python scripts/ap_train.py L_range_V {dev} > runs/logs/obj_train_L_range_V.log 2>&1
+P2_true_D44_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} FNO_Re_true 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D44_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} FNO_Re_id 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D36_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_D {dev} FNO_Re_true 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D36_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_D {dev} FNO_Re_id 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D40_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_D {dev} FNO_Re_true 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D40_s0 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_D {dev} FNO_Re_id 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_H_s0 | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} H 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_H_s1 | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} H 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_H_s2 | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} H 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_O | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} O_V 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_Htrue_s0 | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} H_true 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_Htrue_s1 | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} H_true 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_Htrue_s2 | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} H_true 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_L0 | runs/cache/obj_V_Re50_obs.npy | sleep 20; for s in 0 1 2; do ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} L0 $s 11,6,3,23; done >> runs/logs/obj_eval.log 2>&1
+V_LrangeV_s0 | runs/cache/obj_V_Re50_obs.npy runs/train/L_range_V/info.json | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} L_range_V 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+V_P1x | runs/cache/obj_V_Re50_obs.npy | sleep 20; ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} P1x_V 0 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_Lft_D50 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} L_ft 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_Lft_D44 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} L_ft 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_Lft_D56 | | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} L_ft 0 11 >> runs/logs/obj_eval.log 2>&1
+P2_true_D50_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} FNO_Re_true 1 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D50_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} FNO_Re_id 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D56_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} FNO_Re_true 1 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D56_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} FNO_Re_id 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D44_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} FNO_Re_true 1 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D44_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} FNO_Re_id 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D36_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_D {dev} FNO_Re_true 1 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D36_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_D {dev} FNO_Re_id 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D40_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_D {dev} FNO_Re_true 1 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D40_s1 | runs/train/L_param_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_D {dev} FNO_Re_id 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D50_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} FNO_Re_true 2 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D50_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_D {dev} FNO_Re_id 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D56_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} FNO_Re_true 2 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D56_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_D {dev} FNO_Re_id 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D44_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} FNO_Re_true 2 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D44_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_D {dev} FNO_Re_id 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D36_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_D {dev} FNO_Re_true 2 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D36_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_D {dev} FNO_Re_id 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+P2_true_D40_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_D {dev} FNO_Re_true 2 11 >> runs/logs/obj_eval.log 2>&1
+P2_id_D40_s2 | runs/train/L_param_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_D {dev} FNO_Re_id 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+train_L_param_C | | ../.venv/bin/python scripts/ap_train.py L_param_C {dev} > runs/logs/obj_train_L_param_C.log 2>&1
+P2C_50 | runs/train/L_param_C/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_C {dev} FNO_Re_true 0 11; ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re50_C {dev} FNO_Re_id 0 11 >> runs/logs/obj_eval.log 2>&1
+P2C_56 | runs/train/L_param_C/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_C {dev} FNO_Re_true 0 11; ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re56_C {dev} FNO_Re_id 0 11 >> runs/logs/obj_eval.log 2>&1
+P2C_44 | runs/train/L_param_C/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_C {dev} FNO_Re_true 0 11; ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re44_C {dev} FNO_Re_id 0 11 >> runs/logs/obj_eval.log 2>&1
+P2C_36 | runs/train/L_param_C/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_C {dev} FNO_Re_true 0 11; ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re36_C {dev} FNO_Re_id 0 11 >> runs/logs/obj_eval.log 2>&1
+P2C_40 | runs/train/L_param_C/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_C {dev} FNO_Re_true 0 11; ../.venv/bin/python stage2/objections/scripts/obj_eval.py s2_test_Re40_C {dev} FNO_Re_id 0 11 >> runs/logs/obj_eval.log 2>&1
+train_L_range_V_s1 | runs/cache/train_range_V_re.npy runs/cache/val_range_V_re.npy | ../.venv/bin/python scripts/ap_train.py L_range_V {dev} - 1 > runs/logs/obj_train_L_range_V_s1.log 2>&1
+V_LrangeV_s1 | runs/cache/obj_V_Re50_obs.npy runs/train/L_range_V_s1/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} L_range_V 1 11,6,3,23 >> runs/logs/obj_eval.log 2>&1
+train_L_range_V_s2 | runs/cache/train_range_V_re.npy runs/cache/val_range_V_re.npy | ../.venv/bin/python scripts/ap_train.py L_range_V {dev} - 2 > runs/logs/obj_train_L_range_V_s2.log 2>&1
+V_LrangeV_s2 | runs/cache/obj_V_Re50_obs.npy runs/train/L_range_V_s2/info.json | ../.venv/bin/python stage2/objections/scripts/obj_eval.py obj_V_Re50 {dev} L_range_V 2 11,6,3,23 >> runs/logs/obj_eval.log 2>&1

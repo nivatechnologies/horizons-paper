@@ -1,0 +1,22 @@
+{
+ "FNO_Re_true_s0_11": {
+  "arm": "FNO_Re_true",
+  "seed": 0,
+  "window": 11,
+  "n": 300,
+  "seconds": 23.22838020324707,
+  "wall_seconds_per_state": 0.07742793401082357
+ },
+ "panel": "s2_test_Re36_C",
+ "git_sha": "565a249b4972553e246d13dfa05fce20a350b34f-dirty",
+ "FNO_Re_id_s0_11": {
+  "arm": "FNO_Re_id",
+  "seed": 0,
+  "window": 11,
+  "n": 300,
+  "seconds": 47.74204778671265,
+  "objective_evals": 30,
+  "identify_seconds_per_state": 0.10091195662816366,
+  "wall_seconds_per_state": 0.15914015928904215
+ }
+}

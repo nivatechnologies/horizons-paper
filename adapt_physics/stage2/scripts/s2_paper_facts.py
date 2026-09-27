@@ -219,16 +219,17 @@ def numbers():
         neg = f"passed (raised NumbersError: {e})"
     txt = (PKG / "NUMBERS.md").read_text()
     secs = re.split(r"(?m)^## ", txt)
-    keep = ["## " + s for s in secs if s.startswith(("APV", "APS"))]
-    rows = sum(1 for s in keep for l in s.splitlines() if l.startswith("| APV") or l.startswith("| APS"))
+    pref = ("APV", "APS", "APDD", "APFR", "APEDGE")
+    keep = ["## " + s for s in secs if s.startswith(pref)]
+    rows = sum(1 for s in keep for l in s.splitlines() if l.startswith(tuple("| " + p for p in pref)))
     head = sh("git", "rev-parse", "--short", "HEAD")
-    L = ["# Adapt the Physics: NUMBERS sections APV* and APS*", "",
+    L = ["# Adapt the Physics: NUMBERS sections APV*, APS*, APDD*, APFR*, APEDGE*", "",
          f"Copied from `adapt_physics/NUMBERS.md` at `{head}` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.", "",
          "**Checker status:**",
          f"- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): "
          f"{'passed' if ok else 'FAILED: ' + r.stderr[-400:]}. {r.stdout.strip()}.",
          f"- Negative test (a duplicate section code must raise): {neg}.",
-         f"- APV\\*/APS\\* rows: {rows}.", ""] + keep
+         f"- Rows in these sections: {rows}.", ""] + keep
     (OUT / "numbers_export.md").write_text("\n".join(L) + "\n")
     print("numbers export", "ok" if ok else "FAILED", rows, "rows;", neg)
 
