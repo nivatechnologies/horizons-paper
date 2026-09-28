@@ -22,7 +22,7 @@ Changes needed to read our data (all recorded in the freeze):
   * forecast: from the (noisy) frame 11 with the adapted code, F frames; errors against the truth grids.
 
 Usage (on a Spark, cwd = ~/geps_work):
-  python geps_run.py train <range|range_wide> <seed> <hours>
+  python geps_run.py train <range|range_wide> <seed> <hours> [lr] [val_every (default 50)]
   python geps_run.py adapt <run> <panel> <steps|0> <nominal|batched> <i0> <i1>
         (states i0..i1-1 of the panel adapted in one batched pass; nominal = no-adaptation reference code fitted on Re-40 data)
   python geps_run.py pilot <run> <B> <steps>                   (batched adaptation throughput on training data)
@@ -75,8 +75,8 @@ def to_states(x):
     return x.permute(0, 2, 3, 1).unsqueeze(1)
 
 
-def train(data, seed, hours, lr=None):
-    seed, hours = int(seed), float(hours)
+def train(data, seed, hours, lr=None, val_every=50):
+    seed, hours, val_every = int(seed), float(hours), int(val_every)
     lr = CFG["lr"] if lr is None else float(lr)                # deviation option (GEPS-wide: 1e-3 after divergence at 1e-2)
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -100,8 +100,12 @@ def train(data, seed, hours, lr=None):
     vr = np.random.default_rng(1)
     vi, vk = vr.integers(0, V.shape[0], 64), vr.integers(0, V.shape[1] - T_WIN + 1, 64)
     vx = torch.as_tensor(np.stack([V[i, k:k + T_WIN] for i, k in zip(vi, vk)]) * sc, dtype=torch.float32, device=dev)
+    with torch.no_grad():                                          # no-change forecast on the same windows (collapse check)
+        pv = to_states(vx)
+        persist = float(crit(pv[..., :1].expand_as(pv).contiguous(), pv))
     t0 = time.time()
     log = open(run / "train.log", "a")
+    log.write(json.dumps(dict(persistence_val_loss=persist, val_every=val_every, lr=lr)) + "\n")
     best, best_ep, ep, steps = float("inf"), -1, 0, 0
     cap = hours * 3600
     while ep < CFG["epochs"] and time.time() - t0 < cap:
@@ -126,7 +130,7 @@ def train(data, seed, hours, lr=None):
             if time.time() - t0 >= cap:
                 break
         sched.step(tot / n_env)
-        if ep % 50 == 0:
+        if ep % val_every == 0:
             model.eval()
             with torch.no_grad():
                 # validation environments are unseen: evaluate with the mean training code (adaptation-free proxy)
@@ -136,12 +140,17 @@ def train(data, seed, hours, lr=None):
                 vl = float(crit(model(to_states(vx), t, torch.zeros(64, dtype=torch.long, device=dev)), to_states(vx)))
                 model.derivative.codes.data.copy_(keep)
             rec = dict(epoch=ep, steps=steps, train_loss=tot / n_env, val_loss=vl, lr=opt.param_groups[0]["lr"],
-                       seconds=time.time() - t0)
+                       seconds=time.time() - t0, persistence_val_loss=persist)
             log.write(json.dumps(rec) + "\n")
             log.flush()
             if vl < best:
                 best, best_ep = vl, ep
                 torch.save(model.state_dict(), run / "best.pt")
+            if val_every < 50 and ep == 4 and abs(vl - persist) < 1e-4:     # Todd 2026-09-28: collapse stop at epoch 4
+                (run / "COLLAPSED").write_text(json.dumps(dict(epoch=ep, val_loss=vl, persistence=persist)))
+                log.write(json.dumps(dict(stopped="collapsed to persistence at epoch 4", val_loss=vl, persistence=persist)) + "\n")
+                log.flush()
+                break
         ep += 1
     torch.save(model.state_dict(), run / "last.pt")
     info = dict(data=data, seed=seed, lr=lr, epochs_done=ep, steps=steps, cap_hours=hours, cap_bound=ep < CFG["epochs"],
@@ -345,7 +354,7 @@ if __name__ == "__main__":
     torch.set_num_threads(8)
     c = sys.argv[1]
     if c == "train":
-        train(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5] if len(sys.argv) > 5 else None)
+        train(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5] if len(sys.argv) > 5 else None, sys.argv[6] if len(sys.argv) > 6 else 50)
     elif c == "adapt":
         # adapt <run> <panel> <steps|0> <nominal|batched> <i0> <i1>
         adapt(sys.argv[2], sys.argv[3], int(sys.argv[4]), nominal=sys.argv[5] == "nominal", i0=sys.argv[6], i1=sys.argv[7])

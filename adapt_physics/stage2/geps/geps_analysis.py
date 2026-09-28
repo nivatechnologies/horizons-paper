@@ -31,7 +31,7 @@ from s2_analysis import boot_all, boot_idx, q  # noqa: E402
 from th import score  # noqa: E402
 
 N = 50
-RUN = "geps_range_s0"
+RUN = "geps_range_s0_lr0.001"     # published lr 1e-2 collapsed to persistence (archived, never evaluated); deviation
 GEV = config.RUNS / "geps_eval" / RUN
 S2EV = config.RUNS / "s2_eval"
 OEV = config.RUNS / "obj_eval"
@@ -107,6 +107,7 @@ def main():
                                  S1=float(np.mean(~Cs | (Hs > 1))), S3=float(np.mean(~Cs | (Hs > 3))),
                                  retention=float(Hs.mean() / Ho.mean()),
                                  label="learned opponent (reported)" if geps else "comparator (reported)"))
+    TR = next((t for t in training() if t["run"] == RUN), {})
     for Re in (50, 56):
         cells = [a for a in ("GEPS_range_adapt500", "GEPS_range_adapt5000") if (Re, a, 0.1) in H]
         if len(cells) < 2 or (Re, "H", 0.1) not in H:
@@ -121,7 +122,8 @@ def main():
         dc = bh["cond"] - bg["cond"]
         lo, hi = q(d)
         val = float(Hh.mean() - Hg.mean())
-        reading.append(dict(Re=Re, better_budget=best.replace("GEPS_range_adapt", ""), GEPS=float(Hg.mean()), H=float(Hh.mean()),
+        reading.append(dict(Re=Re, better_budget=best.replace("GEPS_range_adapt", ""), GEPS=float(Hg.mean()),
+                            GEPS_epochs=TR.get("epochs_trained"), GEPS_undertrained=TR.get("undertrained"), H=float(Hh.mean()),
                             H_minus_GEPS=val, ci95_lo=lo, ci95_hi=hi, cond_ci95_lo=q(dc)[0], cond_ci95_hi=q(dc)[1],
                             other_budget_H_minus_GEPS=float(Hh.mean() - H[(Re, [c for c in cells if c != best][0], 0.1)].mean()),
                             holds_at_this_Re=bool(val >= MARGIN and lo > 0), label="reading component"))
@@ -156,24 +158,43 @@ def timing():
     return out
 
 
+def persistence_val(data):
+    """No-change forecast RelativeL2 on the training script's 64 fixed validation windows (collapse reference)."""
+    D = config.RUNS / "cache" / "geps_stage"
+    sc = 64.0 / json.loads((D / "meta.json").read_text())["sigma40"]
+    V = np.load(D / f"val_{data}.npy", mmap_mode="r")
+    vr = np.random.default_rng(1)
+    vi, vk = vr.integers(0, V.shape[0], 64), vr.integers(0, V.shape[1] - 20 + 1, 64)
+    x = np.stack([V[i, k:k + 20] for i, k in zip(vi, vk)]).astype(np.float64).reshape(64, 20, -1) * sc
+    p = np.repeat(x[:, :1], 20, 1)
+    return float((np.sqrt(((p - x) ** 2).sum((1, 2))) / np.sqrt((x ** 2).sum((1, 2)))).mean())
+
+
 def training():
     out = []
-    for run, data, lr, host in ((RUN, "range (Re U[34, 46])", 1e-2, "Spark A"),
-                                ("geps_range_wide_s0", "range_wide (Re U[30, 60])", 1e-2, "Spark B"),
-                                ("geps_range_wide_s0_lr0.001", "range_wide (Re U[30, 60])", 1e-3, "Spark B")):
+    for run, data, lr, host, ev in (
+            ("ARCHIVED_geps_range_s0_lr0.01_collapsed", "range", 1e-2, "Spark A", "no (collapsed to persistence; archived, never evaluated)"),
+            (RUN, "range", 1e-3, "Spark A", "yes"),
+            ("geps_range_wide_s0", "range_wide", 1e-2, "Spark B", "no (diverged)"),
+            ("geps_range_wide_s0_lr0.001", "range_wide", 1e-3, "Spark B", "no (cut)")):
         d = config.RUNS / "geps_eval" / run
         log = d / "train.log"
         if not log.exists():
             continue
         L = [json.loads(x) for x in log.read_text().splitlines() if x.startswith("{")]
-        vals = [x["val_loss"] for x in L if x.get("val_loss") is not None]
+        E = [x for x in L if "epoch" in x]
+        vals = [x["val_loss"] for x in E]
         fin = [v for v in vals if v == v]
         info = json.loads((d / "info.json").read_text()) if (d / "info.json").exists() else {}
-        out.append(dict(run=run, data=data, lr=lr, host=host, epochs_logged=L[-1]["epoch"] if L else None,
-                        steps=info.get("steps", L[-1]["steps"] if L else None), best_val=min(fin) if fin else None,
-                        diverged=bool(vals and not fin), cap_hours=info.get("cap_hours"),
-                        stopped_by=info.get("stopped_by", "cap" if info else "killed at deadline or diverged (no info.json)"),
-                        evaluated="yes" if run == RUN else "no (cut)", label="training (reported)"))
+        pers = persistence_val(data)
+        falling = len(fin) >= 3 and fin[-1] < fin[-2] < fin[-3]
+        best_ep = E[int(np.nanargmin(np.where(np.isnan(vals), np.inf, vals)))]["epoch"] if fin else None
+        out.append(dict(run=run, data=data, lr=lr, host=host, epochs_trained=(info.get("epochs_done") if info else (E[-1]["epoch"] + 1 if E else None)),
+                        steps=info.get("steps", E[-1]["steps"] if E else None), best_val=min(fin) if fin else None, best_epoch=best_ep,
+                        persistence_val=pers, best_minus_persistence=(min(fin) - pers) if fin else None,
+                        val_curve=" ".join(f"{x['epoch']}:{x['val_loss']:.7f}" for x in E),
+                        undertrained=falling, diverged=bool(vals and not fin), collapsed=(d / "COLLAPSED").exists() or run.startswith("ARCHIVED"),
+                        cap_hours=info.get("cap_hours"), evaluated=ev, label="training (reported)"))
     return out
 
 
@@ -185,9 +206,10 @@ def note(rows, reading):
     L = [f"## GEPS as a learned adaptive opponent (script-generated: stage2/geps/geps_analysis.py @ {config.git_sha()[:7]})", ""]
     fin = reading[-1]
     L += [f"**Frozen reading:** {fin['claim']}.", "",
-          "| Re | better budget | GEPS-range | H | H - GEPS (95%) | holds |", "|---|---|---|---|---|---|"]
+          "| Re | better budget | GEPS-range (epochs trained) | H | H - GEPS (95%) | holds |", "|---|---|---|---|---|---|"]
     for r in reading[:-1]:
-        L.append(f"| {r['Re']} | {r['better_budget'] or 'pending'} | {fmt(r['GEPS'])} | {fmt(r['H'])} | "
+        ep = "" if r.get("GEPS_epochs") is None else f" ({r['GEPS_epochs']} epochs{', UNDERTRAINED' if r.get('GEPS_undertrained') else ''})"
+        L.append(f"| {r['Re']} | {r['better_budget'] or 'pending'} | {fmt(r['GEPS'])}{ep} | {fmt(r['H'])} | "
                  f"{fmt(r['H_minus_GEPS'])} [{fmt(r['ci95_lo'])}, {fmt(r['ci95_hi'])}] | {r['holds_at_this_Re']} |")
     L += ["", f"First N = {N} states of the fresh World D panels, w = 11, eps 0.1, future frames; margin {MARGIN} with the "
           "95% paired interval excluding 0 (crossed bootstrap over trajectories and H's seeds; GEPS one seed). Scope reduced "
@@ -197,6 +219,12 @@ def note(rows, reading):
         if r["eps"] == 0.1:
             L.append(f"| {r['Re']} | {r['arm']} | {r['source']} | {fmt(r['restricted_mean'])} [{fmt(r['ci95_lo'])}, "
                      f"{fmt(r['ci95_hi'])}] | {fmt(r['S1'])} | {fmt(r['S3'])} | {fmt(r['retention'])} |")
+    L += ["", "GEPS training (validation RelativeL2 on the 64 fixed windows; persistence = the no-change forecast on the same windows):", "",
+          "| run | lr | epochs | best val (epoch) | persistence | val curve (epoch:loss) | status |", "|---|---|---|---|---|---|---|"]
+    for r in training():
+        st = "collapsed to persistence" if r["collapsed"] else ("diverged" if r["diverged"] else ("undertrained (val still falling)" if r["undertrained"] else "trained"))
+        L.append(f"| {r['run']} | {r['lr']:g} | {r['epochs_trained']} | {fmt(r['best_val'], 7)} ({r['best_epoch']}) | "
+                 f"{r['persistence_val']:.7f} | {r['val_curve']} | {st}; evaluated: {r['evaluated']} |")
     t = timing()
     if t:
         L += ["", "| cost (batch 1, Spark GB10) | steps | n timed | wall median s | adapt median s | forecast median s |",
