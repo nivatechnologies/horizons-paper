@@ -1,11 +1,11 @@
-# Adapt the Physics: NUMBERS (every AP section: stage 1 AP*, pivot APV*, stage 2 APS*, objections APDD*/APFR*/APEDGE*)
+# Adapt the Physics: NUMBERS (every AP section: stage 1 AP*, pivot APV*, stage 2 APS*, objections APDD*/APFR*/APEDGE*, GEPS APGEPS*)
 
-Copied from `adapt_physics/NUMBERS.md` at `5e7b773` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
+Copied from `adapt_physics/NUMBERS.md` at `3ae1502` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
 
 **Checker status:**
-- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5743 rows.
+- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5749 rows.
 - Negative test (a duplicate section code must raise): passed (raised NumbersError: duplicate section code APS_NEGTEST).
-- Rows in these sections: 5743.
+- Rows in these sections: 5749.
 
 ## APK. Kill rule on the frozen cell (Re 44, eps 0.1, w 11, first 100 states)
 
@@ -3528,7 +3528,7 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 
 ## APVS. All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system
 
-Source `pivot/results/chaos_gate_C.json` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `pivot/results/chaos_gate_C.json` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: objections WO; two-parameter systems: stage 2 item 3.
 
@@ -3569,7 +3569,7 @@ Drag: alpha = 0.0773273 gives share 0.14886. Beta: Codex start 3.35; selected be
 
 ## APSO. Stage 2 part A: outcome of the pivot criteria on fresh panels (3 seeds)
 
-Source `stage2/results/s2_outcome.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_outcome.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 | id | outcome | kill_any | pass_all | middle_all | complete | all_three_seeds | precedence | label |
 |---|---|---|---|---|---|---|---|---|
@@ -3578,7 +3578,7 @@ Source `stage2/results/s2_outcome.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b
 
 ## APSK. Stage 2 part A: every pivot criterion on fresh panels, with 95% intervals
 
-Source `stage2/results/s2_conditions.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_conditions.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Point ratio decides. Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories). per_seed = the ratio for each seed.
 
@@ -3609,7 +3609,7 @@ Point ratio decides. Primary 95% intervals: CROSSED bootstrap (trajectory rows a
 
 ## APSH. Stage 2 part A: seed-pooled horizons on fresh panels
 
-Source `stage2/results/s2_rows.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_rows.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 score future = frames 1.. (primary); from_t0 = frame 0 included (item 6).
 
@@ -4639,7 +4639,7 @@ score future = frames 1.. (primary); from_t0 = frame 0 included (item 6).
 
 ## APSD. Stage 2: paired differences H - b (seed-pooled) and frozen readings
 
-Source `stage2/results/s2_paired.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_paired.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Reading = frozen margins on the crossed interval (primary). Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories).
 
@@ -5039,7 +5039,7 @@ Reading = frozen margins on the crossed interval (primary). Primary 95% interval
 
 ## APSR. Stage 2: time to 90% of the oracle (w in 3, 6, 11)
 
-Source `stage2/results/s2_recovery.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_recovery.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 | id | world | Re | eps | arm | w_tested | w_to_90pct_oracle | label |
 |---|---|---|---|---|---|---|---|
@@ -5217,7 +5217,7 @@ Source `stage2/results/s2_recovery.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83
 
 ## APSW. Stage 2: window-drift detector and the World C slope-shortfall correlation
 
-Source `stage2/results/s2_detector.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_detector.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Reported only.
 
@@ -5257,7 +5257,7 @@ Reported only.
 
 ## APSB. Stage 2 part B: robustness items 1-4 (reported, not criteria)
 
-Source `stage2/results/s2_partB.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_partB.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Single seed (seed 0) where stated in the freeze.
 
@@ -5321,7 +5321,7 @@ Single seed (seed 0) where stated in the freeze.
 
 ## APSC. Stage 2: online cost
 
-Source `stage2/results/s2_cost.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_cost.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 | id | panel | key | arm | seed | variant | window | n | wall_seconds_per_state | solver_steps | objective_evals | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|
@@ -5808,7 +5808,7 @@ Source `stage2/results/s2_cost.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b467
 
 ## APST. Stage 2: training cost
 
-Source `stage2/results/s2_training.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/results/s2_training.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Conditions = distinct Re values in the training data (range sets: one Re per trajectory).
 
@@ -5847,7 +5847,7 @@ Conditions = distinct Re values in the training data (range sets: one Re per tra
 
 ## APDD-R. Objections Part 1 (World V, Re 50): readings (reported, not criteria)
 
-Source `stage2/objections/results/obj_part1_readings.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_part1_readings.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories).
 
@@ -5859,7 +5859,7 @@ Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resam
 
 ## APDD-H. Objections Part 1 (World V, Re 50): horizons (seed-pooled)
 
-Source `stage2/objections/results/obj_part1.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_part1.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories).
 
@@ -5917,7 +5917,7 @@ Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resam
 
 ## APDD-W. Objections: identified-Re detectors (H and P1x_V in World V; FNO-Re identified in World D)
 
-Source `stage2/objections/results/obj_detector.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_detector.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Detector reading (H, World V): flags iff the (crossed) 95% interval excludes 0; no effect-size floor (gate). Slopes are per seed and state; crossed interval resamples states and seeds independently.
 
@@ -5934,7 +5934,7 @@ Detector reading (H, World V): flags iff the (crossed) 95% interval excludes 0; 
 
 ## APFR-R. Objections Part 2: frozen claim reading (World D, Re 50 and 56)
 
-Source `stage2/objections/results/obj_part2_reading.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_part2_reading.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 holds_at_this_Re uses the crossed interval (primary). Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories).
 
@@ -5947,7 +5947,7 @@ holds_at_this_Re uses the crossed interval (primary). Primary 95% intervals: CRO
 
 ## APFR-H. Objections Part 2: FNO-Re (true and identified Re) against H, fresh panels
 
-Source `stage2/objections/results/obj_part2.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_part2.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 FNOw_* = the L_param recipe trained on Re 30-60 (post-freeze request; one seed; reported, no reading). Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories).
 
@@ -6017,7 +6017,7 @@ FNOw_* = the L_param recipe trained on Re 30-60 (post-freeze request; one seed; 
 
 ## APFR-FT. Objections Part 2: fine-tuned FNO (L_ft) on fresh panels (reported, not a reading)
 
-Source `stage2/objections/results/obj_lft.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_lft.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resampled independently; post-freeze change, Todd 2026-09-27). Also: 95% cond = conditional on the trained models (seeds fixed); 95% nested = the frozen method (seeds resampled within trajectories).
 
@@ -6030,7 +6030,7 @@ Primary 95% intervals: CROSSED bootstrap (trajectory rows and seed columns resam
 
 ## APFR-ID. Per-state |identified Re - true Re| at w = 11 (pooled over states and seeds)
 
-Source `stage2/objections/results/obj_id_error.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_id_error.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 H: the hybrid's golden-section identification; FNO_Re_id: identification through the Re-conditioned network.
 
@@ -6064,20 +6064,36 @@ H: the hybrid's golden-section identification; FNO_Re_id: identification through
 | APFR-ID-26 | V | 50 | H | 11 | 3 | 900 | 2.5718 | 3.2378 | 3.9977 | estimate |
 
 
+## APFR-FTB. L_ft at matched budgets, World D Re 50 fresh panel, first 100 states, w = 11 (reported only, not a reading)
+
+Source `stage2/objections/results/obj_ftb.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
+
+Every configuration (steps x lr), no post-hoc selection. Stage-1 pair rule; base L0 seed 0; one seed, so the 95% interval is over trajectories. Retention = restricted mean / O's on the same 100 states. Wall = batch-1 seconds per state (fine-tuning + forecast, CUDA-synchronised, Baccus CMP 170HX).
+
+| id | steps | lr | n | restricted_mean | 95% | S1 | S3 | retention | O_same_states | H_same_states | wall_median | wall_p90 | finetune_median | forecast_median | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APFR-FTB-1 | 200 | 1.000e-04 | 100 | 0.7460 | [0.7017, 0.7903] | 0.1400 | 0.0000 | 0.2280 | 3.2724 | 3.2043 | 3.0336 | 3.0653 | 2.9691 | 0.0559 | L_ft matched budget (reported, not a reading; every configuration, no selection) |
+| APFR-FTB-2 | 200 | 0.0010 | 100 | 0.4232 | [0.3888, 0.4575] | 0.0100 | 0.0000 | 0.1293 | 3.2724 | 3.2043 | 2.9697 | 3.0432 | 2.9230 | 0.0383 | L_ft matched budget (reported, not a reading; every configuration, no selection) |
+| APFR-FTB-3 | 1000 | 1.000e-04 | 100 | 0.3319 | [0.3165, 0.3482] | 0.0000 | 0.0000 | 0.1014 | 3.2724 | 3.2043 | 14.6505 | 14.7960 | 14.6216 | 0.0315 | L_ft matched budget (reported, not a reading; every configuration, no selection) |
+| APFR-FTB-4 | 1000 | 0.0010 | 100 | 0.3282 | [0.3111, 0.3463] | 0.0000 | 0.0000 | 0.1003 | 3.2724 | 3.2043 | 15.1343 | 15.1841 | 15.0937 | 0.0373 | L_ft matched budget (reported, not a reading; every configuration, no selection) |
+| APFR-FTB-5 | 7500 | 1.000e-04 | 100 | 0.1763 | [0.1655, 0.1872] | 0.0000 | 0.0000 | 0.0539 | 3.2724 | 3.2043 | 110.4454 | 111.9447 | 110.4317 | 0.0139 | L_ft matched budget (reported, not a reading; every configuration, no selection) |
+| APFR-FTB-6 | 7500 | 0.0010 | 100 | 0.2134 | [0.1971, 0.2306] | 0.0000 | 0.0000 | 0.0652 | 3.2724 | 3.2043 | 112.7780 | 113.2387 | 112.7528 | 0.0184 | L_ft matched budget (reported, not a reading; every configuration, no selection) |
+
+
 ## APEDGE. Objections Part 3: edge timing, Orin NX against datacenter (batch 1, reported only)
 
-Source `stage2/objections/results/obj_edge.csv` · SHA `5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty`
+Source `stage2/objections/results/obj_edge.csv` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
 
 Early-stop columns: each arm forecasts until every state exceeds 0.3 sigma_A (frame counts differ by arm). *_fixed_* columns: every arm forecasts the same F = 111 frames (10 Lyapunov times at Re 50), no early stop.
 
 | id | arm | orin_result | orin_wall_median | orin_wall_p90 | dc_batch1_wall_median | orin_identify_or_adapt_median | orin_forecast_fps | dc_batch1_forecast_fps | orin_peak_torch_mem_MB | orin_tegrastats_ram_peak_MB | orin_vdd_in_mean_mW | orin_energy_per_state_J | horizon_max_abs_diff | horizon_states_identical | horizon_n | orin_fixed_frames | orin_fixed_wall_median | orin_fixed_wall_p90 | orin_fixed_identify_or_adapt_median | orin_fixed_forecast_median | orin_fixed_forecast_fps | orin_fixed_vdd_in_mean_mW | orin_fixed_energy_per_state_J | dc_fixed_wall_median | dc_fixed_forecast_median | dc_fixed_forecast_fps | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| APEDGE-1 | H | ok | 319.5735 | 335.9320 | 112.2071 | 280.3340 | 1.0682 | 3.0351 | 22.2876 | 2483 | 8969.9169 | 2898.4150 | 0.0904 | 17 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 140.8012 | 37.5180 | 2.9372 | estimate (reported only) |
-| APEDGE-2 | H_true | ok | 38.2279 | 56.3865 | 13.7978 |  | 1.0608 | 3.0160 | 22.5684 | 2369 | 9069.5856 | 386.4519 | 0.0904 | 16 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 39.2087 | 39.2087 | 2.8330 | estimate (reported only) |
-| APEDGE-3 | O | ok | 8.0879 | 11.1804 | 2.2648 |  | 5.3101 | 19.0058 | 18.4727 | 2373 | 7161.0967 | 60.7540 | 0.0000 | 20 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 6.1741 | 6.1741 | 18.0457 | estimate (reported only) |
-| APEDGE-4 | L0 | ok | 0.0996 | 0.1355 | 0.0319 |  | 160.6717 | 501.1620 | 94.4014 | 2590 | 15618.9474 | 1.5408 | 0.0000 | 20 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 0.2216 | 0.2216 | 500.9985 | estimate (reported only) |
-| APEDGE-5 | L_range | ok | 0.1539 | 0.2306 | 0.0544 |  | 170.3885 | 483.6747 | 94.4648 | 2567 | 18063.1875 | 3.0955 | 0.0000 | 20 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 0.2212 | 0.2212 | 501.8007 | estimate (reported only) |
-| APEDGE-6 | L0big | ok | 0.7335 | 1.0172 | 0.0302 |  | 19.7626 | 480.5327 | 458.5239 | 3685 | 16288.8310 | 12.2810 | 0.0000 | 20 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 0.2347 | 0.2347 | 471.7850 | estimate (reported only) |
-| APEDGE-7 | FNO_Re_id | ok | 1.4474 | 1.5963 | 0.5154 | 1.2693 | 165.7307 | 462.4877 | 94.4028 | 3720 | 18053.5603 | 26.8142 | 0.0000 | 20 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 0.6594 | 0.2290 | 484.6492 | estimate (reported only) |
-| APEDGE-8 | L_ft | ok | 18.9067 | 18.9608 | 3.0445 | 18.7810 | 121.4306 | 286.8719 | 627.8438 | 3922 | 17542.0681 | 331.7720 | 0.0000 | 20 | 20 | pending | pending | pending | pending | pending | pending | pending | pending | 3.2328 | 0.2463 | 450.1851 | estimate (reported only) |
+| APEDGE-1 | H | ok | 319.5735 | 335.9320 | 112.2071 | 280.3340 | 1.0682 | 3.0351 | 22.2876 | 2483 | 8969.9169 | 2898.4150 | 0.0904 | 17 | 20 | 111 | 388.0223 | 390.2987 | 283.1121 | 104.8759 | 1.0577 | 8958.2733 | 3478.1282 | 140.8012 | 37.5180 | 2.9372 | estimate (reported only) |
+| APEDGE-2 | H_true | ok | 38.2279 | 56.3865 | 13.7978 |  | 1.0608 | 3.0160 | 22.5684 | 2369 | 9069.5856 | 386.4519 | 0.0904 | 16 | 20 | 111 | 105.0751 | 105.6993 |  | 105.0751 | 1.0554 | 9107.9546 | 957.9550 | 39.2087 | 39.2087 | 2.8330 | estimate (reported only) |
+| APEDGE-3 | O | ok | 8.0879 | 11.1804 | 2.2648 |  | 5.3101 | 19.0058 | 18.4727 | 2373 | 7161.0967 | 60.7540 | 0.0000 | 20 | 20 | 111 | 21.2199 | 21.2711 |  | 21.2199 | 5.2267 | 7179.0515 | 152.4632 | 6.1741 | 6.1741 | 18.0457 | estimate (reported only) |
+| APEDGE-4 | L0 | ok | 0.0996 | 0.1355 | 0.0319 |  | 160.6717 | 501.1620 | 94.4014 | 2590 | 15618.9474 | 1.5408 | 0.0000 | 20 | 20 | 111 | 0.6490 | 0.6495 |  | 0.6490 | 171.0059 | 18277.3689 | 11.8638 | 0.2216 | 0.2216 | 500.9985 | estimate (reported only) |
+| APEDGE-5 | L_range | ok | 0.1539 | 0.2306 | 0.0544 |  | 170.3885 | 483.6747 | 94.4648 | 2567 | 18063.1875 | 3.0955 | 0.0000 | 20 | 20 | 111 | 0.6512 | 0.6525 |  | 0.6512 | 170.3511 | 18382.3415 | 11.9778 | 0.2212 | 0.2212 | 501.8007 | estimate (reported only) |
+| APEDGE-6 | L0big | ok | 0.7335 | 1.0172 | 0.0302 |  | 19.7626 | 480.5327 | 458.5239 | 3685 | 16288.8310 | 12.2810 | 0.0000 | 20 | 20 | 111 | 5.5338 | 5.5488 |  | 5.5338 | 20.0483 | 16663.5062 | 92.2597 | 0.2347 | 0.2347 | 471.7850 | estimate (reported only) |
+| APEDGE-7 | FNO_Re_id | ok | 1.4474 | 1.5963 | 0.5154 | 1.2693 | 165.7307 | 462.4877 | 94.4028 | 3720 | 18053.5603 | 26.8142 | 0.0000 | 20 | 20 | 111 | 1.9431 | 1.9448 | 1.2722 | 0.6705 | 165.5180 | 18433.9646 | 35.8192 | 0.6594 | 0.2290 | 484.6492 | estimate (reported only) |
+| APEDGE-8 | L_ft | ok | 18.9067 | 18.9608 | 3.0445 | 18.7810 | 121.4306 | 286.8719 | 627.8438 | 3922 | 17542.0681 | 331.7720 | 0.0000 | 20 | 20 | 111 | 19.4562 | 19.4709 | 18.7612 | 0.6972 | 159.1269 | 17651.8940 | 343.4541 | 3.2328 | 0.2463 | 450.1851 | estimate (reported only) |
 

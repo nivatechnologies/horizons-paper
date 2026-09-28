@@ -1,4 +1,4 @@
-# git_sha=5e7b773d33e483c0d6ac1eec75b52e83b4670320-dirty; Adapt the Physics stage 2; training cost
+# git_sha=3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty; Adapt the Physics stage 2; training cost
 model,params,steps,batch,train_seconds,best_step,seed,training_data,training_conditions,training_re_range,training_states,label
 H_C,2368065,2000,64,5066.500461339951,2000,0,nominal,1,40,102400,learned
 H_C_s1,2368065,2000,64,15061.503987550735,1900,1,nominal,1,40,102400,learned
