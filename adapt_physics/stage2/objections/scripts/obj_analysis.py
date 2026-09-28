@@ -23,7 +23,7 @@ sys.path.insert(0, str(PKG))
 sys.path.insert(0, str(PKG / "stage2" / "scripts"))
 sys.path.insert(0, str(PKG.parent / "tokens_horizon"))
 from ap import config  # noqa: E402
-from s2_analysis import boot_idx, pooled_boot  # noqa: E402
+from s2_analysis import boot_all, boot_idx, crossed_boot, q  # noqa: E402
 from th import score  # noqa: E402
 
 RES = PKG / "stage2" / "objections" / "results"
@@ -62,29 +62,49 @@ IDX = boot_idx(300)
 
 
 def stats(H, C):
-    b = pooled_boot(H, IDX, rng)
-    return dict(restricted_mean=float(H.mean()), ci95_lo=float(np.quantile(b, 0.025)), ci95_hi=float(np.quantile(b, 0.975)),
-                seeds=H.shape[0], per_seed=" ".join(f"{v:.3f}" for v in H.mean(1)), S1=float(np.mean(~C | (H > 1))),
-                S3=float(np.mean(~C | (H > 3)))), b
+    """Primary interval: crossed bootstrap (trajectory rows and seed columns resampled independently; post-freeze, Todd
+    2026-09-27). Also the interval conditional on the trained models and the frozen nested bootstrap."""
+    b = boot_all(H, IDX, rng)
+    lo, hi = q(b["crossed"])
+    return dict(restricted_mean=float(H.mean()), ci95_lo=lo, ci95_hi=hi, cond_ci95_lo=q(b["cond"])[0], cond_ci95_hi=q(b["cond"])[1],
+                nested_ci95_lo=q(b["nested"])[0], nested_ci95_hi=q(b["nested"])[1], seeds=H.shape[0],
+                per_seed=" ".join(f"{v:.3f}" for v in H.mean(1)), seed_sd=float(H.mean(1).std(ddof=1)) if H.shape[0] > 1 else None,
+                S1=float(np.mean(~C | (H > 1))), S3=float(np.mean(~C | (H > 3)))), b
+
+
+def _per_seed(Ha, Hb, op):
+    sa, sb = Ha.mean(1), Hb.mean(1)
+    if len(sa) == 1 and len(sb) > 1:
+        return [op(sa[0], x) for x in sb]
+    return [op(sa[i], sb[i] if len(sb) == len(sa) else sb[0]) for i in range(len(sa))]
 
 
 def ratio(ba, bb, Ha, Hb):
-    r = ba / bb
-    return float(Ha.mean() / Hb.mean()), float(np.quantile(r, 0.025)), float(np.quantile(r, 0.975))
+    ex = {f"{m}_ci95": "[%.4f, %.4f]" % q(ba[m] / bb[m]) for m in ("cond", "nested")}
+    ex["per_seed"] = " ".join(f"{x:.3f}" for x in _per_seed(Ha, Hb, lambda a, b: a / b))
+    lo, hi = q(ba["crossed"] / bb["crossed"])
+    return float(Ha.mean() / Hb.mean()), lo, hi, ex
 
 
 def diff(ba, bb, Ha, Hb):
-    d = ba - bb
+    d = ba["crossed"] - bb["crossed"]
+    ex = {}
+    for m in ("cond", "nested"):
+        ex[f"{m}_ci95_lo"], ex[f"{m}_ci95_hi"] = q(ba[m] - bb[m])
+    ex["per_seed_diff"] = " ".join(f"{x:.3f}" for x in _per_seed(Ha, Hb, lambda a, b: a - b))
     return float(Ha.mean() - Hb.mean()), float(np.quantile(d, 0.025)), float(np.quantile(d, 0.975)), \
-        float(np.quantile(d, 0.05)), float(np.quantile(d, 0.95))
+        float(np.quantile(d, 0.05)), float(np.quantile(d, 0.95)), ex
 
 
-def slope_of(R, ws):
+def slope_of(Rs, ws):
+    """Rs (S, n, W) identified Re per seed, state, window. Per-seed per-state least-squares slopes; point = mean; interval
+    crossed (states and seeds resampled independently), plus conditional (seed-averaged slopes, states resampled)."""
     x = np.array(ws, float)
     xc = x - x.mean()
-    S = (R - R.mean(1, keepdims=True)) @ xc / (xc ** 2).sum()
-    b = S[IDX].mean(1)
-    return float(S.mean()), float(np.quantile(b, 0.025)), float(np.quantile(b, 0.975))
+    S = (Rs - Rs.mean(2, keepdims=True)) @ xc / (xc ** 2).sum()      # (S, n)
+    lo, hi = q(crossed_boot(S, IDX, rng))
+    clo, chi = q(S.mean(0)[IDX].mean(1))
+    return float(S.mean()), lo, hi, clo, chi, " ".join(f"{v:.4f}" for v in S.mean(1))
 
 
 def s2_value(arm, Re, e=0.1, w=11, world="D"):
@@ -125,23 +145,31 @@ def part1():
             hL = ratio(B[k("H")], B[k("L_range_V")], HH[k("H")], HH[k("L_range_V")])
             outcome = "holds" if hO[0] >= 0.85 and hL[0] >= 1.5 else "degrades, still leads" if hL[0] >= 1.2 else "loses its lead"
             r = dict(eps=e, primary=e == 0.1, H_over_O=hO[0], H_over_O_ci95_lo=hO[1], H_over_O_ci95_hi=hO[2],
+                     H_over_O_cond_ci95=hO[3]["cond_ci95"], H_over_O_nested_ci95=hO[3]["nested_ci95"], H_over_O_per_seed=hO[3]["per_seed"],
                      H_over_L_range_V=hL[0], H_over_L_range_V_ci95_lo=hL[1], H_over_L_range_V_ci95_hi=hL[2],
+                     H_over_L_range_V_cond_ci95=hL[3]["cond_ci95"], H_over_L_range_V_nested_ci95=hL[3]["nested_ci95"],
+                     H_over_L_range_V_per_seed=hL[3]["per_seed"],
                      outcome_reading=outcome, L_range_V_seeds=HH[k("L_range_V")].shape[0],
                      partA_D_Re50_H_over_O=(s2_value("H", 50, e) / s2_value("O", 50, e)) if s2_value("O", 50, e) else None,
                      partA_D_Re50_H_over_L_range=(s2_value("H", 50, e) / s2_value("L_range", 50, e)) if s2_value("L_range", 50, e) else None)
             if k("H_true") in B:
                 d = diff(B[k("H_true")], B[k("H")], HH[k("H_true")], HH[k("H")])
-                r.update(H_true_minus_H=d[0], H_true_minus_H_ci95_lo=d[1], H_true_minus_H_ci95_hi=d[2])
+                r.update(H_true_minus_H=d[0], H_true_minus_H_ci95_lo=d[1], H_true_minus_H_ci95_hi=d[2],
+                         H_true_minus_H_cond_ci95="[%.4f, %.4f]" % (d[5]["cond_ci95_lo"], d[5]["cond_ci95_hi"]),
+                         H_true_minus_H_nested_ci95="[%.4f, %.4f]" % (d[5]["nested_ci95_lo"], d[5]["nested_ci95_hi"]),
+                         H_true_minus_H_per_seed=d[5]["per_seed_diff"])
             rd.append(dict(r, label="reading (reported, not criterion)"))
     for arm, ss in (("H", [0, 1, 2]), ("P1x_V", [0])):
         ws = [w for w in (3, 6, 11, 23) if all((P / f"{arm}_s{s}_{w}.npz").exists() for s in ss)]
         if len(ws) >= 2:
-            R = np.stack([np.stack([np.load(P / f"{arm}_s{s}_{w}.npz")["re_hat"] for s in ss]).mean(0) for w in ws], 1)
-            sl = slope_of(R, ws)
+            Rs = np.stack([np.stack([np.load(P / f"{arm}_s{s}_{w}.npz")["re_hat"] for s in ss]) for w in ws], 2)   # (S, n, W)
+            R = Rs.mean(0)
+            sl = slope_of(Rs, ws)
             det.append(dict(world="V", Re=50, arm=arm, w_tested=",".join(map(str, ws)),
                             **{f"re_hat_w{w}": float(R[:, i].mean()) for i, w in enumerate(ws)},
                             mean_re_hat=float(R.mean()), bias_from_true=float(R.mean() - 50),
-                            slope_per_frame=sl[0], slope_ci95_lo=sl[1], slope_ci95_hi=sl[2],
+                            slope_per_frame=sl[0], slope_ci95_lo=sl[1], slope_ci95_hi=sl[2], slope_cond_ci95_lo=sl[3],
+                            slope_cond_ci95_hi=sl[4], slope_per_seed=sl[5],
                             detector_reading=("flags" if (sl[1] > 0 or sl[2] < 0) else "silent") if arm == "H" else "",
                             label="estimate (reported only)"))
     return rows, rd, det
@@ -163,8 +191,9 @@ def part2():
                     continue
                 sh, bh = stats(Hh, Ch)
                 _, bo = stats(Ho, Co)
-                for arm in ("FNO_Re_true", "FNO_Re_id"):
-                    Hf, Cf, _ = load([EV / panel / f"{arm}_s{s}_11.npz" for s in arms_seeds], lam, e)
+                for arm in ("FNO_Re_true", "FNO_Re_id", "FNOw_Re_true", "FNOw_Re_id"):
+                    sds = [0] if arm.startswith("FNOw") else arms_seeds
+                    Hf, Cf, _ = load([EV / panel / f"{arm}_s{s}_11.npz" for s in sds], lam, e)
                     if Hf is None:
                         continue
                     sf, bf = stats(Hf, Cf)
@@ -172,7 +201,11 @@ def part2():
                     rows.append(dict(world=world, Re=Re, arm=arm, w=11, eps=e, n=Hf.shape[1], **sf,
                                      retention=float(Hf.mean() / Ho.mean()), H=float(Hh.mean()), H_retention=float(Hh.mean() / Ho.mean()),
                                      H_minus_arm=d[0], diff_ci95_lo=d[1], diff_ci95_hi=d[2], diff_ci90_lo=d[3], diff_ci90_hi=d[4],
-                                     label="learned (Re-conditioned FNO)"))
+                                     diff_cond_ci95_lo=d[5]["cond_ci95_lo"], diff_cond_ci95_hi=d[5]["cond_ci95_hi"],
+                                     diff_nested_ci95_lo=d[5]["nested_ci95_lo"], diff_nested_ci95_hi=d[5]["nested_ci95_hi"],
+                                     diff_per_seed=d[5]["per_seed_diff"],
+                                     label="learned (Re-conditioned FNO, Re 30-60 data; post-freeze, reported only, no reading)"
+                                     if arm.startswith("FNOw") else "learned (Re-conditioned FNO)"))
             if world == "D":
                 for w in (3, 6, 11, 23):
                     pass
@@ -181,8 +214,13 @@ def part2():
         if r:
             r = r[0]
             ok = r["H_minus_arm"] >= 0.25 and r["diff_ci95_lo"] > 0
+            ok_c = r["H_minus_arm"] >= 0.25 and r["diff_cond_ci95_lo"] > 0
+            ok_n = r["H_minus_arm"] >= 0.25 and r["diff_nested_ci95_lo"] > 0
             reading.append(dict(Re=Re, H_minus_FNO_Re_true=r["H_minus_arm"], ci95_lo=r["diff_ci95_lo"], ci95_hi=r["diff_ci95_hi"],
-                                seeds=r["seeds"], holds_at_this_Re=ok, label="reading component"))
+                                cond_ci95_lo=r["diff_cond_ci95_lo"], cond_ci95_hi=r["diff_cond_ci95_hi"],
+                                nested_ci95_lo=r["diff_nested_ci95_lo"], nested_ci95_hi=r["diff_nested_ci95_hi"],
+                                per_seed=r["diff_per_seed"], seeds=r["seeds"], holds_at_this_Re=ok, holds_cond=ok_c, holds_nested=ok_n,
+                                label="reading component"))
     if len(reading) == 2:
         both = all(x["holds_at_this_Re"] for x in reading)
         reading.append(dict(Re="50 and 56", holds_at_this_Re=both,
@@ -193,12 +231,14 @@ def part2():
         panel = f"s2_test_Re{Re}_D"
         ws = [w for w in (3, 6, 11, 23) if all((EV / panel / f"FNO_Re_id_s{s}_{w}.npz").exists() for s in (0, 1, 2))]
         if len(ws) >= 2:
-            R = np.stack([np.stack([np.load(EV / panel / f"FNO_Re_id_s{s}_{w}.npz")["re_hat"] for s in (0, 1, 2)]).mean(0)
-                          for w in ws], 1)
-            sl = slope_of(R, ws)
+            Rs = np.stack([np.stack([np.load(EV / panel / f"FNO_Re_id_s{s}_{w}.npz")["re_hat"] for s in (0, 1, 2)])
+                           for w in ws], 2)
+            R = Rs.mean(0)
+            sl = slope_of(Rs, ws)
             det.append(dict(world="D", Re=Re, arm="FNO_Re_id", w_tested=",".join(map(str, ws)),
                             **{f"re_hat_w{w}": float(R[:, i].mean()) for i, w in enumerate(ws)}, mean_re_hat=float(R.mean()),
                             bias_from_true=float(R.mean() - Re), slope_per_frame=sl[0], slope_ci95_lo=sl[1], slope_ci95_hi=sl[2],
+                            slope_cond_ci95_lo=sl[3], slope_cond_ci95_hi=sl[4], slope_per_seed=sl[5],
                             label="estimate (reported only)"))
     # L_ft
     for Re in (44, 50, 56):
@@ -215,8 +255,41 @@ def part2():
         meta = json.loads((RES / f"eval_{panel}.json").read_text()).get("L_ft_s0_11", {})
         lft.append(dict(world="D", Re=Re, w=11, eps=0.1, n=H1.shape[1], **s1, retention=float(H1.mean() / Ho.mean()),
                         H=float(Hh.mean()), H_minus_L_ft=d[0], diff_ci95_lo=d[1], diff_ci95_hi=d[2],
+                        diff_cond_ci95_lo=d[5]["cond_ci95_lo"], diff_cond_ci95_hi=d[5]["cond_ci95_hi"],
+                        diff_nested_ci95_lo=d[5]["nested_ci95_lo"], diff_nested_ci95_hi=d[5]["nested_ci95_hi"],
+                        diff_per_seed=d[5]["per_seed_diff"],
                         online_seconds_per_state=meta.get("wall_seconds_per_state"), label="learned (reported, not a reading)"))
     return rows, reading, det, lft
+
+
+def id_error():
+    """Per-state |identified Re - true Re| at w = 11, pooled over states and seeds: median and 90th percentile."""
+    rows = []
+    tp = json.loads((S2R / "test_panels.json").read_text())
+    specs = [("H", S2EV, "H_s{s}_std_11.npz", [0, 1, 2]), ("FNO_Re_id", EV, "FNO_Re_id_s{s}_11.npz", None),
+             ("FNOw_Re_id", EV, "FNOw_Re_id_s{s}_11.npz", [0])]
+    for world in ("D", "C"):
+        for Re in (36, 40, 44, 50, 56):
+            panel = f"s2_test_Re{Re}_{world}"
+            if panel not in tp:
+                continue
+            for arm, base, pat, seeds in specs:
+                ss = seeds if seeds is not None else ([0, 1, 2] if world == "D" else [0])
+                fs = [base / panel / pat.format(s=s) for s in ss]
+                fs = [f for f in fs if f.exists()]
+                if not fs:
+                    continue
+                err = np.abs(np.concatenate([np.load(f)["re_hat"] for f in fs]) - Re)
+                rows.append(dict(world=world, Re=Re, arm=arm, w=11, seeds=len(fs), n_values=len(err),
+                                 abs_err_median=float(np.median(err)), abs_err_p90=float(np.quantile(err, 0.9)),
+                                 abs_err_max=float(err.max()), label="estimate"))
+    P = EV / "obj_V_Re50"
+    fs = [P / f"H_s{s}_11.npz" for s in (0, 1, 2) if (P / f"H_s{s}_11.npz").exists()]
+    if fs:
+        err = np.abs(np.concatenate([np.load(f)["re_hat"] for f in fs]) - 50)
+        rows.append(dict(world="V", Re=50, arm="H", w=11, seeds=len(fs), n_values=len(err), abs_err_median=float(np.median(err)),
+                         abs_err_p90=float(np.quantile(err, 0.9)), abs_err_max=float(err.max()), label="estimate"))
+    return rows
 
 
 def edge():
@@ -241,7 +314,24 @@ def edge():
             if common:
                 diffs = [abs(ho[i] - hd[i]) for i in common]
                 row.update(horizon_max_abs_diff=max(diffs), horizon_states_identical=sum(x == 0 for x in diffs), horizon_n=len(common))
-        rows.append(dict(row, orin_host=json.dumps(O["host"]), dc_host=json.dumps(D.get("host", {})), label="estimate (reported only)"))
+        for tag, f in (("orin_fixed", RES / "edge_orin_fixed.json"), ("dc_fixed", RES / "edge_datacenter_fixed.json")):
+            if f.exists():
+                J = json.loads(f.read_text())
+                rr = J["arms"].get(arm, {})
+                row[f"{tag}_frames"] = J.get("fixed_frames")
+                for k in ("wall_median", "wall_p90", "identify_or_adapt_median", "forecast_median", "forecast_fps",
+                          "vdd_in_mean_mW", "energy_per_state_J", "peak_torch_mem_MB"):
+                    row[f"{tag}_{k}"] = rr.get(k)
+                if rr.get("states"):
+                    row[f"{tag}_frames_per_state"] = sorted({s["frames"] for s in rr["states"] if not s["warmup"]})[0]
+            else:                                           # run still in progress: explicit, so the NUMBERS checker resolves
+                for k in ("frames", "wall_median", "wall_p90", "identify_or_adapt_median", "forecast_median", "forecast_fps",
+                          "vdd_in_mean_mW", "energy_per_state_J", "peak_torch_mem_MB"):
+                    row[f"{tag}_{k}"] = "pending"
+        rows.append(dict(row, early_stop_note="early-stop columns (orin_*, dc_batch1_*): each arm forecasts until every state "
+                                              "exceeds 0.3 sigma_A, so frame counts differ by arm; *_fixed_*: every arm forecasts "
+                                              "the same fixed F frames",
+                         orin_host=json.dumps(O["host"]), dc_host=json.dumps(D.get("host", {})), label="estimate (reported only)"))
     return rows
 
 
@@ -256,6 +346,7 @@ def main():
     write("obj_detector.csv", (p1[2] if p1 else []) + p2[2], "detectors")
     write("obj_lft.csv", p2[3], "L_ft on fresh panels")
     write("obj_edge.csv", edge(), "Part 3 edge timing")
+    write("obj_id_error.csv", id_error(), "per-state |identified Re - true Re| at w = 11")
     for r in (p1[1] if p1 else []) + p2[1]:
         print(r)
 

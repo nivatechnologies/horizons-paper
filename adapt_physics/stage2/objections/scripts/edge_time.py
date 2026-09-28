@@ -8,7 +8,9 @@ time identification and forecast separately; L_ft times fine-tuning (200 steps) 
 state = mean power x mean wall time. Horizons (eps 0.1, future frames) are saved per state for the correctness check.
 
 Usage: python edge_time.py slice                       (datacenter: write runs/cache/edge_slice.npz)
-       python edge_time.py run <device> <out.json> [arms]   (Orin or datacenter)
+       python edge_time.py run <device> <out.json> [arms] [fixed]   (Orin or datacenter)
+With `fixed`, early stopping is disabled and every arm forecasts the same fixed number of frames: the full scoring window
+F (111 frames at Re 50 = 10 Lyapunov times), so wall time and frames per second are comparable across arms.
 """
 import json
 import os
@@ -88,7 +90,10 @@ def sync(dev):
         torch.cuda.synchronize(dev)
 
 
-def run(device, outf, arms):
+def run(device, outf, arms, fixed=False):
+    import ap_eval
+    stop = float("inf") if fixed else 0.3
+    ap_eval.EPS_STOP = stop                   # rollout_errors reads this module constant
     z = np.load(SLICE)
     T, Y, sA, F, lam, s40, alpha = z["T"], z["Y"], float(z["sigma_A"]), int(z["F"]), float(z["lam"]), float(z["sigma40"]), float(z["alpha"])
     sc = 64.0 / s40
@@ -103,7 +108,7 @@ def run(device, outf, arms):
     for cmd in (["nvpmodel", "-q"],):
         if shutil.which(cmd[0]):
             host["nvpmodel"] = subprocess.run(cmd, capture_output=True, text=True).stdout.strip().replace("\n", " | ")
-    res = dict(host=host, arms={})
+    res = dict(host=host, arms={}, fixed_frames=F if fixed else None, early_stop=None if fixed else 0.3)
     for arm in arms:
         rec = dict(states=[], errors=[])
         try:
@@ -145,10 +150,10 @@ def run(device, outf, arms):
                         else:
                             rh = np.array([Re])
                         t1 = time.time()
-                        err, st = solver_errors(y0, tr, rh, 0.0, sA, device, 0.3, make=make)
+                        err, st = solver_errors(y0, tr, rh, 0.0, sA, device, stop, make=make)
                 elif arm == "O":
                     t1 = t0
-                    err, st = solver_errors(y0, tr, np.array([Re]), alpha, sA, device, 0.3)
+                    err, st = solver_errors(y0, tr, np.array([Re]), alpha, sA, device, stop)
                 elif arm in ("L0", "L_range", "L0big"):
                     t1 = t0
                     n_in = 8 if arm == "L_range" else 4
@@ -207,4 +212,5 @@ if __name__ == "__main__":
     if sys.argv[1] == "slice":
         make_slice()
     else:
-        run(sys.argv[2], sys.argv[3], sys.argv[4].split(",") if len(sys.argv) > 4 else ARMS)
+        run(sys.argv[2], sys.argv[3], sys.argv[4].split(",") if len(sys.argv) > 4 else ARMS,
+            fixed=len(sys.argv) > 5 and sys.argv[5] == "fixed")

@@ -25,7 +25,7 @@ from ap.fno import ARMS, build  # noqa: E402
 
 OUT = config.RUNS / "train"
 BATCH, UNROLL, VAL_EVERY = 32, 4, 1000
-STEPS = {"L0": 30000, "L0big": 60000, "L_range": 30000, "L_param": 30000, "L_range_wide": 30000}
+STEPS = {"L0": 30000, "L0big": 60000, "L_range": 30000, "L_param": 30000, "L_range_wide": 30000, "L_param_wide": 30000}
 
 
 def scale(world="D"):

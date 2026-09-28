@@ -10,7 +10,7 @@
   "wall_seconds_per_state": 0.15439983447392783
  },
  "panel": "s2_test_Re44_D",
- "git_sha": "565a249b4972553e246d13dfa05fce20a350b34f-dirty",
+ "git_sha": "afac4cb0f9ceabff99760372ae0c936ea74b2f52-dirty",
  "FNO_Re_id_s0_6": {
   "arm": "FNO_Re_id",
   "seed": 0,
@@ -154,5 +154,23 @@
   "objective_evals": 30,
   "identify_seconds_per_state": 0.22923569758733114,
   "wall_seconds_per_state": 0.28116652886072796
+ },
+ "FNOw_Re_true_s0_11": {
+  "arm": "FNOw_Re_true",
+  "seed": 0,
+  "window": 11,
+  "n": 300,
+  "seconds": 5.482218265533447,
+  "wall_seconds_per_state": 0.01827406088511149
+ },
+ "FNOw_Re_id_s0_11": {
+  "arm": "FNOw_Re_id",
+  "seed": 0,
+  "window": 11,
+  "n": 300,
+  "seconds": 13.84937596321106,
+  "objective_evals": 30,
+  "identify_seconds_per_state": 0.029924908479054768,
+  "wall_seconds_per_state": 0.046164586544036865
  }
 }

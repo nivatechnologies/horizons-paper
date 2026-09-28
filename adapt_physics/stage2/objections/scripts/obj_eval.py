@@ -4,7 +4,8 @@ exceeded 0.3.
 
 Usage: python stage2/objections/scripts/obj_eval.py <panel> <device> <arm> <seed> <windows>
   panel    obj_V_Re50 (World V) | s2_test_Re<Re>_<D|C> (Part A fresh panels)
-  arm      O_V | P1x_V | H | H_true | L_range_V | L0 | FNO_Re_true | FNO_Re_id | L_ft
+  arm      O_V | P1x_V | H | H_true | L_range_V | L0 | FNO_Re_true | FNO_Re_id | FNOw_Re_true | FNOw_Re_id | L_ft
+           (FNOw: post-freeze request, the L_param recipe trained on Re ~ U[30, 60] data, World D, seed 0)
   windows  comma list of w (e.g. 3,6,11,23)
 Part 2 identification through the network (FNO_Re_id): golden-section on Re in [25, 80], exactly 30 evaluations (the
 same routine as ap/arms.identify); misfit = mean over scored frames of ||x_hat - y||^2 / sigma_A^2 where x_hat is the
@@ -152,13 +153,13 @@ def main(panel, device, arm, seed, windows):
             n_in = 8 if arm == "L_range_V" else 4
             ctx = np.asarray(Yall[PRE + w - n_in + 1:PRE + w + 1], dtype=np.float64).transpose(1, 0, 2, 3)
             err = rollout_errors(fno, ctx, tr, sc, sA)
-        elif arm in ("FNO_Re_true", "FNO_Re_id"):
+        elif arm in ("FNO_Re_true", "FNO_Re_id", "FNOw_Re_true", "FNOw_Re_id"):
             if fno is None:
-                fno = build("L_param").to(device)
-                fno.load_state_dict(torch.load(model_dir("L_param" if world == "D" else "L_param_C", seed) / "best.pt",
-                                               map_location=device))
+                name = "L_param_wide" if arm.startswith("FNOw") else ("L_param" if world == "D" else "L_param_C")
+                fno = build("L_param").to(device)      # same architecture; FNOw = L_param recipe on Re 30-60 data
+                fno.load_state_dict(torch.load(model_dir(name, seed) / "best.pt", map_location=device))
                 fno.eval()
-            if arm == "FNO_Re_id":
+            if arm.endswith("_id"):
                 rh, ev = gss(lambda re: fno_misfit(fno, Yall, w, re, sc, sA), n)
                 extra, cost = dict(re_hat=rh), dict(objective_evals=ev, identify_seconds_per_state=(time.time() - t0) / n)
             else:

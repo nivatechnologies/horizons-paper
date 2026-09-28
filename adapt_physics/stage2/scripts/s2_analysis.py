@@ -8,7 +8,9 @@
   s2_detector.csv      identified-Re slope (w 3, 6, 11) for H (seed-averaged) and P1; World C Spearman(slope, O - H)
   s2_partB.csv         items 1-4 (single seed where stated): horizon [95%], ratio to O and to L_range / L_range_wide
   s2_cost.csv, s2_training.csv
-Bootstrap: 2,000 reps, seed 777; resample trajectories, then each arm's seeds within each resampled trajectory.
+Bootstrap: 2,000 reps. Primary intervals (post-freeze, Todd 2026-09-27): CROSSED - trajectory rows and seed columns resampled
+independently. Also reported: intervals conditional on the trained models (seeds fixed, trajectories resampled) and the
+frozen nested bootstrap (seeds resampled within each trajectory), plus per-seed values.
 """
 import csv
 import json
@@ -60,6 +62,29 @@ def pooled_boot(Hs, idx, rng):
     return vals.mean(2).mean(1)
 
 
+def crossed_boot(Hs, idx, rng):
+    """Crossed bootstrap (post-freeze, Todd 2026-09-27): trajectory rows (idx) and seed columns resampled independently;
+    Hs (S, n) -> (reps,) means. Single-seed arms reduce to the trajectory bootstrap."""
+    S, n = Hs.shape
+    if S == 1:
+        return Hs[0][idx].mean(1)
+    sidx = rng.integers(0, S, (idx.shape[0], S))
+    return Hs[sidx[:, :, None], idx[:, None, :]].mean((1, 2))
+
+
+def cond_boot(Hs, idx):
+    """Conditional on the trained models: seeds fixed (per-state mean over all seeds), trajectories resampled."""
+    return Hs.mean(0)[idx].mean(1)
+
+
+def boot_all(Hs, idx, rng):
+    return dict(crossed=crossed_boot(Hs, idx, rng), cond=cond_boot(Hs, idx), nested=pooled_boot(Hs, idx, rng))
+
+
+def q(b, lo=0.025, hi=0.975):
+    return float(np.quantile(b, lo)), float(np.quantile(b, hi))
+
+
 def main():
     tp = json.loads((RES / "test_panels.json").read_text())
     rows, conds, paired, rec, det, partB, cost = [], [], [], [], [], [], []
@@ -91,10 +116,10 @@ def main():
     idx = boot_idx(300)
     B = {}
 
-    def boot(key):
+    def boot(key, mode="crossed"):
         if key not in B:
-            B[key] = pooled_boot(H[key], idx, rng)
-        return B[key]
+            B[key] = boot_all(H[key], idx, rng)
+        return B[key][mode]
 
     for key in [k for k in H if len(k) == 6]:
         world, Re, arm, w, e, sc = key
@@ -106,7 +131,10 @@ def main():
         Lkey = (world, Re, "L_range", w, e, sc)
         lam = tp[f"s2_test_Re{Re}_{world}"]["lam"]
         rows.append(dict(world=world, Re=Re, arm=arm, w=w, eps=e, score=sc, seeds=Hs.shape[0], n=Hs.shape[1], restricted_mean=m,
-                         ci95_lo=float(np.quantile(bs, 0.025)), ci95_hi=float(np.quantile(bs, 0.975)), phys_time=m / lam,
+                         ci95_lo=float(np.quantile(bs, 0.025)), ci95_hi=float(np.quantile(bs, 0.975)),
+                         cond_ci95_lo=q(boot(key, "cond"))[0], cond_ci95_hi=q(boot(key, "cond"))[1],
+                         nested_ci95_lo=q(boot(key, "nested"))[0], nested_ci95_hi=q(boot(key, "nested"))[1],
+                         seed_sd=float(Hs.mean(1).std(ddof=1)) if Hs.shape[0] > 1 else None, phys_time=m / lam,
                          per_seed=" ".join(f"{v:.3f}" for v in Hs.mean(1)),
                          S1=float(np.mean(~c | (Hs > 1))), S3=float(np.mean(~c | (Hs > 3))),
                          retention=m / H[Okey].mean() if Okey in H else None,
@@ -120,29 +148,46 @@ def main():
             if kb not in H:
                 continue
             ka = (world, Re, arm, w, e, sc)
-            da = boot(ka) - boot(kb)
             d = float(H[ka].mean() - H[kb].mean())
-            lo90, hi90, lo95, hi95 = np.quantile(da, [0.05, 0.95, 0.025, 0.975])
-            rd = ("b well below a" if d >= 0.25 and lo95 > 0 else "a well below b" if -d >= 0.25 and hi95 < 0
-                  else "approximately equal" if lo90 >= -0.1 and hi90 <= 0.1 else "no reading")
+
+            def rdg(da):
+                lo90, hi90, lo95, hi95 = np.quantile(da, [0.05, 0.95, 0.025, 0.975])
+                return (lo90, hi90, lo95, hi95, "b well below a" if d >= 0.25 and lo95 > 0 else "a well below b" if -d >= 0.25
+                        and hi95 < 0 else "approximately equal" if lo90 >= -0.1 and hi90 <= 0.1 else "no reading")
+            lo90, hi90, lo95, hi95, rd = rdg(boot(ka) - boot(kb))
+            c90l, c90h, c95l, c95h, rdc = rdg(boot(ka, "cond") - boot(kb, "cond"))
+            n90l, n90h, n95l, n95h, rdn = rdg(boot(ka, "nested") - boot(kb, "nested"))
+            sa, sb = H[ka].mean(1), H[kb].mean(1)
+            per_seed = [sa[i] - (sb[i] if len(sb) == len(sa) else sb[0]) for i in range(len(sa))]
             paired.append(dict(world=world, Re=Re, w=w, eps=e, a=arm, b=b, mean_a=float(H[ka].mean()), mean_b=float(H[kb].mean()),
                                ratio=float(H[ka].mean() / H[kb].mean()), diff=d, ci90_lo=lo90, ci90_hi=hi90, ci95_lo=lo95,
-                               ci95_hi=hi95, reading=rd, label="estimate"))
+                               ci95_hi=hi95, reading=rd, cond_ci95_lo=c95l, cond_ci95_hi=c95h, reading_cond=rdc,
+                               nested_ci95_lo=n95l, nested_ci95_hi=n95h, reading_nested=rdn,
+                               per_seed_diff=" ".join(f"{x:.3f}" for x in per_seed), label="estimate"))
     # criteria (pivot, unchanged) with intervals
     scr = {(c["criterion"], c["world"], c["Re"]): c["value"] for c in
            csv.DictReader(l for l in open(config.PKG / "pivot" / "results" / "pv_conditions.csv") if not l.startswith("#"))}
 
+    def ratio_keys(ka, kb):
+        ex = {}
+        for mode in ("cond", "nested"):
+            ex[f"{mode}_ci95_lo"], ex[f"{mode}_ci95_hi"] = q(boot(ka, mode) / boot(kb, mode))
+        sa, sb = H[ka].mean(1), H[kb].mean(1)
+        ps = [sa[i] / (sb[i] if len(sb) == len(sa) else sb[0]) for i in range(len(sa))]
+        ex.update(per_seed=" ".join(f"{x:.3f}" for x in ps), per_seed_min=float(min(ps)), per_seed_max=float(max(ps)))
+        lo, hi = q(boot(ka) / boot(kb))
+        return (float(H[ka].mean() / H[kb].mean()), lo, hi, ex)
+
     def ratio(wd, Re, a, b):
         ka, kb = (wd, Re, a, 11, 0.1, "future"), (wd, Re, b, 11, 0.1, "future")
         if ka not in H or kb not in H:
-            return None, None, None
-        r = boot(ka) / boot(kb)
-        return float(H[ka].mean() / H[kb].mean()), float(np.quantile(r, 0.025)), float(np.quantile(r, 0.975))
+            return None, None, None, {}
+        return ratio_keys(ka, kb)
 
     def add(name, wd, Re, val, thr, test):
-        v, lo, hi = val
+        v, lo, hi, ex = val
         ok = v is not None and test(v)
-        conds.append(dict(criterion=name, world=wd, Re=Re, value=v, ci95_lo=lo, ci95_hi=hi, threshold=thr, holds=ok,
+        conds.append(dict(criterion=name, world=wd, Re=Re, value=v, ci95_lo=lo, ci95_hi=hi, threshold=thr, holds=ok, **ex,
                           screening_value=scr.get((name, wd, str(Re))), label="estimate"))
         return ok
 
@@ -154,10 +199,9 @@ def main():
     kH, k0, kb = ("D", 40, "H", 11, 0.1, "future"), ("D", 40, "L0", 11, 0.1, "future"), ("D", 40, "L0big", 11, 0.1, "future")
     if all(k in H for k in (kH, k0, kb)):
         best = k0 if H[k0].mean() >= H[kb].mean() else kb
-        rb = boot(kH) / boot(best)
-        v40 = (float(H[kH].mean() / H[best].mean()), float(np.quantile(rb, 0.025)), float(np.quantile(rb, 0.975)))
+        v40 = ratio_keys(kH, best)
     else:
-        v40 = (None, None, None)
+        v40 = (None, None, None, {})
     ps.append(add("PASS: H/max(L0, L0big) >= 0.95 at Re 40 (D)", "D", 40, v40, 0.95, lambda v: v >= 0.95))
     for Re in (50, 56):
         ps.append(add("PASS: H/O >= 0.70 (C)", "C", Re, ratio("C", Re, "H", "O"), 0.70, lambda v: v >= 0.70))

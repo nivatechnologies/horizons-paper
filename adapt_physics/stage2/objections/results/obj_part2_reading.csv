@@ -1,5 +1,5 @@
-# git_sha=a9d2d4d5bb56275725243d742511929152bc677c-dirty; Adapt the Physics objections WO; Part 2 frozen reading
-Re,H_minus_FNO_Re_true,ci95_lo,ci95_hi,seeds,holds_at_this_Re,label,claim
-50,1.044484475427124,0.9692275404214787,1.120540145675136,3,True,reading component,
-56,1.603330712294275,1.5126998852753852,1.6937341165170943,3,True,reading component,
-50 and 56,,,,,True,frozen reading (decides the claim),A network given the parameter does not extrapolate: STATED
+# git_sha=afac4cb0f9ceabff99760372ae0c936ea74b2f52-dirty; Adapt the Physics objections WO; Part 2 frozen reading
+Re,H_minus_FNO_Re_true,ci95_lo,ci95_hi,cond_ci95_lo,cond_ci95_hi,nested_ci95_lo,nested_ci95_hi,per_seed,seeds,holds_at_this_Re,holds_cond,holds_nested,label,claim
+50,1.044484475427124,0.9421911059911751,1.1553077344325002,0.9702196801093246,1.1164208821610426,0.9662159569133097,1.1200553786884158,1.055 1.139 0.939,3,True,True,True,reading component,
+56,1.603330712294275,1.5079097926331584,1.700553957614246,1.5139478678688196,1.6918465073097118,1.5116793254780205,1.692031288331519,1.552 1.648 1.610,3,True,True,True,reading component,
+50 and 56,,,,,,,,,,True,,,frozen reading (decides the claim),A network given the parameter does not extrapolate: STATED
