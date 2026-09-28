@@ -263,7 +263,18 @@ def main():
               "best_minus_persistence", "undertrained", "val_change_last2", "val_change_last2_pct", "diverged", "collapsed", "evaluated", "val_curve"],
              "Validation RelativeL2 on the 64 fixed windows; persistence_val = the no-change forecast on the same windows. At the "
              "published lr 1e-2 GEPS-range collapsed to persistence (archived, never evaluated) and GEPS-wide diverged; both were "
-             "retrained at 1e-3 (deviations; GEPS-range for ~1 h, validated every 2 epochs). GEPS-wide's evaluation is cut.")):
+             "retrained at 1e-3 (deviations; GEPS-range for ~1 h, validated every 2 epochs). GEPS-wide's evaluation is cut."),
+            ("geps_followup.csv", "APGEPS-F", "GEPS post-freeze follow-up: GEPS-range trained longer (seed 1, Baccus) on the frozen reading cells",
+             ["Re", "checkpoint", "val_loss", "budgets_done", "better_budget", "GEPS_500", "GEPS_5000", "H", "H_minus_GEPS",
+              ("95%", ci("ci95_lo", "ci95_hi")), "frozen_H_minus_GEPS", "frozen_epochs"],
+             "Not a substitute for the frozen reading. Same cells (World D, first 50 states, w = 11, eps 0.1), same scorer and "
+             "paired bootstrap; the checkpoint is seed 1's best on validation when the follow-up started."),
+            ("geps_repro.csv", "APGEPS-K", "GEPS post-freeze follow-up: released code on GEPS's own Kolmogorov data at the published lr 1e-2",
+             ["epoch", "train_loss", "loss_test_in", "persistence_test_in", "test_in_minus_persistence", "loss_test_out",
+              "persistence_test_out", "paper_in_d"],
+             "Released train.py via Hydra overrides (Table-12 recipe), wandb offline, 12 h cap on a CMP 170HX; two import/API shims "
+             "(missing geps.datasets.lv; ReduceLROnPlateau verbose) and no released file edited. loss_test_in = the released "
+             "evaluation (RelativeL2 over the first 20 test frames, 256 trajectories); persistence = the first frame repeated.")):
         p = GR / fname
         if p.exists():
             rows, sha = MN.read_csv(p)

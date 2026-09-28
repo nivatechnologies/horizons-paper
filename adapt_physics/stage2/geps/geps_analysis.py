@@ -38,6 +38,7 @@ OEV = config.RUNS / "obj_eval"
 RES = HERE.parent / "results"
 DELTA = 0.35
 MARGIN = 0.25
+STEP_MATCHED_EPOCHS = 2500      # 640,000 published steps (20,000 epochs x 32 steps) / 256 steps per epoch on our data
 CLIP_CAVEAT = ("Every GEPS run trained unclipped: the released train.py:158 calls clip_grad_norm_ after optimizer.zero_grad() "
                "(train.py:157), so clipping never applies, and the wrapper copies that order. The published lr 1e-2 was not "
                "tested with working clipping, so this result cannot tell whether GEPS needs the lower lr (1e-3, used here) "
@@ -136,18 +137,24 @@ def main():
                             other_budget_H_minus_GEPS=float(Hh.mean() - H[(Re, [c for c in cells if c != best][0], 0.1)].mean()),
                             holds_at_this_Re=bool(val >= MARGIN and lo > 0), label="reading component"))
     comp = [r["holds_at_this_Re"] for r in reading]
+    # Todd 2026-09-28: the claim is not stated whatever the components show. The evaluated GEPS-range trained 35 of about
+    # 2,500 step-matched epochs (the WO's 8 h cap: a spec error), so the reading cannot answer its question.
+    budget = (f"GEPS-range trained {TR.get('epochs_trained')} of about {STEP_MATCHED_EPOCHS:,} step-matched epochs "
+              "(the WO's 8 h cap; a spec error), so the reading cannot answer its question")
     if "PENDING" in comp:
-        claim = "PENDING (a reading cell is not yet evaluated)"
+        claim = f"NOT STATED (a reading cell is still pending; in any case {budget})"
     elif all(comp):
-        claim = "A learned adapter built for parametric PDEs does not close the gap: STATED"
+        claim = f"NOT STATED: both reading components hold, but {budget}"
     else:
-        claim = "NOT STATED: GEPS reported prominently; Todd decides the headline"
+        claim = f"NOT STATED: a reading component fails (GEPS reported prominently), and {budget}"
     reading.append(dict(Re="50 and 56", holds_at_this_Re="PENDING" if "PENDING" in comp else all(comp), claim=claim, caveat=CLIP_CAVEAT,
                         label="frozen reading (decides the claim)"))
     write("geps_rows.csv", rows, f"first N = {N} states, w = 11; Part A arms on the same states")
     write("geps_reading.csv", reading, "frozen reading (H - GEPS-range, better budget per Re)")
     write("geps_timing.csv", timing(), "batch-1 timing on a DGX Spark GB10 (states 3-22 / 3-5 of s2_test_Re50_D)")
     write("geps_training.csv", training(), "GEPS training runs")
+    write("geps_followup.csv", followup(reading), "post-freeze follow-up: GEPS-range trained longer (seed 1, Baccus), frozen cells")
+    write("geps_repro.csv", repro(), "post-freeze follow-up: released GEPS on its own Kolmogorov data (lr 1e-2)")
     note(rows, reading)
     for r in reading:
         print(r)
@@ -208,6 +215,49 @@ def training():
     return out
 
 
+FOLLOW = config.RUNS / "geps_eval" / "followup_s1_ep130"
+
+
+def followup(reading):
+    """Post-freeze follow-up (not a substitute): seed 1's best-on-validation checkpoint (Baccus) on the frozen reading
+    cells, scored exactly as the frozen reading; the frozen value beside."""
+    snap = json.loads((FOLLOW / "snapshot.json").read_text()) if (FOLLOW / "snapshot.json").exists() else {}
+    froz = {r["Re"]: r for r in reading if r["Re"] in (50, 56)}
+    out = []
+    for Re in (50, 56):
+        panel = f"s2_test_Re{Re}_D"
+        lam = TP[panel]["lam"]
+        fs = {b: FOLLOW / "eval" / f"{panel}_adapt{b}_states0-{N}.npz" for b in (500, 5000)}
+        have = {b: f for b, f in fs.items() if f.exists()}
+        if not have:
+            continue
+        Hh, _ = horizons(arm_files(Re, "H"), lam, 0.1)
+        Hs = {b: horizons([f], lam, 0.1)[0] for b, f in have.items()}
+        best = max(Hs, key=lambda b: Hs[b].mean())
+        bh, bg = boot_all(Hh, IDX, rng), boot_all(Hs[best], IDX, rng)
+        lo, hi = q(bh["crossed"] - bg["crossed"])
+        fr = froz.get(Re, {})
+        out.append(dict(Re=Re, checkpoint=f"seed 1, epoch {snap.get('epoch')}", val_loss=snap.get("val_loss"),
+                        budgets_done=",".join(map(str, sorted(have))), better_budget=best,
+                        GEPS_500=float(Hs[500].mean()) if 500 in Hs else None,
+                        GEPS_5000=float(Hs[5000].mean()) if 5000 in Hs else None,
+                        H=float(Hh.mean()), H_minus_GEPS=float(Hh.mean() - Hs[best].mean()), ci95_lo=lo, ci95_hi=hi,
+                        frozen_H_minus_GEPS=fr.get("H_minus_GEPS"), frozen_epochs=fr.get("GEPS_epochs"),
+                        label="post-freeze follow-up: GEPS-range trained longer (reported, not a substitute)"))
+    return out
+
+
+def repro():
+    f = HERE.parent / "results" / "geps_repro_curve.json"
+    if not f.exists():
+        return []
+    J = json.loads(f.read_text())
+    return [dict(epoch=r["epoch"], train_loss=r["train_loss"], loss_test_in=r["loss_test_in"], loss_test_out=r["loss_test_out"],
+                 persistence_test_in=J["persistence_test_in"], persistence_test_out=J["persistence_test_out"],
+                 test_in_minus_persistence=r["loss_test_in"] - J["persistence_test_in"], paper_in_d=J["paper_in_d"],
+                 label="reproduction (released code, lr 1e-2; reported)") for r in J["curve"]]
+
+
 def fmt(x, p=2):
     return "" if x is None else f"{x:.{p}f}"
 
@@ -246,6 +296,18 @@ def note(rows, reading):
               "|---|---|---|---|---|---|"]
         L += [f"| {r['arm']} | {r['steps']} | {r['n_timed']} | {fmt(r['wall_median'], 1)} | {fmt(r['adapt_median'], 1)} | "
               f"{fmt(r['forecast_median'], 1)} |" for r in t]
+    fu = followup(reading)
+    if fu:
+        L += ["", "Post-freeze follow-up, GEPS-range trained longer (seed 1 on Baccus; not a substitute for the frozen reading):", "",
+              "| Re | checkpoint (val) | budgets | GEPS 500 / 5,000 | H - GEPS (95%) | frozen H - GEPS (epochs) |", "|---|---|---|---|---|---|"]
+        L += [f"| {r['Re']} | {r['checkpoint']} ({fmt(r['val_loss'], 4)}) | {r['budgets_done']} | {fmt(r['GEPS_500'])} / {fmt(r['GEPS_5000'])} | "
+              f"{fmt(r['H_minus_GEPS'])} [{fmt(r['ci95_lo'])}, {fmt(r['ci95_hi'])}] | {fmt(r['frozen_H_minus_GEPS'])} ({r['frozen_epochs']}) |" for r in fu]
+    rp = repro()
+    if rp:
+        L += ["", "Post-freeze follow-up, reproduction: released GEPS code on its own Kolmogorov data at the published lr 1e-2 "
+              f"(in-distribution test RelativeL2 vs persistence {rp[0]['persistence_test_in']:.4f}; the paper reports {rp[0]['paper_in_d']}):", "",
+              "| epoch | train loss | test in-d | test in-d - persistence | test extrapolation |", "|---|---|---|---|---|"]
+        L += [f"| {r['epoch']} | {r['train_loss']:.4g} | {r['loss_test_in']:.4f} | {r['test_in_minus_persistence']:+.4f} | {r['loss_test_out']:.4f} |" for r in rp]
     (RES / "results_note_geps.md").write_text("\n".join(L) + "\n")
 
 
