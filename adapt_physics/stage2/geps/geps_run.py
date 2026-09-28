@@ -22,7 +22,7 @@ Changes needed to read our data (all recorded in the freeze):
   * forecast: from the (noisy) frame 11 with the adapted code, F frames; errors against the truth grids.
 
 Usage (on a Spark, cwd = ~/geps_work):
-  python geps_run.py train <range|range_wide> <seed> <hours> [lr] [val_every (default 50)]
+  python geps_run.py train <range|range_wide> <seed> <hours> [lr] [val_every (default 50)] [max_epochs] [stop_rule|-] [resume_epoch]
   python geps_run.py adapt <run> <panel> <steps|0> <nominal|batched> <i0> <i1>
         (states i0..i1-1 of the panel adapted in one batched pass; nominal = no-adaptation reference code fitted on Re-40 data)
   python geps_run.py pilot <run> <B> <steps>                   (batched adaptation throughput on training data)
@@ -75,8 +75,12 @@ def to_states(x):
     return x.permute(0, 2, 3, 1).unsqueeze(1)
 
 
-def train(data, seed, hours, lr=None, val_every=50):
+def train(data, seed, hours, lr=None, val_every=50, max_epochs=None, stop_rule=False, resume=None):
+    """stop_rule (pre-registered deviation, Todd 2026-09-28): stop once validation improved by < 1% of the previous check at
+    two consecutive checks; max_epochs caps the epochs (50). resume = <start_epoch>: continue the run in its directory from
+    last.pt (weights) or state.pt (weights + Adam + scheduler + RNG, when saved), keeping the validation history and best."""
     seed, hours, val_every = int(seed), float(hours), int(val_every)
+    max_epochs = CFG["epochs"] if max_epochs is None else int(max_epochs)
     lr = CFG["lr"] if lr is None else float(lr)                # deviation option (GEPS-wide: 1e-3 after divergence at 1e-2)
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -107,8 +111,32 @@ def train(data, seed, hours, lr=None, val_every=50):
     log = open(run / "train.log", "a")
     log.write(json.dumps(dict(persistence_val_loss=persist, val_every=val_every, lr=lr)) + "\n")
     best, best_ep, ep, steps = float("inf"), -1, 0, 0
+    hist = []
+    resumed = None
+    if resume is not None:
+        ep = int(resume)
+        prev = [json.loads(x) for x in (run / "train.log").read_text().splitlines() if x.startswith("{")]
+        hist = [(x["epoch"], x["val_loss"]) for x in prev if "epoch" in x]
+        best_ep, best = min(hist, key=lambda h: h[1])
+        pinfo = json.loads((run / "info.json").read_text()) if (run / "info.json").exists() else {}
+        steps = int(pinfo.get("steps", max(x.get("steps", 0) for x in prev if "epoch" in x)))
+        if (run / "state.pt").exists():
+            st = torch.load(run / "state.pt", map_location=dev, weights_only=False)
+            model.load_state_dict(st["model"])
+            opt.load_state_dict(st["opt"])
+            sched.load_state_dict(st["sched"])
+            rng.bit_generator.state = st["rng"]
+            resumed = "state.pt (weights, Adam, scheduler, RNG)"
+        else:
+            model.load_state_dict(torch.load(run / "last.pt", map_location=dev))
+            rng = np.random.default_rng([seed, ep])               # fresh window stream (the old one was not saved)
+            resumed = "last.pt weights only; Adam moments, scheduler counters and RNG were not saved by the capped run: fresh"
+        log.write(json.dumps(dict(resumed_at_epoch=ep, steps=steps, source=resumed, stop_rule=bool(stop_rule),
+                                  max_epochs=max_epochs)) + "\n")
+        log.flush()
     cap = hours * 3600
-    while ep < CFG["epochs"] and time.time() - t0 < cap:
+    stop_reason = None
+    while ep < max_epochs and time.time() - t0 < cap:
         model.train()
         perm = rng.permutation(n_env)
         tot = 0.0
@@ -146,6 +174,16 @@ def train(data, seed, hours, lr=None, val_every=50):
             if vl < best:
                 best, best_ep = vl, ep
                 torch.save(model.state_dict(), run / "best.pt")
+            hist.append((ep, vl))
+            torch.save(dict(model=model.state_dict(), opt=opt.state_dict(), sched=sched.state_dict(), rng=rng.bit_generator.state,
+                            epoch=ep, steps=steps), run / "state.pt.tmp")
+            os.replace(run / "state.pt.tmp", run / "state.pt")
+            if stop_rule and len(hist) >= 3 and all((hist[i - 1][1] - hist[i][1]) / hist[i - 1][1] < 0.01 for i in (-1, -2)):
+                stop_reason = f"stopping rule: < 1% improvement at two consecutive checks (epochs {hist[-2][0]}, {hist[-1][0]})"
+                log.write(json.dumps(dict(stopped=stop_reason)) + "\n")
+                log.flush()
+                ep += 1
+                break
             if val_every < 50 and ep == 4 and abs(vl - persist) < 1e-4:     # Todd 2026-09-28: collapse stop at epoch 4
                 (run / "COLLAPSED").write_text(json.dumps(dict(epoch=ep, val_loss=vl, persistence=persist)))
                 log.write(json.dumps(dict(stopped="collapsed to persistence at epoch 4", val_loss=vl, persistence=persist)) + "\n")
@@ -153,7 +191,10 @@ def train(data, seed, hours, lr=None, val_every=50):
                 break
         ep += 1
     torch.save(model.state_dict(), run / "last.pt")
-    info = dict(data=data, seed=seed, lr=lr, epochs_done=ep, steps=steps, cap_hours=hours, cap_bound=ep < CFG["epochs"],
+    if stop_reason is None:
+        stop_reason = f"max_epochs {max_epochs}" if ep >= max_epochs else "time cap"
+    info = dict(data=data, seed=seed, lr=lr, epochs_done=ep, steps=steps, cap_hours=hours, cap_bound=stop_reason == "time cap",
+                stopped_by=stop_reason, resumed=resumed, max_epochs=max_epochs, stop_rule=bool(stop_rule),
                 best_val=best, best_epoch=best_ep, train_seconds=time.time() - t0, n_env=n_env, cfg={k: v for k, v in CFG.items()},
                 params=int(sum(p.numel() for p in model.parameters())), torch=torch.__version__)
     (run / "info.json").write_text(json.dumps(info, indent=1, default=str))
@@ -354,7 +395,8 @@ if __name__ == "__main__":
     torch.set_num_threads(8)
     c = sys.argv[1]
     if c == "train":
-        train(sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5] if len(sys.argv) > 5 else None, sys.argv[6] if len(sys.argv) > 6 else 50)
+        a = sys.argv + [None] * 10
+        train(a[2], a[3], a[4], a[5], a[6] or 50, a[7], a[8] == "stop_rule", a[9])
     elif c == "adapt":
         # adapt <run> <panel> <steps|0> <nominal|batched> <i0> <i1>
         adapt(sys.argv[2], sys.argv[3], int(sys.argv[4]), nominal=sys.argv[5] == "nominal", i0=sys.argv[6], i1=sys.argv[7])
