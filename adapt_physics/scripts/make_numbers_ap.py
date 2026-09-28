@@ -241,6 +241,31 @@ def main():
         if p.exists():
             rows, sha = MN.read_csv(p)
             MN.table(out, sec, title, p, cols, rows, sha, note=note)
+    # ---- GEPS WO sections APGEPS* (stage2/geps/geps_freeze.yaml; first N = 50 states, Todd's scope ruling 2026-09-28)
+    GR = config.PKG / "stage2" / "geps" / "results"
+    for fname, sec, title, cols, note in (
+            ("geps_reading.csv", "APGEPS-R", "GEPS: frozen reading (H - GEPS-range at the better budget per Re; World D, first 50 states, w = 11)",
+             ["Re", "better_budget", "GEPS", "H", "H_minus_GEPS", ("95%", ci("ci95_lo", "ci95_hi")),
+              ("95% cond", ci("cond_ci95_lo", "cond_ci95_hi")), "holds_at_this_Re", "claim"],
+             "Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at Re 50 AND 56. Paired bootstrap "
+             "over trajectories (crossed over H's 3 seeds; GEPS one seed); 95% cond = conditional on the trained models."),
+            ("geps_rows.csv", "APGEPS", "GEPS and Part A arms on the same first 50 states (World D, w = 11)",
+             ["Re", "arm", "source", "eps", "n", "seeds", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")),
+              ("95% cond", ci("cond_ci95_lo", "cond_ci95_hi")), "S1", "S3", "retention"],
+             "Retention = restricted mean / O's on the same states and eps. GEPS_range_noadapt: one context fitted on Re-40 "
+             "nominal data, the same for every state."),
+            ("geps_timing.csv", "APGEPS-T", "GEPS: batch-1 cost per state on a DGX Spark GB10 (s2_test_Re50_D; reported only)",
+             ["arm", "steps", "n_timed", "frames", "wall_median", "wall_p90", "adapt_median", "forecast_median", "forecast_fps",
+              "device"],
+             "One state at a time, CUDA-synchronised; the 5,000-step budget timed on states 3-5 only (time-bound)."),
+            ("geps_training.csv", "APGEPS-TR", "GEPS training runs",
+             ["run", "data", "lr", "host", "epochs_logged", "steps", "best_val", "diverged", "cap_hours", "stopped_by", "evaluated"],
+             "8 h cap binds (GEPS-range); GEPS-wide at the published lr 1e-2 diverged and was retrained at 1e-3 (deviation); "
+             "its evaluation is cut.")):
+        p = GR / fname
+        if p.exists():
+            rows, sha = MN.read_csv(p)
+            MN.table(out, sec, title, p, cols, rows, sha, note=note)
     check(out)
     (config.PKG / "NUMBERS.md").write_text("\n".join(out) + "\n")
     print("wrote NUMBERS.md", sum(1 for l in out if l.startswith("| AP")), "rows")
