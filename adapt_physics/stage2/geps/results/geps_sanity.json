@@ -1,0 +1,35 @@
+{
+ "panel": "s2_test_Re50_D",
+ "n": 50,
+ "eps": 0.1,
+ "lam": 0.2583510217898125,
+ "frame_in_lyapunov_times": 0.09042285762643437,
+ "GEPS-range (500 steps)": {
+  "horizon_mean": 0.2007387439306843,
+  "first_frame_over_eps_median": 2.0,
+  "err_frame1_median": 0.09360582381486893,
+  "err_frame2_median": 0.14221815764904022,
+  "window20_relativeL2_mean": 0.3555928981510721
+ },
+ "GEPS-range (5,000 steps)": {
+  "horizon_mean": 0.2007387439306843,
+  "first_frame_over_eps_median": 2.0,
+  "err_frame1_median": 0.0936058945953846,
+  "err_frame2_median": 0.14221829175949097
+ },
+ "persistence": {
+  "horizon_mean": 0.11031588630424993,
+  "first_frame_over_eps_median": 1.0,
+  "err_frame1_median": 0.2047823816537857,
+  "err_frame2_median": 0.3969501405954361,
+  "window20_relativeL2_mean": 0.8346657482310991
+ },
+ "H (seed 0)": {
+  "horizon_mean": 3.2516059602465806,
+  "first_frame_over_eps_median": 32.0,
+  "err_frame1_median": 0.005074359010905027,
+  "err_frame2_median": 0.005068183643743396
+ },
+ "field_norm_over_sigma_A_median": 1.0981745398224665,
+ "validation_relativeL2_geps_range_best": 0.2430717
+}
