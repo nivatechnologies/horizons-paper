@@ -245,7 +245,7 @@ def main():
     GR = config.PKG / "stage2" / "geps" / "results"
     for fname, sec, title, cols, note in (
             ("geps_reading.csv", "APGEPS-R", "GEPS: frozen reading (H - GEPS-range at the better budget per Re; World D, first 50 states, w = 11)",
-             ["Re", "better_budget", "GEPS", "GEPS_epochs", "GEPS_undertrained", "H", "H_minus_GEPS", ("95%", ci("ci95_lo", "ci95_hi")),
+             ["Re", "better_budget", "GEPS", "GEPS_epochs", "GEPS_undertrained", "GEPS_val_change_last2", "GEPS_val_change_last2_pct", "H", "H_minus_GEPS", ("95%", ci("ci95_lo", "ci95_hi")),
               ("95% cond", ci("cond_ci95_lo", "cond_ci95_hi")), "holds_at_this_Re", "claim", "caveat"],
              "Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at Re 50 AND 56. Paired bootstrap "
              "over trajectories (crossed over H's 3 seeds; GEPS one seed); 95% cond = conditional on the trained models."),
@@ -260,7 +260,7 @@ def main():
              "One state at a time, CUDA-synchronised; the 5,000-step budget timed on states 3-5 only (time-bound)."),
             ("geps_training.csv", "APGEPS-TR", "GEPS training runs",
              ["run", "data", "lr", "host", "epochs_trained", "steps", "best_val", "best_epoch", "persistence_val",
-              "best_minus_persistence", "undertrained", "diverged", "collapsed", "evaluated", "val_curve"],
+              "best_minus_persistence", "undertrained", "val_change_last2", "val_change_last2_pct", "diverged", "collapsed", "evaluated", "val_curve"],
              "Validation RelativeL2 on the 64 fixed windows; persistence_val = the no-change forecast on the same windows. At the "
              "published lr 1e-2 GEPS-range collapsed to persistence (archived, never evaluated) and GEPS-wide diverged; both were "
              "retrained at 1e-3 (deviations; GEPS-range for ~1 h, validated every 2 epochs). GEPS-wide's evaluation is cut.")):

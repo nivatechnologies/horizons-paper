@@ -116,7 +116,8 @@ def main():
         cells = [a for a in ("GEPS_range_adapt500", "GEPS_range_adapt5000") if (Re, a, 0.1) in H]
         if len(cells) < 2 or (Re, "H", 0.1) not in H:
             reading.append(dict(Re=Re, better_budget="", GEPS=None, GEPS_epochs=TR.get("epochs_trained"),
-                                GEPS_undertrained=TR.get("undertrained"), H=None, H_minus_GEPS=None, ci95_lo=None, ci95_hi=None,
+                                GEPS_undertrained=TR.get("undertrained"), GEPS_val_change_last2=TR.get("val_change_last2"),
+                                GEPS_val_change_last2_pct=TR.get("val_change_last2_pct"), H=None, H_minus_GEPS=None, ci95_lo=None, ci95_hi=None,
                                 cond_ci95_lo=None, cond_ci95_hi=None, holds_at_this_Re="PENDING",
                                 label="reading component (cell not yet evaluated)"))
             continue
@@ -128,7 +129,9 @@ def main():
         lo, hi = q(d)
         val = float(Hh.mean() - Hg.mean())
         reading.append(dict(Re=Re, better_budget=best.replace("GEPS_range_adapt", ""), GEPS=float(Hg.mean()),
-                            GEPS_epochs=TR.get("epochs_trained"), GEPS_undertrained=TR.get("undertrained"), H=float(Hh.mean()),
+                            GEPS_epochs=TR.get("epochs_trained"), GEPS_undertrained=TR.get("undertrained"),
+                            GEPS_val_change_last2=TR.get("val_change_last2"), GEPS_val_change_last2_pct=TR.get("val_change_last2_pct"),
+                            H=float(Hh.mean()),
                             H_minus_GEPS=val, ci95_lo=lo, ci95_hi=hi, cond_ci95_lo=q(dc)[0], cond_ci95_hi=q(dc)[1],
                             other_budget_H_minus_GEPS=float(Hh.mean() - H[(Re, [c for c in cells if c != best][0], 0.1)].mean()),
                             holds_at_this_Re=bool(val >= MARGIN and lo > 0), label="reading component"))
@@ -198,7 +201,9 @@ def training():
                         steps=info.get("steps", E[-1]["steps"] if E else None), best_val=min(fin) if fin else None, best_epoch=best_ep,
                         persistence_val=pers, best_minus_persistence=(min(fin) - pers) if fin else None,
                         val_curve=" ".join(f"{x['epoch']}:{x['val_loss']:.7f}" for x in E),
-                        undertrained=falling, diverged=bool(vals and not fin), collapsed=(d / "COLLAPSED").exists() or run.startswith("ARCHIVED"),
+                        undertrained=falling,
+                        val_change_last2=(fin[-1] - fin[-2]) if len(fin) >= 2 else None,
+                        val_change_last2_pct=(100 * (fin[-1] - fin[-2]) / fin[-2]) if len(fin) >= 2 else None, diverged=bool(vals and not fin), collapsed=(d / "COLLAPSED").exists() or run.startswith("ARCHIVED"),
                         cap_hours=info.get("cap_hours"), evaluated=ev, label="training (reported)"))
     return out
 
@@ -213,7 +218,10 @@ def note(rows, reading):
     L += [f"**Frozen reading:** {fin['claim']}.", "", f"**Caveat:** {CLIP_CAVEAT}", "",
           "| Re | better budget | GEPS-range (epochs trained) | H | H - GEPS (95%) | holds |", "|---|---|---|---|---|---|"]
     for r in reading[:-1]:
-        ep = "" if r.get("GEPS_epochs") is None else f" ({r['GEPS_epochs']} epochs{', UNDERTRAINED' if r.get('GEPS_undertrained') else ''})"
+        dv = "" if r.get("GEPS_val_change_last2") is None else \
+            f"; val change over last two checks {r['GEPS_val_change_last2']:+.4f} ({r['GEPS_val_change_last2_pct']:+.2f}%)"
+        ep = "" if r.get("GEPS_epochs") is None else \
+            f" ({r['GEPS_epochs']} epochs{', UNDERTRAINED' if r.get('GEPS_undertrained') else ''}{dv})"
         L.append(f"| {r['Re']} | {r['better_budget'] or 'pending'} | {fmt(r['GEPS'])}{ep} | {fmt(r['H'])} | "
                  f"{fmt(r['H_minus_GEPS'])} [{fmt(r['ci95_lo'])}, {fmt(r['ci95_hi'])}] | {r['holds_at_this_Re']} |")
     L += ["", f"First N = {N} states of the fresh World D panels, w = 11, eps 0.1, future frames; margin {MARGIN} with the "
@@ -228,6 +236,8 @@ def note(rows, reading):
           "| run | lr | epochs | best val (epoch) | persistence | val curve (epoch:loss) | status |", "|---|---|---|---|---|---|---|"]
     for r in training():
         st = "collapsed to persistence" if r["collapsed"] else ("diverged" if r["diverged"] else ("undertrained (val still falling)" if r["undertrained"] else "trained"))
+        if r["val_change_last2"] is not None:
+            st += f"; val change over last two checks {r['val_change_last2']:+.4f} ({r['val_change_last2_pct']:+.2f}%)"
         L.append(f"| {r['run']} | {r['lr']:g} | {r['epochs_trained']} | {fmt(r['best_val'], 7)} ({r['best_epoch']}) | "
                  f"{r['persistence_val']:.7f} | {r['val_curve']} | {st}; evaluated: {r['evaluated']} |")
     t = timing()
