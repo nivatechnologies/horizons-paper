@@ -246,7 +246,7 @@ def main():
     for fname, sec, title, cols, note in (
             ("geps_reading.csv", "APGEPS-R", "GEPS: frozen reading (H - GEPS-range at the better budget per Re; World D, first 50 states, w = 11)",
              ["Re", "better_budget", "GEPS", "GEPS_epochs", "GEPS_undertrained", "H", "H_minus_GEPS", ("95%", ci("ci95_lo", "ci95_hi")),
-              ("95% cond", ci("cond_ci95_lo", "cond_ci95_hi")), "holds_at_this_Re", "claim"],
+              ("95% cond", ci("cond_ci95_lo", "cond_ci95_hi")), "holds_at_this_Re", "claim", "caveat"],
              "Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at Re 50 AND 56. Paired bootstrap "
              "over trajectories (crossed over H's 3 seeds; GEPS one seed); 95% cond = conditional on the trained models."),
             ("geps_rows.csv", "APGEPS", "GEPS and Part A arms on the same first 50 states (World D, w = 11)",

@@ -38,6 +38,10 @@ OEV = config.RUNS / "obj_eval"
 RES = HERE.parent / "results"
 DELTA = 0.35
 MARGIN = 0.25
+CLIP_CAVEAT = ("Every GEPS run trained unclipped: the released train.py:158 calls clip_grad_norm_ after optimizer.zero_grad() "
+               "(train.py:157), so clipping never applies, and the wrapper copies that order. The published lr 1e-2 was not "
+               "tested with working clipping, so this result cannot tell whether GEPS needs the lower lr (1e-3, used here) "
+               "or only working clipping.")
 TP = json.loads((PKG / "stage2" / "results" / "test_panels.json").read_text())
 rng = np.random.default_rng(2809)
 IDX = boot_idx(N, seed=2809)
@@ -111,7 +115,8 @@ def main():
     for Re in (50, 56):
         cells = [a for a in ("GEPS_range_adapt500", "GEPS_range_adapt5000") if (Re, a, 0.1) in H]
         if len(cells) < 2 or (Re, "H", 0.1) not in H:
-            reading.append(dict(Re=Re, better_budget="", GEPS=None, H=None, H_minus_GEPS=None, ci95_lo=None, ci95_hi=None,
+            reading.append(dict(Re=Re, better_budget="", GEPS=None, GEPS_epochs=TR.get("epochs_trained"),
+                                GEPS_undertrained=TR.get("undertrained"), H=None, H_minus_GEPS=None, ci95_lo=None, ci95_hi=None,
                                 cond_ci95_lo=None, cond_ci95_hi=None, holds_at_this_Re="PENDING",
                                 label="reading component (cell not yet evaluated)"))
             continue
@@ -134,7 +139,7 @@ def main():
         claim = "A learned adapter built for parametric PDEs does not close the gap: STATED"
     else:
         claim = "NOT STATED: GEPS reported prominently; Todd decides the headline"
-    reading.append(dict(Re="50 and 56", holds_at_this_Re="PENDING" if "PENDING" in comp else all(comp), claim=claim,
+    reading.append(dict(Re="50 and 56", holds_at_this_Re="PENDING" if "PENDING" in comp else all(comp), claim=claim, caveat=CLIP_CAVEAT,
                         label="frozen reading (decides the claim)"))
     write("geps_rows.csv", rows, f"first N = {N} states, w = 11; Part A arms on the same states")
     write("geps_reading.csv", reading, "frozen reading (H - GEPS-range, better budget per Re)")
@@ -205,7 +210,7 @@ def fmt(x, p=2):
 def note(rows, reading):
     L = [f"## GEPS as a learned adaptive opponent (script-generated: stage2/geps/geps_analysis.py @ {config.git_sha()[:7]})", ""]
     fin = reading[-1]
-    L += [f"**Frozen reading:** {fin['claim']}.", "",
+    L += [f"**Frozen reading:** {fin['claim']}.", "", f"**Caveat:** {CLIP_CAVEAT}", "",
           "| Re | better budget | GEPS-range (epochs trained) | H | H - GEPS (95%) | holds |", "|---|---|---|---|---|---|"]
     for r in reading[:-1]:
         ep = "" if r.get("GEPS_epochs") is None else f" ({r['GEPS_epochs']} epochs{', UNDERTRAINED' if r.get('GEPS_undertrained') else ''})"
