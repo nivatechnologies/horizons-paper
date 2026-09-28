@@ -1,4 +1,4 @@
-# git_sha=0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty; Adapt the Physics GEPS WO; GEPS training runs
+# git_sha=8f1c50c50338dc1aff9694b9d300f3baf6a3edee-dirty; Adapt the Physics GEPS WO; GEPS training runs
 run,data,lr,host,epochs_trained,steps,best_val,best_epoch,persistence_val,best_minus_persistence,val_curve,undertrained,val_change_last2,val_change_last2_pct,diverged,collapsed,cap_hours,evaluated,label
 ARCHIVED_geps_range_s0_lr0.01_collapsed,range,0.01,Spark A,51,13056,0.7266750335693359,50,0.7266750314403004,2.1290355034508934e-09,0:0.7266754 50:0.7266750,False,-3.5762786865234375e-07,-4.9214253432079e-05,False,True,,"no (collapsed to persistence; archived, never evaluated)",training (reported)
 geps_range_s0_lr0.001,range,0.001,Spark A,35,8872,0.23087206482887268,30,0.7266750314403004,-0.49580296661142775,0:0.5644766 2:0.4354147 4:0.4316104 6:0.3483525 8:0.3495376 10:0.3225729 12:0.3084703 14:0.2874763 16:0.2953822 18:0.2635087 20:0.2680462 22:0.2648376 24:0.2621697 26:0.2441865 28:0.2554978 30:0.2308721 32:0.2349526 34:0.2430717,False,0.008119136095046997,3.4556485589699557,False,False,8.0,yes,training (reported)

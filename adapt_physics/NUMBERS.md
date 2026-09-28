@@ -3507,7 +3507,7 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 
 ## APVS. All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system
 
-Source `pivot/results/chaos_gate_C.json` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+Source `pivot/results/chaos_gate_C.json` · SHA `8f1c50c50338dc1aff9694b9d300f3baf6a3edee-dirty`
 
 World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: objections WO; two-parameter systems: stage 2 item 3.
 
@@ -6059,7 +6059,7 @@ Early-stop columns: each arm forecasts until every state exceeds 0.3 sigma_A (fr
 
 ## APGEPS-R. GEPS: frozen reading (H - GEPS-range at the better budget per Re; World D, first 50 states, w = 11)
 
-Source `stage2/geps/results/geps_reading.csv` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+Source `stage2/geps/results/geps_reading.csv` · SHA `8f1c50c50338dc1aff9694b9d300f3baf6a3edee-dirty`
 
 Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at Re 50 AND 56. Paired bootstrap over trajectories (crossed over H's 3 seeds; GEPS one seed); 95% cond = conditional on the trained models.
 
@@ -6071,7 +6071,7 @@ Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at
 
 ## APGEPS. GEPS and Part A arms on the same first 50 states (World D, w = 11)
 
-Source `stage2/geps/results/geps_rows.csv` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+Source `stage2/geps/results/geps_rows.csv` · SHA `8f1c50c50338dc1aff9694b9d300f3baf6a3edee-dirty`
 
 Retention = restricted mean / O's on the same states and eps. GEPS_range_noadapt: one context fitted on Re-40 nominal data, the same for every state.
 
@@ -6120,7 +6120,7 @@ Retention = restricted mean / O's on the same states and eps. GEPS_range_noadapt
 
 ## APGEPS-TR. GEPS training runs
 
-Source `stage2/geps/results/geps_training.csv` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+Source `stage2/geps/results/geps_training.csv` · SHA `8f1c50c50338dc1aff9694b9d300f3baf6a3edee-dirty`
 
 Validation RelativeL2 on the 64 fixed windows; persistence_val = the no-change forecast on the same windows. At the published lr 1e-2 GEPS-range collapsed to persistence (archived, never evaluated) and GEPS-wide diverged; both were retrained at 1e-3 (deviations; GEPS-range for ~1 h, validated every 2 epochs). GEPS-wide's evaluation is cut.
 

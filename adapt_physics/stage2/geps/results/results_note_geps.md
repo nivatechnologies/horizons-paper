@@ -1,4 +1,4 @@
-## GEPS as a learned adaptive opponent (script-generated: stage2/geps/geps_analysis.py @ 0e4f15b)
+## GEPS as a learned adaptive opponent (script-generated: stage2/geps/geps_analysis.py @ 8f1c50c)
 
 **Frozen reading:** PENDING (a reading cell is not yet evaluated).
 

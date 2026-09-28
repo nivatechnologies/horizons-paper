@@ -1,4 +1,4 @@
-# git_sha=0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty; Adapt the Physics GEPS WO; first N = 50 states, w = 11; Part A arms on the same states
+# git_sha=8f1c50c50338dc1aff9694b9d300f3baf6a3edee-dirty; Adapt the Physics GEPS WO; first N = 50 states, w = 11; Part A arms on the same states
 world,Re,arm,source,w,eps,n,seeds,restricted_mean,ci95_lo,ci95_hi,cond_ci95_lo,cond_ci95_hi,S1,S3,retention,label
 D,50,GEPS_range_adapt500,GEPS (this WO),11,0.1,50,1,0.2007387439306843,0.16276114372758188,0.24233325843884412,0.16276114372758188,0.24233325843884412,0.0,0.0,0.06119073869900772,learned opponent (reported)
 D,50,GEPS_range_adapt500,GEPS (this WO),11,0.3,50,1,1.0163529197211223,0.8408873644970263,1.215283206499278,0.8408873644970263,1.215283206499278,0.36,0.02,0.23663157894736842,learned opponent (reported)
