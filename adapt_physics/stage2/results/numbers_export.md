@@ -1,11 +1,11 @@
 # Adapt the Physics: NUMBERS (every AP section: stage 1 AP*, pivot APV*, stage 2 APS*, objections APDD*/APFR*/APEDGE*, GEPS APGEPS*)
 
-Copied from `adapt_physics/NUMBERS.md` at `3ae1502` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
+Copied from `adapt_physics/NUMBERS.md` at `0e4f15b` by `adapt_physics/stage2/scripts/s2_paper_facts.py numbers`.
 
 **Checker status:**
-- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5749 rows.
+- Fresh build (`scripts/make_numbers_ap.py`, strict tokens-horizon checker with the AP extension): passed. wrote NUMBERS.md 5796 rows.
 - Negative test (a duplicate section code must raise): passed (raised NumbersError: duplicate section code APS_NEGTEST).
-- Rows in these sections: 5749.
+- Rows in these sections: 5796.
 
 ## APK. Kill rule on the frozen cell (Re 44, eps 0.1, w 11, first 100 states)
 
@@ -3528,7 +3528,7 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 
 ## APVS. All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system
 
-Source `pivot/results/chaos_gate_C.json` · SHA `3ae1502e587ecae9843cee53e9c656e0868cbe33-dirty`
+Source `pivot/results/chaos_gate_C.json` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
 
 World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: objections WO; two-parameter systems: stage 2 item 3.
 
@@ -6096,4 +6096,81 @@ Early-stop columns: each arm forecasts until every state exceeds 0.3 sigma_A (fr
 | APEDGE-6 | L0big | ok | 0.7335 | 1.0172 | 0.0302 |  | 19.7626 | 480.5327 | 458.5239 | 3685 | 16288.8310 | 12.2810 | 0.0000 | 20 | 20 | 111 | 5.5338 | 5.5488 |  | 5.5338 | 20.0483 | 16663.5062 | 92.2597 | 0.2347 | 0.2347 | 471.7850 | estimate (reported only) |
 | APEDGE-7 | FNO_Re_id | ok | 1.4474 | 1.5963 | 0.5154 | 1.2693 | 165.7307 | 462.4877 | 94.4028 | 3720 | 18053.5603 | 26.8142 | 0.0000 | 20 | 20 | 111 | 1.9431 | 1.9448 | 1.2722 | 0.6705 | 165.5180 | 18433.9646 | 35.8192 | 0.6594 | 0.2290 | 484.6492 | estimate (reported only) |
 | APEDGE-8 | L_ft | ok | 18.9067 | 18.9608 | 3.0445 | 18.7810 | 121.4306 | 286.8719 | 627.8438 | 3922 | 17542.0681 | 331.7720 | 0.0000 | 20 | 20 | 111 | 19.4562 | 19.4709 | 18.7612 | 0.6972 | 159.1269 | 17651.8940 | 343.4541 | 3.2328 | 0.2463 | 450.1851 | estimate (reported only) |
+
+
+## APGEPS-R. GEPS: frozen reading (H - GEPS-range at the better budget per Re; World D, first 50 states, w = 11)
+
+Source `stage2/geps/results/geps_reading.csv` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+
+Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at Re 50 AND 56. Paired bootstrap over trajectories (crossed over H's 3 seeds; GEPS one seed); 95% cond = conditional on the trained models.
+
+| id | Re | better_budget | GEPS | GEPS_epochs | GEPS_undertrained | GEPS_val_change_last2 | GEPS_val_change_last2_pct | H | H_minus_GEPS | 95% | 95% cond | holds_at_this_Re | claim | caveat | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APGEPS-R-1 | 50 | 500 | 0.2007 | 35 | False | 0.0081 | 3.4556 | 3.2365 | 3.0358 | [2.7917, 3.3059] | [2.8001, 3.3004] | True |  |  | reading component |
+| APGEPS-R-2 | 56 |  |  | 35 | False | 0.0081 | 3.4556 |  |  |  |  | PENDING |  |  | reading component (cell not yet evaluated) |
+| APGEPS-R-3 | 50 and 56 |  |  |  |  |  |  |  |  |  |  | PENDING | PENDING (a reading cell is not yet evaluated) | Every GEPS run trained unclipped: the released train.py:158 calls clip_grad_norm_ after optimizer.zero_grad() (train.py:157), so clipping never applies, and the wrapper copies that order. The published lr 1e-2 was not tested with working clipping, so this result cannot tell whether GEPS needs the lower lr (1e-3, used here) or only working clipping. | frozen reading (decides the claim) |
+
+
+## APGEPS. GEPS and Part A arms on the same first 50 states (World D, w = 11)
+
+Source `stage2/geps/results/geps_rows.csv` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+
+Retention = restricted mean / O's on the same states and eps. GEPS_range_noadapt: one context fitted on Re-40 nominal data, the same for every state.
+
+| id | Re | arm | source | eps | n | seeds | restricted_mean | 95% | 95% cond | S1 | S3 | retention | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APGEPS-1 | 50 | GEPS_range_adapt500 | GEPS (this WO) | 0.1000 | 50 | 1 | 0.2007 | [0.1628, 0.2423] | [0.1628, 0.2423] | 0.0000 | 0.0000 | 0.0612 | learned opponent (reported) |
+| APGEPS-2 | 50 | GEPS_range_adapt500 | GEPS (this WO) | 0.3000 | 50 | 1 | 1.0164 | [0.8409, 1.2153] | [0.8409, 1.2153] | 0.3600 | 0.0200 | 0.2366 | learned opponent (reported) |
+| APGEPS-3 | 50 | GEPS_range_adapt5000 | GEPS (this WO) | 0.1000 | 50 | 1 | 0.2007 | [0.1628, 0.2423] | [0.1628, 0.2423] | 0.0000 | 0.0000 | 0.0612 | learned opponent (reported) |
+| APGEPS-4 | 50 | GEPS_range_adapt5000 | GEPS (this WO) | 0.3000 | 50 | 1 | 1.0164 | [0.8409, 1.2153] | [0.8409, 1.2153] | 0.3600 | 0.0200 | 0.2366 | learned opponent (reported) |
+| APGEPS-5 | 50 | H | Part A (same states) | 0.1000 | 50 | 3 | 3.2365 | [2.9701, 3.5247] | [2.9701, 3.5271] | 1.0000 | 0.4200 | 0.9866 | comparator (reported) |
+| APGEPS-6 | 50 | H | Part A (same states) | 0.3000 | 50 | 3 | 4.2577 | [3.9370, 4.6176] | [3.9358, 4.6176] | 1.0000 | 0.8933 | 0.9913 | comparator (reported) |
+| APGEPS-7 | 50 | O | Part A (same states) | 0.1000 | 50 | 1 | 3.2805 | [2.9947, 3.6006] | [2.9947, 3.6006] | 1.0000 | 0.4400 | 1.0000 | comparator (reported) |
+| APGEPS-8 | 50 | O | Part A (same states) | 0.3000 | 50 | 1 | 4.2951 | [3.9461, 4.6984] | [3.9461, 4.6984] | 1.0000 | 0.8800 | 1.0000 | comparator (reported) |
+| APGEPS-9 | 50 | persistence | Part A (same states) | 0.1000 | 50 | 1 | 0.1103 | [0.1013, 0.1212] | [0.1013, 0.1212] | 0.0000 | 0.0000 | 0.0336 | comparator (reported) |
+| APGEPS-10 | 50 | persistence | Part A (same states) | 0.3000 | 50 | 1 | 0.2242 | [0.1953, 0.2568] | [0.1953, 0.2568] | 0.0000 | 0.0000 | 0.0522 | comparator (reported) |
+| APGEPS-11 | 50 | L0 | Part A (same states) | 0.1000 | 50 | 3 | 0.5299 | [0.4907, 0.5721] | [0.4907, 0.5709] | 0.0000 | 0.0000 | 0.1615 | comparator (reported) |
+| APGEPS-12 | 50 | L0 | Part A (same states) | 0.3000 | 50 | 3 | 1.5492 | [1.4275, 1.6831] | [1.4299, 1.6831] | 0.8667 | 0.0200 | 0.3607 | comparator (reported) |
+| APGEPS-13 | 50 | L_range | Part A (same states) | 0.1000 | 50 | 3 | 1.7391 | [1.5637, 1.9429] | [1.5703, 1.9441] | 0.8667 | 0.0667 | 0.5301 | comparator (reported) |
+| APGEPS-14 | 50 | L_range | Part A (same states) | 0.3000 | 50 | 3 | 2.8965 | [2.6301, 3.1841] | [2.6433, 3.1781] | 1.0000 | 0.3400 | 0.6744 | comparator (reported) |
+| APGEPS-15 | 50 | L_range_wide | Part A (same states) | 0.1000 | 50 | 1 | 2.1720 | [1.9495, 2.4252] | [1.9495, 2.4252] | 1.0000 | 0.1400 | 0.6621 | comparator (reported) |
+| APGEPS-16 | 50 | L_range_wide | Part A (same states) | 0.3000 | 50 | 1 | 3.3438 | [3.0075, 3.7544] | [3.0075, 3.7544] | 1.0000 | 0.4600 | 0.7785 | comparator (reported) |
+| APGEPS-17 | 50 | FNO_Re_true | Part A (same states) | 0.1000 | 50 | 3 | 2.2148 | [2.0212, 2.4469] | [2.0327, 2.4269] | 0.9667 | 0.1533 | 0.6751 | comparator (reported) |
+| APGEPS-18 | 50 | FNO_Re_true | Part A (same states) | 0.3000 | 50 | 3 | 3.3740 | [3.1021, 3.6838] | [3.1135, 3.6562] | 1.0000 | 0.5067 | 0.7855 | comparator (reported) |
+| APGEPS-19 | 50 | FNO_Re_id | Part A (same states) | 0.1000 | 50 | 3 | 2.2009 | [2.0074, 2.4180] | [2.0152, 2.4077] | 0.9667 | 0.1533 | 0.6709 | comparator (reported) |
+| APGEPS-20 | 50 | FNO_Re_id | Part A (same states) | 0.3000 | 50 | 3 | 3.3667 | [3.0979, 3.6766] | [3.1063, 3.6573] | 1.0000 | 0.5000 | 0.7839 | comparator (reported) |
+| APGEPS-21 | 50 | L_ft | Part A (same states) | 0.1000 | 50 | 1 | 0.7632 | [0.7035, 0.8319] | [0.7035, 0.8319] | 0.1400 | 0.0000 | 0.2326 | comparator (reported) |
+| APGEPS-22 | 50 | L_ft | Part A (same states) | 0.3000 | 50 | 1 | 1.5842 | [1.4540, 1.7325] | [1.4540, 1.7325] | 0.9000 | 0.0000 | 0.3688 | comparator (reported) |
+| APGEPS-23 | 56 | H | Part A (same states) | 0.1000 | 50 | 3 | 3.1193 | [2.8771, 3.3561] | [2.8778, 3.3499] | 1.0000 | 0.4867 | 0.9922 | comparator (reported) |
+| APGEPS-24 | 56 | H | Part A (same states) | 0.3000 | 50 | 3 | 4.2669 | [3.9769, 4.5562] | [3.9803, 4.5494] | 1.0000 | 0.8867 | 1.0032 | comparator (reported) |
+| APGEPS-25 | 56 | O | Part A (same states) | 0.1000 | 50 | 1 | 3.1439 | [2.8962, 3.3916] | [2.8962, 3.3916] | 1.0000 | 0.5000 | 1.0000 | comparator (reported) |
+| APGEPS-26 | 56 | O | Part A (same states) | 0.3000 | 50 | 1 | 4.2533 | [3.9687, 4.5398] | [3.9687, 4.5398] | 1.0000 | 0.8800 | 1.0000 | comparator (reported) |
+| APGEPS-27 | 56 | persistence | Part A (same states) | 0.1000 | 50 | 1 | 0.1126 | [0.1044, 0.1208] | [0.1044, 0.1208] | 0.0000 | 0.0000 | 0.0358 | comparator (reported) |
+| APGEPS-28 | 56 | persistence | Part A (same states) | 0.3000 | 50 | 1 | 0.2129 | [0.1822, 0.2456] | [0.1822, 0.2456] | 0.0000 | 0.0000 | 0.0500 | comparator (reported) |
+| APGEPS-29 | 56 | L0 | Part A (same states) | 0.1000 | 50 | 3 | 0.3630 | [0.3432, 0.3828] | [0.3432, 0.3821] | 0.0000 | 0.0000 | 0.1155 | comparator (reported) |
+| APGEPS-30 | 56 | L0 | Part A (same states) | 0.3000 | 50 | 3 | 1.2506 | [1.1633, 1.3366] | [1.1639, 1.3359] | 0.7600 | 0.0000 | 0.2940 | comparator (reported) |
+| APGEPS-31 | 56 | L_range | Part A (same states) | 0.1000 | 50 | 3 | 1.4676 | [1.3086, 1.6388] | [1.3256, 1.6300] | 0.8733 | 0.0133 | 0.4668 | comparator (reported) |
+| APGEPS-32 | 56 | L_range | Part A (same states) | 0.3000 | 50 | 3 | 2.5735 | [2.3531, 2.8205] | [2.3606, 2.8191] | 1.0000 | 0.2333 | 0.6051 | comparator (reported) |
+| APGEPS-33 | 56 | L_range_wide | Part A (same states) | 0.1000 | 50 | 1 | 1.9301 | [1.7152, 2.1798] | [1.7152, 2.1798] | 1.0000 | 0.1000 | 0.6139 | comparator (reported) |
+| APGEPS-34 | 56 | L_range_wide | Part A (same states) | 0.3000 | 50 | 1 | 3.1275 | [2.8389, 3.4715] | [2.8389, 3.4715] | 1.0000 | 0.4200 | 0.7353 | comparator (reported) |
+| APGEPS-35 | 56 | FNO_Re_true | Part A (same states) | 0.1000 | 50 | 3 | 1.5945 | [1.4710, 1.7241] | [1.4778, 1.7104] | 0.9400 | 0.0067 | 0.5072 | comparator (reported) |
+| APGEPS-36 | 56 | FNO_Re_true | Part A (same states) | 0.3000 | 50 | 3 | 2.7884 | [2.5530, 3.0505] | [2.6055, 2.9733] | 1.0000 | 0.3267 | 0.6556 | comparator (reported) |
+| APGEPS-37 | 56 | FNO_Re_id | Part A (same states) | 0.1000 | 50 | 3 | 1.6108 | [1.4839, 1.7337] | [1.4935, 1.7282] | 0.9467 | 0.0133 | 0.5124 | comparator (reported) |
+| APGEPS-38 | 56 | FNO_Re_id | Part A (same states) | 0.3000 | 50 | 3 | 2.8075 | [2.6035, 3.0409] | [2.6281, 2.9911] | 1.0000 | 0.3533 | 0.6601 | comparator (reported) |
+| APGEPS-39 | 56 | L_ft | Part A (same states) | 0.1000 | 50 | 1 | 0.7184 | [0.6673, 0.7757] | [0.6673, 0.7757] | 0.0600 | 0.0000 | 0.2285 | comparator (reported) |
+| APGEPS-40 | 56 | L_ft | Part A (same states) | 0.3000 | 50 | 1 | 1.4369 | [1.3386, 1.5474] | [1.3386, 1.5474] | 0.9400 | 0.0000 | 0.3378 | comparator (reported) |
+
+
+## APGEPS-TR. GEPS training runs
+
+Source `stage2/geps/results/geps_training.csv` · SHA `0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty`
+
+Validation RelativeL2 on the 64 fixed windows; persistence_val = the no-change forecast on the same windows. At the published lr 1e-2 GEPS-range collapsed to persistence (archived, never evaluated) and GEPS-wide diverged; both were retrained at 1e-3 (deviations; GEPS-range for ~1 h, validated every 2 epochs). GEPS-wide's evaluation is cut.
+
+| id | run | data | lr | host | epochs_trained | steps | best_val | best_epoch | persistence_val | best_minus_persistence | undertrained | val_change_last2 | val_change_last2_pct | diverged | collapsed | evaluated | val_curve | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| APGEPS-TR-1 | ARCHIVED_geps_range_s0_lr0.01_collapsed | range | 0.0100 | Spark A | 51 | 13056 | 0.7267 | 50 | 0.7267 | 2.129e-09 | False | -3.576e-07 | -4.921e-05 | False | True | no (collapsed to persistence; archived, never evaluated) | 0:0.7266754 50:0.7266750 | training (reported) |
+| APGEPS-TR-2 | geps_range_s0_lr0.001 | range | 0.0010 | Spark A | 35 | 8872 | 0.2309 | 30 | 0.7267 | -0.4958 | False | 0.0081 | 3.4556 | False | False | yes | 0:0.5644766 2:0.4354147 4:0.4316104 6:0.3483525 8:0.3495376 10:0.3225729 12:0.3084703 14:0.2874763 16:0.2953822 18:0.2635087 20:0.2680462 22:0.2648376 24:0.2621697 26:0.2441865 28:0.2554978 30:0.2308721 32:0.2349526 34:0.2430717 | training (reported) |
+| APGEPS-TR-3 | geps_range_wide_s0 | range_wide | 0.0100 | Spark B | 1 | 256 |  |  | 0.7797 |  | False |  |  | True | False | no (diverged) | 0:nan | training (reported) |
+| APGEPS-TR-4 | geps_range_wide_s0_lr0.001 | range_wide | 0.0010 | Spark B | 51 | 13056 | 0.2858 | 50 | 0.7797 | -0.4939 | False | -0.3292 | -53.5309 | False | False | no (cut) | 0:0.6149940 50:0.2857823 | training (reported) |
 

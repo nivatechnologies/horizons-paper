@@ -1,0 +1,5 @@
+# git_sha=0e4f15b2db36f47ec84f55fdae93695b75480a62-dirty; Adapt the Physics GEPS WO; frozen reading (H - GEPS-range, better budget per Re)
+Re,better_budget,GEPS,GEPS_epochs,GEPS_undertrained,GEPS_val_change_last2,GEPS_val_change_last2_pct,H,H_minus_GEPS,ci95_lo,ci95_hi,cond_ci95_lo,cond_ci95_hi,other_budget_H_minus_GEPS,holds_at_this_Re,label,claim,caveat
+50,500,0.2007387439306843,35,False,0.008119136095046997,3.4556485589699557,3.2365354839755076,3.035796740044823,2.7916550244534513,3.305874745298712,2.8000643502127085,3.300434303364854,3.035796740044823,True,reading component,,
+56,,,35,False,0.008119136095046997,3.4556485589699557,,,,,,,,PENDING,reading component (cell not yet evaluated),,
+50 and 56,,,,,,,,,,,,,,PENDING,frozen reading (decides the claim),PENDING (a reading cell is not yet evaluated),"Every GEPS run trained unclipped: the released train.py:158 calls clip_grad_norm_ after optimizer.zero_grad() (train.py:157), so clipping never applies, and the wrapper copies that order. The published lr 1e-2 was not tested with working clipping, so this result cannot tell whether GEPS needs the lower lr (1e-3, used here) or only working clipping."
