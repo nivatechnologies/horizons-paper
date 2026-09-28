@@ -8,6 +8,7 @@ Writes stage2/objections/results/:
   obj_part2.csv            FNO-Re (true Re, identified Re) and H on the fresh World D (and C) panels; paired H - FNO-Re
   obj_part2_reading.csv    the frozen claim reading at Re 50 and 56 (World D)
   obj_lft.csv              L_ft on fresh panels (Re 44, 50, 56): horizon, retention, H - L_ft, online seconds per state
+  obj_ftb.csv              L_ft at matched budgets (Re 50, first 100 states; steps x lr; reported only)
   obj_edge.csv             Part 3: Orin NX and datacenter timing side by side; horizon agreement
 """
 import csv
@@ -335,6 +336,36 @@ def edge():
     return rows
 
 
+def ftb():
+    """APFR-FTB (post-freeze request, Todd 2026-09-27; reported only, not a reading): L_ft on the first 100 states of
+    s2_test_Re50_D at w = 11, every configuration (steps x lr), no selection. Retention = restricted mean / O's on the
+    same 100 states; H on the same states beside. One base seed: the interval is over trajectories only."""
+    panel, n = "s2_test_Re50_D", 100
+    lam = json.loads((S2R / "test_panels.json").read_text())[panel]["lam"]
+    Ho, _, _ = load([S2EV / panel / "O_s0_std_11.npz"], lam, 0.1)
+    Hh, _, _ = load([S2EV / panel / f"H_s{s}_std_11.npz" for s in (0, 1, 2)], lam, 0.1)
+    Ho, Hh = Ho[:, :n], Hh[:, :n]
+    idx = boot_idx(n)
+    rows = []
+    for steps in (200, 1000, 7500):
+        for lr in (1e-4, 1e-3):
+            tag = f"steps{steps}_lr{lr:g}"
+            f = EV / "ftb" / f"L_ft_{tag}.npz"
+            if not f.exists():
+                continue
+            H1, C1, _ = load([f], lam, 0.1)
+            b = boot_all(H1, idx, rng)
+            z = np.load(f)
+            rows.append(dict(world="D", Re=50, w=11, eps=0.1, n=H1.shape[1], steps=steps, lr=f"{lr:g}",
+                             restricted_mean=float(H1.mean()), ci95_lo=q(b["crossed"])[0], ci95_hi=q(b["crossed"])[1],
+                             S1=float(np.mean(~C1 | (H1 > 1))), S3=float(np.mean(~C1 | (H1 > 3))),
+                             retention=float(H1.mean() / Ho.mean()), O_same_states=float(Ho.mean()), H_same_states=float(Hh.mean()),
+                             wall_median=float(np.median(z["wall"])), wall_p90=float(np.quantile(z["wall"], 0.9)),
+                             finetune_median=float(np.median(z["finetune"])), forecast_median=float(np.median(z["forecast"])),
+                             label="L_ft matched budget (reported, not a reading; every configuration, no selection)"))
+    return rows
+
+
 def main():
     p1 = part1()
     if p1:
@@ -347,6 +378,7 @@ def main():
     write("obj_lft.csv", p2[3], "L_ft on fresh panels")
     write("obj_edge.csv", edge(), "Part 3 edge timing")
     write("obj_id_error.csv", id_error(), "per-state |identified Re - true Re| at w = 11")
+    write("obj_ftb.csv", ftb(), "APFR-FTB: L_ft at matched budgets, Re 50, first 100 states")
     for r in (p1[1] if p1 else []) + p2[1]:
         print(r)
 

@@ -222,6 +222,12 @@ def main():
             ("obj_id_error.csv", "APFR-ID", "Per-state |identified Re - true Re| at w = 11 (pooled over states and seeds)",
              ["world", "Re", "arm", "w", "seeds", "n_values", "abs_err_median", "abs_err_p90", "abs_err_max"],
              "H: the hybrid's golden-section identification; FNO_Re_id: identification through the Re-conditioned network."),
+            ("obj_ftb.csv", "APFR-FTB", "L_ft at matched budgets, World D Re 50 fresh panel, first 100 states, w = 11 (reported only, not a reading)",
+             ["steps", "lr", "n", "restricted_mean", ("95%", ci("ci95_lo", "ci95_hi")), "S1", "S3", "retention", "O_same_states",
+              "H_same_states", "wall_median", "wall_p90", "finetune_median", "forecast_median"],
+             "Every configuration (steps x lr), no post-hoc selection. Stage-1 pair rule; base L0 seed 0; one seed, so the 95% "
+             "interval is over trajectories. Retention = restricted mean / O's on the same 100 states. Wall = batch-1 seconds per "
+             "state (fine-tuning + forecast, CUDA-synchronised, Baccus CMP 170HX)."),
             ("obj_edge.csv", "APEDGE", "Objections Part 3: edge timing, Orin NX against datacenter (batch 1, reported only)",
              ["arm", "orin_result", "orin_wall_median", "orin_wall_p90", "dc_batch1_wall_median", "orin_identify_or_adapt_median",
               "orin_forecast_fps", "dc_batch1_forecast_fps", "orin_peak_torch_mem_MB", "orin_tegrastats_ram_peak_MB",
