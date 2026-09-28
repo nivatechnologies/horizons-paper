@@ -57,3 +57,14 @@ reading:
   claim: "A learned adapter built for parametric PDEs does not close the gap"
   rule: "at Re 50 AND Re 56 (World D, first N states): H - GEPS-range at the better of its two budgets (chosen per Re; part of the reading) >= 0.25 with the 95% interval excluding 0 -> stated; otherwise GEPS reported prominently and Todd decides the headline"
   not_read: "GEPS-wide; in-range Re (cut)"
+
+post_freeze_followups:
+  status: "POST-FREEZE FOLLOW-UPS (Todd 2026-09-28). Not substitutes in the frozen reading, which uses the Spark GEPS-range run geps_range_s0_lr0.001 only."
+  host: "Baccus, 3x NVIDIA CMP 170HX (Qwen 3.8 27B vLLM services stopped 08:05 UTC; restart when these runs end); torch 2.13.0+cu130; torchdiffeq 0.2.5 and einops 0.8.2 (the Sparks' versions) from a --target dependency dir; working copy ~/geps_baccus"
+  code: "itsakk/geps @ e9a8652 (unmodified) + geps_run.py (same file as the Sparks, md5 8ee26e9c), released clip order unchanged (unclipped); same train_range data and the same 64 validation windows (md5-checked against the Sparks); no test panel on Baccus"
+  timing: "0.934 s per training step (batch 4, 20-frame window) = 239 s per 256-step epoch on a 170HX, against ~310 s on a Spark GB10"
+  published_budget: "20,000 epochs (paper Table 12). On GEPS's Kolmogorov data (8 environments x 16 trajectories, batch 4) that is 32 steps per epoch = 640,000 steps. On our data (1,024 trajectories, 256 steps per epoch), 20,000 epochs = 5.12 M steps (~55 days per run); the step-matched budget is 2,500 of our epochs (~6.9 days per run)"
+  runs:
+    gpu0: "GEPS-range lr 1e-3, seed 0, validation every 2 epochs, best-on-validation, full state saved at every check; launched 08:15 UTC with max_epochs 2,500 (step-matched) pending Todd's budget decision"
+    gpu1: "same, seed 1"
+    gpu2: "reproduction test of the released code on a GEPS benchmark: pending (benchmark and budget to be confirmed)"
