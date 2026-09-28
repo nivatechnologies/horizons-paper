@@ -1,0 +1,13 @@
+{
+ "panel": "s2_test_Re50_D",
+ "n": 100,
+ "w": 11,
+ "steps": 200,
+ "lr": 0.001,
+ "device": "cuda:0",
+ "wall_median": 2.9696788787841797,
+ "wall_p90": 3.0431950807571413,
+ "finetune_median": 2.922983765602112,
+ "forecast_median": 0.038289427757263184,
+ "git_sha": "a274344488723339710c831d8cafec0124295172-dirty"
+}
