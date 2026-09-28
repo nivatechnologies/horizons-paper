@@ -1,0 +1,59 @@
+{
+ "data": "range",
+ "seed": 0,
+ "lr": 0.001,
+ "epochs_done": 35,
+ "steps": 8872,
+ "cap_hours": 8.0,
+ "cap_bound": false,
+ "stopped_by": "stopping rule: < 1% improvement at two consecutive checks (epochs 32, 34)",
+ "resumed": "last.pt weights only; Adam moments, scheduler counters and RNG were not saved by the capped run: fresh",
+ "max_epochs": 50,
+ "stop_rule": true,
+ "best_val": 0.23087206482887268,
+ "best_epoch": 30,
+ "train_seconds": 7262.9969165325165,
+ "n_env": 1024,
+ "cfg": {
+  "state_c": 1,
+  "hidden_c": 64,
+  "code_c": 4,
+  "factor": 1,
+  "is_complete": true,
+  "type_augment": "",
+  "method": "euler",
+  "options": null,
+  "batch": 4,
+  "lr": 0.01,
+  "epochs": 20000,
+  "sched": {
+   "factor": 0.9,
+   "patience": 350,
+   "threshold": 0.01,
+   "min_lr": 1e-05
+  },
+  "adapt_lr": 0.01,
+  "adapt_sched": {
+   "factor": 0.9,
+   "patience": 50,
+   "threshold": 0.01,
+   "min_lr": 1e-05
+  },
+  "init": {
+   "A": {
+    "type": "orthogonal",
+    "gain": 1
+   },
+   "B": {
+    "type": "orthogonal",
+    "gain": 1
+   },
+   "weight": {
+    "type": "orthogonal",
+    "gain": 1
+   }
+  }
+ },
+ "params": 4608058,
+ "torch": "2.13.0+cu130"
+}
