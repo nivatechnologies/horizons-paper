@@ -53,7 +53,7 @@ def main():
         rel = np.sqrt(((sA * e) ** 2).sum(0)) / np.sqrt(yn2.sum(0))
         out[k]["window20_relativeL2_mean"] = float(rel.mean())
     out["field_norm_over_sigma_A_median"] = float(np.median(np.sqrt(yn2[0]) / sA))
-    out["validation_relativeL2_geps_range_best"] = 0.2430717
+    out["validation_relativeL2_geps_range_best"] = 0.2308721  # epoch 30 (best); last check epoch 34 = 0.2430717
     RES.mkdir(parents=True, exist_ok=True)
     (RES / "geps_sanity.json").write_text(json.dumps(out, indent=1))
     J = 30
