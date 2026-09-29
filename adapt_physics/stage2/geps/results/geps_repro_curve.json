@@ -1,0 +1,128 @@
+{
+ "wandb_file": "/home/todd/geps_baccus/repro/wandb/wandb/offline-run-20260928_180405-g2tm0hcw/run-g2tm0hcw.wandb",
+ "curve": [
+  {
+   "epoch": 0,
+   "train_loss": 10963480.969764497,
+   "loss_test_in": 1.0050441920757294,
+   "loss_test_out": 1.7151405066251755
+  },
+  {
+   "epoch": 100,
+   "train_loss": 0.35225751949474216,
+   "loss_test_in": 0.6032702513039112,
+   "loss_test_out": 1.0929067879915237
+  },
+  {
+   "epoch": 200,
+   "train_loss": 0.26825331477448344,
+   "loss_test_in": 0.5994701012969017,
+   "loss_test_out": 1.1038155555725098
+  },
+  {
+   "epoch": 300,
+   "train_loss": 0.26076977839693427,
+   "loss_test_in": 0.6022783555090427,
+   "loss_test_out": 1.1088157296180725
+  },
+  {
+   "epoch": 400,
+   "train_loss": 0.23906813422217965,
+   "loss_test_in": 0.5933111310005188,
+   "loss_test_out": 1.0947934985160828
+  },
+  {
+   "epoch": 500,
+   "train_loss": 0.2208521435968578,
+   "loss_test_in": 0.5962152406573296,
+   "loss_test_out": 1.0983888357877731
+  },
+  {
+   "epoch": 600,
+   "train_loss": 0.20950760785490274,
+   "loss_test_in": 0.5844043865799904,
+   "loss_test_out": 1.0645698830485344
+  },
+  {
+   "epoch": 700,
+   "train_loss": 0.21403735131025314,
+   "loss_test_in": 0.5988748744130135,
+   "loss_test_out": 1.1011434271931648
+  },
+  {
+   "epoch": 800,
+   "train_loss": 0.18062496278434992,
+   "loss_test_in": 0.5994658060371876,
+   "loss_test_out": 1.086866281926632
+  },
+  {
+   "epoch": 900,
+   "train_loss": 0.1735309346113354,
+   "loss_test_in": 0.5837970189750195,
+   "loss_test_out": 1.062004491686821
+  },
+  {
+   "epoch": 1000,
+   "train_loss": 0.16604948369786143,
+   "loss_test_in": 0.5921525247395039,
+   "loss_test_out": 1.0500067472457886
+  },
+  {
+   "epoch": 1100,
+   "train_loss": 0.16766144754365087,
+   "loss_test_in": 0.5824966952204704,
+   "loss_test_out": 1.0346951559185982
+  },
+  {
+   "epoch": 1200,
+   "train_loss": 0.15698651084676385,
+   "loss_test_in": 0.5947458520531654,
+   "loss_test_out": 1.049800030887127
+  },
+  {
+   "epoch": 1300,
+   "train_loss": 0.16151807270944118,
+   "loss_test_in": 0.5995081476867199,
+   "loss_test_out": 1.0521019026637077
+  },
+  {
+   "epoch": 1400,
+   "train_loss": 0.15569219388999045,
+   "loss_test_in": 0.5818251557648182,
+   "loss_test_out": 1.0248021855950356
+  },
+  {
+   "epoch": 1500,
+   "train_loss": 0.1399666629731655,
+   "loss_test_in": 0.5847131311893463,
+   "loss_test_out": 1.0256633386015892
+  },
+  {
+   "epoch": 1600,
+   "train_loss": 0.15615220600739121,
+   "loss_test_in": 0.5882510393857956,
+   "loss_test_out": 1.0332466587424278
+  },
+  {
+   "epoch": 1700,
+   "train_loss": 0.15213848720304668,
+   "loss_test_in": 0.5858544781804085,
+   "loss_test_out": 1.0281234607100487
+  },
+  {
+   "epoch": 1800,
+   "train_loss": 0.1521368226967752,
+   "loss_test_in": 0.5855259038507938,
+   "loss_test_out": 1.0223763287067413
+  }
+ ],
+ "n_test": 256,
+ "persistence_test_in": 1.0050781965255737,
+ "persistence_test_out": 1.7154709100723267,
+ "zero_test_in": 1.0,
+ "paper_in_d": "2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2)",
+ "finished": true,
+ "exit_line": [
+  "exit 124 Tue Sep 29 06:04:01 AM UTC 2026"
+ ]
+}

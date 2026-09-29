@@ -1,4 +1,4 @@
-## GEPS as a learned adaptive opponent (script-generated: stage2/geps/geps_analysis.py @ f9cb469)
+## GEPS as a learned adaptive opponent (script-generated: stage2/geps/geps_analysis.py @ 80dd0d8)
 
 **Frozen reading:** NOT STATED: both reading components hold, but GEPS-range trained 35 of about 2,500 step-matched epochs (the WO's 8 h cap; a spec error), so the reading cannot answer its question.
 
@@ -55,5 +55,29 @@ Post-freeze follow-up, GEPS-range trained longer (seed 1 on Baccus; not a substi
 
 | Re | checkpoint (val) | budgets | GEPS 500 / 5,000 | H - GEPS (95%) | frozen H - GEPS (epochs) |
 |---|---|---|---|---|---|
-| 50 | seed 1, epoch 130 (0.1620) | 500 | 0.46 /  | 2.78 [2.58, 2.99] | 3.04 (35) |
-| 56 | seed 1, epoch 130 (0.1620) | 500 | 0.29 /  | 2.83 [2.63, 3.03] | 2.97 (35) |
+| 50 | seed 1, epoch 130 (0.1620) | 500,5000 | 0.46 / 0.46 | 2.78 [2.58, 2.99] | 3.04 (35) |
+| 56 | seed 1, epoch 130 (0.1620) | 500,5000 | 0.29 / 0.29 | 2.83 [2.63, 3.03] | 2.97 (35) |
+
+Post-freeze follow-up, reproduction: released GEPS code on its own Kolmogorov data at the published lr 1e-2 (in-distribution test RelativeL2 vs persistence 1.0051; the paper reports 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2)):
+
+| epoch | train loss | test in-d | test in-d - persistence | test extrapolation |
+|---|---|---|---|---|
+| 0 | 1.096e+07 | 1.0050 | -0.0000 | 1.7151 |
+| 100 | 0.3523 | 0.6033 | -0.4018 | 1.0929 |
+| 200 | 0.2683 | 0.5995 | -0.4056 | 1.1038 |
+| 300 | 0.2608 | 0.6023 | -0.4028 | 1.1088 |
+| 400 | 0.2391 | 0.5933 | -0.4118 | 1.0948 |
+| 500 | 0.2209 | 0.5962 | -0.4089 | 1.0984 |
+| 600 | 0.2095 | 0.5844 | -0.4207 | 1.0646 |
+| 700 | 0.214 | 0.5989 | -0.4062 | 1.1011 |
+| 800 | 0.1806 | 0.5995 | -0.4056 | 1.0869 |
+| 900 | 0.1735 | 0.5838 | -0.4213 | 1.0620 |
+| 1000 | 0.166 | 0.5922 | -0.4129 | 1.0500 |
+| 1100 | 0.1677 | 0.5825 | -0.4226 | 1.0347 |
+| 1200 | 0.157 | 0.5947 | -0.4103 | 1.0498 |
+| 1300 | 0.1615 | 0.5995 | -0.4056 | 1.0521 |
+| 1400 | 0.1557 | 0.5818 | -0.4233 | 1.0248 |
+| 1500 | 0.14 | 0.5847 | -0.4204 | 1.0257 |
+| 1600 | 0.1562 | 0.5883 | -0.4168 | 1.0332 |
+| 1700 | 0.1521 | 0.5859 | -0.4192 | 1.0281 |
+| 1800 | 0.1521 | 0.5855 | -0.4196 | 1.0224 |

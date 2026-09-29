@@ -1,4 +1,4 @@
-# git_sha=f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty; Adapt the Physics GEPS WO; batch-1 timing on a DGX Spark GB10 (states 3-22 / 3-5 of s2_test_Re50_D)
+# git_sha=80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty; Adapt the Physics GEPS WO; batch-1 timing on a DGX Spark GB10 (states 3-22 / 3-5 of s2_test_Re50_D)
 arm,steps,n_timed,frames,wall_median,wall_p90,adapt_median,forecast_median,forecast_fps,device,torch,label
 GEPS_range_adapt500,500,20,111,65.37105119228363,65.91261503696441,64.73161232471466,0.639588475227356,173.2771339584223,NVIDIA GB10,2.13.0+cu130,cost (reported only)
 GEPS_range_adapt5000,5000,3,111,648.0199310779572,651.2119516849518,647.3808150291443,0.6391160488128662,172.88528647744846,NVIDIA GB10,2.13.0+cu130,cost (reported only)

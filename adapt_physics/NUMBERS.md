@@ -3507,7 +3507,7 @@ Source `pivot/results/pv_training.csv` · SHA `9adb33b3c8d8ada3007418dffbaf6fcef
 
 ## APVS. All worlds: chaos gate (lambda with 95% interval over 64 starts) and sigma_A per test system
 
-Source `pivot/results/chaos_gate_C.json` · SHA `f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty`
+Source `pivot/results/chaos_gate_C.json` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
 
 World D Re 36-50: stage-1 gate; Re 56: pivot; World C: pivot; World V (alpha = alpha0 * 40 / Re) Re 50: objections WO; two-parameter systems: stage 2 item 3.
 
@@ -6059,7 +6059,7 @@ Early-stop columns: each arm forecasts until every state exceeds 0.3 sigma_A (fr
 
 ## APGEPS-R. GEPS: frozen reading (H - GEPS-range at the better budget per Re; World D, first 50 states, w = 11)
 
-Source `stage2/geps/results/geps_reading.csv` · SHA `f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty`
+Source `stage2/geps/results/geps_reading.csv` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
 
 Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at Re 50 AND 56. Paired bootstrap over trajectories (crossed over H's 3 seeds; GEPS one seed); 95% cond = conditional on the trained models.
 
@@ -6071,7 +6071,7 @@ Holds at a Re: H - GEPS >= 0.25 with the 95% interval > 0; stated if it holds at
 
 ## APGEPS. GEPS and Part A arms on the same first 50 states (World D, w = 11)
 
-Source `stage2/geps/results/geps_rows.csv` · SHA `f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty`
+Source `stage2/geps/results/geps_rows.csv` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
 
 Retention = restricted mean / O's on the same states and eps. GEPS_range_noadapt: one context fitted on Re-40 nominal data, the same for every state.
 
@@ -6126,7 +6126,7 @@ Retention = restricted mean / O's on the same states and eps. GEPS_range_noadapt
 
 ## APGEPS-T. GEPS: batch-1 cost per state on a DGX Spark GB10 (s2_test_Re50_D; reported only)
 
-Source `stage2/geps/results/geps_timing.csv` · SHA `f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty`
+Source `stage2/geps/results/geps_timing.csv` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
 
 One state at a time, CUDA-synchronised; the 5,000-step budget timed on states 3-5 only (time-bound).
 
@@ -6137,7 +6137,7 @@ One state at a time, CUDA-synchronised; the 5,000-step budget timed on states 3-
 
 ## APGEPS-TR. GEPS training runs
 
-Source `stage2/geps/results/geps_training.csv` · SHA `f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty`
+Source `stage2/geps/results/geps_training.csv` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
 
 Validation RelativeL2 on the 64 fixed windows; persistence_val = the no-change forecast on the same windows. At the published lr 1e-2 GEPS-range collapsed to persistence (archived, never evaluated) and GEPS-wide diverged; both were retrained at 1e-3 (deviations; GEPS-range for ~1 h, validated every 2 epochs). GEPS-wide's evaluation is cut.
 
@@ -6150,11 +6150,39 @@ Validation RelativeL2 on the 64 fixed windows; persistence_val = the no-change f
 
 ## APGEPS-F. GEPS post-freeze follow-up: GEPS-range trained longer (seed 1, Baccus) on the frozen reading cells
 
-Source `stage2/geps/results/geps_followup.csv` · SHA `f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty`
+Source `stage2/geps/results/geps_followup.csv` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
 
 Not a substitute for the frozen reading. Same cells (World D, first 50 states, w = 11, eps 0.1), same scorer and paired bootstrap; the checkpoint is seed 1's best on validation when the follow-up started.
 
 | id | Re | checkpoint | val_loss | budgets_done | better_budget | GEPS_500 | GEPS_5000 | H | H_minus_GEPS | 95% | frozen_H_minus_GEPS | frozen_epochs | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| APGEPS-F-1 | 50 | seed 1, epoch 130 | 0.1620 | 500 | 500 | 0.4557 |  | 3.2365 | 2.7808 | [2.5854, 2.9930] | 3.0358 | 35 | post-freeze follow-up: GEPS-range trained longer (reported, not a substitute) |
-| APGEPS-F-2 | 56 | seed 1, epoch 130 | 0.1620 | 500 | 500 | 0.2886 |  | 3.1193 | 2.8307 | [2.6315, 3.0293] | 2.9720 | 35 | post-freeze follow-up: GEPS-range trained longer (reported, not a substitute) |
+| APGEPS-F-1 | 50 | seed 1, epoch 130 | 0.1620 | 500,5000 | 500 | 0.4557 | 0.4557 | 3.2365 | 2.7808 | [2.5854, 2.9930] | 3.0358 | 35 | post-freeze follow-up: GEPS-range trained longer (reported, not a substitute) |
+| APGEPS-F-2 | 56 | seed 1, epoch 130 | 0.1620 | 500,5000 | 500 | 0.2886 | 0.2886 | 3.1193 | 2.8307 | [2.6315, 3.0293] | 2.9720 | 35 | post-freeze follow-up: GEPS-range trained longer (reported, not a substitute) |
+
+## APGEPS-K. GEPS post-freeze follow-up: released code on GEPS's own Kolmogorov data at the published lr 1e-2
+
+Source `stage2/geps/results/geps_repro.csv` · SHA `80dd0d8e171a71e34d9ed01a83ffbb3ef3158464-dirty`
+
+Released train.py via Hydra overrides (Table-12 recipe), wandb offline, 12 h cap on a CMP 170HX; two import/API shims (missing geps.datasets.lv; ReduceLROnPlateau verbose) and no released file edited. loss_test_in = the released evaluation (RelativeL2 over the first 20 test frames, 256 trajectories); persistence = the first frame repeated.
+
+| id | epoch | train_loss | loss_test_in | persistence_test_in | test_in_minus_persistence | loss_test_out | persistence_test_out | paper_in_d | label |
+|---|---|---|---|---|---|---|---|---|---|
+| APGEPS-K-1 | 0 | 1.096e+07 | 1.0050 | 1.0051 | -3.400e-05 | 1.7151 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-2 | 100 | 0.3523 | 0.6033 | 1.0051 | -0.4018 | 1.0929 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-3 | 200 | 0.2683 | 0.5995 | 1.0051 | -0.4056 | 1.1038 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-4 | 300 | 0.2608 | 0.6023 | 1.0051 | -0.4028 | 1.1088 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-5 | 400 | 0.2391 | 0.5933 | 1.0051 | -0.4118 | 1.0948 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-6 | 500 | 0.2209 | 0.5962 | 1.0051 | -0.4089 | 1.0984 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-7 | 600 | 0.2095 | 0.5844 | 1.0051 | -0.4207 | 1.0646 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-8 | 700 | 0.2140 | 0.5989 | 1.0051 | -0.4062 | 1.1011 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-9 | 800 | 0.1806 | 0.5995 | 1.0051 | -0.4056 | 1.0869 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-10 | 900 | 0.1735 | 0.5838 | 1.0051 | -0.4213 | 1.0620 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-11 | 1000 | 0.1660 | 0.5922 | 1.0051 | -0.4129 | 1.0500 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-12 | 1100 | 0.1677 | 0.5825 | 1.0051 | -0.4226 | 1.0347 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-13 | 1200 | 0.1570 | 0.5947 | 1.0051 | -0.4103 | 1.0498 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-14 | 1300 | 0.1615 | 0.5995 | 1.0051 | -0.4056 | 1.0521 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-15 | 1400 | 0.1557 | 0.5818 | 1.0051 | -0.4233 | 1.0248 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-16 | 1500 | 0.1400 | 0.5847 | 1.0051 | -0.4204 | 1.0257 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-17 | 1600 | 0.1562 | 0.5883 | 1.0051 | -0.4168 | 1.0332 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-18 | 1700 | 0.1521 | 0.5859 | 1.0051 | -0.4192 | 1.0281 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
+| APGEPS-K-19 | 1800 | 0.1521 | 0.5855 | 1.0051 | -0.4196 | 1.0224 | 1.7155 | 2.94 +/- 0.04 x 1e-1 (Table 2, in-distribution relative L2) | reproduction (released code, lr 1e-2; reported) |
