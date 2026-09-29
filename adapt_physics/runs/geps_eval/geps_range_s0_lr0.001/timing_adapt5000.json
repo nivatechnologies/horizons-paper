@@ -1,0 +1,63 @@
+{
+ "run": "geps_range_s0_lr0.001",
+ "steps": 5000,
+ "frames": 111,
+ "n_timed": 3,
+ "wall_median": 648.0199310779572,
+ "wall_p90": 651.2119516849518,
+ "adapt_median": 647.3808150291443,
+ "forecast_median": 0.6391160488128662,
+ "forecast_fps": 172.88528647744846,
+ "states": [
+  {
+   "state": 0,
+   "warmup": true,
+   "adapt": 651.9402420520782,
+   "forecast": 0.6419804096221924,
+   "wall": 652.5822224617004,
+   "frames": 111
+  },
+  {
+   "state": 1,
+   "warmup": true,
+   "adapt": 650.791796207428,
+   "forecast": 0.6427698135375977,
+   "wall": 651.4345660209656,
+   "frames": 111
+  },
+  {
+   "state": 2,
+   "warmup": true,
+   "adapt": 650.8498475551605,
+   "forecast": 0.6409454345703125,
+   "wall": 651.4907929897308,
+   "frames": 111
+  },
+  {
+   "state": 3,
+   "warmup": false,
+   "adapt": 651.3598277568817,
+   "forecast": 0.6501290798187256,
+   "wall": 652.0099568367004,
+   "frames": 111
+  },
+  {
+   "state": 4,
+   "warmup": false,
+   "adapt": 644.5795178413391,
+   "forecast": 0.6368875503540039,
+   "wall": 645.2164053916931,
+   "frames": 111
+  },
+  {
+   "state": 5,
+   "warmup": false,
+   "adapt": 647.3808150291443,
+   "forecast": 0.6391160488128662,
+   "wall": 648.0199310779572,
+   "frames": 111
+  }
+ ],
+ "device": "NVIDIA GB10",
+ "torch": "2.13.0+cu130"
+}

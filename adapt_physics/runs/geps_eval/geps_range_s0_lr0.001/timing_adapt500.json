@@ -1,0 +1,199 @@
+{
+ "run": "geps_range_s0_lr0.001",
+ "steps": 500,
+ "frames": 111,
+ "n_timed": 20,
+ "wall_median": 65.37105119228363,
+ "wall_p90": 65.91261503696441,
+ "adapt_median": 64.73161232471466,
+ "forecast_median": 0.639588475227356,
+ "forecast_fps": 173.2771339584223,
+ "states": [
+  {
+   "state": 0,
+   "warmup": true,
+   "adapt": 65.41829538345337,
+   "forecast": 0.6460397243499756,
+   "wall": 66.06433510780334,
+   "frames": 111
+  },
+  {
+   "state": 1,
+   "warmup": true,
+   "adapt": 65.0451831817627,
+   "forecast": 0.6478714942932129,
+   "wall": 65.69305467605591,
+   "frames": 111
+  },
+  {
+   "state": 2,
+   "warmup": true,
+   "adapt": 64.80500030517578,
+   "forecast": 0.6442487239837646,
+   "wall": 65.44924902915955,
+   "frames": 111
+  },
+  {
+   "state": 3,
+   "warmup": false,
+   "adapt": 64.70412349700928,
+   "forecast": 0.6390354633331299,
+   "wall": 65.34315896034241,
+   "frames": 111
+  },
+  {
+   "state": 4,
+   "warmup": false,
+   "adapt": 64.75910115242004,
+   "forecast": 0.6398422718048096,
+   "wall": 65.39894342422485,
+   "frames": 111
+  },
+  {
+   "state": 5,
+   "warmup": false,
+   "adapt": 65.17090034484863,
+   "forecast": 0.6494791507720947,
+   "wall": 65.82037949562073,
+   "frames": 111
+  },
+  {
+   "state": 6,
+   "warmup": false,
+   "adapt": 64.54916167259216,
+   "forecast": 0.6374459266662598,
+   "wall": 65.18660759925842,
+   "frames": 111
+  },
+  {
+   "state": 7,
+   "warmup": false,
+   "adapt": 65.05846619606018,
+   "forecast": 0.639695405960083,
+   "wall": 65.69816160202026,
+   "frames": 111
+  },
+  {
+   "state": 8,
+   "warmup": false,
+   "adapt": 65.33508586883545,
+   "forecast": 0.6394815444946289,
+   "wall": 65.97456741333008,
+   "frames": 111
+  },
+  {
+   "state": 9,
+   "warmup": false,
+   "adapt": 65.24180793762207,
+   "forecast": 0.640570878982544,
+   "wall": 65.88237881660461,
+   "frames": 111
+  },
+  {
+   "state": 10,
+   "warmup": false,
+   "adapt": 65.10389709472656,
+   "forecast": 0.6370306015014648,
+   "wall": 65.74092769622803,
+   "frames": 111
+  },
+  {
+   "state": 11,
+   "warmup": false,
+   "adapt": 64.14076614379883,
+   "forecast": 0.6360397338867188,
+   "wall": 64.77680587768555,
+   "frames": 111
+  },
+  {
+   "state": 12,
+   "warmup": false,
+   "adapt": 64.18557500839233,
+   "forecast": 0.6441547870635986,
+   "wall": 64.82972979545593,
+   "frames": 111
+  },
+  {
+   "state": 13,
+   "warmup": false,
+   "adapt": 64.1530065536499,
+   "forecast": 0.6359572410583496,
+   "wall": 64.78896379470825,
+   "frames": 111
+  },
+  {
+   "state": 14,
+   "warmup": false,
+   "adapt": 64.26879334449768,
+   "forecast": 0.6456489562988281,
+   "wall": 64.91444230079651,
+   "frames": 111
+  },
+  {
+   "state": 15,
+   "warmup": false,
+   "adapt": 64.06419277191162,
+   "forecast": 0.6361289024353027,
+   "wall": 64.70032167434692,
+   "frames": 111
+  },
+  {
+   "state": 16,
+   "warmup": false,
+   "adapt": 64.54492568969727,
+   "forecast": 0.6481294631958008,
+   "wall": 65.19305515289307,
+   "frames": 111
+  },
+  {
+   "state": 17,
+   "warmup": false,
+   "adapt": 65.29824233055115,
+   "forecast": 0.6488914489746094,
+   "wall": 65.94713377952576,
+   "frames": 111
+  },
+  {
+   "state": 18,
+   "warmup": false,
+   "adapt": 65.26684617996216,
+   "forecast": 0.6419334411621094,
+   "wall": 65.90877962112427,
+   "frames": 111
+  },
+  {
+   "state": 19,
+   "warmup": false,
+   "adapt": 64.13564348220825,
+   "forecast": 0.6352169513702393,
+   "wall": 64.77086043357849,
+   "frames": 111
+  },
+  {
+   "state": 20,
+   "warmup": false,
+   "adapt": 64.54629397392273,
+   "forecast": 0.6393780708312988,
+   "wall": 65.18567204475403,
+   "frames": 111
+  },
+  {
+   "state": 21,
+   "warmup": false,
+   "adapt": 64.90179562568665,
+   "forecast": 0.6380529403686523,
+   "wall": 65.5398485660553,
+   "frames": 111
+  },
+  {
+   "state": 22,
+   "warmup": false,
+   "adapt": 64.91554141044617,
+   "forecast": 0.639733076095581,
+   "wall": 65.55527448654175,
+   "frames": 111
+  }
+ ],
+ "device": "NVIDIA GB10",
+ "torch": "2.13.0+cu130"
+}
