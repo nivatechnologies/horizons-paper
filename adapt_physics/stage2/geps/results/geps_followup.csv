@@ -1,0 +1,4 @@
+# git_sha=f9cb469e24ce75cd6c68bb0cea90dce88f3ec8a5-dirty; Adapt the Physics GEPS WO; post-freeze follow-up: GEPS-range trained longer (seed 1, Baccus), frozen cells
+Re,checkpoint,val_loss,budgets_done,better_budget,GEPS_500,GEPS_5000,H,H_minus_GEPS,ci95_lo,ci95_hi,frozen_H_minus_GEPS,frozen_epochs,label
+50,"seed 1, epoch 130",0.16198569536209106,500,500,0.4557312024372292,,3.2365354839755076,2.7808042815382783,2.5854456976363664,2.9930116579112487,3.035796740044823,35,"post-freeze follow-up: GEPS-range trained longer (reported, not a substitute)"
+56,"seed 1, epoch 130",0.16198569536209106,500,500,0.2885995282129694,,3.119331070897627,2.8307315426846578,2.6315091733272418,3.029271643653863,2.971961099044196,35,"post-freeze follow-up: GEPS-range trained longer (reported, not a substitute)"
