@@ -11,6 +11,69 @@ from common import CENTRE,RANGE,ROOT,RESULTS,RUNS,SEEDS,rng,write_json
 from ap.fno import FNO2d
 
 
+class TrainingGraph:
+    """Cache unchanged forward/backward/clip kernels; optimizer and schedule remain eager."""
+    def __init__(self,model,x,y,theta):
+        self.inputs=[v.clone() for v in (x,y,theta)]
+        stream=torch.cuda.Stream();stream.wait_stream(torch.cuda.current_stream())
+        with torch.cuda.stream(stream):
+            for _ in range(3):
+                model.zero_grad(set_to_none=True)
+                loss_fn(model,*self.inputs).backward()
+                torch.nn.utils.clip_grad_norm_(model.parameters(),1.0)
+        torch.cuda.current_stream().wait_stream(stream)
+        model.zero_grad(set_to_none=True)
+        self.graph=torch.cuda.CUDAGraph()
+        with torch.cuda.graph(self.graph,stream=stream):
+            self.loss=loss_fn(model,*self.inputs)
+            self.loss.backward()
+            torch.nn.utils.clip_grad_norm_(model.parameters(),1.0)
+        torch.cuda.current_stream().wait_stream(stream)
+
+    def replay(self,x,y,theta):
+        for static,value in zip(self.inputs,(x,y,theta)):static.copy_(value)
+        self.graph.replay()
+        return self.loss
+
+
+def graph_qa(arm):
+    torch.manual_seed(SEEDS["optimizer"])
+    model=build(arm).to("cuda")
+    x=torch.randn(32,model.n_in,64,64,device="cuda")
+    y=torch.randn(32,4,64,64,device="cuda");th=torch.randn(32,3,device="cuda")
+    # Same parameters, data and clip; graph capture itself makes no optimizer update.
+    loss=loss_fn(model,x,y,th);loss.backward()
+    torch.nn.utils.clip_grad_norm_(model.parameters(),1.0)
+    gradients=[p.grad.clone() for p in model.parameters()]
+    eager_loss=loss.detach().clone()
+    del loss
+    cached=TrainingGraph(model,x,y,th)
+    fast_loss=cached.replay(x,y,th)
+    torch.testing.assert_close(fast_loss,eager_loss,rtol=1e-5,atol=1e-6)
+    for p,g in zip(model.parameters(),gradients):
+        torch.testing.assert_close(p.grad,g,rtol=1e-5,atol=1e-6)
+    # A second input proves replay overwrites gradients rather than accumulating.
+    x2=x*.8
+    cached.replay(x2,y,th)
+    second=[p.grad.clone() for p in model.parameters()]
+    del fast_loss,cached
+    model.zero_grad(set_to_none=True)
+    loss_fn(model,x2,y,th).backward();torch.nn.utils.clip_grad_norm_(model.parameters(),1.0)
+    for p,g in zip(model.parameters(),second):torch.testing.assert_close(p.grad,g,rtol=1e-5,atol=1e-6)
+    # Rebuild graph after clearing gradient pointers during the eager verification.
+    cached=TrainingGraph(model,x,y,th)
+    opt=torch.optim.AdamW(model.parameters(),lr=1e-3,weight_decay=1e-4)
+    cached.replay(x,y,th);opt.step()
+    torch.cuda.synchronize();t=time.monotonic()
+    for _ in range(20):
+        cached.replay(x,y,th);opt.step()
+    torch.cuda.synchronize()
+    result=dict(arm=arm,gradient_eager_match=True,gradient_overwrite_verified=True,
+                params=model.n_params(),n_in=model.n_in,seconds_per_step=(time.monotonic()-t)/20)
+    write_json(RESULTS/f"training_graph_qa_{arm}.json",result)
+    print(json.dumps(result),flush=True)
+
+
 class ParamFNO(FNO2d):
     def __init__(self,n_in=4):
         super().__init__(n_in=n_in,re_channel=False)
@@ -85,15 +148,15 @@ def main(arm,steps=30000,qa=False):
         model.load_state_dict(ck["model"]);opt.load_state_dict(ck["opt"]);sched.load_state_dict(ck["sched"])
         tr.bit_generator.state=ck["tr_rng"];nr.bit_generator.state=ck["noise_rng"]
         start_step=ck["step"];best=ck["best"];best_step=ck["best_step"];curve=ck["curve"];elapsed=ck["elapsed"]
-    t=time.monotonic();running=0.
+    t=time.monotonic();running=0.;cached=None
     for step in range(start_step+1,steps+1):
         it=tr.integers(0,len(X),32);k=tr.integers(0,X.shape[1]-n_in-4+1,32)
         noise=(nr.standard_normal((32,n_in,64,64))*.02).astype(np.float32)
         x,y,theta=batch(X,T,it,k,n_in,noise,scale)
-        loss=loss_fn(model,x,y,theta)
+        if cached is None:cached=TrainingGraph(model,x,y,theta)
+        loss=cached.replay(x,y,theta)
         if not torch.isfinite(loss):raise RuntimeError(f"nonfinite training loss at {step}")
-        opt.zero_grad(set_to_none=True);loss.backward()
-        torch.nn.utils.clip_grad_norm_(model.parameters(),1.0);opt.step();sched.step()
+        opt.step();sched.step()
         running+=float(loss.detach())
         if step%100==0:print(arm,"step",step,"seconds",round(elapsed+time.monotonic()-t,1),flush=True)
         if step%1000==0:
@@ -121,5 +184,6 @@ def main(arm,steps=30000,qa=False):
 if __name__=="__main__":
     torch.set_num_threads(4)
     p=argparse.ArgumentParser();p.add_argument("arm",choices=["L_range-3","FNO-theta"])
-    p.add_argument("--qa",action="store_true");a=p.parse_args()
-    main(a.arm,qa=a.qa)
+    p.add_argument("--qa",action="store_true");p.add_argument("--graph-qa",action="store_true");a=p.parse_args()
+    if a.graph_qa:graph_qa(a.arm)
+    else:main(a.arm,qa=a.qa)
