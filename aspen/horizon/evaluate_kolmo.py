@@ -6,7 +6,7 @@ import numpy as np
 import torch
 from common import ROOT,GRID,BUDGETS,ALPHA,rng,patterns,write_json,sha
 from kolmo import KolmoAction
-from ap.arms import identify
+from identify_kolmo import identify
 
 def member_windows(y,sigma,namespace,case,M,action=0):
     return np.stack([y+.02*sigma*rng(namespace,1,2,case,m,action).standard_normal(y.shape) for m in range(M)])

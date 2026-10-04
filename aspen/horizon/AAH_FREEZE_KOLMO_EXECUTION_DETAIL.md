@@ -4,6 +4,8 @@ Written before any Kolmogorov test-panel or learned training data. Requires the 
 
 The test panel has 30 independent base starts, 500-time-unit burn-in and eleven frames separated by0.35. Observation streams use the frozen observation namespace, system1, sub0 for starts and sub1 for noise. P1x starts from the first projected noisy frame, fits the ten remaining frames with true drag and no actions, Re bounds25..70 and30 golden-section evaluations. The positive objective normalization does not change the optimum.
 
+Identification uses the exact inherited P1x objective and bracket updates with explicit finite-input/objective guards. A nonfinite objective stops identification for that part; no arbitrary finite parameter, dropped case or substituted fit is returned. This correctness guard is fixed before test data. All finite-case outputs must match the inherited implementation.
+
 Test ensemble member windows use SeedSequence[namespace,1,2,case,member,action]. Each member independently perturbs all eleven observed frames with physical noise0.02*sigma. Action0 denotes shared windows for paired/jitter/misidentified/learned; unpaired uses action k+1. Truth uses the separate truth namespace with the same rule and512 members. Test member addressing is explicit rather than the calibration's original whole-array stream; calibration remains unchanged.
 
 Baccus generates observation panels, targets, all physics arms, climatologies and learned data/training/evaluation. Sulaco computes the truth ensemble with128 processes and the unchanged Torch IFRK4, one member's six paired actions per task. Immutable shards permit restart without redrawing. Solver objective coefficients are fixedRe40 and true drag for every arm, as in the output-alignment addendum.
