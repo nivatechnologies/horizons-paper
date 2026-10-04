@@ -1,0 +1,1434 @@
+{
+  "system": "Lorenz-96",
+  "Tf": 10.0,
+  "Td": 12.0,
+  "horizons": [
+    {
+      "T": 0.25,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9995740110271558,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9999291356112557,
+          "response_relative_error": 0.010510183753931425
+        },
+        "unpaired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9995748339122176,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9986511953488156,
+          "response_relative_error": 0.04560994309179886
+        },
+        "jitter": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9995740110271558,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9999291356112495,
+          "response_relative_error": 0.01051018375438273
+        },
+        "misidentified": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9991128545569486,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9991217927909307,
+          "response_relative_error": 0.06654856544842055
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 200,
+        "uncommitted": 0,
+        "mean_members": 8.0,
+        "eligible_committed": 200,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.03971492171287536,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 0.5,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9990159893029938,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9998887492271149,
+          "response_relative_error": 0.013113356729727422
+        },
+        "unpaired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9990197181303856,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9987014043092012,
+          "response_relative_error": 0.0446455139586001
+        },
+        "jitter": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9990159893029936,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9998887492271004,
+          "response_relative_error": 0.013113356730583324
+        },
+        "misidentified": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9969659377302817,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9972047474534481,
+          "response_relative_error": 0.08635542990811847
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 200,
+        "uncommitted": 0,
+        "mean_members": 8.0,
+        "eligible_committed": 200,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.03972403049468994,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 0.75,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9980105688421554,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.999761179411589,
+          "response_relative_error": 0.019221689981242813
+        },
+        "unpaired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9980267120412012,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9981979817773854,
+          "response_relative_error": 0.05275800757179445
+        },
+        "jitter": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9980105688421544,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9997611794115767,
+          "response_relative_error": 0.019221689981714613
+        },
+        "misidentified": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9918715159588908,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0,
+          "response_correlation": 0.9904224827207023,
+          "response_relative_error": 0.13593151953013521
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 200,
+        "uncommitted": 0,
+        "mean_members": 8.0,
+        "eligible_committed": 200,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.03972588062286377,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 1.0,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9963189066607377,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0008767437636985194,
+          "response_correlation": 0.999402767650173,
+          "response_relative_error": 0.030714049388948072
+        },
+        "unpaired": {
+          "accuracy": [
+            0.985,
+            0.995,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9963783064537881,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0008767437636985194,
+          "response_correlation": 0.9971676656380942,
+          "response_relative_error": 0.06697663873440594
+        },
+        "jitter": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9963189066607364,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0008767437636985194,
+          "response_correlation": 0.9994027676501906,
+          "response_relative_error": 0.030714049388471668
+        },
+        "misidentified": {
+          "accuracy": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9813113842581496,
+          "normalized_regret": 0.0,
+          "realized_regret": 0.0008767437636985194,
+          "response_correlation": 0.9752283115816368,
+          "response_relative_error": 0.21508967136883114
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 200,
+        "uncommitted": 0,
+        "mean_members": 8.0,
+        "eligible_committed": 200,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.03971687197685242,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 1.5,
+      "eligible": 195,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 5,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.9846153846153847,
+            0.9794871794871794,
+            1.0,
+            0.9948717948717949,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9868038947159752,
+          "normalized_regret": 0.00037847805471099904,
+          "realized_regret": 0.00711114940944539,
+          "response_correlation": 0.9974443729720494,
+          "response_relative_error": 0.06613699424916
+        },
+        "unpaired": {
+          "accuracy": [
+            0.9076923076923077,
+            0.9282051282051282,
+            0.9435897435897436,
+            0.9794871794871794,
+            0.9846153846153847,
+            0.9897435897435898
+          ],
+          "M95": 64,
+          "ACC": 0.9869002519930591,
+          "normalized_regret": 0.0017020407398150828,
+          "realized_regret": 0.00806556870443841,
+          "response_correlation": 0.9931856615535066,
+          "response_relative_error": 0.10856097898131269
+        },
+        "jitter": {
+          "accuracy": [
+            0.9846153846153847,
+            0.9794871794871794,
+            1.0,
+            0.9948717948717949,
+            1.0,
+            1.0
+          ],
+          "M95": 8,
+          "ACC": 0.9868038947159644,
+          "normalized_regret": 0.00037847805471099904,
+          "realized_regret": 0.00711114940944539,
+          "response_correlation": 0.9974443729721965,
+          "response_relative_error": 0.06613699424726918
+        },
+        "misidentified": {
+          "accuracy": [
+            0.9230769230769231,
+            0.9230769230769231,
+            0.9128205128205128,
+            0.9179487179487179,
+            0.9128205128205128,
+            0.9179487179487179
+          ],
+          "M95": null,
+          "ACC": 0.9387539183785654,
+          "normalized_regret": 0.01674694235310268,
+          "realized_regret": 0.018707947792699794,
+          "response_correlation": 0.9036639136844614,
+          "response_relative_error": 0.4436848988633454
+        }
+      },
+      "member_criterion": {
+        "pass_condition": true,
+        "ratio_lower_bound": 8.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 196,
+        "uncommitted": 4,
+        "mean_members": 16.53061224489796,
+        "eligible_committed": 194,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.041925269730237066,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.958974358974359,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 2.0,
+      "eligible": 193,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 7,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.9430051813471503,
+            0.9378238341968912,
+            0.9430051813471503,
+            0.9637305699481865,
+            0.9740932642487047,
+            0.9792746113989638
+          ],
+          "M95": 64,
+          "ACC": 0.9624830301417043,
+          "normalized_regret": 0.004669058906594593,
+          "realized_regret": 0.04181303961330007,
+          "response_correlation": 0.9935990956355558,
+          "response_relative_error": 0.10829167626209177
+        },
+        "unpaired": {
+          "accuracy": [
+            0.7823834196891192,
+            0.8393782383419689,
+            0.9119170984455959,
+            0.9378238341968912,
+            0.9585492227979274,
+            0.9637305699481865
+          ],
+          "M95": 128,
+          "ACC": 0.9625136493872367,
+          "normalized_regret": 0.005446229237440732,
+          "realized_regret": 0.03814971247585681,
+          "response_correlation": 0.9887163885427945,
+          "response_relative_error": 0.144268620102013
+        },
+        "jitter": {
+          "accuracy": [
+            0.9430051813471503,
+            0.9378238341968912,
+            0.9430051813471503,
+            0.9637305699481865,
+            0.9740932642487047,
+            0.9792746113989638
+          ],
+          "M95": 64,
+          "ACC": 0.9624830301417362,
+          "normalized_regret": 0.004669058906594593,
+          "realized_regret": 0.04181303961330007,
+          "response_correlation": 0.9935990956356152,
+          "response_relative_error": 0.10829167626166014
+        },
+        "misidentified": {
+          "accuracy": [
+            0.7823834196891192,
+            0.8031088082901554,
+            0.8082901554404145,
+            0.7979274611398963,
+            0.7875647668393783,
+            0.7875647668393783
+          ],
+          "M95": null,
+          "ACC": 0.8683639014143648,
+          "normalized_regret": 0.05230417355669528,
+          "realized_regret": 0.0756098908674806,
+          "response_correlation": 0.7610027904066015,
+          "response_relative_error": 0.7232259878133642
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 2.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 178,
+        "uncommitted": 22,
+        "mean_members": 28.44943820224719,
+        "eligible_committed": 177,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.04787334967195318,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.8393782383419689,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 2.5,
+      "eligible": 180,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 20,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.8722222222222222,
+            0.9,
+            0.9277777777777778,
+            0.9388888888888889,
+            0.9722222222222222,
+            0.9611111111111111
+          ],
+          "M95": 128,
+          "ACC": 0.9232256337629267,
+          "normalized_regret": 0.012206259764770428,
+          "realized_regret": 0.10863567873330228,
+          "response_correlation": 0.985476504391008,
+          "response_relative_error": 0.16702717452066893
+        },
+        "unpaired": {
+          "accuracy": [
+            0.7055555555555556,
+            0.7833333333333333,
+            0.8555555555555555,
+            0.9111111111111111,
+            0.9444444444444444,
+            0.9722222222222222
+          ],
+          "M95": 256,
+          "ACC": 0.9235838527411638,
+          "normalized_regret": 0.01458101611692766,
+          "realized_regret": 0.11352191814745693,
+          "response_correlation": 0.9813295478831799,
+          "response_relative_error": 0.18904866774668955
+        },
+        "jitter": {
+          "accuracy": [
+            0.8722222222222222,
+            0.9,
+            0.9277777777777778,
+            0.9388888888888889,
+            0.9722222222222222,
+            0.9611111111111111
+          ],
+          "M95": 128,
+          "ACC": 0.9232256337628675,
+          "normalized_regret": 0.012206259764770428,
+          "realized_regret": 0.10863567873330228,
+          "response_correlation": 0.9854765043904589,
+          "response_relative_error": 0.16702717452439703
+        },
+        "misidentified": {
+          "accuracy": [
+            0.5888888888888889,
+            0.6055555555555555,
+            0.6166666666666667,
+            0.5944444444444444,
+            0.6111111111111112,
+            0.5833333333333334
+          ],
+          "M95": null,
+          "ACC": 0.7836809230560274,
+          "normalized_regret": 0.15331469873583506,
+          "realized_regret": 0.21860296222584807,
+          "response_correlation": 0.6247794366517573,
+          "response_relative_error": 0.9236674402728863
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 2.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 163,
+        "uncommitted": 37,
+        "mean_members": 57.2760736196319,
+        "eligible_committed": 160,
+        "error_rate": 0.00625,
+        "mean_wall_seconds": 0.05624538111540438,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.7,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 3.0,
+      "eligible": 161,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 39,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.7515527950310559,
+            0.8509316770186336,
+            0.8881987577639752,
+            0.9316770186335404,
+            0.9565217391304348,
+            0.9627329192546584
+          ],
+          "M95": 128,
+          "ACC": 0.8623262767327663,
+          "normalized_regret": 0.010399098700335088,
+          "realized_regret": 0.13999709388117526,
+          "response_correlation": 0.9783299109341334,
+          "response_relative_error": 0.20449100155767963
+        },
+        "unpaired": {
+          "accuracy": [
+            0.6583850931677019,
+            0.7577639751552795,
+            0.782608695652174,
+            0.84472049689441,
+            0.9440993788819876,
+            0.937888198757764
+          ],
+          "M95": null,
+          "ACC": 0.8627028445069809,
+          "normalized_regret": 0.027651754205665922,
+          "realized_regret": 0.1538122674658495,
+          "response_correlation": 0.9732261149618456,
+          "response_relative_error": 0.22685199545200124
+        },
+        "jitter": {
+          "accuracy": [
+            0.7515527950310559,
+            0.8509316770186336,
+            0.8881987577639752,
+            0.9316770186335404,
+            0.9565217391304348,
+            0.9627329192546584
+          ],
+          "M95": 128,
+          "ACC": 0.8623262767328128,
+          "normalized_regret": 0.010399098700335088,
+          "realized_regret": 0.13999709388117526,
+          "response_correlation": 0.9783299109328787,
+          "response_relative_error": 0.20449100156457864
+        },
+        "misidentified": {
+          "accuracy": [
+            0.38509316770186336,
+            0.4472049689440994,
+            0.4161490683229814,
+            0.484472049689441,
+            0.5031055900621118,
+            0.515527950310559
+          ],
+          "M95": null,
+          "ACC": 0.6879764827192295,
+          "normalized_regret": 0.20078107765406947,
+          "realized_regret": 0.27927226337978417,
+          "response_correlation": 0.5694328608607465,
+          "response_relative_error": 0.9931328512875748
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 2.0,
+        "unpaired_censored": true
+      },
+      "commitment": {
+        "committed": 138,
+        "uncommitted": 62,
+        "mean_members": 85.10144927536231,
+        "eligible_committed": 130,
+        "error_rate": 0.023076923076923078,
+        "mean_wall_seconds": 0.06875143707662389,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.6335403726708074,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 4.0,
+      "eligible": 125,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 75,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.648,
+            0.76,
+            0.824,
+            0.92,
+            0.936,
+            0.984
+          ],
+          "M95": 256,
+          "ACC": 0.7115156795111044,
+          "normalized_regret": 0.021578287292757528,
+          "realized_regret": 0.2766191379416865,
+          "response_correlation": 0.9707527826629252,
+          "response_relative_error": 0.23573275256889914
+        },
+        "unpaired": {
+          "accuracy": [
+            0.584,
+            0.728,
+            0.808,
+            0.856,
+            0.888,
+            0.952
+          ],
+          "M95": 256,
+          "ACC": 0.712772178090504,
+          "normalized_regret": 0.034110909118784546,
+          "realized_regret": 0.28287302873042924,
+          "response_correlation": 0.9644160456387333,
+          "response_relative_error": 0.2606234162882083
+        },
+        "jitter": {
+          "accuracy": [
+            0.648,
+            0.76,
+            0.824,
+            0.92,
+            0.936,
+            0.984
+          ],
+          "M95": 256,
+          "ACC": 0.7115156795125103,
+          "normalized_regret": 0.021578287292757528,
+          "realized_regret": 0.2766191379416865,
+          "response_correlation": 0.970752782659883,
+          "response_relative_error": 0.23573275258158907
+        },
+        "misidentified": {
+          "accuracy": [
+            0.328,
+            0.352,
+            0.416,
+            0.472,
+            0.48,
+            0.504
+          ],
+          "M95": null,
+          "ACC": 0.4954992045712915,
+          "normalized_regret": 0.26211850212837323,
+          "realized_regret": 0.346000890155998,
+          "response_correlation": 0.5143214186606887,
+          "response_relative_error": 1.00680705936955
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 94,
+        "uncommitted": 106,
+        "mean_members": 128.68085106382978,
+        "eligible_committed": 85,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.02089631811101386,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.536,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 5.0,
+      "eligible": 109,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 91,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.5688073394495413,
+            0.6972477064220184,
+            0.8256880733944955,
+            0.8532110091743119,
+            0.9357798165137615,
+            0.9541284403669725
+          ],
+          "M95": 256,
+          "ACC": 0.5491622769463858,
+          "normalized_regret": 0.04477947926473231,
+          "realized_regret": 0.31442444246505574,
+          "response_correlation": 0.9483129376591666,
+          "response_relative_error": 0.31414589562597084
+        },
+        "unpaired": {
+          "accuracy": [
+            0.4954128440366973,
+            0.6055045871559633,
+            0.7706422018348624,
+            0.8899082568807339,
+            0.9357798165137615,
+            0.9357798165137615
+          ],
+          "M95": null,
+          "ACC": 0.5473940726701639,
+          "normalized_regret": 0.03358848860670515,
+          "realized_regret": 0.3297507708915796,
+          "response_correlation": 0.9424401833494661,
+          "response_relative_error": 0.33290988680656175
+        },
+        "jitter": {
+          "accuracy": [
+            0.5688073394495413,
+            0.6972477064220184,
+            0.8256880733944955,
+            0.8532110091743119,
+            0.9357798165137615,
+            0.9541284403669725
+          ],
+          "M95": 256,
+          "ACC": 0.5491622769463842,
+          "normalized_regret": 0.04477947926473231,
+          "realized_regret": 0.31442444246505574,
+          "response_correlation": 0.9483129376767272,
+          "response_relative_error": 0.31414589556553946
+        },
+        "misidentified": {
+          "accuracy": [
+            0.27522935779816515,
+            0.3669724770642202,
+            0.43119266055045874,
+            0.5504587155963303,
+            0.5871559633027523,
+            0.5871559633027523
+          ],
+          "M95": null,
+          "ACC": 0.35190790133690014,
+          "normalized_regret": 0.29818031132112216,
+          "realized_regret": 0.3893723694386587,
+          "response_correlation": 0.44853086885561483,
+          "response_relative_error": 1.023169517708716
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": true
+      },
+      "commitment": {
+        "committed": 66,
+        "uncommitted": 134,
+        "mean_members": 156.72727272727272,
+        "eligible_committed": 62,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.024649327451532536,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.7522935779816514,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 6.0,
+      "eligible": 126,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 74,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.373015873015873,
+            0.5873015873015873,
+            0.7142857142857143,
+            0.8492063492063492,
+            0.9285714285714286,
+            0.9682539682539683
+          ],
+          "M95": 256,
+          "ACC": 0.4085930379636695,
+          "normalized_regret": 0.06856291931664531,
+          "realized_regret": 0.3927155990863908,
+          "response_correlation": 0.9166607007531241,
+          "response_relative_error": 0.40083734258559395
+        },
+        "unpaired": {
+          "accuracy": [
+            0.42063492063492064,
+            0.49206349206349204,
+            0.6428571428571429,
+            0.7936507936507936,
+            0.8968253968253969,
+            0.9523809523809523
+          ],
+          "M95": 256,
+          "ACC": 0.4060001515562069,
+          "normalized_regret": 0.08377979335686636,
+          "realized_regret": 0.35926247092031083,
+          "response_correlation": 0.9189128505555976,
+          "response_relative_error": 0.39354212361823726
+        },
+        "jitter": {
+          "accuracy": [
+            0.373015873015873,
+            0.5873015873015873,
+            0.7142857142857143,
+            0.8492063492063492,
+            0.9285714285714286,
+            0.9682539682539683
+          ],
+          "M95": 256,
+          "ACC": 0.4085930378875404,
+          "normalized_regret": 0.06856291931664531,
+          "realized_regret": 0.3927155990863908,
+          "response_correlation": 0.9166607007934987,
+          "response_relative_error": 0.4008373423429137
+        },
+        "misidentified": {
+          "accuracy": [
+            0.35714285714285715,
+            0.373015873015873,
+            0.49206349206349204,
+            0.6349206349206349,
+            0.746031746031746,
+            0.8015873015873016
+          ],
+          "M95": null,
+          "ACC": 0.24606483703103024,
+          "normalized_regret": 0.2227646111886354,
+          "realized_regret": 0.3630052844439151,
+          "response_correlation": 0.48498184345301104,
+          "response_relative_error": 0.9622770206534838
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 50,
+        "uncommitted": 150,
+        "mean_members": 186.24,
+        "eligible_committed": 45,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.02862380027770996,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.8888888888888888,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 8.0,
+      "eligible": 184,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 16,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.375,
+            0.43478260869565216,
+            0.6358695652173914,
+            0.8206521739130435,
+            0.9130434782608695,
+            0.9782608695652174
+          ],
+          "M95": 256,
+          "ACC": 0.21753451739688118,
+          "normalized_regret": 0.12587504765781365,
+          "realized_regret": 0.37959342999957096,
+          "response_correlation": 0.8287390040828935,
+          "response_relative_error": 0.5667701433432097
+        },
+        "unpaired": {
+          "accuracy": [
+            0.30978260869565216,
+            0.45108695652173914,
+            0.6684782608695652,
+            0.842391304347826,
+            0.9510869565217391,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.21657109652890316,
+          "normalized_regret": 0.11989203277118218,
+          "realized_regret": 0.38276979840786923,
+          "response_correlation": 0.82829121524397,
+          "response_relative_error": 0.5589961508465067
+        },
+        "jitter": {
+          "accuracy": [
+            0.375,
+            0.43478260869565216,
+            0.6358695652173914,
+            0.8206521739130435,
+            0.9130434782608695,
+            0.9782608695652174
+          ],
+          "M95": 256,
+          "ACC": 0.2175345137875809,
+          "normalized_regret": 0.12587504765781365,
+          "realized_regret": 0.37959342999957096,
+          "response_correlation": 0.8287390090745338,
+          "response_relative_error": 0.56677013987686
+        },
+        "misidentified": {
+          "accuracy": [
+            0.31521739130434784,
+            0.3858695652173913,
+            0.5543478260869565,
+            0.7554347826086957,
+            0.907608695652174,
+            0.9728260869565217
+          ],
+          "M95": 256,
+          "ACC": 0.10932008515309971,
+          "normalized_regret": 0.19346361288517547,
+          "realized_regret": 0.37184235237262003,
+          "response_correlation": 0.66710717419684,
+          "response_relative_error": 0.8032442353468882
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 0.5,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 54,
+        "uncommitted": 146,
+        "mean_members": 246.5185185185185,
+        "eligible_committed": 53,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.0362300298832081,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 0.9945652173913043,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 10.0,
+      "eligible": 199,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 1,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.36180904522613067,
+            0.4723618090452261,
+            0.628140703517588,
+            0.8190954773869347,
+            0.9798994974874372,
+            0.9949748743718593
+          ],
+          "M95": 128,
+          "ACC": 0.11397478235632025,
+          "normalized_regret": 0.15616775853784887,
+          "realized_regret": 0.40658034012586386,
+          "response_correlation": 0.7841825414177089,
+          "response_relative_error": 0.6335484641251474
+        },
+        "unpaired": {
+          "accuracy": [
+            0.3065326633165829,
+            0.4723618090452261,
+            0.6432160804020101,
+            0.8743718592964824,
+            0.9748743718592965,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.1122830642321415,
+          "normalized_regret": 0.11011666729230046,
+          "realized_regret": 0.3838351123613284,
+          "response_correlation": 0.7916754136317453,
+          "response_relative_error": 0.6237314444787977
+        },
+        "jitter": {
+          "accuracy": [
+            0.36180904522613067,
+            0.4723618090452261,
+            0.628140703517588,
+            0.8190954773869347,
+            0.9798994974874372,
+            0.9949748743718593
+          ],
+          "M95": 128,
+          "ACC": 0.11397473680015963,
+          "normalized_regret": 0.15616775853784887,
+          "realized_regret": 0.40658034012586386,
+          "response_correlation": 0.7841825645462532,
+          "response_relative_error": 0.6335484748336345
+        },
+        "misidentified": {
+          "accuracy": [
+            0.3065326633165829,
+            0.3969849246231156,
+            0.5226130653266332,
+            0.7487437185929648,
+            0.9396984924623115,
+            1.0
+          ],
+          "M95": 256,
+          "ACC": 0.052484246157739174,
+          "normalized_regret": 0.2124915562354105,
+          "realized_regret": 0.4178530506327915,
+          "response_correlation": 0.753032212625074,
+          "response_relative_error": 0.7120587927531904
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 61,
+        "uncommitted": 139,
+        "mean_members": 219.40983606557376,
+        "eligible_committed": 61,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.032498777889814534,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 12.0,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.375,
+            0.41,
+            0.645,
+            0.845,
+            0.965,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.06006363419732841,
+          "normalized_regret": 0.141714143533399,
+          "realized_regret": 0.422516899141605,
+          "response_correlation": 0.7980479480268202,
+          "response_relative_error": 0.6008776012153929
+        },
+        "unpaired": {
+          "accuracy": [
+            0.315,
+            0.455,
+            0.625,
+            0.81,
+            0.955,
+            0.995
+          ],
+          "M95": 128,
+          "ACC": 0.05437036634474799,
+          "normalized_regret": 0.15901080652865343,
+          "realized_regret": 0.4202459958743109,
+          "response_correlation": 0.7941307837810745,
+          "response_relative_error": 0.6175068465550985
+        },
+        "jitter": {
+          "accuracy": [
+            0.375,
+            0.41,
+            0.645,
+            0.845,
+            0.965,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.06006451286023596,
+          "normalized_regret": 0.141714143533399,
+          "realized_regret": 0.422516899141605,
+          "response_correlation": 0.7980521149978976,
+          "response_relative_error": 0.6008726032418357
+        },
+        "misidentified": {
+          "accuracy": [
+            0.34,
+            0.48,
+            0.63,
+            0.81,
+            0.96,
+            0.995
+          ],
+          "M95": 128,
+          "ACC": 0.02158221433302199,
+          "normalized_regret": 0.16215830622535968,
+          "realized_regret": 0.4015259723934561,
+          "response_correlation": 0.7623188585574956,
+          "response_relative_error": 0.72144796794514
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 68,
+        "uncommitted": 132,
+        "mean_members": 235.76470588235293,
+        "eligible_committed": 68,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.14456944255267873,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 16.0,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.305,
+            0.385,
+            0.56,
+            0.79,
+            0.97,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.022642427035422533,
+          "normalized_regret": 0.1858236723093424,
+          "realized_regret": 0.42489802130482424,
+          "response_correlation": 0.7936559197480111,
+          "response_relative_error": 0.6102481736749343
+        },
+        "unpaired": {
+          "accuracy": [
+            0.32,
+            0.45,
+            0.58,
+            0.79,
+            0.965,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.02036177512295894,
+          "normalized_regret": 0.19034912850835645,
+          "realized_regret": 0.4265788794007517,
+          "response_correlation": 0.7942241691511825,
+          "response_relative_error": 0.6069036147702596
+        },
+        "jitter": {
+          "accuracy": [
+            0.305,
+            0.39,
+            0.555,
+            0.79,
+            0.975,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.02270619907384414,
+          "normalized_regret": 0.1858236723093424,
+          "realized_regret": 0.42489802130482424,
+          "response_correlation": 0.793645097976069,
+          "response_relative_error": 0.6102960872260877
+        },
+        "misidentified": {
+          "accuracy": [
+            0.31,
+            0.43,
+            0.595,
+            0.82,
+            0.94,
+            0.995
+          ],
+          "M95": 256,
+          "ACC": 0.003965730534395476,
+          "normalized_regret": 0.15733472379235175,
+          "realized_regret": 0.4150776119922358,
+          "response_correlation": 0.7599425233833202,
+          "response_relative_error": 0.7084300477193715
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 70,
+        "uncommitted": 130,
+        "mean_members": 229.94285714285715,
+        "eligible_committed": 70,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.034095324788774764,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    },
+    {
+      "T": 20.0,
+      "eligible": 200,
+      "total": 200,
+      "sufficient": true,
+      "near_ties": 0,
+      "arms": {
+        "paired": {
+          "accuracy": [
+            0.32,
+            0.44,
+            0.655,
+            0.85,
+            0.97,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.009376391594117305,
+          "normalized_regret": 0.13617678845410308,
+          "realized_regret": 0.4490511164818659,
+          "response_correlation": 0.7802010950468453,
+          "response_relative_error": 0.6390617508520302
+        },
+        "unpaired": {
+          "accuracy": [
+            0.325,
+            0.44,
+            0.575,
+            0.81,
+            0.96,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.01483069174884557,
+          "normalized_regret": 0.17204531605902504,
+          "realized_regret": 0.4509286252849564,
+          "response_correlation": 0.7808250915192755,
+          "response_relative_error": 0.636437294083039
+        },
+        "jitter": {
+          "accuracy": [
+            0.325,
+            0.42,
+            0.635,
+            0.84,
+            0.97,
+            1.0
+          ],
+          "M95": 128,
+          "ACC": 0.009789640089404856,
+          "normalized_regret": 0.1444831789205827,
+          "realized_regret": 0.4512382350573057,
+          "response_correlation": 0.7784890374771984,
+          "response_relative_error": 0.6438186763979103
+        },
+        "misidentified": {
+          "accuracy": [
+            0.33,
+            0.4,
+            0.59,
+            0.755,
+            0.94,
+            0.99
+          ],
+          "M95": 256,
+          "ACC": 0.009227681394300436,
+          "normalized_regret": 0.2163637934671735,
+          "realized_regret": 0.43953056433488313,
+          "response_correlation": 0.7382739126060263,
+          "response_relative_error": 0.7178387862013512
+        }
+      },
+      "member_criterion": {
+        "pass_condition": false,
+        "ratio_lower_bound": 1.0,
+        "unpaired_censored": false
+      },
+      "commitment": {
+        "committed": 70,
+        "uncommitted": 130,
+        "mean_members": 236.8,
+        "eligible_committed": 70,
+        "error_rate": 0.0,
+        "mean_wall_seconds": 0.03511591638837542,
+        "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
+      },
+      "myopic_accuracy": 1.0,
+      "random_accuracy_expected": 0.125
+    }
+  ],
+  "seconds": 10.377821445465088,
+  "git_sha": "4d3a404a8399b82d36c9fc8efc0b63ffccb99676",
+  "learned_arm_pending": true
+}
