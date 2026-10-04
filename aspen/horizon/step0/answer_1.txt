@@ -1,0 +1,72 @@
+Use a common **RMS amplitude** \(\varepsilon\): every candidate adds \(\varepsilon p\), where \(p\) has unit spatial RMS. This makes the perturbation sizes comparable. These are candidates to test; their effect on a chaotic long-run average is not guaranteed.
+
+### (1) Lorenz–96
+
+Use indices \(i=0,\ldots,39\), interpreted modulo 40:
+\[
+\dot x_i=(x_{i+1}-x_{i-2})x_{i-1}-x_i+8+\varepsilon p_i,
+\qquad \frac1{40}\sum_i p_i^2=1.
+\]
+
+Eight candidates are:
+
+| Candidate | Exact pattern \(p_i\) | Purpose |
+|---|---|---|
+| Uniform forcing reduction | \(-1\) | Direct baseline for reducing energy input |
+| Longest spatial wave | \(\sqrt2\cos(2\pi i/40)\) | Large-scale redistribution |
+| Two-wave pattern | \(\sqrt2\cos(4\pi i/40)\) | Broad spatial structure |
+| Four-wave pattern | \(\sqrt2\cos(8\pi i/40)\) | Intermediate scale |
+| Eight-wave pattern | \(\sqrt2\cos(16\pi i/40)\) | Shorter spatial scale |
+| Ten-wave pattern | \(\sqrt2\cos(20\pi i/40)\) | Four-site wavelength |
+| Alternating forcing | \((-1)^i\) | Smallest resolved wavelength |
+| Local reduction with compensation | \((1-40\delta_{i0})/\sqrt{39}\) | Concentrated actuation with zero net forcing change |
+
+All except the uniform reduction have zero spatial mean. Compare their long-run
+\[
+E=\left\langle\frac1{80}\sum_i x_i^2\right\rangle_t.
+\]
+Testing both signs of \(\varepsilon\), and translated versions of structured patterns, helps avoid an arbitrary phase choice.
+
+### (2) Periodic incompressible flow
+
+Take “Kolmogorov forcing \(\sin(4y)\)” to mean the **body force**
+\[
+\mathbf f_0=(\sin4y,0).
+\]
+Its vorticity forcing is \(\operatorname{curl}\mathbf f_0=-4\cos4y\). If your convention instead specifies \(\sin4y\) directly in the vorticity equation, shift the baseline phase accordingly.
+
+Write
+\[
+\mathbf f=\mathbf f_0+\varepsilon\mathbf p,\qquad
+\mathbf p=(\partial_y\psi,-\partial_x\psi).
+\]
+Then every modification is divergence-free, its vorticity forcing is exactly
+\[
+\delta g=-\varepsilon\Delta\psi,
+\]
+and the following choices all satisfy
+\[
+\frac1{(2\pi)^2}\int_{[0,2\pi]^2}|\mathbf p|^2\,dx\,dy=1.
+\]
+
+| Candidate | Exact perturbation streamfunction \(\psi(x,y)\) | Added vorticity forcing \(\delta g/\varepsilon\) |
+|---|---|---|
+| Reduce original forcing | \(\dfrac{\sqrt2}{4}\cos4y\) | \(4\sqrt2\cos4y\) |
+| Larger-scale shear | \(-\dfrac{\sqrt2}{2}\cos2y\) | \(-2\sqrt2\cos2y\) |
+| Smaller-scale shear | \(-\dfrac{\sqrt2}{8}\cos8y\) | \(-8\sqrt2\cos8y\) |
+| Long streamwise modulation | \(\dfrac{2}{\sqrt{17}}\cos x\cos4y\) | \(2\sqrt{17}\cos x\cos4y\) |
+| Shorter streamwise modulation | \(\dfrac{1}{\sqrt5}\cos2x\cos4y\) | \(4\sqrt5\cos2x\cos4y\) |
+| Large-scale cellular forcing | \(\sqrt2\cos x\cos y\) | \(2\sqrt2\cos x\cos y\) |
+
+For the first candidate, \(\mathbf p=(-\sqrt2\sin4y,0)\), so positive \(\varepsilon\) reduces the baseline forcing.
+
+Hold Reynolds number and drag fixed and compare
+\[
+D_\nu=\nu\left\langle|\nabla\omega|^2\right\rangle_{x,y,t}.
+\]
+If “enstrophy dissipation” includes linear drag \(-\alpha\omega\), compare instead
+\[
+D_{\rm total}=D_\nu+\alpha\langle\omega^2\rangle_{x,y,t}.
+\]
+
+If the engineering constraint requires preserving the original forcing amplitude, exclude the direct-reduction candidates from the comparison.
