@@ -48,6 +48,11 @@ def render():
             if 'learned_stability' in data:
                 row=dict(data['learned_stability'],label='estimate');row.pop('per_case',None)
                 MN.table(out,prefix+'STABLE','Learned rollout stability',path,['attempted_members','dropped'],[row],data.get('diagnostics_source_sha',data['git_sha']))
+    path=results/'l96_posthoc_action_frequency.json'
+    if path.exists():
+        data=json.loads(path.read_text())
+        rows=[dict(T=r['T'],eligible=r['eligible'],action0_best=r['best_action_counts'][0],label='estimate') for r in data['horizons']]
+        MN.table(out,'AAHLPOSTHOC','Post-hoc action frequency, no changed selectors',path,['T','eligible','action0_best'],rows,data['git_sha'],note='Final blinded Codex run1 action panel; one framing. All200 myopic choices were action0. Diagnostic only, not a criterion.')
     path=results/'l96_training.json'
     if path.exists():
         data=json.loads(path.read_text())

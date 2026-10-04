@@ -48,6 +48,12 @@ def render():
     if training.exists():
         t=json.loads(training.read_text())
         lines += ['',f"Lorenz CNN training complete: {t['steps_done']} updates, {t['params']} parameters; best normalized 1-LT validation MSE {t['best_val']:.8g}. Test evaluation running; training score is not test performance."]
+    frequency=ROOT/'results/l96_posthoc_action_frequency.json'
+    if frequency.exists():
+        d=json.loads(frequency.read_text())
+        lines += ['', '## Post-hoc action-frequency diagnostic', '',
+                  'Diagnostic only; no selector or criterion changed. Uniform negative-forcing action0 is the truth-best action in every eligible Lorenz case at10,12,16,20LT. The myopic null selects action0 for all200 cases. This is a boundary of the selected action panel, not a universal claim about planning. Selector: final blinded Codex run1 action set; one framing.', '',
+                  'Source: `results/l96_posthoc_action_frequency.json`; checked section AAHLPOSTHOC.']
     return '\n'.join(lines)+'\n'
 
 if __name__=='__main__':

@@ -121,6 +121,31 @@ Calibration cases only. First passing amplitude selected; later amplitudes not t
 | AAHKCAL-1 | kolmo | 0.0100 | 6 | 20 | 0.3000 | estimate |
 | AAHKCAL-2 | kolmo | 0.0200 | 6 | 20 | 0.3000 | estimate |
 
+## AAHLPOSTHOC. Post-hoc action frequency, no changed selectors
+
+Source `results/l96_posthoc_action_frequency.json` · SHA `1297ee00e5de5155124796572e93f230a1f48d17`
+
+Final blinded Codex run1 action panel; one framing. All200 myopic choices were action0. Diagnostic only, not a criterion.
+
+| id | T | eligible | action0_best | label |
+|---|---|---|---|---|
+| AAHLPOSTHOC-1 | 0.2500 | 200 | 200 | estimate |
+| AAHLPOSTHOC-2 | 0.5000 | 200 | 200 | estimate |
+| AAHLPOSTHOC-3 | 0.7500 | 200 | 200 | estimate |
+| AAHLPOSTHOC-4 | 1.0000 | 200 | 200 | estimate |
+| AAHLPOSTHOC-5 | 1.5000 | 195 | 187 | estimate |
+| AAHLPOSTHOC-6 | 2.0000 | 193 | 162 | estimate |
+| AAHLPOSTHOC-7 | 2.5000 | 180 | 126 | estimate |
+| AAHLPOSTHOC-8 | 3.0000 | 161 | 102 | estimate |
+| AAHLPOSTHOC-9 | 4.0000 | 125 | 67 | estimate |
+| AAHLPOSTHOC-10 | 5.0000 | 109 | 82 | estimate |
+| AAHLPOSTHOC-11 | 6.0000 | 126 | 112 | estimate |
+| AAHLPOSTHOC-12 | 8.0000 | 184 | 183 | estimate |
+| AAHLPOSTHOC-13 | 10.0000 | 199 | 199 | estimate |
+| AAHLPOSTHOC-14 | 12.0000 | 200 | 200 | estimate |
+| AAHLPOSTHOC-15 | 16.0000 | 200 | 200 | estimate |
+| AAHLPOSTHOC-16 | 20.0000 | 200 | 200 | estimate |
+
 ## AAHLTRAIN. CNN training, not test performance
 
 Source `results/l96_training.json` · SHA `b15e94ad8fe894656b27113458b2fdbd03be07a4`
