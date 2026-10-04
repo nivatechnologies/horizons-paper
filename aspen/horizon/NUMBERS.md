@@ -114,7 +114,7 @@ Source `results/l96_solver_statistics.json` · SHA `e7604b3e83523a6dbdb849299219
 
 Source `results/l96_solver_statistics.json` · SHA `e7604b3e83523a6dbdb84929921982b27c52978b`
 
-M95 restricted to budget grid. Censored unpaired conservative numerator256; paired censoring fails. Wall seconds measure nested cohorts sharing all scoring horizons plus interval analysis, on a shared host.
+M95 restricted to budget grid. Censored unpaired conservative numerator256; paired censoring fails. Wall seconds measure nested forecast cohorts sharing all scoring horizons plus interval analysis on a shared host; parameter identification, observation preparation and sampler setup are excluded. This is evaluation latency, not end-to-end planner latency.
 
 | id | T | ratio | member_pass | myopic | random | committed | uncommitted | mean_members | commitment_errors | wall_seconds | random_regret | myopic_regret | random_realized | myopic_realized | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|

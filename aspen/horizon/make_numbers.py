@@ -56,7 +56,7 @@ def render():
                        random_realized=h.get('null_regrets',{}).get('random_actual'),myopic_realized=h.get('null_regrets',{}).get('myopic_actual'),label='estimate') for h in data['horizons']]
             MN.table(out,prefix+'CONTROL','Members, commitment and null readings',path,
                      ['T','ratio','member_pass','myopic','random','committed','uncommitted','mean_members','commitment_errors','wall_seconds','random_regret','myopic_regret','random_realized','myopic_realized'],rows,data.get('diagnostics_source_sha',data['git_sha']),
-                     note='M95 restricted to budget grid. Censored unpaired conservative numerator256; paired censoring fails. Wall seconds measure nested cohorts sharing all scoring horizons plus interval analysis, on a shared host.')
+                     note='M95 restricted to budget grid. Censored unpaired conservative numerator256; paired censoring fails. Wall seconds measure nested forecast cohorts sharing all scoring horizons plus interval analysis on a shared host; parameter identification, observation preparation and sampler setup are excluded. This is evaluation latency, not end-to-end planner latency.')
             if 'learned_stability' in data:
                 row=dict(data['learned_stability'],label='estimate');row.pop('per_case',None)
                 MN.table(out,prefix+'STABLE','Learned rollout stability',path,['attempted_members','dropped'],[row],data.get('diagnostics_source_sha',data['git_sha']))

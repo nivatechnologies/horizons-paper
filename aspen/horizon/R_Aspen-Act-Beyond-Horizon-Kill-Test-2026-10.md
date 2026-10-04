@@ -60,6 +60,8 @@ Every measured number is generated from JSON sources into `aspen/horizon/NUMBERS
 
 Raw arrays/logs are retained under each compute checkout’s `aspen/horizon/runs/`; source SHAs accompany summaries. Lorenz calibration launch-tag correction is explicitly recorded in its source JSON and calibration freeze addendum; numerical data unchanged.
 
+Commitment wall times measure nested forecast cohorts plus bootstrap interval analysis, sharing all16 horizons. They exclude parameter identification, observation preparation and sampler setup; no end-to-end planner latency claim is made.
+
 Optional cuts fixed before data, in the WO order: latent emulator, W=2 sensitivity, impulsive timing. Mandatory systems, truth, paired/unpaired/jitter, action-conditioned learned arms and myopic null retained. Kolmogorov panel stays30.
 
 No full campaign PASS/KILL finding is claimed while required evidence remains pending. Calibration/chaos failures stop the affected system. Results and session review are published through the niva-obsidian MCP.
