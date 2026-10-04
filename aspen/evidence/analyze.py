@@ -52,6 +52,8 @@ def main():
                                  source_hash=source_hash(path),label="estimate"))
     save_csv("reported_sensitivity.csv",reported)
     errors={};error_rows=[];intervals={}
+    normalization={p["id"]:json.loads((RESULTS/"panels"/f"{p['id']}.json").read_text())["query_available"]
+                   for p in points if (RESULTS/"panels"/f"{p['id']}.json").exists()}
     for p in points:
         for ai,a in enumerate(ARMS):
             path=RESULTS/"eval"/f"{p['id']}_{a}.json"
@@ -70,7 +72,7 @@ def main():
                     lo,hi=np.quantile(means,[.025,.975]).tolist()
                 error_rows.append(dict(query=QUERY_NAMES[qi],point=p["id"],angle="centre" if p["id"]=="centre" else p["angle"],
                     arm=a,error=e,ci_lo=lo,ci_hi=hi,n=100,D_g=p["D_g"],D_perp=p["D_perp"],distance=p.get("distance",0.),
-                    lam=p["chaos"]["lam"],h=j["h"],evaluable=evaluable[qi],seconds=j["wall_seconds"],
+                    lam=p["chaos"]["lam"],h=j["h"],evaluable=evaluable[qi],point_available=normalization[p["id"]][qi],seconds=j["wall_seconds"],
                     source_sha=j["git_sha"],source_hash=source_hash(path),raw_hash=source_hash(raw),
                     label="learned" if a in ARMS[:2] else "estimate" if a=="law" else "reference"))
     save_csv("errors.csv",error_rows)
@@ -92,9 +94,9 @@ def main():
         u=(np.load(training_theta)-CENTRE)/RANGE
         covariance=np.cov(u,rowvar=False);mean=u.mean(0)
     for a in ARMS:
-        rows=[r for r in error_rows if r["arm"]==a and r["evaluable"] and r["error"] is not None]
-        expected_units=sum(len([qi for qi in p["query_ids"] if evaluable[qi]]) for p in points
-                           if p["chaos"]["chaotic"] and (RESULTS/"panels"/f"{p['id']}.json").exists())
+        rows=[r for r in error_rows if r["arm"]==a and r["evaluable"] and r["point_available"] and r["error"] is not None]
+        expected_units=sum(len([qi for qi in p["query_ids"] if evaluable[qi] and normalization[p["id"]][qi]]) for p in points
+                           if p["chaos"]["chaotic"] and p["id"] in normalization)
         e=[r["error"] for r in rows]
         g=[r["D_g"] for r in rows];p=[r["D_perp"] for r in rows]
         missing=len(rows)!=expected_units
