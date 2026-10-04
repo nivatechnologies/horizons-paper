@@ -13,7 +13,8 @@ def acc(pred,target,mean):
     cross=np.sum(a*b,axis=-1)
     ans=np.zeros_like(fa)
     ans[ob<=0]=np.nan
-    use=(ob>0)&(fa>=1e-12*ob)
+    # The frozen threshold is on norms; these quantities are squared norms.
+    use=(ob>0)&(fa>0)&(fa>=1e-24*ob)
     ans[use]=cross[use]/np.sqrt(fa[use]*ob[use])
     return ans
 
