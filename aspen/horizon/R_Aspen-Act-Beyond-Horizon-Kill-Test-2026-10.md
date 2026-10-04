@@ -52,6 +52,7 @@ Calibration running; completed amplitude readings below. No amplitude selected y
 |---|---|---|---|
 | 0.01 | 6 | 20 | 0.300 |
 | 0.02 | 6 | 20 | 0.300 |
+| 0.05 | 13 | 20 | 0.650 |
 
 ## Evidence and completion
 

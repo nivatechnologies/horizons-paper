@@ -145,6 +145,7 @@ Calibration cases only. First passing amplitude selected; later amplitudes not t
 |---|---|---|---|---|---|---|
 | AAHKCAL-1 | kolmo | 0.0100 | 6 | 20 | 0.3000 | estimate |
 | AAHKCAL-2 | kolmo | 0.0200 | 6 | 20 | 0.3000 | estimate |
+| AAHKCAL-3 | kolmo | 0.0500 | 13 | 20 | 0.6500 | estimate |
 
 ## AAHKSYSTEM. Base system measurements
 
