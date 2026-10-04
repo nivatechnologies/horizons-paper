@@ -29,8 +29,8 @@ def main():
         window=obs[c]+.02*sigma*rng('arm',0,2,c).standard_normal((M,11,40))
         cost=np.empty((K,M,H));snap=np.empty((K,M,H,40));valid=np.ones(M,dtype=bool)
         # Microbatches over members; each contains every candidate action.
-        for first in range(0,M,64):
-            last=min(M,first+64);m=last-first
+        for first in range(0,M,256):
+            last=min(M,first+256);m=last-first
             context=torch.tensor(np.tile(window[first:last]/sigma,(K,1,1)),dtype=torch.float32)
             a=torch.tensor(np.repeat(action,m,axis=0),dtype=torch.float32)
             total=np.zeros((K*m,H));counts=np.zeros(H);alive=np.ones(m,dtype=bool)
