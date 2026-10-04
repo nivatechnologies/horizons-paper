@@ -14,9 +14,34 @@ Calibration cases only. First passing amplitude selected; later amplitudes not t
 | AAHLCAL-1 | l96 | 0.0100 | 2 | 40 | 0.0500 | estimate |
 | AAHLCAL-2 | l96 | 0.0200 | 36 | 40 | 0.9000 | estimate |
 
+## AAHLSYSTEM. Base system measurements
+
+Source `results/l96_calibration.json` · SHA `bd46f7d27417cbc01938a07cdcdea986c60f982d`
+
+| id | lambda_mean | sigma | label |
+|---|---|---|---|
+| AAHLSYSTEM-1 | 1.6868 | 4.3126 | estimate |
+
+## AAHLCHAOS. Every-action chaos gate
+
+Source `results/l96_action_chaos.json` · SHA `bd46f7d27417cbc01938a07cdcdea986c60f982d`
+
+64 starts; strict positive lower95% lambda bound. No failed-action substitution.
+
+| id | action | lambda_mean | lower | upper | chaotic | label |
+|---|---|---|---|---|---|---|
+| AAHLCHAOS-1 | 0 | 1.6364 | 1.6298 | 1.6431 | 1 | estimate |
+| AAHLCHAOS-2 | 1 | 1.6855 | 1.6789 | 1.6921 | 1 | estimate |
+| AAHLCHAOS-3 | 2 | 1.6913 | 1.6852 | 1.6974 | 1 | estimate |
+| AAHLCHAOS-4 | 3 | 1.6848 | 1.6794 | 1.6902 | 1 | estimate |
+| AAHLCHAOS-5 | 4 | 1.6905 | 1.6838 | 1.6973 | 1 | estimate |
+| AAHLCHAOS-6 | 5 | 1.6853 | 1.6788 | 1.6917 | 1 | estimate |
+| AAHLCHAOS-7 | 6 | 1.6892 | 1.6837 | 1.6946 | 1 | estimate |
+| AAHLCHAOS-8 | 7 | 1.6903 | 1.6849 | 1.6958 | 1 | estimate |
+
 ## AAHLARMS. Per-horizon arm readings
 
-Source `results/l96_solver_statistics.json` · SHA `4d3a404a8399b82d36c9fc8efc0b63ffccb99676`
+Source `results/l96_solver_statistics.json` · SHA `e7604b3e83523a6dbdb84929921982b27c52978b`
 
 | id | T | arm | eligible | total | sufficient | top1 | ACC | M95 | regret | realized_regret | response_correlation | response_relative_error | label |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -120,6 +145,16 @@ Calibration cases only. First passing amplitude selected; later amplitudes not t
 |---|---|---|---|---|---|---|
 | AAHKCAL-1 | kolmo | 0.0100 | 6 | 20 | 0.3000 | estimate |
 | AAHKCAL-2 | kolmo | 0.0200 | 6 | 20 | 0.3000 | estimate |
+
+## AAHKSYSTEM. Base system measurements
+
+Source `results/kolmo_system.json` · SHA `bd46f7d27417cbc01938a07cdcdea986c60f982d`
+
+Lambda inherited from unchanged World D Re40 chaos artifact; total-state RMS newly measured for physical observation noise.
+
+| id | lambda_mean | sigma | label |
+|---|---|---|---|
+| AAHKSYSTEM-1 | 0.1679 | 2.8380 | estimate |
 
 ## AAHLPOSTHOC. Post-hoc action frequency, no changed selectors
 

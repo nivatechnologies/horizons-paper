@@ -23,6 +23,18 @@ def render():
             data=json.loads(path.read_text())
             rows=[dict(system=system,delta=r['delta'],eligible=r['eligible'],n=r['total'],fraction=r['fraction'],label='estimate') for r in data['rows']]
             MN.table(out,prefix+'CAL','Amplitude calibration',path,['system','delta','eligible','n','fraction'],rows,data['git_sha'],note='Calibration cases only. First passing amplitude selected; later amplitudes not tested.')
+            if 'system' in data:
+                s=data['system'];row=dict(lambda_mean=s['lambda_mean'],sigma=s['sigma'],label='estimate')
+                MN.table(out,prefix+'SYSTEM','Base system measurements',path,['lambda_mean','sigma'],[row],s['git_sha'])
+        if system=='kolmo' and (results/'kolmo_system.json').exists():
+            path=results/'kolmo_system.json';s=json.loads(path.read_text())
+            row=dict(lambda_mean=s['lambda_mean'],sigma=s['sigma'],label='estimate')
+            MN.table(out,prefix+'SYSTEM','Base system measurements',path,['lambda_mean','sigma'],[row],s['git_sha'],note='Lambda inherited from unchanged World D Re40 chaos artifact; total-state RMS newly measured for physical observation noise.')
+        path=results/f'{system}_action_chaos.json'
+        if path.exists():
+            data=json.loads(path.read_text())
+            rows=[dict(action=g['action'],lambda_mean=g['lambda_mean'],lower=g['lambda_ci95'][0],upper=g['lambda_ci95'][1],chaotic=g['chaotic'],label='estimate') for g in data['gates']]
+            MN.table(out,prefix+'CHAOS','Every-action chaos gate',path,['action','lambda_mean','lower','upper','chaotic'],rows,data['git_sha'],note='64 starts; strict positive lower95% lambda bound. No failed-action substitution.')
         path=results/f'{system}_solver_statistics.json'
         if path.exists():
             data=json.loads(path.read_text());rows=[]
@@ -35,7 +47,7 @@ def render():
                                      response_correlation=a['response_correlation'],response_relative_error=a['response_relative_error'],label='estimate'))
             MN.table(out,prefix+'ARMS','Per-horizon arm readings',path,
                      ['T','arm','eligible','total','sufficient','top1','ACC','M95','regret','realized_regret','response_correlation','response_relative_error'],
-                     rows,data['git_sha'])
+                     rows,data.get('diagnostics_source_sha',data['git_sha']))
             rows=[dict(T=h['T'],ratio=h['member_criterion']['ratio_lower_bound'],member_pass=h['member_criterion']['pass_condition'],
                        myopic=h['myopic_accuracy'],random=h['random_accuracy_expected'],committed=h['commitment']['committed'],
                        uncommitted=h['commitment']['uncommitted'],mean_members=h['commitment']['mean_members'],
