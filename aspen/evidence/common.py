@@ -22,6 +22,8 @@ QUERY_NAMES = ["forcing_power", "viscous_energy", "drag_energy", "viscous_enstro
 SEEDS = {name: 7100000 + 100000 * i for i, name in enumerate([
     "training", "validation", "sensitivity", "attractor", "test", "identification",
     "chaos", "noise", "bootstrap", "optimizer", "qa"])}
+# Preserve the inherited torch initializer seed; physical/noise streams are NumPy blocks.
+SEEDS["optimizer"] = 0
 RESULTS = ROOT / "results"
 RUNS = ROOT / "runs"
 

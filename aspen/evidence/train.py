@@ -177,7 +177,7 @@ def main(arm,steps=30000,qa=False):
             write_json(out/"progress.json",dict(arm=arm,**curve[-1],best_step=best_step,best_val=best))
     write_json(out/"info.json",dict(arm=arm,n_in=n_in,param_channels=0 if arm=="L_range-3" else 3,
                params=model.n_params(),steps=steps,batch=32,unroll=4,best_val=best,best_step=best_step,
-               train_seconds=elapsed+time.monotonic()-t,curve=curve))
+               train_seconds=elapsed+time.monotonic()-t,curve=curve,torch_seed=SEEDS["optimizer"]))
     print("TRAIN COMPLETE",arm,flush=True)
 
 
