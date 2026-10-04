@@ -18,6 +18,7 @@ def render():
     results=ROOT/'results'
     for system,prefix in [('l96','AAHL'),('kolmo','AAHK')]:
         path=results/f'{system}_calibration.json'
+        if not path.exists():path=results/f'{system}_calibration_progress.json'
         if path.exists():
             data=json.loads(path.read_text())
             rows=[dict(system=system,delta=r['delta'],eligible=r['eligible'],n=r['total'],fraction=r['fraction'],label='estimate') for r in data['rows']]
@@ -47,6 +48,11 @@ def render():
             if 'learned_stability' in data:
                 row=dict(data['learned_stability'],label='estimate');row.pop('per_case',None)
                 MN.table(out,prefix+'STABLE','Learned rollout stability',path,['attempted_members','dropped'],[row],data.get('diagnostics_source_sha',data['git_sha']))
+    path=results/'l96_training.json'
+    if path.exists():
+        data=json.loads(path.read_text())
+        row=dict(steps_done=data['steps_done'],params=data['params'],best_val=data['best_val'],seconds=data['seconds'],label='estimate')
+        MN.table(out,'AAHLTRAIN','CNN training, not test performance',path,['steps_done','params','best_val','seconds'],[row],data['git_sha'])
     path=results/'readings.json'
     if path.exists():
         data=json.loads(path.read_text())

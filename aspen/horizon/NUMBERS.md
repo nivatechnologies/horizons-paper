@@ -110,6 +110,25 @@ M95 restricted to budget grid. Censored unpaired conservative numerator256; pair
 | AAHLCONTROL-15 | 16.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 70 | 130 | 229.9429 | 0.0000 | 0.0341 | 0.7737 | 0.0000 | 0.4980 | 0.3940 | estimate |
 | AAHLCONTROL-16 | 20.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 70 | 130 | 236.8000 | 0.0000 | 0.0351 | 0.7696 | 0.0000 | 0.4857 | 0.4123 | estimate |
 
+## AAHKCAL. Amplitude calibration
+
+Source `results/kolmo_calibration_progress.json` · SHA `41730cd159d0a98a9e4d32be7feb9729d62f9653`
+
+Calibration cases only. First passing amplitude selected; later amplitudes not tested.
+
+| id | system | delta | eligible | n | fraction | label |
+|---|---|---|---|---|---|---|
+| AAHKCAL-1 | kolmo | 0.0100 | 6 | 20 | 0.3000 | estimate |
+| AAHKCAL-2 | kolmo | 0.0200 | 6 | 20 | 0.3000 | estimate |
+
+## AAHLTRAIN. CNN training, not test performance
+
+Source `results/l96_training.json` · SHA `b15e94ad8fe894656b27113458b2fdbd03be07a4`
+
+| id | steps_done | params | best_val | seconds | label |
+|---|---|---|---|---|---|
+| AAHLTRAIN-1 | 20000 | 999681 | 5.263e-04 | 6943.8370 | estimate |
+
 ## AAHREAD. Frozen discrete criteria
 
 Source `results/readings.json` · SHA `7e3b01ef968078462adab8013b333468165fc083`
