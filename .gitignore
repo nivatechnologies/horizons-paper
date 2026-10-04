@@ -21,3 +21,8 @@ adapt_physics/stage2/results/.*.lock
 adapt_physics/stage2/*.lock
 adapt_physics/stage2/objections/*.lock
 adapt_physics/stage2/objections/results/.*.lock
+aspen/evidence/runs/cache/
+aspen/evidence/runs/train/**/*.pt
+aspen/evidence/runs/train/**/resume.tmp
+aspen/evidence/runs/eval/
+aspen/evidence/runs/logs/
