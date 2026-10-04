@@ -83,6 +83,15 @@ def run_phase(phase):
             print("Completed",phase,"seconds",status["seconds"],flush=True)
             sync_results();return
         if ssh(f"kill -0 {pid}",check=False).returncode:
+            # The wrapper may exit between the first status read and this PID check.
+            # Re-read its atomic completion record before declaring a missing product.
+            final=ssh("cat "+done,check=False)
+            if final.returncode==0:
+                status=json.loads(final.stdout)
+                if status["returncode"]!=0:
+                    raise RuntimeError(f"{phase} failed: {status}")
+                print("Completed",phase,"seconds",status["seconds"],flush=True)
+                sync_results();return
             raise RuntimeError(f"{phase} PID {pid} exited without completion record")
         tail=ssh(f"tail -n 2 {REMOTE}/aspen/evidence/runs/logs/{phase}.log").stdout.strip()
         if tail:print(phase,tail,flush=True)
@@ -92,12 +101,13 @@ def run_phase(phase):
 def main():
     branch=subprocess.check_output(["git","branch","--show-current"],cwd=REPO,text=True).strip()
     if branch!="paper/aspen-2026-10-evidence":raise RuntimeError("wrong branch")
-    state("preparation");wait_prepare();sync_results()
-    local([sys.executable,str(ROOT/"freeze_addendum.py")])
-    # The numeric addendum must be a commit before panel data/training.
-    local(["git","add","aspen/evidence/AEA_FREEZE_CALIBRATION.md","aspen/evidence/results"])
-    staged=subprocess.run(["git","diff","--cached","--quiet"],cwd=REPO)
-    if staged.returncode:local(["git","commit","-m","Aspen evidence: freeze measured sensitivity geometry and every-point chaos gates"])
+    if "--resume" not in sys.argv:
+        state("preparation");wait_prepare();sync_results()
+        local([sys.executable,str(ROOT/"freeze_addendum.py")])
+        # The numeric addendum must be a commit before panel data/training.
+        local(["git","add","aspen/evidence/AEA_FREEZE_CALIBRATION.md","aspen/evidence/results"])
+        staged=subprocess.run(["git","diff","--cached","--quiet"],cwd=REPO)
+        if staged.returncode:local(["git","commit","-m","Aspen evidence: freeze measured sensitivity geometry and every-point chaos gates"])
     deploy()
     for phase in ["reported","data","nulls","law","train_L","train_F","learned"]:run_phase(phase)
     # Recover raw per-state evidence and final training metadata, excluding bulky weights/data.
