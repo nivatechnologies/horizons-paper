@@ -1,0 +1,16 @@
+Let \(\theta=(Re,A,\alpha)\) and evaluate all fields at
+\[
+t_*=t_{\mathrm{last}}+\frac{0.5}{\lambda(\theta)}.
+\]
+With \(\langle g\rangle=(2\pi)^{-2}\int_{[0,2\pi]^2}g\,dx\,dy\), the four queries are
+\[
+\boxed{
+\begin{aligned}
+I_*&=A\langle u_x(t_*)\sin(4y)\rangle
+=-\frac{A}{4}\langle\omega(t_*)\cos(4y)\rangle,\\
+D_{\nu,*}&=\frac{1}{Re}\langle\omega(t_*)^2\rangle,\\
+D_{\alpha,*}&=\alpha\langle|\mathbf u(t_*)|^2\rangle,\\
+H_{\nu,*}&=\frac{1}{Re}\langle|\nabla\omega(t_*)|^2\rangle.
+\end{aligned}}
+\]
+Here \(\omega=\partial_xu_y-\partial_yu_x\), consistent with the vorticity forcing \(-4A\cos(4y)\).
