@@ -26,7 +26,10 @@ def main(device,microbatch):
     out=ROOT/'runs/kolmo/learned'
     if (out/'checkpoint.pt').exists():raise FileExistsError('checkpoint exists')
     sysinfo=json.loads((ROOT/'runs/kolmo/system.json').read_text())
-    sigma=sysinfo['sigma'];lam=sysinfo['lambda_mean']
+    physical_sigma=sysinfo['sigma'];lam=sysinfo['lambda_mean']
+    inherited=json.loads((ROOT.parents[1]/'adapt_physics/results/chaos_gate.json').read_text())
+    sigma=inherited['Re40']['sigma_A']/64
+    noise_scale=.02*physical_sigma/sigma
     X=np.load(out/'train.npy',mmap_mode='r');A=np.load(out/'train_actions.npy')
     V=np.load(out/'val.npy',mmap_mode='r');VA=np.load(out/'val_actions.npy')
     R=rng('train',1,6);RV=rng('val',1,6)
@@ -34,12 +37,12 @@ def main(device,microbatch):
     opt=torch.optim.AdamW(model.parameters(),lr=1e-3,weight_decay=1e-4)
     schedule=torch.optim.lr_scheduler.CosineAnnealingLR(opt,30000)
     stepsLT=max(1,int(round(1/lam/.35)))
-    valnoise=.02*RV.standard_normal((64,11,64,64)).astype(np.float32)
+    valnoise=noise_scale*RV.standard_normal((64,11,64,64)).astype(np.float32)
     best=float('inf');begin=time.time();log=[]
     for iteration in range(1,30001):
         idx=R.integers(len(X),size=32);times=R.integers(X.shape[1]-14,size=32)
         f=np.stack([np.asarray(X[i,t:t+15]) for i,t in zip(idx,times)])/sigma
-        noise=.02*R.standard_normal((32,11,64,64)).astype(np.float32)
+        noise=noise_scale*R.standard_normal((32,11,64,64)).astype(np.float32)
         opt.zero_grad(set_to_none=True);loss_value=0.
         for start in range(0,32,microbatch):
             end=min(32,start+microbatch);weight=(end-start)/32
@@ -72,7 +75,8 @@ def main(device,microbatch):
                 best=mse
                 torch.save(dict(state_dict=model.state_dict(),step=iteration,val=mse,sigma=sigma),out/'checkpoint.pt')
             write_json(out/'training.json',dict(log=log,steps_done=iteration,params=model.n_params(),best_val=best,
-                       seconds=time.time()-begin,device=device,microbatch=microbatch,git_sha=sha()))
+                       seconds=time.time()-begin,device=device,microbatch=microbatch,git_sha=sha(),
+                       feature_sigma=sigma,physical_sigma=physical_sigma,normalized_noise=noise_scale))
             model.train()
 
 if __name__=='__main__':
