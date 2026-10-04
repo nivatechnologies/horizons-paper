@@ -1,0 +1,25 @@
+{
+  "max_reference_errors": [
+    0.0,
+    0.0
+  ],
+  "graph_eager_verified": true,
+  "query_identities_verified": true,
+  "timing": [
+    {
+      "batch": 64,
+      "steps": 1000,
+      "seconds": 1.8330726800049888,
+      "finite": true
+    },
+    {
+      "batch": 128,
+      "steps": 1000,
+      "seconds": 3.9200091709935805,
+      "finite": true
+    }
+  ],
+  "torch_version": "2.13.0+cu130",
+  "gpu": "NVIDIA GB10",
+  "git_sha": "789e93b537f7a4bdcf74c0df1c7e972a43f0d9c0"
+}
