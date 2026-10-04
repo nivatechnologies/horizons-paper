@@ -66,4 +66,6 @@ def write_json(path,data):
     os.replace(tmp,path)
 
 def sha():
+    if os.environ.get('AAH_SOURCE_SHA'):
+        return os.environ['AAH_SOURCE_SHA']
     return subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
