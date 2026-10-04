@@ -1,33 +1,61 @@
-# Aspen act beyond the horizon: execution status (2026-10-04)
+# Aspen act beyond the horizon: results and execution status (2026-10)
 
-**NOT RUN: experimental execution blocked by spec integrity gate.** This is not an empirical KILL or a PASS result.
+Gate passed under Amendment 1a; execution in progress.
 
-Work order: [[WO_Aspen-Act-Beyond-Horizon-Kill-Test-2026-10-03]]. Full gate: [[R_Aspen-Act-Beyond-Horizon-Spec-Gate-2026-10-04]].
+Work order: [[WO_Aspen-Act-Beyond-Horizon-Kill-Test-2026-10-03]]. Gate: [[R_Aspen-Act-Beyond-Horizon-Spec-Gate-2026-10-04]].
 
-Repository: nivatechnologies/horizons-paper, branch `paper/aspen-2026-10-horizon`, base `8147f8262dd5c9659bbc2cd83c70990d8b517584` from latest fetched paper branch `origin/paper/adapt-physics-2026-09`. Audit: `aspen/horizon/AAH_GATE.md`; session review: `aspen/horizon/SESSION_REVIEW_AAH.md`.
+Repository: nivatechnologies/horizons-paper, branch `paper/aspen-2026-10-horizon`. Protocol: `aspen/horizon/AAH_FREEZE.md`; measured calibration addenda precede each system's test/training. Step 0 complete and not rerun.
 
-Step 0: two blinded CLI invocations completed; exact prompts and verbatim answers in `aspen/horizon/CODEX_ACTIONS.md`.
+M_95 is only a tested-grid budget in {8,16,32,64,128,256}. Censored unpaired numerator is conservatively256; censored paired fails. Bootstrap confidence/commitment levels are nominal; empirical errors are reported.
 
-Machine assignment: Baccus for Kolmogorov; sulaco (192.168.88.228) for Lorenz-96 and truth ensembles. Read-only key-based SSH succeeded; sulaco reports 256 logical CPUs. No Qwen service stopped.
+Machines: Baccus for Kolmogorov and FNO; sulaco for Lorenz and brute-force truth ensembles. No Qwen service stopped.
 
+## Lorenz-96
 
-## Amendment 1 gate rerun (2026-10-04)
+Calibration status: READY_FOR_CALIBRATION_FREEZE_ADDENDUM; selected delta: 0.02.
 
-Amendment 1 resolves the earlier nine defects or removes the affected arm. One check-3 referent remains unresolved: whether censored M_95 means actual integer member counts or budgets on a powers-of-two grid continuing beyond 256. The lower bound 512 is valid only for the latter construct. The censored member-gain reading and final PASS classification remain blocked; the construct was queried during the rerun. Full rerun and hypothetical counterexample: `aspen/horizon/AAH_GATE_AMENDMENT1.md`, also appended to [[R_Aspen-Act-Beyond-Horizon-Spec-Gate-2026-10-04]].
+| delta | Determinable | Panel | Fraction |
+|---|---|---|---|
+| 0.01 | 2 | 40 | 0.050 |
+| 0.02 | 36 | 40 | 0.900 |
 
-Step 0 was not rerun. No calibration, truth ensemble, training or test panel was launched. This is a specification blocker, not an empirical KILL. Original defects listed below are historical; current disposition is this Amendment 1 rerun.
+Niva forecast horizon T_f=10.0 LT; sustained decision horizon T_d=12.0 LT.
 
-## Initial gate defects (historical)
+| T (LT) | Eligible / panel | Niva top-1 (M64) | Forecast ACC | Myopic top-1 | Paired / unpaired M95 |
+|---|---|---|---|---|---|
+| 0.25 | 200 / 200 | 1.0000 | 0.9996 | 1.0000 | 8 / 8 |
+| 0.5 | 200 / 200 | 1.0000 | 0.9990 | 1.0000 | 8 / 8 |
+| 0.75 | 200 / 200 | 1.0000 | 0.9980 | 1.0000 | 8 / 8 |
+| 1.0 | 200 / 200 | 1.0000 | 0.9963 | 1.0000 | 8 / 8 |
+| 1.5 | 195 / 200 | 0.9949 | 0.9868 | 0.9590 | 8 / 64 |
+| 2.0 | 193 / 200 | 0.9637 | 0.9625 | 0.8394 | 64 / 128 |
+| 2.5 | 180 / 200 | 0.9389 | 0.9232 | 0.7000 | 128 / 256 |
+| 3.0 | 161 / 200 | 0.9317 | 0.8623 | 0.6335 | 128 / >256 |
+| 4.0 | 125 / 200 | 0.9200 | 0.7115 | 0.5360 | 256 / 256 |
+| 5.0 | 109 / 200 | 0.8532 | 0.5492 | 0.7523 | 256 / >256 |
+| 6.0 | 126 / 200 | 0.8492 | 0.4086 | 0.8889 | 256 / 256 |
+| 8.0 | 184 / 200 | 0.8207 | 0.2175 | 0.9946 | 256 / 128 |
+| 10.0 | 199 / 200 | 0.8191 | 0.1140 | 1.0000 | 128 / 128 |
+| 12.0 | 200 / 200 | 0.8450 | 0.0601 | 1.0000 | 128 / 128 |
+| 16.0 | 200 / 200 | 0.7900 | 0.0226 | 1.0000 | 128 / 128 |
+| 20.0 | 200 / 200 | 0.8500 | 0.0094 | 1.0000 | 128 / 128 |
 
-- Forecast horizon has no specified action/arm reference or anomaly convention.
-- Fixed horizons omit required KILL evaluation locations; off-grid readings are undefined.
-- Largest-successful-horizon PASS can overlap early-drop KILL on a nonmonotone accuracy curve.
-- Truth bootstrap, eligibility, observation-conditioned sampling, independent estimator streams and sequential interval rules need operational definitions.
-- Uncentered tangent subtraction can reverse expected cost-difference signs.
-- Calibration amplitude bounds, final action-set resolution, learned comparator tuning and Kolmogorov objective formula need pre-data definitions.
+Preliminary Lorenz reading misses PASS: sustained horizon12 is below the required G(30), which is outside the frozen grid; paired/unpaired M95 ratio at T_f is1. At G(1.5 T_f)=16, accuracy0.79 does not meet the <0.5 KILL rule. Full second-system and learned-arm evidence remains pending.
 
-No calibration, new Lyapunov estimation, truth ensembles, training, test panels or evaluation were run. No complete freeze, AAH empirical NUMBERS entries or figures exist. These remain pending an amended specification that passes the gate. The gate report includes concrete hypothetical passing/failing inputs for every threshold and differential predictions for corrections.
+Learned-arm evaluation remains pending.
 
-Selector provenance: candidate sets from the WO-mandated blinded Codex invocations, compared with explicitly attributed Claude sets; horizon/window/objective/arm selectors from the WO author (Claude attribution inferred from guideline roles, not verified history). No action-set choice was made from performance. Two invocations of one prompt are one framing, not two independent findings.
+## Kolmogorov
 
-Generated by `aspen/horizon/results_note.py`; published to `04-Results/R_Aspen-Act-Beyond-Horizon-Kill-Test-2026-10.md` through the Obsidian MCP.
+Calibration truth ensembles pending or running.
+
+## Evidence and completion
+
+Every measured number is generated from JSON sources into `aspen/horizon/NUMBERS.md` (AAH sections). `make_numbers.py check` replays source values and reports zero mismatches; a deliberate numeric mutation was rejected.
+
+Raw arrays/logs are retained under each compute checkout’s `aspen/horizon/runs/`; source SHAs accompany summaries. Lorenz calibration launch-tag correction is explicitly recorded in its source JSON and calibration freeze addendum; numerical data unchanged.
+
+Optional cuts fixed before data, in the WO order: latent emulator, W=2 sensitivity, impulsive timing. Mandatory systems, truth, paired/unpaired/jitter, action-conditioned learned arms and myopic null retained. Kolmogorov panel stays30.
+
+No full campaign PASS/KILL finding is claimed while required evidence remains pending. Calibration/chaos failures stop the affected system. Results and session review are published through the niva-obsidian MCP.
+
+Generated by `aspen/horizon/results_note.py` into `04-Results/R_Aspen-Act-Beyond-Horizon-Kill-Test-2026-10.md`.
