@@ -29,8 +29,8 @@ def main():
     points=data["points"];byid={p["id"]:p for p in points}
     chaos_rows=[]
     for p in points:
-        c=p["chaos"]
         path=RESULTS/"chaos"/f"{p['id']}.json"
+        c=json.loads(path.read_text())
         chaos_rows.append(dict(point=p["id"],Re=p["theta"][0],A=p["theta"][1],alpha=p["theta"][2],
                               lam=c["lam"],ci_lo=c["lam_ci95"][0],ci_hi=c["lam_ci95"][1],chaotic=c["chaotic"],
                               source_sha=c.get("git_sha",sha()),source_hash=source_hash(path),label="estimate"))
