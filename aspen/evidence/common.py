@@ -121,15 +121,16 @@ def queries(model, wh, theta=None):
 
 
 def ratio(e0, e90):
-    if e0 is None or e90 is None or e0 == 0 or e90 == 0:
+    if e0 is None or e90 is None or e0 == 0 or e90 == 0 or not np.isfinite([e0,e90]).all():
         return None
-    return e0 / e90
+    value=e0/e90
+    return value if np.isfinite(value) and value>0 else None
 
 
 def spearman(x, y):
     from scipy.stats import spearmanr
     x, y = np.asarray(x), np.asarray(y)
-    if len(x) < 2 or np.ptp(x) == 0 or np.ptp(y) == 0:
+    if len(x) < 2 or not np.isfinite(x).all() or not np.isfinite(y).all() or np.ptp(x) == 0 or np.ptp(y) == 0:
         return None
     value = float(spearmanr(x, y).statistic)
     return value if np.isfinite(value) else None
@@ -154,7 +155,7 @@ def classify(ratios, correlations, law_ratios, n_evaluable):
 
 def geometry(g):
     norm = np.linalg.norm(g)
-    if norm < 1e-8:
+    if not np.isfinite(norm) or norm < 1e-8:
         return None
     gh = g / norm
     j = int(np.argmin(np.abs(gh)))

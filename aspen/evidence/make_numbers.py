@@ -10,6 +10,7 @@ import make_numbers as inherited
 
 SECTIONS=[("AEA-C","chaos.csv","Every-point chaos gate"),
           ("AEA-G","sensitivity.csv","Fixed-lead centre sensitivity"),
+          ("AEA-GP","reported_sensitivity.csv","Reported local gradients, not direction selectors"),
           ("AEA-E","errors.csv","Query errors and state bootstrap intervals"),
           ("AEA-R","ratios.csv","Endpoint ratios"),
           ("AEA-I","correlations.csv","Index against baseline predictors"),

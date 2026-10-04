@@ -41,6 +41,16 @@ def main():
     sensitivity_rows=[dict(query=q,g_Re=gs[i,0],g_A=gs[i,1],g_alpha=gs[i,2],norm=np.linalg.norm(gs[i]),
                            h=sj["h"],evaluable=evaluable[i],source_sha=sj["git_sha"],source_hash=source_hash(sp),label="estimate") for i,q in enumerate(QUERY_NAMES)]
     save_csv("sensitivity.csv",sensitivity_rows)
+    reported=[]
+    for path in sorted((RESULTS/"reported_sensitivity").glob("*.json")):
+        j=json.loads(path.read_text())
+        if j["g"] is None:continue
+        for qi,q in enumerate(QUERY_NAMES):
+            g=j["g"][qi]
+            reported.append(dict(point=j["point"],query=q,g_Re=g[0],g_A=g[1],g_alpha=g[2],h=j["h"],
+                                 used_for_directions=j["used_for_directions"],source_sha=j["git_sha"],
+                                 source_hash=source_hash(path),label="estimate"))
+    save_csv("reported_sensitivity.csv",reported)
     errors={};error_rows=[];intervals={}
     for p in points:
         for ai,a in enumerate(ARMS):

@@ -162,9 +162,26 @@ def prepare():
     print("PREPARE COMPLETE", sum(usable), "evaluable queries", flush=True)
 
 
+def reported_sensitivity():
+    points=json.loads((RESULTS/"points.json").read_text())["points"]
+    for p in points:
+        path=RESULTS/"reported_sensitivity"/f"{p['id']}.json"
+        if path.exists():continue
+        if p["id"]=="centre":
+            result=json.loads((RESULTS/"sensitivity.json").read_text())
+            write_json(path,dict(point=p["id"],g=result["g"],h=result["h"],lead="fixed-local",used_for_directions=True))
+        elif p["chaos"]["chaotic"]:
+            h=.5/p["chaos"]["lam"]
+            g=sensitivity(p["theta"],h,p["index"])
+            write_json(path,dict(point=p["id"],g=g.tolist(),h=h,lead="fixed-local",used_for_directions=False))
+            print("reported sensitivity",p["id"],flush=True)
+        else:
+            write_json(path,dict(point=p["id"],g=None,h=None,reason="chaos-failed",used_for_directions=False))
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("phase", choices=["qa","prepare"])
+    parser.add_argument("phase", choices=["qa","prepare","reported-sensitivity"])
     args = parser.parse_args()
     torch.set_num_threads(4)
-    (qa if args.phase=="qa" else prepare)()
+    {"qa":qa,"prepare":prepare,"reported-sensitivity":reported_sensitivity}[args.phase]()

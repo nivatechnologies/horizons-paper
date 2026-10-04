@@ -110,8 +110,7 @@ def main():
         sufficient.append(bool(good and all(by_id[f"q{qi}_{a}"]["query_available"][qi] for a in ["0","90"])))
     write_json(RESULTS/"panel_feasibility.json",dict(evaluable=sufficient,n_evaluable=sum(sufficient)))
     if sum(sufficient)<3:
-        print("INSUFFICIENT PANEL: otherwise; do not train",flush=True)
-        return
+        print("INSUFFICIENT PANEL: frozen outcome otherwise; mandatory arms retained at available points",flush=True)
     learned_data("training")
     learned_data("validation")
 
