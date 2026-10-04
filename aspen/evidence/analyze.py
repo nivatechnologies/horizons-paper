@@ -93,19 +93,22 @@ def main():
         covariance=np.cov(u,rowvar=False);mean=u.mean(0)
     for a in ARMS:
         rows=[r for r in error_rows if r["arm"]==a and r["evaluable"] and r["error"] is not None]
+        expected_units=sum(len([qi for qi in p["query_ids"] if evaluable[qi]]) for p in points
+                           if p["chaos"]["chaotic"] and (RESULTS/"panels"/f"{p['id']}.json").exists())
         e=[r["error"] for r in rows]
         g=[r["D_g"] for r in rows];p=[r["D_perp"] for r in rows]
-        rg,rp=spearman(e,g),spearman(e,p)
+        missing=len(rows)!=expected_units
+        rg,rp=(None,None) if missing else (spearman(e,g),spearman(e,p))
         correlations[a]=[rg,rp]
-        re=spearman(e,[r["distance"] for r in rows]);rm=None
-        if covariance is not None:
+        re=None if missing else spearman(e,[r["distance"] for r in rows]);rm=None
+        if covariance is not None and not missing:
             inv=np.linalg.inv(covariance)
             distances=[]
             for r in rows:
                 d=np.asarray(byid[r["point"]]["u"])-mean
                 distances.append(float(np.sqrt(d@inv@d)))
             rm=spearman(e,distances)
-        cor_rows.append(dict(arm=a,n_units=len(rows),rho_g=rg,rho_perp=rp,
+        cor_rows.append(dict(arm=a,n_units=len(rows),expected_units=expected_units,missing_units=missing,rho_g=rg,rho_perp=rp,
                             gap=None if rg is None or rp is None else abs(rg-rp),
                             rho_euclidean=re,rho_mahalanobis=rm,partial_lambda_h="unavailable:constant-control",
                             ensemble="cut",identifiability="cut",label="estimate"))
