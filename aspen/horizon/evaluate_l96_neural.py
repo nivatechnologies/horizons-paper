@@ -1,4 +1,5 @@
 """Frozen learned arm: paired windows, all-action stability drops, 21 LT rollout."""
+import argparse
 import json
 import time
 import numpy as np
@@ -7,8 +8,12 @@ from common import ROOT,GRID,rng,patterns,write_json,sha
 from train_l96 import Emulator
 
 @torch.no_grad()
-def main():
-    torch.set_num_threads(64)
+def main(device='cpu'):
+    threads=64 if device=='cpu' else 1
+    torch.set_num_threads(threads)
+    torch.backends.cuda.matmul.allow_tf32=False
+    torch.backends.cudnn.allow_tf32=False
+    torch.backends.cudnn.deterministic=True
     cal=json.loads((ROOT/'results/l96_calibration.json').read_text())
     sigma=cal['system']['sigma'];lam=cal['system']['lambda_mean'];delta=cal['delta']
     learned=ROOT/'runs/l96/learned'
@@ -16,7 +21,7 @@ def main():
         raise RuntimeError('full prescribed training budget has not completed')
     model=Emulator()
     checkpoint=torch.load(learned/'checkpoint.pt',map_location='cpu',weights_only=True)
-    model.load_state_dict(checkpoint['state_dict']);model.eval()
+    model.load_state_dict(checkpoint['state_dict']);model.to(device);model.eval()
     root=ROOT/'runs/l96/test';obs=np.load(root/'observations.npz')['observed']
     K=8;M=256;H=len(GRID)
     action=8*delta*patterns(0)/sigma
@@ -31,12 +36,12 @@ def main():
         # Microbatches over members; each contains every candidate action.
         for first in range(0,M,256):
             last=min(M,first+256);m=last-first
-            context=torch.tensor(np.tile(window[first:last]/sigma,(K,1,1)),dtype=torch.float32)
-            a=torch.tensor(np.repeat(action,m,axis=0),dtype=torch.float32)
+            context=torch.tensor(np.tile(window[first:last]/sigma,(K,1,1)),dtype=torch.float32,device=device)
+            a=torch.tensor(np.repeat(action,m,axis=0),dtype=torch.float32,device=device)
             total=np.zeros((K*m,H));counts=np.zeros(H);alive=np.ones(m,dtype=bool)
             snapshots=np.full((K*m,H,40),np.nan)
             for s in range(end+1):
-                state=context[:,-1].numpy()*sigma
+                state=context[:,-1].cpu().numpy()*sigma
                 stable=np.isfinite(state).all(1)&(np.sqrt(np.mean(state*state,axis=1))<=10*sigma)
                 alive &= stable.reshape(K,m).all(0)
                 t=s*.05
@@ -46,7 +51,7 @@ def main():
                     total[:,indices]+=energy[:,None];counts[indices]+=1
                 for h in np.flatnonzero(targets==s):snapshots[:,h]=state
                 if s<end:
-                    invalid=torch.tensor(np.tile(~alive,K))
+                    invalid=torch.tensor(np.tile(~alive,K),device=device)
                     context[invalid]=0
                     prediction=model(context,a)
                     context=torch.cat([context[:,1:],prediction[:,None]],1)
@@ -58,8 +63,10 @@ def main():
         np.savez(path,cost=cost,mean_snap=mean_snap,valid=valid,
                  actual_snapshot_times=targets*.05,checkpoint_step=checkpoint['step'])
         write_json(root/f'neural_{c:03d}.json',dict(case=c,dropped=int((~valid).sum()),
-                   dropped_first64=int((~valid[:64]).sum()),seconds=time.time()-start,git_sha=sha(),threads=64))
+                   dropped_first64=int((~valid[:64]).sum()),seconds=time.time()-start,git_sha=sha(),threads=threads,
+                   device=device,tf32=False,deterministic_cudnn=True))
         print(f'L96 learned case {c+1}/200 dropped={(~valid).sum()}',flush=True)
     write_json(learned/'evaluation_complete.json',dict(cases=200,git_sha=sha(),checkpoint_step=checkpoint['step']))
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--device',default='cpu');main(p.parse_args().device)
