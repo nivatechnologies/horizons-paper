@@ -70,6 +70,14 @@ def render():
         data=json.loads(path.read_text())
         row=dict(steps_done=data['steps_done'],params=data['params'],best_val=data['best_val'],seconds=data['seconds'],label='estimate')
         MN.table(out,'AAHLTRAIN','CNN training, not test performance',path,['steps_done','params','best_val','seconds'],[row],data['git_sha'])
+    for name,identifier,columns in [
+        ('kolmo_calibration_audit','AAHKCAUDIT',['panels_replayed','member_artifacts','finite','bootstrap_records_exact']),
+        ('l96_neural_artifact_audit','AAHLNAUDIT',['cases','attempted_members','dropped','checkpoint_step','total_case_seconds','mean_case_seconds','physical_norm_floor_values_changed','learned_values_differing_from_old_norm_floor'])]:
+        path=results/f'{name}.json'
+        if path.exists():
+            data=json.loads(path.read_text())
+            MN.table(out,identifier,'Retained artifact audit',path,columns,[dict(data,label='execution diagnostic')],data['git_sha'],
+                     note='Read-only artifact checks; no new scientific ensemble or rollout. Case seconds describe neural evaluation only.')
     path=results/'readings.json'
     if path.exists():
         data=json.loads(path.read_text())

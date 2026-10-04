@@ -87,6 +87,7 @@ def main():
                     ax.set(title=title,xlabel=xlabel,ylabel='Top-1 accuracy (M64)',ylim=(-.03,1.05));ax.legend(frameon=False,fontsize=8)
         save(fig,'learned_response_and_forecast')
     metadata=dict(sources=[dict(system=s[0],git_sha=s[2]['git_sha'] if s[2] else None,
+                  diagnostics_source_sha=s[2].get('diagnostics_source_sha') if s[2] else None,
                   learned_pending=s[2].get('learned_arm_pending',True) if s[2] else False,
                   stopped=s[2] is None) for s in sources],
                   labels='Censored M95 plotted at a display-only320; no inferred member count. Learned point labels are LT.')

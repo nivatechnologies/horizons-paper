@@ -78,6 +78,11 @@ def render():
         lines += ['', '## Post-hoc action-frequency diagnostic', '',
                   'Diagnostic only; no selector or criterion changed. Uniform negative-forcing action 0 is the truth-best action in every eligible Lorenz case at 10, 12, 16, 20 LT. The myopic null selects action 0 for all 200 cases. This is a boundary of the selected action panel, not a universal claim about planning. Selector: final blinded Codex run1 action set; one framing.', '',
                   'Source: `results/l96_posthoc_action_frequency.json`; checked section AAHLPOSTHOC.']
+    audit=ROOT/'results/l96_neural_artifact_audit.json'
+    if audit.exists():
+        a=json.loads(audit.read_text())
+        lines += ['', '## Artifact audit', '',
+                  f"All {a['cases']} learned cases pass the retained-artifact check: one CUDA backend/source/checkpoint, frozen output times and consistent finite-survivor/drop records. The ACC norm-floor correction affects {a['physical_norm_floor_values_changed']} saved physical values and {a['learned_values_differing_from_old_norm_floor']} learned values. Calibration replay exactly reproduces all 80 Kolmogorov panel records from 20,480 finite member files. Sources: `results/l96_neural_artifact_audit.json`, `results/kolmo_calibration_audit.json`; checked AAHLNAUDIT/AAHKCAUDIT sections."]
     return '\n'.join(lines)+'\n'
 
 if __name__=='__main__':
