@@ -28,6 +28,7 @@ def main():
             "persistence":("x",":"),"centre-law":("D","--")}
     fig,axes=plt.subplots(2,2,figsize=(11,7))
     for ax,q in zip(axes.flat,QUERY_NAMES):
+        endpoints=[]
         for a,(marker,line) in styles.items():
             selected=[r for r in error if r["query"]==q and r["arm"]==a and r["angle"]!="centre" and r["error"]]
             selected.sort(key=lambda r:int(r["angle"]))
@@ -35,9 +36,16 @@ def main():
             x=np.array([int(r["angle"]) for r in selected]);y=np.array([float(r["error"]) for r in selected])
             lo=np.array([float(r["ci_lo"]) for r in selected]);hi=np.array([float(r["ci_hi"]) for r in selected])
             ax.errorbar(x,y,yerr=[y-lo,hi-y],fmt=marker,color="black",linestyle=line,capsize=2,label=a)
-            ax.annotate(a,(x[-1],y[-1]),xytext=(5,0),textcoords="offset points",fontsize=7)
+            endpoints.append((y[-1],a))
         ax.set_title(q);ax.set_xlabel("Generating ray angle (degrees)");ax.set_ylabel("Mean query error / attractor SD")
         ax.set_xticks([0,90]);ax.margins(x=.25)
+        # Keep direct labels readable when several accurate arms share the same scale.
+        bottom,top=ax.get_ylim();span=top-bottom;previous=bottom
+        for value,a in sorted(endpoints):
+            label_y=max(value,previous+.045*span,bottom+.025*span)
+            ax.annotate(a,(90,value),xytext=(94,label_y),textcoords="data",fontsize=7,
+                        va="center",arrowprops=dict(arrowstyle="-",color="black",lw=.5))
+            previous=label_y
     fig.suptitle("AEA: fixed 0°/90° rays; 45° panel cut before data",fontsize=11)
     save(fig,"AEA1_error_angle")
     fig,axes=plt.subplots(1,2,figsize=(10,4))

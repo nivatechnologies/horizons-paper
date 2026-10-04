@@ -110,11 +110,11 @@ def main():
         if staged.returncode:local(["git","commit","-m","Aspen evidence: freeze measured sensitivity geometry and every-point chaos gates"])
     deploy()
     for phase in ["reported","data","nulls","law","train_L","train_F","learned"]:run_phase(phase)
-    # Recover raw per-state evidence and final training metadata, excluding bulky weights/data.
+    # Recover per-state evidence and selected weights for their provenance hashes.
     for sub in ["eval","train","phase_status"]:
         dest=RUNS/sub;dest.mkdir(parents=True,exist_ok=True)
         argv=["rsync","-a"]
-        if sub=="train":argv += ["--exclude=*.pt","--exclude=resume.tmp"]
+        if sub=="train":argv += ["--exclude=resume.pt","--exclude=resume.tmp"]
         local(argv+[HOST+":"+REMOTE+"/aspen/evidence/runs/"+sub+"/",str(dest)+"/"])
     cache=RUNS/"cache";cache.mkdir(parents=True,exist_ok=True)
     local(["scp",HOST+":"+REMOTE+"/aspen/evidence/runs/cache/training_theta.npy",str(cache)+"/"])

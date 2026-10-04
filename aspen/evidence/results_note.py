@@ -64,6 +64,14 @@ def main():
     )
     if outcome=="otherwise":
         text+="\nThe frozen PASS/KILL rules return otherwise; Todd decides the next stage.\n"
+        for arm in ["L_range-3","FNO-theta"]:
+            ratios=summary["ratios"][arm];corr=summary["correlations"][arm]
+            pass_count=sum(r is not None and r>=2 for r in ratios)
+            kill_count=sum(r is not None and max(r,1/r)<=1.3 for r in ratios)
+            gap="unavailable" if None in corr else f"{abs(corr[0]-corr[1]):.4f}"
+            text+=f"\n{arm}: {pass_count} queries with R ≥ 2; {kill_count} with max(R, 1/R) ≤ 1.3; correlation gap {gap}.\n"
+        law_count=sum(r is not None and r<=1.3 for r in summary["ratios"]["law"])
+        text+=f"\nThe law meets R ≤ 1.3 for {law_count} queries. Neither PASS nor KILL is satisfied. This selector framing does not establish the proposed directional thesis. No stage-2 experiment was started.\n"
     if not summary["complete_arm_panel"]:
         text+="\nArm comparisons are incomplete and cannot be presented as measured PASS or KILL.\n"
     (ROOT/"RUN_RESULTS.md").write_text(text)

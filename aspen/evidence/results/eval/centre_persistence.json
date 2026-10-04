@@ -1,0 +1,25 @@
+{
+  "id": "centre",
+  "arm": "persistence",
+  "n": 100,
+  "mean_errors": [
+    0.7418992780951388,
+    0.6648608952636029,
+    0.6091736882900649,
+    0.704488988232568
+  ],
+  "wall_seconds": 0.02404862700495869,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    40.0,
+    1.0,
+    0.07733
+  ],
+  "h": 2.8833783622843536,
+  "raw_file": "eval/centre_persistence.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}

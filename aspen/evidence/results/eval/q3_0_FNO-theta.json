@@ -1,0 +1,25 @@
+{
+  "id": "q3_0",
+  "arm": "FNO-theta",
+  "n": 100,
+  "mean_errors": [
+    0.00910595696109296,
+    0.012451589563220686,
+    0.017869932080081582,
+    0.017245915567650292
+  ],
+  "wall_seconds": 0.7153504710004199,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    37.483191269517285,
+    1.2,
+    0.07491358827746732
+  ],
+  "h": 3.179104573059656,
+  "raw_file": "eval/q3_0_FNO-theta.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}

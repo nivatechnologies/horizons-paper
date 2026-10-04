@@ -1,0 +1,25 @@
+{
+  "id": "q2_0",
+  "arm": "persistence",
+  "n": 100,
+  "mean_errors": [
+    0.7598870854263133,
+    0.682947892802774,
+    0.6263542397554523,
+    0.7351962526267417
+  ],
+  "wall_seconds": 0.003772120995563455,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    45.95671365314689,
+    1.1423547287370295,
+    0.1068062472113139
+  ],
+  "h": 1.8596867999261135,
+  "raw_file": "eval/q2_0_persistence.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}

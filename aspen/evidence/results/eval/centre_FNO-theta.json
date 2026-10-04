@@ -1,0 +1,25 @@
+{
+  "id": "centre",
+  "arm": "FNO-theta",
+  "n": 100,
+  "mean_errors": [
+    0.009416835731056053,
+    0.021784989233614858,
+    0.028940123901117686,
+    0.03516382013030494
+  ],
+  "wall_seconds": 0.6475950400053989,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    40.0,
+    1.0,
+    0.07733
+  ],
+  "h": 2.8833783622843536,
+  "raw_file": "eval/centre_FNO-theta.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}

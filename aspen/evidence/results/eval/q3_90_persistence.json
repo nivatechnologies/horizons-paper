@@ -1,0 +1,25 @@
+{
+  "id": "q3_90",
+  "arm": "persistence",
+  "n": 100,
+  "mean_errors": [
+    1.1462274534235433,
+    1.0916967095095529,
+    1.0354866311239876,
+    1.129496729108709
+  ],
+  "wall_seconds": 0.0038077049975981936,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    39.811670878339164,
+    1.0149657079125527,
+    0.108262
+  ],
+  "h": 3.2190510994739747,
+  "raw_file": "eval/q3_90_persistence.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}

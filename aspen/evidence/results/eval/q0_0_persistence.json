@@ -1,0 +1,25 @@
+{
+  "id": "q0_0",
+  "arm": "persistence",
+  "n": 100,
+  "mean_errors": [
+    0.5635705444206974,
+    0.5120459533680484,
+    0.48263268305633517,
+    0.5534878097986213
+  ],
+  "wall_seconds": 0.004066695997607894,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    38.70261762128806,
+    1.2,
+    0.08156870564304368
+  ],
+  "h": 2.3940212549754034,
+  "raw_file": "eval/q0_0_persistence.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}

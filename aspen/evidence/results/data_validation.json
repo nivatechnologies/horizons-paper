@@ -1,0 +1,12 @@
+{
+  "name": "validation",
+  "n": 128,
+  "n_frames": 100,
+  "params_file": "validation_theta.npy",
+  "conditions": "uniform-independent-3-parameter-box",
+  "burn": 500,
+  "dt": 0.01,
+  "delta": 0.35,
+  "seconds": 211.02838993900514,
+  "git_sha": "797d1c9977a39786786317d695effaddc3579254"
+}

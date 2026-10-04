@@ -1,0 +1,25 @@
+{
+  "id": "q1_90",
+  "arm": "L_range-3",
+  "n": 100,
+  "mean_errors": [
+    0.04664921032409331,
+    0.06731610316944935,
+    0.11695284110341773,
+    0.17697406561981402
+  ],
+  "wall_seconds": 0.7156707809917862,
+  "identify_seconds": 0.0,
+  "objective_evals": 0,
+  "parameter_mean": null,
+  "parameter_sd": null,
+  "theta": [
+    39.60595710583392,
+    1.0141533785182628,
+    0.108262
+  ],
+  "h": 3.2312198068356572,
+  "raw_file": "eval/q1_90_L_range-3.npz",
+  "finite_prediction": true,
+  "git_sha": "01d30964d32748ce9d235966646dd4dc38f4cb6d"
+}
