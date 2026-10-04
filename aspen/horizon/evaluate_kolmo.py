@@ -44,7 +44,7 @@ def rollout(initial,re,delta,lam,device,jitter=False,case=0,neural_targets=False
     return costs,snapshot,times
 
 @torch.no_grad()
-def main(device,part):
+def main(device,part,start_case=0,stop_case=30):
     torch.set_num_threads(1)
     if not (ROOT/'AAH_FREEZE_CALIBRATION_KOLMO.md').exists():raise RuntimeError('missing numeric calibration freeze')
     cal=json.loads((ROOT/'results/kolmo_calibration.json').read_text())
@@ -68,7 +68,7 @@ def main(device,part):
                    identifier='P1x, true drag, Re bounds25..70,30evals',evals=evals,steps=steps))
         print('Kolmo test observations ready',flush=True);return
     data=np.load(out/'observations.npz')
-    for c in range(30):
+    for c in range(start_case,stop_case):
         path=out/f'{part}_{c:03d}.npz'
         if path.exists():continue
         begin=time.time();payload={};timings={}
@@ -107,8 +107,11 @@ def main(device,part):
         np.savez(path,**payload)
         write_json(path.with_suffix('.json'),dict(case=c,git_sha=sha(),seconds=time.time()-begin,timings=timings,device=device))
         print('Kolmo',part,'case',c+1,'/30',flush=True)
-    write_json(out/f'{part}_complete.json',dict(cases=30,git_sha=sha()))
+    write_json(out/f'{part}_complete_{start_case}_{stop_case}.json',dict(cases=stop_case-start_case,git_sha=sha(),start_case=start_case,stop_case=stop_case))
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--device',default='cuda:0');p.add_argument('--part',choices=['prepare','targets','arms'],required=True)
-    a=p.parse_args();main(a.device,a.part)
+    p.add_argument('--start-case',type=int,default=0);p.add_argument('--stop-case',type=int,default=30)
+    a=p.parse_args()
+    if not 0<=a.start_case<a.stop_case<=30:raise ValueError('case partition outside frozen30-case panel')
+    main(a.device,a.part,a.start_case,a.stop_case)

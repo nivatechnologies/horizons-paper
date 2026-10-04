@@ -61,13 +61,14 @@ def main():
     run(['rsync','-a',str(ROOT/'runs/kolmo/test/observations.npz'),f'sulaco:{REMOTE}/aspen/horizon/runs/kolmo/test/'])
     remote=f'cd {REMOTE} && AAH_SOURCE_SHA={source} OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 {TORCH} aspen/horizon/truth_kolmo.py --workers 128'
     truth=start(['ssh','sulaco',remote],'kolmo_truth_remote.log',env=env)
-    arms=start([str(REPO/'.venv/bin/python'),str(ROOT/'evaluate_kolmo.py'),'--part','arms','--device','cuda:0'],'kolmo_arms.log',env=env)
+    arms=start([str(REPO/'.venv/bin/python'),str(ROOT/'evaluate_kolmo.py'),'--part','arms','--device','cuda:0','--start-case','0','--stop-case','20'],'kolmo_arms.log',env=env)
     write_json(ROOT/'runs/kolmo/launch_manifest.json',dict(source_sha=source,truth_pid=truth.pid,arms_pid=arms.pid))
     run([str(REPO/'.venv/bin/python'),str(ROOT/'evaluate_kolmo.py'),'--part','targets','--device','cuda:1'],env=env)
     run([str(REPO/'.venv/bin/python'),str(ROOT/'climatology_kolmo.py'),'--device','cuda:1'],env=env)
     run([str(REPO/'.venv/bin/python'),str(ROOT/'learned_kolmo_data.py'),'--device','cuda:1','--chunk','256'],env=env)
     run([str(REPO/'.venv/bin/python'),str(ROOT/'train_kolmo.py'),'--device','cuda:1','--microbatch','32'],env=env)
     run([str(REPO/'.venv/bin/python'),str(ROOT/'evaluate_kolmo_neural.py'),'--device','cuda:1','--members-per-batch','16'],env=env)
+    run([str(REPO/'.venv/bin/python'),str(ROOT/'evaluate_kolmo.py'),'--part','arms','--device','cuda:1','--start-case','20','--stop-case','30'],env=env)
     for name,proc in [('truth',truth),('arms',arms)]:
         status=proc.wait()
         if status:raise RuntimeError(f'{name} failed exit{status}; see retained log')
