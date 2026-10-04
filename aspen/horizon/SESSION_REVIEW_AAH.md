@@ -35,3 +35,13 @@ Step 0 uses exactly the WO prompt as stdin, twice, in separate empty temporary w
 CLI invocation checked against installed `codex exec --help` and [official noninteractive documentation](https://learn.chatgpt.com/docs/non-interactive-mode). Local help was inspected before official documentation, contrary to the skill's source-order instruction; official documentation was subsequently fetched before invoking the CLI.
 
 The vault context tool returned NOTE_NOT_FOUND for Tasks; the WO and templates were successfully read directly. The initial broad workspace file search was unnecessarily noisy; subsequent repository searches were scoped.
+
+## Amendment 1 rerun — 2026-10-04
+
+User requested rereading the amended WO, rerunning the gate and appending the result. WO and existing vault gate report reread through Obsidian MCP. Step 0 was not rerun. Amendment 1 snapshot: AAH_AMENDMENT1.md. Rerun: AAH_GATE_AMENDMENT1.md, also appended to AAH_GATE.md and the existing vault report.
+
+Original nine defects resolved operationally or affected arm removed. Remaining check-3 failure: A5 does not pin whether censored M_95 is an actual integer member count or a budget on a continuing powers-of-two grid. Failure through tested M=256 justifies 512 only under the latter construct. Hypothetical paired=128/unpaired=300 yields actual ratio 2.34375 while assigned bound 512 yields 4, changing the 3x criterion. Clarification requested; no answer received during this rerun. No replacement rule adopted.
+
+Arithmetic checks verified that the old overlapping outcome is no longer a PASS, G(3)=3, G(6)=6, G(24) is undefined, and a sustained accuracy dip at 3 bounds T_d at 2.5 despite later recovery. Other correction-discipline failures remain failures as stated in the amendment.
+
+Stopped affected censored member-gain/final PASS reading. No calibration, truth ensemble, test data or learned training started under the user's conditional execution instruction. Branch remains paper/aspen-2026-10-horizon. Read-only resource inspection found Baccus GPU memory occupied; no services stopped. Sulaco system python currently has none of numpy/torch/numba/scipy discoverable; isolated environment setup would be routine authorized preparation after a passing gate, not a specification defect.

@@ -10,7 +10,14 @@ Step 0: two blinded CLI invocations completed; exact prompts and verbatim answer
 
 Machine assignment: Baccus for Kolmogorov; sulaco (192.168.88.228) for Lorenz-96 and truth ensembles. Read-only key-based SSH succeeded; sulaco reports 256 logical CPUs. No Qwen service stopped.
 
-## Gate defects
+
+## Amendment 1 gate rerun (2026-10-04)
+
+Amendment 1 resolves the earlier nine defects or removes the affected arm. One check-3 referent remains unresolved: whether censored M_95 means actual integer member counts or budgets on a powers-of-two grid continuing beyond 256. The lower bound 512 is valid only for the latter construct. The censored member-gain reading and final PASS classification remain blocked; the construct was queried during the rerun. Full rerun and hypothetical counterexample: `aspen/horizon/AAH_GATE_AMENDMENT1.md`, also appended to [[R_Aspen-Act-Beyond-Horizon-Spec-Gate-2026-10-04]].
+
+Step 0 was not rerun. No calibration, truth ensemble, training or test panel was launched. This is a specification blocker, not an empirical KILL. Original defects listed below are historical; current disposition is this Amendment 1 rerun.
+
+## Initial gate defects (historical)
 
 - Forecast horizon has no specified action/arm reference or anomaly convention.
 - Fixed horizons omit required KILL evaluation locations; off-grid readings are undefined.
