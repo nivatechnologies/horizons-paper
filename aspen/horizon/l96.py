@@ -28,13 +28,15 @@ def flow(x,forcing,nsteps):
     return out
 
 @njit(cache=True,parallel=True)
-def rollout(x,forcing,lam,horizons,W=1.,capture=False):
+def rollout(x,forcing,lam,horizons,W=1.,capture=False,jitterseeds=None):
     B=len(x);H=len(horizons)
     end=int(np.ceil((horizons.max()+W)/lam/.01))+5
     costs=np.zeros((B,H));counts=np.zeros((B,H))
     snapshots=np.zeros((B,H,40)) if capture else np.zeros((0,0,0))
     for b in prange(B):
         a=x[b].copy()
+        if jitterseeds is not None:
+            np.random.seed(jitterseeds[b])
         for s in range(end+1):
             t=s*.01
             if s%5==0:
@@ -48,6 +50,8 @@ def rollout(x,forcing,lam,horizons,W=1.,capture=False):
                         snapshots[b,h]=a
             if s<end:
                 a=step(a,forcing[b])
+                if jitterseeds is not None:
+                    a=a*(1+1e-12*np.random.standard_normal(40))
     return costs/counts,snapshots
 
 @njit(cache=True,parallel=True)
