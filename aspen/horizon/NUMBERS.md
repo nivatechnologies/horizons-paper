@@ -87,25 +87,43 @@ Source `results/l96_solver_statistics.json` · SHA `4d3a404a8399b82d36c9fc8efc0b
 
 ## AAHLCONTROL. Members, commitment and null readings
 
-Source `results/l96_solver_statistics.json` · SHA `4d3a404a8399b82d36c9fc8efc0b63ffccb99676`
+Source `results/l96_solver_statistics.json` · SHA `e7604b3e83523a6dbdb84929921982b27c52978b`
 
 M95 restricted to budget grid. Censored unpaired conservative numerator256; paired censoring fails. Wall seconds measure nested cohorts sharing all scoring horizons plus interval analysis, on a shared host.
 
-| id | T | ratio | member_pass | myopic | random | committed | uncommitted | mean_members | commitment_errors | wall_seconds | label |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| AAHLCONTROL-1 | 0.2500 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | estimate |
-| AAHLCONTROL-2 | 0.5000 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | estimate |
-| AAHLCONTROL-3 | 0.7500 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | estimate |
-| AAHLCONTROL-4 | 1.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | estimate |
-| AAHLCONTROL-5 | 1.5000 | 8.0000 | 1 | 0.9590 | 0.1250 | 196 | 4 | 16.5306 | 0.0000 | 0.0419 | estimate |
-| AAHLCONTROL-6 | 2.0000 | 2.0000 | 0 | 0.8394 | 0.1250 | 178 | 22 | 28.4494 | 0.0000 | 0.0479 | estimate |
-| AAHLCONTROL-7 | 2.5000 | 2.0000 | 0 | 0.7000 | 0.1250 | 163 | 37 | 57.2761 | 0.0063 | 0.0562 | estimate |
-| AAHLCONTROL-8 | 3.0000 | 2.0000 | 0 | 0.6335 | 0.1250 | 138 | 62 | 85.1014 | 0.0231 | 0.0688 | estimate |
-| AAHLCONTROL-9 | 4.0000 | 1.0000 | 0 | 0.5360 | 0.1250 | 94 | 106 | 128.6809 | 0.0000 | 0.0209 | estimate |
-| AAHLCONTROL-10 | 5.0000 | 1.0000 | 0 | 0.7523 | 0.1250 | 66 | 134 | 156.7273 | 0.0000 | 0.0246 | estimate |
-| AAHLCONTROL-11 | 6.0000 | 1.0000 | 0 | 0.8889 | 0.1250 | 50 | 150 | 186.2400 | 0.0000 | 0.0286 | estimate |
-| AAHLCONTROL-12 | 8.0000 | 0.5000 | 0 | 0.9946 | 0.1250 | 54 | 146 | 246.5185 | 0.0000 | 0.0362 | estimate |
-| AAHLCONTROL-13 | 10.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 61 | 139 | 219.4098 | 0.0000 | 0.0325 | estimate |
-| AAHLCONTROL-14 | 12.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 68 | 132 | 235.7647 | 0.0000 | 0.1446 | estimate |
-| AAHLCONTROL-15 | 16.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 70 | 130 | 229.9429 | 0.0000 | 0.0341 | estimate |
-| AAHLCONTROL-16 | 20.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 70 | 130 | 236.8000 | 0.0000 | 0.0351 | estimate |
+| id | T | ratio | member_pass | myopic | random | committed | uncommitted | mean_members | commitment_errors | wall_seconds | random_regret | myopic_regret | random_realized | myopic_realized | label |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| AAHLCONTROL-1 | 0.2500 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | 0.7598 | 0.0000 | 0.7594 | 0.0000 | estimate |
+| AAHLCONTROL-2 | 0.5000 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | 0.7548 | 0.0000 | 0.7545 | 0.0000 | estimate |
+| AAHLCONTROL-3 | 0.7500 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | 0.7286 | 0.0000 | 0.7276 | 0.0000 | estimate |
+| AAHLCONTROL-4 | 1.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 200 | 0 | 8.0000 | 0.0000 | 0.0397 | 0.6961 | 0.0000 | 0.6903 | 8.767e-04 | estimate |
+| AAHLCONTROL-5 | 1.5000 | 8.0000 | 1 | 0.9590 | 0.1250 | 196 | 4 | 16.5306 | 0.0000 | 0.0419 | 0.6152 | 0.0050 | 0.5963 | 0.0106 | estimate |
+| AAHLCONTROL-6 | 2.0000 | 2.0000 | 0 | 0.8394 | 0.1250 | 178 | 22 | 28.4494 | 0.0000 | 0.0479 | 0.5646 | 0.0331 | 0.5371 | 0.0542 | estimate |
+| AAHLCONTROL-7 | 2.5000 | 2.0000 | 0 | 0.7000 | 0.1250 | 163 | 37 | 57.2761 | 0.0063 | 0.0562 | 0.5509 | 0.0775 | 0.5106 | 0.1409 | estimate |
+| AAHLCONTROL-8 | 3.0000 | 2.0000 | 0 | 0.6335 | 0.1250 | 138 | 62 | 85.1014 | 0.0231 | 0.0688 | 0.5337 | 0.1016 | 0.4873 | 0.2127 | estimate |
+| AAHLCONTROL-9 | 4.0000 | 1.0000 | 0 | 0.5360 | 0.1250 | 94 | 106 | 128.6809 | 0.0000 | 0.0209 | 0.5386 | 0.1408 | 0.4685 | 0.3116 | estimate |
+| AAHLCONTROL-10 | 5.0000 | 1.0000 | 0 | 0.7523 | 0.1250 | 66 | 134 | 156.7273 | 0.0000 | 0.0246 | 0.5760 | 0.0955 | 0.4779 | 0.3694 | estimate |
+| AAHLCONTROL-11 | 6.0000 | 1.0000 | 0 | 0.8889 | 0.1250 | 50 | 150 | 186.2400 | 0.0000 | 0.0286 | 0.6155 | 0.0393 | 0.4881 | 0.3911 | estimate |
+| AAHLCONTROL-12 | 8.0000 | 0.5000 | 0 | 0.9946 | 0.1250 | 54 | 146 | 246.5185 | 0.0000 | 0.0362 | 0.7140 | 0.0021 | 0.4669 | 0.3690 | estimate |
+| AAHLCONTROL-13 | 10.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 61 | 139 | 219.4098 | 0.0000 | 0.0325 | 0.7581 | 0.0000 | 0.4809 | 0.3848 | estimate |
+| AAHLCONTROL-14 | 12.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 68 | 132 | 235.7647 | 0.0000 | 0.1446 | 0.7669 | 0.0000 | 0.4968 | 0.4195 | estimate |
+| AAHLCONTROL-15 | 16.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 70 | 130 | 229.9429 | 0.0000 | 0.0341 | 0.7737 | 0.0000 | 0.4980 | 0.3940 | estimate |
+| AAHLCONTROL-16 | 20.0000 | 1.0000 | 0 | 1.0000 | 0.1250 | 70 | 130 | 236.8000 | 0.0000 | 0.0351 | 0.7696 | 0.0000 | 0.4857 | 0.4123 | estimate |
+
+## AAHREAD. Frozen discrete criteria
+
+Source `results/readings.json` · SHA `7e3b01ef968078462adab8013b333468165fc083`
+
+| id | system | Tf | Td | kill_grid_T | pass_grid_T | kill_condition | pass_condition | ratio_at_Tf | accuracy_at_kill_T | label |
+|---|---|---|---|---|---|---|---|---|---|---|
+| AAHREAD-1 | l96 | 10.0000 | 12.0000 | 16.0000 |  | 0 | 0 | 1.0000 | 0.7900 | estimate |
+
+## AAHPARTIAL. Descriptive correlations
+
+Source `results/readings.json` · SHA `7e3b01ef968078462adab8013b333468165fc083`
+
+Unit (arm,T); learned/misidentified/jitter within each system. No inferential claim. Pending learned evidence means partial panel.
+
+| id | system | units | attempted | learned_Tf | learned_Tf_status | response_partial | forecast_partial | label |
+|---|---|---|---|---|---|---|---|---|
+| AAHPARTIAL-1 | l96 | 32 | 32 |  | pending | 0.9362 | -0.2058 | estimate |

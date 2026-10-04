@@ -38,10 +38,24 @@ def render():
             rows=[dict(T=h['T'],ratio=h['member_criterion']['ratio_lower_bound'],member_pass=h['member_criterion']['pass_condition'],
                        myopic=h['myopic_accuracy'],random=h['random_accuracy_expected'],committed=h['commitment']['committed'],
                        uncommitted=h['commitment']['uncommitted'],mean_members=h['commitment']['mean_members'],
-                       commitment_errors=h['commitment']['error_rate'],wall_seconds=h['commitment'].get('mean_wall_seconds'),label='estimate') for h in data['horizons']]
+                       commitment_errors=h['commitment']['error_rate'],wall_seconds=h['commitment'].get('mean_wall_seconds'),
+                       random_regret=h.get('null_regrets',{}).get('random'),myopic_regret=h.get('null_regrets',{}).get('myopic'),
+                       random_realized=h.get('null_regrets',{}).get('random_actual'),myopic_realized=h.get('null_regrets',{}).get('myopic_actual'),label='estimate') for h in data['horizons']]
             MN.table(out,prefix+'CONTROL','Members, commitment and null readings',path,
-                     ['T','ratio','member_pass','myopic','random','committed','uncommitted','mean_members','commitment_errors','wall_seconds'],rows,data['git_sha'],
+                     ['T','ratio','member_pass','myopic','random','committed','uncommitted','mean_members','commitment_errors','wall_seconds','random_regret','myopic_regret','random_realized','myopic_realized'],rows,data.get('diagnostics_source_sha',data['git_sha']),
                      note='M95 restricted to budget grid. Censored unpaired conservative numerator256; paired censoring fails. Wall seconds measure nested cohorts sharing all scoring horizons plus interval analysis, on a shared host.')
+            if 'learned_stability' in data:
+                row=dict(data['learned_stability'],label='estimate');row.pop('per_case',None)
+                MN.table(out,prefix+'STABLE','Learned rollout stability',path,['attempted_members','dropped'],[row],data.get('diagnostics_source_sha',data['git_sha']))
+    path=results/'readings.json'
+    if path.exists():
+        data=json.loads(path.read_text())
+        rows=[dict(system=k,**v,label='estimate') for k,v in data['systems'].items()]
+        if rows:MN.table(out,'AAHREAD','Frozen discrete criteria',path,['system','Tf','Td','kill_grid_T','pass_grid_T','kill_condition','pass_condition','ratio_at_Tf','accuracy_at_kill_T'],rows,data['git_sha'])
+        rows=[dict(system=k,units=v['available_units'],attempted=v['attempted_units'],learned_Tf=v['learned_Tf'],
+                   learned_Tf_status=v['learned_Tf_status'],response_partial=v['partial_accuracy_response_controlling_ACC'],
+                   forecast_partial=v['partial_accuracy_ACC_controlling_response'],label='estimate') for k,v in data['diagnostics'].items()]
+        if rows:MN.table(out,'AAHPARTIAL','Descriptive correlations',path,['system','units','attempted','learned_Tf','learned_Tf_status','response_partial','forecast_partial'],rows,data['git_sha'],note='Unit (arm,T); learned/misidentified/jitter within each system. No inferential claim. Pending learned evidence means partial panel.')
     for line in out:
         if line.startswith('Source ') and ('SHA ``' in line):raise MN.NumbersError('empty source SHA')
         if line.startswith('| AAH') and line.endswith('|  |'):raise MN.NumbersError('empty AAH row label')

@@ -90,7 +90,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7597653345003108,
+        "random_actual": 0.759392709490463,
+        "myopic": 0.0,
+        "myopic_actual": 0.0
+      }
     },
     {
       "T": 0.5,
@@ -179,7 +185,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7547880568208876,
+        "random_actual": 0.7544942560573707,
+        "myopic": 0.0,
+        "myopic_actual": 0.0
+      }
     },
     {
       "T": 0.75,
@@ -268,7 +280,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7286336950982656,
+        "random_actual": 0.7276293535841447,
+        "myopic": 0.0,
+        "myopic_actual": 0.0
+      }
     },
     {
       "T": 1.0,
@@ -357,7 +375,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.6960962552059989,
+        "random_actual": 0.690333450231739,
+        "myopic": 0.0,
+        "myopic_actual": 0.0008767437636985194
+      }
     },
     {
       "T": 1.5,
@@ -446,7 +470,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.958974358974359,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.6151965786130027,
+        "random_actual": 0.5963088068238678,
+        "myopic": 0.0050280687790927045,
+        "myopic_actual": 0.010644083906110468
+      }
     },
     {
       "T": 2.0,
@@ -535,7 +565,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.8393782383419689,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.5645541364507722,
+        "random_actual": 0.5371031223932381,
+        "myopic": 0.033137291354566493,
+        "myopic_actual": 0.05421099371152466
+      }
     },
     {
       "T": 2.5,
@@ -624,7 +660,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.7,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.5509196667192858,
+        "random_actual": 0.5106145959873335,
+        "myopic": 0.07751802771892372,
+        "myopic_actual": 0.1409479417071722
+      }
     },
     {
       "T": 3.0,
@@ -713,7 +755,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.6335403726708074,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.5336843327761632,
+        "random_actual": 0.48734107540519606,
+        "myopic": 0.1016083406887547,
+        "myopic_actual": 0.21271151776213776
+      }
     },
     {
       "T": 4.0,
@@ -802,7 +850,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.536,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.5385781601096117,
+        "random_actual": 0.4685327117902103,
+        "myopic": 0.14077977314113843,
+        "myopic_actual": 0.3116246950578346
+      }
     },
     {
       "T": 5.0,
@@ -891,7 +945,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.7522935779816514,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.5759662026110551,
+        "random_actual": 0.4778911726716421,
+        "myopic": 0.09553940266119602,
+        "myopic_actual": 0.3694472325745017
+      }
     },
     {
       "T": 6.0,
@@ -980,7 +1040,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.8888888888888888,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.6154591141525271,
+        "random_actual": 0.4880700390617171,
+        "myopic": 0.03929315824858522,
+        "myopic_actual": 0.3911481223366286
+      }
     },
     {
       "T": 8.0,
@@ -1069,7 +1135,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 0.9945652173913043,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7139609818490243,
+        "random_actual": 0.4669352018703531,
+        "myopic": 0.0021413357897742866,
+        "myopic_actual": 0.36902009252306317
+      }
     },
     {
       "T": 10.0,
@@ -1158,7 +1230,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7580737373148687,
+        "random_actual": 0.48085418632251115,
+        "myopic": 0.0,
+        "myopic_actual": 0.38478888768036246
+      }
     },
     {
       "T": 12.0,
@@ -1247,7 +1325,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7669174945516198,
+        "random_actual": 0.4967928156863099,
+        "myopic": 0.0,
+        "myopic_actual": 0.41950961337488096
+      }
     },
     {
       "T": 16.0,
@@ -1336,7 +1420,13 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7737290140489196,
+        "random_actual": 0.4979689143776466,
+        "myopic": 0.0,
+        "myopic_actual": 0.39399470816449134
+      }
     },
     {
       "T": 20.0,
@@ -1425,10 +1515,17 @@
         "wall_time_basis": "measured nested-cohort solver costs through commitment, sharing all horizons, plus measured interval-analysis time"
       },
       "myopic_accuracy": 1.0,
-      "random_accuracy_expected": 0.125
+      "random_accuracy_expected": 0.125,
+      "null_regrets": {
+        "random": 0.7696154941089546,
+        "random_actual": 0.4856697923060198,
+        "myopic": 0.0,
+        "myopic_actual": 0.41229524990204086
+      }
     }
   ],
   "seconds": 10.377821445465088,
   "git_sha": "4d3a404a8399b82d36c9fc8efc0b63ffccb99676",
-  "learned_arm_pending": true
+  "learned_arm_pending": true,
+  "diagnostics_source_sha": "e7604b3e83523a6dbdb84929921982b27c52978b"
 }
