@@ -32,6 +32,12 @@ def rng(name, index=0):
 
 
 def sha():
+    snapshot = REPO / "SOURCE_COMMIT"
+    if snapshot.exists():
+        value = snapshot.read_text().strip()
+        if len(value) != 40 or any(c not in "0123456789abcdef" for c in value):
+            raise ValueError("invalid source snapshot SHA")
+        return value
     return subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=REPO, text=True).strip()
 
 
