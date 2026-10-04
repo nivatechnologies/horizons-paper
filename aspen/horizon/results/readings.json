@@ -1,6 +1,10 @@
 {
-  "scientific_verdict": "PENDING",
+  "scientific_verdict": "NOT_EVALUATED_CALIBRATION_STOP",
   "required_evidence_complete": false,
+  "execution_complete": false,
+  "stopped_systems": {
+    "kolmo": "STOP_CALIBRATION_FAIL"
+  },
   "systems": {
     "l96": {
       "Tf": 10.0,
@@ -283,5 +287,5 @@
       ]
     }
   },
-  "git_sha": "7e3b01ef968078462adab8013b333468165fc083"
+  "git_sha": "3fe3e5f31e3281c648c0b1272eb082dc032b434a"
 }

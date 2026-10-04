@@ -52,16 +52,25 @@ def diagnostics(data):
                 partial_accuracy_ACC_controlling_response=partial(y,f,r),units=rows)
 
 def main():
-    systems={};diag={};complete=True
+    systems={};diag={};complete=True;stopped={};execution_complete=True
     for key in ['l96','kolmo']:
         p=ROOT/f'results/{key}_solver_statistics.json'
-        if not p.exists():complete=False;continue
+        if not p.exists():
+            complete=False
+            status=ROOT/f'results/{key}_execution_status.json'
+            s=json.loads(status.read_text()) if status.exists() else {}
+            if s.get('status','').startswith('STOP_'):stopped[key]=s['status']
+            else:execution_complete=False
+            continue
         d=json.loads(p.read_text());systems[key]=system_reading(d);diag[key]=diagnostics(d)
         complete &= not d.get('learned_arm_pending',True)
+        execution_complete &= not d.get('learned_arm_pending',True)
     verdict='PENDING'
     if len(systems)==2:
         verdict='KILL' if all(s['kill_condition'] for s in systems.values()) else ('PASS' if all(s['pass_condition'] for s in systems.values()) else 'OTHERWISE')
-    write_json(ROOT/'results/readings.json',dict(scientific_verdict=verdict,required_evidence_complete=complete,systems=systems,diagnostics=diag,git_sha=sha()))
+    elif stopped:verdict='NOT_EVALUATED_CALIBRATION_STOP'
+    write_json(ROOT/'results/readings.json',dict(scientific_verdict=verdict,required_evidence_complete=complete,
+               execution_complete=execution_complete,stopped_systems=stopped,systems=systems,diagnostics=diag,git_sha=sha()))
     print(verdict,'required evidence complete:',complete)
 
 if __name__=='__main__':main()

@@ -12,13 +12,26 @@ def main():
     for system,title in [('l96','Lorenz-96'),('kolmo','Kolmogorov')]:
         path=ROOT/f'results/{system}_solver_statistics.json'
         if path.exists():sources.append((system,title,json.loads(path.read_text())))
+        else:
+            status=ROOT/f'results/{system}_execution_status.json'
+            if status.exists() and json.loads(status.read_text()).get('status','').startswith('STOP_'):
+                sources.append((system,title,None))
     if not sources:raise RuntimeError('no measured sources')
     out=ROOT/'figures';out.mkdir(exist_ok=True)
     plt.rcParams.update({'font.size':9,'axes.spines.top':False,'axes.spines.right':False,'savefig.dpi':220})
     def save(fig,name):
         fig.tight_layout();fig.savefig(out/(name+'.pdf'));fig.savefig(out/(name+'.png'));plt.close(fig)
+    def stopped(ax,system,title):
+        c=json.loads((ROOT/f'results/{system}_calibration.json').read_text())
+        counts='\n'.join(f"δ={r['delta']:g}: {r['eligible']}/{r['total']} determinable" for r in c['rows'])
+        ax.set_title(title+' — calibration stopped')
+        ax.text(.5,.5,counts+'\n\nRequired: ≥16/20\nTest and learned arms not run',transform=ax.transAxes,
+                ha='center',va='center',fontsize=11)
+        ax.set_xticks([]);ax.set_yticks([])
+        for spine in ax.spines.values():spine.set_visible(False)
     fig,axes=plt.subplots(1,len(sources),figsize=(7.2*len(sources),4),squeeze=False)
     for ax,(system,title,data) in zip(axes[0],sources):
+        if data is None:stopped(ax,system,title);continue
         rows=data['horizons'];T=[r['T'] for r in rows];end_labels=[]
         specs=[('paired','Niva decision','-','o','0'),('unpaired','Unpaired decision','--','s','.35'),
                ('learned','Learned decision',':','^','.15')]
@@ -44,7 +57,8 @@ def main():
         ax.set(title=title+(' (learned arm pending)' if data.get('learned_arm_pending',True) else ''),xlabel='Lead time (unperturbed LT)',ylabel='Top-1 accuracy / forecast ACC',ylim=(-.12,max(1.1,previous+.08)),xlim=(0,29))
     save(fig,'decision_and_forecast')
     fig,axes=plt.subplots(1,len(sources),figsize=(6*len(sources),3.8),squeeze=False)
-    for ax,(_,title,data) in zip(axes[0],sources):
+    for ax,(system,title,data) in zip(axes[0],sources):
+        if data is None:stopped(ax,system,title);continue
         rows=data['horizons'];T=np.array([r['T'] for r in rows])
         for arm,color,marker,style,label in [('paired','0','o','-','Paired'),('unpaired','.4','s','--','Unpaired')]:
             value=np.array([r['arms'][arm]['M95'] if r['arms'][arm]['M95'] is not None else 320 for r in rows])
@@ -56,7 +70,7 @@ def main():
         ax.set(title=title,xlabel='Lead time (LT)',ylabel='Smallest tested budget with top-1 ≥0.95',xlim=(0,24))
         ax.legend(frameon=False);ax.text(.02,.03,'Triangles: censored; no 320-member test',transform=ax.transAxes,fontsize=8)
     save(fig,'members_paired_unpaired')
-    complete=[s for s in sources if not s[2].get('learned_arm_pending',True)]
+    complete=[s for s in sources if s[2] is not None and not s[2].get('learned_arm_pending',True)]
     if complete:
         fig,axes=plt.subplots(len(complete),2,figsize=(10,3.8*len(complete)),squeeze=False)
         for row,(_,title,data) in enumerate(complete):
@@ -72,7 +86,9 @@ def main():
                     ax.scatter(x,y,marker=marker,c=color,label=label,s=27)
                     ax.set(title=title,xlabel=xlabel,ylabel='Top-1 accuracy (M64)',ylim=(-.03,1.05));ax.legend(frameon=False,fontsize=8)
         save(fig,'learned_response_and_forecast')
-    metadata=dict(sources=[dict(system=s[0],git_sha=s[2]['git_sha'],learned_pending=s[2].get('learned_arm_pending',True)) for s in sources],
+    metadata=dict(sources=[dict(system=s[0],git_sha=s[2]['git_sha'] if s[2] else None,
+                  learned_pending=s[2].get('learned_arm_pending',True) if s[2] else False,
+                  stopped=s[2] is None) for s in sources],
                   labels='Censored M95 plotted at a display-only320; no inferred member count. Learned point labels are LT.')
     (out/'sources.json').write_text(json.dumps(metadata,indent=2)+'\n')
 

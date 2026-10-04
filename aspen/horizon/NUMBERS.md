@@ -137,7 +137,7 @@ M95 restricted to budget grid. Censored unpaired conservative numerator256; pair
 
 ## AAHKCAL. Amplitude calibration
 
-Source `results/kolmo_calibration_progress.json` · SHA `41730cd159d0a98a9e4d32be7feb9729d62f9653`
+Source `results/kolmo_calibration.json` · SHA `41730cd159d0a98a9e4d32be7feb9729d62f9653`
 
 Calibration cases only. First passing amplitude selected; later amplitudes not tested.
 
@@ -146,6 +146,7 @@ Calibration cases only. First passing amplitude selected; later amplitudes not t
 | AAHKCAL-1 | kolmo | 0.0100 | 6 | 20 | 0.3000 | estimate |
 | AAHKCAL-2 | kolmo | 0.0200 | 6 | 20 | 0.3000 | estimate |
 | AAHKCAL-3 | kolmo | 0.0500 | 13 | 20 | 0.6500 | estimate |
+| AAHKCAL-4 | kolmo | 0.1000 | 13 | 20 | 0.6500 | estimate |
 
 ## AAHKSYSTEM. Base system measurements
 
@@ -192,7 +193,7 @@ Source `results/l96_training.json` · SHA `b15e94ad8fe894656b27113458b2fdbd03be0
 
 ## AAHREAD. Frozen discrete criteria
 
-Source `results/readings.json` · SHA `7e3b01ef968078462adab8013b333468165fc083`
+Source `results/readings.json` · SHA `3fe3e5f31e3281c648c0b1272eb082dc032b434a`
 
 | id | system | Tf | Td | kill_grid_T | pass_grid_T | kill_condition | pass_condition | ratio_at_Tf | accuracy_at_kill_T | label |
 |---|---|---|---|---|---|---|---|---|---|---|
@@ -200,7 +201,7 @@ Source `results/readings.json` · SHA `7e3b01ef968078462adab8013b333468165fc083`
 
 ## AAHPARTIAL. Descriptive correlations
 
-Source `results/readings.json` · SHA `7e3b01ef968078462adab8013b333468165fc083`
+Source `results/readings.json` · SHA `3fe3e5f31e3281c648c0b1272eb082dc032b434a`
 
 Unit (arm,T); learned/misidentified/jitter within each system. No inferential claim. Pending learned evidence means partial panel.
 
