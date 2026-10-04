@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "cases": 200,
+  "attempted_members": 51200,
+  "dropped": 0,
+  "numerical_source_sha": "15b0fe73754a5bd77a18b99fa2693e9f94e296ed",
+  "checkpoint_step": 20000,
+  "device": "cuda:0",
+  "tf32": false,
+  "deterministic_cudnn": true,
+  "total_case_seconds": 2218.159700870514,
+  "mean_case_seconds": 11.09079850435257,
+  "physical_norm_floor_values_changed": 0,
+  "learned_values_differing_from_old_norm_floor": 0,
+  "git_sha": "87caf004c20b82e56b32608aa1b9a07f1a6c9373",
+  "note": "Retained artifact audit; no new evaluation or scientific threshold."
+}

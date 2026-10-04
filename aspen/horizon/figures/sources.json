@@ -3,15 +3,19 @@
     {
       "system": "l96",
       "git_sha": "4d3a404a8399b82d36c9fc8efc0b63ffccb99676",
-      "learned_pending": true,
+      "diagnostics_source_sha": "87caf004c20b82e56b32608aa1b9a07f1a6c9373",
+      "calibration_source_sha": "bd46f7d27417cbc01938a07cdcdea986c60f982d",
+      "learned_pending": false,
       "stopped": false
     },
     {
       "system": "kolmo",
       "git_sha": null,
+      "diagnostics_source_sha": null,
+      "calibration_source_sha": "41730cd159d0a98a9e4d32be7feb9729d62f9653",
       "learned_pending": false,
       "stopped": true
     }
   ],
-  "labels": "Censored M95 plotted at a display-only320; no inferred member count. Learned point labels are LT."
+  "labels": "Censored M95 plotted at a display-only320; no inferred member count. Learned point labels show selected LT: 2,4,8,10,20."
 }

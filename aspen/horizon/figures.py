@@ -68,7 +68,7 @@ def main():
             ax.annotate(label,(T[-1],value[-1]),xytext=(7,7 if arm=='paired' else -12),textcoords='offset points',fontsize=8,color=color)
         ax.set_yscale('log',base=2);ax.set_yticks([8,16,32,64,128,256,320],labels=['8','16','32','64','128','256','>256'])
         ax.set(title=title,xlabel='Lead time (LT)',ylabel='Smallest tested budget with top-1 ≥0.95',xlim=(0,24))
-        ax.legend(frameon=False);ax.text(.02,.03,'Triangles: censored; no 320-member test',transform=ax.transAxes,fontsize=8)
+        ax.legend(frameon=False);ax.text(.24,.03,'Triangles: censored; no 320-member test',transform=ax.transAxes,fontsize=8)
     save(fig,'members_paired_unpaired')
     complete=[s for s in sources if s[2] is not None and not s[2].get('learned_arm_pending',True)]
     if complete:
@@ -82,15 +82,16 @@ def main():
                         a=h['arms'][arm]
                         if a[key] is None or a['accuracy'][3] is None:continue
                         x.append(a[key]);y.append(a['accuracy'][3])
-                        if arm=='learned':ax.annotate(f"{h['T']:g}",(a[key],a['accuracy'][3]),fontsize=6,xytext=(3,3),textcoords='offset points')
+                        if arm=='learned' and h['T'] in (2,4,8,10,20):ax.annotate(f"{h['T']:g}",(a[key],a['accuracy'][3]),fontsize=7,xytext=(4,4),textcoords='offset points')
                     ax.scatter(x,y,marker=marker,c=color,label=label,s=27)
                     ax.set(title=title,xlabel=xlabel,ylabel='Top-1 accuracy (M64)',ylim=(-.03,1.05));ax.legend(frameon=False,fontsize=8)
         save(fig,'learned_response_and_forecast')
     metadata=dict(sources=[dict(system=s[0],git_sha=s[2]['git_sha'] if s[2] else None,
                   diagnostics_source_sha=s[2].get('diagnostics_source_sha') if s[2] else None,
+                  calibration_source_sha=json.loads((ROOT/f'results/{s[0]}_calibration.json').read_text())['git_sha'],
                   learned_pending=s[2].get('learned_arm_pending',True) if s[2] else False,
                   stopped=s[2] is None) for s in sources],
-                  labels='Censored M95 plotted at a display-only320; no inferred member count. Learned point labels are LT.')
+                  labels='Censored M95 plotted at a display-only320; no inferred member count. Learned point labels show selected LT: 2,4,8,10,20.')
     (out/'sources.json').write_text(json.dumps(metadata,indent=2)+'\n')
 
 if __name__=='__main__':main()

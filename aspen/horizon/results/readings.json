@@ -1,7 +1,7 @@
 {
   "scientific_verdict": "NOT_EVALUATED_CALIBRATION_STOP",
   "required_evidence_complete": false,
-  "execution_complete": false,
+  "execution_complete": true,
   "stopped_systems": {
     "kolmo": "STOP_CALIBRATION_FAIL"
   },
@@ -21,13 +21,21 @@
     "l96": {
       "unit": "(arm,grid T), pooled learned/misidentified/jitter within system",
       "inference": false,
-      "attempted_units": 32,
-      "available_units": 32,
-      "learned_Tf": null,
-      "learned_Tf_status": "pending",
-      "partial_accuracy_response_controlling_ACC": 0.936201708066854,
-      "partial_accuracy_ACC_controlling_response": -0.20575636286834711,
+      "attempted_units": 48,
+      "available_units": 48,
+      "learned_Tf": 10.0,
+      "learned_Tf_status": "defined",
+      "partial_accuracy_response_controlling_ACC": 0.9453711564653036,
+      "partial_accuracy_ACC_controlling_response": -0.4761965446919724,
       "units": [
+        {
+          "arm": "learned",
+          "T": 0.25,
+          "accuracy": 1.0,
+          "ACC": 0.9998832470197425,
+          "response": 0.9934398158376812,
+          "response_relative_error": 0.2016011510644621
+        },
         {
           "arm": "misidentified",
           "T": 0.25,
@@ -43,6 +51,14 @@
           "ACC": 0.9995740110271558,
           "response": 0.9999291356112495,
           "response_relative_error": 0.01051018375438273
+        },
+        {
+          "arm": "learned",
+          "T": 0.5,
+          "accuracy": 1.0,
+          "ACC": 0.999752620414786,
+          "response": 0.9890461487605855,
+          "response_relative_error": 0.16768048795408208
         },
         {
           "arm": "misidentified",
@@ -61,6 +77,14 @@
           "response_relative_error": 0.013113356730583324
         },
         {
+          "arm": "learned",
+          "T": 0.75,
+          "accuracy": 1.0,
+          "ACC": 0.9995232830657909,
+          "response": 0.9793367878793702,
+          "response_relative_error": 0.20242102615971663
+        },
+        {
           "arm": "misidentified",
           "T": 0.75,
           "accuracy": 1.0,
@@ -75,6 +99,14 @@
           "ACC": 0.9980105688421544,
           "response": 0.9997611794115767,
           "response_relative_error": 0.019221689981714613
+        },
+        {
+          "arm": "learned",
+          "T": 1.0,
+          "accuracy": 0.99,
+          "ACC": 0.9991223609319653,
+          "response": 0.9636852182829908,
+          "response_relative_error": 0.2652761834254107
         },
         {
           "arm": "misidentified",
@@ -93,6 +125,14 @@
           "response_relative_error": 0.030714049388471668
         },
         {
+          "arm": "learned",
+          "T": 1.5,
+          "accuracy": 0.8666666666666667,
+          "ACC": 0.996388284299247,
+          "response": 0.9157080850037126,
+          "response_relative_error": 0.4406558672553199
+        },
+        {
           "arm": "misidentified",
           "T": 1.5,
           "accuracy": 0.9179487179487179,
@@ -107,6 +147,14 @@
           "ACC": 0.9868038947159644,
           "response": 0.9974443729721965,
           "response_relative_error": 0.06613699424726918
+        },
+        {
+          "arm": "learned",
+          "T": 2.0,
+          "accuracy": 0.7357512953367875,
+          "ACC": 0.9874377917664259,
+          "response": 0.8470872070092855,
+          "response_relative_error": 0.6713902117621913
         },
         {
           "arm": "misidentified",
@@ -125,6 +173,14 @@
           "response_relative_error": 0.10829167626166014
         },
         {
+          "arm": "learned",
+          "T": 2.5,
+          "accuracy": 0.6666666666666666,
+          "ACC": 0.9701485952310552,
+          "response": 0.7674962823857648,
+          "response_relative_error": 0.918584479012873
+        },
+        {
           "arm": "misidentified",
           "T": 2.5,
           "accuracy": 0.5944444444444444,
@@ -139,6 +195,14 @@
           "ACC": 0.9232256337628675,
           "response": 0.9854765043904589,
           "response_relative_error": 0.16702717452439703
+        },
+        {
+          "arm": "learned",
+          "T": 3.0,
+          "accuracy": 0.6211180124223602,
+          "ACC": 0.9383135819384745,
+          "response": 0.6974296218325664,
+          "response_relative_error": 1.1200135682859522
         },
         {
           "arm": "misidentified",
@@ -157,6 +221,14 @@
           "response_relative_error": 0.20449100156457864
         },
         {
+          "arm": "learned",
+          "T": 4.0,
+          "accuracy": 0.416,
+          "ACC": 0.8386609837980368,
+          "response": 0.6088702764535969,
+          "response_relative_error": 1.3134426837366742
+        },
+        {
           "arm": "misidentified",
           "T": 4.0,
           "accuracy": 0.472,
@@ -171,6 +243,14 @@
           "ACC": 0.7115156795125103,
           "response": 0.970752782659883,
           "response_relative_error": 0.23573275258158907
+        },
+        {
+          "arm": "learned",
+          "T": 5.0,
+          "accuracy": 0.4954128440366973,
+          "ACC": 0.6807298298148744,
+          "response": 0.5468458996344929,
+          "response_relative_error": 1.5322807820159245
         },
         {
           "arm": "misidentified",
@@ -189,6 +269,14 @@
           "response_relative_error": 0.31414589556553946
         },
         {
+          "arm": "learned",
+          "T": 6.0,
+          "accuracy": 0.4603174603174603,
+          "ACC": 0.5228731109134247,
+          "response": 0.5430136709788513,
+          "response_relative_error": 1.6364832826562776
+        },
+        {
           "arm": "misidentified",
           "T": 6.0,
           "accuracy": 0.6349206349206349,
@@ -203,6 +291,14 @@
           "ACC": 0.4085930378875404,
           "response": 0.9166607007934987,
           "response_relative_error": 0.4008373423429137
+        },
+        {
+          "arm": "learned",
+          "T": 8.0,
+          "accuracy": 0.5815217391304348,
+          "ACC": 0.2809098243861675,
+          "response": 0.5980089061568497,
+          "response_relative_error": 1.189941898644858
         },
         {
           "arm": "misidentified",
@@ -221,6 +317,14 @@
           "response_relative_error": 0.56677013987686
         },
         {
+          "arm": "learned",
+          "T": 10.0,
+          "accuracy": 0.7989949748743719,
+          "ACC": 0.147665295162892,
+          "response": 0.7447153873885323,
+          "response_relative_error": 0.7335315531443212
+        },
+        {
           "arm": "misidentified",
           "T": 10.0,
           "accuracy": 0.7487437185929648,
@@ -235,6 +339,14 @@
           "ACC": 0.11397473680015963,
           "response": 0.7841825645462532,
           "response_relative_error": 0.6335484748336345
+        },
+        {
+          "arm": "learned",
+          "T": 12.0,
+          "accuracy": 0.83,
+          "ACC": 0.07491542875043386,
+          "response": 0.7868290462977715,
+          "response_relative_error": 0.632613758746012
         },
         {
           "arm": "misidentified",
@@ -253,6 +365,14 @@
           "response_relative_error": 0.6008726032418357
         },
         {
+          "arm": "learned",
+          "T": 16.0,
+          "accuracy": 0.835,
+          "ACC": 0.022752683698762023,
+          "response": 0.7901376586050552,
+          "response_relative_error": 0.6183626109868204
+        },
+        {
           "arm": "misidentified",
           "T": 16.0,
           "accuracy": 0.82,
@@ -267,6 +387,14 @@
           "ACC": 0.02270619907384414,
           "response": 0.793645097976069,
           "response_relative_error": 0.6102960872260877
+        },
+        {
+          "arm": "learned",
+          "T": 20.0,
+          "accuracy": 0.825,
+          "ACC": 0.005584918670847763,
+          "response": 0.7947695234367523,
+          "response_relative_error": 0.6166764784658322
         },
         {
           "arm": "misidentified",
@@ -287,5 +415,5 @@
       ]
     }
   },
-  "git_sha": "3fe3e5f31e3281c648c0b1272eb082dc032b434a"
+  "git_sha": "87caf004c20b82e56b32608aa1b9a07f1a6c9373"
 }

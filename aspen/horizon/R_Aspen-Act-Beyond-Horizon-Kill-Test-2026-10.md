@@ -1,6 +1,6 @@
 # Aspen act beyond the horizon: results and execution status (2026-10)
 
-Gate passed under Amendment 1a; execution in progress.
+Execution complete with the prescribed Kolmogorov calibration stop; no two-system empirical PASS/KILL.
 
 Work order: [[WO_Aspen-Act-Beyond-Horizon-Kill-Test-2026-10-03]]. Gate: [[R_Aspen-Act-Beyond-Horizon-Spec-Gate-2026-10-04]].
 
@@ -42,7 +42,28 @@ Niva forecast horizon T_f=10.0 LT; sustained decision horizon T_d=12.0 LT.
 
 Lorenz reading misses PASS: sustained horizon 12 is below the required G(30), which is outside the frozen grid; paired/unpaired M95 ratio at T_f is 1 (128 members each). At G(1.5 T_f)=16, accuracy 0.79 does not meet the <0.5 KILL rule.
 
-Learned-arm evaluation remains pending.
+Learned-arm evaluation included.
+
+Learned stability: 0 dropped of 51200 attempted members under the all-action 21-LT rule.
+
+| T (LT) | Learned top-1 (M64) | Learned ACC | Response correlation | Response relative error |
+|---|---|---|---|---|
+| 0.25 | 1.0000 | 0.9999 | 0.9934 | 0.2016 |
+| 0.5 | 1.0000 | 0.9998 | 0.9890 | 0.1677 |
+| 0.75 | 1.0000 | 0.9995 | 0.9793 | 0.2024 |
+| 1.0 | 0.9900 | 0.9991 | 0.9637 | 0.2653 |
+| 1.5 | 0.8667 | 0.9964 | 0.9157 | 0.4407 |
+| 2.0 | 0.7358 | 0.9874 | 0.8471 | 0.6714 |
+| 2.5 | 0.6667 | 0.9701 | 0.7675 | 0.9186 |
+| 3.0 | 0.6211 | 0.9383 | 0.6974 | 1.1200 |
+| 4.0 | 0.4160 | 0.8387 | 0.6089 | 1.3134 |
+| 5.0 | 0.4954 | 0.6807 | 0.5468 | 1.5323 |
+| 6.0 | 0.4603 | 0.5229 | 0.5430 | 1.6365 |
+| 8.0 | 0.5815 | 0.2809 | 0.5980 | 1.1899 |
+| 10.0 | 0.7990 | 0.1477 | 0.7447 | 0.7335 |
+| 12.0 | 0.8300 | 0.0749 | 0.7868 | 0.6326 |
+| 16.0 | 0.8350 | 0.0228 | 0.7901 | 0.6184 |
+| 20.0 | 0.8250 | 0.0056 | 0.7948 | 0.6167 |
 
 ## Kolmogorov
 
@@ -63,7 +84,7 @@ Unit: (arm,T), pooling learned/misidentified/jitter within each system. Full-ran
 
 | System | Available / attempted units | Learned Tf / status | Accuracy–response controlling ACC | Accuracy–ACC controlling response |
 |---|---|---|---|---|
-| l96 | 32 / 32 | None / pending | 0.9362 | -0.2058 |
+| l96 | 48 / 48 | 10.0 / defined | 0.9454 | -0.4762 |
 
 ## Evidence and completion
 
@@ -88,3 +109,7 @@ Lorenz CNN training complete: 20000 updates, 999681 parameters; best normalized 
 Diagnostic only; no selector or criterion changed. Uniform negative-forcing action 0 is the truth-best action in every eligible Lorenz case at 10, 12, 16, 20 LT. The myopic null selects action 0 for all 200 cases. This is a boundary of the selected action panel, not a universal claim about planning. Selector: final blinded Codex run1 action set; one framing.
 
 Source: `results/l96_posthoc_action_frequency.json`; checked section AAHLPOSTHOC.
+
+## Artifact audit
+
+All 200 learned cases pass the retained-artifact check: one CUDA backend/source/checkpoint, frozen output times and consistent finite-survivor/drop records. The ACC norm-floor correction affects 0 saved physical values and 0 learned values. Calibration replay exactly reproduces all 80 Kolmogorov panel records from 20,480 finite member files. Sources: `results/l96_neural_artifact_audit.json`, `results/kolmo_calibration_audit.json`; checked AAHLNAUDIT/AAHKCAUDIT sections.

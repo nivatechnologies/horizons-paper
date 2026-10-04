@@ -1,0 +1,21 @@
+{
+  "inventory": [
+    {
+      "system": "l96",
+      "files": 1498,
+      "bytes": 674339208,
+      "manifest": "aspen/horizon/runs/l96/artifact_manifest.json",
+      "manifest_sha256": "614635c9459bc55500a72766a3bec41c674cc0888152d2ab6113dcfdc97cc808",
+      "source_sha": "87caf004c20b82e56b32608aa1b9a07f1a6c9373"
+    },
+    {
+      "system": "kolmo",
+      "files": 20486,
+      "bytes": 18109472,
+      "manifest": "aspen/horizon/runs/kolmo/artifact_manifest.json",
+      "manifest_sha256": "98801fd44f581fb05b84b1f3b1b7de33082904ffd320d55d6589f5ef8ab9c41e",
+      "source_sha": "3fe3e5f31e3281c648c0b1272eb082dc032b434a"
+    }
+  ],
+  "note": "Raw artifacts remain under the task checkouts; manifests include per-file SHA256. Scientific source provenance is retained in each launch/summary."
+}
