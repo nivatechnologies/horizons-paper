@@ -12,6 +12,7 @@ def acc(pred,target,mean):
     fa=np.sum(a*a,axis=-1);ob=np.sum(b*b,axis=-1)
     cross=np.sum(a*b,axis=-1)
     ans=np.zeros_like(fa)
+    ans[ob<=0]=np.nan
     use=(ob>0)&(fa>=1e-12*ob)
     ans[use]=cross[use]/np.sqrt(fa[use]*ob[use])
     return ans

@@ -38,10 +38,16 @@ def diagnostics(data):
                              response=a['response_correlation'],response_relative_error=a['response_relative_error']))
     eligible=[r for r in rows if all(r[k] is not None and np.isfinite(r[k]) for k in ['accuracy','ACC','response'])]
     y=[r['accuracy'] for r in eligible];f=[r['ACC'] for r in eligible];r=[r['response'] for r in eligible]
-    learnedTf=next((h['T'] for h in data['horizons'] if 'learned' in h['arms'] and h['arms']['learned']['ACC'] is not None and h['arms']['learned']['ACC']<.2),None)
+    learnedTf=None;learned_status='pending'
+    if not data.get('learned_arm_pending',True):
+        learned_status='censored'
+        for h in data['horizons']:
+            skill=h['arms']['learned']['ACC']
+            if skill is None:learned_status='unavailable';break
+            if skill<.2:learnedTf=h['T'];learned_status='defined';break
     return dict(unit='(arm,grid T), pooled learned/misidentified/jitter within system',inference=False,
                 attempted_units=len(rows),available_units=len(eligible),learned_Tf=learnedTf,
-                learned_Tf_status='pending' if data.get('learned_arm_pending',True) else ('defined' if learnedTf is not None else 'censored_or_unavailable'),
+                learned_Tf_status=learned_status,
                 partial_accuracy_response_controlling_ACC=partial(y,r,f),
                 partial_accuracy_ACC_controlling_response=partial(y,f,r),units=rows)
 

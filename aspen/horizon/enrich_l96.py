@@ -58,7 +58,7 @@ def main():
         a=arrays[h];accuracy=np.mean(a['correct'],axis=0).tolist() if a['correct'] else [None]*6
         df=np.asarray(a['diff']);dt=np.asarray(truthdiff[h])
         record['arms']['learned']=dict(accuracy=accuracy,M95=m95(accuracy) if a['correct'] else None,
-            ACC=mean_available(a['acc']),normalized_regret=mean_available(a['regret']),
+            ACC=mean_available(a['acc']) if len(a['acc'])==200*8 and np.isfinite(a['acc']).all() else None,normalized_regret=mean_available(a['regret']),
             realized_regret=mean_available(a['realized']),
             response_correlation=float(np.corrcoef(df,dt)[0,1]) if len(df)>1 and np.std(df)>0 and np.std(dt)>0 else None,
             response_relative_error=float(np.linalg.norm(df-dt)/np.linalg.norm(dt)) if np.linalg.norm(dt)>0 else None,

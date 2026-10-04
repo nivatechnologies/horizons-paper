@@ -69,8 +69,9 @@ def main(workers):
             pairs=[r for r in cases if r['arms'][arm]['response_differences'][h] is not None]
             df=np.asarray([r['arms'][arm]['response_differences'][h] for r in pairs]).reshape(-1)
             dt=np.asarray([r['truth_differences'][h] for r in pairs]).reshape(-1)
+            acc_values=[v for r in cases for v in r['arms'][arm]['acc'][h]]
             record['arms'][arm]=dict(accuracy=accuracy,M95=m95(accuracy) if n else None,
-                ACC=mean_available([v for r in cases for v in r['arms'][arm]['acc'][h]]),
+                ACC=mean_available(acc_values) if all(v is not None for v in acc_values) else None,
                 normalized_regret=mean_available([r['arms'][arm]['regret'][h] for r in selected]),
                 realized_regret=mean_available([r['arms'][arm]['realized_regret'][h] for r in selected]),
                 response_correlation=float(np.corrcoef(df,dt)[0,1]) if len(df)>1 and np.std(df)>0 and np.std(dt)>0 else None,
