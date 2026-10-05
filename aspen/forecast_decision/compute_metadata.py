@@ -19,6 +19,7 @@ def collect(root=ROOT):
             if not path.exists():continue
             row=json.loads(path.read_text());solver[system+'_'+label]=dict(measured_cpu_wall_seconds=row.get('seconds'),starts=row.get('starts'),dt=row.get('dt'),data_sha256=row.get('sha256'),receipt_sha256=digest(path))
             sources[str(path.relative_to(root))]=digest(path)
-    return dict(at=datetime.datetime.now(datetime.timezone.utc).isoformat(),training=training,solver_data=solver,receipt_source_hashes=sources,
+    stage_hours={stage:sum(v['actual_charged_gpu_hours'] for name,v in training.items() if name!='CNN-20k' and (name.startswith('CNN2-') if stage=='2b' else not name.startswith('CNN2-'))) for stage in ['2','2b']}
+    return dict(completed_training_stage_gpu_hours=stage_hours,at=datetime.datetime.now(datetime.timezone.utc).isoformat(),training=training,solver_data=solver,receipt_source_hashes=sources,
         rule='CPU wall seconds are never relabeled as GPU-hours; GPU time comes only from charged worker receipts')
 if __name__=='__main__':write_json(ROOT/'runs/statistics_compute_metadata.json',collect())

@@ -62,5 +62,50 @@ def run():
             for k,v in bounds(vals).items():
                 expected=boot[subset][field][k]
                 assert v==expected or np.isclose(v,expected,rtol=1e-10,atol=1e-12),(subset,field,k,v,expected)
+    # An unstable rollout twin prevents H1c as well as H2 from making a reading.
+    repair=copy.deepcopy(rows)
+    for i,e in enumerate(repair):
+        e['arms']['CNN-roll']=copy.deepcopy(e['arms']['CNN-20k'])
+        e['arms']['CNN-resp']=copy.deepcopy(e['arms']['N-last'])
+        if i<3:e['arms']['CNN-roll'].update(failed=True,correct=False,chosen=-1,dropped=33,regret_raw=7.,wACC=0.,wRMSE=None,MSRE_num=None,MSRE_den=None,VRE_num=None,VRE_den=None)
+    rr=read_gates(repair,['CNN-20k','CNN-roll'],['CNN-roll'],samples)
+    assert rr['H1c']=='Inconclusive' and rr['H2']=='Inconclusive'
+    # Insufficiency has no hypothesis bounds; prose must safely generate no claim.
+    from result_note import licensed_text,stage2_note
+    for r in empty:r['arms']['CNN-cost']=copy.deepcopy(r['arms']['CNN-20k'])
+    ig=read_gates(empty,['CNN-20k'],[],samples,selected='CNN-20k');ig['licensed_sentences']=[]
+    result=dict(stage='2',selected='CNN-20k',primary=dict(gate=ig))
+    assert licensed_text(result)==[];stage2_note(result,{'status':'PASS'})
+    ig2=read_gates(empty,['CNN-20k'],[],samples,selected='CNN-20k');ig2['licensed_sentences']=['S9']
+    # S9 depends only on insufficiency and is safe even without H1b/H1e bounds.
+    result2=dict(stage='2b',selected='CNN-20k',primary=dict(gate=ig2))
+    assert licensed_text(result2)[0]['id']=='S9'
+    from final_sentences import combined,check_combined
+    rr=copy.deepcopy(rows)
+    for e in rr:
+        e['arms']['CNN-cost']=copy.deepcopy(e['arms']['CNN-20k'])
+        e['arms']['CNN-roll']=copy.deepcopy(e['arms']['CNN-20k'])
+        e['arms']['CNN-resp']=copy.deepcopy(e['arms']['N-last'])
+    gg=read_gates(rr,['CNN-20k','CNN-roll'],['CNN-roll'],samples,selected='CNN-20k')
+    gg['licensed_sentences']=license_ids(gg,'2',selected='CNN-20k')
+    one=dict(stage='2',arms=list(rr[0]['arms']),selected='CNN-20k',primary=dict(gate=gg))
+    twrows=copy.deepcopy(rr)
+    for i,e in enumerate(twrows):
+        e['eligible']=i<100
+        e['arms']={a.replace('N-last','N2').replace('CNN-','CNN2-'):v for a,v in e['arms'].items() if a!='CNN-resp'}
+    tg=read_gates(twrows,['CNN2-20k','CNN2-roll'],['CNN2-roll'],samples,selected='CNN2-20k',two_scale=True)
+    tg['licensed_sentences']=license_ids(tg,'2b',selected='CNN2-20k')
+    two=dict(stage='2b',arms=list(twrows[0]['arms']),selected='CNN2-20k',primary=dict(gate=tg))
+    closed=combined(one,two,'ran');assert 'S9' in closed['final_licensed_sentences']
+    tamper=copy.deepcopy(closed);tamper['final_licensed_sentences'].remove('S9')
+    try:check_combined(one,two,'ran',tamper)
+    except ValueError:pass
+    else:raise AssertionError('missing S9 companion accepted')
+    assert combined(one,None,'pending')['final_licensed_sentences']==[]
+    killed=copy.deepcopy(one);killed['primary']['gate']['H1a']='KILL'
+    assert combined(killed,two,'ran')['campaign_kill'] and combined(killed,two,'ran')['final_licensed_sentences']==[]
+    try:combined(one,two,'not_run')
+    except ValueError:pass
+    else:raise AssertionError('contradictory not-run scope accepted')
     print('PASS: constructed PASS, insufficiency, failure, covariance identity, finite/NaN tamper cases')
 if __name__=='__main__':run()

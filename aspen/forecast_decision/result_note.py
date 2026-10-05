@@ -27,7 +27,7 @@ def licensed_text(result):
         texts['S1']=f"A deterministic learned emulator ({witness}) with window ACC at least as high and window RMSE no higher than the physics arm's identifies the best intervention less often: {P(witness)} against {P(physics)}."
         texts['S1+']=f"…and incurs higher energy regret: {R(witness)} against {R(physics)}, capturing {B(witness)} against {B(physics)} of the attainable energy reduction."
         texts['S8']=f"With unresolved fast scales, where the physics arm knows only the resolved dynamics and fits its closure from the X data the base emulator trains on, a deterministic learned emulator ({witness}) with window ACC at least as high and window RMSE no higher also identifies the best intervention less often: {P(witness)} against {P(physics)}."
-    if selected:
+    if selected and g.get('H1b_bounds') is not None:
         gap=g['H1b_bounds']['point']
         texts['S2']=f"The validation-selected emulator ({selected}) retains a {f(100*gap)}-point gap."
         texts['S2+']=f"…with higher energy regret, capturing {B(selected)} against {B(physics)} of the attainable energy reduction."
@@ -49,7 +49,7 @@ def licensed_text(result):
         texts['S4b']='The counterfactual-supervised emulator is no more than five percentage points worse than the physics arm.'
         texts['S5']='This counterfactual-pair repair retains a gap.'
     texts['S6']='Physics with run-time identification makes better intervention decisions than every tested learned model, in this matched-law setting.'
-    if cost in m:
+    if cost in m and g.get('H1e_bounds') is not None:
         texts['S10']=f'A model trained directly on intervention cost, with solver-generated labels for every action, also identifies the best intervention less often: {P(cost)} against {P(physics)}.'
         texts['S10+']='…with higher energy regret.'
         texts['S10b']=f'A model trained directly on intervention cost, with solver-generated labels for every action, is no more than five points worse than the physics arm: {P(cost)} against {P(physics)}.'
@@ -68,9 +68,9 @@ def stage2_note(result,checker):
     g=result['primary']['gate'];m=g['metrics'];physics='N2' if result['stage']=='2b' else 'N-last';selected=result.get('selected')
     value=lambda x:'unavailable' if x is None else f'{x:.6g}'
     headline='H1a '+str(g['H1a'])+'; H1b '+str(g['H1b'])+'. '
-    if selected:
+    if selected and g.get('H1b_bounds') is not None:
         b=g['H1b_bounds'];headline+=f"Validation-selected {selected}: gap {value(b['point'])}, lower {value(b['lower'])}, upper {value(b['upper'])}; PASS requires gap≥0.10 and lower≥0.05; KILL requires upper≤0.05."
-    choice='stop' if g['H1a']=='KILL' else 'go' if g['H1a']=='PASS' and g['H1b']=='PASS' else 'pivot'
+    choice='stop' if g['H1a']=='KILL' and result['stage']=='2' else 'go' if g['H1a']=='PASS' and g['H1b']=='PASS' else 'pivot'
     reason='H1a KILL ends the campaign under WO §9' if choice=='stop' else 'the full headline thresholds are met, with all mandatory companion readings below' if choice=='go' else 'the full headline is not licensed; Todd decides whether the measured scope warrants an Aspen headline'
     lines=[f"Stage and gate: Stage {result['stage']}, sufficiency then frozen hypotheses at T*=2 LT.",
            f"Headline value now, against the threshold: {headline}",
@@ -84,6 +84,6 @@ def stage2_note(result,checker):
             'Repair readings: '+str(g.get('repairs')),
             'H1e: '+str(g['H1e'])+'; '+str(g.get('H1e_bounds')),
             'H1c: '+str(g['H1c'])+'; H2: '+str(g['H2'])+'; H3: '+str(g['H3']),
-            '', 'Licensed sentences (WO §§7.6–7.7):','']
+            '', 'One-scale conditional sentences; final abstract set remains open until combined Stage2b scope check:' if result['stage']=='2' else 'Licensed two-scale sentences (WO §7.7):','']
     lines.extend(x['id']+': '+x['text'] for x in licensed_text(result));lines+=['','Every displayed number comes from the checked NUMBERS full-metrics record.','']
     return '\n'.join(lines)

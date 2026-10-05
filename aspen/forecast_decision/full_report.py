@@ -26,6 +26,32 @@ def check(rows,result,root=None,source_hashes=True):
     if root is not None and source_hashes:
         for source,expected in result['source_hashes'].items():assert digest(root/source)==expected,'source changed: '+source
     if root is not None:
+        compute=result.get('compute_metadata')
+        if compute is not None:
+            paths=[p for p in result['source_hashes'] if p.endswith('/statistics_compute_metadata.json')]
+            assert len(paths)==1;equivalent(compute,json.loads((root/paths[0]).read_text()))
+            for name,receipt in compute['training'].items():
+                if name!='CNN-20k':equivalent(receipt['actual_charged_gpu_hours'],receipt['actual_charged_gpu_seconds']/3600)
+        raw_panel='twoscale_test' if result['stage']=='2b' else 'test'
+        for group,field in [('primary_learned_measured_seconds','primary_decision_timing'),('primary_optional_physics_measured_seconds','measured_primary_seconds')]:
+            for name,record in result.get(group,{}).items():
+                values=[]
+                for c in range(len(cases)):
+                    meta=root/f'runs/{raw_panel}/{name}_{c:03d}.json'
+                    if not meta.exists():continue
+                    item=json.loads(meta.read_text());value=item.get(field)
+                    if field=='primary_decision_timing':value=value.get('seconds') if value else None
+                    if value is not None:values.append(value)
+                equivalent(record['cases'],len(values));equivalent(record['mean'],float(np.mean(values)) if values else None)
+        if result.get('primary_Nlast_measured_seconds') is not None:
+            values=[]
+            for c in range(len(cases)):
+                path=root/f'runs/{raw_panel}/work_timing_{c:03d}.json'
+                if not path.exists():continue
+                item=json.loads(path.read_text())
+                if item.get('primary_timing_includes_cost_and_argmin') and item.get('measured_primary_Nlast_seconds') is not None:values.append(item['measured_primary_Nlast_seconds'])
+            equivalent(result['primary_Nlast_measured_seconds']['cases'],len(values));equivalent(result['primary_Nlast_measured_seconds']['mean'],float(np.mean(values)) if values else None)
+    if root is not None:
         from protocol import WINDOWS
         raw_panel='twoscale_test' if result['stage']=='2b' else 'test'
         for row in cases:
@@ -64,7 +90,7 @@ def check(rows,result,root=None,source_hashes=True):
                 split=stored[subset].get('cost_difference_split')
                 if split:equivalent(split['total_MSE'],split['mean_part_MSE']+split['spread_part_MSE']+split['cross_MSE'])
             if 'bootstrap' in stored:
-                samples=rng('afd-bootstrap',3,member=j+100).integers(200,size=(2000,200))
+                samples=rng('afd2-bootstrap' if result['stage']=='2b' else 'afd-bootstrap',3,member=j+100).integers(len(cases),size=(2000,len(cases)))
                 equivalent(stored['bootstrap'],bootstrap_metrics(entries,name,samples))
         if 'null_metrics' in panel:
             J=np.array([e['arms'][result['arms'][0]]['J'] for e in entries]);J0=np.array([e['arms'][result['arms'][0]]['J0'] for e in entries]);scale=float(np.median(np.ptp(J,axis=1)))
@@ -124,6 +150,7 @@ def main():
     except (ValueError,AssertionError):pass
     else:raise AssertionError('NaN tamper accepted')
     checked.update(tamper_rejected=True,NaN_rejected=True)
+    if result['stage']=='2':checked.update(final_abstract_sentence_set='OPEN pending combined Stage2b scope check',final_sentence_set_closed=False)
     write_json(a.root/f'runs/{a.stage}_metrics_checker.json',checked)
     fragment='# NUMBERS full metrics\n\nChecked measured descriptions; this file is a NUMBERS fragment for campaign registration.\n\n```json\n'+json.dumps(result,indent=2,allow_nan=False)+'\n```\n\nChecker: '+json.dumps(checked,sort_keys=True)+'\n'
     fragment+='\n| Artifact | SHA256 |\n|---|---|\n'

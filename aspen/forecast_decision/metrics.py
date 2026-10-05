@@ -184,7 +184,7 @@ def read_gates(entries,S,Rep,samples,selected=None,two_scale=False):
     out['REG']=regs
     if not two_scale and 'CNN-resp' in names and 'CNN-roll' in names:
         resp='CNN-resp';roll='CNN-roll';g=gap(physics,resp);d=gap(resp,roll);reliable=metrics[resp]['reliable'] and metrics[roll]['reliable']
-        out['H1c_bounds']=g;out['H1c']='CLOSES' if metrics[resp]['reliable'] and le(g['upper'],.05) else 'OPEN' if metrics[resp]['reliable'] and ge(g['point'],.10) and finite(g['lower']) and g['lower']>0 else 'Inconclusive'
+        out['H1c_bounds']=g;out['H1c']='CLOSES' if reliable and le(g['upper'],.05) else 'OPEN' if reliable and ge(g['point'],.10) and finite(g['lower']) and g['lower']>0 else 'Inconclusive'
         matched=all(finite(metrics[resp]['eligible'][k]) and finite(metrics[roll]['eligible'][k]) and abs(metrics[resp]['eligible'][k]-metrics[roll]['eligible'][k])<=.02 for k in ['wACC','wRMSE'])
         evaluable=ge(gap(physics,roll)['point'],.15)
         out['H2_bounds']=d;out['H2']='REPAIR WORKS' if evaluable and reliable and matched and ge(d['point'],.10) and finite(d['lower']) and d['lower']>0 else 'REPAIR FAILS' if evaluable and reliable and matched and le(d['upper'],.05) else 'Inconclusive'
