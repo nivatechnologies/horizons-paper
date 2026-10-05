@@ -39,6 +39,14 @@ def copy_final(name):
         if metadata is not None:
             write_json(destination.with_suffix('.training.json'),metadata)
             run(['scp',str(destination.with_suffix('.training.json')),'sulaco:'+REMOTE+'/runs/evaluation_checkpoints/'+name+'/selected.training.json'])
+    remote_checkpoint=REMOTE+'/runs/evaluation_checkpoints/'+name+'/selected.pt'
+    remote_hash=subprocess.run(['ssh','sulaco','sha256sum '+shlex.quote(remote_checkpoint)],capture_output=True,text=True)
+    if remote_hash.returncode or remote_hash.stdout.split()[0]!=digest(destination):
+        run(['ssh','sulaco','mkdir -p '+shlex.quote(REMOTE+'/runs/evaluation_checkpoints/'+name)])
+        run(['scp',str(destination),'sulaco:'+remote_checkpoint])
+    if metadata is not None:
+        write_json(destination.with_suffix('.training.json'),metadata)
+        run(['scp',str(destination.with_suffix('.training.json')),'sulaco:'+REMOTE+'/runs/evaluation_checkpoints/'+name+'/selected.training.json'])
     if name!='CNN-20k':
         normalization=ROOT/'runs/training'/name/'normalization.json'
         if normalization.exists():
@@ -52,7 +60,7 @@ def evaluate(name,checkpoint,panel,count):
         target=REMOTE+'/runs/'+panel+'/'+name+f'_{case:03d}.npz'
         ready=subprocess.run(['ssh','sulaco','test -f '+shlex.quote(REMOTE+'/runs/'+panel+f'/cpu_{case:03d}.npz')],capture_output=True)
         if ready.returncode:return False
-        done=subprocess.run(['ssh','sulaco','test -f '+shlex.quote(target)],capture_output=True)
+        done=subprocess.run(['ssh','sulaco','test -f '+shlex.quote(target)+' && test -f '+shlex.quote(target[:-4]+'.json')],capture_output=True)
         needs_timing=(panel=='test' and case<16 and name=='CNN-20k')
         if done.returncode==0 and not needs_timing:continue
         arguments=[PYTHON,'stage2_inference.py','--name',name,'--checkpoint',remote_cp,
@@ -72,6 +80,7 @@ def main():
     manifest_path=DIRECTORY/'manifest.json'
     manifest=json.loads(manifest_path.read_text()) if manifest_path.exists() else dict(stage=2,arms={},complete=False,
        test_access_agents=['/root/stage2_inference'],frozen_selection_manifest='runs/training/final_selection_stage2.json')
+    write_json(manifest_path,manifest)
     while True:
         excluded=cuts();manifest['cut_models']=excluded
         for name in NAMES:

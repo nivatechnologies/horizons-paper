@@ -92,7 +92,7 @@ def main(name,checkpoint,panel,case,micro):
     checkpoint=checkpoint.resolve()
     record=register(checkpoint,name,panel)
     directory=ROOT/'runs'/panel;target=directory/f'{name}_{case:03d}.npz'
-    existing=target.exists()
+    existing=target.exists() and target.with_suffix('.json').exists()
     if existing:
         meta=json.loads(target.with_suffix('.json').read_text())
         if meta['checkpoint_sha256']!=record['checkpoint_sha256']:raise RuntimeError('checkpoint mismatch on resume')
