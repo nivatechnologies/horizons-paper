@@ -6,11 +6,11 @@ The process exits before releasing the lock, so validation has no resident rival
 import argparse, datetime, fcntl, json, time
 from pathlib import Path
 import numpy as np
+from evaluation_hold import hold_active
 from protocol import ROOT, SIGMA, LT, WINDOWS, TICKS, PRIMARY, patterns, digest, write_json
 
 def test_hold_guard():
-    marker=ROOT/'runs/stage2_test_hold.json'
-    if marker.exists() and json.loads(marker.read_text()).get('held',True) is not False:
+    if hold_active(ROOT):
         raise SystemExit('Todd hold: no Stage 2 test evaluation')
 
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
@@ -18,7 +18,7 @@ def register(checkpoint,name,panel):
     record=dict(kind='Stage2 checkpoint and inference source before own test evaluation',name=name,
                 panel=panel,recorded_at=now(),checkpoint=str(checkpoint.relative_to(ROOT)),
                 checkpoint_sha256=digest(checkpoint),source_hashes={n:digest(ROOT/n) for n in
-                ['stage2_inference.py','models.py','protocol.py']})
+                ['stage2_inference.py','models.py','protocol.py','evaluation_hold.py']})
     training_record=checkpoint.with_suffix('.training.json')
     if training_record.exists():
         record['training_metadata_sha256']=digest(training_record)

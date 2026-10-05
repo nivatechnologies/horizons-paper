@@ -4,6 +4,7 @@ No training/selection process imports this module or has access to its outputs.
 """
 import json, shlex, subprocess, time
 from pathlib import Path
+from evaluation_hold import hold_active
 from protocol import ROOT, digest, write_json
 REMOTE='/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision'
 GPU_LOCK='/home/todd/work/aspen-forecast-decision-20261005/gpu.lock'
@@ -16,8 +17,7 @@ def run(args):
     return subprocess.run(args,check=True,capture_output=True,text=True).stdout
 
 def held():
-    marker=ROOT/'runs/stage2_test_hold.json'
-    return marker.exists() and json.loads(marker.read_text()).get('held',True) is not False
+    return hold_active(ROOT)
 
 def stopped():
     if held():return True
@@ -119,7 +119,7 @@ def main():
     authorization=json.loads(authorization_path.read_text())
     if authorization.get('authorized') is not True or authorization.get('authority')!='WO v5.2 §9':
         raise RuntimeError('Stage2 continuation not authorized')
-    for name in ['stage2_inference.py','models.py','protocol.py']:
+    for name in ['stage2_inference.py','models.py','protocol.py','evaluation_hold.py']:
         run(['scp',str(ROOT/name),'sulaco:'+REMOTE+'/'+name])
     manifest_path=DIRECTORY/'manifest.json'
     manifest=json.loads(manifest_path.read_text()) if manifest_path.exists() else dict(stage=2,arms={},complete=False,
