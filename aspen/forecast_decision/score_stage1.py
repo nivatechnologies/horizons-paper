@@ -82,14 +82,19 @@ def score():
         with np.load(ROOT/f"runs/val/cpu_{c:03d}.npz") as d:
             fixed_choices.append(int(d["truth_cost"][:8,:1024,PRIMARY].mean(1).argmin()))
     fixed=int(np.bincount(fixed_choices,minlength=8).argmax())
-    rows=[]
-    # Coordinator compute threads; case streams are fixed and independent.
-    with ThreadPoolExecutor(max_workers=8) as pool:
-        futures=[pool.submit(score_one,c,climate,fixed) for c in range(200)]
-        for c,future in enumerate(futures):
-            rows.append(future.result())
-            write_json(ROOT/"runs/stage1_cases_partial.json",dict(cases=rows))
-            print("scored",c+1,flush=True)
+    cached=ROOT/"runs/stage1_cases.json"
+    if cached.exists():
+        rows=json.loads(cached.read_text())["cases"]
+        assert len(rows)==200
+    else:
+        rows=[]
+        # Coordinator compute threads; case streams are fixed and independent.
+        with ThreadPoolExecutor(max_workers=8) as pool:
+            futures=[pool.submit(score_one,c,climate,fixed) for c in range(200)]
+            for c,future in enumerate(futures):
+                rows.append(future.result())
+                write_json(ROOT/"runs/stage1_cases_partial.json",dict(cases=rows))
+                print("scored",c+1,flush=True)
     readings=[]
     for j,T in enumerate(LEADS[1:]):
         entries=[r["leads"][j] for r in rows]
@@ -108,7 +113,7 @@ def score():
             arm[name]=dict(P=P[name],wACC=skill,wRMSE=float(np.mean(rmses)) if rmses else None,
                  failed_cases=failures,dropped_members=dropped,attempted_members=200*64,
                  reliable=failures<=2 and dropped<=128,
-                 excluded_wRMSE_cases=sum(m and v["failed"] for v,m in zip(a,mask)),
+                 excluded_wRMSE_cases=int(sum(m and v["failed"] for v,m in zip(a,mask))),
                  all_case_wACC=float(np.mean([v["wACC"] for v in a])))
         R=rng("afd-bootstrap",3,member=j+100)
         samples=R.integers(200,size=(2000,200))
