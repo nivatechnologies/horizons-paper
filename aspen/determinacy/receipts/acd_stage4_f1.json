@@ -1,0 +1,102 @@
+{
+  "status": "ILLUSTRATIVE",
+  "case": 6,
+  "k": 0,
+  "l": 5,
+  "lead": 2,
+  "draw_indices": [
+    14,
+    0
+  ],
+  "draw_costs": [
+    [
+      [
+        9.27987737181961,
+        7.492714681011758,
+        6.832710240916938,
+        6.726930866605574,
+        7.172032864393814,
+        8.246540712201048,
+        9.996385798417828,
+        9.491844225560081
+      ],
+      [
+        9.393582873938188,
+        7.65847105754538,
+        6.962529398403338,
+        6.734008123389611,
+        7.013716133909246,
+        8.13684904142879,
+        10.674720634190214,
+        10.930134252466551
+      ]
+    ],
+    [
+      [
+        9.355839129305627,
+        7.559990278290222,
+        6.925987377627723,
+        6.926198251104232,
+        7.430777722439444,
+        8.333479765116417,
+        9.70571141454435,
+        8.768286933002566
+      ],
+      [
+        9.469825339659243,
+        7.711414379679902,
+        7.007715880827365,
+        6.887027345810297,
+        7.347119627115835,
+        8.42133774570479,
+        10.518190136166165,
+        9.516124718747399
+      ]
+    ]
+  ],
+  "probe_sites": [
+    11,
+    9,
+    10,
+    33
+  ],
+  "probe_values": [
+    -1.7231909041230495,
+    5.255713574446029,
+    10.161569775597064,
+    -3.826249491129098
+  ],
+  "pre_probability": 0.05859375,
+  "post_probability": 0.0,
+  "post_modal": false,
+  "observation_confident_actions": [
+    2,
+    3,
+    5,
+    6
+  ],
+  "candidates": [
+    {
+      "case": 0,
+      "qualifies": false
+    },
+    {
+      "case": 1,
+      "qualifies": false
+    },
+    {
+      "case": 3,
+      "qualifies": false
+    },
+    {
+      "case": 6,
+      "qualifies": true
+    }
+  ],
+  "source_hashes": {
+    "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs/conf/case_006.npz": "e52769669e87c90afe529b880dff6f5c519b76f3a0eabf3f057726bf1734652f",
+    "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs/conf/score_006.npz": "98873b5b80b0c7de418d1859d384c0bbb1bf66c7d3f581ec681ccd9f54dca210",
+    "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs/conf/measure/refit_006_3_0.npz": "58eb173452b48f5b50715ba704b215848efd872df7c1ceb86b31d98f07592566"
+  },
+  "resolution": "R-other: only window-energy trajectories of individual draws are saved; no individual state trajectory is reconstructed. Illustrative energy curves carry no population claim."
+}

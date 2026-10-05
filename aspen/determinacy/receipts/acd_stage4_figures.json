@@ -1,0 +1,28 @@
+{
+  "source_hashes": {
+    "receipts/acd_stage2.json": "16b009b1bb3038866f7336a9217a9182b1ae5df27961cab91583760886fbcce1",
+    "receipts/acd_stage1.json": "862f72455080ef4d39f950acd39a42974f60169f00c48d94fd797e1f9316b864",
+    "receipts/acd_step0.json": "d34849c878194bf49d1e52f80e4ab9749e4c8088968a6db3edff65617e7e31e8",
+    "receipts/acd_stage4_f1.json": "91a1e602e7e6ba9915493b8ca700eec8d34349a1a954b9c5fdd15116ee268584"
+  },
+  "outputs": {
+    "figures/F1_illustrative.pdf": "d163c4893258df21c69ff73b153e58840af8961c78a0e856ba4b1213464e7e77",
+    "figures/F1_illustrative.png": "c14827ef8091fbc4e318abafb5b57a0ddd5ae6820ec540da85274c6d1c877f57",
+    "figures/F2_confidence.pdf": "b9c9e1d2a4335ab6298269224c1f16f73362dcdeabb2b89b5f3610ffa645b5f4",
+    "figures/F2_confidence.png": "53b682dd8ea2f3c396f325bc78f63b4580b3081e3eed9cb4531e565b71bbc9cd",
+    "figures/F3_mechanism.pdf": "70445efb102622321c0c19711d4f4dbf4c1ad65c1d6098e0bb019aaaeccb45f7",
+    "figures/F3_mechanism.png": "83da45006566d4615c89e87f659f58d3b2494c4d4c73293d8b2de172feef1c70",
+    "figures/F4_reliability.pdf": "c108c92664a5aa63b1d07e3a87f27638e54621b4c683d3906612ba9b80031c2d",
+    "figures/F4_reliability.png": "5816ab62ef73f177a8e4811f82283d01b41da9dee08ddd64c9c967674a1f6387",
+    "figures/F5_measurements.pdf": "6d57535d988802cf7b8eae2acf9674ce112a286c96e5bdb4cf46e7c92edf5947",
+    "figures/F5_measurements.png": "c96e1e42e4fe93101687bc63d8a4c0bd2426190c0310699a6387a34bb4e2de0a",
+    "figures/CAPTIONS.md": "1438144e5c707438df196c15f4ac5f9c0f2791044f22be002f73736c41f8d946"
+  },
+  "captions": {
+    "F1_illustrative": "Illustrative, first qualifying confirmation case 6, actions 0/5, 2 LT. First saved draw of each opposing P answer; before p=0.05859375, after Q p=0.0, correct. R-other: curves show saved window-energy forecasts, not individual physical-state trajectories (not saved); no reintegration. Draw identity uses line style and marker; action identity uses grey shade and filled/open markers. Saved four-site probe. No generalization from this selected case.",
+    "F2_confidence": "Confirmation R1, frozen threshold and null. Observation-confident solid circles; all-confident dashed squares. P/B only at 2 and 3 LT under frozen cuts; lines connect tested leads without imputing other readings. Fc is the sign of the unforced window-energy anomaly.",
+    "F3_mechanism": "Confirmation R1m saved medians and IQR dispersion bands; no new statistics. Divergence uses saved output ticks on a Lyapunov-time axis, not per-window quartiles. z_D solid circles/slash hatching; z_F dashed squares/cross hatching. Stored R1m bootstrap intervals are approximate and descriptive; these plotted bands are quartiles, not bootstrap confidence intervals.",
+    "F4_reliability": "Saved aggregate reliability bins. Posterior/crude/CNN are confirmation; RML is development and is labelled development. CNN is the deterministic CNN emulator at its frozen lead. Posterior/crude/RML aggregate their saved tested leads; CNN is 2 LT only. Curves have distinct line styles and markers. These mixed panels and bin aggregates do not establish a comparator ordering or RML confirmation performance.",
+    "F5_measurements": "Confirmation R5 arms Q/F/V/R, frozen first 60 qualifying cases at 2 LT. Arm A was cut; no all-site value is imputed. One persistent F-arm diagnostic failure remains unresolved in the denominator. Q did not reliably beat the best alternative (saved route DOES NOT BEAT). Counts shown are correct/population; all settled answers were correct."
+  }
+}

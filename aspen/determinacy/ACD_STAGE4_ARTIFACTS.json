@@ -1,0 +1,57 @@
+{
+  "base": "c1d692a06483dd57e4d6159f43333d53fa0ab8ca",
+  "panel": "existing receipts",
+  "hard_stops": [],
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "finding": "Protocol and structural literals have no numeric Stage2 JSON field",
+      "resolution": "Identify contract/source constants separately; empirical values point to actual Stage2 paths. Derived values carry actual input paths and operations; no fabricated receipt path."
+    },
+    {
+      "rule": "R-other",
+      "finding": "Per-question z_D/z_F distribution and window-level divergence quartiles are not saved",
+      "resolution": "Report ratio of saved medians explicitly; window divergence point only. Preserve saved tick-level divergence median/IQR separately; no invented quartiles or new statistic."
+    },
+    {
+      "rule": "R-other",
+      "finding": "Individual physical-state trajectories are not saved for qualifying F1 case 6",
+      "resolution": "Show existing opposing-draw window-energy curves and saved Q probe, labelled illustrative. Do not reconstruct state trajectories."
+    },
+    {
+      "rule": "R-other",
+      "finding": "Amplitude-matched climatological states are not on disk",
+      "resolution": "No new climatological run. Matched observation confidence and R2b unavailable away from 0.16; display frozen-null-relative exploratory proxies explicitly, with no route status or abstract license."
+    },
+    {
+      "rule": "R-other",
+      "finding": "Abstract/title payload is a paste placeholder",
+      "resolution": "Preserve exact supplied payload and record input FIX. No scientific claims assessed, no fabricated abstract, no sign-off; remaining receipt work complete."
+    }
+  ],
+  "abstract_status": "MISSING DRAFT: INPUT FIX; SCIENTIFIC AUDIT OPEN",
+  "audit_counts": {
+    "OK": 0,
+    "FIX": 1,
+    "scientific_claims": 0
+  },
+  "verification": "PASS",
+  "outputs": {
+    "ACD_ABSTRACT_AUDIT.md": "7d58b862af20d9883205d83bf8fe120782f7d45a35511d8fcc7d0e830b3f7276",
+    "ACD_ABSTRACT_DRAFT.md": "f2c03b6f5b39e5acc73e49a80a1a0c3cdad6b809be22cdd3cadebd09e4da5d7d",
+    "ACD_AMPLITUDE_EXPLORATORY.md": "d689dce362c152a4afd0370a5761739043c6de4a8dafda320593afdb0e935830",
+    "ACD_EXECUTION_REPAIR.md": "9e6b2182577b190592105cced2ffebd3ca59458f5bfdc1583a6268788e8bd874",
+    "ACD_FREEZE.md": "ff04820b81450163db9d815c64f0c9fa5a8192e5b3db8925cc24711e6609a21a",
+    "ACD_FREEZE_CODE.md": "ba3cd480e05f3351dbcbea10a86eb078fe8ac77973f4267c5eb55436fc53bbcc",
+    "ACD_MECHANISM.md": "a578b78179219af0d59bbb292b87204ae38c5b42377455786db62926855b06e8",
+    "ACD_NUMERICAL_REPORT.md": "4cc5249823da1f1c7c37cbb8e0c23f81078c3fa7b56fc69a15e03cfe08786489",
+    "ACD_SPEC_GATE.md": "f44ca2fcace045909f0dfb1be01fa3b853f205d05bb68dd418f8753b59468f83",
+    "ACD_STAGE1A_VALIDATION.md": "2329c4fe8c454814265f4ac970cd7feef3534c45ce5d804f69bc69f274100a82",
+    "ACD_STAGE1_READING.md": "f462312bdd2fd44989df39a3931edbda05f1371b92914bde89a1460d41e49a98",
+    "ACD_STAGE2_READING.md": "04a2b41ca75770343317f9f4c4f02cff7509df4fff641171c58b205e26a83cae",
+    "ACD_STAGE4_REPORT.md": "5a0618ecbd68513b1337a4ab91118d174db1d083c7a6698f6d18024194b60d3a",
+    "ACD_STATS_AUDIT.md": "fd63e019326ecb9acd4f7a8300f589ea92bbb8be543740bc47554f16542b6507",
+    "ACD_STATS_AUDIT_v2.3.json": "a81c7a31503efb2e665efede76f810e45122a695bf664973cfbe645d2ceec2f6",
+    "ACD_STEP0.md": "7d449d5032dfc935fe6f00fc051d518eec5c6d2fd9fad6ac30f5b03f4469f7ea"
+  }
+}

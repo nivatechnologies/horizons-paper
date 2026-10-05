@@ -23,3 +23,13 @@ Historical ledger text is preserved in `sources/Ledger_pre_stage1.md`. Related: 
 The historical development-only risks above describe Stage1. Confirmation numbers now determine publication licensing under §11; every licensed or unavailable sentence is enumerated in the confirmation reading. Scope remains this one-scale perfect-model Lorenz-96 setting; no broader system claim is licensed. Resolution rules: R-diag, R-other, R-rml, R-time.
 
 [Confirmation reading](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE2_READING.md). Related: [[R_Aspen-Counterfactual-Determinacy-Confirmation-2026-10]].
+
+## Stage4 abstract-to-license ledger — 2026-10-05
+
+The scientific abstract is absent from the request; this is an intake FIX, not an audited scientific sentence. Existing confirmation licenses remain unchanged. Publication route is PUBLISH under §11, but the factual release audit remains OPEN.
+
+| Abstract sentence / supplied payload | L# | NUMBERS keys | Audit verdict |
+|---|---|---|---|
+| [paste the abstract above, plus title] | None — missing title and abstract | None | FIX: supply verbatim draft; 0 scientific sentences assessed |
+
+Receipt-backed numbers, mechanism and greyscale figures are complete. Optional amplitude results are development/exploratory and license nothing in the abstract. Changed-amplitude null proxies do not extend the frozen scientific claim. Stage4 R-other findings and resolutions: ACD_STAGE4_REPORT.md.

@@ -1,0 +1,27 @@
+{
+  "status": "PASS",
+  "checks": {
+    "registry regeneration": true,
+    "NUMBERS_ACD.md tamper returns nonzero": true,
+    "numbers_acd.json tamper returns nonzero": true,
+    "unmatched text fails and prints literal": true,
+    "numeric lexer signs decimals scientific percent counts": true,
+    "decimal rounding": true,
+    "scientific rounding": true,
+    "Stage2 every visible number": true,
+    "development baseline shares 2": true,
+    "development baseline shares 3": true,
+    "development baseline R2b": true,
+    "F1 designated pair": true,
+    "F1 opposite P answers": true,
+    "figure renderer exits zero": true,
+    "PDF/PNG and caption reproduction bitwise": true,
+    "figure receipt source hashes": true,
+    "original checker archive": true,
+    "scientific modules unchanged": true,
+    "unforced invariants checked": 1000,
+    "baseline full forecast invariants checked": 200
+  },
+  "stage2_numeric_extraction": 544,
+  "total_checks": 1218
+}
