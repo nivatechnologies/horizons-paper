@@ -19,6 +19,9 @@ def has_val2():
     r=subprocess.run(['ssh','sulaco','test -f '+REMOTE+'/runs/selection_inputs/validation2_inputs.npz'])
     return r.returncode==0
 def launch(name,gpu,micro):
+    closure=ROOT/'runs/training/closure_control.json'
+    if closure.exists() and not json.loads(closure.read_text()).get('new_training_launches',True):
+        raise RuntimeError('Campaign closed: all new training launches prohibited')
     capacity=subprocess.run(['ssh','baccus','nvidia-smi --query-gpu=index,name,memory.total,memory.used --format=csv,noheader'],check=True,capture_output=True,text=True).stdout
     directory=ROOT/'runs/training'/name;directory.mkdir(parents=True,exist_ok=True)
     (directory/'scheduler_capacity.txt').write_text(now()+'\n'+capacity)
@@ -105,6 +108,9 @@ def main(cuts):
             gpu=1 if name in ['CNN2-20k','CNN2-R2'] else 0 if name=='CNN2-cost' else 2
             ACTIVE[name]=(pid,gpu)
     while True:
+        closure=ROOT/'runs/training/closure_control.json'
+        if closure.exists() and json.loads(closure.read_text()).get('campaign_closed'):
+            print(now(),'campaign closed: no new training or pilot launches',flush=True);return
         control=ROOT/'runs/campaign_control.json'
         if control.exists() and json.loads(control.read_text()).get('execution')=='stop':
             print(now(),'root stop: no further launches',flush=True);return

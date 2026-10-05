@@ -143,6 +143,7 @@ def run(interval, enforce):
         rows = {}
         alerts = []
         control = load(ROOT / "runs/campaign_control.json")
+        closure=load(ROOT/'runs/training/closure_control.json')
         authorization = load(ROOT / "runs/stage2_authorization.json")
         campaign_stop = bool(control and control.get("campaign") == "aspen-forecast-decision"
                              and control.get("execution") == "stop")
@@ -228,6 +229,11 @@ def run(interval, enforce):
                     warning = "Measured recent update rate projects required exact count beyond conservative cap"
                     alerts.append(f"{name}: {warning}")
             stopped = old and old.get("stop_requested", False)
+            named_closed_stop=bool(closure and name in closure.get('only_named_stop',[]))
+            if named_closed_stop:
+                state[name]['stop_requested']=True
+                state[name]['stop_reason']='Todd WO Section19 closure: named CNN-cost stop only; preserve other running jobs within caps'
+                stopped=True
             checkpoints=list(directory.glob('checkpoint_*.pt'))
             all_scheduled_acknowledged=bool(checkpoints) and all(
                 p.with_suffix('.json').exists() and
@@ -282,6 +288,8 @@ def run(interval, enforce):
                        all_scheduled_checkpoints_acknowledged=all_scheduled_acknowledged,
                        variable_budget_stop_triggered=variable_budget_stop,
                        stop_reason=state[name].get('stop_reason'),
+                       campaign_closed=bool(closure and closure.get('campaign_closed')),
+                       named_closure_stop=named_closed_stop,
                        selection_allowed=not stopped and remaining is not None and admission_reserve is not None and remaining > admission_reserve,
                        selector_charge_sources=sources, active_selector_record=active_record,
                        selector_reservation_sources=reservation_sources,

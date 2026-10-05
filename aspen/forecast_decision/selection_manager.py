@@ -3,6 +3,16 @@ from pathlib import Path
 local=Path(__file__).resolve().parent
 remote='/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision'
 def guard_path(name):return local/'GUARD_STATUS'/(name+'.json')
+def closed_selection_allowed(name):
+ control=local/'runs/training/closure_control.json'
+ if not control.exists():return True
+ closure=json.loads(control.read_text())
+ if not closure.get('campaign_closed'):return True
+ allowed=closure.get('permitted_closed_reference_checkpoint_validation',{}).get(name)
+ guard=guard_path(name)
+ if not allowed or not guard.exists():return False
+ observed=json.loads(guard.read_text())
+ return observed.get('pid')==allowed['pid'] and observed.get('start_ticks')==allowed['start_ticks']
 def ssh(cmd,name=None):
  p=subprocess.Popen(['ssh','sulaco',cmd],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
  while p.poll() is None:
@@ -18,6 +28,8 @@ def ssh(cmd,name=None):
  return stdout
 while True:
  for name in ['CNN-cost','CNN-R2','CNN2-cost','CNN2-R2','CNN-roll','CNN-80k','CNN-5k','CNN2-20k','CNN2-roll']:
+  closure=local/'runs/training/closure_control.json'
+  if not closed_selection_allowed(name):continue
   input_name='validation2_inputs.npz' if name.startswith('CNN2-') else 'validation_inputs.npz'
   ready=subprocess.run(['ssh','sulaco','test -f '+remote+'/runs/selection_inputs/'+input_name])
   if ready.returncode:continue
@@ -37,6 +49,7 @@ while True:
    args=['aa-exec','-p','chrome','--','/home/todd/.local/bin/bwrap','--ro-bind','/','/','--proc','/proc','--dev-bind','/dev','/dev','--tmpfs','/mnt','--tmpfs','/home','--tmpfs','/tmp','--dir','/tmp/worker','--ro-bind',remote+'/runs/selection_source','/tmp/worker/source','--ro-bind',remote+'/runs/selection_inputs/'+input_name,'/tmp/worker/validation_inputs.npz','--bind',rd,'/tmp/worker/out','--ro-bind','/home/todd/niva-datagen/.venv','/tmp/venv','--unsetenv','PYTHONPATH','--chdir','/tmp/worker/source','--','/tmp/venv/bin/python','selection_worker.py','--checkpoint','/tmp/worker/out/'+cp.name,'--inputs','/tmp/worker/validation_inputs.npz','--output','/tmp/worker/out/'+ack.name,'--microbatch','8']
    args+=['--model-name',name]
    command='flock '+shlex.quote('/home/todd/work/aspen-forecast-decision-20261005/gpu.lock')+' '+shlex.join(args)
+   if not closed_selection_allowed(name):break
    # Recheck after transfers and any wait: a prior checkpoint may have consumed the margin.
    latest_guard=guard_path(name)
    if latest_guard.exists() and not json.loads(latest_guard.read_text()).get('selection_allowed',True):
@@ -62,6 +75,8 @@ while True:
    subprocess.run(['scp',f'sulaco:{rd}/{ack.name}',str(ack_tmp)],check=True)
    subprocess.run(['scp',f'sulaco:{rd}/{ack.with_suffix(".npz").name}',str(ack.with_suffix('.npz'))],check=True)
    raw_ack=json.loads(ack_tmp.read_text());raw_ack['selector_reservation_wall_seconds']=finished-started
+   if closure.exists() and json.loads(closure.read_text()).get('campaign_closed'):
+    raw_ack['authority_status']='CLOSED_REFERENCE_ONLY: existing frozen job finish/budget accounting; not authoritative for a future WO'
    raw_ack['selector_reservation_bound_label']='remote command wall upper bound; not measured GPU time'
    ack_tmp.write_text(json.dumps(raw_ack,indent=2)+'\n')
    if name in ['CNN-R2','CNN2-R2'] and step=='002000':
@@ -77,6 +92,9 @@ while True:
    reservation_tmp.replace(reservation)
    subprocess.run(['scp',f'sulaco:{rd}/checkpoint_selection.json',str(own/'selection.json')],check=True)
    decision=json.loads((own/'selection.json').read_text());best=decision['step']
+   if closure.exists() and json.loads(closure.read_text()).get('campaign_closed'):
+    decision['authority_status']='CLOSED_REFERENCE_ONLY: retain candidates; no new L*/FINAL reading; future WO must reauthorize selection'
+    (own/'selection.json').write_text(json.dumps(decision,indent=2)+'\n')
    bestcp=own/f'checkpoint_{best:06d}.pt'
    import shutil
    shutil.copy2(bestcp,own/'selected.pt')

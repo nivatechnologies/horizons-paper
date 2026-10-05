@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 task_root=/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision
+/usr/bin/python3 - "$task_root/runs/training/closure_control.json" <<'PY'
+import json,sys
+from pathlib import Path
+p=Path(sys.argv[1])
+if p.exists() and not json.loads(p.read_text()).get('new_training_launches',True):
+    raise SystemExit('WO Section19 closure: new training launch prohibited')
+PY
 model_name=$1
 gpu_index=$2
 microbatch=$3

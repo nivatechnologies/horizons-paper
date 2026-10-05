@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 task_root=/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision
+/usr/bin/python3 - "$task_root/runs/training/closure_control.json" <<'PY'
+import json,sys
+from pathlib import Path
+p=Path(sys.argv[1])
+if p.exists() and not json.loads(p.read_text()).get('pilot_allowed',True):
+    raise SystemExit('WO Section19 closure: pilot launch prohibited')
+PY
 exec /home/todd/.local/bin/bwrap \
   --ro-bind / / --proc /proc --dev-bind /dev /dev \
   --tmpfs /mnt --tmpfs /home --tmpfs /tmp --dir /tmp/worker \

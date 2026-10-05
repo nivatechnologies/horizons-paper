@@ -167,6 +167,8 @@ def finalize_system(two,cuts):
 
 def main():
     while True:
+        closure=ROOT/'runs/training/closure_control.json'
+        if closure.exists() and not json.loads(closure.read_text()).get('final_selection_allowed',True):return
         control=ROOT/'runs/campaign_control.json'
         if control.exists() and json.loads(control.read_text()).get('execution')=='stop':return
         cutfile=ROOT/'runs/training/cuts.json'
