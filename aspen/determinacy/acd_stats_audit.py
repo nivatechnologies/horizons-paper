@@ -1,4 +1,4 @@
-"""Synthetic-only v2.2 audit, reproducible on sulaco CPU."""
+"""Synthetic-only v2.3 audit, reproducible on sulaco CPU."""
 import argparse
 import hashlib
 import json
@@ -9,14 +9,14 @@ from pathlib import Path
 import numpy as np
 import scipy
 from scipy.stats import binom, binomtest
-from statistics import (cp_bounds, mcnemar, r0, r0_f, r0_pass_batch,
+from acd_stats import (cp_bounds, mcnemar, r0, r0_f, r0_pass_batch,
                         interval_noncoverage_batch, positive_r2_route_batch,
                         one_sided, interval, descriptive_ratio_bootstrap)
 
 
 def estimate(values, nominal=None):
     rate = float(np.mean(values))
-    se = math.sqrt(rate * (1 - rate) / len(values))
+    se = math.sqrt((nominal * (1 - nominal) if nominal is not None else rate * (1 - rate)) / len(values))
     result = dict(rate=rate, mc_se=se, panels=len(values), events=int(np.sum(values)))
     if nominal is not None:
         result.update(nominal=nominal, limit=nominal + 2 * se,
@@ -76,13 +76,24 @@ def exact_audit():
 def run(args):
     started = time.monotonic()
     rng = np.random.default_rng(2026100522)
-    report = dict(work_order='v2.2', source_class='synthetic hypotheses under test',
+    report = dict(work_order='v2.3', source_class='synthetic hypotheses under test',
                   host=platform.node(), numpy=np.__version__, scipy=scipy.__version__,
                   seed=2026100522, null_panels=args.panels, power_panels=args.power_panels,
-                  variance_convention='pseudo weight 1, sum=.5, sum_squares=.5; mixture population variance',
-                  grid='literal .001; lower scan .500 upward; upper 1 downward; two-sided retained-grid hull',
+                  variance_convention='mu=(.5+sum x)/(t+1); sigma2=(.25+sum (x_i-mu_i)^2)/(t+1)',
+                  grid='monotone bisection .001, outward rounding, continuous parameter; alpha/2 each side',
                   exact=exact_audit(), null_R0=[], null_R2=[], power_R0=[], power_R2=[])
-    print('Exact procedures audited', flush=True)
+    from acd_stats import monotonicity_audit, log_capital_max
+    sequences=rng.uniform(size=(1000,200))
+    sequences[:250]=rng.binomial(1,.5,size=(250,200))
+    sequences[250:500]=rng.beta(2,10,size=(250,200))
+    violations=monotonicity_audit(sequences)
+    report['monotonicity']=dict(sequences=1000,grid_step=.0001,violations=int(violations.sum()),passed=not violations.any())
+    report['witnesses']=[]
+    for value,m in [(1.,.9629),(0.,.0371)]:
+        x=np.full(200,value);lo,hi=interval(x,.01)
+        peak=max(log_capital_max(x,m,1,.005),log_capital_max(x,m,-1,.005))
+        report['witnesses'].append(dict(value=value,candidate=m,interval=[lo,hi],candidate_rejected=bool(peak>=math.log(200)),candidate_included=bool(lo<=m<=hi),peak=float(math.exp(peak))))
+    print('Exact and monotonicity procedures audited',flush=True)
     for theme, fraction in [('executor', 1/3), ('uniform', 1/8), ('half-empty', 1/8)]:
         for mechanism in ['independent', 'whole-case', 'eight-only']:
             n = sizes_for(rng, theme, args.panels)
@@ -113,7 +124,7 @@ def run(args):
     new_pass = r0_pass_batch(n, c)
     fixture_n = np.array([8]*10 + [1]*20 + [0]*170)
     report['counterexample'] = dict(answer_accuracy=.888, case_accuracy=(.1+.043)/.15,
-                                    interpretation='case accuracy=.953333, so this is an alternative, not a v2.2 null',
+                                    interpretation='case accuracy=.953333, so this is an alternative, not a v2.3 null',
                                     old_no_error_PASS=estimate(old_pass), new_PASS=estimate(new_pass),
                                     thirty_perfect_fixture=r0(fixture_n, fixture_n))
     print('Counterexample reported', flush=True)
@@ -141,11 +152,12 @@ def run(args):
                                             inference='statistical route only; assumes calibration prerequisites',
                                             publish=estimate(result), strong=estimate(strong)))
             print('Power R2', delta, theme, float(result.mean()), flush=True)
-    report['all_prescribed_checks_pass'] = report['exact']['passed'] and all(
+    report['all_prescribed_checks_pass'] = report['exact']['passed'] and report['monotonicity']['passed'] and all(
         row['passed'] for row in report['null_R0'] + report['null_R2'])
     report['wall_seconds'] = time.monotonic() - started
     report['code_hashes'] = {name: hashlib.sha256(Path(name).read_bytes()).hexdigest()
-                              for name in ['statistics.py', 'stats_audit.py']}
+                              for name in ['acd_stats.py', 'acd_stats_audit.py']}
+    Path(args.output).parent.mkdir(parents=True,exist_ok=True)
     Path(args.output).write_text(json.dumps(report, indent=2) + '\n')
     print('Audit complete', report['all_prescribed_checks_pass'], flush=True)
 
@@ -154,7 +166,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--panels', type=int, default=20000)
     parser.add_argument('--power-panels', type=int, default=5000)
-    parser.add_argument('--output', default='STATS_AUDIT.json')
+    parser.add_argument('--output', default='runs/audit/acd_stats_audit.json')
     arguments = parser.parse_args()
     if arguments.panels < 20000:
         parser.error('WO requires at least 20,000 null panels per configuration')

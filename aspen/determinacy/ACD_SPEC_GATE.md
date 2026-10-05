@@ -1,64 +1,48 @@
-# ACD spec integrity gate — v2.2 — HALT
+# ACD spec integrity gate — v2.3 — proceed with resolution rules
 
-2026-10-05. The entire v2.2 vault note was read, especially §10 and §19; archived as `sources/WO_v2.2.md`. Both standing templates previously read in full remain applicable and are archived in `sources/`. This is the complete re-assessment, not a sign-off based only on the amendment.
+The entire v2.3 work order was read; sources/WO_v2.3.md archives it. Todd authorizes Stage 0 through the Stage 1 gate. Only H1–H3 stop this run. Step 0b at eb87279 is preserved, with no new selector or model review.
 
-Branch `paper/aspen-2026-10-determinacy`, requested base `1b1094ae8f2536b9fe43e55ceeabfd3f02d14abc`. Step 0b stays byte-for-byte unchanged from `eb87279`, as Todd instructed. The prior v2.1 gate remains available at `91e77a6`. Current authorization covers the synthetic statistical audit and, if every prerequisite passes, Steps 0 through Stage 1. The stale “Pending” field is not an approval blocker. Confirmation, freeze and CNN inference remain held.
+## Checks 1–9 including 5a
 
-## Decision
+| Check | Assessment |
+|---|---|
+| 1 Feasibility | PASS: both operational outcomes constructed in the witness inventory. |
+| 2 Independence | PASS as designed: exploratory development, future disjoint confirmation, samplers observe no hidden truth; signed calibration scored separately. |
+| 3 Referents | PASS: case-average R0, separate answer point, fixed pre-probe pair, same-modal-answer climate confidence and specified refit order/seed roles. |
+| 4 Source class | PASS for the repaired statistics: m-independent predictable bets, nonnegative factors, monotone capitals, outward integer inversion. Synthetic null/monotonicity/exact checks pass. Development remains exploratory and RML approximate. |
+| 5 Examples | PASS: equations, not illustrative bounds, define outcomes. |
+| 5a Witnesses | PASS: every constructed example is a synthetic hypothesis under test. |
+| 6 Surprise | PASS: sign may precede Fc, covariance may not cancel, Q may lose to F/V/R, sampler diagnostics and coverage can fail and will be reported. |
+| 7 Null | PASS: climatological and random-site nulls; Q now must beat random as well. |
+| 8 Separability | PASS: point margin against max(V,F,R), all three exact paired tests, accuracy/count/coverage safeguards. |
+| 9 Selector separation | PASS: blinded competing selector at eb87279, overlap and divergence already reported. One independent framing, not multiple negatives. |
 
-**HALT: check 4 cannot sign off on the finite-sample confidence-interval claim in §10.** The prescribed exact and Monte Carlo audits pass, but the literal grid inversion removes real means that the capital rule does not reject. The method's Ville justification applies to the continuous retained set, not to extra exclusions made by its inward grid endpoints. This is one correctness/source-class defect, not an unfavorable scientific result.
+## Findings and resolutions
 
-For 200 synthetic x values all equal to 1, the stated two-sided 99% grid interval is [.963,1]. At m=.9629 the largest K+ is 178.0211842333, largest K− is 1, and the largest hedged capital is 89.0105921166, below the required 100. Thus m is not rejected by §10's capital condition, yet is outside the grid interval. The reflected x=0 construction omits unrejected m=.0371 from [0,.037]. These are synthetic hypotheses under test, not claimed Lorenz-96 observations.
+- §6 says knowledge of true forcing makes the observation share conservative. That is an information heuristic, not a pointwise proof for every action/lead. **R-other:** report the actual null answer shares and its information advantage; claim only the declared “not climate-confident” classification, not a proven ordering of posteriors.
+- The independent selector proposed expected-regret targeting and conflicting-scenario separation beyond Q/F/V/R. These are **untested comparators**, recorded under **R-other**; L6 names only the tested arms and does not claim best possible targeting.
+- Wilks truth coverage is approximate at this nonlinear finite-noise operating point. **R-other:** report measured Δχ² coverage, not posterior probability or model identification from it. Coverage findings use R-cov if triggered.
+- Old §17–§19 halt descriptions are archival; current §14 and §20 govern. No additional halt or threshold change is inferred from them.
 
-Evidence: `statistics.py` implements the literal grid prescription; `stats_grid_audit.py` reproduces the discrepancy; `STATS_GRID_AUDIT.json` records it on sulaco CPU. `ACD_STATS_AUDIT.md` reports all audit results and the power table. This failure is **not** a measured exceedance of a Monte Carlo false-PASS/noncoverage limit. It is a mismatch between continuous test inversion and the procedure the WO says that theorem licenses. The missing justification blocks check 4 under the template's rule that any check that cannot be answered in writing blocks execution.
+The original bootstrap and grid findings are repaired by §10 v2.3; R-stat did not fire in the new audit. The previous witness inventory below is retained for operational geometry, with v2.3 overrides explicit: failed numerics/coverage/diagnostics trigger resolution rules rather than halts; R0 and R0-F have four statuses; R2 prerequisites and matching bound direction apply; crossed intervals license less; Q must beat V,F,R and use exact CP/McNemar. All hypothetical bounds below are classifier inputs, never observed outcomes or anchors.
 
-No rule was silently repaired. An amendment must specify a conservative inversion for real-valued means and justify any assumption about the shape of the retained set. The primary betting paper's Appendix E.4 notes aGRAPA sublevel sets need not be intervals; consequently neither a monotone root-search shortcut nor a numerical grid is automatically a coverage-preserving inversion. [Primary source](https://arxiv.org/html/2010.09686v7).
+## Hard-stop controls
 
-Differential prediction required for a correction: .9629/.0371 must remain included when their capitals never cross the threshold; the 30-perfect-case R0 fixture must remain INSUFFICIENT; five Q-favouring discordances must stay nonsignificant at .01; the answer-point floor, all count floors and route prerequisites remain binding. Power changes from any interval amendment must be disclosed. No replacement algorithm, threshold or estimand has been selected by the executor.
+All sampling/targeting observational input goes through acd_protocol.load_observed and logs the observed-only access. Truth-bearing arrays are read only for Step 0 item 7, scoring/coverage, authorized dt recomputation, and the designed probes. No confirmation access exists in this run. No service stop, cloud compute, training or Baccus close-out mutation is authorized or performed. JAX_PLATFORMS=cpu and float64 are set before JAX import; modules are prefixed acd_.
 
-## Audit and amendment disposition
+## Selector provenance
 
-Implemented predictable aGRAPA capitals and prefix maxima, literal one-/two-sided grid scans, case-averaged R0 and its answer-point floor, transformed answer-ratio lower bounds, four reading statuses, exact Clopper–Pearson bounds, exact one-sided McNemar, and reported-only bootstrap redraws. Standalone code imports no experiment module. Existing sulaco Python environment was used without modification; 16 CPU threads for the prescribed audit, one for the grid check. No training, GPU use, cloud computation, service changes or Baccus close-out changes.
-
-- Exact agreement: CP maximum absolute error 4.774e-15; McNemar 6.661e-16.
-- 20,000 independent 200-case panels per configuration: nine R0 null configurations all pass, maximum false-PASS .02685; three R2 mean-zero configurations all pass, maximum noncoverage .00425.
-- Original .888 answer-accuracy construction has case accuracy .9533333333 under v2.2, so it is no longer a .90 case-mean null. Old no-error PASS frequency .06305, new full-rule PASS .00050; the exact 30-case fixture has lower .857 and is INSUFFICIENT.
-- All required R0/R2a power cells reported (5,000 panels/cell); at .97 and 80 nonempty cases, power is .7900 for independent answers and .4724 for whole-case errors.
-- Grid consistency check fails as detailed above. Approximate bootstrap intervals are clearly descriptive and do not repair or license a gate.
-
-The original bootstrap boundary defect is fixed at the capital-test/exact-binomial level and the estimand/kill changes are explicitly disclosed in §19. The new halt concerns inversion of those tests, not opposition to the disclosed estimand change or low power.
-
-## Full checks 1–9, including 5a
-
-| Check | Assessment | Evidence and limits |
-|---|---|---|
-| 1 Two-sided feasibility | PASS for operational rule geometry | Full hypothetical witness inventory below. Four R0/R0-F statuses have different witnesses. Statistical geometry is feasible; inferential validity is separately blocked. |
-| 2 Independence | PASS as designed; code verification pending | Development remains exploratory, confirmation uses new disjoint streams, truth never enters sampling, null sees no observations, targeting uses draws, common probe noise pairs arms. Synthetic audit consumes no experimental inputs. |
-| 3 Referents | PASS for scientific objects; grid interpretation identified explicitly | Case/lead/question unit, first-frame state and F, costs and realized answers are pinned. New R0 averages over nonempty cases; answer-level ratio remains separate. R2b requires PASS/NOT EVALUABLE, excluding INSUFFICIENT. In §10 the null mean is continuous; it has not been redefined to lie on the grid. |
-| 4 Source class | **FAIL / sign-off blocked** | Betting theorem licenses point-null capital rejection for predictable bounded streams with common conditional mean. Grid interval omits unrejected real means; that extra exclusion is not licensed by the stated Ville argument. Monte Carlo validity at .90/0 cannot establish continuous-parameter coverage for the literal endpoints. |
-| 5 No example as definition | PASS | Equations define rules; §12/§19 fixtures are illustrative hypotheses. Actual strong margins .25/.30/.15 prevail over the approximate “1.5 times” shorthand. Reported power is not a guarantee. |
-| 5a Witness provenance | PASS | All audit distributions and witness rows are explicitly synthetic hypotheses under test; no physical claim is inferred from them. Source work order is a design, inherited code assertions still await Step 0. |
-| 6 Surprise | PASS | Sign confidence could precede Fc; cancellation could disappear; F/V could match Q; RML could differ beyond MC error; coverage could fail. Case dependence can sharply reduce power, as audit demonstrates. |
-| 7 Null | PASS as designed | True-F climatological null and random sites; neither serves as truth. Computation follows later gates. |
-| 8 Comparator separability | PASS as designed | Q must exceed max(V,F) in point share and pass both exact paired tests; exact accuracy/count/coverage safeguards remain. No comparator rank is licensed by approximate overlapping intervals. |
-| 9 Selector separation | PASS, inherited artifact unchanged | Competing blinded selector at eb87279; overlap/divergence reported. No new model review or selector run. S/P direct, B wider nine-action family, Fc partial, Q-family overlap, F/V/R not independently proposed. Descriptive regret/backfire readings remain required if execution resumes. |
-
-The full gate is not signed off. Steps 0, Stage 0 scientific checks, Stage 1a and Stage 1b have not begun. Scientific reports are not fabricated at an unmet prerequisite.
-
-## Selector provenance and independence accounting
-
-Action set: inherited AAH blinded Codex selector, as asserted by the WO and pending code/source verification. Observable/window: inherited AAH/AFD. GPT originated trajectory/effect framing, covariance and spread comparator; Claude specified questions, targeting/comparators, leads, precision, confidence/calibration thresholds and margins after exploratory AFD numbers. Claude authored Amendment 1's statistics, estimand/status changes and audit configurations. The executor's statistics follow that declared procedure and are being tested, not treated as findings by authorship.
-
-One competing blinded operational framing was generated in Step 0b; its competing suggestions and omissions remain in CODEX_SELECTOR.md. There is no claim of several independent negatives. Primary-WO selectors include first-index R5 populations, top-two pairs, eligible-at-zero loss comparisons, and the first qualifying illustrative confirmation case. The synthetic case-size/error-mechanism grid is an authored audit selector; deterministic off-grid witnesses expose a limitation it did not sample. Empirical test rates are reported only for the specified synthetic configurations, not as universal validation. Confirmation would remain the only independent scientific evidence.
+GPT framed trajectory versus intervention effects and covariance; Claude specified the questions, targeting/comparators, thresholds and leads after AFD exploratory results. Actions and energy/windows are inherited. The blinded Codex competing selector at eb87279 overlaps S/P, broadens B to include no-action, partially overlaps Fc, and proposes Q-family targeting plus the two untested algorithms above. Primary selector omissions are not independent empirical negatives. Extra cost-derived regret/backfire/nine-action readings stay descriptive.
 
 ## Complete operational witness inventory
+
 
 
 **Every input in the following table is a synthetic hypothesis under test (check 5a).** Unless a row varies a prerequisite, assume all other prerequisites pass, ample cases, no ties, and valid diagnostics. Bounds shown are hypothetical inputs to classifications. They do not validate the grid inversion. The v2.2 formula and all audit inputs are synthetic, not empirical anchors. This table assesses scientific axes, filters and thresholds without running experiment data.
 
 | Axis/filter/classification (WO section) | Passing / first branch | Failing / other branch |
 |---|---|---|
-| Scientific definition agreement (§3) | Code has the exact declared cost/window/action | Cost uses terminal energy instead of window energy: halt |
+| Scientific definition agreement (§3) | Code has the exact declared cost/window/action | Cost uses terminal energy instead of window energy: R-def follows inherited code |
 | Seed leaf disjointness (§4) | Distinct stream/case/sub leaves outside inherited IDs | Reused leaf or inherited ID: fail assertion |
 | Observation likelihood / prior support (§5) | F=8, finite 40-state vector | F=10.1 has zero prior density; nonfinite state invalid |
 | Posterior parameter and log-likelihood diagnostics (§5) | All R-hat=1.005, ESS=600 | One R-hat=1.02 or ESS=399: rerun; persistent fail excludes |
@@ -66,12 +50,12 @@ One competing blinded operational framing was generated in Step 0b; its competin
 | Divergences (§5) | 40/4000=1% | 41/4000>1%: fails diagnostics |
 | F boundary / convergence reporting (§5) | Interior minima; all starts converge | F=6 or optimizer fails: report, not automatic independent halt |
 | Threshold uncertainty (§5) | p=.94, se=.01: flagged | p=.98, se=.005: not flagged |
-| Panel diagnostic exclusion (§5/§14) | 10/200=5% excluded | 11/200>5%: halt |
-| Gaussian implementation mean/variance (§5) | Every error 3 MC SE; both extreme-direction variances off 6% | Any mean/variance error 5 MC SE or extreme variance off 25%: halt |
-| Joint FD adjoint (§5) | Maximum absolute error 9e-7 | Error 1e-6: halt |
+| Panel diagnostic exclusion (§5/§14) | 10/200=5% excluded | 11/200>5%: R-diag flags exclusions |
+| Gaussian implementation mean/variance (§5) | Every error 3 MC SE; both extreme-direction variances off 6% | Any mean/variance error 5 MC SE or extreme variance off 25%: R-impl doubles and rechecks |
+| Joint FD adjoint (§5) | Maximum absolute error 9e-7 | Error 1e-6: R-grad uses JAX AD |
 | Multi-start minimum bookkeeping (§5) | Lowest χ² retained across four starts, RML and posterior | Retaining a higher start's χ² is an implementation failure |
 | Truth coverage χ² (§5) | Δχ²=56.90: covered | Δχ²=57: not covered |
-| Completed-panel coverage (§5) | 170/200=.85: no coverage halt | 169/200<.85: halt on dev, KILL on confirmation |
+| Completed-panel coverage (§5) | 170/200=.85: no R-cov flag | 169/200<.85: R-cov reports development; KILL on future confirmation |
 | Fit flag (§5) | χ²_min=460: no flag | χ²_min=470>467.6: flagged, reported |
 | True-F rank (§5) | Uniform-looking histogram / large test p | Boundary-concentrated ranks / small p: reported, no independent threshold invented |
 | S and P signed answers (§6) | D=-.01 or J_k−J_l=-.01: lower/yes | Zero or positive: not lower/no; exact zero logged |
@@ -82,9 +66,9 @@ One competing blinded operational framing was generated in Step 0b; its competin
 | Observation confidence (§6) | Confident posterior, no same climate-confident answer | Posterior not confident, or same climate-confident answer: excluded from observation-confident share |
 | Realized accuracy (§6) | Modal answer equals actual answer | Different answer: incorrect even if confidence is 1 |
 | Split stability (§6) | Both chain groups agree on classification | One group crosses .95: instability reported, not a new gate |
-| dt answer and classification checks (§6) | Every lead ≤3 has .004 answer changes and .008 class changes | Any lead has .006 answer changes or .011 class changes: halt |
+| dt answer and classification checks (§6) | Every lead ≤3 has .004 answer changes and .008 class changes | Any lead has .006 answer changes or .011 class changes: R-dt halves and rechecks |
 | Null (§7.1) | 4096 independently seeded spun-up states and mean over states/leads | Observation-conditioned states called climatology or ensemble used as truth: invalid |
-| Crude/RML member counts (§7) | 128 crude draws; 112/128 valid RML | 111/128 valid RML: short case; 11/200 short cases: halt |
+| Crude/RML member counts (§7) | 128 crude draws; 112/128 valid RML | 111/128 valid RML: short case; short cases use available members under R-rml |
 | RML validity (§7.3) | Finite; RMS=9*SIGMA; Δχ²=74 | Nonfinite, RMS>10*SIGMA, or Δχ²>74.75: invalid |
 | Signed sampler comparison (§7.3) | Same-event p's differ by 2 combined SE | Difference 4 combined SE: substantive; opposite modal answers cannot be hidden by comparing modal masses |
 | Threshold crossing (§7.3) | p_post=.96, p_RML=.94 with abs(z)≤3: diagnostic only | abs(z)>3: substantive; handled by Stage 1a rule, not automatically proof posterior is wrong |
@@ -114,28 +98,28 @@ One competing blinded operational framing was generated in Step 0b; its competin
 | R7 (§10) | Two-scale truth, one-scale inference and reported fit/calibration | Claiming same-class calibration from mismatched truth: invalid; optional arm may be cut |
 | Publish / kill / otherwise (§11) | R0 PASS at 2 plus valid R2a/R2b/R5 route: publish condition | R0 FAIL at both 2/3 or coverage<.85: kill; neither: Todd decides |
 | Licensed sentences (§11) | L1 with both calibration passes; L4 with R0 pass | L1 without Fc pass, or outlives from R2a alone: unlicensed |
-| Stage 1a diagnostics/coverage (§13) | 1/20 diagnostics failures and 15/20 covered: continue | 2/20 failures or 14/20 covered: halt |
-| Stage 1a disagreement/rerun (§13) | >5% substantive S disagreements then fresh 4x posterior agrees within 1%: continue, label RML biased | Repeat posterior disagreements >1%: halt; threshold crossings alone never halt |
-| Stage 1 strong (§13) | R0 PASS at 2, route prerequisites, and R2a abs(Δ)=.26, R2b abs(Δ)=.31, or R5 margin=.16 with both McNemar p≤.01 | R2b abs(Δ)=.18 or missing route prerequisite: not strong; R0 FAIL both 2/3: stop/report |
-| Runtime projection and cuts (§13/§14) | All required costs/compile/diagnostics plus rerun allowance fit 12h after permitted cuts | >12h after R7,A,R6@3,RML-conf,P/B-other-leads,R5@3 cuts: halt; never cut required core |
+| Stage 1a diagnostics/coverage (§13) | 1/20 diagnostics failures and 15/20 covered: continue | 2/20 failures or 14/20 covered: R-diag/R-cov flags |
+| Stage 1a disagreement/rerun (§13) | >5% substantive S disagreements then fresh 4x posterior agrees within 1%: continue, label RML biased | Repeat posterior disagreements >1%: R-rml flags and retains rerun; threshold crossings alone never halt |
+| Stage 1 strong (§13) | R0 PASS at 2, route prerequisites, and R2a abs(Δ)=.26, R2b abs(Δ)=.31, or R5 margin=.16 with all three McNemar p≤.01 | R2b abs(Δ)=.18 or missing route prerequisite: not strong; R0 FAIL both 2/3: stop/report |
+| Runtime projection and cuts (§13/§14) | All required costs/compile/diagnostics plus rerun allowance fit 12h after permitted cuts | >12h after R7,A,R6@3,RML-conf,P/B-other-leads,R5@3 cuts: R-time reduces population then draws; never cut required core |
 | Freeze / blind order (§4/§14) | Freeze committed before confirmation; outputs hashed before realized outcomes | Confirmation reading before freeze: halt |
 | Illustrative selector (§13) | First confirmation index satisfying all declared predicates | Choosing the prettiest or a later matching case: invalid selector use |
 
 
-### Amendment-specific witness additions
+### v2.3 statistical and sensitivity witnesses
 
-| Axis/filter/classification | Passing / first branch | Failing / other branch |
+All are synthetic hypotheses under test, rather than observed anchors.
+
+| Rule | First branch | Other branch |
 |---|---|---|
-| v2.2 CP/McNemar exact audit (§10) | Errors <1e-10/<1e-12 against exact reference | Larger discrepancies: audit halt |
-| v2.2 null audit (§10) | 20,000 panels/config, false-PASS .02685 or noncoverage .00425 below nominal+2SE | Rate .07 at nominal .05, SE .0018: audit halt |
-| v2.2 betting capital (§10) | Predictable bet, values in [0,1], caps .75/m and .75/(1−m), prefix maximum | Bet uses next case, invalid range, or terminal-only capital: implementation failure |
-| v2.2 answer-ratio bound (§10) | For all cases use x=(correct−m*answers)/8+m | Removing empty cases without accounting or using answers as independent trials changes target |
-| v2.2 grid inversion (§10) | Retain every unrejected real mean in an outer approximation | x=1 for 200 cases: literal interval [.963,1] omits unrejected .9629: failed source claim |
-| v2.2 descriptive bootstrap (§10) | Redraw zero denominator and report count; all-empty population NOT EVALUABLE | Retain undefined ratios or use descriptive bounds to gate: invalid |
-| v2.2 power table (§10) | All 12 accuracy/count cells, plus both R2a deltas, reported with MC SE | Missing cells: incomplete audit; low power itself is not a new halt |
-| R0 answer-point safeguard (§10) | Case lower .91 and answer point .91: may PASS | Same case bound with answer point .89: not PASS |
-| R0/R0-F INSUFFICIENT (§10) | Evaluable lower<.90 and upper≥.90 | Calling this FAIL/KILL or permitting it for an R2b prerequisite violates v2.2 |
+| Monotone capital | Predictable m-independent bet ≤.9; every factor ≥.1 | m-dependent betting cannot license integer bisection |
+| Continuous inversion | 200 ones: 99% interval [.970,1] | The historical [.963,1] excluded unrejected .9629 under v2.2 |
+| Audit | Exact matches and null rate ≤nominal+2SE | Larger discrepancy: R-stat repairs/rechecks, then conservative bound |
+| R0 exclusion sensitivity | Primary PASS and included-case PASS | Primary PASS, included-case FAIL: reported FAIL |
+| Crossed bounds | Lower ≤upper and matching direction licenses route | Lower >upper: R2a INCONCLUSIVE/R2b NO ORDER DETECTED |
+| R5 random safeguard | Margin ≥.10 and p≤.01 against V, F and R | F/V beaten but R not beaten: no Q-BEATS |
+| R-time | Projected stages fit 12 hours | Cut permitted arms/leads, population 60 then draws 500; report and continue |
 
-## Gate summary
+## Runtime resolution ledger
 
-Stage: pre-data statistical audit and full v2.2 spec gate, HALT. Headline value: unmeasured. Change: the original boundary defect is repaired by betting/exact tests, all prescribed Monte Carlo checks pass, and the required power table is complete; a continuous-mean grid inversion gap remains. Largest risk: the claimed coverage guarantee is carried from a capital test to an interval that can exclude a mean without capital rejection. Recommendation: stop for a targeted inversion amendment and rerun the necessary audit/gate before Step 0. No scientific kill, threshold relaxation or rescue run is implied.
+The complete triggered-rule log is runs/resolutions.jsonl. Scientific findings and exclusions will be summarized in the Stage 1 reading. This gate does not authorize confirmation or a publish claim.
