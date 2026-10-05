@@ -85,7 +85,7 @@ def make_training():
     moments=np.zeros(7);rhs=np.zeros(4);count=0
     for ns,n,label in [("afd2-train",2048,"train"),("afd2-train-val",64,"val")]:
         path=out/f"base_{label}.npz"
-        if path.exists():continue
+        if path.exists() and (out/f"full_{label}.npz").exists() and (label!="train" or (out/"X_005_train.npz").exists()):continue
         start=time.monotonic();z=spin(ns,n,dt);hist=[z.copy()]
         for _ in range(10):
             z=flow2(z,np.full((n,40),10.),int(round(.05/dt)),dt);hist.append(z.copy())
@@ -115,7 +115,23 @@ def make_training():
         write_json(out/f"base_{label}.json",dict(trajectories=n,dt=dt,seconds=time.monotonic()-start,
                    sigma=info["sigma_X"],sha256=digest(path)))
         artifact(path,"two-scale base training X before test evaluation")
+        artifact(out/f"full_{label}.npz","two-scale full training states: solver labels only")
+        if label=="train":artifact(out/"X_005_train.npz","X-only closure inputs before fit")
         print("two-scale train data",label,"complete",flush=True)
+    if not count and not (out/"closure.json").exists():
+        # Resume from the recorded X-only artifact, never from hidden-state tendencies.
+        data=np.load(out/"X_005_train.npz");slow=data["X"];actions=data["action"]
+        for b in range(len(slow)):
+            X=slow[b,1:-1]
+            derivative=(slow[b,2:]-slow[b,:-2])/.01
+            resolved=(np.roll(X,-1,axis=-1)-np.roll(X,2,axis=-1))*np.roll(X,1,axis=-1)-X
+            flat=X.reshape(-1);y=(derivative-resolved-actions[b]).reshape(-1)
+            power=np.ones_like(flat)
+            for p in range(7):
+                moments[p]+=power.sum()
+                if p<4:rhs[p]+=(power*y).sum()
+                power*=flat
+            count+=len(flat)
     if count:
         matrix=np.array([[moments[i+j] for j in range(4)] for i in range(4)])
         if np.linalg.matrix_rank(matrix)!=4:raise RuntimeError("rank-deficient closure")
@@ -125,8 +141,59 @@ def make_training():
                  X_rows=count,condition=float(np.linalg.cond(matrix)),normal_matrix=matrix.tolist(),
                  normal_rhs=rhs.tolist(),X_only=True,dt=dt))
         artifact(out/"closure.json","X-only closure before test evaluation")
+def make_labels():
+    directory=ROOT/"runs/twoscale";out=ROOT/"runs/training_data2"
+    info=json.loads((directory/"fastlib.json").read_text());sigma=info["sigma_X"]
+    gate=json.loads((directory/"decision_dtcheck.json").read_text())
+    assert gate["status"]=="PASS";dt=gate["chosen_dt"]
+    full=np.load(out/"full_train.npz")["state"]
+    library=np.load(directory/"fastlib.npz")["Y"]
+    for kind,n,ns in [("pairs",4096,"afd2-train-pairs"),("cost",16384,"afd2-train-cost")]:
+        path=out/(kind+".npz")
+        if path.exists():continue
+        started=time.monotonic();R=rng(ns,6)
+        traj=R.integers(len(full),size=n);ticks=R.integers(10,full.shape[1],size=n)
+        hist=np.stack([full[i,t-10:t+1,:40] for i,t in zip(traj,ticks)])
+        obs=hist+.02*sigma*rng(ns,1).standard_normal(hist.shape)
+        if kind=="pairs":
+            pairset=np.array([(j,k) for j in range(8) for k in range(j+1,8)])
+            pair=pairset[rng(ns,4).integers(28,size=n)]
+            amp=rng(ns,4,member=1).uniform(-.04,.04,size=n)
+            action=10*amp[:,None,None]*patterns()[pair]
+            targets=np.empty((n,2,36,40),np.float32)
+            for first in range(0,n,128):
+                last=min(n,first+128);m=last-first
+                initial=full[traj[first:last],ticks[first:last]]
+                states=slowpaths(np.repeat(initial,2,axis=0),(10+action[first:last]).reshape(-1,40),dt,37)
+                if not np.isfinite(states).all():raise RuntimeError("nonfinite two-scale pair target")
+                targets[first:last]=states[:,1:].reshape(m,2,36,40)
+            np.savez(path,window=obs.astype(np.float32),action=action.astype(np.float32),targets=targets,
+                     trajectory=traj,time_index=ticks,sigma=sigma)
+        else:
+            member=obs+.02*sigma*rng(ns,2).standard_normal(hist.shape)
+            indices=rng(ns,5).integers(len(library),size=n)
+            fast=condition(library[indices],member,dt)
+            action=.2*patterns();labels=np.empty((n,8),np.float64)
+            initial=np.concatenate([member[:,-1],fast],axis=1)
+            for first in range(0,n,128):
+                last=min(n,first+128);m=last-first
+                states=slowpaths(np.repeat(initial[first:last],8,axis=0),np.tile(10+action,(m,1)),dt,36)
+                if not np.isfinite(states).all():raise RuntimeError("nonfinite two-scale cost label")
+                energy=.5*np.mean(states*states,axis=-1)
+                labels[first:last]=energy[:,WINDOWS[PRIMARY]].mean(-1).reshape(m,8)
+            centered=labels-labels.mean(1)[:,None]
+            vd=float(np.mean(centered**2));vm=float(labels.mean(1).var(ddof=0))
+            if not np.isfinite([vd,vm]).all() or vd<=0 or vm<=0:raise RuntimeError("invalid cost variance")
+            np.savez(path,window=member.astype(np.float32),action=action.astype(np.float32),labels=labels,
+                     variance_diff=vd,variance_mean=vm,trajectory=traj,time_index=ticks,sigma=sigma,
+                     fastlib_index=indices)
+        artifact(path,"two-scale solver training labels before model evaluation")
+        write_json(out/(kind+".json"),dict(starts=n,dt=dt,seconds=time.monotonic()-started,
+            sha256=digest(path),namespace=ns,sigma=sigma,source_sha256=digest(ROOT/"twoscale_data.py"),
+            full_train_sha256=digest(out/"full_train.npz"),fastlib_sha256=digest(directory/"fastlib.npz")))
+        print("two-scale labels",kind,"complete",flush=True)
 if __name__=="__main__":
-    p=argparse.ArgumentParser();p.add_argument("task",choices=["dtcheck","train"]);p.add_argument("--workers",type=int,default=96);a=p.parse_args();numba.set_num_threads(a.workers)
+    p=argparse.ArgumentParser();p.add_argument("task",choices=["dtcheck","train","labels"]);p.add_argument("--workers",type=int,default=96);a=p.parse_args();numba.set_num_threads(a.workers)
     if a.task=="dtcheck":decision_check()
-    else:make_training()
-
+    elif a.task=="train":make_training()
+    else:make_labels()
