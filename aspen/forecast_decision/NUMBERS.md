@@ -589,3 +589,25 @@ Chosen dt: 0.001. N2 solver dt remains 0.01 under WO §4 propagation.
 
 Every comparison requires a strictly smaller absolute mean gap change than max(0.05*S_J, two paired standard errors).
 State check, sampler approval and decision-cost check remain separate gates. No two-scale panel was launched by this checker.
+
+## AFD_BASELINE_FULL_METRICS_REGISTERED
+
+Checked NUMBERS continuation: [NUMBERS_FULL_METRICS_BASELINE.md](NUMBERS_FULL_METRICS_BASELINE.md). Descriptive baseline/optional physics metrics; no headline sentence licensed.
+
+SHA256: cc50303c09459920fd994860b153427a31a6022d97af53bd78d2730a0401a587
+
+Checker record: `runs/baseline_metrics_checker.json`; SHA256 12e08b4be5be9da5d815a3e880b2f73d05b6741ead35c02b7b137124a92b94c8.
+
+```json
+{
+  "status": "PASS",
+  "cases": 200,
+  "leads": 7,
+  "allcase_and_eligible_checked": true,
+  "bootstrap_checked": true,
+  "source_hashes_checked": true,
+  "raw_truth_eligibility_and_cost_checked": true,
+  "tamper_rejected": true,
+  "NaN_rejected": true
+}
+```
