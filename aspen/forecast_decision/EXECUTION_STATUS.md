@@ -1,3 +1,18 @@
+# Closed work order — recorded 2026-10-05
+
+Todd closed WO_Aspen-Forecast-Decision-Kill-Test-2026-10-04, vault status `closed-2026-10-04`, under §19. Findings: `04-Results/F_Aspen-Forecast-Decision-Kill-Test-2026-10.md`. The reference ensemble shares N-last's construction; the prior readings measure agreement with that reference rather than real decision quality. The checked Stage 1 reading is retained as a historical result; this closure is Todd's decision, not a newly computed WO gate.
+
+Execution policy after closure:
+
+- Stop CNN-cost and retain every checkpoint. Its labels use the closed reference recipe.
+- Let the other already-running training jobs finish within their existing caps. Retain every saved checkpoint, including every CNN-R2 candidate; its prior selection uses the closed reference and may be redone under a future work order.
+- Run no Stage 2 or Stage 2b test readings. Generate no two-scale truth. Existing test holds remain in force; freeze further training launches and pilots.
+- Preserve all Stage 1 inputs, truth, arm outputs, actual-cost arrays, source snapshots, NUMBERS, checkers and artifact ledgers. No new work order or reuse decision is inferred from this closure.
+
+Operational stop verification and retention inventory are recorded in `runs/closure/` and `TRAINING_CLOSURE_STATUS.md`. The closure session entry is `SESSION_REVIEW_CLOSURE.md`. Qwen services remain outside the campaign controls.
+
+## Historical execution record (superseded by closure above)
+
 ## Todd hold and exploratory request — 2026-10-05
 
 Stage 2 test inference and readings are held until Todd decides. Their controllers are stopped; training and validation selection may finish. Stage 2b truth remains held without sampler go. The existing Stage 1 reading and WO rules are unchanged. A separately labelled exploratory real-outcome check on the existing Stage 1 test panel is authorized, with source, NUMBERS and checker provenance.
