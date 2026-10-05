@@ -95,7 +95,13 @@ def finalize_system(two,cuts):
             if not baseline_file.exists():
                 baseline_step=models[baseline]['step']
                 p=ROOT/'runs/training'/baseline/f'validation_{baseline_step:06d}.npz'
-                if not p.exists():return False
+                if not p.exists():
+                    baseown=ROOT/'runs/training'/baseline
+                    basecandidate=baseown/f'checkpoint_{baseline_step:06d}.pt'
+                    if not basecandidate.exists():shutil.copy2(ROOT/models[baseline]['checkpoint'],basecandidate)
+                    write(baseown/'final_validation_request.json',dict(step=baseline_step,checkpoint=basecandidate.name,
+                         checkpoint_sha256=models[baseline]['sha256'],requested_at=now(),kind='state'))
+                    return False
                 shutil.copy2(p,baseline_file)
             with np.load(result) as selected,np.load(baseline_file) as base:
                 if not np.array_equal(selected['survivors'],base['survivors']):

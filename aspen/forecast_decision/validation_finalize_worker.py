@@ -18,6 +18,10 @@ def main(inputs,out):
     truth=d['truth'];sj=float(np.median(np.ptp(truth,axis=1)))
     if not np.isfinite(sj) or sj<=0:raise RuntimeError('validation S_J unavailable')
     eligible=skill['eligible'];actual=skill['actual'];climate=skill['climate'];sigma=float(skill['sigma'])
+    truth_best=skill['truth_best_action']
+    if truth_best.shape!=(len(truth),) or not np.all((truth_best>=0)&(truth_best<8)):
+        raise RuntimeError('validation truth-best actions unavailable')
+    fixed=int(np.bincount(truth_best,minlength=8).argmax())
     records={}
     for name in configuration['S']:
         prediction=np.load(inputs/(name+'.npz'))
@@ -53,6 +57,7 @@ def main(inputs,out):
     selected=min(tied,key=configuration['order'].index)
     completed=datetime.datetime.now(datetime.timezone.utc).isoformat()
     result=dict(status='FINAL',system=configuration['system'],selected_L=selected,selection_completed_at=completed,
+                best_fixed_action=fixed,
                 S=configuration['S'],models=configuration['models'],cuts=configuration['cuts'],not_run=configuration['not_run'],
                 compute_manifest=configuration.get('compute_manifest'),
                 rule='all-case mean normalized regret; higher eligible-case wACC; lower eligible-case wRMSE; frozen order',
