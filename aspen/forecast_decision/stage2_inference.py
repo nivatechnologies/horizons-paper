@@ -81,6 +81,9 @@ def cost_prediction(model,win,sigma,amplitude,micro):
                 survivors=keep,rawprediction=prediction.T)
 
 def main(name,checkpoint,panel,case,micro):
+    control=ROOT/'runs/campaign_control.json'
+    if control.exists() and json.loads(control.read_text()).get('execution')=='stop':
+        print('Campaign stop: no new case evaluation',flush=True);return
     if panel!='test' and panel!='test2':raise RuntimeError('test evaluator cannot select models')
     authorization_path=ROOT/'runs/stage2_authorization.json'
     if not authorization_path.exists():raise RuntimeError('root-issued Stage2 authorization required')

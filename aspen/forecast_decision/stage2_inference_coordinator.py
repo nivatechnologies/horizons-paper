@@ -15,6 +15,10 @@ DIRECTORY.mkdir(parents=True,exist_ok=True)
 def run(args):
     return subprocess.run(args,check=True,capture_output=True,text=True).stdout
 
+def stopped():
+    control=ROOT/'runs/campaign_control.json'
+    return control.exists() and json.loads(control.read_text()).get('execution')=='stop'
+
 def cuts():
     path=DIRECTORY/'cuts.json'
     return json.loads(path.read_text()).get('models',[]) if path.exists() else []
@@ -23,12 +27,39 @@ def copy_final(name):
     if name=='CNN-20k':source=ROOT/'inputs/CNN-20k.pt';metadata=None
     else:
         training=ROOT/'runs/training'/name;complete=training/'training_complete.json';source=training/'selected.pt'
-        if not complete.exists() or not source.exists():return None
-        metadata=json.loads(complete.read_text())
-        expected=metadata.get('selected_hash')
-        if not expected or expected!=digest(source):return None
-        if name in ['CNN-roll','CNN-resp'] and metadata['last_step']!=metadata['prescribed_updates']:
-            raise RuntimeError(name+' did not complete its frozen update count')
+        if not source.exists():return None
+        if complete.exists():
+            metadata=json.loads(complete.read_text())
+            expected=metadata.get('selected_hash')
+            if not expected or expected!=digest(source):return None
+            if name in ['CNN-roll','CNN-resp'] and metadata['last_step']!=metadata['prescribed_updates']:
+                raise RuntimeError(name+' did not complete its frozen update count')
+        elif name in ['CNN-R2','CNN-cost']:
+            terminal=training/'resource_stop.json'
+            selection=ROOT/'runs/training/final_selection_stage2.json'
+            if not terminal.exists() or not selection.exists():return None
+            receipt=json.loads(terminal.read_text());final=json.loads(selection.read_text())
+            if receipt.get('status')!='EXTERNALLY_STOPPED' or final.get('status')!='FINAL':return None
+            record=final.get('models',{}).get(name)
+            if record is None:return None
+            if (record.get('worker_terminal_status')!='EXTERNALLY_STOPPED'
+                    or record.get('training_receipt_path')!=str(terminal.relative_to(ROOT))
+                    or record.get('training_receipt_sha256')!=digest(terminal)):
+                raise RuntimeError('unbound terminal receipt: '+name)
+            if receipt.get('completed_updates_exact') is not None or receipt.get('exact_total_gpu_seconds') is not None:
+                raise RuntimeError('external stop cannot supply unmeasured exact totals')
+            step=record.get('step');expected=record.get('sha256')
+            if type(step) is not int or step<0 or step%2000 or (name=='CNN-cost' and step==0):
+                raise RuntimeError('invalid final selected scheduled step: '+name)
+            candidate=training/f'checkpoint_{step:06d}.pt'
+            if not candidate.exists() or digest(candidate)!=expected or digest(source)!=expected:
+                raise RuntimeError('final selected checkpoint hash mismatch: '+name)
+            metadata=dict(terminal_resource_stop=receipt,terminal_receipt_sha256=digest(terminal),
+                final_selected_checkpoint=record,final_selection_manifest_sha256=digest(selection),
+                final_selection_manifest=str(selection.relative_to(ROOT)),selected_step=step,
+                exact_total_gpu_seconds=None,
+                timing_scope='resource-stop phase subtotal remains a lower bound; guard bound is separate')
+        else:return None
     destination=ROOT/'runs/evaluation_checkpoints'/name/'selected.pt';destination.parent.mkdir(parents=True,exist_ok=True)
     if destination.exists() and digest(destination)!=digest(source):raise RuntimeError('final artifact mutated: '+name)
     if not destination.exists():
@@ -56,6 +87,7 @@ def copy_final(name):
 def evaluate(name,checkpoint,panel,count):
     remote_cp=REMOTE+'/runs/evaluation_checkpoints/'+name+'/selected.pt'
     for case in range(count):
+        if stopped():return False
         # Snapshot metadata only; never send any test output to training/selection.
         target=REMOTE+'/runs/'+panel+'/'+name+f'_{case:03d}.npz'
         ready=subprocess.run(['ssh','sulaco','test -f '+shlex.quote(REMOTE+'/runs/'+panel+f'/cpu_{case:03d}.npz')],capture_output=True)
@@ -66,6 +98,10 @@ def evaluate(name,checkpoint,panel,count):
         arguments=[PYTHON,'stage2_inference.py','--name',name,'--checkpoint',remote_cp,
                    '--panel',panel,'--case',str(case),'--microbatch','8']
         command='cd '+shlex.quote(REMOTE)+' && flock '+shlex.quote(GPU_LOCK)+' env PYTHONPATH='+shlex.quote(NUMBA)+' '+shlex.join(arguments)
+        if stopped():return False
+        control=ROOT/'runs/campaign_control.json'
+        if control.exists():run(['scp',str(control),'sulaco:'+REMOTE+'/runs/campaign_control.json'])
+        if stopped():return False
         print(run(['ssh','sulaco',command]),flush=True)
     return True
 
@@ -82,8 +118,12 @@ def main():
        test_access_agents=['/root/stage2_inference'],frozen_selection_manifest='runs/training/final_selection_stage2.json')
     write_json(manifest_path,manifest)
     while True:
+        if stopped():
+            manifest['execution']='stopped';write_json(manifest_path,manifest);return
         excluded=cuts();manifest['cut_models']=excluded
         for name in NAMES:
+            if stopped():
+                manifest['execution']='stopped';write_json(manifest_path,manifest);return
             if name in excluded:continue
             record=manifest['arms'].get(name,{})
             checkpoint=copy_final(name)
