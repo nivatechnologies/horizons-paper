@@ -19,10 +19,11 @@ OUT = ROOT / "GUARD_STATUS"
 CAPS = {"CNN-roll": 18000, "CNN-resp": 18000, "CNN-cost": 36000,
         "CNN-R2": 36000, "CNN-5k": 3600, "CNN-80k": 18000,
         "CNN-20k-s2": 7200, "CNN-20k-s3": 7200, "CNN2-20k": 10800,
-        "CNN2-roll": 7200, "CNN2-R2": 25200, "CNN2-cost": 28800}
+        "CNN2-roll": 7200, "CNN2-R2": 25200, "CNN2-cost": 28800,
+        "CNN2-roll-pilot":900}
 COUNTS = {"CNN-roll": 10000, "CNN-resp": 10000, "CNN-5k": 5000,
           "CNN-80k": 80000, "CNN-20k-s2": 20000, "CNN-20k-s3": 20000,
-          "CNN2-20k": 20000, "CNN2-roll": 10000}
+          "CNN2-20k": 20000, "CNN2-roll": 10000,"CNN2-roll-pilot":100}
 INITIAL = {"CNN-roll": 283638, "CNN-resp": 283639,
            "CNN-cost": 285573, "CNN-R2": 286883}
 
@@ -40,6 +41,9 @@ def load(path):
         return json.loads(path.read_text())
     except FileNotFoundError:
         return None
+
+def model_directory(name):
+    return ROOT/'runs/training_pilot' if name=='CNN2-roll-pilot' else ROOT/'runs/training'/name
 
 
 def write(path, data):
@@ -151,7 +155,7 @@ def run(interval, enforce):
         selector_pools = {"state": [], "cost": []}
         selector_pool_sources = {"state": [], "cost": []}
         for candidate in CAPS:
-            candidate_directory = ROOT / "runs/training" / candidate
+            candidate_directory = model_directory(candidate)
             candidate_values = selector_charge(candidate_directory, now_boottime)
             pool = "cost" if candidate.endswith("cost") else "state"
             selector_pools[pool].extend(r["seconds"] for r in candidate_values[5]
@@ -159,7 +163,7 @@ def run(interval, enforce):
             selector_pool_sources[pool].extend(r for r in candidate_values[5]
                                                if r['seconds'] is not None)
         for name, cap in CAPS.items():
-            directory = ROOT / "runs/training" / name
+            directory = model_directory(name)
             pidpath = directory / "detached_worker_pid.txt"
             pid = int(pidpath.read_text()) if pidpath.exists() else INITIAL.get(name)
             if pid is None:
@@ -167,7 +171,9 @@ def run(interval, enforce):
             current = process(pid)
             old = state.get(name)
             if current and current["state"] != "Z":
-                if f"--name {name} " not in current["command"]:
+                expected_name='CNN2-roll' if name=='CNN2-roll-pilot' else name
+                if (f"--name {expected_name} " not in current["command"] or
+                    (name=='CNN2-roll-pilot' and '--pilot-updates 100' not in current['command'])):
                     alerts.append(f"{name}: PID identity mismatch; no signal sent")
                     continue
                 start = current["start_boottime_seconds"]
@@ -188,6 +194,9 @@ def run(interval, enforce):
                 alerts.append(f"{name}: process absent before guard registration; startup reservation unavailable")
                 continue
             receipt = load(directory / "training_complete.json")
+            if name=='CNN2-roll-pilot':
+                pilot_receipt=load(directory/'pilot_complete.json')
+                receipt=dict(pilot_receipt,last_step=pilot_receipt['measured_updates']) if pilot_receipt else None
             actual, active, sources, active_record, selector_reservation, reservation_sources, reservation_errors = selector_charge(directory, now_boottime)
             alerts.extend(f"{name}: {error}" for error in reservation_errors)
             base = 0.

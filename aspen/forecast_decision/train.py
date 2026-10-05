@@ -4,9 +4,11 @@ from pathlib import Path
 import numpy as np,torch
 from models import Emulator,CostModel,cuda_rules
 from protocol import RECIPE,LT,SIGMA,rng,WINDOWS,PRIMARY,write_json,digest
-def main(name,data,out,micro):
+def main(name,data,out,micro,pilot_updates=None):
     cuda_rules();torch.manual_seed(0);out.mkdir(parents=True,exist_ok=True)
     recipe=RECIPE[name];kind=recipe["kind"];updates=recipe["updates"];cap=recipe["cap_hours"]*3600
+    if pilot_updates is not None and (name!='CNN2-roll' or pilot_updates!=100):
+        raise RuntimeError('Only the preregistered 100-update CNN2-roll diagnostic is allowed')
     two=name.startswith("CNN2-")
     sigma=float(np.load(data/"base_train.npz")["sigma"]) if two else SIGMA
     checkpoint=data/("CNN2-20k.pt" if two else "CNN-20k.pt")
@@ -80,6 +82,7 @@ def main(name,data,out,micro):
                    batches=64,paired_data_sha256=digest(data/"pairs.npz")))
         model.train()
     best=float("inf");recent=[];log=[];selection_seconds=0.;completed_updates=0;selection_reserve=0.
+    pilot_update_times=[];pilot_setup_seconds=time.monotonic()-begin
     if kind=="r2":
         path=out/"checkpoint_000000.pt"
         torch.save(dict(state_dict=model.state_dict(),step=0,sigma=sigma,kind=kind),path)
@@ -124,7 +127,22 @@ def main(name,data,out,micro):
         opt.param_groups[0]["lr"]=initial_lr*.5*(1+math.cos(math.pi*min(1,fraction)))
         opt.step();torch.cuda.synchronize()
         completed_updates=iteration
-        recent.append(time.monotonic()-before);recent=recent[-32:]
+        measured_update_seconds=time.monotonic()-before
+        recent.append(measured_update_seconds);recent=recent[-32:]
+        if pilot_updates is not None:pilot_update_times.append(measured_update_seconds)
+        if pilot_updates is not None and iteration==pilot_updates:
+            torch.cuda.synchronize()
+            write_json(out/'pilot_complete.json',dict(name=name,status='DIAGNOSTIC_ONLY',
+                measured_updates=completed_updates,full_recipe_updates=updates,effective_batch=128,microbatch=micro,
+                charged_gpu_seconds=time.monotonic()-begin,
+                timing_scope='synchronized allocated training phase from before first CUDA synchronization; includes setup, normalization and host gaps; not device kernel active-time sum',
+                update_seconds=pilot_update_times,
+                measured_update_median_seconds=float(np.median(pilot_update_times)),
+                measured_update_maximum_seconds=float(max(pilot_update_times)),
+                setup_normalization_seconds=pilot_setup_seconds,
+                gpu_name=torch.cuda.get_device_name(0),checkpoint_or_candidate_written=False,
+                initialized_checkpoint_sha256=digest(checkpoint),paired_data_sha256=digest(data/'pairs.npz')))
+            return
         if iteration%100==0:
             row=dict(step=iteration,loss=total,charged_gpu_seconds=time.monotonic()-begin+selection_seconds,
                      recent_update_seconds=float(np.median(recent)),
@@ -169,4 +187,4 @@ def main(name,data,out,micro):
                selected_hash=digest(out/"selected.pt") if (out/"selected.pt").exists() else None,
                isolation="bubblewrap: no /mnt, /home, test outputs or result reports"))
 if __name__=="__main__":
-    p=argparse.ArgumentParser();p.add_argument("--name",required=True);p.add_argument("--data",type=Path,required=True);p.add_argument("--out",type=Path,required=True);p.add_argument("--microbatch",type=int,default=64);a=p.parse_args();main(a.name,a.data,a.out,a.microbatch)
+    p=argparse.ArgumentParser();p.add_argument("--name",required=True);p.add_argument("--data",type=Path,required=True);p.add_argument("--out",type=Path,required=True);p.add_argument("--microbatch",type=int,default=64);p.add_argument('--pilot-updates',type=int);a=p.parse_args();main(a.name,a.data,a.out,a.microbatch,a.pilot_updates)

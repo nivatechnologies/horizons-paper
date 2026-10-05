@@ -130,9 +130,16 @@ def finalize_system(two,cuts):
         source=data_root/(kind+'.json')
         if source.exists():solver_data[kind]=dict(source=str(source.relative_to(ROOT)),source_sha256=digest(source),receipt=json.loads(source.read_text()))
     public_compute=ROOT/'runs/training'/('compute_stage2b.json' if two else 'compute_stage2.json')
+    diagnostics={}
+    pilot=ROOT/'runs/training_pilot/pilot_complete.json'
+    if two and pilot.exists():
+        diagnostics['CNN2-roll-throughput-pilot']=dict(source=str(pilot.relative_to(ROOT)),
+            source_sha256=digest(pilot),receipt=json.loads(pilot.read_text()),
+            reservation_upper_bound_receipt='GUARD_STATUS/CNN2-roll-pilot.json')
     write(public_compute,dict(system=system,recorded_at=now(),models={n:{k:r[k] for k in r if k not in ['checkpoint','step','kind','completed_at']} for n,r in models.items()},
                               solver_data=solver_data,
-                              aggregate_recorded_phase_gpu_seconds=sum(r['recorded_training_selection_phase_gpu_seconds'] or 0 for r in models.values()),
+                              diagnostics=diagnostics,
+                              aggregate_recorded_phase_gpu_seconds=sum(r['recorded_training_selection_phase_gpu_seconds'] or 0 for r in models.values())+sum(d['receipt']['charged_gpu_seconds'] for d in diagnostics.values()),
                               aggregate_phase_measurement_is_lower_bound=any(r['phase_measurement_is_lower_bound'] for r in models.values()),
                               exact_total_gpu_seconds=None,
                               reservation_upper_bound_summary='GUARD_STATUS/summary.json'))
