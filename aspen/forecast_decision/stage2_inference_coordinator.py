@@ -15,7 +15,12 @@ DIRECTORY.mkdir(parents=True,exist_ok=True)
 def run(args):
     return subprocess.run(args,check=True,capture_output=True,text=True).stdout
 
+def held():
+    marker=ROOT/'runs/stage2_test_hold.json'
+    return marker.exists() and json.loads(marker.read_text()).get('held',True) is not False
+
 def stopped():
+    if held():return True
     control=ROOT/'runs/campaign_control.json'
     return control.exists() and json.loads(control.read_text()).get('execution')=='stop'
 
@@ -106,6 +111,9 @@ def evaluate(name,checkpoint,panel,count):
     return True
 
 def main():
+    if held():
+        print('Todd hold: no Stage 2 test launches',flush=True)
+        return
     authorization_path=ROOT/'runs/stage2_authorization.json'
     if not authorization_path.exists():raise RuntimeError('root-issued Stage2 authorization required')
     authorization=json.loads(authorization_path.read_text())
@@ -119,11 +127,11 @@ def main():
     write_json(manifest_path,manifest)
     while True:
         if stopped():
-            manifest['execution']='stopped';write_json(manifest_path,manifest);return
+            manifest['execution']='held' if held() else 'stopped';write_json(manifest_path,manifest);return
         excluded=cuts();manifest['cut_models']=excluded
         for name in NAMES:
             if stopped():
-                manifest['execution']='stopped';write_json(manifest_path,manifest);return
+                manifest['execution']='held' if held() else 'stopped';write_json(manifest_path,manifest);return
             if name in excluded:continue
             record=manifest['arms'].get(name,{})
             checkpoint=copy_final(name)

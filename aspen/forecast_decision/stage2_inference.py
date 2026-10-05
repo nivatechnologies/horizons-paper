@@ -8,6 +8,11 @@ from pathlib import Path
 import numpy as np
 from protocol import ROOT, SIGMA, LT, WINDOWS, TICKS, PRIMARY, patterns, digest, write_json
 
+def test_hold_guard():
+    marker=ROOT/'runs/stage2_test_hold.json'
+    if marker.exists() and json.loads(marker.read_text()).get('held',True) is not False:
+        raise SystemExit('Todd hold: no Stage 2 test evaluation')
+
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 def register(checkpoint,name,panel):
     record=dict(kind='Stage2 checkpoint and inference source before own test evaluation',name=name,
@@ -41,6 +46,7 @@ def rollout(model,win,sigma,amplitude,micro,last):
     a=amplitude*patterns()/sigma
     with torch.no_grad():
         for first in range(0,512,micro):
+            test_hold_guard()
             ids=np.arange(first,min(512,first+micro))
             context=torch.tensor(win[ids%64]/sigma,dtype=torch.float32,device='cuda')
             action=torch.tensor(a[ids//64],dtype=torch.float32,device='cuda')
@@ -72,6 +78,7 @@ def cost_prediction(model,win,sigma,amplitude,micro):
     a=amplitude*patterns()/sigma
     with torch.no_grad():
         for first in range(0,512,micro):
+            test_hold_guard()
             ids=np.arange(first,min(512,first+micro))
             context=torch.tensor(win[ids%64]/sigma,dtype=torch.float32,device='cuda')
             action=torch.tensor(a[ids//64],dtype=torch.float32,device='cuda')
@@ -81,6 +88,7 @@ def cost_prediction(model,win,sigma,amplitude,micro):
                 survivors=keep,rawprediction=prediction.T)
 
 def main(name,checkpoint,panel,case,micro):
+    test_hold_guard()
     control=ROOT/'runs/campaign_control.json'
     if control.exists() and json.loads(control.read_text()).get('execution')=='stop':
         print('Campaign stop: no new case evaluation',flush=True);return
@@ -137,6 +145,7 @@ def main(name,checkpoint,panel,case,micro):
         s,v=rollout(model,win,sigma,amplitude,micro,len(TICKS)-1)
         result=state_summary(s,v)
     torch.cuda.synchronize();elapsed=time.perf_counter()-start
+    test_hold_guard()
     tmp=target.with_suffix('.partial.npz');np.savez(tmp,**result);tmp.replace(target)
     write_json(target.with_suffix('.json'),dict(case=case,panel=panel,name=name,kind=kind,
         completed_at=now(),shared_all_leads_seconds=elapsed,primary_decision_timing=timing,
