@@ -59,6 +59,16 @@ def main():
     root=a.root
     while True:
         one_path=root/'runs/2_metrics.json';one_check=root/'runs/2_metrics_checker.json';two_path=root/'runs/2b_metrics.json';two_check=root/'runs/2b_metrics_checker.json';scope_path=root/'runs/final_scope_status.json'
+        authorization=root/'runs/final_scope_authorization.json'
+        complete_two=two_path.exists() and two_check.exists() and json.loads(two_check.read_text()).get('status')=='PASS'
+        if authorization.exists() and not scope_path.exists() and not complete_two:
+            auth=json.loads(authorization.read_text());reject_nonfinite(auth)
+            if auth.get('authorize_not_run_if_incomplete') is True:
+                deadline=datetime.datetime.fromisoformat(auth['two_scale_deadline_utc'].replace('Z','+00:00'))
+                if deadline.tzinfo is None:raise ValueError('cutoff authorization deadline must include timezone')
+                current=datetime.datetime.now(datetime.timezone.utc)
+                if current>deadline:
+                    write_json(scope_path,dict(two_scale='not_run',final=True,at=current.isoformat(),deadline_utc=deadline.isoformat(),reason='No checked complete Stage2b gate at the explicitly authorized evidence cutoff',authority=auth['authority'],authorization_sha256=digest(authorization),sampler_go_implied=False))
         if not one_path.exists() or not one_check.exists():
             write_json(root/'runs/final_sentences_status.json',dict(status='WAITING_STAGE2',at=datetime.datetime.now(datetime.timezone.utc).isoformat()))
         else:
