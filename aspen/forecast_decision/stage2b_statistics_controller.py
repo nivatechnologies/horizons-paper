@@ -44,6 +44,9 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--authorization',required=True);p.add_argument('--watch',action='store_true');a=p.parse_args()
     status=a.root/'runs/stage2b_statistics_status.json'
     while True:
+        control=a.root/'runs/campaign_control.json'
+        if control.exists() and json.loads(control.read_text()).get('execution')=='stop':
+            write_json(status,dict(status='STOPPED_BY_CAMPAIGN_CONTROL',at=now(),role='statistics only'));return
         scope=a.root/'runs/final_scope_status.json'
         if scope.exists() and json.loads(scope.read_text()).get('two_scale')=='not_run':
             write_json(status,dict(status='NOT_RUN_AT_AUTHORIZED_CUTOFF',at=now(),role='statistics only'));return

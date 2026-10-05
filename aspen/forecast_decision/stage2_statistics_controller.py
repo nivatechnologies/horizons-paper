@@ -77,6 +77,11 @@ def main():
     checker=check(dict(cases=rows),result,a.root);write_json(status,dict(status='CHECKED',at=now(),checker=checker,full_report_command='python full_report.py --stage 2',role='statistics only'))
     subprocess.run([sys.executable,str(a.root/'full_report.py'),'--root',str(a.root),'--stage','2'],check=True)
     write_json(status,dict(status='REGISTERED',at=now(),role='statistics only',NUMBERS_fragment='NUMBERS_FULL_METRICS_STAGE2.md',reading='AFD_STAGE2_READING.md',checker=checker,remaining='Root merges NUMBERS fragment, renders checked figures locally, and obtains independent factual audit. Stage2b requires its separate approved sampler go.'))
+    gate=result['primary']['gate']
+    if gate['sufficiency'] and gate['H1a']=='KILL':
+        write_json(a.root/'runs/campaign_control.json',dict(execution='stop',recorded_at=now(),authority='WO v5.2 §7.6',reason='Stage2 H1a KILL; stop campaign and write findings harvest',checked_evidence='runs/2_metrics_checker.json',evidence_sha256=digest(a.root/'runs/2_metrics_checker.json')))
+        write_json(status,dict(status='KILL_REGISTERED',at=now(),role='statistics only',findings_harvest='Required; root coordinator writes vault findings from checked records'))
+        return
     print('Stage-2 reading registered; full campaign is not declared complete',flush=True)
     # Descriptive secondary results cannot license a sentence or influence L*.
     secondary_names=[name for name in ready['names'] if not name.endswith('-cost') and

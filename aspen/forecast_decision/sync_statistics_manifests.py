@@ -9,6 +9,13 @@ from protocol import ROOT,digest,write_json
 
 
 def sync(root,destination):
+    # Only public execution control returns from Sulaco; no outcome/test arrays
+    # reach training/selection workers. A scientific KILL must stop all launches.
+    remote_host,remote_root=destination.split(':',1)
+    received=subprocess.run(['ssh',remote_host,'cat',remote_root+'/runs/campaign_control.json'],capture_output=True,text=True)
+    if received.returncode==0:
+        control=json.loads(received.stdout)
+        if control.get('execution')=='stop':write_json(root/'runs/campaign_control.json',control)
     from compute_metadata import collect
     write_json(root/'runs/statistics_compute_metadata.json',collect(root))
     records=[]
