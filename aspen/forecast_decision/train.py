@@ -25,7 +25,7 @@ def main(name,data,out,micro):
         R=rng(ns,6,member=1)
     else:
         R=rng("afd2-train" if two and kind=="base" else "afd2-train-pairs" if two else "afd-train-recipe",6)
-    torch.cuda.synchronize();begin=time.monotonic()
+    begin=time.monotonic();torch.cuda.synchronize()
     model.to("cuda");opt=torch.optim.AdamW(model.parameters(),lr=1e-3 if kind in ["base","cost"] else 1e-4,weight_decay=1e-4)
     initial_lr=opt.param_groups[0]["lr"]
     if kind=="base":
