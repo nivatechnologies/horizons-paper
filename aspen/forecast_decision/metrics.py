@@ -201,17 +201,6 @@ def read_gates(entries,S,Rep,samples,selected=None,two_scale=False):
     return out
 
 
-def bootstrap_metrics(entries,name,samples):
-    """Each resample reruns eligibility subset and panel normalizing scales."""
-    fields=['P','wACC','wRMSE','MSRE','VRE','regret','regret_raw','B','energy_saved','cost_forecast_error','spearman','margin_sign_accuracy','cost_difference_RE','cost_difference_correlation']
-    draws={subset:{f:[] for f in fields} for subset in ['eligible','all']}
-    for sample in samples:
-        m=aggregate([entries[int(i)] for i in sample],name)
-        for subset in draws:
-            for f in fields:draws[subset][f].append(m[subset].get(f))
-    return {subset:{f:bounds(values) if all(finite(v) for v in values) else bounds(None) for f,values in data.items()} for subset,data in draws.items()}
-
-
 def license_ids(gate,stage='2',selected=None,twoscale_gate=None,repeats_ran=False):
     """Exact sentence identifiers; prose must interpolate only checked metrics.
 
@@ -229,6 +218,7 @@ def license_ids(gate,stage='2',selected=None,twoscale_gate=None,repeats_ran=Fals
         else:ids.append('S9')
         if gate.get('S12'):ids.append('S12')
         return ids
+    if not gate['sufficiency'] or gate['H1a']=='KILL':return []
     if gate['H1a']=='PASS':
         ids.append('S1')
         if repeats_ran:ids.append('S1s')
@@ -242,6 +232,7 @@ def license_ids(gate,stage='2',selected=None,twoscale_gate=None,repeats_ran=Fals
         ids.append('S2')
         if selected and gate['REG'][selected]['95']['holds']:ids.append('S2+')
         if gate['H1d']!='HOLDS':ids.append('S7')
+    if repeats_ran and ('S1' in ids or 'S2' in ids) and 'S1s' not in ids:ids.append('S1s')
     if gate['H1d']=='HOLDS':ids.append('S3')
     if gate['H1c']=='CLOSES':ids.append('S4' if gate['H2']=='REPAIR WORKS' else 'S4b')
     elif gate['H1c']=='OPEN':ids.append('S5')
@@ -272,3 +263,50 @@ def enrich_state_entry(entry,name,cpu,network,window,point_tick,sigma):
     # Normalize realized regret using the panel median realized range downstream.
     arm['realized_cost_range']=float(np.ptp(realized))
     return arm
+
+
+def bootstrap_metrics(entries,name,samples):
+    """Vectorized paired case bootstrap; recompute eligible denominator and S_J."""
+    rows=[e['arms'][name] for e in entries];eligible=np.array([e['eligible'] for e in entries]);failed=np.array([r['failed'] for r in rows])
+    ranges=np.array([np.ptp(r['J']) for r in rows]);scale=np.median(ranges[samples],axis=1)
+    J=np.array([r['J'] for r in rows]);C=np.array([r['cost'] for r in rows]);J0=np.array([r['J0'] for r in rows])
+    chosen=np.array([r['chosen'] for r in rows]);chosen_cost=np.array([j.max() if fail else j[k] for j,k,fail in zip(J,chosen,failed)])
+    ix,iy=np.triu_indices(8,1);target=J[:,iy]-J[:,ix];pred=C[:,iy]-C[:,ix]
+    result={}
+    def v(field):return np.array([r.get(field) if finite(r.get(field)) else np.nan for r in rows])
+    def divide(a,b):
+        out=np.full(a.shape,np.nan);np.divide(a,b,out=out,where=b!=0);return out
+    for subset,selected in [('eligible',eligible),('all',np.ones(len(rows),bool))]:
+        valid=selected&~failed;mask=selected[samples];vmask=valid[samples];count=mask.sum(1);vcount=vmask.sum(1)
+        def total(values,good=selected):return np.where(good[samples],np.asarray(values)[samples],0.).sum(1)
+        def mean(values,good=selected):return divide(total(values,good),good[samples].sum(1))
+        raw=mean(v('regret_raw'));forecasterror=np.abs(C-J).mean(1)
+        draws=dict(P=mean(v('correct')),wACC=mean(v('wACC')),pointACC=mean(v('pointACC')),wRMSE=mean(v('wRMSE'),valid),
+            regret_raw=raw,regret=divide(raw,scale),cost_forecast_error=divide(mean(forecasterror,valid),scale),
+            energy_saved=mean(J0-chosen_cost),energy_saved_percent=mean(divide(100*(J0-chosen_cost),J0)),
+            B=divide(total(J0-chosen_cost),total(J0-J.min(1))),
+            spearman=mean(np.array([spearman(c,j) if spearman(c,j) is not None else np.nan for c,j in zip(C,J)]),valid))
+        draws['B'][total(J0-J.min(1))<=0]=np.nan
+        for prefix in ['MSRE','VRE']:
+            numerator=total(v(prefix+'_num'),valid);denominator=total(v(prefix+'_den'),valid)
+            draws[prefix]=np.sqrt(divide(numerator,denominator))
+        draws['cost_difference_RE']=np.sqrt(divide(total(np.sum((pred-target)**2,axis=1),valid),total(np.sum(target**2,axis=1),valid)))
+        paircount=28*vcount;pt=total(pred.sum(1),valid);tt=total(target.sum(1),valid)
+        cov=total(np.sum(pred*target,axis=1),valid)-divide(pt*tt,paircount)
+        pp=total(np.sum(pred*pred,axis=1),valid)-divide(pt*pt,paircount);tp=total(np.sum(target*target,axis=1),valid)-divide(tt*tt,paircount)
+        draws['cost_difference_correlation']=divide(cov,np.sqrt(np.maximum(pp,0)*np.maximum(tp,0)))
+        result[subset]={f:bounds(values) for f,values in draws.items()}
+    return result
+
+
+def seed_witness_readings(entries,gate,S,samples):
+    """Reported seed repeats use the witness-in-S simultaneous level."""
+    physics='N-last';readings={};m=gate['metrics']
+    if not gate['sufficiency']:return dict(base_seed_witness_count=0,base_seed_readings={})
+    for name in ['CNN-20k','CNN-20k-s2','CNN-20k-s3']:
+        if name not in m:continue
+        point=m[physics]['eligible']['P']-m[name]['eligible']['P'];b=bounds(paired_gap(entries,physics,name,samples),1-.05/len(S))
+        a=m[name]['eligible'];n=m[physics]['eligible']
+        witness=m[name]['reliable'] and all(finite(v) for v in [a['wACC'],a['wRMSE'],n['wACC'],n['wRMSE'],point,b['lower']]) and a['wACC']>=n['wACC'] and a['wRMSE']<=n['wRMSE'] and point>=.15 and b['lower']>=.10
+        readings[name]=dict(witness=bool(witness),gap=point,**b)
+    return dict(base_seed_witness_count=sum(r['witness'] for r in readings.values()),base_seed_readings=readings)

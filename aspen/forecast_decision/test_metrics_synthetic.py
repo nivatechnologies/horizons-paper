@@ -1,7 +1,7 @@
 """Constructed hypothesis inputs, not campaign measurements. No disk data reads."""
 import copy
 import numpy as np
-from metrics import aggregate,read_gates,bounds,paired_gap,state_statistics,license_ids
+from metrics import aggregate,read_gates,bounds,paired_gap,state_statistics,license_ids,bootstrap_metrics
 from check_campaign import reject_nonfinite,equivalent
 
 
@@ -46,5 +46,21 @@ def run():
     parts=st['cost_difference_split'];cost=.5*(states**2).mean(axis=(1,2,3))
     assert np.allclose(np.array(parts['arm_mean_difference'])+parts['arm_spread_difference'],cost-cost[0])
     assert st['MSRE_num']==0 and st['VRE_num']==0
+    # Compare vectorized bootstrap bounds against independent resample aggregation.
+    varying=copy.deepcopy(rows)
+    for i,e in enumerate(varying):
+        for a in e['arms'].values():
+            a['J']=[v*(1+i/200) for v in a['J']]
+            a['regret_raw']*=1+i/200
+            a['MSRE_num']*=1+i/200
+            a['VRE_den']*=1+i/200
+    quick=samples[:12];boot=bootstrap_metrics(varying,'CNN-20k',quick)
+    slow=[aggregate([varying[int(i)] for i in sample],'CNN-20k') for sample in quick]
+    for subset in ['eligible','all']:
+        for field in ['P','wACC','wRMSE','MSRE','VRE','regret','regret_raw','B','energy_saved','cost_forecast_error','spearman','cost_difference_RE','cost_difference_correlation']:
+            vals=[a[subset][field] for a in slow]
+            for k,v in bounds(vals).items():
+                expected=boot[subset][field][k]
+                assert v==expected or np.isclose(v,expected,rtol=1e-10,atol=1e-12),(subset,field,k,v,expected)
     print('PASS: constructed PASS, insufficiency, failure, covariance identity, finite/NaN tamper cases')
 if __name__=='__main__':run()
