@@ -34,15 +34,30 @@ def pilot_tick(gpu1_available):
             raise RuntimeError('pilot diagnostic scope violation')
         if list(own.glob('*.pt')):raise RuntimeError('pilot wrote a candidate')
         projection=measured['setup_normalization_seconds']+10000*measured['measured_update_median_seconds']
+        state_guard=json.loads((ROOT/'GUARD_STATUS/CNN2-20k.json').read_text())
+        selection_reserve=state_guard['selector_admission_reserve_seconds']
+        if selection_reserve is None:raise RuntimeError('measured state-selector reserve unavailable for feasibility')
+        feasible=projection+selection_reserve<=7200
         decision=dict(recorded_at=now(),status='MEASURED_FEASIBILITY',
             measured_receipt='runs/training_pilot/pilot_complete.json',
             measured_receipt_sha256=hashlib.sha256(receipt.read_bytes()).hexdigest(),
             projected_full_recipe_seconds=projection,projection_is_not_measured_duration=True,
-            frozen_allocation_seconds=7200,feasible_at_measured_median_rate=projection<=7200,
+            measured_selection_admission_reserve_seconds=selection_reserve,
+            selection_reserve_sources=state_guard['selector_admission_maximum_sources'],
+            frozen_allocation_seconds=7200,feasible_at_measured_median_rate=feasible,
             cut_order_scope='Only cuts freeing constrained Stage2b GPU quota apply; CNN2-roll is the optional Stage2b GPU arm',
-            recommendation='run frozen exact10000 recipe' if projection<=7200 else 'cut CNN2-roll; never shorten exact10000 recipe',
-            coordinator_cut_authorization_required=True)
+            recommendation='run frozen exact10000 recipe' if feasible else 'cut CNN2-roll; never shorten exact10000 recipe',
+            authorization='Coordinator approved measured pilot and frozen-cap decision under WO cut order')
         (own/'feasibility.json').write_text(json.dumps(decision,indent=2)+'\n')
+        if not feasible:
+            cutfile=ROOT/'runs/training/cuts.json'
+            prior=json.loads(cutfile.read_text()) if cutfile.exists() else {'cuts':[]}
+            prior['cuts']=sorted(set(prior.get('cuts',[]))|{'CNN2-roll'})
+            prior.setdefault('events',[]).append(dict(arm='CNN2-roll',recorded_at=now(),
+                reason='measured same-device full-unroll projection plus required measured selector reserve exceeds frozen2h cap',
+                evidence='runs/training_pilot/feasibility.json',
+                cut_order='earlier cuts do not free the constrained Stage2b GPU allocation; optional CNN2-roll is cut'))
+            temporary=cutfile.with_suffix('.tmp');temporary.write_text(json.dumps(prior,indent=2)+'\n');temporary.replace(cutfile)
         print(now(),'CNN2-roll feasibility report ready',flush=True);return
     pidfile=own/'detached_worker_pid.txt'
     if pidfile.exists():
@@ -109,6 +124,11 @@ def main(cuts):
             if has_val2() and not pilot_active and not complete('CNN2-R2') and 'CNN2-R2' not in ACTIVE:
                 launch('CNN2-R2',1,64)
         pilot_tick(not any(gpu==1 for _,gpu in ACTIVE.values()))
+        feasibility=pilot_own/'feasibility.json'
+        if (feasibility.exists() and json.loads(feasibility.read_text())['feasible_at_measured_median_rate']
+            and complete('CNN2-R2') and 'CNN2-roll' not in cuts
+            and not complete('CNN2-roll') and not any(gpu==1 for _,gpu in ACTIVE.values())):
+            launch('CNN2-roll',1,64)
         # Await validation readiness before allocating GPU to checkpoint-selected workers.
         if complete('CNN-roll') and has_val2() and not complete('CNN2-cost') and 'CNN2-cost' not in ACTIVE:
             launch('CNN2-cost',0,64)
@@ -122,7 +142,10 @@ def main(cuts):
                     test_access='none; controller reads no test outputs')
         target=ROOT/'runs/training/scheduler_status.json'
         tmp=target.with_suffix('.tmp');tmp.write_text(json.dumps(status,indent=2)+'\n');tmp.replace(target)
-        if all(complete(n) for n in ['CNN2-20k','CNN2-R2','CNN2-cost']) and all(n in cuts or complete(n) for n in queue) and (pilot_own/'feasibility.json').exists():break
+        if (all(complete(n) for n in ['CNN2-20k','CNN2-R2','CNN2-cost'])
+            and all(n in cuts or complete(n) for n in queue)
+            and (pilot_own/'feasibility.json').exists()
+            and ('CNN2-roll' in cuts or complete('CNN2-roll'))):break
         time.sleep(30)
 
 if __name__=='__main__':
