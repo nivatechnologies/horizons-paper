@@ -1,5 +1,6 @@
 """Coordinator-only Stage-1 reading; CPU bootstrap on sulaco."""
 import argparse,json,datetime,time
+from concurrent.futures import ThreadPoolExecutor
 import numpy as np
 from protocol import *
 def normal_eligible(cost):
@@ -26,6 +27,52 @@ def acc(pred,actual,climate):
     keep=(ob>0)&(fa>0)&(fa>=1e-24*ob)
     out[keep]=(a*b).sum(-1)[keep]/np.sqrt(fa[keep]*ob[keep])
     return out
+def score_one(c,climate,fixed):
+    cpu=np.load(ROOT/f"runs/test/cpu_{c:03d}.npz")
+    net=np.load(ROOT/f"runs/test/CNN-20k_{c:03d}.npz")
+    row=dict(case=c,leads=[])
+    myopic=int(cpu["N-last_cost"][:,:,0].mean(1).argmin())
+    for h,T in enumerate(LEADS):
+        if h==0:continue
+        truth=cpu["truth_cost"][:8,:,h]
+        b,eligible,low=normal_eligible(truth)
+        # Member bootstrap cross-check is truth-only and independent at each lead.
+        boot,bootlow=bootstrap_eligible(truth,b,"afd-bootstrap",c,h)
+        entry=dict(T=float(T),h=h,b=b,eligible=eligible,confirmation_bounds=low.tolist(),
+                   bootstrap_eligible=boot,bootstrap_bounds=bootlow.tolist(),
+                   full_best=int(truth.mean(1).argmin()),
+                   myopic_correct=myopic==b,fixed_correct=fixed==b,arms={})
+        full=truth.mean(1)
+        for name in ["N-last","N-oracle","CNN-20k"]:
+            if name=="CNN-20k":
+                keep=net["survivors"][h];failed=int(keep.sum())<32
+                chosen=int(net["cost"][h].argmin()) if not failed else -1
+                mean=net["mean"][h];var=net["var"][h];cost=net["cost"][h]
+                dropped=int((~keep).sum())
+            else:
+                mean=cpu[name+"_mean"];var=cpu[name+"_var"];cost=cpu[name+"_cost"][:,:,h].mean(1)
+                chosen=int(cost.argmin());failed=False;dropped=0
+            w=WINDOWS[h]
+            skill=acc(mean[:8,w],cpu["actual"][:8,w],climate)
+            wacc=0. if failed else float(skill.mean())
+            rmse=None if failed else float(np.sqrt(np.mean((mean[:8,w]-cpu["actual"][:8,w])**2,axis=-1)).mean()/SIGMA)
+            # All metrics retain per-case sufficient statistics for case bootstrap.
+            other=[k for k in range(8) if k!=b]
+            response=mean[other][:,w]-mean[b,w]
+            truth_response=cpu["truth_mean"][other][:,w]-cpu["truth_mean"][b,w]
+            vresponse=var[other][:,w]-var[b,w]
+            tvresponse=cpu["truth_var"][other][:,w]-cpu["truth_var"][b,w]
+            entry["arms"][name]=dict(chosen=chosen,correct=chosen==b and not failed,
+                 failed=failed,dropped=dropped,wACC=wacc,wRMSE=rmse,
+                 cost=cost.tolist(),J=full.tolist(),J0=float(cpu["truth_cost"][8,:,h].mean()),
+                 regret_raw=float(full.max()-full.min()) if failed else float(full[chosen]-full.min()),
+                 MSRE_num=None if failed else float(np.sum((response-truth_response)**2)),
+                 MSRE_den=None if failed else float(np.sum(truth_response**2)),
+                 VRE_num=None if failed else float(np.sum((vresponse-tvresponse)**2)),
+                 VRE_den=None if failed else float(np.sum(tvresponse**2)))
+        row["leads"].append(entry)
+    return row
+
 def score():
     if not all((ROOT/f"runs/test/CNN-20k_{c:03d}.npz").exists() for c in range(200)):
         raise RuntimeError("CNN test inference incomplete")
@@ -36,53 +83,13 @@ def score():
             fixed_choices.append(int(d["truth_cost"][:8,:1024,PRIMARY].mean(1).argmin()))
     fixed=int(np.bincount(fixed_choices,minlength=8).argmax())
     rows=[]
-    for c in range(200):
-        cpu=np.load(ROOT/f"runs/test/cpu_{c:03d}.npz")
-        net=np.load(ROOT/f"runs/test/CNN-20k_{c:03d}.npz")
-        row=dict(case=c,leads=[])
-        myopic=int(cpu["N-last_cost"][:,:,0].mean(1).argmin())
-        for h,T in enumerate(LEADS):
-            if h==0:continue
-            truth=cpu["truth_cost"][:8,:,h]
-            b,eligible,low=normal_eligible(truth)
-            # Member bootstrap cross-check is truth-only and independent at each lead.
-            boot,bootlow=bootstrap_eligible(truth,b,"afd-bootstrap",c,h)
-            entry=dict(T=float(T),h=h,b=b,eligible=eligible,confirmation_bounds=low.tolist(),
-                       bootstrap_eligible=boot,bootstrap_bounds=bootlow.tolist(),
-                       full_best=int(truth.mean(1).argmin()),
-                       myopic_correct=myopic==b,fixed_correct=fixed==b,arms={})
-            full=truth.mean(1)
-            for name in ["N-last","N-oracle","CNN-20k"]:
-                if name=="CNN-20k":
-                    keep=net["survivors"][h];failed=int(keep.sum())<32
-                    chosen=int(net["cost"][h].argmin()) if not failed else -1
-                    mean=net["mean"][h];var=net["var"][h];cost=net["cost"][h]
-                    dropped=int((~keep).sum())
-                else:
-                    mean=cpu[name+"_mean"];var=cpu[name+"_var"];cost=cpu[name+"_cost"][:,:,h].mean(1)
-                    chosen=int(cost.argmin());failed=False;dropped=0
-                w=WINDOWS[h]
-                skill=acc(mean[:8,w],cpu["actual"][:8,w],climate)
-                wacc=0. if failed else float(skill.mean())
-                rmse=None if failed else float(np.sqrt(np.mean((mean[:8,w]-cpu["actual"][:8,w])**2,axis=-1)).mean()/SIGMA)
-                # All metrics retain per-case sufficient statistics for case bootstrap.
-                other=[k for k in range(8) if k!=b]
-                response=mean[other][:,w]-mean[b,w]
-                truth_response=cpu["truth_mean"][other][:,w]-cpu["truth_mean"][b,w]
-                vresponse=var[other][:,w]-var[b,w]
-                tvresponse=cpu["truth_var"][other][:,w]-cpu["truth_var"][b,w]
-                entry["arms"][name]=dict(chosen=chosen,correct=chosen==b and not failed,
-                     failed=failed,dropped=dropped,wACC=wacc,wRMSE=rmse,
-                     cost=cost.tolist(),J=full.tolist(),J0=float(cpu["truth_cost"][8,:,h].mean()),
-                     regret_raw=float(full.max()-full.min()) if failed else float(full[chosen]-full.min()),
-                     MSRE_num=None if failed else float(np.sum((response-truth_response)**2)),
-                     MSRE_den=None if failed else float(np.sum(truth_response**2)),
-                     VRE_num=None if failed else float(np.sum((vresponse-tvresponse)**2)),
-                     VRE_den=None if failed else float(np.sum(tvresponse**2)))
-            row["leads"].append(entry)
-        rows.append(row)
-        write_json(ROOT/"runs/stage1_cases_partial.json",dict(cases=rows))
-        print("scored",c+1,flush=True)
+    # Coordinator compute threads; case streams are fixed and independent.
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures=[pool.submit(score_one,c,climate,fixed) for c in range(200)]
+        for c,future in enumerate(futures):
+            rows.append(future.result())
+            write_json(ROOT/"runs/stage1_cases_partial.json",dict(cases=rows))
+            print("scored",c+1,flush=True)
     readings=[]
     for j,T in enumerate(LEADS[1:]):
         entries=[r["leads"][j] for r in rows]
@@ -107,15 +114,18 @@ def score():
         samples=R.integers(200,size=(2000,200))
         denom=mask[samples].sum(1)
         gap=(correct["N-last"]-correct["CNN-20k"])
-        dist=(gap[samples]*mask[samples]).sum(1)/denom
-        assert np.isfinite(dist).all()
-        lower=float(np.quantile(dist,.05,method="linear"));upper=float(np.quantile(dist,.95,method="linear"))
+        if n and np.all(denom>0):
+            dist=(gap[samples]*mask[samples]).sum(1)/denom
+            assert np.isfinite(dist).all()
+            lower=float(np.quantile(dist,.05,method="linear"));upper=float(np.quantile(dist,.95,method="linear"))
+        else:
+            lower=upper=None
         g=P["N-last"]-P["CNN-20k"] if n else None
         sufficient=n>=160
         trivial=n>0 and P["N-last"]-max(myopic,pfixed)<.05
         comparable=n>0 and arm["CNN-20k"]["wACC"]>=arm["N-last"]["wACC"]-.01
-        kill=comparable and upper<=.05
-        witness=comparable and arm["CNN-20k"]["reliable"] and arm["CNN-20k"]["wACC"]>=arm["N-last"]["wACC"] and arm["CNN-20k"]["wRMSE"]<=arm["N-last"]["wRMSE"] and g>=.15 and lower>=.10
+        kill=comparable and upper is not None and upper<=.05
+        witness=comparable and lower is not None and arm["CNN-20k"]["wRMSE"] is not None and arm["N-last"]["wRMSE"] is not None and arm["CNN-20k"]["reliable"] and arm["CNN-20k"]["wACC"]>=arm["N-last"]["wACC"] and arm["CNN-20k"]["wRMSE"]<=arm["N-last"]["wRMSE"] and g>=.15 and lower>=.10
         verdict="otherwise" if not sufficient or trivial else "KILL" if kill else "PASS" if witness else "otherwise"
         readings.append(dict(T=float(T),eligible=n,total=200,eligible_fraction=n/200,sufficiency=bool(sufficient and not trivial),
                    sufficiency_status="INSUFFICIENT" if not sufficient else "TRIVIAL" if trivial else "SUFFICIENT",
