@@ -21,7 +21,7 @@ def sentence_check(gate,ids,stage,selected=None,repeats_ran=False):
 
 
 def check(rows,result,root=None,source_hashes=True):
-    if root is not None and result['stage'] in ['2','2b']:
+    if root is not None and (result['stage'] in ['2','2b'] or any(name.startswith('CNN') and name!='CNN-20k' for name in result.get('arms',[]))):
         from evaluation_hold import require_test_release
         require_test_release(root)
     reject_nonfinite(rows);reject_nonfinite(result)
