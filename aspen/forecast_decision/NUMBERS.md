@@ -594,7 +594,7 @@ State check, sampler approval and decision-cost check remain separate gates. No 
 
 Checked NUMBERS continuation: [NUMBERS_FULL_METRICS_BASELINE.md](NUMBERS_FULL_METRICS_BASELINE.md). Descriptive baseline/optional physics metrics; no headline sentence licensed.
 
-SHA256: cc50303c09459920fd994860b153427a31a6022d97af53bd78d2730a0401a587
+SHA256: 283da331d79e0857b8a6da24de905f0dbb869093857d6eec4c714cf0fb6307d0
 
 Checker record: `runs/baseline_metrics_checker.json`; SHA256 12e08b4be5be9da5d815a3e880b2f73d05b6741ead35c02b7b137124a92b94c8.
 
