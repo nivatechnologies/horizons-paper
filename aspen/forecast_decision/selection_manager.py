@@ -37,6 +37,10 @@ while True:
    args=['aa-exec','-p','chrome','--','/home/todd/.local/bin/bwrap','--ro-bind','/','/','--proc','/proc','--dev-bind','/dev','/dev','--tmpfs','/mnt','--tmpfs','/home','--tmpfs','/tmp','--dir','/tmp/worker','--ro-bind',remote+'/runs/selection_source','/tmp/worker/source','--ro-bind',remote+'/runs/selection_inputs/'+input_name,'/tmp/worker/validation_inputs.npz','--bind',rd,'/tmp/worker/out','--ro-bind','/home/todd/niva-datagen/.venv','/tmp/venv','--unsetenv','PYTHONPATH','--chdir','/tmp/worker/source','--','/tmp/venv/bin/python','selection_worker.py','--checkpoint','/tmp/worker/out/'+cp.name,'--inputs','/tmp/worker/validation_inputs.npz','--output','/tmp/worker/out/'+ack.name,'--microbatch','8']
    args+=['--model-name',name]
    command='flock '+shlex.quote('/home/todd/work/aspen-forecast-decision-20261005/gpu.lock')+' '+shlex.join(args)
+   # Recheck after transfers and any wait: a prior checkpoint may have consumed the margin.
+   latest_guard=guard_path(name)
+   if latest_guard.exists() and not json.loads(latest_guard.read_text()).get('selection_allowed',True):
+    print(name,step,'validation admission denied by latest guard receipt',flush=True);break
    print(name,step,'validation launch',flush=True)
    started=time.clock_gettime(time.CLOCK_BOOTTIME)
    reservation=own/'selection_in_progress.json'
