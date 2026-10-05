@@ -78,6 +78,19 @@ def main():
     subprocess.run([sys.executable,str(a.root/'full_report.py'),'--root',str(a.root),'--stage','2'],check=True)
     write_json(status,dict(status='REGISTERED',at=now(),role='statistics only',NUMBERS_fragment='NUMBERS_FULL_METRICS_STAGE2.md',reading='AFD_STAGE2_READING.md',checker=checker,remaining='Root merges NUMBERS fragment, renders checked figures locally, and obtains independent factual audit. Stage2b requires its separate approved sampler go.'))
     print('Stage-2 reading registered; full campaign is not declared complete',flush=True)
+    # Descriptive secondary results cannot license a sentence or influence L*.
+    secondary_names=[name for name in ready['names'] if not name.endswith('-cost') and
+        (name in ['N-last','N-oracle'] or all((a.root/f'runs/test2/{name}_{c:03d}.npz').exists() for c in range(100)))]
+    fixed=ready['selection'].get('best_fixed_action')
+    if fixed is not None and all((a.root/f'runs/test2/cpu_{c:03d}.npz').exists() for c in range(100)):
+        secondary_rows,secondary_result=assemble(a.root,a.root/'runs/secondary_case_rows.json',secondary_names,a.authorization,stage='secondary',intervals=True,panel='test2',fixed_action=fixed)
+        secondary_result['selection_completed_at']=ready['selection']['selection_completed_at']
+        secondary_result['selection_manifest']=str(selection_path.relative_to(a.root))
+        secondary_result['source_hashes'][str(selection_path.relative_to(a.root))]=digest(selection_path)
+        secondary_result['not_run']=[name for name in ready['names'] if not name.endswith('-cost') and name not in secondary_names]
+        write_json(a.root/'runs/secondary_metrics_cases.json',dict(cases=secondary_rows));write_json(a.root/'runs/secondary_metrics.json',secondary_result)
+        subprocess.run([sys.executable,str(a.root/'full_report.py'),'--root',str(a.root),'--stage','secondary'],check=True)
+        write_json(a.root/'runs/secondary_statistics_status.json',dict(status='REGISTERED',at=now(),role='statistics only',gate=None,licensed_sentences=[]))
 if __name__=='__main__':
     try:main()
     except Exception as exc:
