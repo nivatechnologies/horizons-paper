@@ -13,7 +13,12 @@ from check_campaign import reject_nonfinite
 
 def assemble(root,case_path,names,authorization,stage='baseline',selected=None,two_scale=False,intervals=False,panel='test',fixed_action=None):
     if not authorization:raise ValueError('explicit coordinator test-access authorization required')
-    if two_scale:panel='twoscale_test'
+    if two_scale:
+        approval=root/'runs/twoscale/sampler_go.json'
+        go=json.loads(approval.read_text())
+        if go.get('approved') is not True or go.get('approved_by')!='Todd':raise ValueError('Todd two-scale sampler approval required')
+        if go['sampler_check_sha256']!=digest(root/'runs/twoscale/sampler_check.json'):raise ValueError('sampler approval source mismatch')
+        panel='twoscale_test'
     now=datetime.datetime.now(datetime.timezone.utc).isoformat()
     log=root/'runs/statistics_access.jsonl';log.parent.mkdir(parents=True,exist_ok=True)
     with log.open('a') as f:f.write(json.dumps(dict(at=now,authorized_at=authorization,role='statistics coordinator only',case_rows=str(case_path),arms=names,stage=stage))+'\n')

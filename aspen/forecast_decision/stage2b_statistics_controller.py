@@ -21,7 +21,9 @@ def readiness(root):
     if selection.get('system')!='two-scale' or not selection.get('selection_completed_at'):raise ValueError('invalid two-scale selection')
     S=selection['S'];names=list(selection['models'])
     if selection['selected_L'] not in S or set(S)!=set(n for n in names if n in ORDER2):raise ValueError('two-scale frozen S mismatch')
-    if not {'CNN2-20k','CNN2-R2','CNN2-roll','CNN2-cost'}.issubset(names):raise ValueError('mandatory two-scale arm missing')
+    if not {'CNN2-20k','CNN2-R2','CNN2-cost'}.issubset(names):raise ValueError('never-cut two-scale arm missing')
+    cuts=set(selection.get('cuts',[]))|set(selection.get('not_run',[]))
+    if 'CNN2-roll' not in names and 'CNN2-roll' not in cuts:raise ValueError('optional CNN2-roll absent without explicit cut')
     if selection.get('best_fixed_action') not in range(8):raise ValueError('validation-selected fixed action missing')
     for c in range(200):
         if not (root/f'runs/twoscale_test/cpu_{c:03d}.npz').exists():return None,'waiting for complete approved two-scale truth'
@@ -34,7 +36,8 @@ def readiness(root):
     if not compute_path.exists():return None,'waiting for public two-scale compute receipts'
     compute=json.loads(compute_path.read_text())
     if any(n not in compute['training'] for n in names):return None,'waiting for all public two-scale terminal phase receipts'
-    return dict(selection=selection,path=selection_path,approval=approval,names=['N2','N2-offline','N2-noclosure']+names),'ready'
+    physics=['N2','N2-offline']+([] if 'N2-noclosure' in cuts else ['N2-noclosure'])
+    return dict(selection=selection,path=selection_path,approval=approval,names=physics+names),'ready'
 
 
 def main():
