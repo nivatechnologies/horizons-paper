@@ -149,12 +149,15 @@ def run(interval, enforce):
         # Admission uses observed selector residency bounds, independently of
         # scientific checkpoint rules. State/cost inference share their own pool.
         selector_pools = {"state": [], "cost": []}
+        selector_pool_sources = {"state": [], "cost": []}
         for candidate in CAPS:
             candidate_directory = ROOT / "runs/training" / candidate
             candidate_values = selector_charge(candidate_directory, now_boottime)
             pool = "cost" if candidate.endswith("cost") else "state"
             selector_pools[pool].extend(r["seconds"] for r in candidate_values[5]
                                         if r["seconds"] is not None)
+            selector_pool_sources[pool].extend(r for r in candidate_values[5]
+                                               if r['seconds'] is not None)
         for name, cap in CAPS.items():
             directory = ROOT / "runs/training" / name
             pidpath = directory / "detached_worker_pid.txt"
@@ -205,6 +208,8 @@ def run(interval, enforce):
             pool = selector_pools["cost" if name.endswith("cost") else "state"]
             measured_selector_maximum = max(pool) if pool else None
             admission_reserve = 2 * measured_selector_maximum + 60 if pool else None
+            admission_sources=selector_pool_sources['cost' if name.endswith('cost') else 'state']
+            admission_maximum_sources=[r for r in admission_sources if r['seconds']==measured_selector_maximum]
             progress = load(directory / "progress.json")
             latest = progress["log"][-1] if progress and progress.get("log") else None
             warning = None
@@ -214,6 +219,20 @@ def run(interval, enforce):
                     warning = "Measured recent update rate projects required exact count beyond conservative cap"
                     alerts.append(f"{name}: {warning}")
             stopped = old and old.get("stop_requested", False)
+            checkpoints=list(directory.glob('checkpoint_*.pt'))
+            all_scheduled_acknowledged=bool(checkpoints) and all(
+                p.with_suffix('.json').exists() and
+                (directory/(p.stem.replace('checkpoint_','validation_')+'.json')).exists()
+                for p in checkpoints)
+            variable_budget_stop=(name not in COUNTS and alive and not receipt
+                and remaining is not None and admission_reserve is not None
+                and remaining<=admission_reserve
+                and all_scheduled_acknowledged
+                and not (active_record and active_record.get('active')))
+            if variable_budget_stop:
+                state[name]['stop_requested']=True
+                state[name]['stop_reason']='variable recipe stopped conservatively before required selector reservation would be exhausted; every produced scheduled checkpoint acknowledged'
+                stopped=True
             if selector_reservation is None or base is None:
                 state[name]["stop_requested"] = True
                 state[name]["stop_reason"] = "own or included-base selector residency upper bound unavailable"
@@ -248,7 +267,12 @@ def run(interval, enforce):
                        feasibility_warning=warning, stop_requested=bool(stopped),
                        selector_admission_measured_maximum_seconds=measured_selector_maximum,
                        selector_admission_reserve_seconds=admission_reserve,
+                       selector_admission_maximum_sources=admission_maximum_sources,
                        selector_admission_rule="two times maximum observed same-kind selector reservation plus 60-second stop margin",
+                       variable_budget_stop_predicate='variable-update recipe, alive, no completion receipt, remaining conservative seconds <= measured selector admission reserve, every produced scheduled checkpoint acknowledged, no active selector',
+                       all_scheduled_checkpoints_acknowledged=all_scheduled_acknowledged,
+                       variable_budget_stop_triggered=variable_budget_stop,
+                       stop_reason=state[name].get('stop_reason'),
                        selection_allowed=not stopped and remaining is not None and admission_reserve is not None and remaining > admission_reserve,
                        selector_charge_sources=sources, active_selector_record=active_record,
                        selector_reservation_sources=reservation_sources,
