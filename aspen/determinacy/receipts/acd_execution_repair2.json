@@ -1,0 +1,12 @@
+{
+  "reason": "Pre-R5 audit found a possible concurrent write race on the common population receipt",
+  "hashes": {
+    "acd_confirmation.py": "839393995b3e0a4422f8cc28706b352fc27eafbff2852b6f87c7b439e648d322"
+  },
+  "scientific_changes": false,
+  "threshold_changes": false,
+  "seed_changes": false,
+  "settings_changes": false,
+  "repair": "Only R5 worker0 writes the population receipt; every worker independently computes the identical frozen population",
+  "applied_before_any_R5_refit": true
+}

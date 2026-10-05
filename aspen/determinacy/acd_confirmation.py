@@ -17,6 +17,8 @@ def verify_freeze():
     d=json.loads((ROOT/'receipts/acd_freeze_code.json').read_text())
     hashes=dict(d['hashes']);repair=ROOT/'receipts/acd_execution_repair.json'
     if repair.exists():hashes.update(json.loads(repair.read_text())['hashes'])
+    repair2=ROOT/'receipts/acd_execution_repair2.json'
+    if repair2.exists():hashes.update(json.loads(repair2.read_text())['hashes'])
     for name,sha in hashes.items():
         if digest(ROOT/name)!=sha:raise RuntimeError(f'Execution freeze changed: {name}')
     if settings()!=d['settings']:raise RuntimeError('Frozen compute settings changed')
@@ -33,6 +35,8 @@ def verify_freeze():
         raise RuntimeError('H2: pushed execution freeze differs')
     if repair.exists() and receipt.get('repair_receipt_sha256')!=digest(repair):
         raise RuntimeError('H2: execution repair must be committed and pushed')
+    if repair2.exists() and receipt.get('repair2_receipt_sha256')!=digest(repair2):
+        raise RuntimeError('H2: receipt-writer repair must be committed and pushed')
     if os.uname().nodename!='sulaco':raise RuntimeError('H3: compute requires sulaco')
 
 def event(c,kind,paths=()):
@@ -120,7 +124,8 @@ def population():
 def measures(worker,workers):
     verify_freeze()
     from acd_measure import sites_for,probe_values,refit
-    rows=population();save_json(ROOT/'runs/conf/measure_population.json',dict(lead=3,population=rows,not_evaluable=len(rows)<40))
+    rows=population()
+    if worker==0:save_json(ROOT/'runs/conf/measure_population.json',dict(lead=3,population=rows,not_evaluable=len(rows)<40))
     for row in rows:
         c,k,l=row['case'],row['k'],row['l']
         owned=[arm for arm in range(4) if (c*4+arm)%workers==worker]
