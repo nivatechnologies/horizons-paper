@@ -19,6 +19,8 @@ def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
 def readiness(root,selection_path,inference_path):
+    from evaluation_hold import hold_active
+    if hold_active(root):return None,'Stage2 test reading held pending Todd decision'
     if not selection_path.exists():return None,'waiting for FINAL validation-selection consumer manifest'
     selection=json.loads(selection_path.read_text());reject_nonfinite(selection)
     if selection.get('status')!='FINAL':return None,'selection consumer manifest is not FINAL'
@@ -67,8 +69,11 @@ def main():
         print(reason,flush=True)
         if not a.watch:return
         time.sleep(30)
+    from evaluation_hold import require_test_release
+    require_test_release(a.root)
     from assemble_metrics import assemble
     rows,result=assemble(a.root,a.root/'runs/stage1_cases.json',ready['names'],a.authorization,stage='2',selected=ready['selection']['selected_L'],intervals=True,fixed_action=ready['selection'].get('best_fixed_action'))
+    require_test_release(a.root)
     result['selection_completed_at']=ready['selection']['selection_completed_at'];result['selection_manifest']=str(selection_path.relative_to(a.root));result['inference_manifest']=str(inference_path.relative_to(a.root));result['cuts']=ready['selection'].get('cuts',[]);result['not_run']=ready['selection'].get('not_run',[])
     result['source_hashes'][str(selection_path.relative_to(a.root))]=digest(selection_path);result['source_hashes'][str(inference_path.relative_to(a.root))]=digest(inference_path)
     write_json(a.root/'runs/2_metrics_cases.json',dict(cases=rows));write_json(a.root/'runs/2_metrics.json',result)

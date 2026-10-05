@@ -9,6 +9,8 @@ def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
 def readiness(root):
+    from evaluation_hold import hold_active
+    if hold_active(root):return None,'Stage2b test reading held pending Todd decision'
     approval=root/'runs/twoscale/sampler_go.json'
     if not approval.exists():return None,'waiting for Todd two-scale sampler go'
     go=json.loads(approval.read_text());reject_nonfinite(go)
@@ -55,8 +57,11 @@ def main():
         if ready:break
         if not a.watch:return
         time.sleep(30)
+    from evaluation_hold import require_test_release
+    require_test_release(a.root)
     from assemble_metrics import assemble
     rows,result=assemble(a.root,a.root/'runs/2b_case_rows.json',ready['names'],a.authorization,stage='2b',selected=ready['selection']['selected_L'],two_scale=True,intervals=True,fixed_action=ready['selection']['best_fixed_action'])
+    require_test_release(a.root)
     result['selection_completed_at']=ready['selection']['selection_completed_at'];result['selection_manifest']=str(ready['path'].relative_to(a.root));result['cuts']=ready['selection'].get('cuts',[]);result['not_run']=ready['selection'].get('not_run',[])
     for path in [ready['path'],ready['approval']]:result['source_hashes'][str(path.relative_to(a.root))]=digest(path)
     write_json(a.root/'runs/2b_metrics_cases.json',dict(cases=rows));write_json(a.root/'runs/2b_metrics.json',result)

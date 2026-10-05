@@ -12,6 +12,8 @@ from check_campaign import reject_nonfinite
 
 
 def assemble(root,case_path,names,authorization,stage='baseline',selected=None,two_scale=False,intervals=False,panel=None,fixed_action=None):
+    from evaluation_hold import require_test_release
+    if stage in ['2','2b'] or any(name.startswith('CNN') and name!='CNN-20k' for name in names):require_test_release(root)
     if not authorization:raise ValueError('explicit coordinator test-access authorization required')
     expected_panel={'baseline':'test','2':'test','2b':'twoscale_test','secondary':'test2'}.get(stage)
     if expected_panel is None:raise ValueError('unsupported statistics stage')

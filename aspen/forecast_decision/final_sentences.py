@@ -58,6 +58,11 @@ def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--watch',action='store_true');a=p.parse_args()
     root=a.root
     while True:
+        from evaluation_hold import hold_active
+        if hold_active(root):
+            write_json(root/'runs/final_sentences_status.json',dict(status='HELD_PENDING_TODD_DECISION',at=datetime.datetime.now(datetime.timezone.utc).isoformat()))
+            if not a.watch:return
+            time.sleep(30);continue
         one_path=root/'runs/2_metrics.json';one_check=root/'runs/2_metrics_checker.json';two_path=root/'runs/2b_metrics.json';two_check=root/'runs/2b_metrics_checker.json';scope_path=root/'runs/final_scope_status.json'
         authorization=root/'runs/final_scope_authorization.json'
         complete_two=two_path.exists() and two_check.exists() and json.loads(two_check.read_text()).get('status')=='PASS'
@@ -93,6 +98,8 @@ def main():
             sources={str(one_path.relative_to(root)):digest(one_path),str(one_check.relative_to(root)):digest(one_check)}
             if scope=='ran':sources.update({str(two_path.relative_to(root)):digest(two_path),str(two_check.relative_to(root)):digest(two_check)})
             if scope=='not_run':sources[str(scope_path.relative_to(root))]=digest(scope_path)
+            from evaluation_hold import require_test_release
+            require_test_release(root)
             output=dict(reading=reading,checker=checker,source_hashes=sources)
             write_json(root/'runs/final_sentences.json',output)
             write_json(root/'runs/final_sentences_status.json',dict(status=reading['status'],at=datetime.datetime.now(datetime.timezone.utc).isoformat(),factual_audit='OPEN; independent prose audit remains required'))

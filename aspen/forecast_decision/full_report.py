@@ -21,6 +21,9 @@ def sentence_check(gate,ids,stage,selected=None,repeats_ran=False):
 
 
 def check(rows,result,root=None,source_hashes=True):
+    if root is not None and result['stage'] in ['2','2b']:
+        from evaluation_hold import require_test_release
+        require_test_release(root)
     reject_nonfinite(rows);reject_nonfinite(result)
     expected_panel={'baseline':'test','2':'test','2b':'twoscale_test','secondary':'test2'}[result['stage']]
     if 'panel' in result:assert result['panel']==expected_panel,'stage/panel provenance mismatch'
@@ -197,6 +200,9 @@ def report(result):
 
 def main():
     p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--stage',default='baseline');p.add_argument('--figures',action='store_true');a=p.parse_args()
+    if a.stage in ['2','2b','secondary']:
+        from evaluation_hold import require_test_release
+        require_test_release(a.root)
     cases_path=a.root/f'runs/{a.stage}_metrics_cases.json';result_path=a.root/f'runs/{a.stage}_metrics.json'
     rows=json.loads(cases_path.read_text());result=json.loads(result_path.read_text());checked=check(rows,result,a.root)
     bad=copy.deepcopy(result);bad['primary']['metrics'][result['arms'][0]]['eligible']['P']+=.01
@@ -207,6 +213,7 @@ def main():
     try:check(rows,bad,source_hashes=False)
     except (ValueError,AssertionError):pass
     else:raise AssertionError('NaN tamper accepted')
+    if a.stage in ['2','2b','secondary']:require_test_release(a.root)
     checked.update(tamper_rejected=True,NaN_rejected=True)
     if result['stage']=='2':checked.update(final_abstract_sentence_set='OPEN pending combined Stage2b scope check',final_sentence_set_closed=False)
     write_json(a.root/f'runs/{a.stage}_metrics_checker.json',checked)
