@@ -41,6 +41,14 @@ def check(rows,result,root=None,source_hashes=True):
                     if receipt.get('worker_terminal_status')=='EXTERNALLY_STOPPED':assert receipt['phase_measurement_is_lower_bound'] is True
                     if 'total_gpu_hours' in receipt:assert receipt['total_gpu_hours'] is None
         raw_panel=result.get('panel','twoscale_test' if result['stage']=='2b' else 'test')
+        for name,expected in result.get('expected_checkpoint_hashes',{}).items():
+            if name=='CNN-20k':equivalent(expected,digest(root/'inputs/CNN-20k.pt'))
+            else:
+                manifest=root/('runs/training/final_selection_stage2b.json' if result['stage']=='2b' else 'runs/training/final_selection_stage2.json')
+                consumer=json.loads(manifest.read_text());assert consumer['status']=='FINAL';equivalent(expected,consumer['models'][name]['sha256'])
+            for c in range(len(cases)):
+                meta=root/f'runs/{raw_panel}/{name}_{c:03d}.json'
+                equivalent(json.loads(meta.read_text())['checkpoint_sha256'],expected)
         for group,field in [('primary_learned_measured_seconds','primary_decision_timing'),('primary_optional_physics_measured_seconds','measured_primary_seconds')]:
             for name,record in result.get(group,{}).items():
                 values=[]

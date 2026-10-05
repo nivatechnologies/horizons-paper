@@ -54,6 +54,9 @@ def assemble(root,case_path,names,authorization,stage='baseline',selected=None,t
         fixed_action=next(iter(fixed_set))
     if fixed_action not in range(8) or fixed_set-{fixed_action}:raise ValueError('stored fixed null differs from finalized validation selection')
     work=[];timing=[];learned_timing={name:[] for name in names if name.startswith('CNN')};optional_physics_timing={};sources={str(case_path.relative_to(root)):digest(case_path)}
+    if expected_checkpoints:
+        if 'CNN-20k' in expected_checkpoints:sources['inputs/CNN-20k.pt']=expected_checkpoints['CNN-20k']
+        if any(name!='CNN-20k' for name in expected_checkpoints):sources[str(manifest_path.relative_to(root))]=digest(manifest_path)
     for name in ['assemble_metrics.py','metrics.py','full_report.py','protocol.py','panel_case_rows.py']:
         sha=digest(root/name);snapshot=root/'runs/statistics_sources'/sha/name;snapshot.parent.mkdir(parents=True,exist_ok=True)
         if not snapshot.exists():shutil.copyfile(root/name,snapshot)
@@ -75,6 +78,7 @@ def assemble(root,case_path,names,authorization,stage='baseline',selected=None,t
                 sources[str(p.relative_to(root))]=digest(p)
                 meta_path=p.with_suffix('.json')
                 if meta_path.exists():
+                    sources[str(meta_path.relative_to(root))]=digest(meta_path)
                     meta=json.loads(meta_path.read_text());pt=meta.get('primary_decision_timing',meta.get('primary_timing'))
                     if meta.get('primary_timing_includes_identification_fit_cost_and_argmin') and meta.get('measured_primary_seconds') is not None:
                         optional_physics_timing.setdefault(name,[]).append(meta['measured_primary_seconds']);sources[str(meta_path.relative_to(root))]=digest(meta_path)
@@ -187,7 +191,7 @@ def assemble(root,case_path,names,authorization,stage='baseline',selected=None,t
         snapshot=root/'runs/statistics_sources'/sha/public_compute.name;snapshot.parent.mkdir(parents=True,exist_ok=True)
         if not snapshot.exists():shutil.copyfile(public_compute,snapshot)
         sources[str(snapshot.relative_to(root))]=sha
-    output=dict(stage=stage,panel=panel,two_scale=two_scale,sigma=sigma,selected=selected,role='statistics coordinator',test_access_authorization=authorization,created_at=now,arms=names,source_hashes=sources,
+    output=dict(stage=stage,panel=panel,expected_checkpoint_hashes=expected_checkpoints,two_scale=two_scale,sigma=sigma,selected=selected,role='statistics coordinator',test_access_authorization=authorization,created_at=now,arms=names,source_hashes=sources,
                 leads=panels,primary=next(p for p in panels if p['T']==2),primary_Nlast_measured_seconds=dict(cases=len(timing),mean=float(np.mean(timing)) if timing else None),
                 compute_metadata=compute_metadata,primary_two_scale_physics_measured_seconds={name:dict(cases=len(values),mean=float(np.mean(values)),panel='validation timing only',includes='identification, fit, integration, cost and argmin') for name,values in two_scale_physics_timing.items()},
                 primary_optional_physics_measured_seconds={name:dict(cases=len(values),mean=float(np.mean(values)) if values else None,includes='identification, fit if applicable, integration, drop, cost and argmin') for name,values in optional_physics_timing.items()},
