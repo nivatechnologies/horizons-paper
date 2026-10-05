@@ -1,14 +1,15 @@
 """Baccus-only queue controller. Reads training progress and validation readiness only."""
 import argparse,datetime,json,shutil,subprocess,time,shlex
 from pathlib import Path
+from training_lifecycle import terminal_record
 ROOT=Path(__file__).resolve().parent
 REMOTE='/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision'
 ACTIVE={}
 
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
-def complete(name):return (ROOT/'runs/training'/name/'training_complete.json').exists()
+def complete(name):return terminal_record(name)[0] is not None
 def run_record(name):
-    return json.loads((ROOT/'runs/training'/name/'training_complete.json').read_text())
+    return terminal_record(name)[0]
 def has_val2():
     r=subprocess.run(['ssh','sulaco','test -f '+REMOTE+'/runs/selection_inputs/validation2_inputs.npz'])
     return r.returncode==0
@@ -46,7 +47,7 @@ def main(cuts):
             if not complete(name):
                 raise RuntimeError(f'{name} failed without completion receipt; inspect training-only scheduler.log')
             record=run_record(name)
-            if record['charged_gpu_seconds']>record['cap_seconds']:
+            if record.get('charged_gpu_seconds',record.get('recorded_phase_gpu_seconds_lower_bound',0))>record['cap_seconds']:
                 raise RuntimeError(f'{name} exceeded cap; halt scheduling')
             done.add(name);print(now(),'complete',name,flush=True)
         # Mandatory two-scale base first; it does not require panel truth.

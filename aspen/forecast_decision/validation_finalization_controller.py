@@ -2,6 +2,7 @@
 import datetime,hashlib,json,shutil,subprocess,time
 from pathlib import Path
 import numpy as np
+from training_lifecycle import terminal_record
 ROOT=Path(__file__).resolve().parent
 REMOTE='/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision'
 ORDER=['CNN-R2','CNN-roll','CNN-80k','CNN-20k','CNN-5k']
@@ -24,13 +25,20 @@ def model_record(name):
     if name=='CNN-20k':
         checkpoint=ROOT/'runs/training_data/CNN-20k.pt';step=20000;kind='state';training=None
     else:
-        directory=ROOT/'runs/training'/name;done=directory/'training_complete.json'
-        if not done.exists():return None
-        training=json.loads(done.read_text());kind=training['kind']
+        directory=ROOT/'runs/training'/name
+        training,done=terminal_record(name)
+        if training is None:return None
+        kind=training['kind']
         checkpoint=directory/'selected.pt'
         if kind in ['r2','cost']:
-            if any(not (directory/(p.stem.replace('checkpoint_','validation_')+'.json')).exists()
-                   for p in directory.glob('checkpoint_*.pt')):return None
+            pending=[p.name for p in directory.glob('checkpoint_*.pt')
+                     if not (directory/(p.stem.replace('checkpoint_','validation_')+'.json')).exists()]
+            if pending:
+                if training.get('status')=='EXTERNALLY_STOPPED':
+                    write(directory/'finalization_blocker.json',dict(status='BLOCKED',recorded_at=now(),
+                        reason='externally stopped with unevaluated scheduled checkpoints; no candidate omitted',
+                        pending_checkpoints=sorted(pending),terminal_receipt=str(done.relative_to(ROOT))))
+                return None
             choice=directory/'selection.json'
             if not choice.exists():return None
             step=json.loads(choice.read_text())['step']
@@ -40,7 +48,8 @@ def model_record(name):
             import torch
             step=int(torch.load(checkpoint,map_location='cpu',weights_only=True)['step'])
         if not checkpoint.exists():return None
-    charged=float(training['charged_gpu_seconds']) if training else None
+    stopped=bool(training and training.get('status')=='EXTERNALLY_STOPPED')
+    charged=float(training.get('charged_gpu_seconds',training.get('recorded_phase_gpu_seconds_lower_bound'))) if training else None
     extra=0.
     if training and kind not in ['r2','cost']:
         ack=ROOT/'runs/training'/name/f'validation_{step:06d}.json'
@@ -50,13 +59,16 @@ def model_record(name):
                 recorded_training_selection_phase_gpu_seconds=charged+extra if charged is not None else None,
                 recorded_training_selection_phase_gpu_hours=(charged+extra)/3600 if charged is not None else None,
                 exact_total_gpu_seconds=None,
+                phase_measurement_is_lower_bound=stopped,
+                worker_terminal_status='EXTERNALLY_STOPPED' if stopped else 'COMPLETE' if training else 'HISTORICAL',
                 cuda_startup_duration_seconds=None,
                 cuda_startup_timing_scope='unavailable; excluded from legacy worker phase' if name in ['CNN-roll','CNN-resp','CNN-cost','CNN-R2','CNN-20k'] else 'included from before first CUDA synchronization in new worker phase',
                 reservation_upper_bound_receipt='GUARD_STATUS/'+name+'.json' if name!='CNN-20k' else None,
                 additional_final_validation_gpu_seconds=extra,
                 base_charged_gpu_seconds_in_individual_cap=float(training.get('base_gpu_seconds_in_individual_cap',0)) if training else None,
-                timing_status='synchronized recorded training/selection phase; exact total unavailable; reservation bound is separate' if training else 'historical GPU timing unavailable; no CPU-to-GPU conversion',
-                training_receipt_sha256=digest(ROOT/'runs/training'/name/'training_complete.json') if training else None)
+                timing_status='last synchronized recorded phase is a lower bound; externally stopped; exact final phase unavailable' if stopped else 'synchronized recorded training/selection phase; exact total unavailable; reservation bound is separate' if training else 'historical GPU timing unavailable; no CPU-to-GPU conversion',
+                training_receipt_sha256=digest(done) if training else None,
+                training_receipt_path=str(done.relative_to(ROOT)) if training else None)
 
 def finalize_system(two,cuts):
     system='two-scale' if two else 'one-scale'
@@ -121,6 +133,7 @@ def finalize_system(two,cuts):
     write(public_compute,dict(system=system,recorded_at=now(),models={n:{k:r[k] for k in r if k not in ['checkpoint','step','kind','completed_at']} for n,r in models.items()},
                               solver_data=solver_data,
                               aggregate_recorded_phase_gpu_seconds=sum(r['recorded_training_selection_phase_gpu_seconds'] or 0 for r in models.values()),
+                              aggregate_phase_measurement_is_lower_bound=any(r['phase_measurement_is_lower_bound'] for r in models.values()),
                               exact_total_gpu_seconds=None,
                               reservation_upper_bound_summary='GUARD_STATUS/summary.json'))
     configuration=dict(system=system,S=S,order=order,models=models,cuts=sorted(cuts),not_run=[n for n in order if n not in models],
