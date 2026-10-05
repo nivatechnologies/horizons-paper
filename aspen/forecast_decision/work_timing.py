@@ -36,16 +36,30 @@ def main(workers):
     ends=(LEADS+1)*LT
     # JIT warm-up is excluded from reported per-decision time.
     works(np.zeros((1,40)),np.full((1,40),8.),np.zeros((1,40)),ends,dt())
+    # Warm all kernels/signatures outside measured decisions.
+    dummy=np.full((11,40),8.)
+    identify(dummy,dt())
+    simulate(np.full((512,40),8.),np.full((512,40),8.),dt(),36)
+    from physics import flow
+    flow(np.full((512,40),8.),np.full((512,40),8.),1,.001)
     for c in range(200):
         dest=ROOT/f"runs/test/work_timing_{c:03d}.json"
-        if dest.exists():continue
+        if dest.exists():
+            existing=json.loads(dest.read_text())
+            if c>=16 or existing.get("primary_timing_includes_cost_and_argmin"):continue
+        else:
+            existing=None
         inp=np.load(ROOT/f"runs/test/input_{c:03d}.npz");y=inp["observed"]
-        members=y+.02*SIGMA*rng("afd-test-truth",2,c).standard_normal((2048,11,40))
-        u=np.repeat(.16*patterns(),2048,axis=0)
-        work=works(np.tile(members[:,-1],(8,1)),8+u,u,ends,dt()).reshape(8,2048,len(LEADS),2)
-        mean=work.mean(1);den=mean[...,0]
-        ratios=np.divide(mean[...,1],den,out=np.full_like(den,np.nan),where=den!=0)
-        if not np.isfinite(ratios).all():raise RuntimeError("undefined injected-work ratio")
+        if existing is None:
+            members=y+.02*SIGMA*rng("afd-test-truth",2,c).standard_normal((2048,11,40))
+            u=np.repeat(.16*patterns(),2048,axis=0)
+            work=works(np.tile(members[:,-1],(8,1)),8+u,u,ends,dt()).reshape(8,2048,len(LEADS),2)
+            mean=work.mean(1);den=mean[...,0]
+            ratios=np.divide(mean[...,1],den,out=np.full_like(den,np.nan),where=den!=0)
+            if not np.isfinite(ratios).all():raise RuntimeError("undefined injected-work ratio")
+        else:
+            mean=np.stack([np.array(existing["work_base"]),np.array(existing["work_action"])],axis=-1)
+            ratios=np.array(existing["R_W"])
         measurement=None
         if c<16:
             windows=y+.02*SIGMA*rng("afd-test-arm",2,c).standard_normal((64,11,40))
@@ -53,8 +67,10 @@ def main(workers):
             # Measure integration through T+W, including final fractional step.
             nstep=int(np.floor(3*LT/dt()));x=np.tile(windows[:,-1],(8,1))
             f=np.repeat(Fhat+.16*patterns(),64,axis=0)
-            from physics import flow
-            x=flow(x,f,nstep,dt())
+            states=simulate(x,f,dt(),36)
+            costs=(.5*np.mean(states**2,axis=-1))[:,WINDOWS[PRIMARY]].mean(-1).reshape(8,64).mean(1)
+            chosen=int(costs.argmin())
+            x=flow(states[:,-1],f,nstep-int(round(35*.05/dt())),dt())
             remainder=3*LT-nstep*dt()
             if remainder>0:x=flow(x,f,1,remainder)
             assert np.isfinite(x).all()
@@ -63,6 +79,7 @@ def main(workers):
              work_action=mean[...,1].tolist(),R_W=ratios.tolist(),
              rule="ratio of member-mean integrated work per case/action, then average cases",
              measured_primary_Nlast_seconds=measurement,primary_seconds_case_sample=c<16,
+             primary_timing_includes_cost_and_argmin=c<16,
              integrator="same RK4 stages, exact endtime via partial quadrature without changing sampled trajectory",
              source_hash=digest(ROOT/"work_timing.py")))
         print("work",c+1,flush=True)
