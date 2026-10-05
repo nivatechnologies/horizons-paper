@@ -1,5 +1,41 @@
 # Aspen counterfactual determinacy
 
+Todd authorized freeze and Stage 2 confirmation on 2026-10-05. The original
+Stage 1 scope below is retained as execution history. Confirmation uses
+`ACD_FREEZE.md`, the additive `ACD_FREEZE_CODE.md`, and the serialization-only
+`ACD_EXECUTION_REPAIR.md`; all were pushed before the corresponding execution.
+
+Stage 2 entry points (run on sulaco from this directory):
+
+```
+python acd_confirmation.py cpu --worker 0 --workers 1
+python acd_cnn_ensemble.py --microbatch 8
+python acd_confirmation.py score
+python acd_confirmation.py measure --worker 0 --workers 1
+python acd_confirmation_analysis.py
+python acd_stage2_check.py
+```
+
+CPU and CNN workers may overlap; the CNN waits for each CPU case receipt.
+Scoring runs after all CNN receipts exist, and verifies the per-case hash-event
+order. Inference sees only `runs/conf/input_*.npz` observations; permitted truth
+readers use `runs/conf/truth/`. Independent case/refit workers keep frozen seeds
+and case-index population ordering. Every worker checks the frozen source,
+settings, inherited source, checkpoint and null hashes. A pushed-freeze receipt
+is required before observations are generated.
+
+The fixed R-time cuts omit confirmation RML, R5-A, R5-3LT and R6-3LT, cap R5
+at60 at2LT, and use1000 warmup/500 draws per chain. RML-free MAP initialization
+uses the preregistered R-other resolution. CNN uses sulaco GPU only for inference,
+and reduces its microbatch or reports R-gpu if memory is short. Services remain
+running; no training or cloud compute is used.
+
+`acd_confirmation_analysis.py` generates `ACD_STAGE2_READING.md`, the
+confirmation result vault note and claim-ledger update from saved confirmation
+numbers. `ACD_STAGE2_ARTIFACTS.json` is the separate Stage2 inventory/order check;
+the original Stage1 inventory remains unchanged. Never run the Stage1-only
+`check_acd.py` as a Stage2 checker: it intentionally rejects confirmation paths.
+
 The v2.3 run ends at the Stage 1 development gate. Step 0b is preserved at
 `eb87279`; a freeze, confirmation, training and CNN inference are outside this run.
 

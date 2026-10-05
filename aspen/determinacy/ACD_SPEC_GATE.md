@@ -133,6 +133,29 @@ Applied rules: **R-other** (the three scope findings above), **R-rml** (163 coup
 Final reading: ACD_STAGE1_READING.md. Artifact verification passes for1,545 raw files; ACD_ARTIFACTS.json records the inventory, unchanged inherited hashes, CPU JAX/x64 and seed leaves. Runtime details: receipts/resolutions.jsonl and receipts/acd_stage1.json. Work stops at this gate, with no freeze, confirmation reading or CNN inference.
 # Stage 2 addendum — before confirmation, 2026-10-05
 
+**Final Stage 2 reading: PUBLISH via R2a and R2b; R5 DOES NOT BEAT.** The
+confirmation panel and all240 refits are complete. `ACD_STAGE2_ARTIFACTS.json`
+passes the frozen-code/settings, all200 blind-order and raw-hash checks. No
+H1–H3 occurred. Frozen null and Stage1 reading hashes are unchanged.
+
+Stage2 **R-diag** fired once: case129's F-arm refit still had parameter
+R-hat=1.010101494 after the prescribed retry, exceeding1.01. It remains unresolved
+in F's denominator of60; it is not dropped. Ordinary diagnostic exclusions are
+0/200 (11 warmup retries); confirmation coverage is189/200. R5 Q resolves15/60
+and F10/60, so the .10 margin, paired tests and Q's20-answer floor do not all pass.
+
+All rules fired across development/confirmation: **R-time**, **R-rml**,
+**R-other**, **R-diag**. R-time's six cuts and1000/500 settings are retained;
+R-rml is the recorded development cross-check, not a confirmation RML run.
+R-other covers the earlier scope findings and the two pre-data adapter resolutions
+below. No R-gpu, R-grad, R-impl, R-dt, R-stat or R-cov fallback was needed.
+
+Two operational receipt repairs are recorded in `ACD_EXECUTION_REPAIR.md`:
+NumPy diagnostic-count serialization before outcome scoring, and a single-writer
+population receipt before refits. Neither changes a scientific threshold, seed,
+population or computation. The16 rerun posterior archives are bitwise identical
+to their preserved first attempts. The final inventory has3879 raw files.
+
 Todd authorized the freeze, confirmation and CNN inference. The scientific
 freeze was committed and pushed at `1f38be3`; the execution-code freeze and the
 following resolutions were committed and pushed at `9b88d23`, before generating

@@ -1,0 +1,95 @@
+{
+  "status": "PUBLISH",
+  "panel": "confirmation",
+  "cases": 200,
+  "settings": {
+    "dt": 0.01,
+    "warmup": 1000,
+    "draws": 500,
+    "r5_population": 60,
+    "cuts": [
+      "R7",
+      "R5-A",
+      "R6-3LT",
+      "RML-conf",
+      "P/B-other-leads",
+      "R5-3LT"
+    ]
+  },
+  "coverage": {
+    "covered": 189,
+    "total": 200,
+    "share": 0.945,
+    "descriptive": {
+      "interval": [
+        0.91,
+        0.975
+      ],
+      "redraws": 0,
+      "status": "DESCRIPTIVE",
+      "approximate": true
+    },
+    "wilson95": [
+      0.9042120755340645,
+      0.9690149791986299
+    ]
+  },
+  "ordinary_exclusions": 0,
+  "ordinary_warmup_retries": 11,
+  "ordinary_all_draw_forecasts": 115,
+  "refits": 240,
+  "persistent_refit_failures": {
+    "F": [
+      129
+    ]
+  },
+  "R5_status": "DOES NOT BEAT",
+  "publish_routes": [
+    "R2a 2 LT",
+    "R2a 3 LT",
+    "R2b PRECEDES"
+  ],
+  "hard_stops": [],
+  "rules": [
+    "R-diag",
+    "R-other",
+    "R-rml",
+    "R-time"
+  ],
+  "blind_order_passed": true,
+  "blind_order_cases": 200,
+  "raw_files": 3879,
+  "freeze_push_receipt": {
+    "scientific_commit": "1f38be370718825196ecf4ff1e5e82138faf44c7",
+    "execution_commit": "9b88d237287d16d0a175aa735f247ddaffdc2558",
+    "remote_commit": "ce89990847062dc67cfbf9824be7a3b4e3f66f1c",
+    "time": 1791232448.5063858,
+    "execution_receipt_sha256": "4019410e46018904280ba12ee54e31c9e682ffbde5d37bdd0ab595179e479119",
+    "repair_commit": "4bcd702e01db5f96fb2dd6936dc42af9e7110c1e",
+    "repair_pushed_at": 1791232655.3250878,
+    "repair_receipt_sha256": "260b62a96903a4c541c84aee0596119952f0c3b7cdb1f94fdd4979d419b65c73",
+    "repair2_commit": "ce89990847062dc67cfbf9824be7a3b4e3f66f1c",
+    "repair2_pushed_at": 1791233374.2398279,
+    "repair2_receipt_sha256": "5f7b70e0af26fae6454056b9b1a088d3546f2ff8ee6220a7eaada2bde6a44fb9"
+  },
+  "raw_root": "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs",
+  "reports": {
+    "ACD_STAGE2_READING.md": "04a2b41ca75770343317f9f4c4f02cff7509df4fff641171c58b205e26a83cae",
+    "CLAIM_LEDGER.md": "a376c80f30f7c899a3107f1c6f8debe77bb554b25182c67a887a2825a7fbdc46",
+    "ACD_STAGE2_ARTIFACTS.json": "e912a0607956c9ccb83757acb5a0779be2bc6b4efdf2e6410844b138750174dc",
+    "receipts/acd_stage2.json": "16b009b1bb3038866f7336a9217a9182b1ae5df27961cab91583760886fbcce1",
+    "receipts/acd_licensed_sentences.json": "3e1f9d369f62c7eac3892edc63763c348e6cd42e26188d5ecaedb2cd52020728"
+  },
+  "vault_notes": [
+    "04-Results/R_Aspen-Counterfactual-Determinacy-Confirmation-2026-10.md",
+    "04-Results/L_Aspen-Counterfactual-Determinacy-Claim-Ledger-2026-10.md",
+    "00-Inbox/Session-Review-Aspen-Counterfactual-Determinacy-Confirmation-2026-10-05.md"
+  ],
+  "scientific_computation_host": "sulaco",
+  "cnn_device": "cuda",
+  "jax_platform": "cpu",
+  "training": false,
+  "cloud_compute": false,
+  "qwen_services_stopped": false,
+  "baccus_closeout_changed": false
+}

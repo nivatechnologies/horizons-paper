@@ -1,0 +1,87 @@
+[
+  {
+    "label": "L1 (2 LT)",
+    "condition_met": true,
+    "sentence": "With 11 noisy snapshots spanning 0.84 Lyapunov times, the posterior under the known law answers the sign of a small intervention\u2019s effect on window energy with at least 95% probability for 72.38% of case\u2013action questions at 2 LT (60.69% beyond what climatology alone gives), against 85.00% for the sign of the unforced window-energy anomaly."
+  },
+  {
+    "label": "L2 (2 LT)",
+    "condition_met": true,
+    "sentence": "Averaged over cases, confident intervention-sign answers that climatology alone does not give are right 99.53% of the time at 2 LT (one-sided 95% lower bound 0.977000); over all such answers, 99.49%. Including excluded cases: case accuracy 99.53%, lower bound 0.977000, answer accuracy 99.49%."
+  },
+  {
+    "label": "L3a (2 LT)",
+    "condition_met": true,
+    "sentence": "At 2 LT the observation-confident S share and the confident share for the sign of the unforced window-energy anomaly differ by -0.243125 (99% interval [-0.352000, -0.136000])."
+  },
+  {
+    "label": "L4 (2 LT)",
+    "condition_met": true,
+    "sentence": "At 2 LT, the posterior correlation between factual and counterfactual window energies is 0.974953 (median), so the difference carries 0.031334 of their summed uncertainty."
+  },
+  {
+    "label": "L5 (2 LT)",
+    "condition_met": true,
+    "sentence": "Of the confident sign answers at 2 LT, 16.15% are given by climatology at the true forcing; the rest depend on the observations."
+  },
+  {
+    "label": "L1 (3 LT)",
+    "condition_met": true,
+    "sentence": "With 11 noisy snapshots spanning 0.84 Lyapunov times, the posterior under the known law answers the sign of a small intervention\u2019s effect on window energy with at least 95% probability for 40.38% of case\u2013action questions at 3 LT (40.38% beyond what climatology alone gives), against 67.00% for the sign of the unforced window-energy anomaly."
+  },
+  {
+    "label": "L2 (3 LT)",
+    "condition_met": true,
+    "sentence": "Averaged over cases, confident intervention-sign answers that climatology alone does not give are right 98.30% of the time at 3 LT (one-sided 95% lower bound 0.954000); over all such answers, 99.07%. Including excluded cases: case accuracy 98.30%, lower bound 0.954000, answer accuracy 99.07%."
+  },
+  {
+    "label": "L3a (3 LT)",
+    "condition_met": true,
+    "sentence": "At 3 LT the observation-confident S share and the confident share for the sign of the unforced window-energy anomaly differ by -0.266250 (99% interval [-0.388000, -0.152000])."
+  },
+  {
+    "label": "L4 (3 LT)",
+    "condition_met": true,
+    "sentence": "At 3 LT, the posterior correlation between factual and counterfactual window energies is 0.778394 (median), so the difference carries 0.244137 of their summed uncertainty."
+  },
+  {
+    "label": "L5 (3 LT)",
+    "condition_met": true,
+    "sentence": "Of the confident sign answers at 3 LT, 0.00% are given by climatology at the true forcing; the rest depend on the observations."
+  },
+  {
+    "label": "L3b",
+    "condition_met": true,
+    "sentence": "Paired by case, confidence in an intervention\u2019s sign is lost before confidence in the sign of the unforced window-energy anomaly: it is lost later in 28.22% and earlier in 59.09% of a case\u2019s eligible actions, averaged over cases (99% interval for the difference [-0.494000, -0.128000])."
+  },
+  {
+    "label": "L6 (2 LT)",
+    "condition_met": true,
+    "sentence": "Question-, forecast-, spread-targeted and random measurements turned 25.00%, 16.67%, 11.67% and 6.67% of open decision questions at 2 LT into confident, correct answers; question targeting did not reliably beat the best alternative."
+  },
+  {
+    "label": "L7 (crude)",
+    "condition_met": true,
+    "sentence": "An ensemble built from perturbed last frames gives observation-confident intervention-sign answers with case-averaged accuracy 98.55% and answer-level accuracy 98.87% at 2 LT (one-sided 95% upper bound 1.000000)."
+  },
+  {
+    "label": "L7 (RML)",
+    "condition_met": false,
+    "sentence": null
+  },
+  {
+    "label": "L8 (2 LT)",
+    "condition_met": true,
+    "sentence": "On sign questions where the posterior is not confident at 2 LT, a deterministic CNN emulator\u2019s ensemble is confident on 21.95% and right on 65.98% of those."
+  },
+  {
+    "label": "L9",
+    "condition_met": true,
+    "sentence": "Answering every question up to the lead at which the sign of the unforced window-energy anomaly is confident for half the cases, and none beyond, would answer 25.87% of sign questions the posterior is not confident on (right 75.20%) and refuse 7.47% that it is confident on. Fractions are within the answered and refused lead ranges respectively."
+  },
+  {
+    "label": "L10",
+    "condition_met": false,
+    "sentence": null
+  }
+]

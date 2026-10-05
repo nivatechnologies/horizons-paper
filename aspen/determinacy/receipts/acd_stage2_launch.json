@@ -1,0 +1,31 @@
+{
+  "host": "sulaco",
+  "cpu_workers": 16,
+  "cpu_cores_per_worker": 8,
+  "cpu_affinity_range": "128-255",
+  "r5_workers": 32,
+  "r5_cores_per_worker": 4,
+  "r5_affinity_range": "128-255",
+  "cnn_cpu_affinity": "120-121",
+  "cnn_initial_microbatch": 8,
+  "cnn_device": "cuda",
+  "jax_device": "cpu",
+  "warmup": 1000,
+  "draws": 500,
+  "chains": 4,
+  "r5_population_cap": 60,
+  "r5_lead_LT": 2,
+  "thread_environment": {
+    "OPENBLAS_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1"
+  },
+  "supervisor_sha256": "4296220fe3cfd7cb70a5a00525b5cb003c179ad590c84f01022cf8a3e66fc23a",
+  "freeze_commits": [
+    "1f38be370718825196ecf4ff1e5e82138faf44c7",
+    "9b88d237287d16d0a175aa735f247ddaffdc2558"
+  ],
+  "serialization_repair_commit": "4bcd702",
+  "outcome_scoring": "after every sampler hash for every case",
+  "parallelism": "independent cases or refit arms; no seed/population/order change"
+}
