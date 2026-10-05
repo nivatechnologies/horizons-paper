@@ -1,4 +1,8 @@
-# AFD Step 0 — HALT before data
+# AFD Step 0 — halt resolved by Amendment 1
+
+## Amendment 1 resolution
+
+Re-read WO §4 and §18 through vault MCP: version v5.2, status go-v5.2, Todd approval 2026-10-04. The amendment adopts the inherited unrounded predicate with tolerance 1e-12 for every window. The mismatch below is resolved without changing the historical cost code. The original halt and its measured differential remain recorded below as history. Primary ticks are 24–35; myopic ticks 0–11. The output grid stays 0.05 after timestep refinement. No new data preceded this resolution.
 
 Governing work order: vault `02-Projects/WO_Aspen-Forecast-Decision-Kill-Test-2026-10-04.md`, v5.1, status go-v5.1; read in full through niva-obsidian MCP. Todd's execution go is present in §1. Local body snapshot: WO_v5.1.md. Read-only scientific source: `paper/aspen-2026-10-horizon` at `1cd0ab701b5e663eb7e0304b1d705ddeabe80617`. All source references below index that commit.
 
@@ -73,4 +77,3 @@ Namespace IDs are reproduced in NUMBERS §AFD_SEEDS: calibration, truth, arm, tr
 NUMBERS sections AFD_STEP0, AFD_WINDOWS, AFD_HASHES, AFD_ACTIONS and AFD_SEEDS derive from step0_evidence.json. Run `/mnt/niva-array/horizons-paper/.venv/bin/python aspen/forecast_decision/preflight.py` from the AFD worktree. It rereads the source artifacts, recomputes tensor count, hashes, action RMS and window predicates, checks the rendered NUMBERS text and rejects a tampered parameter count. This checker covers preflight only; no campaign verdict checker is claimed.
 
 Branch pushes are recorded in EXECUTION_STATUS.md.
-
