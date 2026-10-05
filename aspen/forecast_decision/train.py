@@ -7,8 +7,14 @@ from protocol import RECIPE,LT,SIGMA,rng,WINDOWS,PRIMARY,write_json,digest
 def main(name,data,out,micro):
     cuda_rules();torch.manual_seed(0);out.mkdir(parents=True,exist_ok=True)
     recipe=RECIPE[name];kind=recipe["kind"];updates=recipe["updates"];cap=recipe["cap_hours"]*3600
-    sigma=SIGMA
-    checkpoint=data/"CNN-20k.pt"
+    two=name.startswith("CNN2-")
+    sigma=float(np.load(data/"base_train.npz")["sigma"]) if two else SIGMA
+    checkpoint=data/("CNN2-20k.pt" if two else "CNN-20k.pt")
+    base_gpu_seconds=0.
+    if two and kind=="r2":
+        base_gpu_seconds=float(json.loads((data/"CNN2-20k.training.json").read_text())["charged_gpu_seconds"])
+        cap-=base_gpu_seconds
+        if not np.isfinite(cap) or cap<=0: raise RuntimeError("base consumed CNN2-R2 cap")
     model=CostModel() if kind=="cost" else Emulator()
     if kind in ["roll","resp","r2"]:
         ck=torch.load(checkpoint,map_location="cpu",weights_only=True)
@@ -18,7 +24,8 @@ def main(name,data,out,micro):
         seed=int(rng(ns,6).integers(2**31));torch.manual_seed(seed);model=Emulator()
         R=rng(ns,6,member=1)
     else:
-        R=rng("afd-train-recipe",6)
+        R=rng("afd2-train" if two and kind=="base" else "afd2-train-pairs" if two else "afd-train-recipe",6)
+    torch.cuda.synchronize();begin=time.monotonic()
     model.to("cuda");opt=torch.optim.AdamW(model.parameters(),lr=1e-3 if kind in ["base","cost"] else 1e-4,weight_decay=1e-4)
     initial_lr=opt.param_groups[0]["lr"]
     if kind=="base":
@@ -27,7 +34,7 @@ def main(name,data,out,micro):
         V=val["state"]/sigma;VA=val["action"]/sigma
         # Base training stream is inherited unchanged for 5k/80k.
         if name in ["CNN-5k","CNN-80k"]:R=np.random.default_rng(np.random.SeedSequence([400000,0,6,0,0,0]))
-        RV=np.random.default_rng(np.random.SeedSequence([500000,0,6,0,0,0]))
+        RV=rng("afd2-train-val",6) if two else np.random.default_rng(np.random.SeedSequence([500000,0,6,0,0,0]))
         vctx=torch.tensor(V[:,:11]+.02*RV.standard_normal((64,11,40)),dtype=torch.float32,device="cuda")
         va=torch.tensor(VA,dtype=torch.float32,device="cuda")
         vtarget=torch.tensor(V[:,11:11+round(LT/.05)],dtype=torch.float32,device="cuda")
@@ -35,6 +42,8 @@ def main(name,data,out,micro):
         train=np.load(data/"cost.npz")
         X=train["window"]/sigma;A=train["action"]/sigma
         target=train["labels"];vd=float(train["variance_diff"]);vm=float(train["variance_mean"])
+        if not (np.isfinite(vd) and np.isfinite(vm) and vd>0 and vm>0):
+            raise RuntimeError("invalid cost normalization")
     else:
         train=np.load(data/"pairs.npz")
         X=train["window"]/sigma;A=train["action"]/sigma;target=train["targets"]/sigma
@@ -53,9 +62,9 @@ def main(name,data,out,micro):
                     diff=diff+(delta**2).mean()/36
             ctx=torch.cat([ctx[:,1:],pred[:,None]],1)
         return roll,diff
-    torch.cuda.synchronize();begin=time.monotonic();normal_roll=normal_diff=None
+    torch.cuda.synchronize();normal_roll=normal_diff=None
     if kind in ["roll","resp"]:
-        Rnorm=rng("afd-train-recipe",6);losses=[]
+        Rnorm=rng("afd2-train-pairs" if two else "afd-train-recipe",6);losses=[]
         model.eval()
         with torch.no_grad():
             for _ in range(64):
@@ -69,10 +78,14 @@ def main(name,data,out,micro):
         write_json(out/"normalization.json",dict(roll=float(normal_roll),difference=float(normal_diff),
                    batches=64,paired_data_sha256=digest(data/"pairs.npz")))
         model.train()
-    best=float("inf");recent=[];log=[]
+    best=float("inf");recent=[];log=[];selection_seconds=0.;completed_updates=0;selection_reserve=0.
+    if kind=="r2":
+        path=out/"checkpoint_000000.pt"
+        torch.save(dict(state_dict=model.state_dict(),step=0,sigma=sigma,kind=kind),path)
+        write_json(out/"checkpoint_000000.json",dict(step=0,sha256=digest(path),charged_gpu_seconds=0.,status="AWAITING_VALIDATION"))
     for iteration in range(1,updates+1):
-        torch.cuda.synchronize();elapsed=time.monotonic()-begin
-        if elapsed+(max(recent) if recent else 0)>=cap:
+        torch.cuda.synchronize();elapsed=time.monotonic()-begin+selection_seconds
+        if elapsed+(max(recent) if recent else 0)+selection_reserve>=cap:
             if kind in ["base","roll","resp"]:raise RuntimeError(f"cap prevents prescribed updates: {iteration-1}/{updates}")
             break
         before=time.monotonic();opt.zero_grad()
@@ -109,9 +122,10 @@ def main(name,data,out,micro):
         fraction=(iteration-1)/updates if kind in ["base","roll","resp"] else elapsed/cap
         opt.param_groups[0]["lr"]=initial_lr*.5*(1+math.cos(math.pi*min(1,fraction)))
         opt.step();torch.cuda.synchronize()
+        completed_updates=iteration
         recent.append(time.monotonic()-before);recent=recent[-32:]
         if iteration%100==0:
-            row=dict(step=iteration,loss=total,charged_gpu_seconds=time.monotonic()-begin,
+            row=dict(step=iteration,loss=total,charged_gpu_seconds=time.monotonic()-begin+selection_seconds,
                      recent_update_seconds=float(np.median(recent)),
                      projected_full_recipe_seconds=float(np.median(recent)*updates) if updates<100000000 else None)
             log.append(row);write_json(out/"progress.json",dict(name=name,log=log,cap_seconds=cap))
@@ -131,19 +145,25 @@ def main(name,data,out,micro):
             path=out/f"checkpoint_{iteration:06d}.pt"
             torch.save(dict(state_dict=model.state_dict(),step=iteration,sigma=sigma,kind=kind),path)
             write_json(out/f"checkpoint_{iteration:06d}.json",dict(step=iteration,sha256=digest(path),
-                       charged_gpu_seconds=time.monotonic()-begin,status="AWAITING_VALIDATION"))
+                       charged_gpu_seconds=time.monotonic()-begin+selection_seconds,status="AWAITING_VALIDATION"))
             # Charge/follow actual selection costs before next block, keeping total under cap.
             ack=out/f"validation_{iteration:06d}.json"
             while not ack.exists():
-                if time.monotonic()-begin>=cap:break
+                if time.monotonic()-begin+selection_seconds>=cap:break
                 time.sleep(5)
-            if time.monotonic()-begin>=cap:break
+            if ack.exists():
+                selected_charge=float(json.loads(ack.read_text())["charged_gpu_seconds"])
+                selection_seconds+=selected_charge
+                selection_reserve=max(selection_reserve,2*selected_charge+5.)
+            if time.monotonic()-begin+selection_seconds>=cap:break
     else:
         iteration=updates
     if kind in ["roll","resp"]:
         torch.save(dict(state_dict=model.state_dict(),step=updates,sigma=sigma),out/"selected.pt")
-    write_json(out/"training_complete.json",dict(name=name,kind=kind,last_step=iteration,
-               prescribed_updates=updates,charged_gpu_seconds=time.monotonic()-begin,
+    write_json(out/"training_complete.json",dict(name=name,kind=kind,last_step=completed_updates,
+               prescribed_updates=updates,charged_gpu_seconds=time.monotonic()-begin+selection_seconds,
+               selection_gpu_seconds=selection_seconds,
+               base_gpu_seconds_in_individual_cap=base_gpu_seconds,
                gpu_name=torch.cuda.get_device_name(0),microbatch=micro,cap_seconds=cap,log=log,
                selected_hash=digest(out/"selected.pt") if (out/"selected.pt").exists() else None,
                isolation="bubblewrap: no /mnt, /home, test outputs or result reports"))
