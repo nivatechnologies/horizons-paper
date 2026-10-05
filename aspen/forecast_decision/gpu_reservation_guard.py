@@ -146,6 +146,15 @@ def run(interval, enforce):
         two_scale_cutoff = datetime.datetime.now(datetime.timezone.utc) >= cutoff
         if campaign_stop:
             alerts.append("Root campaign control requests stop: " + str(control.get("reason", "")))
+        # Admission uses observed selector residency bounds, independently of
+        # scientific checkpoint rules. State/cost inference share their own pool.
+        selector_pools = {"state": [], "cost": []}
+        for candidate in CAPS:
+            candidate_directory = ROOT / "runs/training" / candidate
+            candidate_values = selector_charge(candidate_directory, now_boottime)
+            pool = "cost" if candidate.endswith("cost") else "state"
+            selector_pools[pool].extend(r["seconds"] for r in candidate_values[5]
+                                        if r["seconds"] is not None)
         for name, cap in CAPS.items():
             directory = ROOT / "runs/training" / name
             pidpath = directory / "detached_worker_pid.txt"
@@ -179,19 +188,23 @@ def run(interval, enforce):
             actual, active, sources, active_record, selector_reservation, reservation_sources, reservation_errors = selector_charge(directory, now_boottime)
             alerts.extend(f"{name}: {error}" for error in reservation_errors)
             base = 0.
+            base_components = None
             if name == "CNN2-R2":
                 # Individual R2 includes base; aggregate counts base only once.
-                base_state = state.get("CNN2-20k")
-                base_receipt = load(ROOT / "runs/training/CNN2-20k/training_complete.json")
-                if base_state and "end_boottime_upper_bound_seconds" in base_state:
-                    base = base_state["end_boottime_upper_bound_seconds"] - base_state["start_boottime_seconds"]
-                elif base_receipt:
-                    base = base_receipt["charged_gpu_seconds"]
-                    alerts.append("CNN2-R2: base startup reservation unavailable; actual receipt used")
-                else:
-                    raise RuntimeError("CNN2-R2 missing base charge")
-            bound = None if selector_reservation is None else reservation + selector_reservation + active + base
+                base_row = rows.get("CNN2-20k")
+                base = base_row["individual_reservation_upper_bound_seconds"] if base_row else None
+                if base_row:
+                    base_components = {key: base_row[key] for key in [
+                        "process_reservation_wall_upper_bound_seconds",
+                        "unique_completed_selector_reservation_upper_bound_seconds",
+                        "active_selector_reservation_wall_upper_bound_seconds"]}
+                if base is None:
+                    alerts.append("CNN2-R2: complete base reservation upper bound unavailable; no actual-timer substitution")
+            bound = None if selector_reservation is None or base is None else reservation + selector_reservation + active + base
             remaining = None if bound is None else cap - bound
+            pool = selector_pools["cost" if name.endswith("cost") else "state"]
+            measured_selector_maximum = max(pool) if pool else None
+            admission_reserve = 2 * measured_selector_maximum + 60 if pool else None
             progress = load(directory / "progress.json")
             latest = progress["log"][-1] if progress and progress.get("log") else None
             warning = None
@@ -201,9 +214,9 @@ def run(interval, enforce):
                     warning = "Measured recent update rate projects required exact count beyond conservative cap"
                     alerts.append(f"{name}: {warning}")
             stopped = old and old.get("stop_requested", False)
-            if selector_reservation is None:
+            if selector_reservation is None or base is None:
                 state[name]["stop_requested"] = True
-                state[name]["stop_reason"] = "completed selector residency upper bound unavailable"
+                state[name]["stop_reason"] = "own or included-base selector residency upper bound unavailable"
                 stopped = True
             if campaign_stop or (name.startswith("CNN2-") and two_scale_cutoff):
                 state[name]["stop_requested"] = True
@@ -212,7 +225,7 @@ def run(interval, enforce):
                 stopped = True
                 if alive and name.startswith("CNN2-") and two_scale_cutoff:
                     alerts.append(f"{name}: two-scale unfinished at chosen execution cutoff; report not run")
-            if alive and remaining is not None and remaining <= 60:
+            if (alive or active > 0) and remaining is not None and remaining <= 60:
                 state[name]["stop_requested"] = True
                 state[name]["stop_reason"] = "conservative individual reservation cap (60-second guard margin)"
                 stopped = True
@@ -227,12 +240,16 @@ def run(interval, enforce):
                        unique_completed_selector_reservation_upper_bound_seconds=selector_reservation,
                        active_selector_reservation_wall_upper_bound_seconds=active,
                        included_base_reservation_seconds=base,
+                       included_base_reservation_components=base_components,
                        individual_reservation_upper_bound_seconds=bound,
                        cap_seconds=cap, remaining_conservative_seconds=remaining,
                        completion_receipt_present=receipt is not None,
                        exact_required_updates=COUNTS.get(name), latest_training_progress=latest,
                        feasibility_warning=warning, stop_requested=bool(stopped),
-                       selection_allowed=not stopped and remaining is not None and remaining > 60,
+                       selector_admission_measured_maximum_seconds=measured_selector_maximum,
+                       selector_admission_reserve_seconds=admission_reserve,
+                       selector_admission_rule="two times maximum observed same-kind selector reservation plus 60-second stop margin",
+                       selection_allowed=not stopped and remaining is not None and admission_reserve is not None and remaining > admission_reserve,
                        selector_charge_sources=sources, active_selector_record=active_record,
                        selector_reservation_sources=reservation_sources,
                        selector_reservation_errors=reservation_errors,
