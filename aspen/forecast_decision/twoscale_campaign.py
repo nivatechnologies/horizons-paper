@@ -16,8 +16,7 @@ def closure_rhs(x,f,a):
         out[k]=(x[(k+1)%40]-x[(k-2)%40])*x[(k-1)%40]-q+f[k]+a[0]*q+a[1]*q*q+a[2]*q*q*q
     return out
 @njit(cache=True)
-def closure_step(x,f,a):
-    dt=.01
+def closure_step(x,f,a,dt=.01):
     k1=closure_rhs(x,f,a);k2=closure_rhs(x+dt/2*k1,f,a)
     k3=closure_rhs(x+dt/2*k2,f,a);k4=closure_rhs(x+dt*k3,f,a)
     return x+dt/6*(k1+2*k2+2*k3+k4)
@@ -59,6 +58,64 @@ def injected_work2(initial,action,dt,endpoints):
             z=nxt;t+=dt
     return numer,denom
 
+@njit(cache=True,parallel=True)
+def closure_flow(x,f,a,nsteps,dt):
+    result=x.copy()
+    for b in prange(len(result)):
+        q=result[b].copy()
+        for _ in range(nsteps):q=closure_step(q,f[b],a,dt)
+        result[b]=q
+    return result
+
+def primary_timing2(workers):
+    numba.set_num_threads(workers)
+    info,_,cl=metadata();folder=panel_directory2("val");a=np.array(cl["a"])
+    dummy=np.full((11,40),8.)
+    identify2(dummy,a)
+    closure_paths(np.full((512,40),8.),np.full((512,40),10.),a,36)
+    closure_flow(np.full((512,40),8.),np.full((512,40),10.),a,1,.001)
+    for c in range(16):
+        target=folder/f"primary_timing_{c:03d}.json"
+        if target.exists():continue
+        with np.load(folder/f"input_{c:03d}.npz") as d:y=d["observed"]
+        with np.load(folder/f"cpu_{c:03d}.npz") as d:windows=d["arm_windows"]
+        timings={}
+        for name,coeff,fixed in [("N2",a,None),("N2-offline",a,cl["c0"]),("N2-noclosure",np.zeros(3),None)]:
+            start=time.perf_counter()
+            fhat=identify2(y,coeff) if fixed is None else fixed
+            initial=np.tile(windows[:,-1],(8,1));f=np.repeat(fhat+.2*patterns(),64,axis=0)
+            states=closure_paths(initial,f,coeff,36)
+            costs=(.5*np.mean(states*states,axis=-1))[:,WINDOWS[3]].mean(-1).reshape(8,64).mean(1)
+            chosen=int(costs.argmin())
+            nstep=int(np.floor(3*LT/.01))
+            end=closure_flow(states[:,-1],f,coeff,nstep-175,.01)
+            remainder=3*LT-nstep*.01
+            if remainder>0:end=closure_flow(end,f,coeff,1,remainder)
+            if not np.isfinite(end).all():raise RuntimeError("nonfinite timed physics decision")
+            timings[name]=dict(seconds=time.perf_counter()-start,chosen=chosen,
+                includes_identification=fixed is None,includes_cost_and_argmin=True,physics_dt=.01,
+                horizon=3*LT,actions=8,members=64)
+        write_json(target,dict(case=c,panel="val",measurement_sample="first16 validation cases",
+            timings=timings,source_sha256=digest(ROOT/"twoscale_campaign.py"),JIT_warmup_excluded=True))
+        print("two-scale primary timing",c+1,flush=True)
+
+def pack_validation2():
+    info,dt,_=metadata();folder=panel_directory2("val")
+    windows=[];truth=[]
+    for c in range(100):
+        with np.load(folder/f"cpu_{c:03d}.npz") as data:
+            if data["truth_cost"].shape!=(9,2048,4) or data["arm_windows"].shape!=(64,11,40):
+                raise RuntimeError("wrong system or incomplete validation artifact")
+            windows.append(data["arm_windows"])
+            truth.append(data["truth_cost"][:8,:,3].mean(1))
+    path=ROOT/"runs/selection_inputs/validation2_inputs.npz"
+    path.parent.mkdir(parents=True,exist_ok=True)
+    np.savez(path,windows=np.array(windows),truth=np.array(truth),actions=.2*patterns(),
+         sigma=info["sigma_X"],window_indices=WINDOWS[3],dt=dt)
+    artifact(path,"two-scale validation-only checkpoint selection input")
+    write_json(path.with_suffix(".json"),dict(cases=100,members=64,truth_members=2048,primary_lead_ref=2,
+         sigma=info["sigma_X"],sha256=digest(path),source_sha256=digest(ROOT/"twoscale_campaign.py")))
+
 def identify2(y,a):
     lo=4.;hi=16.;g=(np.sqrt(5)-1)/2
     def objective(f):
@@ -96,8 +153,23 @@ def cost2(states):
     energy=.5*np.mean(states*states,axis=-1)
     return np.stack([energy[...,w].mean(-1) for w in W2],axis=-1)
 
+def panel_directory2(panel):
+    folder=ROOT/"runs"/("twoscale_"+panel)
+    marker=folder/"panel_schema.json"
+    if marker.exists():
+        schema=json.loads(marker.read_text())
+        if schema.get("system")!="two-scale-L96" or schema.get("panel")!=panel:
+            raise RuntimeError("panel directory belongs to a different system")
+    else:
+        if folder.exists() and any(folder.glob("*.npz")):
+            raise RuntimeError("refusing unmarked existing panel files")
+        folder.mkdir(parents=True,exist_ok=True)
+        write_json(marker,dict(system="two-scale-L96",panel=panel,truth_namespace="afd2-"+panel+"-truth",
+             arm_namespace="afd2-"+panel+"-arm",observations_namespace="afd2-observation-"+panel))
+    return folder
+
 def input_case2(panel,c,dt,sigma):
-    folder=ROOT/"runs"/(panel+"2");folder.mkdir(parents=True,exist_ok=True)
+    folder=panel_directory2(panel)
     path=folder/f"input_{c:03d}.npz"
     if not path.exists():
         ns="afd2-observation-"+panel
@@ -114,7 +186,7 @@ def input_case2(panel,c,dt,sigma):
 
 def case_cpu2(panel,c):
     info,dt,cl=metadata();sigma=info["sigma_X"]
-    folder=ROOT/"runs"/(panel+"2");target=folder/f"cpu_{c:03d}.npz"
+    folder=panel_directory2(panel);target=folder/f"cpu_{c:03d}.npz"
     if target.exists():return
     record=input_case2(panel,c,dt,sigma);y=record["observed"]
     library=np.load(ROOT/"runs/twoscale/fastlib.npz")["Y"]
@@ -160,7 +232,7 @@ def case_cpu2(panel,c):
 
 def hidden_sensitivity2():
     info,dt,_=metadata()
-    folder=ROOT/"runs/test2"
+    folder=panel_directory2("test")
     for c in range(50):
         path=folder/f"hidden_oracle_{c:03d}.npz"
         if path.exists():continue
@@ -201,6 +273,41 @@ def climatology2():
     write_json(path.with_suffix(".json"),dict(dt=dt,steps=steps,LT_ref=LT,averaged_LT_ref=steps*dt/LT,
         seconds=time.perf_counter()-start,sha256=digest(path),namespace="afd2-climatology"))
 
+def primary_inference_timing2(model,windows,sigma,is_cost,micro):
+    import torch
+    actions=.2*patterns()/sigma
+    torch.cuda.synchronize();start=time.perf_counter()
+    if is_cost:values=np.empty(512)
+    else:
+        states=np.empty((512,36,40));alive_all=np.ones(512,bool)
+    with torch.no_grad():
+        for first in range(0,512,micro):
+            ids=np.arange(first,min(first+micro,512))
+            ctx=torch.tensor(windows[ids%64]/sigma,dtype=torch.float32,device="cuda")
+            act=torch.tensor(actions[ids//64],dtype=torch.float32,device="cuda")
+            if is_cost:values[ids]=model(ctx,act).reshape(-1).cpu().numpy()
+            else:
+                alive=np.ones(len(ids),bool)
+                for t in range(36):
+                    state=ctx[:,-1].cpu().numpy().astype(np.float64)*sigma
+                    alive&=np.isfinite(state).all(-1)&(np.sqrt(np.mean(state*state,axis=-1))<=10*sigma)
+                    states[ids,t]=state
+                    if t<35:
+                        ctx[torch.tensor(~alive,device="cuda")]=0.
+                        pred=model(ctx,act);ctx=torch.cat([ctx[:,1:],pred[:,None]],1)
+                alive_all[ids]=alive
+    if is_cost:
+        values=values.reshape(8,64);keep=np.isfinite(values).all(0)
+        costs=values[:,keep].mean(1) if keep.any() else np.zeros(8)
+    else:
+        keep=alive_all.reshape(8,64).all(0);st=states.reshape(8,64,36,40)
+        costs=(.5*np.mean(st[:,keep]**2,axis=-1))[:,:,WINDOWS[3]].mean((1,2)) if keep.any() else np.zeros(8)
+    failed=int(keep.sum())<32
+    chosen=-1 if failed else int(costs.argmin())
+    torch.cuda.synchronize()
+    return dict(seconds=time.perf_counter()-start,chosen=chosen,includes_cost_and_argmin=True,
+        window_indices=WINDOWS[3].tolist(),actions=8,members=64,device="sulaco CUDA",JIT_warmup_excluded=True)
+
 def inference2(panel,name,checkpoint,micro):
     import torch
     from models import Emulator,CostModel,cuda_rules
@@ -211,7 +318,7 @@ def inference2(panel,name,checkpoint,micro):
     sigma=ck["sigma"];is_cost=name=="CNN2-cost"
     model=CostModel() if is_cost else Emulator();model.load_state_dict(ck["state_dict"])
     model.to("cuda");model.eval();artifact(checkpoint,"checkpoint before two-scale "+panel+" evaluation")
-    folder=ROOT/"runs"/(panel+"2")
+    folder=panel_directory2(panel)
     for c in range(100 if panel=="val" else 200):
         path=folder/f"{name}_{c:03d}.npz"
         if path.exists():continue
@@ -251,17 +358,21 @@ def inference2(panel,name,checkpoint,micro):
                 variances.append(st[:,keep].var(1,ddof=0).sum(-1) if keep.any() else np.zeros((8,37)))
                 cs.append(cost2(st[:,keep])[...,h].mean(1) if keep.any() else np.zeros(8))
             output=dict(mean=np.array(means),var=np.array(variances),cost=np.array(cs),survivors=np.array(survivors))
-        torch.cuda.synchronize();np.savez(path,**output)
+        torch.cuda.synchronize();shared_seconds=time.perf_counter()-start
+        primary_timing=primary_inference_timing2(model,win,sigma,is_cost,micro) if panel=="val" and c<16 else None
+        np.savez(path,**output)
         write_json(folder/f"{name}_{c:03d}.json",dict(case=c,completed_at=now(),device="cuda",microbatch=micro,
             checkpoint_sha256=digest(checkpoint),sigma=sigma,tf32=False,deterministic_cudnn=True,
-            shared_all_leads_seconds=time.perf_counter()-start))
+            shared_all_leads_seconds=shared_seconds,primary_timing=primary_timing))
         print(panel,name,c+1,flush=True)
 
 if __name__=="__main__":
     from pathlib import Path
-    p=argparse.ArgumentParser();p.add_argument("task",choices=["cpu","cnn","climate","oracle"],default="cpu",nargs="?");p.add_argument("--panel",choices=["val","test"],default="val");p.add_argument("--workers",type=int,default=96)
+    p=argparse.ArgumentParser();p.add_argument("task",choices=["cpu","cnn","climate","oracle","timing","pack-val"],default="cpu",nargs="?");p.add_argument("--panel",choices=["val","test"],default="val");p.add_argument("--workers",type=int,default=96)
     p.add_argument("--name");p.add_argument("--checkpoint",type=Path);p.add_argument("--microbatch",type=int,default=8);args=p.parse_args()
-    if args.task=="oracle":
+    if args.task=="timing":primary_timing2(args.workers)
+    elif args.task=="pack-val":pack_validation2()
+    elif args.task=="oracle":
         numba.set_num_threads(args.workers);hidden_sensitivity2()
     elif args.task=="climate":
         numba.set_num_threads(args.workers);climatology2()
@@ -271,3 +382,4 @@ if __name__=="__main__":
         artifact(ROOT/"runs/training_data2/closure.json","X-only closure before two-scale panel evaluation")
         artifact(ROOT/"runs/twoscale/fastlib.npz","conditioned fast library before two-scale panel evaluation")
         for c in range(100 if args.panel=="val" else 200):case_cpu2(args.panel,c)
+        if args.panel=="val":pack_validation2()
