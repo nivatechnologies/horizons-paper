@@ -11,7 +11,7 @@ Read-only verification on sulaco; source base 1b1094a. Completed 200 cases.
 | 5 dt | Inherited record PASS at 0.01 |
 | 6 Fits | extras.objective sums squared residuals/440; exact RK4 reverse; L-BFGS-B maxiter200, F=identify(y,dt); success/finite and all-frame RMS≤10SIGMA checks |
 | 7 Data | Manifest matches 200/200; bitwise reproductions 200/200; maximum actual-cost discrepancy 0 |
-| 8 CNN | Checkpoint hash below; 11 input frames and SIGMA normalization; action .16p/SIGMA. Base training draws amplitudes continuously through zero, so zero lies in its action support. No inference or model initialization performed |
+| 8 CNN | Checkpoint metadata read by zip/pickle opcode inspection (no model initialization): step=20000, sigma=4.312600593723798; models.py has 12 channels (11 frames + action), campaign.inference uses window/sigma and .16p/sigma. learned_l96_data.py draws amplitude uniform(-2delta,2delta), so zero lies in its action support. No inference performed |
 | 9 Two-scale | rhs2 uses h=1,c=10,b=10; state dt .001 recorded in inherited NUMBERS.md. R7 is optional and not run in this go |
 
 No inherited module was edited. New posterior/readings follow v2.3. Any inherited discrepancy is resolved by R-def, never a pre-gate halt. Full per-case evidence: runs/audit/acd_step0.json.

@@ -2,7 +2,7 @@
 import os
 os.environ['JAX_PLATFORMS']='cpu'
 os.environ['JAX_ENABLE_X64']='true'
-import re,json,time
+import re,json,time,zipfile,pickletools
 import numpy as np,numba
 from acd_protocol import *
 def run():
@@ -24,9 +24,16 @@ def run():
         records.append(row)
         if not row['manifest_matches'] or not row['reproduced'] or row['actual_max_error']>1e-12:
             resolution('R-def',f'development {c} verification difference',row)
+    metadata={}
+    with zipfile.ZipFile(INHERITED/'inputs/CNN-20k.pt') as archive:
+        pkl=next(n for n in archive.namelist() if n.endswith('data.pkl'))
+        ops=list(pickletools.genops(archive.read(pkl)))
+        for i,(opcode,arg,pos) in enumerate(ops):
+            if isinstance(arg,str) and arg in ['sigma','step','val']:
+                metadata[arg]=next(a for o,a,p in ops[i+1:] if o.name in ['BINFLOAT','BININT','BININT1','BININT2'])
     numerical=json.loads((INHERITED/'runs/numerics/dtcheck.json').read_text())
     info=dict(base='1b1094a',LT=LT,SIGMA=SIGMA,LEADS=LEADS.tolist(),OUT=OUT,TICKS=TICKS.tolist(),WINDOWS=[w.tolist() for w in WINDOWS],
-              pattern_rms=np.sqrt(np.mean(PATTERNS[:8]**2,axis=1)).tolist(),dt_record=numerical,
+              checkpoint_metadata=metadata,pattern_rms=np.sqrt(np.mean(PATTERNS[:8]**2,axis=1)).tolist(),dt_record=numerical,
               hashes={f:digest(INHERITED/f) for f in ['protocol.py','physics.py','extras.py','campaign.py','inputs/CNN-20k.pt']},
               inputs=records,seconds=time.perf_counter()-begin,seed_leaves=assert_leaves())
     save_json(ROOT/'runs/audit/acd_step0.json',info)
@@ -39,7 +46,7 @@ def run():
            f"| 5 dt | Inherited record {numerical['status']} at {numerical['chosen_dt']} |",
            '| 6 Fits | extras.objective sums squared residuals/440; exact RK4 reverse; L-BFGS-B maxiter200, F=identify(y,dt); success/finite and all-frame RMS≤10SIGMA checks |',
            f"| 7 Data | Manifest matches {sum(v['manifest_matches'] for v in records)}/200; bitwise reproductions {sum(v['reproduced'] for v in records)}/200; maximum actual-cost discrepancy {max(v['actual_max_error'] for v in records):.3g} |",
-           '| 8 CNN | Checkpoint hash below; 11 input frames and SIGMA normalization; action .16p/SIGMA. Base training draws amplitudes continuously through zero, so zero lies in its action support. No inference or model initialization performed |',
+           f"| 8 CNN | Checkpoint metadata read by zip/pickle opcode inspection (no model initialization): step={metadata['step']}, sigma={metadata['sigma']}; models.py has 12 channels (11 frames + action), campaign.inference uses window/sigma and .16p/sigma. learned_l96_data.py draws amplitude uniform(-2delta,2delta), so zero lies in its action support. No inference performed |",
            '| 9 Two-scale | rhs2 uses h=1,c=10,b=10; state dt .001 recorded in inherited NUMBERS.md. R7 is optional and not run in this go |','',
            'No inherited module was edited. New posterior/readings follow v2.3. Any inherited discrepancy is resolved by R-def, never a pre-gate halt. Full per-case evidence: runs/audit/acd_step0.json.','',
            '| Artifact | SHA256 |','|---|---|']

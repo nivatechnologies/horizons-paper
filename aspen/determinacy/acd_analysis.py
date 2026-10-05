@@ -19,6 +19,14 @@ def basic(j,jbar,null):
 def boot(a,b=None,sub=1):
     a=np.asarray(a,float);b=np.ones_like(a) if b is None else np.asarray(b,float)
     return descriptive_ratio_bootstrap(a,b,rng('acd-bootstrap',sub))
+def median_boot(values):
+    values=np.asarray(values);g=rng('acd-bootstrap',2);draws=[]
+    for first in range(0,10000,50):
+        idx=g.integers(0,len(values),size=(min(50,10000-first),len(values)))
+        selected=values[idx];axes=(1,2) if values.ndim==3 else 1
+        draws.extend(np.median(selected,axis=axes).tolist())
+    return dict(interval=np.quantile(draws,[.025,.975],axis=0).tolist(),approximate=True,replicates=10000)
+
 def calibration(s,truth,keep):
     results=[]
     for t in range(8):
@@ -64,23 +72,24 @@ def r5():
 def run():
     start=time.perf_counter()
     with np.load(ROOT/'runs/null/null.npz') as n:jbar=float(n['jbar']);null=n['prob']
-    post=[];crude=[];rml=[];truth=[];reports=[];mechanisms=[];divergences=[];extras=[];ranks=[];precision=[];agreement=[]
+    post=[];crude=[];rml=[];truth=[];reports=[];mechanisms=[];divergences=[];extras=[];ranks=[];precision=[];agreement=[];forcing_ranks=[];all_calibration=[];zeros=[]
     for c in range(200):
         reports.append(json.loads((ROOT/f'runs/dev/case_{c:03d}.json').read_text()))
         with np.load(ROOT/f'runs/dev/case_{c:03d}.npz') as d:
-            j=d['J'];post.append(summary(j,jbar,null));crude.append(basic(d['crude_J'],jbar,null));rml.append(basic(d['rml_J'],jbar,null));mechanisms.append(mechanism(j))
+            j=d['J'];forcing_ranks.append(float((d['theta'][:,40]<8).mean()));post.append(summary(j,jbar,null));crude.append(basic(d['crude_J'],jbar,null));rml.append(basic(d['rml_J'],jbar,null));mechanisms.append(mechanism(j))
             spread=np.sqrt(np.mean(np.maximum(0,d['factual_square_sum']/len(j)-(d['state_sum'][8]/len(j))**2),axis=-1))
             divergences.append(d['divergence_sum'][:8]/len(j)/np.maximum(spread,1e-30))
             pp,ps=signed_se(j,jbar);rr,rs=signed_se(d['rml_J'],jbar,chains=0)
             agreement.append(dict(mean_probability_difference=np.abs(pp-rr).mean(0).tolist(),substantive=(np.abs(pp-rr)>3*np.sqrt(ps*ps+rs*rs)).mean(0).tolist(),threshold_crossing=((pp>=.95)!=(rr>=.95)).mean(0).tolist(),threshold_crossing_mc_expected=(norm.cdf(-np.abs(pp-.95)/rs)).mean(0).tolist()))
             with np.load(ROOT/f'runs/dev/score_{c:03d}.npz') as scoring:actual=scoring['actual_cost']
-            truth.append(labels(actual,jbar)[0]);D=j[:,:8]-j[:,8,None];real=actual[:8]-actual[8]
+            zeros.append(dict(case=c,action_zero=np.argwhere(actual[:8]==actual[8]).tolist(),pair_zero=[[k,l,t] for k in range(8) for l in range(k+1,8) for t in range(8) if actual[k,t]==actual[l,t]],factual_zero=np.flatnonzero(actual[8]==jbar).tolist()));truth.append(labels(actual,jbar)[0]);D=j[:,:8]-j[:,8,None];real=actual[:8]-actual[8]
             ranks.append((D<real[None]).mean(0))
             meanj=j.mean(0);chosen=int(meanj[:,3].argmin());draw_regret=j[:,:,3]-j[:,:,3].min(1)[:,None]
             extras.append(dict(case=c,unforced_quantiles=np.quantile(j[:,8],[.05,.5,.95],axis=0).tolist(),effect_mean=D.mean(0).tolist(),effect_quantiles=np.quantile(D,[.05,.5,.95],axis=0).tolist(),backfire_probability=(D>0).mean(0).tolist(),positive_expected_loss=np.maximum(D,0).mean(0).tolist(),nine_action_best=np.stack([(j.argmin(1)==a).mean(0) for a in range(9)]).tolist(),posterior_regret_2LT=draw_regret.mean(0).tolist(),chosen_nine_action=chosen,realized_regret_2LT=float(actual[chosen,3]-actual[:,3].min())))
     def stack(rows):return {key:np.stack([r[key] for r in rows]) for key in rows[0]}
     s=stack(post);sc=stack(crude);sr=stack(rml);truth=np.asarray(truth);keep=np.array([not r['excluded'] for r in reports]);cal=calibration(s,truth,keep);cal_c=calibration(sc,truth,keep);cal_r=calibration(sr,truth,keep)
     covered=sum(r['coverage']['covered'] for r in reports)
+    wilson_center=(covered/200+1.96**2/400)/(1+1.96**2/200);wilson_radius=1.96*np.sqrt((covered/200)*(1-covered/200)/200+1.96**2/(4*200**2))/(1+1.96**2/200)
     if covered/200<.85:resolution('R-cov','Development coverage below0.85',dict(covered=covered,cases=200))
     if (~keep).mean()>.05:resolution('R-diag','Development diagnostic exclusions above5%',dict(excluded=int((~keep).sum())))
     shares=[]
@@ -125,6 +134,8 @@ def run():
     for key in mechanisms[0]:
         values=np.stack([r[key] for r in mechanisms])[keep]
         mechan[key]=dict(median=np.median(values,axis=(0,1) if values.ndim==3 else 0).tolist(),quartiles=np.quantile(values,[.25,.75],axis=(1,2) if False else (0,1) if values.ndim==3 else 0).tolist())
+    for key in ['rho','cancellation','z_D']:
+        mechan[key]['descriptive']=median_boot(np.stack([r[key] for r in mechanisms])[keep])
     rho_med=np.array(mechan['rho']['median']);cross=np.flatnonzero(rho_med<.5);mechan['first_median_rho_below_half']=float(LEADS[cross[0]]) if len(cross) else None
     div=np.asarray(divergences)[keep];mechan['divergence_ratio']=dict(median=np.median(div,axis=(0,1)).tolist(),quartiles=np.quantile(div,[.25,.75],axis=(0,1)).tolist(),ticks=TICKS.tolist())
     zvals=np.stack([r['z_D'] for r in mechanisms])[keep];cvals=np.stack([r['cancellation'] for r in mechanisms])[keep];conf=s['confident'][keep,:8];mechan['bins']={}
@@ -148,20 +159,27 @@ def run():
     if not any(r['rule']=='R-other' and r['trigger']=='Spec gate scope findings' for r in resolutions):
         resolution('R-other','Spec gate scope findings','True-F climate advantage is literal rather than proven monotone; untested selector targeting arms cannot support L6; Wilks coverage remains approximate.')
         resolutions=[json.loads(l) for l in (ROOT/'runs/resolutions.jsonl').read_text().splitlines()]
-    output=dict(version='2.3',panel='development',cases=200,gate=decision,dt=dt(),settings=settings(),R0=cal,R1=shares,R1m=mechan,R2a=R2a,R2b=R2b,R2c=dict(horizon=float(LEADS[horizon]) if horizon>=0 else None,readings=R2c),R3=dict(calibration=cal_c,reliability=reliability(sc,truth,keep)),R3b=dict(calibration=cal_r,reliability=reliability(sr,truth,keep),posterior_agreement=agreement),R5=measure,coverage=dict(covered=covered,total=200,share=covered/200,descriptive=boot(np.array([r['coverage']['covered'] for r in reports]),sub=7)),excluded=int((~keep).sum()),fit_flags=sum(r['minimum']>467.6 for r in reports),reliability=reliability(s,truth,keep),threshold_uncertain=s['uncertain'][keep].mean((0,1)).tolist(),split_instability=s['split_unstable'][keep].mean((0,1)).tolist(),rank_histogram=np.histogram(np.asarray(ranks)[keep],bins=np.linspace(0,1,11))[0].tolist(),extra_selector_readings=extras,resolutions=resolutions,seconds=time.perf_counter()-start)
+    output=dict(version='2.3',panel='development',cases=200,gate=decision,dt=dt(),settings=settings(),R0=cal,R1=shares,R1m=mechan,R2a=R2a,R2b=R2b,R2c=dict(horizon=float(LEADS[horizon]) if horizon>=0 else None,readings=R2c),R3=dict(calibration=cal_c,reliability=reliability(sc,truth,keep)),R3b=dict(calibration=cal_r,reliability=reliability(sr,truth,keep),posterior_agreement=agreement),R5=measure,coverage=dict(covered=covered,total=200,share=covered/200,descriptive=boot(np.array([r['coverage']['covered'] for r in reports]),sub=7),wilson95=[wilson_center-wilson_radius,wilson_center+wilson_radius]),excluded=int((~keep).sum()),fit_flags=sum(r['minimum']>467.6 for r in reports),reliability=reliability(s,truth,keep),threshold_uncertain=s['uncertain'][keep].mean((0,1)).tolist(),split_instability=s['split_unstable'][keep].mean((0,1)).tolist(),true_F_rank=dict(histogram=np.histogram(forcing_ranks,bins=np.linspace(0,1,11))[0].tolist(),uniformity_KS=dict(statistic=float(kstest(np.asarray(forcing_ranks)[keep],'uniform').statistic),p=float(kstest(np.asarray(forcing_ranks)[keep],'uniform').pvalue)),case_values=forcing_ranks),exact_zero_answers=zeros,rank_histogram=np.histogram(np.asarray(ranks)[keep],bins=np.linspace(0,1,11))[0].tolist(),extra_selector_readings=extras,resolutions=resolutions,seconds=time.perf_counter()-start)
+    for type_name,q in types.items():
+        for t in range(8):
+            selection=s['confident'][keep,q,t];right=s['modal'][keep,q,t]==truth[keep,q,t]
+            all_calibration.append(dict(type=type_name,lead=float(LEADS[t]),answers=int(selection.sum()),correct=int((selection&right).sum()),accuracy=float(right[selection].mean()) if selection.any() else None,descriptive=boot((selection&right).sum(1),selection.sum(1),0),threshold_uncertain=int(s['uncertain'][keep,q,t].sum()),split_unstable=int(s['split_unstable'][keep,q,t].sum())))
+    output['all_confident_calibration']=all_calibration
     for name,arm in [('crude',sc),('RML',sr)]:
         # Cohen kappa for modal classifications plus abstention, per lead.
         kappas=[]
         for t in range(8):
             a=np.where(s['confident'][keep,:8,t],s['modal'][keep,:8,t],-1).ravel();b=np.where(arm['confident'][keep,:8,t],arm['modal'][keep,:8,t],-1).ravel();pe=sum(np.mean(a==v)*np.mean(b==v) for v in [-1,0,1]);po=np.mean(a==b);kappas.append(float((po-pe)/(1-pe)) if pe<1 else None)
-        output['R3' if name=='crude' else 'R3b']['kappa']=kappas
+        target=output['R3' if name=='crude' else 'R3b'];target['kappa_S']=kappas
+        target['reliability_by_lead']=[reliability({key:val[:,:,t:t+1] for key,val in arm.items()},truth[:,:,t:t+1],keep) for t in range(8)]
+        target['confidence_shares']=[dict(type=type_name,lead=float(LEADS[t]),all=float(arm['confident'][keep,q,t].mean()),observation=float(arm['observation'][keep,q,t].mean()),descriptive=boot(arm['confident'][keep,q,t].mean(1),sub=4 if name=='crude' else 5)) for type_name,q in types.items() for t in range(8)]
     save_json(ROOT/'runs/audit/acd_stage1.json',output)
-    lines=['# Aspen counterfactual determinacy — Stage 1 (v2.3)','',f'**Stage 1 gate: {decision}.** Development only; Todd decides whether to authorize a freeze and confirmation.','',f'Completed 200 cases on sulaco CPU at dt={dt()}; truth coverage {covered}/200; diagnostic exclusions {int((~keep).sum())}/200.','', '| Lead (LT) | R0 | Case accuracy [L,U] | Answers / cases | R0-F |','|---|---|---|---|---|']
+    lines=['# Aspen counterfactual determinacy — Stage 1 (v2.3)','',f'**Stage 1 gate: {decision}.** Development only; Todd decides whether to authorize a freeze and confirmation.','',f'Completed 200 cases on sulaco CPU at dt={dt()}; truth coverage {covered}/200; diagnostic exclusions {int((~keep).sum())}/200.','', '| Lead (LT) | R0 | Case accuracy [L,U] | Answer accuracy / answers / cases | Included-case R0 [L,U] | R0-F |','|---|---|---|---|---|---|']
     for row in cal:
-        r=row['R0'];point='NA' if r['case_accuracy'] is None else f"{r['case_accuracy']:.3f}";lines.append(f"| {row['lead']:g} | {r['status']} | {point} [{r['case_lower']:.3f}, {r['case_upper']:.3f}] | {r['answers']} / {r['cases']} | {row['R0_F']['status']} |")
+        r=row['R0'];point='NA' if r['case_accuracy'] is None else f"{r['case_accuracy']:.3f}";lines.append(f"| {row['lead']:g} | {r['status']} | {point} [{r['case_lower']:.3f}, {r['case_upper']:.3f}] | {r['answer_accuracy']} / {r['answers']} / {r['cases']} | {r['included_excluded']['status']} [{r['included_excluded']['case_lower']:.3f}, {r['included_excluded']['case_upper']:.3f}] | {row['R0_F']['status']} |")
     lines+=['','R0 includes the required sensitivity with excluded cases included; the worse status governs. Bounds are v2.3 betting bounds; R0-F uses exact Clopper–Pearson.','']
     for row in R2a:lines.append(f"R2a at {row['lead']:g} LT: {row['status']}; Δ={row['point']:.3f}, 99% interval [{row['lower']:.3f}, {row['upper']:.3f}].")
-    point='NA' if R2b['point'] is None else f"{R2b['point']:.3f}";lines+=['',f"R2b: {R2b['status']}; Δ_loss={point}, 99% interval [{R2b['lower']:.3f}, {R2b['upper']:.3f}], {R2b['cases']} eligible cases.",'',f"R5 at 2 LT: {measure['status']}; common population {measure['population']}; margin {measure['margin']}. Only Q, F, V and R support the tested comparison.",'','| Arm | Confident correct / population | Confident wrong | Accuracy lower bound | Truth coverage |','|---|---|---|---|---|']
+    point='NA' if R2b['point'] is None else f"{R2b['point']:.3f}";lines+=['',f"R2b: {R2b['status']}; Δ_loss={point}, 99% interval [{R2b['lower']:.3f}, {R2b['upper']:.3f}], {R2b['cases']} eligible cases.",'',f"R5 at 2 LT: {measure['status']}; common population {measure['population']}; margin {measure['margin']}. Only Q, F, V and R support the tested comparison.",'','| Arm | Confident correct / population | Confident wrong | Accuracy lower bound | Truth coverage |','|---|---|---|---|---|---|']
     for name,r in measure['arms'].items():lines.append(f"| {name} | {r['correct']} / {r['population']} | {r['wrong']} | {r['accuracy_lower']:.3f} | {r['coverage']:.3f} |")
     lines+=['','Resolution rules fired: '+', '.join(sorted(set(r['rule'] for r in resolutions)))+'.','']
     for rule in sorted(set(r['rule'] for r in resolutions)):

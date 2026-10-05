@@ -14,7 +14,10 @@ from acd_questions import prepare_dtcheck,coverage,actual,distribution,summary,l
 def case(panel,c,forced_draws=None,rerun_stage1a=False):
     directory=ROOT/f'runs/{panel}';directory.mkdir(parents=True,exist_ok=True)
     target=directory/f'case_{c:03d}.npz';report_path=target.with_suffix('.json')
-    if target.exists() and not rerun_stage1a:return json.loads(report_path.read_text())
+    if target.exists() and not rerun_stage1a:
+        previous=json.loads(report_path.read_text())
+        if panel!='dev' or previous.get('stage1a_rerun',False) or previous['diagnostics']['sampler']['draws']==settings()['draws']:return previous
+        target.unlink();report_path.unlink()
     tick=time.perf_counter();h=dt();y=load_observed(panel,c);config=settings()
     fit_path=directory/f'fits_{c:03d}.npz'
     if fit_path.exists():
@@ -58,7 +61,7 @@ def case(panel,c,forced_draws=None,rerun_stage1a=False):
     np.savez(directory/f'score_{c:03d}.npz',actual_cost=actual_cost)
     final=dict(case=c,panel=panel,seconds=time.perf_counter()-tick,excluded=excluded,coverage=cov,
                diagnostics=last,fits=fit_report,forecast_draws=len(selected),dt=h,minimum=minimum,
-               sha256=digest(target))
+               sha256=digest(target),stage1a_rerun=rerun_stage1a)
     save_json(report_path,final);print('case',panel,c,'seconds',round(final['seconds'],2),'excluded',excluded,flush=True)
     return final
 
@@ -71,7 +74,7 @@ def null():
     result=forecast(np.c_[states,np.full(4096,8.)],h,initial_is_last=True)
     jbar=float(result['J'][:,8,:].mean());probs=distribution(result['J'],jbar)
     np.savez(target,J=result['J'],jbar=jbar,prob=probs)
-    save_json(target.with_suffix('.json'),dict(seconds=time.perf_counter()-start,dt=h,jbar=jbar,sha256=digest(target)))
+    save_json(target.with_suffix('.json'),dict(seconds=time.perf_counter()-start,dt=h,jbar=jbar,sha256=digest(target),stage1a_rerun=rerun_stage1a))
     print('null complete',flush=True)
 
 def stage0():
@@ -156,12 +159,13 @@ def stage0():
 def stage1a():
     reports=[case('dev',c) for c in range(20)]
     with np.load(ROOT/'runs/null/null.npz') as n:jbar=float(n['jbar'])
-    disagreement=[];questions=0;repeat_report=[]
+    disagreement=[];questions=0;repeat_report=[];agreement=[]
     for c in range(20):
         with np.load(ROOT/f'runs/dev/case_{c:03d}.npz') as d:a=d['J'];b=d['rml_J']
         pp,sp=signed_se(a,jbar);pr,sr=signed_se(b,jbar,chains=0)
         z=(pp-pr)/np.sqrt(sp*sp+sr*sr);flag=np.abs(z[:8,3])>3
         disagreement.append(flag);questions+=int(flag.sum())
+        agreement.append(dict(case=c,mean_signed_probability_difference_2_3=np.abs(pp-pr)[:,[3,5]].mean(0).tolist(),substantive_S_2_3=(np.abs(z[:8,[3,5]])>3).sum(0).tolist(),threshold_crossing_2_3=((pp[:,[3,5]]>=.95)!=(pr[:,[3,5]]>=.95)).sum(0).tolist()))
     if questions/160>.05:
         resolution('R-rml','Stage1a substantive disagreement >5%',dict(questions=questions,total=160))
         for c,flags in enumerate(disagreement):
@@ -180,16 +184,18 @@ def stage1a():
     excluded=sum(v['excluded'] for v in reports)
     if flag_cov:resolution('R-cov','Stage1a coverage below15/20','Report and continue')
     if excluded>1:resolution('R-diag','Stage1a exclusion rate>1/20','Flag and continue')
-    result=dict(cases=20,covered=sum(v['coverage']['covered'] for v in reports),excluded=excluded,substantive_S_questions_2LT=questions,total_questions=160,reruns=repeat_report)
+    result=dict(cases=20,covered=sum(v['coverage']['covered'] for v in reports),excluded=excluded,substantive_S_questions_2LT=questions,total_questions=160,reruns=repeat_report,agreement=agreement)
     save_json(ROOT/'runs/audit/acd_stage1a.json',result)
     (ROOT/'ACD_STAGE1A_VALIDATION.md').write_text('# ACD Stage1a validation\n\n```json\n'+json.dumps(result,indent=2)+'\n```\n\nAll flags use §14 resolution rules; development continues to200 cases.\n')
     print('Stage1a complete',flush=True)
 def main():
-    p=argparse.ArgumentParser();p.add_argument('task',choices=['stage0','stage1a','stage1b','case']);p.add_argument('--case',type=int,default=0);p.add_argument('--panel',default='dtcheck');a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('task',choices=['stage0','stage1a','stage1b','case','batch']);p.add_argument('--case',type=int,default=0);p.add_argument('--panel',default='dtcheck');p.add_argument('--cases',default='');a=p.parse_args()
     numba.set_num_threads(8)
     if a.task=='stage0':stage0()
     elif a.task=='stage1a':stage1a()
     elif a.task=='case':case(a.panel,a.case)
+    elif a.task=='batch':
+        for c in map(int,a.cases.split(',')):case(a.panel,c)
     else:
         for c in range(200):case('dev',c)
         from acd_measure import campaign

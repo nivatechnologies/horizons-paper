@@ -69,5 +69,7 @@ def assert_leaves():
             for sub in [4,5,6]:add('acd-dtcheck',sub,c,chain)
     for c in range(4096):add('acd-climatology',0,c)
     for sub in range(8):add('acd-bootstrap',sub,0)
+    for c in range(50):
+        for sub in [0,1]:add('acd-twoscale',sub,c)
     assert len(leaves)==len(set(leaves))
     return dict(count=len(leaves),ids=ACD_IDS,sub_roles=SUB_ROLES)
