@@ -101,20 +101,45 @@ def primary_timing2(workers):
 
 def pack_validation2():
     info,dt,_=metadata();folder=panel_directory2("val")
-    windows=[];truth=[]
+    windows=[];truth=[];actual=[];eligible=[];best=[]
     for c in range(100):
         with np.load(folder/f"cpu_{c:03d}.npz") as data:
             if data["truth_cost"].shape!=(9,2048,4) or data["arm_windows"].shape!=(64,11,40):
                 raise RuntimeError("wrong system or incomplete validation artifact")
+            costs=data["truth_cost"][:8,:,3]
             windows.append(data["arm_windows"])
-            truth.append(data["truth_cost"][:8,:,3].mean(1))
+            truth.append(costs.mean(1))
+            b=int(costs[:,:1024].mean(1).argmin());best.append(b)
+            differences=costs[:,1024:]-costs[b,1024:]
+            lower=differences.mean(1)-2.983*differences.std(1,ddof=1)/np.sqrt(1024)
+            eligible.append(bool(np.all(np.delete(lower,b)>0)))
+            actual.append(data["actual"][:8][:,WINDOWS[3]])
     path=ROOT/"runs/selection_inputs/validation2_inputs.npz"
     path.parent.mkdir(parents=True,exist_ok=True)
-    np.savez(path,windows=np.array(windows),truth=np.array(truth),actions=.2*patterns(),
-         sigma=info["sigma_X"],window_indices=WINDOWS[3],dt=dt)
-    artifact(path,"two-scale validation-only checkpoint selection input")
-    write_json(path.with_suffix(".json"),dict(cases=100,members=64,truth_members=2048,primary_lead_ref=2,
-         sigma=info["sigma_X"],sha256=digest(path),source_sha256=digest(ROOT/"twoscale_campaign.py")))
+    # Keep published checkpoint-selection inputs immutable when adding tie-break data later.
+    if not path.exists():
+        np.savez(path,windows=np.array(windows),truth=np.array(truth),actions=.2*patterns(),
+             sigma=info["sigma_X"],window_indices=WINDOWS[3],dt=dt)
+        artifact(path,"two-scale validation-only checkpoint selection input")
+        write_json(path.with_suffix(".json"),dict(cases=100,members=64,truth_members=2048,primary_lead_ref=2,
+             sigma=info["sigma_X"],sha256=digest(path),source_sha256=digest(ROOT/"twoscale_campaign.py")))
+    climate_path=ROOT/"runs/twoscale/climatology.npy"
+    if not climate_path.exists():
+        print("validation2 checkpoint inputs ready; skill inputs await two-scale climatology",flush=True)
+        return
+    skill=path.with_name("validation2_skill_inputs.npz")
+    if skill.exists():return
+    climate=np.load(climate_path)
+    if climate.shape!=(8,40) or not np.isfinite(climate).all():raise RuntimeError("invalid two-scale climatology")
+    np.savez(skill,actual=np.array(actual),eligible=np.array(eligible,dtype=bool),
+         truth_best_action=np.array(best,dtype=np.int64),climate=climate,sigma=info["sigma_X"])
+    artifact(skill,"two-scale validation-only frozen tie-break and fixed-action inputs")
+    write_json(skill.with_suffix(".json"),dict(cases=100,actual_shape=[100,8,12,40],
+         eligible_rule="first1024 select; last1024 paired mean minus2.983 sampleSD/sqrt1024 strictlypositive",
+         source_sha256=digest(ROOT/"twoscale_campaign.py"),sha256=digest(skill),
+         climatology_sha256=digest(climate_path),checkpoint_inputs_sha256=digest(path),
+         access_scope="validation only; choices reserved for isolated selection worker"))
+
 
 def identify2(y,a):
     lo=4.;hi=16.;g=(np.sqrt(5)-1)/2
@@ -272,6 +297,8 @@ def climatology2():
     np.save(path,means);artifact(path,"two-scale per-action climatology before forecast evaluation")
     write_json(path.with_suffix(".json"),dict(dt=dt,steps=steps,LT_ref=LT,averaged_LT_ref=steps*dt/LT,
         seconds=time.perf_counter()-start,sha256=digest(path),namespace="afd2-climatology"))
+    val=ROOT/"runs/twoscale_val"
+    if all((val/f"cpu_{c:03d}.npz").exists() for c in range(100)):pack_validation2()
 
 def primary_inference_timing2(model,windows,sigma,is_cost,micro):
     import torch
