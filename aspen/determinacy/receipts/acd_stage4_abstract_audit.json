@@ -1,0 +1,920 @@
+{
+  "schema": 1,
+  "rows": [
+    {
+      "id": "T",
+      "kind": "Title",
+      "sentence": "The forecast horizon is not the intervention horizon",
+      "numbers": [],
+      "context_keys": [
+        "ACD_R2B_POINT"
+      ],
+      "license": "Setup + L3b; R2b PRECEDES",
+      "verdict": "FIX",
+      "finding": "The title expands the tested sign observable to a general forecast horizon. In this study Fc is always named the sign of the unforced window-energy anomaly; a horizon of the whole forecast was not measured. The distinct-horizon framing is supported within the declared Lorenz-96 setting, not every forecasting system.",
+      "comparison": "'is not': supported only as a distinct-quantity framing by the nonzero, PRECEDES paired-loss reading ($.R2b); not a result about all forecast observables.",
+      "fix": "Distinct confidence horizons for intervention signs and the sign of the unforced window-energy anomaly in Lorenz-96",
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        }
+      },
+      "rounding": "N/A — no explicit number"
+    },
+    {
+      "id": "T-alt",
+      "kind": "Alternative title",
+      "sentence": "An intervention's effect loses confidence before the forecast does",
+      "numbers": [],
+      "context_keys": [
+        "ACD_R2B_POINT",
+        "ACD_R2B_PAIR_SHARES_EARLIER",
+        "ACD_R2B_PAIR_SHARES_LATER"
+      ],
+      "license": "L3b; R2b PRECEDES",
+      "verdict": "FIX",
+      "finding": "'The forecast' replaces Fc with a broader target and breaks the full-name rule. 'Loses confidence before' reads as an unqualified ordering for an intervention, while the reading is a case-averaged, eligible-action preference; some eligible actions lose confidence later.",
+      "comparison": "'before': $.R2b.status=PRECEDES, prerequisite=true; does not license a universal per-action ordering.",
+      "fix": "In Lorenz-96, intervention-sign confidence is more often lost before confidence in the sign of the unforced window-energy anomaly than after",
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        }
+      },
+      "rounding": "N/A — no explicit number"
+    },
+    {
+      "id": "S1",
+      "kind": "Abstract sentence 1",
+      "sentence": "Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts.",
+      "numbers": [],
+      "context_keys": [],
+      "license": "No L# licenses the broad practice claim",
+      "verdict": "FIX",
+      "finding": "This asserts how data assimilation, learned world models and intervention practice are judged. Existing receipts do not establish that general claim, and it is outside L1–L10 plus the declared Setup. World models may enter here only as a reporting desideratum, as in S8.",
+      "comparison": "No empirical route supports the cross-system framing 'from ... to ...' or the asserted common evaluation/selection practice.",
+      "fix": "For a single observed instance, we compare confidence in an intervention's window-energy sign with confidence in the sign of the unforced window-energy anomaly.",
+      "source_values": {},
+      "rounding": "N/A — no explicit number"
+    },
+    {
+      "id": "S2",
+      "kind": "Abstract sentence 2",
+      "sentence": "We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the sign of the forecast it acts on than after.",
+      "numbers": [],
+      "context_keys": [
+        "ACD_R2B_POINT",
+        "ACD_R2B_PAIR_SHARES_EARLIER",
+        "ACD_R2B_PAIR_SHARES_LATER"
+      ],
+      "license": "L3b; R2b PRECEDES; all lead prerequisites met",
+      "verdict": "FIX",
+      "finding": "The direction is licensed, but 'the sign of the forecast it acts on' violates Fc naming and can mean a general forecast observable. Preserve the paired eligible-action, case-averaged referent; this is not a guarantee for each observed instance.",
+      "comparison": "'more often', 'before', 'than after': $.R2b.status=PRECEDES, point=-0.3087874324987727 with upper=-0.128; the shares are means of within-case eligible-action shares.",
+      "fix": "In this setting, paired by instance, confidence in an intervention's sign is more often lost before confidence in the sign of the unforced window-energy anomaly than after, averaging each eligible instance's action shares.",
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        }
+      },
+      "rounding": "N/A — no explicit number"
+    },
+    {
+      "id": "S3",
+      "kind": "Abstract sentence 3",
+      "sentence": "In one-scale Lorenz-96 (N = 40, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we compute the full posterior for 200 independent instances and score it against each realized trajectory.",
+      "numbers": [
+        {
+          "literal": "96",
+          "key": "ACD_CONTRACT_MODEL_IDENTIFIER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "40",
+          "key": "ACD_CONTRACT_STATE_DIMENSION",
+          "rounding_OK": true
+        },
+        {
+          "literal": "11",
+          "key": "ACD_CONTRACT_FRAMES",
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.84",
+          "key": "ACD_CONTRACT_OBSERVATION_SPAN_LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "200",
+          "key": "ACD_CASES",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [],
+      "license": "Setup",
+      "verdict": "OK",
+      "finding": "Setup numbers and realized-trajectory scoring agree with the receipts and frozen protocol. 'Full posterior' is accepted as the joint initial-state/forcing posterior, represented by finite NUTS samples; it is not an analytic or exact-integration certificate. The paper's Setup must retain the frozen prior, noise, action patterns/amplitude and windows: uniform F on [6,10], Gaussian initial-state prior N(0,(10·SIGMA)^2), observation noise 0.02·SIGMA, eight persistent forcing patterns at amplitude 0.16, inherited one-LT energy windows. These are declared conditions, not new generalization to other settings.",
+      "comparison": "No comparator ordering. 96 is a model-name identifier, not the state dimension; N=40.",
+      "fix": "—",
+      "source_values": {
+        "ACD_CONTRACT_MODEL_IDENTIFIER": {
+          "value": 96,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal Lorenz-96 model name, §3; identifier, not state dimension"
+        },
+        "ACD_CONTRACT_STATE_DIMENSION": {
+          "value": 40,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_FRAMES": {
+          "value": 11,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_OBSERVATION_SPAN_LT": {
+          "value": 0.8434126850229302,
+          "receipt": "receipts/acd_step0.json",
+          "receipt_path": [
+            "$.OUT",
+            "$.LT"
+          ],
+          "derivation": "(11 snapshots - 1) * OUT / LT",
+          "additional_sources": [
+            {
+              "receipt": "sources/WO_v2.3.md",
+              "receipt_path": "§3–§4, 11 snapshots"
+            }
+          ]
+        },
+        "ACD_CASES": {
+          "value": 200,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.cases"
+        }
+      },
+      "rounding": "OK"
+    },
+    {
+      "id": "S4",
+      "kind": "Abstract sentence 4",
+      "sentence": "At 2 LT the posterior answers the sign of a small intervention's effect on window energy with at least 95% probability for 72% of case–action questions (61% beyond what climatology alone gives), against 85% for the sign of the unforced window-energy anomaly, the forecast sign (difference −0.24, 99% interval [−0.35, −0.14]); at 3 LT, 40% against 67%.",
+      "numbers": [
+        {
+          "literal": "2",
+          "key": "ACD_R1_S_LEAD_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "95%",
+          "key": "ACD_CONTRACT_CONFIDENCE",
+          "rounding_OK": true
+        },
+        {
+          "literal": "72%",
+          "key": "ACD_R1_S_CONFIDENT_POINT_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "61%",
+          "key": "ACD_R1_S_OBSERVATION_POINT_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "85%",
+          "key": "ACD_R1_FC_CONFIDENT_POINT_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "−0.24",
+          "key": "ACD_R2A_0_POINT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "99%",
+          "key": "ACD_CONTRACT_ROUTE_CI_PERCENT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "−0.35",
+          "key": "ACD_R2A_0_LOWER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "−0.14",
+          "key": "ACD_R2A_0_UPPER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "3",
+          "key": "ACD_R1_S_LEAD_3LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "40%",
+          "key": "ACD_R1_S_CONFIDENT_POINT_3LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "67%",
+          "key": "ACD_R1_FC_CONFIDENT_POINT_3LT",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [],
+      "license": "L1 and L3a at 2/3 LT; R0/R0-F PASS, R2a DIFFERS",
+      "verdict": "FIX",
+      "finding": "All numeric values round correctly. The parenthetical difference is ambiguous: -0.243125 compares observation-confident S (0.606875) with Fc (0.85); all-confident S (0.72375) minus Fc is -0.12625. Explicitly identify the observation-confident contrast, and remove 'the forecast sign', even at first definition. Climatology means the frozen null at the true forcing.",
+      "comparison": "'against': L1 with R0/R0-F PASS at both leads. 'difference': $.R2a[0].status=DIFFERS; its CI is for observation-confident S minus confident Fc, not 72% minus 85%. The 3 LT DIFFERS route also passes prerequisites.",
+      "fix": "At 2 LT the posterior answers the sign of a small intervention's effect on window energy with at least 95% probability for 72% of case–action questions (61% beyond what climatology at the true forcing alone gives), against 85% for the sign of the unforced window-energy anomaly; the observation-confident intervention-sign share minus the confident share for the sign of the unforced window-energy anomaly is −0.24 (99% interval [−0.35, −0.14]). At 3 LT the corresponding all-confident shares are 40% and 67%.",
+      "source_values": {
+        "ACD_R1_S_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].lead"
+        },
+        "ACD_CONTRACT_CONFIDENCE": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_2LT": {
+          "value": 0.72375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].confident.point"
+        },
+        "ACD_R1_S_OBSERVATION_POINT_2LT": {
+          "value": 0.606875,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].observation.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_2LT": {
+          "value": 0.85,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[15].confident.point"
+        },
+        "ACD_R2A_0_POINT": {
+          "value": -0.243125,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].point"
+        },
+        "ACD_CONTRACT_ROUTE_CI_PERCENT": {
+          "value": 99,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_R2A_0_LOWER": {
+          "value": -0.352,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].lower"
+        },
+        "ACD_R2A_0_UPPER": {
+          "value": -0.136,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].upper"
+        },
+        "ACD_R1_S_LEAD_3LT": {
+          "value": 3.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[5].lead"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_3LT": {
+          "value": 0.40375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[5].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_3LT": {
+          "value": 0.67,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[17].confident.point"
+        }
+      },
+      "rounding": "OK"
+    },
+    {
+      "id": "S5",
+      "kind": "Abstract sentence 5",
+      "sentence": "Averaged over instances, confident answers that climatology alone does not give are right 99.5% of the time (one-sided 95% lower bound 97.7%).",
+      "numbers": [
+        {
+          "literal": "99.5%",
+          "key": "ACD_R0_CASE_ACCURACY_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "95%",
+          "key": "ACD_CONTRACT_R0_CI_LEVEL",
+          "rounding_OK": true
+        },
+        {
+          "literal": "97.7%",
+          "key": "ACD_R0_CASE_LOWER_2LT",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [
+        "ACD_R0_CASE_ACCURACY_3LT"
+      ],
+      "license": "L2 at 2 LT; R0 PASS",
+      "verdict": "FIX",
+      "finding": "The numbers describe case-averaged accuracy of observation-confident intervention-sign answers at 2 LT, not all question types or both the 2 and 3 LT readings just mentioned. At 3 LT that accuracy is 0.9830492424242423. Add the lead and intervention-sign referent; retain case averaging.",
+      "comparison": "No comparator ordering. The one-sided lower bound belongs to $.R0[3].R0 and gates its PASS, not the 3 LT estimate.",
+      "fix": "At 2 LT, averaged over instances, confident intervention-sign answers that climatology at the true forcing alone does not give are right 99.5% of the time (one-sided 95% lower bound 97.7%).",
+      "source_values": {
+        "ACD_R0_CASE_ACCURACY_2LT": {
+          "value": 0.9952503052503053,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.case_accuracy"
+        },
+        "ACD_CONTRACT_R0_CI_LEVEL": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal one-sided R0 confidence level, §10"
+        },
+        "ACD_R0_CASE_LOWER_2LT": {
+          "value": 0.977,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.case_lower"
+        },
+        "ACD_R0_CASE_ACCURACY_3LT": {
+          "value": 0.9830492424242423,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[5].R0.case_accuracy"
+        }
+      },
+      "rounding": "OK"
+    },
+    {
+      "id": "S6",
+      "kind": "Abstract sentence 6",
+      "sentence": "Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59% of actions and after it for 28% (99% interval for the difference [−0.49, −0.13]), although the posterior correlation between factual and counterfactual window energies is 0.97, so their difference carries 3% of the summed uncertainty.",
+      "numbers": [
+        {
+          "literal": "59%",
+          "key": "ACD_R2B_PAIR_SHARES_EARLIER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "28%",
+          "key": "ACD_R2B_PAIR_SHARES_LATER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "99%",
+          "key": "ACD_CONTRACT_ROUTE_CI_PERCENT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "−0.49",
+          "key": "ACD_R2B_LOWER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "−0.13",
+          "key": "ACD_R2B_UPPER",
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.97",
+          "key": "ACD_R1M_RHO_MEDIAN_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "3%",
+          "key": "ACD_R1M_CANCELLATION_MEDIAN_2LT",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [
+        "ACD_R2B_POINT",
+        "ACD_R2B_CASES",
+        "ACD_R2B_ACTIONS"
+      ],
+      "license": "L3b (PRECEDES) + L4 at 2 LT (R0 PASS)",
+      "verdict": "FIX",
+      "finding": "Rounding is correct, but 59%/28% are averages of each eligible case's eligible-action shares, not pooled shares or all actions. Eligibility: observation-confident S at lead 0 and confident Fc at lead 0. Use the full Fc name. The CI is for later minus earlier, with point -0.3087874324987727. Correlation 0.97 and cancellation 3% are medians at 2 LT; specify median and lead. 'Although' may juxtapose licensed readings but cannot establish a causal mechanism or z-based ordering.",
+      "comparison": "'before/after': $.R2b.status=PRECEDES, prerequisites true; 'although' juxtaposes that route with descriptive L4 medians at 2 LT; 'so' is the L4 cancellation description, not a causal or significance test.",
+      "fix": "Paired by instance, intervention-sign confidence is lost before confidence in the sign of the unforced window-energy anomaly in 59% and after it in 28% of an instance's eligible actions, averaged over eligible instances (99% interval for later minus earlier [−0.49, −0.13]). At 2 LT, the median posterior correlation between factual and counterfactual window energies is 0.97, so their difference carries a median 3% of their summed uncertainty.",
+      "source_values": {
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        },
+        "ACD_CONTRACT_ROUTE_CI_PERCENT": {
+          "value": 99,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_R2B_LOWER": {
+          "value": -0.494,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.lower"
+        },
+        "ACD_R2B_UPPER": {
+          "value": -0.128,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.upper"
+        },
+        "ACD_R1M_RHO_MEDIAN_2LT": {
+          "value": 0.9749533160639576,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.rho.median[3]"
+        },
+        "ACD_R1M_CANCELLATION_MEDIAN_2LT": {
+          "value": 0.03133408563632934,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.cancellation.median[3]"
+        },
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_CASES": {
+          "value": 194,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.cases"
+        },
+        "ACD_R2B_ACTIONS": {
+          "value": 1332,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.actions"
+        }
+      },
+      "rounding": "OK"
+    },
+    {
+      "id": "S7",
+      "kind": "Abstract sentence 7",
+      "sentence": "Answering every question up to the lead at which the forecast sign is confident for half the instances, and none beyond, would answer 26% of the intervention questions the posterior is not confident on (right 75%) and refuse 7% it is confident on; a deterministic CNN emulator's ensemble is confident on 22% of those open questions and right on 66%.",
+      "numbers": [
+        {
+          "literal": "half",
+          "key": "ACD_CONTRACT_R2C_HALF_CASES",
+          "rounding_OK": true
+        },
+        {
+          "literal": "26%",
+          "key": "ACD_L9_ANSWERED_NOT_CONFIDENT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "75%",
+          "key": "ACD_L9_EXCEPTION_ACCURACY",
+          "rounding_OK": true
+        },
+        {
+          "literal": "7%",
+          "key": "ACD_L9_REFUSED_CONFIDENT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "22%",
+          "key": "ACD_R6_POSTERIOR_NOT_CONFIDENT_X",
+          "rounding_OK": true
+        },
+        {
+          "literal": "66%",
+          "key": "ACD_R6_POSTERIOR_NOT_CONFIDENT_Y",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [
+        "ACD_R2C_HORIZON",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_QUESTIONS",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CNN_CONFIDENT",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CORRECT"
+      ],
+      "license": "L9 (R2c) + L8 at 2 LT (R6 complete, posterior R0 PASS)",
+      "verdict": "FIX",
+      "finding": "Numbers round correctly. Fc shorthand is forbidden. U=26% and D=7% use the answered and refused lead ranges separately; V=75% is weighted over the answered-not-confident subset. 'Those open questions' incorrectly merges that multilead subset with CNN's 2 LT posterior-open S subset (442 questions; 97 CNN-confident, 64 correct). State the 2 LT condition and sign-question referent. The horizon is the last tested lead with at least half the cases confident (3 LT), not exactly 50% at that lead.",
+      "comparison": "'up to/none beyond' is the R2c rule with $.R2c.horizon=3.0; L9 licenses its measured error/refusal fractions. CNN conditional percentages use $.R6.posterior_not_confident under L8, not a claim of superiority or 'overconfident' (its bounds do not license that word).",
+      "fix": "Answering every intervention-sign question through the last tested lead at which the sign of the unforced window-energy anomaly is confident for at least half the instances (3 LT), and none beyond, would answer 26% of sign questions the posterior is not confident on (right 75%) within the answered lead range and refuse 7% it is confident on within the refused lead range. At 2 LT, on intervention-sign questions where the posterior is not confident, a deterministic CNN emulator's ensemble is confident on 22% and right on 66% of those.",
+      "source_values": {
+        "ACD_CONTRACT_R2C_HALF_CASES": {
+          "value": 0.5,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal R2c at least half of cases, §10"
+        },
+        "ACD_L9_ANSWERED_NOT_CONFIDENT": {
+          "value": 0.25875,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.readings",
+          "derivation": "mean over answered leads"
+        },
+        "ACD_L9_EXCEPTION_ACCURACY": {
+          "value": 0.7520128824476651,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.readings",
+          "derivation": "exception-share weighted accuracy in answered range"
+        },
+        "ACD_L9_REFUSED_CONFIDENT": {
+          "value": 0.07468749999999999,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.readings",
+          "derivation": "mean over refused leads"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_X": {
+          "value": 0.21945701357466063,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.X"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_Y": {
+          "value": 0.6597938144329897,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.Y"
+        },
+        "ACD_R2C_HORIZON": {
+          "value": 3.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.horizon"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_QUESTIONS": {
+          "value": 442,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.questions"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CNN_CONFIDENT": {
+          "value": 97,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.cnn_confident"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CORRECT": {
+          "value": 64,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.correct"
+        }
+      },
+      "rounding": "OK"
+    },
+    {
+      "id": "S8",
+      "kind": "Abstract sentence 8",
+      "sentence": "An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question.",
+      "numbers": [],
+      "context_keys": [
+        "ACD_R2B_POINT"
+      ],
+      "license": "Setup/headline framing supported by L3b",
+      "verdict": "OK",
+      "finding": "World-model language states what a model used to choose actions would need to report; it does not claim a measured world-model capability. 'Its own quantity' is a reporting/observable distinction within the declared setup, supported by the differing paired confidence-loss reading, not an assertion of statistical independence.",
+      "comparison": "No new comparison beyond the distinct-quantity framing supported by $.R2b.status=PRECEDES.",
+      "fix": "—",
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        }
+      },
+      "rounding": "N/A — no explicit number"
+    },
+    {
+      "id": "M",
+      "kind": "Optional mechanism sentence",
+      "sentence": "The intervention's median z, its effect over its posterior spread, starts at 3.6 times the forecast sign's just after the observation window and falls to 0.61 times it by 2 LT.",
+      "numbers": [
+        {
+          "literal": "3.6",
+          "key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_0LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.61",
+          "key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_2LT",
+          "rounding_OK": true
+        },
+        {
+          "literal": "2",
+          "key": "ACD_R1_S_LEAD_2LT",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [
+        "ACD_R1M_Z_D_MEDIAN_0LT",
+        "ACD_R1M_Z_F_MEDIAN_0LT",
+        "ACD_R1M_Z_D_MEDIAN_2LT",
+        "ACD_R1M_Z_F_MEDIAN_2LT"
+      ],
+      "license": "Outside L1–L10; no present abstract license",
+      "verdict": "FIX",
+      "finding": "The two ratios round correctly and are ratios of saved medians, not medians of per-question ratios. z_D is |E[J_action−J_factual]|/sd(J_action−J_factual); z_F is |E[J_factual]−jbar|/sd(J_factual). 'Forecast sign's' violates naming. 'Just after' must mean lead 0's one-LT energy window, not an instantaneous observation. R1m bootstrap intervals are approximate and descriptive; these point ratios and 'falls' carry no inferential ordering route.",
+      "comparison": "'3.6 times/0.61 times/starts/falls': descriptive arithmetic from $.R1m medians only; no L# or gate licenses this z-comparison in the abstract. PRECEDES is a loss-order route, not a test of these ratios.",
+      "fix": "Keep M outside the abstract unless explicitly licensed. If licensed descriptively: For one-LT window energy, the ratio of median z_D to median z_F is 3.6 at lead 0 and 0.61 at 2 LT, where z_D is the absolute posterior-mean intervention effect divided by its posterior standard deviation and z_F is the corresponding standardized magnitude for the sign of the unforced window-energy anomaly.",
+      "needs": "Todd must explicitly extend §11 to license a descriptive confirmation-R1m sentence outside L1–L10, with ratio-of-medians and both z definitions, the lead/window convention and full Fc name. No inference about trend, causal cancellation, horizon ordering or significance may be drawn from these ratios or bootstrap intervals. If such an inferential comparison is intended, it needs its own prospectively specified estimand/decision route and evidence; none is executed or presumed here.",
+      "source_values": {
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_0LT": {
+          "value": 3.576923298372998,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[0]",
+            "$.R1m.z_F.median[0]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_2LT": {
+          "value": 0.6076949618734677,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[3]",
+            "$.R1m.z_F.median[3]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1_S_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].lead"
+        },
+        "ACD_R1M_Z_D_MEDIAN_0LT": {
+          "value": 62.022866065642056,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[0]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_0LT": {
+          "value": 17.339724923331126,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[0]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_2LT": {
+          "value": 3.677818439498731,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[3]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_2LT": {
+          "value": 6.0520798595406395,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[3]"
+        }
+      },
+      "rounding": "OK"
+    },
+    {
+      "id": "A",
+      "kind": "Optional amplitude sentence",
+      "sentence": "In development runs, varying the intervention's amplitude sixteenfold, from 0.5% to 8% of the forcing, keeps the confident intervention-sign share at 2 LT between 73.5% and 79.6%, against 84.5% for the forecast sign.",
+      "numbers": [
+        {
+          "literal": "sixteenfold",
+          "key": "ACD_DEV_AMPLITUDE_RANGE_FACTOR",
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.5%",
+          "key": "ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING",
+          "rounding_OK": true
+        },
+        {
+          "literal": "8%",
+          "key": "ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING",
+          "rounding_OK": true
+        },
+        {
+          "literal": "2",
+          "key": "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_LEAD",
+          "rounding_OK": true
+        },
+        {
+          "literal": "73.5%",
+          "key": "ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_S",
+          "rounding_OK": true
+        },
+        {
+          "literal": "79.6%",
+          "key": "ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_S",
+          "rounding_OK": true
+        },
+        {
+          "literal": "84.5%",
+          "key": "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_FC",
+          "rounding_OK": true
+        }
+      ],
+      "context_keys": [
+        "ACD_NULL_FORCING",
+        "ACD_DEV_AMPLITUDE_ROWS_0_AMPLITUDE",
+        "ACD_DEV_AMPLITUDE_ROWS_1_AMPLITUDE",
+        "ACD_DEV_AMPLITUDE_ROWS_2_AMPLITUDE",
+        "ACD_DEV_AMPLITUDE_ROWS_3_AMPLITUDE",
+        "ACD_DEV_AMPLITUDE_ROWS_4_AMPLITUDE",
+        "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_S",
+        "ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_S",
+        "ACD_DEV_AMPLITUDE_ROWS_2_SHARES_0_CONFIDENT_S",
+        "ACD_DEV_AMPLITUDE_ROWS_3_SHARES_0_CONFIDENT_S",
+        "ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_S",
+        "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_FC",
+        "ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_FC",
+        "ACD_DEV_AMPLITUDE_ROWS_2_SHARES_0_CONFIDENT_FC",
+        "ACD_DEV_AMPLITUDE_ROWS_3_SHARES_0_CONFIDENT_FC",
+        "ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_FC"
+      ],
+      "license": "Development/exploratory, outside L1–L10; no present abstract license",
+      "verdict": "FIX",
+      "finding": "Numbers are correct for five tested amplitudes, with endpoints normalized by true forcing F=8, not each inferred F. The minimum share is at amplitude 0.08, not 0.04. 'Varying ... keeps' suggests a continuous-range robustness result not measured by the five settings. Use the full Fc name and label a post-hoc development-only, all-confident-S comparison. No amplitude-specific realized calibration or inferential comparison route exists. A uses all-confident S/Fc, so the missing amplitude-matched null does not invalidate these particular shares; it would invalidate treating changed-amplitude observation-confidence proxies as matched readings.",
+      "comparison": "'sixteenfold/from/to/between/against/keeps': saved development amplitude-grid arithmetic and descriptive extrema only; no confirmation route supports robustness or directional performance at changed amplitudes.",
+      "fix": "Keep A outside the abstract under the current §11. For a development/exploratory section, or an explicitly amended descriptive license: Across five tested development amplitudes from 0.04 to 0.64 (0.5% to 8% of true forcing F=8), the all-confident intervention-sign share at 2 LT ranges from 73.5% to 79.6%; the confident share for the sign of the unforced window-energy anomaly is 84.5% at each setting. These are post-hoc development readings.",
+      "needs": "Todd must explicitly amend §11 to allow labelled development/exploratory numbers in the abstract despite completed confirmation, and license this five-setting descriptive statement outside L1–L10. The existing exception for missing confirmation by Oct 8 does not apply. State the tested grid, true-forcing normalization and all-confident estimand. Any claim of robustness, calibrated correctness at changed amplitudes, continuous-range validity or inferential superiority would require a separate prospective confirmation/decision route; existing receipts provide none and no new run is authorized.",
+      "source_values": {
+        "ACD_DEV_AMPLITUDE_RANGE_FACTOR": {
+          "value": 16.0,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": [
+            "$.rows[4].amplitude",
+            "$.rows[0].amplitude"
+          ],
+          "derivation": "maximum tested amplitude / minimum tested amplitude"
+        },
+        "ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING": {
+          "value": 0.005,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[0].amplitude",
+          "derivation": "tested amplitude / true forcing ACD_NULL_FORCING",
+          "additional_sources": [
+            {
+              "receipt": "receipts/acd_stage2.json",
+              "receipt_path": "$.null.F"
+            }
+          ]
+        },
+        "ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING": {
+          "value": 0.08,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[4].amplitude",
+          "derivation": "tested amplitude / true forcing ACD_NULL_FORCING",
+          "additional_sources": [
+            {
+              "receipt": "receipts/acd_stage2.json",
+              "receipt_path": "$.null.F"
+            }
+          ]
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_LEAD": {
+          "value": 2,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[0].shares[0].lead"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_S": {
+          "value": 0.735,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[1].shares[0].confident_S"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_S": {
+          "value": 0.79625,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[4].shares[0].confident_S"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_FC": {
+          "value": 0.845,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[0].shares[0].confident_Fc"
+        },
+        "ACD_NULL_FORCING": {
+          "value": 8.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.null.F",
+          "derivation": "true forcing specified in WO §3 and used by the saved climatological null"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_0_AMPLITUDE": {
+          "value": 0.04,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[0].amplitude"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_1_AMPLITUDE": {
+          "value": 0.08,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[1].amplitude"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_2_AMPLITUDE": {
+          "value": 0.16,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[2].amplitude"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_3_AMPLITUDE": {
+          "value": 0.32,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[3].amplitude"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_4_AMPLITUDE": {
+          "value": 0.64,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[4].amplitude"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_S": {
+          "value": 0.738125,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[0].shares[0].confident_S"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_2_SHARES_0_CONFIDENT_S": {
+          "value": 0.744375,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[2].shares[0].confident_S"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_3_SHARES_0_CONFIDENT_S": {
+          "value": 0.766875,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[3].shares[0].confident_S"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_FC": {
+          "value": 0.845,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[1].shares[0].confident_Fc"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_2_SHARES_0_CONFIDENT_FC": {
+          "value": 0.845,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[2].shares[0].confident_Fc"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_3_SHARES_0_CONFIDENT_FC": {
+          "value": 0.845,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[3].shares[0].confident_Fc"
+        },
+        "ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_FC": {
+          "value": 0.845,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[4].shares[0].confident_Fc"
+        }
+      },
+      "rounding": "OK"
+    }
+  ],
+  "draft_sha256": "0c74136ab9b3673512767dbf938b10f6b35627a85842c3c04a570c6c3a92214b",
+  "base": "91462d02c7c3ce96bae54ebfd9ccd2ea5b228ee1",
+  "counts": {
+    "OK": 2,
+    "FIX": 10
+  },
+  "numeric_check": {
+    "exit_code": 0,
+    "extracted": 49,
+    "semantic_items": 43,
+    "unmatched": 0
+  },
+  "source_hashes": {
+    "numbers_acd.json": "df372ddc8911804211afe71bf3a9864031fd4a2fb08a09989a68d6590975c32d",
+    "receipts/acd_stage2.json": "16b009b1bb3038866f7336a9217a9182b1ae5df27961cab91583760886fbcce1",
+    "receipts/acd_stage4_amplitude.json": "e84d037760caea97d358bad8880422bf2368538fb43f7ac8727d1d5fe9db51c4",
+    "sources/WO_v2.3.md": "77d72c48c8168a3c63dbd45b14a24f9d1c986591f0578a8fa70055f2a3b1f875",
+    "acd_abstract_audit.py": "94f75a3638a8d46f894d54693b468922e1ca4d8cf7e621ddbfceeee9e80e5838"
+  },
+  "hard_stops": [],
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "Fc shorthand and broader forecast-horizon referents",
+      "resolution": "Flag each affected row; propose the full Fc name and measured scope; preserve the draft, no assumed naming waiver."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Ambiguous contrast, lead, averaging and CNN subset",
+      "resolution": "Use the frozen estimands and denominators explicitly; rounding PASS is insufficient for semantic correctness."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Broad world-model/practice framing outside Setup and licensed sentences",
+      "resolution": "Replace with the measured question; retain only the S8 world-model reporting desideratum."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Optional M/A outside L1–L10",
+      "resolution": "No current abstract license. Propose descriptive wording and record the explicit scope/license amendment needed; do not infer comparison gates or run new experiments."
+    }
+  ]
+}

@@ -132,6 +132,11 @@
       "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
       "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
     },
+    "ACD_CONTRACT_MODEL_IDENTIFIER": {
+      "value": 96,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": "literal Lorenz-96 model name, \u00a73; identifier, not state dimension"
+    },
     "ACD_CONTRACT_NINE": {
       "value": 9,
       "receipt": "sources/WO_v2.3.md",
@@ -149,6 +154,21 @@
       "receipt": "sources/WO_v2.3.md",
       "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
       "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+    },
+    "ACD_CONTRACT_OBSERVATION_SPAN_LT": {
+      "value": 0.8434126850229302,
+      "receipt": "receipts/acd_step0.json",
+      "receipt_path": [
+        "$.OUT",
+        "$.LT"
+      ],
+      "derivation": "(11 snapshots - 1) * OUT / LT",
+      "additional_sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "\u00a73\u2013\u00a74, 11 snapshots"
+        }
+      ]
     },
     "ACD_CONTRACT_ONE": {
       "value": 1,
@@ -191,6 +211,11 @@
       "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
       "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
     },
+    "ACD_CONTRACT_R0_CI_LEVEL": {
+      "value": 0.95,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": "literal one-sided R0 confidence level, \u00a710"
+    },
     "ACD_CONTRACT_R0_FLOOR": {
       "value": 0.9,
       "receipt": "sources/WO_v2.3.md",
@@ -208,6 +233,11 @@
       "receipt": "sources/WO_v2.3.md",
       "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
       "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+    },
+    "ACD_CONTRACT_R2C_HALF_CASES": {
+      "value": 0.5,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": "literal R2c at least half of cases, \u00a710"
     },
     "ACD_CONTRACT_R2_ALPHA": {
       "value": 0.01,
@@ -349,6 +379,39 @@
       "value": 0.9690149791986299,
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.coverage.wilson95[1]"
+    },
+    "ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING": {
+      "value": 0.08,
+      "receipt": "receipts/acd_stage4_amplitude.json",
+      "receipt_path": "$.rows[4].amplitude",
+      "derivation": "tested amplitude / true forcing ACD_NULL_FORCING",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.null.F"
+        }
+      ]
+    },
+    "ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING": {
+      "value": 0.005,
+      "receipt": "receipts/acd_stage4_amplitude.json",
+      "receipt_path": "$.rows[0].amplitude",
+      "derivation": "tested amplitude / true forcing ACD_NULL_FORCING",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.null.F"
+        }
+      ]
+    },
+    "ACD_DEV_AMPLITUDE_RANGE_FACTOR": {
+      "value": 16.0,
+      "receipt": "receipts/acd_stage4_amplitude.json",
+      "receipt_path": [
+        "$.rows[4].amplitude",
+        "$.rows[0].amplitude"
+      ],
+      "derivation": "maximum tested amplitude / minimum tested amplitude"
     },
     "ACD_DEV_AMPLITUDE_ROWS_0_AMPLITUDE": {
       "value": 0.04,
@@ -13492,6 +13555,12 @@
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.R2c.readings",
       "derivation": "mean over refused leads"
+    },
+    "ACD_NULL_FORCING": {
+      "value": 8.0,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.null.F",
+      "derivation": "true forcing specified in WO \u00a73 and used by the saved climatological null"
     },
     "ACD_PANEL_LAST_CASE": {
       "value": 199,

@@ -76,6 +76,18 @@ def build():
         if (ROOT/filename).exists():
             stage4=json.loads((ROOT/filename).read_text())
             walk(stage4,prefix,'$',filename,omit=('source_hashes','forecast_hashes'))
+    add('ACD_CONTRACT_R0_CI_LEVEL',.95,'literal one-sided R0 confidence level, §10','sources/WO_v2.3.md')
+    add('ACD_CONTRACT_OBSERVATION_SPAN_LT',(constants['FRAMES']-1)*step['OUT']/step['LT'],['$.OUT','$.LT'],'receipts/acd_step0.json',derivation='(11 snapshots - 1) * OUT / LT',additional_sources=[dict(receipt='sources/WO_v2.3.md',receipt_path='§3–§4, 11 snapshots')])
+    add('ACD_CONTRACT_R2C_HALF_CASES',.5,'literal R2c at least half of cases, §10','sources/WO_v2.3.md')
+    add('ACD_NULL_FORCING',d['null']['F'],'$.null.F',derivation='true forcing specified in WO §3 and used by the saved climatological null')
+    add('ACD_CONTRACT_MODEL_IDENTIFIER',96,'literal Lorenz-96 model name, §3; identifier, not state dimension','sources/WO_v2.3.md')
+    amplitude_receipt='receipts/acd_stage4_amplitude.json'
+    if (ROOT/amplitude_receipt).exists():
+        a=json.loads((ROOT/amplitude_receipt).read_text())['rows']
+        lo=min(range(len(a)),key=lambda i:a[i]['amplitude']);hi=max(range(len(a)),key=lambda i:a[i]['amplitude'])
+        add('ACD_DEV_AMPLITUDE_RANGE_FACTOR',a[hi]['amplitude']/a[lo]['amplitude'],[f'$.rows[{hi}].amplitude',f'$.rows[{lo}].amplitude'],amplitude_receipt,derivation='maximum tested amplitude / minimum tested amplitude')
+        for name,i in [('MIN',lo),('MAX',hi)]:
+            add('ACD_DEV_AMPLITUDE_'+name+'_FRACTION_TRUE_FORCING',a[i]['amplitude']/d['null']['F'],f'$.rows[{i}].amplitude',amplitude_receipt,derivation='tested amplitude / true forcing ACD_NULL_FORCING',additional_sources=[dict(receipt='receipts/acd_stage2.json',receipt_path='$.null.F')])
     sources=['receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json']
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):

@@ -25,20 +25,22 @@
     },
     {
       "rule": "R-other",
-      "finding": "Abstract/title payload is a paste placeholder",
-      "resolution": "Preserve exact supplied payload and record input FIX. No scientific claims assessed, no fabricated abstract, no sign-off; remaining receipt work complete."
+      "finding": "Supplied title/draft follow-up; prior missing-input FIX resolved",
+      "resolution": "Audit performed: 2 OK / 10 FIX. Preserve exact draft, propose scope/estimand/naming fixes; M/A remain unlicensed."
     }
   ],
-  "abstract_status": "MISSING DRAFT: INPUT FIX; SCIENTIFIC AUDIT OPEN",
+  "abstract_status": "AUDIT COMPLETE: 2 OK / 10 FIX; RELEASE WORDING/LICENSE FIXES OPEN",
   "audit_counts": {
-    "OK": 0,
-    "FIX": 1,
-    "scientific_claims": 0
+    "OK": 2,
+    "FIX": 10,
+    "abstract_sentences": 8,
+    "title_rows": 2,
+    "optional_rows": 2
   },
   "verification": "PASS",
   "outputs": {
-    "ACD_ABSTRACT_AUDIT.md": "7d58b862af20d9883205d83bf8fe120782f7d45a35511d8fcc7d0e830b3f7276",
-    "ACD_ABSTRACT_DRAFT.md": "f2c03b6f5b39e5acc73e49a80a1a0c3cdad6b809be22cdd3cadebd09e4da5d7d",
+    "ACD_ABSTRACT_AUDIT.md": "7017bbeb1547630f65d212fce3efaf4d6662e6c4a00d041b783737d4644b47de",
+    "ACD_ABSTRACT_DRAFT.md": "0c74136ab9b3673512767dbf938b10f6b35627a85842c3c04a570c6c3a92214b",
     "ACD_AMPLITUDE_EXPLORATORY.md": "d689dce362c152a4afd0370a5761739043c6de4a8dafda320593afdb0e935830",
     "ACD_EXECUTION_REPAIR.md": "9e6b2182577b190592105cced2ffebd3ca59458f5bfdc1583a6268788e8bd874",
     "ACD_FREEZE.md": "ff04820b81450163db9d815c64f0c9fa5a8192e5b3db8925cc24711e6609a21a",
@@ -49,9 +51,46 @@
     "ACD_STAGE1A_VALIDATION.md": "2329c4fe8c454814265f4ac970cd7feef3534c45ce5d804f69bc69f274100a82",
     "ACD_STAGE1_READING.md": "f462312bdd2fd44989df39a3931edbda05f1371b92914bde89a1460d41e49a98",
     "ACD_STAGE2_READING.md": "04a2b41ca75770343317f9f4c4f02cff7509df4fff641171c58b205e26a83cae",
-    "ACD_STAGE4_REPORT.md": "5a0618ecbd68513b1337a4ab91118d174db1d083c7a6698f6d18024194b60d3a",
+    "ACD_STAGE4_REPORT.md": "e760c56f44b9a0ce065a965ba8a8e71fb7d74f05603c949be160c7a18c30dd15",
     "ACD_STATS_AUDIT.md": "fd63e019326ecb9acd4f7a8300f589ea92bbb8be543740bc47554f16542b6507",
     "ACD_STATS_AUDIT_v2.3.json": "a81c7a31503efb2e665efede76f810e45122a695bf664973cfbe645d2ceec2f6",
-    "ACD_STEP0.md": "7d449d5032dfc935fe6f00fc051d518eec5c6d2fd9fad6ac30f5b03f4469f7ea"
-  }
+    "ACD_STEP0.md": "7d449d5032dfc935fe6f00fc051d518eec5c6d2fd9fad6ac30f5b03f4469f7ea",
+    "NUMBERS_ACD.md": "a292569539b9ca30af32551ca25d9df1dc796d548dc513f996f82fe452bcfa28",
+    "numbers_acd.json": "df372ddc8911804211afe71bf3a9864031fd4a2fb08a09989a68d6590975c32d",
+    "CLAIM_LEDGER.md": "3f0ebe930f63fffd7ba86dca3685713cdef312b60b321ba13003588056059ce8",
+    "receipts/acd_stage4_abstract_check.txt": "da023407fb2a2fa90ac34c69649d6184f3806f56a9eef7e3afb8dc486899f673",
+    "receipts/acd_stage4_abstract_audit.json": "cef5f0fa6a4e39f426a88f3a4732023f47397deb68c6011891d345dedf31d0ea",
+    "acd_abstract_audit.py": "94f75a3638a8d46f894d54693b468922e1ca4d8cf7e621ddbfceeee9e80e5838",
+    "vault/04-Results/R_Aspen-Counterfactual-Determinacy-Stage4-2026-10.md": "c94c43ca066211b23e98cc976f6d3fdaf36a5271f5100a86d0d61bb95fda55ed"
+  },
+  "abstract_followup_base": "91462d02c7c3ce96bae54ebfd9ccd2ea5b228ee1",
+  "draft_sha256": "0c74136ab9b3673512767dbf938b10f6b35627a85842c3c04a570c6c3a92214b",
+  "abstract_numeric_check": {
+    "exit_code": 0,
+    "extracted": 49,
+    "semantic_items": 43,
+    "unmatched": 0
+  },
+  "abstract_followup_resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "Fc shorthand and broader forecast-horizon referents",
+      "resolution": "Flag each affected row; propose the full Fc name and measured scope; preserve the draft, no assumed naming waiver."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Ambiguous contrast, lead, averaging and CNN subset",
+      "resolution": "Use the frozen estimands and denominators explicitly; rounding PASS is insufficient for semantic correctness."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Broad world-model/practice framing outside Setup and licensed sentences",
+      "resolution": "Replace with the measured question; retain only the S8 world-model reporting desideratum."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Optional M/A outside L1–L10",
+      "resolution": "No current abstract license. Propose descriptive wording and record the explicit scope/license amendment needed; do not infer comparison gates or run new experiments."
+    }
+  ]
 }

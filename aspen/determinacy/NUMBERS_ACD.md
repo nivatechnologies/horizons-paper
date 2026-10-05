@@ -25,9 +25,11 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_CONTRACT_LT | 0.5928295944308761 | receipts/acd_step0.json | $.LT |
 | ACD_CONTRACT_MAP_START_HIGH | 9.5 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_MAP_START_LOW | 6.5 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
+| ACD_CONTRACT_MODEL_IDENTIFIER | 96 | sources/WO_v2.3.md | literal Lorenz-96 model name, §3; identifier, not state dimension |
 | ACD_CONTRACT_NINE | 9 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_OBSERVATION_LT | 0.84 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_OBSERVATION_NOISE_FACTOR | 0.02 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
+| ACD_CONTRACT_OBSERVATION_SPAN_LT | 0.8434126850229302 | receipts/acd_step0.json | ['$.OUT', '$.LT'] ; (11 snapshots - 1) * OUT / LT |
 | ACD_CONTRACT_ONE | 1 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_OUT | 0.05 | receipts/acd_step0.json | $.OUT |
 | ACD_CONTRACT_PARAMETERS | 41 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
@@ -35,9 +37,11 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_CONTRACT_PRIOR_SCALE | 10 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_PROBE_FACTOR | 0.1 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_PUBLICATION_YEAR | 2026 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
+| ACD_CONTRACT_R0_CI_LEVEL | 0.95 | sources/WO_v2.3.md | literal one-sided R0 confidence level, §10 |
 | ACD_CONTRACT_R0_FLOOR | 0.9 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_R2A_MARGIN | 0.15 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_R2B_MARGIN | 0.2 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
+| ACD_CONTRACT_R2C_HALF_CASES | 0.5 | sources/WO_v2.3.md | literal R2c at least half of cases, §10 |
 | ACD_CONTRACT_R2_ALPHA | 0.01 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_R5_ALPHA | 0.01 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_R5_MARGIN | 0.1 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
@@ -63,6 +67,9 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_COVERAGE_TOTAL | 200 | receipts/acd_stage2.json | $.coverage.total |
 | ACD_COVERAGE_WILSON95_0 | 0.9042120755340645 | receipts/acd_stage2.json | $.coverage.wilson95[0] |
 | ACD_COVERAGE_WILSON95_1 | 0.9690149791986299 | receipts/acd_stage2.json | $.coverage.wilson95[1] |
+| ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING | 0.08 | receipts/acd_stage4_amplitude.json | $.rows[4].amplitude ; tested amplitude / true forcing ACD_NULL_FORCING |
+| ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING | 0.005 | receipts/acd_stage4_amplitude.json | $.rows[0].amplitude ; tested amplitude / true forcing ACD_NULL_FORCING |
+| ACD_DEV_AMPLITUDE_RANGE_FACTOR | 16.0 | receipts/acd_stage4_amplitude.json | ['$.rows[4].amplitude', '$.rows[0].amplitude'] ; maximum tested amplitude / minimum tested amplitude |
 | ACD_DEV_AMPLITUDE_ROWS_0_AMPLITUDE | 0.04 | receipts/acd_stage4_amplitude.json | $.rows[0].amplitude |
 | ACD_DEV_AMPLITUDE_ROWS_0_BASELINE_NULL_R2B_PROXY_CASES | 192 | receipts/acd_stage4_amplitude.json | $.rows[0].baseline_null_R2b_proxy.cases |
 | ACD_DEV_AMPLITUDE_ROWS_0_BASELINE_NULL_R2B_PROXY_LOWER | -0.402 | receipts/acd_stage4_amplitude.json | $.rows[0].baseline_null_R2b_proxy.lower |
@@ -2671,6 +2678,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_L9_ANSWERED_NOT_CONFIDENT | 0.25875 | receipts/acd_stage2.json | $.R2c.readings ; mean over answered leads |
 | ACD_L9_EXCEPTION_ACCURACY | 0.7520128824476651 | receipts/acd_stage2.json | $.R2c.readings ; exception-share weighted accuracy in answered range |
 | ACD_L9_REFUSED_CONFIDENT | 0.07468749999999999 | receipts/acd_stage2.json | $.R2c.readings ; mean over refused leads |
+| ACD_NULL_FORCING | 8.0 | receipts/acd_stage2.json | $.null.F ; true forcing specified in WO §3 and used by the saved climatological null |
 | ACD_PANEL_LAST_CASE | 199 | receipts/acd_stage2.json | $.cases ; cases minus one: last zero-based confirmation index |
 | ACD_PROJECTION_AFTER_POPULATION_SECONDS_HOURS | 15.569634455279836 | receipts/acd_stage2.json | $.resolutions[0].detail.after_population_seconds ; saved seconds / 3600 |
 | ACD_PROJECTION_INITIAL_SECONDS_HOURS | 29.160530385199916 | receipts/acd_stage2.json | $.resolutions[0].detail.initial_seconds ; saved seconds / 3600 |

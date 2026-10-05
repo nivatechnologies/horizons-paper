@@ -1,6 +1,6 @@
 # Aspen counterfactual determinacy — Stage4 (2026-10)
 
-**Receipt work complete; abstract audit OPEN.** Confirmation publication route remains PUBLISH under frozen v2.3 §11. Stage4 adds no new confirmation data or posterior. Branch starts at c1d692a; execution was sulaco CPU only.
+**Receipt work and abstract audit complete; release FIX rows open.** Confirmation publication route remains PUBLISH under frozen v2.3 §11. Stage4 adds no new confirmation data or posterior. Branch starts at c1d692a; execution was sulaco CPU only.
 
 [ACD_STAGE4_REPORT.md](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE4_REPORT.md)
 
@@ -24,21 +24,69 @@
 - [figures/F4_reliability.pdf](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/figures/F4_reliability.pdf) · [figures/F4_reliability.png](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/figures/F4_reliability.png)
 - [figures/F5_measurements.pdf](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/figures/F5_measurements.pdf) · [figures/F5_measurements.png](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/figures/F5_measurements.png)
 
-## Supplied draft payload, verbatim
+## Supplied draft, verbatim
 
 ```
-[paste the abstract above, plus title]
+# Aspen abstract draft (Claude, from confirmation L1–L4, L8, L9)
+
+**Title:** The forecast horizon is not the intervention horizon
+
+**Alternative title:** An intervention's effect loses confidence before the forecast does
+
+## Abstract
+
+Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts. We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the sign of the forecast it acts on than after. In one-scale Lorenz-96 (N = 40, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we compute the full posterior for 200 independent instances and score it against each realized trajectory. At 2 LT the posterior answers the sign of a small intervention's effect on window energy with at least 95% probability for 72% of case–action questions (61% beyond what climatology alone gives), against 85% for the sign of the unforced window-energy anomaly, the forecast sign (difference −0.24, 99% interval [−0.35, −0.14]); at 3 LT, 40% against 67%. Averaged over instances, confident answers that climatology alone does not give are right 99.5% of the time (one-sided 95% lower bound 97.7%). Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59% of actions and after it for 28% (99% interval for the difference [−0.49, −0.13]), although the posterior correlation between factual and counterfactual window energies is 0.97, so their difference carries 3% of the summed uncertainty. Answering every question up to the lead at which the forecast sign is confident for half the instances, and none beyond, would answer 26% of the intervention questions the posterior is not confident on (right 75%) and refuse 7% it is confident on; a deterministic CNN emulator's ensemble is confident on 22% of those open questions and right on 66%. An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question.
+
+## Optional sentences (outside L1–L10; Todd decides; audit each separately)
+
+**M (mechanism, confirmation R1m, descriptive; would replace the CNN clause):** The intervention's median z, its effect over its posterior spread, starts at 3.6 times the forecast sign's just after the observation window and falls to 0.61 times it by 2 LT.
+
+**A (amplitude, development and exploratory):** In development runs, varying the intervention's amplitude sixteenfold, from 0.5% to 8% of the forcing, keeps the confident intervention-sign share at 2 LT between 73.5% and 79.6%, against 84.5% for the forecast sign.
+
+## Deliberate deviation for the audit
+
+"The forecast sign" is used as a shorthand for the sign of the unforced window-energy anomaly, defined at first use. §11 says Fc is always written in full; the audit should flag it and Todd decides.
 ```
 
-The title and actual abstract are absent. No substitute abstract was written.
+## Audit verdicts
 
-## Audit FIX rows
+**2 OK / 10 FIX**, across the title, alternative title, eight abstract sentences and optional M/A. Numeric checker: PASS, 49 visible literals, zero unmatched. The prior missing-input FIX is resolved. Audit performed; proposed wording/license fixes remain open. Draft unchanged.
 
-Counts: **0 OK / 1 FIX (intake), 0 scientific claims assessed.** The empty numeric check is not factual audit approval.
-
-| Row | Supplied sentence / payload | Verdict | Proposed fix |
+| Row | Kind | L# | Verdict |
 |---|---|---|---|
-| 1 | [paste the abstract above, plus title] | FIX | Supply the exact title and abstract; preserve it verbatim, then audit each sentence against confirmation NUMBERS and its route status. |
+| T | Title | Setup + L3b; R2b PRECEDES | FIX |
+| T-alt | Alternative title | L3b; R2b PRECEDES | FIX |
+| S1 | Abstract sentence 1 | No L# licenses the broad practice claim | FIX |
+| S2 | Abstract sentence 2 | L3b; R2b PRECEDES; all lead prerequisites met | FIX |
+| S3 | Abstract sentence 3 | Setup | OK |
+| S4 | Abstract sentence 4 | L1 and L3a at 2/3 LT; R0/R0-F PASS, R2a DIFFERS | FIX |
+| S5 | Abstract sentence 5 | L2 at 2 LT; R0 PASS | FIX |
+| S6 | Abstract sentence 6 | L3b (PRECEDES) + L4 at 2 LT (R0 PASS) | FIX |
+| S7 | Abstract sentence 7 | L9 (R2c) + L8 at 2 LT (R6 complete, posterior R0 PASS) | FIX |
+| S8 | Abstract sentence 8 | Setup/headline framing supported by L3b | OK |
+| M | Optional mechanism sentence | Outside L1–L10; no present abstract license | FIX |
+| A | Optional amplitude sentence | Development/exploratory, outside L1–L10; no present abstract license | FIX |
+
+## Every FIX row and proposed fix
+
+| Row | Sentence / title, verbatim | Finding | Proposed fix |
+|---|---|---|---|
+| T | The forecast horizon is not the intervention horizon | The title expands the tested sign observable to a general forecast horizon. In this study Fc is always named the sign of the unforced window-energy anomaly; a horizon of the whole forecast was not measured. The distinct-horizon framing is supported within the declared Lorenz-96 setting, not every forecasting system. | Distinct confidence horizons for intervention signs and the sign of the unforced window-energy anomaly in Lorenz-96 |
+| T-alt | An intervention's effect loses confidence before the forecast does | 'The forecast' replaces Fc with a broader target and breaks the full-name rule. 'Loses confidence before' reads as an unqualified ordering for an intervention, while the reading is a case-averaged, eligible-action preference; some eligible actions lose confidence later. | In Lorenz-96, intervention-sign confidence is more often lost before confidence in the sign of the unforced window-energy anomaly than after |
+| S1 | Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts. | This asserts how data assimilation, learned world models and intervention practice are judged. Existing receipts do not establish that general claim, and it is outside L1–L10 plus the declared Setup. World models may enter here only as a reporting desideratum, as in S8. | For a single observed instance, we compare confidence in an intervention's window-energy sign with confidence in the sign of the unforced window-energy anomaly. |
+| S2 | We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the sign of the forecast it acts on than after. | The direction is licensed, but 'the sign of the forecast it acts on' violates Fc naming and can mean a general forecast observable. Preserve the paired eligible-action, case-averaged referent; this is not a guarantee for each observed instance. | In this setting, paired by instance, confidence in an intervention's sign is more often lost before confidence in the sign of the unforced window-energy anomaly than after, averaging each eligible instance's action shares. |
+| S4 | At 2 LT the posterior answers the sign of a small intervention's effect on window energy with at least 95% probability for 72% of case–action questions (61% beyond what climatology alone gives), against 85% for the sign of the unforced window-energy anomaly, the forecast sign (difference −0.24, 99% interval [−0.35, −0.14]); at 3 LT, 40% against 67%. | All numeric values round correctly. The parenthetical difference is ambiguous: -0.243125 compares observation-confident S (0.606875) with Fc (0.85); all-confident S (0.72375) minus Fc is -0.12625. Explicitly identify the observation-confident contrast, and remove 'the forecast sign', even at first definition. Climatology means the frozen null at the true forcing. | At 2 LT the posterior answers the sign of a small intervention's effect on window energy with at least 95% probability for 72% of case–action questions (61% beyond what climatology at the true forcing alone gives), against 85% for the sign of the unforced window-energy anomaly; the observation-confident intervention-sign share minus the confident share for the sign of the unforced window-energy anomaly is −0.24 (99% interval [−0.35, −0.14]). At 3 LT the corresponding all-confident shares are 40% and 67%. |
+| S5 | Averaged over instances, confident answers that climatology alone does not give are right 99.5% of the time (one-sided 95% lower bound 97.7%). | The numbers describe case-averaged accuracy of observation-confident intervention-sign answers at 2 LT, not all question types or both the 2 and 3 LT readings just mentioned. At 3 LT that accuracy is 0.9830492424242423. Add the lead and intervention-sign referent; retain case averaging. | At 2 LT, averaged over instances, confident intervention-sign answers that climatology at the true forcing alone does not give are right 99.5% of the time (one-sided 95% lower bound 97.7%). |
+| S6 | Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59% of actions and after it for 28% (99% interval for the difference [−0.49, −0.13]), although the posterior correlation between factual and counterfactual window energies is 0.97, so their difference carries 3% of the summed uncertainty. | Rounding is correct, but 59%/28% are averages of each eligible case's eligible-action shares, not pooled shares or all actions. Eligibility: observation-confident S at lead 0 and confident Fc at lead 0. Use the full Fc name. The CI is for later minus earlier, with point -0.3087874324987727. Correlation 0.97 and cancellation 3% are medians at 2 LT; specify median and lead. 'Although' may juxtapose licensed readings but cannot establish a causal mechanism or z-based ordering. | Paired by instance, intervention-sign confidence is lost before confidence in the sign of the unforced window-energy anomaly in 59% and after it in 28% of an instance's eligible actions, averaged over eligible instances (99% interval for later minus earlier [−0.49, −0.13]). At 2 LT, the median posterior correlation between factual and counterfactual window energies is 0.97, so their difference carries a median 3% of their summed uncertainty. |
+| S7 | Answering every question up to the lead at which the forecast sign is confident for half the instances, and none beyond, would answer 26% of the intervention questions the posterior is not confident on (right 75%) and refuse 7% it is confident on; a deterministic CNN emulator's ensemble is confident on 22% of those open questions and right on 66%. | Numbers round correctly. Fc shorthand is forbidden. U=26% and D=7% use the answered and refused lead ranges separately; V=75% is weighted over the answered-not-confident subset. 'Those open questions' incorrectly merges that multilead subset with CNN's 2 LT posterior-open S subset (442 questions; 97 CNN-confident, 64 correct). State the 2 LT condition and sign-question referent. The horizon is the last tested lead with at least half the cases confident (3 LT), not exactly 50% at that lead. | Answering every intervention-sign question through the last tested lead at which the sign of the unforced window-energy anomaly is confident for at least half the instances (3 LT), and none beyond, would answer 26% of sign questions the posterior is not confident on (right 75%) within the answered lead range and refuse 7% it is confident on within the refused lead range. At 2 LT, on intervention-sign questions where the posterior is not confident, a deterministic CNN emulator's ensemble is confident on 22% and right on 66% of those. |
+| M | The intervention's median z, its effect over its posterior spread, starts at 3.6 times the forecast sign's just after the observation window and falls to 0.61 times it by 2 LT. | The two ratios round correctly and are ratios of saved medians, not medians of per-question ratios. z_D is &#124;E[J_action−J_factual]&#124;/sd(J_action−J_factual); z_F is &#124;E[J_factual]−jbar&#124;/sd(J_factual). 'Forecast sign's' violates naming. 'Just after' must mean lead 0's one-LT energy window, not an instantaneous observation. R1m bootstrap intervals are approximate and descriptive; these point ratios and 'falls' carry no inferential ordering route. | Keep M outside the abstract unless explicitly licensed. If licensed descriptively: For one-LT window energy, the ratio of median z_D to median z_F is 3.6 at lead 0 and 0.61 at 2 LT, where z_D is the absolute posterior-mean intervention effect divided by its posterior standard deviation and z_F is the corresponding standardized magnitude for the sign of the unforced window-energy anomaly. |
+| A | In development runs, varying the intervention's amplitude sixteenfold, from 0.5% to 8% of the forcing, keeps the confident intervention-sign share at 2 LT between 73.5% and 79.6%, against 84.5% for the forecast sign. | Numbers are correct for five tested amplitudes, with endpoints normalized by true forcing F=8, not each inferred F. The minimum share is at amplitude 0.08, not 0.04. 'Varying ... keeps' suggests a continuous-range robustness result not measured by the five settings. Use the full Fc name and label a post-hoc development-only, all-confident-S comparison. No amplitude-specific realized calibration or inferential comparison route exists. A uses all-confident S/Fc, so the missing amplitude-matched null does not invalidate these particular shares; it would invalidate treating changed-amplitude observation-confidence proxies as matched readings. | Keep A outside the abstract under the current §11. For a development/exploratory section, or an explicitly amended descriptive license: Across five tested development amplitudes from 0.04 to 0.64 (0.5% to 8% of true forcing F=8), the all-confident intervention-sign share at 2 LT ranges from 73.5% to 79.6%; the confident share for the sign of the unforced window-energy anomaly is 84.5% at each setting. These are post-hoc development readings. |
+
+## M and A licensing requirements
+
+**M**. Todd must explicitly extend §11 to license a descriptive confirmation-R1m sentence outside L1–L10, with ratio-of-medians and both z definitions, the lead/window convention and full Fc name. No inference about trend, causal cancellation, horizon ordering or significance may be drawn from these ratios or bootstrap intervals. If such an inferential comparison is intended, it needs its own prospectively specified estimand/decision route and evidence; none is executed or presumed here.
+
+**A**. Todd must explicitly amend §11 to allow labelled development/exploratory numbers in the abstract despite completed confirmation, and license this five-setting descriptive statement outside L1–L10. The existing exception for missing confirmation by Oct 8 does not apply. State the tested grid, true-forcing normalization and all-confident estimand. Any claim of robustness, calibrated correctness at changed amplitudes, continuous-range validity or inferential superiority would require a separate prospective confirmation/decision route; existing receipts provide none and no new run is authorized.
 
 ## Rules fired
 
@@ -46,8 +94,10 @@ Counts: **0 OK / 1 FIX (intake), 0 scientific claims assessed.** The empty numer
 - **R-other**: Per-question z_D/z_F distribution and window-level divergence quartiles are not saved. Report ratio of saved medians explicitly; window divergence point only. Preserve saved tick-level divergence median/IQR separately; no invented quartiles or new statistic.
 - **R-other**: Individual physical-state trajectories are not saved for qualifying F1 case 6. Show existing opposing-draw window-energy curves and saved Q probe, labelled illustrative. Do not reconstruct state trajectories.
 - **R-other**: Amplitude-matched climatological states are not on disk. No new climatological run. Matched observation confidence and R2b unavailable away from 0.16; display frozen-null-relative exploratory proxies explicitly, with no route status or abstract license.
-- **R-other**: Abstract/title payload is a paste placeholder. Preserve exact supplied payload and record input FIX. No scientific claims assessed, no fabricated abstract, no sign-off; remaining receipt work complete.
+- **R-other**: The previous missing-title/draft input FIX is resolved. This follow-up flags Fc shorthand, broader forecast referents, ambiguous leads/contrasts/denominators, unsupported general practice framing, and M/A outside L1–L10; proposes precise wording and licensing requirements; changes no route, threshold or draft text.
 
 Inherited confirmation rules: R-time, R-rml, R-other, R-diag. No new H1–H3 stop. Optional amplitude forecasts are development/exploratory, license nothing in the abstract, and changed-amplitude observation-confidence/loss proxies explicitly use the frozen 0.16 null.
 
 Related: [[WO_Aspen-Counterfactual-Determinacy-2026-10-04]], [[R_Aspen-Counterfactual-Determinacy-Confirmation-2026-10]], [[L_Aspen-Counterfactual-Determinacy-Claim-Ledger-2026-10]].
+
+Follow-up audit receipt: [receipts/acd_stage4_abstract_audit.json](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage4_abstract_audit.json). The claim ledger maps all twelve rows to their keys and verdicts. No new scientific runs or figure rendering occurred.
