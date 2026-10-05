@@ -1,5 +1,7 @@
 # AFD spec integrity gate
 
+Current governing version: WO v5.2 (go-v5.2). Amendment 1, approved 2026-10-04, resolves the implementation halt documented below. Checks 1–9 including 5a remain PASS: the amendment pins the inherited unrounded window predicate without changing truth, selection independence, thresholds, nulls, comparator sets or licensed-sentence rules. A window containing a tick inside the unrounded interval passes the amended rule; a rounded endpoint admitting a tick outside that interval fails it. These are constructed hypotheses under test, not observations. Historical pre-amendment statements below are retained as the original pre-data report; current execution status is in EXECUTION_STATUS.md.
+
 Governing sources read in full through vault MCP: WO v5.1 (go-v5.1), T_Spec-Integrity-Gate, T_Research-Paper-Guideline, and the Aspen handoff. The WO governs conflicts with the handoff/guideline. This report precedes any AFD data.
 
 **Design gate: PASS for checks 1–9 including 5a, with the explicit examples and selector accounting below. Implementation preflight: HALT under WO §3; see AFD_STEP0.md. A design PASS does not authorize bypassing that halt.**
@@ -92,4 +94,3 @@ Independence accounting: both action runs share one framing; the new competing c
 ## Overall status
 
 The work order can return materially different outcomes and permits scope narrowing. Its approved toy-setting deviation is explicit. Design checks pass; the reused implementation does not yet meet the scientific cost-window convention. Step 0's §3 halt controls all subsequent scientific work. No headline sentence, Stage-1 result or two-scale sampler result exists.
-
