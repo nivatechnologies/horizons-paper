@@ -1,0 +1,37 @@
+{
+  "source_class": "synthetic hypothesis under test; exact mathematical counterexample",
+  "case_rows_denominator_numerator_probability": [
+    [
+      0,
+      0,
+      0.85
+    ],
+    [
+      1,
+      1,
+      0.1
+    ],
+    [
+      8,
+      8,
+      0.043
+    ],
+    [
+      8,
+      0,
+      0.007
+    ]
+  ],
+  "n_cases": 200,
+  "population_ratio_of_expectations": 0.8879999999999999,
+  "true_accuracy_below_R0_threshold": true,
+  "no_error_evaluable_false_PASS_probability": 0.061120375098500886,
+  "one_sided_nominal_error": 0.05,
+  "bootstrap_lower_bound_on_this_event": 1.0,
+  "bootstrap_replicates": 10000,
+  "bootstrap_argument": "Every nonempty resample has numerator=denominator, so all defined quantiles are 1.",
+  "empty_replicate_union_bound": 7.652179393889719e-11,
+  "false_PASS_probability_lower_even_if_any_empty_replicate_blocks_PASS": 0.06112037502197909,
+  "max_one_sided_coverage": 0.9388796249780209,
+  "simple_boundary_probability_at_r095_n30": 0.21463876394293727
+}
