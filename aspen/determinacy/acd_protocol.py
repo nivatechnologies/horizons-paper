@@ -36,7 +36,14 @@ def rng(name,sub=0,case=0,member=0,action=0):return protocol.rng(name,sub,case,m
 def input_path(panel,c):
     if panel=='dev':return INHERITED/f'runs/test/input_{c:03d}.npz'
     if panel=='dtcheck':return ROOT/f'runs/dtcheck/input_{c:03d}.npz'
+    if panel=='conf':
+        if not (ROOT/'ACD_FREEZE.md').exists() or not (ROOT/'ACD_FREEZE_CODE.md').exists():
+            raise RuntimeError('H2: committed scientific and code freezes required')
+        return ROOT/f'runs/conf/input_{c:03d}.npz'
     raise RuntimeError('H2: confirmation unavailable in this authorization')
+def truth_path(panel,c):
+    if panel=='conf':return ROOT/f'runs/conf/truth/input_{c:03d}.npz'
+    return input_path(panel,c)
 def load_observed(panel,c):
     path=input_path(panel,c)
     # The inherited archive has truth arrays; only this array is extracted.

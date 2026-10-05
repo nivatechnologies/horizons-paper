@@ -3,7 +3,7 @@ import os
 os.environ['JAX_PLATFORMS']='cpu'
 os.environ['JAX_ENABLE_X64']='true'
 import numpy as np,math
-from acd_protocol import ROOT,INHERITED,PATTERNS,physics,NOISE,input_path,save_json
+from acd_protocol import ROOT,INHERITED,PATTERNS,physics,NOISE,input_path,truth_path,save_json
 PAIRS=[(k,l) for k in range(8) for l in range(k+1,8)]
 def prepare_dtcheck(h):
     directory=ROOT/'runs/dtcheck';directory.mkdir(parents=True,exist_ok=True)
@@ -13,12 +13,12 @@ def prepare_dtcheck(h):
             true,observed=physics.history('acd-dtcheck',c,h)
             np.savez(p,true=true,observed=observed)
 def actual(panel,c,h):
-    with np.load(input_path(panel,c),allow_pickle=False) as data:true=data['true'].copy()
+    with np.load(truth_path(panel,c),allow_pickle=False) as data:true=data['true'].copy()
     states=physics.simulate(np.repeat(true[-1,None],9,axis=0),8+.16*PATTERNS,h)
     return physics.costs(states),np.r_[true[0],8.]
 def coverage(panel,c,y,minimum,h,mask=None,z=None):
     from acd_fits import chi
-    with np.load(input_path(panel,c),allow_pickle=False) as data:initial=data['true'][0].copy()
+    with np.load(truth_path(panel,c),allow_pickle=False) as data:initial=data['true'][0].copy()
     val=chi(np.r_[initial,8.],y,h,mask,z)-minimum
     return dict(delta_chi2=val,covered=val<=56.94)
 def labels(j,jbar):

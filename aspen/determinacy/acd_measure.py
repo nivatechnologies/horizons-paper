@@ -25,7 +25,7 @@ def sites_for(panel,c,t,x,j,k,l):
             np.argsort(-x.var(0,ddof=1),kind='stable')[:4].tolist(),
             rng('acd-measure-'+panel,1,c,0,t).choice(40,4,replace=False).tolist(),list(range(40))]
 def probe_values(panel,c,t):
-    with np.load(input_path(panel,c),allow_pickle=False) as data:decision=data['true'][-1].copy()
+    with np.load(truth_path(panel,c),allow_pickle=False) as data:decision=data['true'][-1].copy()
     return decision+.1*NOISE*rng('acd-measure-'+panel,0,c,0,t).standard_normal(40)
 
 def refit(panel,c,t,arm,sites,k,l,base,z,prefix='refit'):
@@ -103,4 +103,3 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--worker',type=int);p.add_argument('--workers',type=int,default=1);a=p.parse_args()
     if a.worker is None:campaign()
     else:worker(a.worker,a.workers)
-
