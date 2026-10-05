@@ -106,7 +106,7 @@ def main(name,data,out,micro):
             if not torch.isfinite(loss):raise RuntimeError("nonfinite loss")
             (loss*weight).backward();total+=loss.item()*weight
         torch.nn.utils.clip_grad_norm_(model.parameters(),1.)
-        fraction=iteration/updates if kind in ["base","roll","resp"] else elapsed/cap
+        fraction=(iteration-1)/updates if kind in ["base","roll","resp"] else elapsed/cap
         opt.param_groups[0]["lr"]=initial_lr*.5*(1+math.cos(math.pi*min(1,fraction)))
         opt.step();torch.cuda.synchronize()
         recent.append(time.monotonic()-before);recent=recent[-32:]
@@ -149,4 +149,3 @@ def main(name,data,out,micro):
                isolation="bubblewrap: no /mnt, /home, test outputs or result reports"))
 if __name__=="__main__":
     p=argparse.ArgumentParser();p.add_argument("--name",required=True);p.add_argument("--data",type=Path,required=True);p.add_argument("--out",type=Path,required=True);p.add_argument("--microbatch",type=int,default=64);a=p.parse_args();main(a.name,a.data,a.out,a.microbatch)
-
