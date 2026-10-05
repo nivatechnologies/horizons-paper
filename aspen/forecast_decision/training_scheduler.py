@@ -7,6 +7,11 @@ REMOTE='/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision
 ACTIVE={}
 
 def now():return datetime.datetime.now(datetime.timezone.utc).isoformat()
+def digest(path):
+    h=hashlib.sha256()
+    with path.open('rb') as f:
+        for chunk in iter(lambda:f.read(1<<20),b''):h.update(chunk)
+    return h.hexdigest()
 def complete(name):return terminal_record(name)[0] is not None
 def run_record(name):
     return terminal_record(name)[0]
@@ -72,11 +77,18 @@ def pilot_tick(gpu1_available):
     if bound is None or bound+900>72000:raise RuntimeError('no assured Stage2b cap room for pilot')
     initializer=ROOT/'runs/training_data2/CNN2-20k.pt'
     if not initializer.exists():return
+    preregistration=json.loads((own/'preregistration.json').read_text())
+    for filename,expected in preregistration['source_hashes'].items():
+        if digest(own/'source'/filename)!=expected:raise RuntimeError('pilot preregistered source changed')
+    for filename,expected in preregistration['data_hashes'].items():
+        if digest(ROOT/'runs/training_data2'/filename)!=expected:raise RuntimeError('pilot preregistered training data changed')
+    if digest(ROOT/'launch_training_pilot.sh')!=preregistration['launcher_sha256']:
+        raise RuntimeError('pilot preregistered launcher changed')
     registration=dict(registered_at=now(),gpu=1,microbatch=64,effective_batch=128,updates=100,
         frozen_recipe_updates=10000,pilot_reservation_seconds=900,
         budget='Stage2b remaining3h reserve, aggregate20h maximum',
         source_preregistration='runs/training_pilot/preregistration.json',
-        initializer_sha256=hashlib.sha256(initializer.read_bytes()).hexdigest(),
+        initializer_sha256=digest(initializer),
         capacity=subprocess.run(['ssh','baccus','nvidia-smi --query-gpu=index,name,memory.total,memory.used --format=csv,noheader'],check=True,capture_output=True,text=True).stdout)
     (own/'execution_registration.json').write_text(json.dumps(registration,indent=2)+'\n')
     command='nohup bash '+shlex.quote(str(ROOT/'launch_training_pilot.sh'))+' > '+shlex.quote(str(own/'pilot.log'))+' 2>&1 < /dev/null & echo $!'
