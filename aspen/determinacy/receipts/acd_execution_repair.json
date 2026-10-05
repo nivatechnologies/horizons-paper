@@ -1,0 +1,30 @@
+{
+  "reason": "Receipt NumPy diagnostic-count serialization, before any realized outcome computation",
+  "hashes": {
+    "acd_confirmation.py": "8d3b481a87945bd23d6b971c1b521d6471a981cb25709a56d2d76ec84f232d2c"
+  },
+  "scientific_changes": false,
+  "threshold_changes": false,
+  "seed_changes": false,
+  "settings_changes": false,
+  "failed_cases": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15
+  ],
+  "rerun": "same frozen seeds, starts and settings; original arm files/order logs archived",
+  "no_realized_outcomes_computed": true
+}

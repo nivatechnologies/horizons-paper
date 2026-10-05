@@ -15,7 +15,9 @@ from acd_questions import actual,coverage
 
 def verify_freeze():
     d=json.loads((ROOT/'receipts/acd_freeze_code.json').read_text())
-    for name,sha in d['hashes'].items():
+    hashes=dict(d['hashes']);repair=ROOT/'receipts/acd_execution_repair.json'
+    if repair.exists():hashes.update(json.loads(repair.read_text())['hashes'])
+    for name,sha in hashes.items():
         if digest(ROOT/name)!=sha:raise RuntimeError(f'Execution freeze changed: {name}')
     if settings()!=d['settings']:raise RuntimeError('Frozen compute settings changed')
     for name,sha in d['inherited'].items():
@@ -29,6 +31,8 @@ def verify_freeze():
     receipt=json.loads(pushed.read_text())
     if receipt['execution_receipt_sha256']!=digest(ROOT/'receipts/acd_freeze_code.json'):
         raise RuntimeError('H2: pushed execution freeze differs')
+    if repair.exists() and receipt.get('repair_receipt_sha256')!=digest(repair):
+        raise RuntimeError('H2: execution repair must be committed and pushed')
     if os.uname().nodename!='sulaco':raise RuntimeError('H3: compute requires sulaco')
 
 def event(c,kind,paths=()):
@@ -57,7 +61,7 @@ def confirmation_fits(y,h):
                 minimum=float(results[index][1]['chi2']),fhat=fhat,
                 report=dict(maps=[r[1] for r in results],rml='cut',
                             start_forcings=[float(v[40]) for v in starts],
-                            boundary_contacts=sum(abs(r[0][40]-6)<1e-8 or abs(r[0][40]-10)<1e-8 for r in results)))
+                            boundary_contacts=int(sum(abs(r[0][40]-6)<1e-8 or abs(r[0][40]-10)<1e-8 for r in results))))
 
 def infer(c):
     prepare(c);directory=ROOT/'runs/conf';p=directory/f'case_{c:03d}.npz'

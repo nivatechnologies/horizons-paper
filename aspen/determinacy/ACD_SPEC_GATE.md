@@ -131,3 +131,28 @@ Stage 1 is STRONG through R5 at 2 LT: Q resolves correctly 27/60, against F13/60
 Applied rules: **R-other** (the three scope findings above), **R-rml** (163 coupled signed question–lead diagnostic flags out of59,200; retain RML as the approximate cross-check; Stage1a had0/160 S flags and required no rerun), and **R-time** (optional cuts, R5 cap60, 500 draws/chain). No H1–H3 hard stop occurred. No R-stat, R-grad, R-impl, R-dt or R-cov fallback was needed; no posterior remained excluded under R-diag.
 
 Final reading: ACD_STAGE1_READING.md. Artifact verification passes for1,545 raw files; ACD_ARTIFACTS.json records the inventory, unchanged inherited hashes, CPU JAX/x64 and seed leaves. Runtime details: receipts/resolutions.jsonl and receipts/acd_stage1.json. Work stops at this gate, with no freeze, confirmation reading or CNN inference.
+# Stage 2 addendum — before confirmation, 2026-10-05
+
+Todd authorized the freeze, confirmation and CNN inference. The scientific
+freeze was committed and pushed at `1f38be3`; the execution-code freeze and the
+following resolutions were committed and pushed at `9b88d23`, before generating
+any confirmation data. No statistical threshold or estimand changed.
+
+- **R-other: RML-conf cut removes MAP/chain initializers.** §5's fourth MAP
+  start and chain starts rely on RML members, while the frozen R-time cut omits
+  confirmation RML. Use four observation-only starts `(y0,Fhat)`, `(y0,6.5)`,
+  `(y0,9.5)`, `(y0,8.0)`; 8.0 is the prior midpoint. The four fitted states
+  initialize the chains. The final likelihood minimum includes all posterior
+  draws. Prior, likelihood, optimizer, diagnostics, seed roles and confidence
+  thresholds remain frozen. This changes initialization under the required cut
+  and cannot be characterized as an unchanged RML cross-check.
+- **R-other: omitted ceiling cannot fill the L6 all-site clause.** R5-A is cut,
+  so L6 reports only Q/F/V/R and omits the all-40-site ceiling. The RML sentence
+  is likewise unavailable on confirmation. No cut-arm value is imputed.
+
+The live vault v2.3 body matches `sources/WO_v2.3.md`. Observations and hidden
+histories are separated; inference reads only observations. Per-case hash events
+precede realized-outcome evaluation. `ACD_FREEZE_CODE.md` records the code and
+checks; the Stage 2 artifact checker verifies order, hashes and the common R5
+population. Earlier R-other, R-time and R-rml findings remain disclosed; new
+numerical/GPU rules will be recorded if triggered during confirmation.
