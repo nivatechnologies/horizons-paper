@@ -74,7 +74,8 @@ def main(name,data,out,micro):
                     r+=a.item()*len(ix)/128;d+=b.item()*len(ix)/128
                 losses.append([r,d])
         normal_roll,normal_diff=np.mean(losses,axis=0)
-        if not normal_roll>0 or not normal_diff>0:raise RuntimeError("invalid paired normalization")
+        if not (np.isfinite(normal_roll) and np.isfinite(normal_diff) and normal_roll>0 and normal_diff>0):
+            raise RuntimeError("invalid paired normalization")
         write_json(out/"normalization.json",dict(roll=float(normal_roll),difference=float(normal_diff),
                    batches=64,paired_data_sha256=digest(data/"pairs.npz")))
         model.train()

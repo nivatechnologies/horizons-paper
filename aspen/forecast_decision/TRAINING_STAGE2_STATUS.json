@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-10-05T01:05:46.034488+00:00",
+  "recorded_at": "2026-10-05T01:11:47.933168+00:00",
   "stage": 2,
   "machines": {
     "training": "Baccus",
@@ -9,41 +9,48 @@
     "CNN-roll": {
       "progress_source": "aspen/forecast_decision/runs/training/CNN-roll/progress.json",
       "latest_measured_progress": {
-        "step": 400,
-        "loss": 1.0902286767959595,
-        "charged_gpu_seconds": 647.0216486889985,
-        "recent_update_seconds": 1.6560114389940281,
-        "projected_full_recipe_seconds": 16560.11438994028
+        "step": 700,
+        "loss": 0.8861063122749329,
+        "charged_gpu_seconds": 1140.6697485819896,
+        "recent_update_seconds": 1.644911930001399,
+        "projected_full_recipe_seconds": 16449.11930001399
       },
       "validation_acknowledgements": []
     },
     "CNN-resp": {
       "progress_source": "aspen/forecast_decision/runs/training/CNN-resp/progress.json",
       "latest_measured_progress": {
-        "step": 600,
-        "loss": 1.7444700002670288,
-        "charged_gpu_seconds": 718.5599039139925,
-        "recent_update_seconds": 1.2047305164960562,
-        "projected_full_recipe_seconds": 12047.305164960562
+        "step": 900,
+        "loss": 1.6281551122665405,
+        "charged_gpu_seconds": 1079.2831855370023,
+        "recent_update_seconds": 1.2013631474983413,
+        "projected_full_recipe_seconds": 12013.631474983413
       },
       "validation_acknowledgements": []
     },
     "CNN-cost": {
       "progress_source": "aspen/forecast_decision/runs/training/CNN-cost/progress.json",
       "latest_measured_progress": {
-        "step": 3100,
-        "loss": 1.4923217259347439,
-        "charged_gpu_seconds": 513.3248844400077,
-        "recent_update_seconds": 0.2655150114951539,
+        "step": 4400,
+        "loss": 1.2281665429472923,
+        "charged_gpu_seconds": 880.3552875690075,
+        "recent_update_seconds": 0.26932379900244996,
         "projected_full_recipe_seconds": null
       },
       "validation_acknowledgements": [
-        "aspen/forecast_decision/runs/training/CNN-cost/validation_002000.json"
+        "aspen/forecast_decision/runs/training/CNN-cost/validation_002000.json",
+        "aspen/forecast_decision/runs/training/CNN-cost/validation_004000.json"
       ]
     },
     "CNN-R2": {
       "progress_source": "aspen/forecast_decision/runs/training/CNN-R2/progress.json",
-      "latest_measured_progress": null,
+      "latest_measured_progress": {
+        "step": 100,
+        "loss": 0.07680848811287433,
+        "charged_gpu_seconds": 415.88496690499596,
+        "recent_update_seconds": 4.290487010992365,
+        "projected_full_recipe_seconds": null
+      },
       "validation_acknowledgements": [
         "aspen/forecast_decision/runs/training/CNN-R2/validation_000000.json"
       ]
@@ -61,10 +68,12 @@
     "CNN-resp": 95586,
     "CNN-cost": 47412,
     "CNN-R2": 29920,
-    "selection_manager": 91663
+    "selection_manager": 90791,
+    "training_scheduler": 37336
   },
   "isolation": "Every launched training and validation selection Python worker runs bubblewrap with /mnt and /home masked, with training/validation-only bindings.",
   "cap_accounting_note": "Current progress charged seconds start after CUDA model/data setup; future train.py moves charging boundary before model.to(cuda). Initial selector0 charge is aggregated into first R2 scheduled acknowledgement.",
-  "coordinator_controller": "/tmp/afd-selection-manager.py",
-  "test_access": "none; no test outputs, Stage1 reading, or old AAH tests read by this agent or its workers"
+  "coordinator_controller": "aspen/forecast_decision/selection_manager.py",
+  "test_access": "none; no test outputs, Stage1 reading, or old AAH tests read by this agent or its workers",
+  "scheduler": "aspen/forecast_decision/training_scheduler.py"
 }
