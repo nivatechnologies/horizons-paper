@@ -1,3 +1,7 @@
+## Todd hold and exploratory request — 2026-10-05
+
+Stage 2 test inference and readings are held until Todd decides. Their controllers are stopped; training and validation selection may finish. Stage 2b truth remains held without sampler go. The existing Stage 1 reading and WO rules are unchanged. A separately labelled exploratory real-outcome check on the existing Stage 1 test panel is authorized, with source, NUMBERS and checker provenance.
+
 # Execution status — 2026-10-05
 
 WO v5.2 (go-v5.2), Amendment 1 approved by Todd on 2026-10-04, resolves the historical Step 0 window halt. Step 0 and integrity gate are complete. Every scoring and label window uses inherited unrounded endpoints with tolerance 1e-12. CNN-R2 and CNN-cost each use the 10 GPU-hour fallback; historical CPU wall time is not GPU time.
