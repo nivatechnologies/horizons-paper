@@ -22,6 +22,8 @@ def sentence_check(gate,ids,stage,selected=None,repeats_ran=False):
 
 def check(rows,result,root=None,source_hashes=True):
     reject_nonfinite(rows);reject_nonfinite(result)
+    expected_panel={'baseline':'test','2':'test','2b':'twoscale_test','secondary':'test2'}[result['stage']]
+    if 'panel' in result:assert result['panel']==expected_panel,'stage/panel provenance mismatch'
     work_records=[]
     cases=rows['cases'];expected_count=100 if result['stage']=='secondary' else 200;assert len(cases)==expected_count;assert [r['case'] for r in cases]==list(range(expected_count))
     if root is not None and source_hashes:

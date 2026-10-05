@@ -11,8 +11,22 @@ from metrics import aggregate,enrich_state_entry,read_gates,license_ids,bootstra
 from check_campaign import reject_nonfinite
 
 
-def assemble(root,case_path,names,authorization,stage='baseline',selected=None,two_scale=False,intervals=False,panel='test',fixed_action=None):
+def assemble(root,case_path,names,authorization,stage='baseline',selected=None,two_scale=False,intervals=False,panel=None,fixed_action=None):
     if not authorization:raise ValueError('explicit coordinator test-access authorization required')
+    expected_panel={'baseline':'test','2':'test','2b':'twoscale_test','secondary':'test2'}.get(stage)
+    if expected_panel is None:raise ValueError('unsupported statistics stage')
+    if panel is not None and panel!=expected_panel:raise ValueError('stage/panel provenance mismatch')
+    if two_scale!=(stage=='2b'):raise ValueError('two-scale stage/system mismatch')
+    panel=expected_panel
+    expected_checkpoints={}
+    for name in names:
+        if not name.startswith('CNN'):continue
+        if name=='CNN-20k':expected_checkpoints[name]=digest(root/'inputs/CNN-20k.pt')
+        else:
+            manifest_path=root/('runs/training/final_selection_stage2b.json' if two_scale else 'runs/training/final_selection_stage2.json')
+            selection=json.loads(manifest_path.read_text())
+            if selection.get('status')!='FINAL':raise ValueError('FINAL consumer checkpoint manifest required')
+            expected_checkpoints[name]=selection['models'][name]['sha256']
     if two_scale:
         approval=root/'runs/twoscale/sampler_go.json'
         go=json.loads(approval.read_text())
@@ -26,7 +40,9 @@ def assemble(root,case_path,names,authorization,stage='baseline',selected=None,t
     if not case_path.exists():
         from panel_case_rows import derive
         write_json(case_path,derive(root,panel,fixed_action,two_scale))
-    rows=copy.deepcopy(json.loads(case_path.read_text())['cases'])
+    case_document=json.loads(case_path.read_text())
+    if case_document.get('panel',panel)!=panel:raise ValueError('stored case-row panel mismatch')
+    rows=copy.deepcopy(case_document['cases'])
     climate=np.load(root/'inputs/climatology.npy');sigma=SIGMA
     if two_scale:
         panel='twoscale_test';leads=LEADS[:4];climate=np.load(root/'runs/twoscale/climatology.npy');sigma=json.loads((root/'runs/twoscale/fastlib.json').read_text())['sigma_X']
@@ -52,6 +68,9 @@ def assemble(root,case_path,names,authorization,stage='baseline',selected=None,t
         for name in names:
             if name.startswith('CNN') or (root/f'runs/{panel}/{name}_{c:03d}.npz').exists():
                 p=root/f'runs/{panel}/{name}_{c:03d}.npz'
+                if name in expected_checkpoints:
+                    identity=json.loads(p.with_suffix('.json').read_text())
+                    if identity.get('checkpoint_sha256')!=expected_checkpoints[name]:raise ValueError('raw panel checkpoint identity mismatch '+str(p))
                 with np.load(p) as loaded:networks[name]={k:loaded[k] for k in loaded.files}
                 sources[str(p.relative_to(root))]=digest(p)
                 meta_path=p.with_suffix('.json')
@@ -180,7 +199,7 @@ def assemble(root,case_path,names,authorization,stage='baseline',selected=None,t
 
 
 def main():
-    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--cases',type=Path);p.add_argument('--arms',nargs='+',default=['N-last','N-oracle','CNN-20k']);p.add_argument('--authorization',required=True);p.add_argument('--stage',default='baseline');p.add_argument('--selected');p.add_argument('--intervals',action='store_true');p.add_argument('--panel',default='test');p.add_argument('--fixed-action',type=int);a=p.parse_args()
+    p=argparse.ArgumentParser();p.add_argument('--root',type=Path,default=ROOT);p.add_argument('--cases',type=Path);p.add_argument('--arms',nargs='+',default=['N-last','N-oracle','CNN-20k']);p.add_argument('--authorization',required=True);p.add_argument('--stage',default='baseline');p.add_argument('--selected');p.add_argument('--intervals',action='store_true');p.add_argument('--panel');p.add_argument('--fixed-action',type=int);a=p.parse_args()
     case_path=a.cases or a.root/('runs/stage1_cases.json' if a.stage in ['baseline','2'] else f'runs/{a.stage}_case_rows.json')
     rows,result=assemble(a.root,case_path,a.arms,a.authorization,a.stage,a.selected,two_scale=a.stage=='2b',intervals=a.intervals,panel=a.panel,fixed_action=a.fixed_action)
     write_json(a.root/f'runs/{a.stage}_metrics_cases.json',dict(cases=rows));write_json(a.root/f'runs/{a.stage}_metrics.json',result)
