@@ -22,6 +22,7 @@ def sentence_check(gate,ids,stage,selected=None,repeats_ran=False):
 
 def check(rows,result,root=None,source_hashes=True):
     reject_nonfinite(rows);reject_nonfinite(result)
+    work_records=[]
     cases=rows['cases'];expected_count=100 if result['stage']=='secondary' else 200;assert len(cases)==expected_count;assert [r['case'] for r in cases]==list(range(expected_count))
     if root is not None and source_hashes:
         for source,expected in result['source_hashes'].items():assert digest(root/source)==expected,'source changed: '+source
@@ -62,7 +63,7 @@ def check(rows,result,root=None,source_hashes=True):
             for c in range(len(cases)):
                 path=root/f'runs/{raw_panel}/work_timing_{c:03d}.json'
                 if not path.exists():continue
-                item=json.loads(path.read_text())
+                item=json.loads(path.read_text());work_records.append(np.asarray(item['R_W']))
                 if item.get('primary_timing_includes_cost_and_argmin') and item.get('measured_primary_Nlast_seconds') is not None:values.append(item['measured_primary_Nlast_seconds'])
             equivalent(result['primary_Nlast_measured_seconds']['cases'],len(values));equivalent(result['primary_Nlast_measured_seconds']['mean'],float(np.mean(values)) if values else None)
     if root is not None:
@@ -70,6 +71,10 @@ def check(rows,result,root=None,source_hashes=True):
         raw_panel=result.get('panel','twoscale_test' if result['stage']=='2b' else 'test')
         for row in cases:
             with np.load(root/f'runs/{raw_panel}/cpu_{row["case"]:03d}.npz') as raw:
+                if result['stage']=='2b':
+                    num=raw['work_numerator'].mean(1);den=raw['work_denominator'].mean(1);assert np.all(den!=0);work_records.append(num/den)
+                physics='N2' if result['stage']=='2b' else 'N-last'
+                equivalent(row['null_choices']['myopic'],int(raw[physics+'_cost'][:,:,0].mean(1).argmin()))
                 for e in row['leads']:
                     truth=raw['truth_cost'][:8,:,e['h']];b=int(truth[:,:1024].mean(1).argmin())
                     differences=truth[:,1024:]-truth[b,1024:]
@@ -91,8 +96,17 @@ def check(rows,result,root=None,source_hashes=True):
                             assert np.allclose(energy,arm['cost'],rtol=1e-10,atol=1e-12),'raw state-energy identity mismatch'
     for j,panel in enumerate(result['leads']):
         entries=[r['leads'][j] for r in cases];assert all(e['T']==panel['T'] for e in entries)
+        equivalent(panel['best_action_frequency'],[sum(e['b']==k for e in entries)/len(entries) for k in range(8)])
+        equivalent(panel['best_differs_from_fixed'],sum(not e['fixed_correct'] for e in entries)/len(entries))
+        if 'injected_work' in panel and root is not None:
+            from metrics import spearman
+            rw=np.mean([v[:,entries[0]['h']] for v in work_records],axis=0)
+            Jmean=np.mean([e['arms'][result['arms'][0]]['J'] for e in entries],axis=0)
+            equivalent(panel['injected_work'],dict(cases=len(work_records),per_action=rw.tolist(),overall=float(rw.mean()),work_truth_cost_rank_correlation=spearman(rw,Jmean)))
         for name in panel['metrics']:
             stored=panel['metrics'][name];expected=aggregate(entries,name);equivalent(stored,expected)
+            vals=[e['arms'][name]['historical_case_range_realized_regret'] for e in entries]
+            equivalent(stored['historical_case_range_realized_regret'],float(np.mean(vals)) if all(v is not None for v in vals) else None)
             # Independently check sum-before-square-root response aggregate.
             for subset in ['eligible','all']:
                 selected=[e for e in entries if subset=='all' or e['eligible']]
@@ -117,7 +131,20 @@ def check(rows,result,root=None,source_hashes=True):
                     m=np.array([e['eligible'] for e in entries]) if subset=='eligible' else np.ones(len(cases),bool)
                     raw=float(np.mean((costs-J.min(1))[m])) if m.any() else None;den=float(np.sum((J0-J.min(1))[m]))
                     expected=dict(cases=int(m.sum()),P=float(np.mean(correct[m])) if m.any() else None,regret_raw=raw,regret=raw/scale if raw is not None and scale>0 else None,B=float(np.sum((J0-costs)[m])/den) if den>0 else None,energy_saved=float(np.mean((J0-costs)[m])) if m.any() else None)
+                    expected['action_frequency']=[1/8]*8 if choices is None else [float(np.mean(choices[m]==k)) if m.any() else None for k in range(8)]
                     equivalent(nm[subset],expected)
+                if 'bootstrap' in nm:
+                    from metrics import bounds
+                    draws=rng('afd2-bootstrap' if result['stage']=='2b' else 'afd-bootstrap',3,case=200 if result['stage']=='secondary' else 0,member=j+100).integers(len(cases),size=(2000,len(cases)))
+                    resampled_scale=np.median(np.ptp(J,axis=1)[draws],axis=1)
+                    for subset in ['eligible','all']:
+                        mask=np.array([e['eligible'] for e in entries]) if subset=='eligible' else np.ones(len(cases),bool)
+                        selected=mask[draws];count=selected.sum(1)
+                        def sums(value):return np.where(selected,value[draws],0.).sum(1)
+                        with np.errstate(divide='ignore',invalid='ignore'):
+                            regret=sums(costs-J.min(1))/count;den=sums(J0-J.min(1));saved=sums(J0-costs);B=saved/den;B[den<=0]=np.nan
+                            expected={key:bounds(value) for key,value in dict(P=sums(correct)/count,regret_raw=regret,regret=regret/resampled_scale,B=B,energy_saved=saved/count).items()}
+                        equivalent(nm['bootstrap'][subset],expected)
         if 'gate' in panel:
             gate=panel['gate']
             from protocol import ORDER,ORDER2
