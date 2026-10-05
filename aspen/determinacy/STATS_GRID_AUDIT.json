@@ -1,0 +1,41 @@
+{
+  "host": "sulaco",
+  "source_class": "synthetic hypotheses under test",
+  "scope": "literal grid inversion consistency; not an observed coverage-rate failure",
+  "statistics_sha256": "ce51769ba9e46d8d973327a60479dd04d3cabad5bc0f16341be40698a95ab41d",
+  "rows": [
+    {
+      "cases": 200,
+      "constant": 1.0,
+      "interval": [
+        0.963,
+        1.0
+      ],
+      "candidate": 0.9629,
+      "plus_prefix_peak": 178.02118423327562,
+      "minus_prefix_peak": 1.0,
+      "hedged_peak": 89.01059211663781,
+      "threshold": 100.0,
+      "candidate_outside_interval": true,
+      "candidate_rejected_by_declared_capital_rule": false,
+      "inversion_consistent": false
+    },
+    {
+      "cases": 200,
+      "constant": 0.0,
+      "interval": [
+        0.0,
+        0.037
+      ],
+      "candidate": 0.0371,
+      "plus_prefix_peak": 1.0,
+      "minus_prefix_peak": 178.02118423327545,
+      "hedged_peak": 89.01059211663772,
+      "threshold": 100.0,
+      "candidate_outside_interval": true,
+      "candidate_rejected_by_declared_capital_rule": false,
+      "inversion_consistent": false
+    }
+  ],
+  "passed": false
+}

@@ -1,0 +1,525 @@
+{
+  "work_order": "v2.2",
+  "source_class": "synthetic hypotheses under test",
+  "host": "sulaco",
+  "numpy": "2.5.3",
+  "scipy": "1.18.1",
+  "seed": 2026100522,
+  "null_panels": 20000,
+  "power_panels": 5000,
+  "variance_convention": "pseudo weight 1, sum=.5, sum_squares=.5; mixture population variance",
+  "grid": "literal .001; lower scan .500 upward; upper 1 downward; two-sided retained-grid hull",
+  "exact": {
+    "cp_max_absolute_error": 4.773959005888173e-15,
+    "cp_tolerance": 1e-10,
+    "mcnemar_max_absolute_error": 6.661338147750939e-16,
+    "mcnemar_tolerance": 1e-12,
+    "mcnemar_no_discordance": 1.0,
+    "mcnemar_five_all_Q": 0.03125,
+    "thirty_perfect_Fc": {
+      "status": "PASS",
+      "lower": 0.9049661471446958,
+      "upper": 1.0
+    },
+    "descriptive_redraw_test": {
+      "interval": [
+        1.0,
+        1.0
+      ],
+      "redraws": 3284,
+      "status": "DESCRIPTIVE",
+      "approximate": true
+    },
+    "descriptive_all_empty_test": {
+      "interval": null,
+      "redraws": 0,
+      "status": "NOT EVALUABLE",
+      "approximate": true
+    },
+    "passed": true
+  },
+  "null_R0": [
+    {
+      "sizes": "executor",
+      "mechanism": "independent",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": null,
+      "evaluable_panels": 7571,
+      "rate": 0.0,
+      "mc_se": 0.0,
+      "panels": 20000,
+      "events": 0,
+      "nominal": 0.05,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "sizes": "executor",
+      "mechanism": "whole-case",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": null,
+      "evaluable_panels": 7742,
+      "rate": 0.00015,
+      "mc_se": 8.659604494432757e-05,
+      "panels": 20000,
+      "events": 3,
+      "nominal": 0.05,
+      "limit": 0.05017319208988866,
+      "passed": true
+    },
+    {
+      "sizes": "executor",
+      "mechanism": "eight-only",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": 0.30000000000000004,
+      "evaluable_panels": 7720,
+      "rate": 0.0,
+      "mc_se": 0.0,
+      "panels": 20000,
+      "events": 0,
+      "nominal": 0.05,
+      "limit": 0.05,
+      "passed": true
+    },
+    {
+      "sizes": "uniform",
+      "mechanism": "independent",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": null,
+      "evaluable_panels": 20000,
+      "rate": 0.00765,
+      "mc_se": 0.0006160956703305095,
+      "panels": 20000,
+      "events": 153,
+      "nominal": 0.05,
+      "limit": 0.051232191340661024,
+      "passed": true
+    },
+    {
+      "sizes": "uniform",
+      "mechanism": "whole-case",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": null,
+      "evaluable_panels": 20000,
+      "rate": 0.02685,
+      "mc_se": 0.0011430021325439424,
+      "panels": 20000,
+      "events": 537,
+      "nominal": 0.05,
+      "limit": 0.052286004265087886,
+      "passed": true
+    },
+    {
+      "sizes": "uniform",
+      "mechanism": "eight-only",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": 0.8,
+      "evaluable_panels": 20000,
+      "rate": 0.00695,
+      "mc_se": 0.0005874392521784699,
+      "panels": 20000,
+      "events": 139,
+      "nominal": 0.05,
+      "limit": 0.051174878504356945,
+      "passed": true
+    },
+    {
+      "sizes": "half-empty",
+      "mechanism": "independent",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": null,
+      "evaluable_panels": 20000,
+      "rate": 0.00145,
+      "mc_se": 0.0002690629573166845,
+      "panels": 20000,
+      "events": 29,
+      "nominal": 0.05,
+      "limit": 0.05053812591463337,
+      "passed": true
+    },
+    {
+      "sizes": "half-empty",
+      "mechanism": "whole-case",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": null,
+      "evaluable_panels": 20000,
+      "rate": 0.0205,
+      "mc_se": 0.0010019917664332377,
+      "panels": 20000,
+      "events": 410,
+      "nominal": 0.05,
+      "limit": 0.05200398353286648,
+      "passed": true
+    },
+    {
+      "sizes": "half-empty",
+      "mechanism": "eight-only",
+      "case_averaged_true_accuracy": 0.9,
+      "eight_error_probability": 0.8,
+      "evaluable_panels": 20000,
+      "rate": 0.0145,
+      "mc_se": 0.0008452736243371137,
+      "panels": 20000,
+      "events": 290,
+      "nominal": 0.05,
+      "limit": 0.05169054724867423,
+      "passed": true
+    }
+  ],
+  "null_R2": [
+    {
+      "theme": "symmetric",
+      "true_difference": 0.0,
+      "rate": 0.00425,
+      "mc_se": 0.00045999660324832836,
+      "panels": 20000,
+      "events": 85,
+      "nominal": 0.01,
+      "limit": 0.010919993206496658,
+      "passed": true
+    },
+    {
+      "theme": "skewed",
+      "true_difference": 0.0,
+      "rate": 0.0033,
+      "mc_se": 0.00040553113320681064,
+      "panels": 20000,
+      "events": 66,
+      "nominal": 0.01,
+      "limit": 0.010811062266413622,
+      "passed": true
+    },
+    {
+      "theme": "sparse",
+      "true_difference": 0.0,
+      "rate": 0.0,
+      "mc_se": 0.0,
+      "panels": 20000,
+      "events": 0,
+      "nominal": 0.01,
+      "limit": 0.01,
+      "passed": true
+    }
+  ],
+  "power_R0": [
+    {
+      "accuracy": 0.95,
+      "nonempty": 50,
+      "mechanism": "independent",
+      "rate": 0.0038,
+      "mc_se": 0.0008701218305501822,
+      "panels": 5000,
+      "events": 19
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 50,
+      "mechanism": "whole-case",
+      "rate": 0.0946,
+      "mc_se": 0.0041388607128049135,
+      "panels": 5000,
+      "events": 473
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 80,
+      "mechanism": "independent",
+      "rate": 0.2952,
+      "mc_se": 0.006450689265497138,
+      "panels": 5000,
+      "events": 1476
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 80,
+      "mechanism": "whole-case",
+      "rate": 0.2078,
+      "mc_se": 0.005737929243202639,
+      "panels": 5000,
+      "events": 1039
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 120,
+      "mechanism": "independent",
+      "rate": 0.6652,
+      "mc_se": 0.006673963739787623,
+      "panels": 5000,
+      "events": 3326
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 120,
+      "mechanism": "whole-case",
+      "rate": 0.3546,
+      "mc_se": 0.00676548357473433,
+      "panels": 5000,
+      "events": 1773
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 160,
+      "mechanism": "independent",
+      "rate": 0.8562,
+      "mc_se": 0.004962288987957071,
+      "panels": 5000,
+      "events": 4281
+    },
+    {
+      "accuracy": 0.95,
+      "nonempty": 160,
+      "mechanism": "whole-case",
+      "rate": 0.4566,
+      "mc_se": 0.007044379887541557,
+      "panels": 5000,
+      "events": 2283
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 50,
+      "mechanism": "independent",
+      "rate": 0.0744,
+      "mc_se": 0.003711189566702299,
+      "panels": 5000,
+      "events": 372
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 50,
+      "mechanism": "whole-case",
+      "rate": 0.255,
+      "mc_se": 0.006164008436074694,
+      "panels": 5000,
+      "events": 1275
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 80,
+      "mechanism": "independent",
+      "rate": 0.79,
+      "mc_se": 0.005760208329565867,
+      "panels": 5000,
+      "events": 3950
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 80,
+      "mechanism": "whole-case",
+      "rate": 0.4724,
+      "mc_se": 0.007060286679731922,
+      "panels": 5000,
+      "events": 2362
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 120,
+      "mechanism": "independent",
+      "rate": 0.9756,
+      "mc_se": 0.0021819550866138365,
+      "panels": 5000,
+      "events": 4878
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 120,
+      "mechanism": "whole-case",
+      "rate": 0.7372,
+      "mc_se": 0.006224727463913581,
+      "panels": 5000,
+      "events": 3686
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 160,
+      "mechanism": "independent",
+      "rate": 0.9954,
+      "mc_se": 0.000956957679315031,
+      "panels": 5000,
+      "events": 4977
+    },
+    {
+      "accuracy": 0.97,
+      "nonempty": 160,
+      "mechanism": "whole-case",
+      "rate": 0.855,
+      "mc_se": 0.0049794578018093495,
+      "panels": 5000,
+      "events": 4275
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 50,
+      "mechanism": "independent",
+      "rate": 0.4308,
+      "mc_se": 0.0070030187776415394,
+      "panels": 5000,
+      "events": 2154
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 50,
+      "mechanism": "whole-case",
+      "rate": 0.5226,
+      "mc_se": 0.007063840881560117,
+      "panels": 5000,
+      "events": 2613
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 80,
+      "mechanism": "independent",
+      "rate": 0.9708,
+      "mc_se": 0.0023810653077981714,
+      "panels": 5000,
+      "events": 4854
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 80,
+      "mechanism": "whole-case",
+      "rate": 0.7846,
+      "mc_se": 0.005813825590779276,
+      "panels": 5000,
+      "events": 3923
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 120,
+      "mechanism": "independent",
+      "rate": 0.9996,
+      "mc_se": 0.0002827861382741226,
+      "panels": 5000,
+      "events": 4998
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 120,
+      "mechanism": "whole-case",
+      "rate": 0.962,
+      "mc_se": 0.0027039230758288974,
+      "panels": 5000,
+      "events": 4810
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 160,
+      "mechanism": "independent",
+      "rate": 1.0,
+      "mc_se": 0.0,
+      "panels": 5000,
+      "events": 5000
+    },
+    {
+      "accuracy": 0.985,
+      "nonempty": 160,
+      "mechanism": "whole-case",
+      "rate": 0.9924,
+      "mc_se": 0.00122818891055082,
+      "panels": 5000,
+      "events": 4962
+    }
+  ],
+  "power_R2": [
+    {
+      "delta": 0.15,
+      "theme": "high-variance",
+      "inference": "statistical route only; assumes calibration prerequisites",
+      "publish": {
+        "rate": 0.0892,
+        "mc_se": 0.004030964152656285,
+        "panels": 5000,
+        "events": 446
+      },
+      "strong": {
+        "rate": 0.0626,
+        "mc_se": 0.003425820777565575,
+        "panels": 5000,
+        "events": 313
+      }
+    },
+    {
+      "delta": 0.15,
+      "theme": "low-variance",
+      "inference": "statistical route only; assumes calibration prerequisites",
+      "publish": {
+        "rate": 0.5338,
+        "mc_se": 0.0070548927702694395,
+        "panels": 5000,
+        "events": 2669
+      },
+      "strong": {
+        "rate": 0.0,
+        "mc_se": 0.0,
+        "panels": 5000,
+        "events": 0
+      }
+    },
+    {
+      "delta": 0.25,
+      "theme": "high-variance",
+      "inference": "statistical route only; assumes calibration prerequisites",
+      "publish": {
+        "rate": 0.497,
+        "mc_se": 0.007070940531499328,
+        "panels": 5000,
+        "events": 2485
+      },
+      "strong": {
+        "rate": 0.4586,
+        "mc_se": 0.007046787069296192,
+        "panels": 5000,
+        "events": 2293
+      }
+    },
+    {
+      "delta": 0.25,
+      "theme": "low-variance",
+      "inference": "statistical route only; assumes calibration prerequisites",
+      "publish": {
+        "rate": 1.0,
+        "mc_se": 0.0,
+        "panels": 5000,
+        "events": 5000
+      },
+      "strong": {
+        "rate": 0.5254,
+        "mc_se": 0.007061937977637583,
+        "panels": 5000,
+        "events": 2627
+      }
+    }
+  ],
+  "counterexample": {
+    "answer_accuracy": 0.888,
+    "case_accuracy": 0.9533333333333335,
+    "interpretation": "case accuracy=.953333, so this is an alternative, not a v2.2 null",
+    "old_no_error_PASS": {
+      "rate": 0.06305,
+      "mc_se": 0.0017186433239622465,
+      "panels": 20000,
+      "events": 1261
+    },
+    "new_PASS": {
+      "rate": 0.0005,
+      "mc_se": 0.0001580743495953724,
+      "panels": 20000,
+      "events": 10
+    },
+    "thirty_perfect_fixture": {
+      "status": "INSUFFICIENT",
+      "cases": 30,
+      "answers": 100,
+      "case_accuracy": 1.0,
+      "case_lower": 0.857,
+      "case_upper": 1.0,
+      "answer_accuracy": 1.0,
+      "answer_lower": 0.703
+    }
+  },
+  "all_prescribed_checks_pass": true,
+  "wall_seconds": 15.238193612007308,
+  "code_hashes": {
+    "statistics.py": "ce51769ba9e46d8d973327a60479dd04d3cabad5bc0f16341be40698a95ab41d",
+    "stats_audit.py": "2c0d325190239cfb862ba08b3d9bd3791e02ee78ed514ea927f09781ddddfdd0"
+  }
+}
