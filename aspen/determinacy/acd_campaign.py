@@ -102,7 +102,7 @@ def stage0():
         impl['repeat']=repeated
         if not repeated['passed']:resolution('R-impl','Gaussian doubled check failed','Retain doubled NumPyro settings and flag')
     save_json(ROOT/'runs/audit/acd_implementation.json',impl)
-    ordinary=case('dtcheck',0)
+    ordinary=case('dtcheck',0);ordinary_extra_fit_seconds=fit_report['seconds']
     for c in range(1,8):case('dtcheck',c)
     # Pooled dt comparison. Jbar is computed from the coarse null and held fixed.
     null()
@@ -128,17 +128,20 @@ def stage0():
     if not checked['passed']:
         resolution('R-dt','Pooled timestep check failed',checked)
         old=dt();config['dt']=old/2;save_json(ROOT/'runs/numerics/acd_dt.json',config)
-        checked['repeat']=dt_comparison(old/2,old/4)
         # New fit/forecast definition: drop only owned coarse Stage0 artifacts.
         for p in root.glob('case_*'):p.unlink()
         for p in root.glob('fits_*'):p.unlink()
         for p in root.glob('score_*'):p.unlink()
         (ROOT/'runs/null/null.npz').unlink();null()
+        with np.load(ROOT/'runs/null/null.npz') as n:jbar=float(n['jbar'])
+        finer_reports=[case('dtcheck',c) for c in range(8)]
+        ordinary=finer_reports[0];ordinary_extra_fit_seconds=0.
+        checked['repeat']=dt_comparison(old/2,old/4)
     from acd_measure import benchmark_refit
     benchmark_case=case('dev',199)
     four=benchmark_refit('dev',199,[0,1,2,3]);allsite=benchmark_refit('dev',199,list(range(40)))
     # Conservative initial projection includes first ordinary compilation/fit cost.
-    ordinary_seconds=ordinary['seconds']+fit_report['seconds']
+    ordinary_seconds=ordinary['seconds']+ordinary_extra_fit_seconds
     projection=400*ordinary_seconds+1200*four['seconds']+300*allsite['seconds']
     projection*=1.2
     if projection>43200:
@@ -165,7 +168,7 @@ def stage1a():
         pp,sp=signed_se(a,jbar);pr,sr=signed_se(b,jbar,chains=0)
         z=(pp-pr)/np.sqrt(sp*sp+sr*sr);flag=np.abs(z[:8,3])>3
         disagreement.append(flag);questions+=int(flag.sum())
-        agreement.append(dict(case=c,mean_signed_probability_difference_2_3=np.abs(pp-pr)[:,[3,5]].mean(0).tolist(),substantive_S_2_3=(np.abs(z[:8,[3,5]])>3).sum(0).tolist(),threshold_crossing_2_3=((pp[:,[3,5]]>=.95)!=(pr[:,[3,5]]>=.95)).sum(0).tolist()))
+        agreement.append(dict(case=c,mean_signed_probability_difference_2_3=np.abs(pp-pr)[:,[3,5]].mean(0).tolist(),substantive_S_2_3=(np.abs(z[:8,[3,5]])>3).sum(0).tolist(),threshold_crossing_2_3=((np.maximum(pp[:,[3,5]],1-pp[:,[3,5]])>=.95)!=(np.maximum(pr[:,[3,5]],1-pr[:,[3,5]])>=.95)).sum(0).tolist()))
     if questions/160>.05:
         resolution('R-rml','Stage1a substantive disagreement >5%',dict(questions=questions,total=160))
         for c,flags in enumerate(disagreement):

@@ -92,10 +92,10 @@ def implementation_check(map_theta,y,h,c=0,warmup=1000,draws=1000):
     jac=np.asarray(jax.jacfwd(lambda t:history(t,h).reshape(-1))(jnp.asarray(map_theta)))
     precision=jac.T@jac/NOISE**2
     covariance=np.linalg.inv(precision)
-    def gaussian():numpyro.sample('theta',dist.MultivariateNormal(jnp.asarray(map_theta),precision_matrix=jnp.asarray(precision)))
+    def gaussian(center):numpyro.sample('theta',dist.MultivariateNormal(center,precision_matrix=jnp.asarray(precision)))
     keys=jnp.stack([jax.random.PRNGKey(int(rng('acd-dtcheck',5,c,chain).integers(0,2**32,dtype=np.uint32))) for chain in range(4)])
-    m=MCMC(NUTS(gaussian,dense_mass=True,target_accept_prob=.9),num_warmup=warmup,num_samples=draws,num_chains=4,chain_method='vectorized',progress_bar=False)
-    tick=time.perf_counter();m.run(keys);samples=np.asarray(m.get_samples(group_by_chain=True)['theta'])
+    m=MCMC(ReusableNUTS(gaussian,dense_mass=True,target_accept_prob=.9),num_warmup=warmup,num_samples=draws,num_chains=4,chain_method='vectorized',progress_bar=False)
+    tick=time.perf_counter();m.run(keys,jnp.asarray(map_theta));samples=np.asarray(m.get_samples(group_by_chain=True)['theta'])
     import arviz as az
     ess=np.asarray(az.ess({'theta':samples},method='bulk')['theta'])
     sq=(samples-map_theta)**2;vess=np.asarray(az.ess({'variance':sq},method='bulk')['variance'])
@@ -105,4 +105,6 @@ def implementation_check(map_theta,y,h,c=0,warmup=1000,draws=1000):
     eig,vec=np.linalg.eigh(precision);ratios=[]
     for index in [0,40]:ratios.append(float(np.var(flat@vec[:,index],ddof=1)*eig[index]))
     passed=bool((mean_errors<=4).all() and (var_errors<=4).all() and all(abs(v-1)<=.1 for v in ratios))
-    return dict(passed=passed,seconds=time.perf_counter()-tick,warmup=warmup,draws=draws,max_mean_mcse=float(mean_errors.max()),max_variance_mcse=float(var_errors.max()),extreme_variance_ratios=ratios,precision=precision.tolist())
+    first_samples=samples.copy();m.post_warmup_state=None;m.run(keys,jnp.asarray(map_theta));reuse_identical=bool(np.array_equal(first_samples,np.asarray(m.get_samples(group_by_chain=True)['theta'])))
+    passed=passed and reuse_identical
+    return dict(passed=passed,reuse_identical=reuse_identical,seconds=time.perf_counter()-tick,warmup=warmup,draws=draws,max_mean_mcse=float(mean_errors.max()),max_variance_mcse=float(var_errors.max()),extreme_variance_ratios=ratios,precision=precision.tolist())

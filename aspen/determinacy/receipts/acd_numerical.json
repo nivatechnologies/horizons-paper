@@ -3,7 +3,8 @@
   "jax_relative_match": 5.426124519221623e-16,
   "implementation": {
     "passed": true,
-    "seconds": 5.874620353002683,
+    "reuse_identical": true,
+    "seconds": 9.550950261997059,
     "warmup": 1000,
     "draws": 1000,
     "max_mean_mcse": 1.905773656705045,
@@ -2115,7 +2116,7 @@
   },
   "seconds": 460.8128162820067,
   "seeds": {
-    "count": 147464,
+    "count": 147564,
     "ids": {
       "acd-observation-conf": 1200000,
       "acd-posterior-dev": 1200001,

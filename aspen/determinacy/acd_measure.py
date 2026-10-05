@@ -4,7 +4,7 @@ Only probe_values opens true, solely to construct the authorized measurement z.
 import os
 os.environ['JAX_PLATFORMS']='cpu'
 os.environ['JAX_ENABLE_X64']='true'
-import time,json
+import time,json,argparse
 import numpy as np
 from acd_protocol import *
 from acd_fits import fit,chi
@@ -63,18 +63,44 @@ def benchmark_refit(panel,c,sites):
     arm=4 if len(sites)==40 else 0
     return refit(panel,c,3,arm,designed[arm],k,l,base,probe_values(panel,c,3),prefix='benchmark')
 
-def campaign():
-    population=[];config=settings()
+def population(require_complete=True):
+    result=[];config=settings()
     for c in range(200):
-        with np.load(ROOT/f'runs/dev/case_{c:03d}.npz') as d:
+        if c==199 and not (ROOT/'runs/ordinary_complete').exists() and not require_complete:break
+        path=ROOT/f'runs/dev/case_{c:03d}.npz'
+        # Receipts are written last, so a forecast file alone is not completion.
+        if not path.with_suffix('.json').exists():
+            if require_complete:raise RuntimeError(f'Ordinary development case {c} missing')
+            break
+        with np.load(path) as d:
             if bool(d['excluded']):continue
             j=d['J'];k,l=sorted(np.argsort(j[:,:8,3].mean(0),kind='stable')[:2].tolist());p=float((j[:,k,3]<j[:,l,3]).mean())
-        if max(p,1-p)<.95:population.append(dict(case=c,k=k,l=l))
-    population=population[:config['r5_population']]
-    save_json(ROOT/'runs/dev/measure_population.json',dict(lead=3,population=population,not_evaluable=len(population)<40))
-    for row in population:
+        if max(p,1-p)<.95:result.append(dict(case=c,k=k,l=l))
+    return result[:config['r5_population']]
+
+def process_population(rows,worker=0,workers=1):
+    config=settings();arms=4 if 'R5-A' in config['cuts'] else 5
+    for row in rows:
         c,k,l=row['case'],row['k'],row['l']
+        owned=[arm for arm in range(arms) if (c*arms+arm)%workers==worker]
+        if not owned:continue
         with np.load(ROOT/f'runs/dev/case_{c:03d}.npz') as d:base={key:d[key] for key in d.files}
         sites=sites_for('dev',c,3,base['x0'],base['J'],k,l);z=probe_values('dev',c,3)
-        for arm in range(4 if 'R5-A' in config['cuts'] else 5):refit('dev',c,3,arm,sites[arm],k,l,base,z)
-if __name__=='__main__':campaign()
+        for arm in owned:refit('dev',c,3,arm,sites[arm],k,l,base,z)
+
+def campaign():
+    rows=population();save_json(ROOT/'runs/dev/measure_population.json',dict(lead=3,population=rows,not_evaluable=len(rows)<40));process_population(rows)
+
+def worker(index,workers):
+    # Prefix selection is stable as remaining ordinary cases arrive. All earlier
+    # case receipts must exist; this cannot skip an unresolved lower index.
+    while True:
+        done=(ROOT/'runs/ordinary_complete').exists();process_population(population(require_complete=done),index,workers)
+        if done:return
+        time.sleep(5)
+
+if __name__=='__main__':
+    p=argparse.ArgumentParser();p.add_argument('--worker',type=int);p.add_argument('--workers',type=int,default=1);a=p.parse_args()
+    if a.worker is None:campaign()
+    else:worker(a.worker,a.workers)
+

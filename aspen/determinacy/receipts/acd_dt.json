@@ -1,0 +1,14 @@
+{
+  "dt": 0.01,
+  "warmup": 1000,
+  "draws": 500,
+  "r5_population": 60,
+  "cuts": [
+    "R7",
+    "R5-A",
+    "R6-3LT",
+    "RML-conf",
+    "P/B-other-leads",
+    "R5-3LT"
+  ]
+}

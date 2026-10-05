@@ -45,8 +45,9 @@ def summary(j,jbar,null_prob,chains=4):
     pt=(count+.5)/(len(j)+1);se=np.sqrt(pt*(1-pt)/ess)
     # Each sampler's own modal event; the cross-check uses signed events below.
     uncertain=np.abs(p-.95)<2*se
-    first=distribution(j[:len(j)//2],jbar).max(-1)>=.95
-    second=distribution(j[len(j)//2:],jbar).max(-1)>=.95
+    a=distribution(j[:len(j)//2],jbar);b=distribution(j[len(j)//2:],jbar)
+    first=np.where(a.max(-1)>=.95,a.argmax(-1),-1)
+    second=np.where(b.max(-1)>=.95,b.argmax(-1),-1)
     return dict(modal=modal,p=p,confident=confident,climate=climate,observation=confident&~climate,
                 uncertain=uncertain,se=se,split_unstable=first!=second)
 def signed_se(j,jbar,chains=4):

@@ -123,3 +123,11 @@ All are synthetic hypotheses under test, rather than observed anchors.
 ## Runtime resolution ledger
 
 The complete triggered-rule log is runs/resolutions.jsonl. Scientific findings and exclusions will be summarized in the Stage 1 reading. This gate does not authorize confirmation or a publish claim.
+
+## Completed Stage 1 gate (v2.3)
+
+Stage 1 is STRONG through R5 at 2 LT: Q resolves correctly 27/60, against F13/60, V7/60 and R6/60; all three exact paired tests pass. R0 and R0-F pass at2 and3LT. Truth coverage is192/200, with0 diagnostic exclusions. Intervention-sign confidence PRECEDES the factual-anomaly sign in the paired-loss reading; this contradicts the proposed “outlives” direction and is retained.
+
+Applied rules: **R-other** (the three scope findings above), **R-rml** (163 coupled signed question–lead diagnostic flags out of59,200; retain RML as the approximate cross-check; Stage1a had0/160 S flags and required no rerun), and **R-time** (optional cuts, R5 cap60, 500 draws/chain). No H1–H3 hard stop occurred. No R-stat, R-grad, R-impl, R-dt or R-cov fallback was needed; no posterior remained excluded under R-diag.
+
+Final reading: ACD_STAGE1_READING.md. Artifact verification passes for1,545 raw files; ACD_ARTIFACTS.json records the inventory, unchanged inherited hashes, CPU JAX/x64 and seed leaves. Runtime details: receipts/resolutions.jsonl and receipts/acd_stage1.json. Work stops at this gate, with no freeze, confirmation reading or CNN inference.

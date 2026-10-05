@@ -7,6 +7,7 @@ import numpy as np
 from acd_protocol import *
 def run():
     errors=[];manifest=[]
+    if digest(ROOT/'CODEX_SELECTOR.md')!='4bbd87f7a578d1222e6af82079db3b44d2cf3567eddc0872b28d3c08d3c05070':errors.append('Step0b selector changed')
     for name in ['acd_posterior.py','acd_fits.py','acd_mechanism.py']:
         tree=ast.parse((ROOT/name).read_text())
         for node in ast.walk(tree):
@@ -32,7 +33,9 @@ def run():
     inherited={name:digest(INHERITED/name) for name in ['protocol.py','physics.py','extras.py','campaign.py']}
     expected={'protocol.py':'e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d','physics.py':'13ef98834e47bd667f53cce50af3e7d573a1bc4eb9c38987f389a05b1f2fc5d7'}
     if any(inherited[k]!=v for k,v in expected.items()):errors.append('inherited source changed')
-    report=dict(passed=not errors,errors=errors,host=os.uname().nodename,jax_platform='cpu',seed_leaves=assert_leaves(),inherited=inherited,manifest=manifest)
+    import jax,numpyro
+    if any(d.platform!='cpu' for d in jax.devices()) or not jax.config.jax_enable_x64:errors.append('JAX platform or precision')
+    report=dict(jax_devices=[str(d) for d in jax.devices()],jax_x64=bool(jax.config.jax_enable_x64),jax_version=jax.__version__,numpyro_version=numpyro.__version__,passed=not errors,errors=errors,host=os.uname().nodename,jax_platform='cpu',seed_leaves=assert_leaves(),inherited=inherited,manifest=manifest)
     save_json(ROOT/'ACD_ARTIFACTS.json',report);print('check_acd', 'PASS' if not errors else errors,flush=True)
     if errors:raise RuntimeError('Artifact verification requires repair')
 if __name__=='__main__':run()

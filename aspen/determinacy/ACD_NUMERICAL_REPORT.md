@@ -22,11 +22,11 @@ Initial serial 8-core projection: 1.2 × (400 ordinary +1200 four-site +300 all-
 
 dt remains .01. No R-grad, R-impl or R-dt fallback fired. The Stage0 benchmark development case is resampled at the production draw count before Stage1 scoring.
 
-IDs and sub roles are fixed in acd_protocol.py. The complete planned leaf uniqueness assertion covers 147464 leaves; no overlap with inherited IDs. Full records: `receipts/acd_numerical.json`, `runs/null/null.npz`, `runs/acd_access.jsonl`, and `runs/resolutions.jsonl`.
+IDs and sub roles are fixed in acd_protocol.py. The complete planned leaf uniqueness assertion covers 147564 leaves; no overlap with inherited IDs. Full records: `receipts/acd_numerical.json`, `runs/null/null.npz`, `runs/acd_access.jsonl`, and `runs/resolutions.jsonl`.
 
 ```json
 {
-  "count": 147464,
+  "count": 147564,
   "ids": {
     "acd-observation-conf": 1200000,
     "acd-posterior-dev": 1200001,

@@ -27,7 +27,7 @@ def median_boot(values):
         draws.extend(np.median(selected,axis=axes).tolist())
     return dict(interval=np.quantile(draws,[.025,.975],axis=0).tolist(),approximate=True,replicates=10000)
 
-def calibration(s,truth,keep):
+def calibration(s,truth,keep,bootstrap_sub=0):
     results=[]
     for t in range(8):
         obs=s['observation'][:,:,t][:,:8];right=s['modal'][:,:,t][:,:8]==truth[:,:,t][:,:8]
@@ -35,7 +35,10 @@ def calibration(s,truth,keep):
         order={'PASS':0,'INSUFFICIENT':1,'FAIL':2}
         status=primary['status']
         if status!='NOT EVALUABLE' and sensitivity['status']!='NOT EVALUABLE':status=max([status,sensitivity['status']],key=lambda v:order[v])
-        primary.update(status=status,included_excluded=sensitivity,answer_descriptive=boot(correct[keep],n[keep],0))
+        for name,result in [('primary',primary),('included',sensitivity)]:
+            result['bounds_crossed']=result['case_lower']>result['case_upper'];result['point_outside_bounds']=result['case_accuracy'] is not None and not result['case_lower']<=result['case_accuracy']<=result['case_upper']
+            if result['bounds_crossed'] or result['point_outside_bounds']:resolution('R-other',f'R0 {LEADS[t]} {name} bounds conflict/offset',result)
+        primary.update(status=status,included_excluded=sensitivity,answer_descriptive=boot(correct[keep],n[keep],bootstrap_sub))
         fc=s['confident'][:,37,t]&keep;good=s['modal'][:,37,t]==truth[:,37,t]
         f=r0_f(int((good&fc).sum()),int(fc.sum()));f.update(correct=int((good&fc).sum()),answers=int(fc.sum()),accuracy=float(good[fc].mean()) if fc.any() else None)
         results.append(dict(lead=float(LEADS[t]),R0=primary,R0_F=f))
@@ -54,7 +57,9 @@ def r5():
         rows=[];correct=[];settled=[];covered=[]
         for entry in pop:
             c,k,l=entry['case'],entry['k'],entry['l'];p=ROOT/f'runs/dev/measure/refit_{c:03d}_3_{arm}.json'
-            if not p.exists():continue
+            if not p.exists():
+                if arm<4 or 'R5-A' not in settings()['cuts']:raise RuntimeError(f'Incomplete R5 result: {p}')
+                continue
             row=json.loads(p.read_text());rows.append(row)
             with np.load(ROOT/f'runs/dev/score_{c:03d}.npz') as data:j=data['actual_cost']
             actual=bool(j[k,3]<j[l,3]);settled.append(row['confident']);correct.append(row['confident'] and row['modal']==actual);covered.append(row['coverage']['covered'])
@@ -80,14 +85,15 @@ def run():
             spread=np.sqrt(np.mean(np.maximum(0,d['factual_square_sum']/len(j)-(d['state_sum'][8]/len(j))**2),axis=-1))
             divergences.append(d['divergence_sum'][:8]/len(j)/np.maximum(spread,1e-30))
             pp,ps=signed_se(j,jbar);rr,rs=signed_se(d['rml_J'],jbar,chains=0)
-            agreement.append(dict(mean_probability_difference=np.abs(pp-rr).mean(0).tolist(),substantive=(np.abs(pp-rr)>3*np.sqrt(ps*ps+rs*rs)).mean(0).tolist(),threshold_crossing=((pp>=.95)!=(rr>=.95)).mean(0).tolist(),threshold_crossing_mc_expected=(norm.cdf(-np.abs(pp-.95)/rs)).mean(0).tolist()))
+            shared=(pp/(ps*ps)+rr/(rs*rs))/(1/(ps*ps)+1/(rs*rs));pa=norm.cdf((.05-shared)/ps)+norm.sf((.95-shared)/ps);pb=norm.cdf((.05-shared)/rs)+norm.sf((.95-shared)/rs)
+            agreement.append(dict(mc_expectation='Gaussian approximation at pooled signed probability; independent sampler errors',mean_probability_difference=np.abs(pp-rr).mean(0).tolist(),substantive=(np.abs(pp-rr)>3*np.sqrt(ps*ps+rs*rs)).mean(0).tolist(),threshold_crossing=((np.maximum(pp,1-pp)>=.95)!=(np.maximum(rr,1-rr)>=.95)).mean(0).tolist(),threshold_crossing_mc_expected=(pa*(1-pb)+pb*(1-pa)).mean(0).tolist()))
             with np.load(ROOT/f'runs/dev/score_{c:03d}.npz') as scoring:actual=scoring['actual_cost']
             zeros.append(dict(case=c,action_zero=np.argwhere(actual[:8]==actual[8]).tolist(),pair_zero=[[k,l,t] for k in range(8) for l in range(k+1,8) for t in range(8) if actual[k,t]==actual[l,t]],factual_zero=np.flatnonzero(actual[8]==jbar).tolist()));truth.append(labels(actual,jbar)[0]);D=j[:,:8]-j[:,8,None];real=actual[:8]-actual[8]
             ranks.append((D<real[None]).mean(0))
             meanj=j.mean(0);chosen=int(meanj[:,3].argmin());draw_regret=j[:,:,3]-j[:,:,3].min(1)[:,None]
             extras.append(dict(case=c,unforced_quantiles=np.quantile(j[:,8],[.05,.5,.95],axis=0).tolist(),effect_mean=D.mean(0).tolist(),effect_quantiles=np.quantile(D,[.05,.5,.95],axis=0).tolist(),backfire_probability=(D>0).mean(0).tolist(),positive_expected_loss=np.maximum(D,0).mean(0).tolist(),nine_action_best=np.stack([(j.argmin(1)==a).mean(0) for a in range(9)]).tolist(),posterior_regret_2LT=draw_regret.mean(0).tolist(),chosen_nine_action=chosen,realized_regret_2LT=float(actual[chosen,3]-actual[:,3].min())))
     def stack(rows):return {key:np.stack([r[key] for r in rows]) for key in rows[0]}
-    s=stack(post);sc=stack(crude);sr=stack(rml);truth=np.asarray(truth);keep=np.array([not r['excluded'] for r in reports]);cal=calibration(s,truth,keep);cal_c=calibration(sc,truth,keep);cal_r=calibration(sr,truth,keep)
+    s=stack(post);sc=stack(crude);sr=stack(rml);truth=np.asarray(truth);keep=np.array([not r['excluded'] for r in reports]);cal=calibration(s,truth,keep);cal_c=calibration(sc,truth,keep,4);cal_r=calibration(sr,truth,keep,5)
     covered=sum(r['coverage']['covered'] for r in reports)
     wilson_center=(covered/200+1.96**2/400)/(1+1.96**2/200);wilson_radius=1.96*np.sqrt((covered/200)*(1-covered/200)/200+1.96**2/(4*200**2))/(1+1.96**2/200)
     if covered/200<.85:resolution('R-cov','Development coverage below0.85',dict(covered=covered,cases=200))
@@ -110,30 +116,31 @@ def run():
         if bounds['empty'] or bounds['offset']:resolution('R-other',f'R2a {LEADS[t]} interval conflict',bounds)
         R2a.append(dict(lead=float(LEADS[t]),status=status,prerequisite=prerequisite,**bounds))
     def ordered_loss(use_observation=False):
-        values=[];counts={'earlier':0,'later':0,'same_lead':0,'both_beyond':0};eligible_actions=0
+        values=[];counts={'earlier':0,'later':0,'same_lead':0,'both_beyond':0};eligible_actions=0;case_shares=[]
         for c in np.flatnonzero(keep):
-            eligible=np.flatnonzero(s['observation'][c,:8,0]&s['confident'][c,37,0]);pairs=[]
+            eligible=np.flatnonzero(s['observation'][c,:8,0]&s['confident'][c,37,0]);pairs=[];categories=[]
             for k in eligible:
                 def loss(v):
                     z=np.flatnonzero(~v);return int(z[0]) if len(z) else 8
                 a=loss(s['observation' if use_observation else 'confident'][c,k]);b=loss(s['confident'][c,37]);pairs.append(int(a>b)-int(a<b));eligible_actions+=1
-                counts['later' if a>b else 'earlier' if a<b else 'both_beyond' if a==8 else 'same_lead']+=1
-            if pairs:values.append(float(np.mean(pairs)))
-        return values,counts,eligible_actions
-    loss,counts,actions=ordered_loss();b=difference_interval(loss);prereq=all(v['R0']['status'] in ['PASS','NOT EVALUABLE'] and v['R0_F']['status'] in ['PASS','NOT EVALUABLE'] for v in cal)
-    R2b=dict(cases=len(loss),actions=actions,pair_counts=counts,pair_shares={k:v/actions if actions else None for k,v in counts.items()},prerequisite=prereq,**b)
+                category='later' if a>b else 'earlier' if a<b else 'both_beyond' if a==8 else 'same_lead';counts[category]+=1;categories.append(category)
+            if pairs:
+                values.append(float(np.mean(pairs)));case_shares.append({k:categories.count(k)/len(categories) for k in counts})
+        return values,counts,eligible_actions,{k:float(np.mean([v[k] for v in case_shares])) if case_shares else None for k in counts}
+    loss,counts,actions,loss_shares=ordered_loss();b=difference_interval(loss);prereq=all(v['R0']['status'] in ['PASS','NOT EVALUABLE'] and v['R0_F']['status'] in ['PASS','NOT EVALUABLE'] for v in cal)
+    R2b=dict(cases=len(loss),actions=actions,pair_counts=counts,pair_shares=loss_shares,answer_weighted_pair_shares={k:v/actions if actions else None for k,v in counts.items()},prerequisite=prereq,**b)
     R2b['status']='NOT EVALUABLE' if len(loss)<30 else 'PREREQUISITE NOT MET' if not prereq else 'NO ORDER DETECTED' if b['empty'] else 'OUTLIVES' if b['point']>=.2 and b['lower']>0 else 'PRECEDES' if b['point']<=-.2 and b['upper']<0 else 'NO DIRECTIONAL PREFERENCE' if b['lower']>=-.1 and b['upper']<=.1 else 'NO ORDER DETECTED'
-    variant,vc,va=ordered_loss(True);R2b['observation_loss_variant']=dict(interval=difference_interval(variant),pair_counts=vc,actions=va)
+    variant,vc,va,vs=ordered_loss(True);R2b['observation_loss_variant']=dict(interval=difference_interval(variant),pair_counts=vc,actions=va,case_pair_shares=vs)
     if b['empty'] or b['offset']:resolution('R-other','R2b interval conflict',b)
     fcshare=s['confident'][keep,37].mean(0);good=np.flatnonzero(fcshare>=.5);horizon=int(good[-1]) if len(good) else -1;R2c=[]
     for t in range(8):
         conf=s['confident'][keep,:8,t];right=(s['modal'][keep,:8,t]==truth[keep,:8,t]);answer=t<=horizon;selected=~conf if answer else conf
         num=selected.sum(1);correct=(right&selected).sum(1)
-        R2c.append(dict(lead=float(LEADS[t]),answers=answer,exception_share=float(selected.mean()),exception_accuracy=float(correct.sum()/num.sum()) if num.sum() else None,accuracy_descriptive=boot(correct,num,3)))
+        R2c.append(dict(lead=float(LEADS[t]),answers=answer,exception_share=float(selected.mean()),exception_accuracy=float(correct.sum()/num.sum()) if num.sum() else None,exception_share_descriptive=boot(num,np.full(len(num),8),3),answered_not_confident_share=float(selected.mean()) if answer else 0.,refused_confident_share=float(selected.mean()) if not answer else 0.,accuracy_descriptive=boot(correct,num,3)))
     mechan={}
     for key in mechanisms[0]:
         values=np.stack([r[key] for r in mechanisms])[keep]
-        mechan[key]=dict(median=np.median(values,axis=(0,1) if values.ndim==3 else 0).tolist(),quartiles=np.quantile(values,[.25,.75],axis=(1,2) if False else (0,1) if values.ndim==3 else 0).tolist())
+        mechan[key]=dict(median=np.median(values,axis=(0,1) if values.ndim==3 else 0).tolist(),quartiles=np.quantile(values,[.25,.75],axis=(0,1) if values.ndim==3 else 0).tolist())
     for key in ['rho','cancellation','z_D']:
         mechan[key]['descriptive']=median_boot(np.stack([r[key] for r in mechanisms])[keep])
     rho_med=np.array(mechan['rho']['median']);cross=np.flatnonzero(rho_med<.5);mechan['first_median_rho_below_half']=float(LEADS[cross[0]]) if len(cross) else None
@@ -144,47 +151,64 @@ def run():
         for lo,hi in zip(edges[:-1],edges[1:]):
             m=(values>=lo)&(values<hi);rows.append(dict(lower=lo,upper=None if np.isinf(hi) else hi,count=int(m.sum()),confident_share=float(conf[m].mean()) if m.any() else None,mean_Phi_zD=float(norm.cdf(zvals)[m].mean()) if m.any() else None))
         mechan['bins'][name]=rows
-    mechan['z_F']=np.median(np.stack([np.abs(np.asarray(e['unforced_quantiles'])[1]-jbar) for e in extras]),axis=0).tolist() # replaced below with exact mean/std
     zf=[]
     for c in range(200):
         with np.load(ROOT/f'runs/dev/case_{c:03d}.npz') as d:j=d['J'][:,8];zf.append(np.abs(j.mean(0)-jbar)/j.std(0,ddof=1))
+    mechan['lead_relationship']=[dict(lead=float(LEADS[t]),confident_S_share=float(s['confident'][keep,:8,t].mean()),observation_S_share=float(s['observation'][keep,:8,t].mean()),confident_Fc_share=float(s['confident'][keep,37,t].mean()),median_cancellation=mechan['cancellation']['median'][t],median_rho=mechan['rho']['median'][t],window_divergence_ratio=float(np.median(div[:,:,WINDOWS[t]].mean(-1)))) for t in range(8)]
     mechan['z_F']=dict(median=np.median(np.asarray(zf)[keep],axis=0).tolist(),quartiles=np.quantile(np.asarray(zf)[keep],[.25,.75],axis=0).tolist())
     measure=r5();strong=False
     if cal[3]['R0']['status']=='PASS':
         strong=any(v['status']=='DIFFERS' and abs(v['point'])>=.25 for v in R2a) or (R2b['status'] in ['OUTLIVES','PRECEDES'] and abs(R2b['point'])>=.30) or (measure['status']=='Q-BEATS' and measure['margin']>=.15)
     decision='STRONG' if strong else 'STOP AND REPORT' if cal[3]['R0']['status']=='FAIL' and cal[5]['R0']['status']=='FAIL' else 'TODD DECIDES'
+    signed_flags=[int(round(sum(r['substantive'][t]*37 for r in agreement))) for t in range(8)]
+    prior_rules=[json.loads(l) for l in (ROOT/'runs/resolutions.jsonl').read_text().splitlines()] if (ROOT/'runs/resolutions.jsonl').exists() else []
+    if sum(signed_flags) and not any(r['trigger']=='Full-panel signed-event cross-check flags' for r in prior_rules):
+        resolution('R-rml','Full-panel signed-event cross-check flags',dict(question_lead_flags=sum(signed_flags),total_question_leads=200*37*8,per_lead=signed_flags,resolution='Report coupled diagnostic events; retain RML as an approximate cross-check. Stage1a S at2LT had0/160 substantive flags, so its rerun rule did not trigger.'))
     resolutions=[]
     if (ROOT/'runs/resolutions.jsonl').exists():resolutions=[json.loads(l) for l in (ROOT/'runs/resolutions.jsonl').read_text().splitlines()]
     # Spec findings are recorded even when no numerical resolution fired.
     if not any(r['rule']=='R-other' and r['trigger']=='Spec gate scope findings' for r in resolutions):
         resolution('R-other','Spec gate scope findings','True-F climate advantage is literal rather than proven monotone; untested selector targeting arms cannot support L6; Wilks coverage remains approximate.')
         resolutions=[json.loads(l) for l in (ROOT/'runs/resolutions.jsonl').read_text().splitlines()]
-    output=dict(version='2.3',panel='development',cases=200,gate=decision,dt=dt(),settings=settings(),R0=cal,R1=shares,R1m=mechan,R2a=R2a,R2b=R2b,R2c=dict(horizon=float(LEADS[horizon]) if horizon>=0 else None,readings=R2c),R3=dict(calibration=cal_c,reliability=reliability(sc,truth,keep)),R3b=dict(calibration=cal_r,reliability=reliability(sr,truth,keep),posterior_agreement=agreement),R5=measure,coverage=dict(covered=covered,total=200,share=covered/200,descriptive=boot(np.array([r['coverage']['covered'] for r in reports]),sub=7),wilson95=[wilson_center-wilson_radius,wilson_center+wilson_radius]),excluded=int((~keep).sum()),fit_flags=sum(r['minimum']>467.6 for r in reports),reliability=reliability(s,truth,keep),threshold_uncertain=s['uncertain'][keep].mean((0,1)).tolist(),split_instability=s['split_unstable'][keep].mean((0,1)).tolist(),true_F_rank=dict(histogram=np.histogram(forcing_ranks,bins=np.linspace(0,1,11))[0].tolist(),uniformity_KS=dict(statistic=float(kstest(np.asarray(forcing_ranks)[keep],'uniform').statistic),p=float(kstest(np.asarray(forcing_ranks)[keep],'uniform').pvalue)),case_values=forcing_ranks),exact_zero_answers=zeros,rank_histogram=np.histogram(np.asarray(ranks)[keep],bins=np.linspace(0,1,11))[0].tolist(),extra_selector_readings=extras,resolutions=resolutions,seconds=time.perf_counter()-start)
+    output=dict(null=dict(jbar=jbar,F=8.,states=4096,Fc_above_shares=null[37,:,1].tolist(),question_probabilities=null.tolist()),version='2.3',panel='development',cases=200,gate=decision,dt=dt(),settings=settings(),R0=cal,R1=shares,R1m=mechan,R2a=R2a,R2b=R2b,R2c=dict(horizon=float(LEADS[horizon]) if horizon>=0 else None,readings=R2c),R3=dict(calibration=cal_c,reliability=reliability(sc,truth,keep)),R3b=dict(calibration=cal_r,reliability=reliability(sr,truth,keep),posterior_agreement=agreement),R5=measure,coverage=dict(covered=covered,total=200,share=covered/200,descriptive=boot(np.array([r['coverage']['covered'] for r in reports]),sub=7),wilson95=[wilson_center-wilson_radius,wilson_center+wilson_radius]),excluded=int((~keep).sum()),fit_flags=sum(r['minimum']>467.6 for r in reports),reliability=reliability(s,truth,keep),threshold_uncertain=s['uncertain'][keep].mean((0,1)).tolist(),split_instability=s['split_unstable'][keep].mean((0,1)).tolist(),true_F_rank=dict(histogram=np.histogram(forcing_ranks,bins=np.linspace(0,1,11))[0].tolist(),uniformity_KS=dict(statistic=float(kstest(np.asarray(forcing_ranks)[keep],'uniform').statistic),p=float(kstest(np.asarray(forcing_ranks)[keep],'uniform').pvalue)),case_values=forcing_ranks),exact_zero_answers=zeros,rank_histogram=np.histogram(np.asarray(ranks)[keep],bins=np.linspace(0,1,11))[0].tolist(),extra_selector_readings=extras,resolutions=resolutions,source_hashes={p.name:digest(p) for p in sorted(list(ROOT.glob('acd_*.py'))+[ROOT/'check_acd.py'])},seconds=time.perf_counter()-start)
     for type_name,q in types.items():
         for t in range(8):
             selection=s['confident'][keep,q,t];right=s['modal'][keep,q,t]==truth[keep,q,t]
             all_calibration.append(dict(type=type_name,lead=float(LEADS[t]),answers=int(selection.sum()),correct=int((selection&right).sum()),accuracy=float(right[selection].mean()) if selection.any() else None,descriptive=boot((selection&right).sum(1),selection.sum(1),0),threshold_uncertain=int(s['uncertain'][keep,q,t].sum()),split_unstable=int(s['split_unstable'][keep,q,t].sum())))
     output['all_confident_calibration']=all_calibration
+    output['reliability_by_type_lead']=[dict(type=type_name,lead=float(LEADS[t]),bins=reliability({key:val[:,q,t:t+1] for key,val in s.items()},truth[:,q,t:t+1],keep)) for type_name,q in types.items() for t in range(8)]
     for name,arm in [('crude',sc),('RML',sr)]:
         # Cohen kappa for modal classifications plus abstention, per lead.
         kappas=[]
         for t in range(8):
             a=np.where(s['confident'][keep,:8,t],s['modal'][keep,:8,t],-1).ravel();b=np.where(arm['confident'][keep,:8,t],arm['modal'][keep,:8,t],-1).ravel();pe=sum(np.mean(a==v)*np.mean(b==v) for v in [-1,0,1]);po=np.mean(a==b);kappas.append(float((po-pe)/(1-pe)) if pe<1 else None)
-        target=output['R3' if name=='crude' else 'R3b'];target['kappa_S']=kappas
+        target=output['R3' if name=='crude' else 'R3b'];target['kappa_S']=kappas;target['kappa_by_type_lead']=[]
+        for type_name,q in types.items():
+            for t in range(8):
+                a=np.where(s['confident'][keep,q,t],s['modal'][keep,q,t],-1).ravel();b=np.where(arm['confident'][keep,q,t],arm['modal'][keep,q,t],-1).ravel();pe=sum(np.mean(a==v)*np.mean(b==v) for v in range(-1,8));po=np.mean(a==b)
+                target['kappa_by_type_lead'].append(dict(type=type_name,lead=float(LEADS[t]),kappa=float((po-pe)/(1-pe)) if pe<1 else None,agreement=float(po)))
         target['reliability_by_lead']=[reliability({key:val[:,:,t:t+1] for key,val in arm.items()},truth[:,:,t:t+1],keep) for t in range(8)]
         target['confidence_shares']=[dict(type=type_name,lead=float(LEADS[t]),all=float(arm['confident'][keep,q,t].mean()),observation=float(arm['observation'][keep,q,t].mean()),descriptive=boot(arm['confident'][keep,q,t].mean(1),sub=4 if name=='crude' else 5)) for type_name,q in types.items() for t in range(8)]
     save_json(ROOT/'runs/audit/acd_stage1.json',output)
-    lines=['# Aspen counterfactual determinacy — Stage 1 (v2.3)','',f'**Stage 1 gate: {decision}.** Development only; Todd decides whether to authorize a freeze and confirmation.','',f'Completed 200 cases on sulaco CPU at dt={dt()}; truth coverage {covered}/200; diagnostic exclusions {int((~keep).sum())}/200.','', '| Lead (LT) | R0 | Case accuracy [L,U] | Answer accuracy / answers / cases | Included-case R0 [L,U] | R0-F |','|---|---|---|---|---|---|']
+    lines=['# Aspen counterfactual determinacy — Stage 1 (v2.3)','',f'**Stage 1 gate: {decision}.** Development only; Todd decides whether to authorize a freeze and confirmation.','',f'Completed 200 cases on sulaco CPU at dt={dt()}; truth coverage {covered}/200; diagnostic exclusions {int((~keep).sum())}/200.','', '| Lead (LT) | R0 | Case accuracy [L,U] | Answer accuracy / answers / cases | Included-case R0 accuracy [L,U] | R0-F |','|---|---|---|---|---|---|']
     for row in cal:
-        r=row['R0'];point='NA' if r['case_accuracy'] is None else f"{r['case_accuracy']:.3f}";lines.append(f"| {row['lead']:g} | {r['status']} | {point} [{r['case_lower']:.3f}, {r['case_upper']:.3f}] | {r['answer_accuracy']} / {r['answers']} / {r['cases']} | {r['included_excluded']['status']} [{r['included_excluded']['case_lower']:.3f}, {r['included_excluded']['case_upper']:.3f}] | {row['R0_F']['status']} |")
+        r=row['R0'];point='NA' if r['case_accuracy'] is None else f"{r['case_accuracy']:.3f}";lines.append(f"| {row['lead']:g} | {r['status']} | {point} [{r['case_lower']:.3f}, {r['case_upper']:.3f}] | {r['answer_accuracy']} / {r['answers']} / {r['cases']} | {r['included_excluded']['status']} {r['included_excluded']['case_accuracy']} [{r['included_excluded']['case_lower']:.3f}, {r['included_excluded']['case_upper']:.3f}] | {row['R0_F']['status']} |")
+    lines+=['','| Lead (LT) | All-confident S | Observation-confident S | Confident Fc | Median rho | Median cancellation |','|---|---|---|---|---|---|']
+    for t in [3,5]:
+        r=mechan['lead_relationship'][t];lines.append(f"| {r['lead']:g} | {r['confident_S_share']:.3f} | {r['observation_S_share']:.3f} | {r['confident_Fc_share']:.3f} | {r['median_rho']:.3f} | {r['median_cancellation']:.3f} |")
     lines+=['','R0 includes the required sensitivity with excluded cases included; the worse status governs. Bounds are v2.3 betting bounds; R0-F uses exact Clopper–Pearson.','']
     for row in R2a:lines.append(f"R2a at {row['lead']:g} LT: {row['status']}; Δ={row['point']:.3f}, 99% interval [{row['lower']:.3f}, {row['upper']:.3f}].")
     point='NA' if R2b['point'] is None else f"{R2b['point']:.3f}";lines+=['',f"R2b: {R2b['status']}; Δ_loss={point}, 99% interval [{R2b['lower']:.3f}, {R2b['upper']:.3f}], {R2b['cases']} eligible cases.",'',f"R5 at 2 LT: {measure['status']}; common population {measure['population']}; margin {measure['margin']}. Only Q, F, V and R support the tested comparison.",'','| Arm | Confident correct / population | Confident wrong | Accuracy lower bound | Truth coverage |','|---|---|---|---|---|---|']
     for name,r in measure['arms'].items():lines.append(f"| {name} | {r['correct']} / {r['population']} | {r['wrong']} | {r['accuracy_lower']:.3f} | {r['coverage']:.3f} |")
+    lines+=['','Exact one-sided McNemar p-values (Q against each alternative): '+', '.join(f"{name}: {row['p']:.8g}" for name,row in measure['McNemar'].items())+'. The Q accuracy/count/coverage safeguards and R0 at 2 LT pass.','',f"Forecast-horizon rule R2c: largest lead with at least half the panel’s Fc answers confident is {output['R2c']['horizon']} LT. Its errors/refusals at every lead are in the receipt.",'', '| Comparator | Lead (LT) | Confident S share | Observation-confident S share | Case accuracy [L,U] | R0 | S classification kappa |','|---|---|---|---|---|---|---|']
+    for arm_name,key in [('Crude','R3'),('RML','R3b')]:
+        arm=output[key]
+        for t in [3,5]:
+            r=arm['calibration'][t]['R0'];v=next(v for v in arm['confidence_shares'] if v['type']=='S' and v['lead']==float(LEADS[t]));lines.append(f"| {arm_name} | {LEADS[t]:g} | {v['all']:.3f} | {v['observation']:.3f} | {r['case_accuracy']:.3f} [{r['case_lower']:.3f}, {r['case_upper']:.3f}] | {r['status']} | {arm['kappa_S'][t]:.3f} |")
     lines+=['','Resolution rules fired: '+', '.join(sorted(set(r['rule'] for r in resolutions)))+'.','']
     for rule in sorted(set(r['rule'] for r in resolutions)):
         triggered=[r['trigger'] for r in resolutions if r['rule']==rule];lines.append(f"- **{rule}**: "+'; '.join(dict.fromkeys(triggered))+'.')
-    lines+=['','All share/mechanism/comparator bootstrap intervals are approximate and descriptive. Extra selector readings (unforced distribution, effect magnitudes/backfire, nine-action best and regret) are reported only. The full receipt includes R1/R1m maps, reliability, rank histogram, threshold uncertainty, split stability, RML cross-checks and R5 site/refit records: `runs/audit/acd_stage1.json`.','','This is development analysis; it licenses no confirmation claim. Work stops here. No freeze, confirmation reading or CNN inference was performed.']
+    lines+=['','R-time resolution: initial serial projection 29.16 hours; prescribed cuts '+', '.join(settings()['cuts'])+f"; R5 cap {settings()['r5_population']}, {settings()['warmup']} warmup and {settings()['draws']} draws per chain. Arm A is cut after its required Stage0 benchmark.",'', 'R-rml resolution: report the full-panel signed-event flags as coupled diagnostics; RML remains an approximate cross-check. The Stage1a 0/160 result did not trigger its rerun rule.','', 'R-other resolutions: report the literal climate classification without a proven confidence ordering; name only Q/F/V/R in the tested targeting comparison (regret/scenario targeting is untested); report Wilks truth coverage as measured, approximate coverage.','', 'All share/mechanism/comparator bootstrap intervals are approximate and descriptive. Extra selector readings (unforced distribution, effect magnitudes/backfire, nine-action best and regret) are reported only. The full receipt includes R1/R1m maps, reliability, rank histogram, threshold uncertainty, split stability, RML cross-checks and R5 site/refit records: `runs/audit/acd_stage1.json`.','','This is development analysis; it licenses no confirmation claim. Work stops here. No freeze, confirmation reading or CNN inference was performed.']
     rendered='\n'.join(lines)+'\n';(ROOT/'ACD_STAGE1_READING.md').write_text(rendered)
     note=ROOT/'vault/04-Results/R_Aspen-Counterfactual-Determinacy-Stage1-2026-10.md';note.parent.mkdir(parents=True,exist_ok=True);note.write_text(rendered+'\nRelated: [[WO_Aspen-Counterfactual-Determinacy-2026-10-04]], [[L_Aspen-Counterfactual-Determinacy-Claim-Ledger-2026-10]].\n')
     print('Stage1 gate',decision,flush=True)
