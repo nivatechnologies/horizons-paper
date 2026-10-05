@@ -132,6 +132,7 @@ def run(interval, enforce):
     boot_id = Path("/proc/sys/kernel/random/boot_id").read_text().strip()
     snapshot_last = 0.
     previous_alerts = None
+    previous_events = None
     while True:
         now_boottime = boot()
         recorded_at = utc()
@@ -274,7 +275,12 @@ def run(interval, enforce):
               scope="training and validation only; no test results accessed",
               accounting="conservative reservation bound, not actual GPU time; no CPU-to-GPU conversion")
         write(OUT / "summary.json", summary)
-        if now_boottime - snapshot_last >= 300 or alerts != previous_alerts:
+        events = [(name, row["alive"], row["completion_receipt_present"],
+                   row["stop_requested"], len(row["selector_charge_sources"]),
+                   (row["active_selector_record"] or {}).get("active"),
+                   (row["active_selector_record"] or {}).get("step"))
+                  for name, row in sorted(rows.items())]
+        if now_boottime - snapshot_last >= 300 or alerts != previous_alerts or events != previous_events:
             stamp = recorded_at.replace(":", "").replace("+", "_")
             snapshot_path = OUT / "snapshots" / f"{stamp}.json"
             snapshot_path.parent.mkdir(exist_ok=True)
@@ -283,6 +289,7 @@ def run(interval, enforce):
                 handle.write("\n")
             snapshot_last = now_boottime
             previous_alerts = alerts
+            previous_events = events
         time.sleep(interval)
 
 
