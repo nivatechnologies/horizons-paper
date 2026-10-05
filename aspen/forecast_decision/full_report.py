@@ -33,6 +33,12 @@ def check(rows,result,root=None,source_hashes=True):
         if compute is not None:
             paths=[p for p in result['source_hashes'] if p.endswith('/statistics_compute_metadata.json')]
             assert len(paths)==1;equivalent(compute,json.loads((root/paths[0]).read_text()))
+            for stage,public in compute.get('published_stage_compute',{}).items():
+                seconds=sum(model['recorded_training_selection_phase_gpu_seconds'] or 0 for model in public['models'].values())
+                seconds+=sum(item.get('receipt',{}).get('charged_gpu_seconds',0) for item in public.get('diagnostics',{}).values())
+                equivalent(public['aggregate_recorded_phase_gpu_seconds'],seconds)
+                if 'published_stage_recorded_phase_gpu_hours' in compute:equivalent(compute['published_stage_recorded_phase_gpu_hours'][stage],seconds/3600)
+                equivalent(public['aggregate_phase_measurement_is_lower_bound'],any(model.get('phase_measurement_is_lower_bound',False) for model in public['models'].values()))
             for name,receipt in compute['training'].items():
                 if name!='CNN-20k':
                     hour_key='recorded_charged_phase_gpu_hours' if 'recorded_charged_phase_gpu_hours' in receipt else 'actual_charged_gpu_hours'
