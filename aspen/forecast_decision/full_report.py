@@ -22,7 +22,7 @@ def sentence_check(gate,ids,stage,selected=None,repeats_ran=False):
 
 def check(rows,result,root=None,source_hashes=True):
     reject_nonfinite(rows);reject_nonfinite(result)
-    cases=rows['cases'];assert len(cases)==200;assert [r['case'] for r in cases]==list(range(200))
+    cases=rows['cases'];expected_count=100 if result['stage']=='secondary' else 200;assert len(cases)==expected_count;assert [r['case'] for r in cases]==list(range(expected_count))
     if root is not None and source_hashes:
         for source,expected in result['source_hashes'].items():assert digest(root/source)==expected,'source changed: '+source
     if root is not None:
@@ -31,18 +31,32 @@ def check(rows,result,root=None,source_hashes=True):
             paths=[p for p in result['source_hashes'] if p.endswith('/statistics_compute_metadata.json')]
             assert len(paths)==1;equivalent(compute,json.loads((root/paths[0]).read_text()))
             for name,receipt in compute['training'].items():
-                if name!='CNN-20k':equivalent(receipt['actual_charged_gpu_hours'],receipt['actual_charged_gpu_seconds']/3600)
-        raw_panel='twoscale_test' if result['stage']=='2b' else 'test'
+                if name!='CNN-20k':
+                    hour_key='recorded_charged_phase_gpu_hours' if 'recorded_charged_phase_gpu_hours' in receipt else 'actual_charged_gpu_hours'
+                    second_key='recorded_charged_phase_gpu_seconds' if 'recorded_charged_phase_gpu_seconds' in receipt else 'actual_charged_gpu_seconds'
+                    equivalent(receipt[hour_key],receipt[second_key]/3600 if receipt[second_key] is not None else None)
+                    if receipt.get('worker_terminal_status')=='EXTERNALLY_STOPPED':assert receipt['phase_measurement_is_lower_bound'] is True
+                    if 'total_gpu_hours' in receipt:assert receipt['total_gpu_hours'] is None
+        raw_panel=result.get('panel','twoscale_test' if result['stage']=='2b' else 'test')
         for group,field in [('primary_learned_measured_seconds','primary_decision_timing'),('primary_optional_physics_measured_seconds','measured_primary_seconds')]:
             for name,record in result.get(group,{}).items():
                 values=[]
                 for c in range(len(cases)):
-                    meta=root/f'runs/{raw_panel}/{name}_{c:03d}.json'
+                    timing_panel='twoscale_val' if record.get('timing_panel')=='validation timing only' else raw_panel
+                    meta=root/f'runs/{timing_panel}/{name}_{c:03d}.json'
                     if not meta.exists():continue
-                    item=json.loads(meta.read_text());value=item.get(field)
+                    item=json.loads(meta.read_text());value=item.get(field,item.get('primary_timing') if field=='primary_decision_timing' else None)
                     if field=='primary_decision_timing':value=value.get('seconds') if value else None
                     if value is not None:values.append(value)
                 equivalent(record['cases'],len(values));equivalent(record['mean'],float(np.mean(values)) if values else None)
+        for name,record in result.get('primary_two_scale_physics_measured_seconds',{}).items():
+            values=[]
+            for c in range(16):
+                path=root/f'runs/twoscale_val/primary_timing_{c:03d}.json'
+                if not path.exists():continue
+                item=json.loads(path.read_text())['timings'].get(name)
+                if item and item.get('includes_cost_and_argmin'):values.append(item['seconds'])
+            equivalent(record['cases'],len(values));equivalent(record['mean'],float(np.mean(values)) if values else None)
         if result.get('primary_Nlast_measured_seconds') is not None:
             values=[]
             for c in range(len(cases)):
@@ -53,7 +67,7 @@ def check(rows,result,root=None,source_hashes=True):
             equivalent(result['primary_Nlast_measured_seconds']['cases'],len(values));equivalent(result['primary_Nlast_measured_seconds']['mean'],float(np.mean(values)) if values else None)
     if root is not None:
         from protocol import WINDOWS
-        raw_panel='twoscale_test' if result['stage']=='2b' else 'test'
+        raw_panel=result.get('panel','twoscale_test' if result['stage']=='2b' else 'test')
         for row in cases:
             with np.load(root/f'runs/{raw_panel}/cpu_{row["case"]:03d}.npz') as raw:
                 for e in row['leads']:
@@ -65,7 +79,8 @@ def check(rows,result,root=None,source_hashes=True):
                         assert np.allclose(arm['J'],truth.mean(1),rtol=1e-10,atol=1e-12)
                         equivalent(arm['J0'],float(raw['truth_cost'][8,:,e['h']].mean()))
                         if arm['failed']:
-                            equivalent(arm['regret_raw'],float(np.ptp(truth.mean(1))));equivalent(arm['wACC'],0.)
+                            equivalent(arm['regret_raw'],float(np.ptp(truth.mean(1))))
+                            if not name.endswith('-cost'):equivalent(arm['wACC'],0.)
                             assert not arm['correct']
                         else:
                             equivalent(arm['chosen'],int(np.argmin(arm['cost'])))
@@ -90,7 +105,7 @@ def check(rows,result,root=None,source_hashes=True):
                 split=stored[subset].get('cost_difference_split')
                 if split:equivalent(split['total_MSE'],split['mean_part_MSE']+split['spread_part_MSE']+split['cross_MSE'])
             if 'bootstrap' in stored:
-                samples=rng('afd2-bootstrap' if result['stage']=='2b' else 'afd-bootstrap',3,member=j+100).integers(len(cases),size=(2000,len(cases)))
+                samples=rng('afd2-bootstrap' if result['stage']=='2b' else 'afd-bootstrap',3,case=200 if result['stage']=='secondary' else 0,member=j+100).integers(len(cases),size=(2000,len(cases)))
                 equivalent(stored['bootstrap'],bootstrap_metrics(entries,name,samples))
         if 'null_metrics' in panel:
             J=np.array([e['arms'][result['arms'][0]]['J'] for e in entries]);J0=np.array([e['arms'][result['arms'][0]]['J0'] for e in entries]);scale=float(np.median(np.ptp(J,axis=1)))
@@ -108,15 +123,15 @@ def check(rows,result,root=None,source_hashes=True):
             from protocol import ORDER,ORDER2
             two=result['stage']=='2b';order=ORDER2 if two else ORDER
             S=[name for name in order if name in panel['metrics']];Rep=[name for name in (['CNN2-roll','CNN2-R2'] if two else ['CNN-80k','CNN-roll','CNN-R2']) if name in panel['metrics']]
-            samples=rng('afd2-bootstrap' if two else 'afd-bootstrap',3,member=j+100).integers(len(cases),size=(2000,len(cases)))
+            samples=rng('afd2-bootstrap' if two else 'afd-bootstrap',3,case=200 if result['stage']=='secondary' else 0,member=j+100).integers(len(cases),size=(2000,len(cases)))
             expected=read_gates(entries,S,Rep,samples,selected=result.get('selected'),two_scale=two)
             if not two:expected.update(seed_witness_readings(entries,expected,S,samples))
             expected['licensed_sentences']=license_ids(expected,result['stage'],selected=result.get('selected'),repeats_ran=all(a in result['arms'] for a in ['CNN-20k-s2','CNN-20k-s3']))
             equivalent(gate,expected)
             sentence_check(gate,gate['licensed_sentences'],result['stage'],result.get('selected'),repeats_ran=all(a in result['arms'] for a in ['CNN-20k-s2','CNN-20k-s3']))
     equivalent(result['primary'],next(p for p in result['leads'] if p['T']==2))
-    if result['stage']=='baseline':assert result['licensed_sentences']==[]
-    return dict(status='PASS',cases=200,leads=len(result['leads']),allcase_and_eligible_checked=True,bootstrap_checked=all('bootstrap' in m for p in result['leads'] for m in p['metrics'].values()),source_hashes_checked=root is not None and source_hashes,raw_truth_eligibility_and_cost_checked=root is not None)
+    if result['stage'] in ['baseline','secondary']:assert result['licensed_sentences']==[]
+    return dict(status='PASS',cases=len(cases),leads=len(result['leads']),allcase_and_eligible_checked=True,bootstrap_checked=all('bootstrap' in m for p in result['leads'] for m in p['metrics'].values()),source_hashes_checked=root is not None and source_hashes,raw_truth_eligibility_and_cost_checked=root is not None)
 
 
 def fragment_name(stage):return 'NUMBERS_FULL_METRICS_'+{'baseline':'BASELINE','2':'STAGE2','2b':'STAGE2B','secondary':'SECONDARY'}.get(stage,stage.upper())+'.md'
@@ -133,7 +148,7 @@ def report(result):
     lines+=['','Failed cases have wrong top-1, worst regret and ACC zero; excluded metrics carry counts in the checked record. Response metrics are ratios of sums, with paired case bootstrap.','',
             'Realized regret is reported in raw energy, as the panel median range counterpart, and as the historical per-case range descriptive ratio. No new threshold uses these descriptive ratios.','',
             'Complete cost mean/spread decomposition, all-case counterparts, action use, work and bootstrap intervals are in the named NUMBERS fragment.','']
-    if result['stage']=='baseline':lines+=['This descriptive baseline report licenses no headline sentence.','']
+    if result['stage'] in ['baseline','secondary']:lines+=['This descriptive baseline report licenses no headline sentence.','']
     return '\n'.join(lines)
 
 

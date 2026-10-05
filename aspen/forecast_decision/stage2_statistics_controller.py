@@ -46,10 +46,10 @@ def readiness(root,selection_path,inference_path):
             record=json.loads(meta.read_text())
             if record.get('checkpoint_sha256')!=expected:raise ValueError('raw output checkpoint mismatch '+str(meta))
     compute_path=root/'runs/statistics_compute_metadata.json'
-    if not compute_path.exists():return None,'waiting for public actual compute receipts'
+    if not compute_path.exists():return None,'waiting for public recorded-phase compute receipts'
     compute=json.loads(compute_path.read_text())
     for name in model_names:
-        if name!='CNN-20k' and name not in compute['training']:return None,'waiting for completed GPU receipt '+name
+        if name!='CNN-20k' and name not in compute['training']:return None,'waiting for public terminal GPU phase receipt '+name
     names=['N-last','N-oracle']+model_names
     for name in ['N-mis','N-win']:
         if all((root/f'runs/test/{name}_{c:03d}.npz').exists() for c in range(200)):names.append(name)
@@ -68,7 +68,7 @@ def main():
         if not a.watch:return
         time.sleep(30)
     from assemble_metrics import assemble
-    rows,result=assemble(a.root,a.root/'runs/stage1_cases.json',ready['names'],a.authorization,stage='2',selected=ready['selection']['selected_L'],intervals=True)
+    rows,result=assemble(a.root,a.root/'runs/stage1_cases.json',ready['names'],a.authorization,stage='2',selected=ready['selection']['selected_L'],intervals=True,fixed_action=ready['selection'].get('best_fixed_action'))
     result['selection_completed_at']=ready['selection']['selection_completed_at'];result['selection_manifest']=str(selection_path.relative_to(a.root));result['inference_manifest']=str(inference_path.relative_to(a.root));result['cuts']=ready['selection'].get('cuts',[]);result['not_run']=ready['selection'].get('not_run',[])
     result['source_hashes'][str(selection_path.relative_to(a.root))]=digest(selection_path);result['source_hashes'][str(inference_path.relative_to(a.root))]=digest(inference_path)
     write_json(a.root/'runs/2_metrics_cases.json',dict(cases=rows));write_json(a.root/'runs/2_metrics.json',result)

@@ -72,7 +72,7 @@ def stage2_note(result,checker):
         b=g['H1b_bounds'];headline+=f"Validation-selected {selected}: gap {value(b['point'])}, lower {value(b['lower'])}, upper {value(b['upper'])}; PASS requires gap≥0.10 and lower≥0.05; KILL requires upper≤0.05."
     choice='stop' if g['H1a']=='KILL' and result['stage']=='2' else 'go' if g['H1a']=='PASS' and g['H1b']=='PASS' else 'pivot'
     reason='H1a KILL ends the campaign under WO §9' if choice=='stop' else 'the full headline thresholds are met, with all mandatory companion readings below' if choice=='go' else 'the full headline is not licensed; Todd decides whether the measured scope warrants an Aspen headline'
-    lines=[f"Stage and gate: Stage {result['stage']}, sufficiency then frozen hypotheses at T*=2 LT.",
+    lines=[f"Stage and gate: Stage {result['stage']}, sufficiency then frozen hypotheses at T*=2 {'LT_ref' if result['stage']=='2b' else 'LT'}.",
            f"Headline value now, against the threshold: {headline}",
            'What changed since the last gate: frozen training, validation selection and complete test inference now supply the budgeted repairs and decision-trained comparison.',
            'Largest remaining risk to the so-what test: the matched-law operating point and the measured outcome of the strongest incumbent; the two-scale reading determines the broader scope.',

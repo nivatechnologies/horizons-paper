@@ -73,10 +73,16 @@ def main():
             write_json(root/'runs/final_sentences_status.json',dict(status='WAITING_STAGE2',at=datetime.datetime.now(datetime.timezone.utc).isoformat()))
         else:
             one=json.loads(one_path.read_text());assert json.loads(one_check.read_text())['status']=='PASS';two=None;scope='pending'
-            if two_path.exists() and two_check.exists() and json.loads(two_check.read_text())['status']=='PASS':two=json.loads(two_path.read_text());scope='ran'
-            elif scope_path.exists():
-                stated=json.loads(scope_path.read_text())
-                if stated.get('two_scale')=='not_run' and stated.get('final') is True:scope='not_run'
+            if scope_path.exists():
+                stated=json.loads(scope_path.read_text());reject_nonfinite(stated)
+                if stated.get('two_scale')=='not_run' and stated.get('final') is True:
+                    if stated.get('authorization_sha256') is not None:
+                        if not authorization.exists() or digest(authorization)!=stated['authorization_sha256']:raise ValueError('not-run authorization receipt changed')
+                        recorded=datetime.datetime.fromisoformat(stated['at'].replace('Z','+00:00'))
+                        cutoff=datetime.datetime.fromisoformat(stated['deadline_utc'].replace('Z','+00:00'))
+                        if recorded.tzinfo is None or cutoff.tzinfo is None or recorded<=cutoff:raise ValueError('not-run receipt precedes authorized cutoff')
+                    scope='not_run'
+            if scope=='pending' and two_path.exists() and two_check.exists() and json.loads(two_check.read_text())['status']=='PASS':two=json.loads(two_path.read_text());scope='ran'
             reading=combined(one,two,scope);checker=check_combined(one,two,scope,reading)
             # Missing mandatory S9 must be rejected when a ran panel lacks S8.
             if scope=='ran' and 'S9' in reading['final_licensed_sentences']:

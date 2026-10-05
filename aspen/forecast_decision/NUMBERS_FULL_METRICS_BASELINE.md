@@ -5,10 +5,13 @@ Checked measured descriptions; this file is a NUMBERS fragment for campaign regi
 ```json
 {
   "stage": "baseline",
+  "panel": "test",
+  "two_scale": false,
+  "sigma": 4.312600593723798,
   "selected": null,
   "role": "statistics coordinator",
   "test_access_authorization": "2026-10-05T01:08:15Z",
-  "created_at": "2026-10-05T01:33:47.922128+00:00",
+  "created_at": "2026-10-05T02:17:23.374965+00:00",
   "arms": [
     "N-last",
     "N-oracle",
@@ -18,10 +21,11 @@ Checked measured descriptions; this file is a NUMBERS fragment for campaign regi
   ],
   "source_hashes": {
     "runs/stage1_cases.json": "472a75670a18983124cd66ed92f5d419aeea8c95d5a13193d3cc58e0c55b95fb",
-    "runs/statistics_sources/d3413b9933f9105bc8f9acef719cd757898cdd453c69913bcad3d4ffa50e81d2/assemble_metrics.py": "d3413b9933f9105bc8f9acef719cd757898cdd453c69913bcad3d4ffa50e81d2",
-    "runs/statistics_sources/a3e1c2228d5565d7ca29b7d1bbe5cf2b46b1427a5e46896b754351638c2b9d30/metrics.py": "a3e1c2228d5565d7ca29b7d1bbe5cf2b46b1427a5e46896b754351638c2b9d30",
-    "runs/statistics_sources/a8a2cd413762d2ee0981fe81bddd1c04a5beb97a3a9c94c521c7def1086c7600/full_report.py": "a8a2cd413762d2ee0981fe81bddd1c04a5beb97a3a9c94c521c7def1086c7600",
+    "runs/statistics_sources/9d2544aaafa8dfcce2e61bf190ca128238855d41300f64b302524b1680502e54/assemble_metrics.py": "9d2544aaafa8dfcce2e61bf190ca128238855d41300f64b302524b1680502e54",
+    "runs/statistics_sources/df693c709f7598f57105af7b7cf724d0943c35c4860b28d35a5deb83b9869fa7/metrics.py": "df693c709f7598f57105af7b7cf724d0943c35c4860b28d35a5deb83b9869fa7",
+    "runs/statistics_sources/7c5beaeb5946de89b1a75c249c096478f927622b58fb22603b5000b2f20051cc/full_report.py": "7c5beaeb5946de89b1a75c249c096478f927622b58fb22603b5000b2f20051cc",
     "runs/statistics_sources/e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d/protocol.py": "e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d",
+    "runs/statistics_sources/3bba9f8a4af9cf1fae7a6363e21711933a2f1378cd0f3ecafb92e46e07f43ba1/panel_case_rows.py": "3bba9f8a4af9cf1fae7a6363e21711933a2f1378cd0f3ecafb92e46e07f43ba1",
     "inputs/climatology.npy": "4513b34ab1ab674bb7c5bf295906e38334ce938ebcb729b6bfa9d97467c7499e",
     "runs/test/cpu_000.npz": "adeda3a05219b766b95a7686549b819eacb5ee9f66ed8d359e340b8b7337072e",
     "runs/test/CNN-20k_000.npz": "affbb223c471ad5fdf6dcd47887b1276a14fae397dc87611b775d4d5d47da83c",
@@ -1071,7 +1075,7 @@ Checked measured descriptions; this file is a NUMBERS fragment for campaign regi
     "runs/test/N-mis_199.npz": "4944fbba20ce2ff768a6a38cd255175096e36e052ebd6c45b8f5664d9ce0c133",
     "runs/test/N-win_199.npz": "4e22c6ff9f82ef015890593f0e3911afb431845a411f83e8c244e9ddd4561a3f",
     "runs/test/work_timing_199.json": "d1f0f91a4419e428cba8bc42cbbb11e3b5dd9231e30a5a807b05313242e516df",
-    "runs/statistics_sources/d48c50368ffdf70138a49918df07058f94e0f6555c066e649378fc807c3cc82f/statistics_compute_metadata.json": "d48c50368ffdf70138a49918df07058f94e0f6555c066e649378fc807c3cc82f"
+    "runs/statistics_sources/c858ecf3d1a65dfa2ef056be4376e2c97ec78c591942c0930ac34556c1e021b0/statistics_compute_metadata.json": "c858ecf3d1a65dfa2ef056be4376e2c97ec78c591942c0930ac34556c1e021b0"
   },
   "leads": [
     {
@@ -13536,7 +13540,12 @@ Checked measured descriptions; this file is a NUMBERS fragment for campaign regi
     "mean": 0.19777136956054164
   },
   "compute_metadata": {
-    "at": "2026-10-05T01:33:49.119483+00:00",
+    "published_stage_compute": {},
+    "completed_training_stage_recorded_phase_gpu_hours": {
+      "2": 0,
+      "2b": 0
+    },
+    "at": "2026-10-05T02:17:25.898262+00:00",
     "training": {
       "CNN-20k": {
         "actual_gpu_hours": null,
@@ -13579,7 +13588,7 @@ Checked measured descriptions; this file is a NUMBERS fragment for campaign regi
       "runs/training_data2/pairs.json": "d1f0d8c964b33ceecf0f7bb116d65bc059dc1cce93585ca0b8c758b3533dea49",
       "runs/training_data2/cost.json": "c99fc12fbfa2e089263b365dc91fc392d3463603e50c77a45c74287a9670eda4"
     },
-    "rule": "CPU wall seconds are never relabeled as GPU-hours; GPU time comes only from charged worker receipts"
+    "rule": "CPU wall seconds are never relabeled as GPU-hours; Recorded GPU phase time comes only from worker receipts; legacy CUDA setup duration and exact total GPU time remain unavailable; process elapsed reservation bounds are not measured GPU time"
   },
   "primary_optional_physics_measured_seconds": {
     "N-mis": {
@@ -13610,5 +13619,5 @@ Checker: {"NaN_rejected": true, "allcase_and_eligible_checked": true, "bootstrap
 | Artifact | SHA256 |
 |---|---|
 | runs/baseline_metrics_cases.json | d8050b83a1d4da61885f4f10cdd5a29785036ce7d34b3bd7b5b88648055d3c6c |
-| runs/baseline_metrics.json | b12f19c4edc13e883c76bd55a3e1b56d0d3b0aaa64d124256d94c5aa87dd62d2 |
+| runs/baseline_metrics.json | 4cafd1cd85dbcd858c17f169c86a3a0219e4bccfaa356c595636049d8b123654 |
 | runs/baseline_metrics_checker.json | 12e08b4be5be9da5d815a3e880b2f73d05b6741ead35c02b7b137124a92b94c8 |

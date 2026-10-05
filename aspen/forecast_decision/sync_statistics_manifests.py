@@ -12,7 +12,7 @@ def sync(root,destination):
     from compute_metadata import collect
     write_json(root/'runs/statistics_compute_metadata.json',collect(root))
     records=[]
-    for rel in ['runs/training/final_selection_stage2.json','runs/training/final_selection_stage2b.json','runs/stage2_inference/manifest.json','runs/statistics_compute_metadata.json','runs/final_scope_authorization.json']:
+    for rel in ['runs/training/final_selection_stage2.json','runs/training/final_selection_stage2b.json','runs/stage2_inference/manifest.json','runs/statistics_compute_metadata.json','runs/final_scope_authorization.json','runs/training/compute_stage2.json','runs/training/compute_stage2b.json']:
         source=root/rel
         if not source.exists():continue
         data=json.loads(source.read_text())
