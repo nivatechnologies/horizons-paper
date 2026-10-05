@@ -1,0 +1,14 @@
+{
+  "kind": "operational closure guard only; no scientific quantity or frozen recipe change",
+  "authority": "Todd, WO section19, closed-2026-10-04",
+  "original_source_sha256": "1e100ed5b83b7427741439312e80a7ede0de1d41bea3671fce25ce9a48a27397",
+  "preserved_snapshot": "source_history/twoscale_campaign.1e100ed5b83b7427741439312e80a7ede0de1d41bea3671fce25ce9a48a27397.py",
+  "closed_source_sha256": "cf8ada38c0f327b8c478c97d7a12434c49940aaf41c305b7579af376b5dca1e2",
+  "closed_source": "twoscale_campaign.py",
+  "control_paths": [
+    "runs/closure/control.json",
+    "runs/training/closure_control.json",
+    "runs/stage2_test_hold.json"
+  ],
+  "old_sampler_go_cannot_override_closure": true
+}

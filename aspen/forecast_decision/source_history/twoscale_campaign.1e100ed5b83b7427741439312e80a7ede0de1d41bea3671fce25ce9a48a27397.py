@@ -7,18 +7,6 @@ from physics import flow2,step2,rhs2
 from twoscale_prep import condition
 from twoscale_data import slowpaths
 from campaign import artifact,now
-from evaluation_hold import hold_active
-def require_twoscale_open():
-    # Operational closure overrides all earlier sampler approvals; no numerical rule changes.
-    permanent=ROOT/"runs/closure/control.json"
-    if permanent.exists():
-        raise PermissionError("Todd closed the campaign under WO section19; no two-scale data or panels")
-    training=ROOT/"runs/training/closure_control.json"
-    if training.exists() and json.loads(training.read_text()).get("campaign_closed") is True:
-        raise PermissionError("Todd closed the campaign; permanent training closure blocks two-scale work")
-    if hold_active(ROOT):
-        raise PermissionError("Todd hold blocks two-scale work; no previous sampler approval releases it")
-
 W2=WINDOWS[:4]
 @njit(cache=True)
 def closure_rhs(x,f,a):
@@ -167,7 +155,6 @@ def identify2(y,a):
     return (lo+hi)/2
 
 def metadata():
-    require_twoscale_open()
     folder=ROOT/"runs/twoscale"
     # A coordinator creates this only after the user explicitly approves the report.
     go=json.loads((folder/"sampler_go.json").read_text())
@@ -192,7 +179,6 @@ def cost2(states):
     return np.stack([energy[...,w].mean(-1) for w in W2],axis=-1)
 
 def panel_directory2(panel):
-    require_twoscale_open()
     folder=ROOT/"runs"/("twoscale_"+panel)
     marker=folder/"panel_schema.json"
     if marker.exists():
@@ -408,7 +394,6 @@ def inference2(panel,name,checkpoint,micro):
         print(panel,name,c+1,flush=True)
 
 if __name__=="__main__":
-    require_twoscale_open()
     from pathlib import Path
     p=argparse.ArgumentParser();p.add_argument("task",choices=["cpu","cnn","climate","oracle","timing","pack-val"],default="cpu",nargs="?");p.add_argument("--panel",choices=["val","test"],default="val");p.add_argument("--workers",type=int,default=96)
     p.add_argument("--name");p.add_argument("--checkpoint",type=Path);p.add_argument("--microbatch",type=int,default=8);args=p.parse_args()
