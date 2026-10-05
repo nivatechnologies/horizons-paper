@@ -61,3 +61,47 @@ Measured RMS values: [1.0, 1.0, 1.0, 0.9999999999999999, 1.0, 1.0, 1.0, 0.999999
 ## AFD_SEEDS
 
 Retained namespace IDs: {"arm": 300000, "calibration": 100000, "climatology": 600000, "jitter": 700000, "lyapunov": 800000, "observation": 900000, "train": 400000, "truth": 200000, "val": 500000}
+
+## AFD_NUMERICAL_PREFLIGHT
+
+Source: runs/preflight_report.json; values recomputed from recorded comparisons and raw sampler draws.
+Truth time is a projection from measured single-core throughput; the WO extra cost remains an unmeasured estimate.
+
+| Key | Value |
+|---|---|
+| one_scale_dt | 0.01 |
+| dt_rounds | 1 |
+| checked_comparisons | 896 |
+| failed_comparisons | 0 |
+| argmin_changes | [0, 0, 0, 0, 0, 0, 0, 0] |
+| two_scale_batch_members | 2048 |
+| single_core_batch_step_seconds | 0.008907205150171649 |
+| dt_benchmark | 0.001 |
+| truth_projection_steps | 1779 |
+| projected_truth_core_hours | 11.884438471616523 |
+| wo_total_estimate_core_hours | 96 |
+| wo_extra_estimate_core_hours | 15 |
+| projection_with_unmeasured_wo_extra | 26.884438471616523 |
+| two_scale_state_dt | 0.001 |
+| state_check_rounds | [{"dt": 0.001, "sigma_X": 4.39100317948803, "max_abs_X_difference": 4.800699962004273e-07, "threshold": 4.39100317948803e-06, "passed": true}] |
+| sampler_ratio | 0.9966878068707742 |
+| sampler_correlation | 0.9408992852605442 |
+| sampler_spread | 0.40542024308530517 |
+| sampler_mean_error | 0.4067675357223167 |
+| sampler_states | 16 |
+| sampler_draws_per_state | 64 |
+| sampler_per_state_ratios | [1.1695964451174292, 1.1617687150620861, 1.163389886037, 0.7318121144028732, 0.9013407512588125, 0.93511707579016, 0.8170905516384024, 1.0292784364640089, 1.0512178706007087, 0.9712287115072136, 1.145011423965617, 0.898479723312774, 1.1229222639832233, 1.1290454925353803, 0.9179814707730805, 1.1341152612540168] |
+| sampler_per_state_correlations | [0.930875437030984, 0.9650483270890302, 0.9516222502373259, 0.8950274608596865, 0.9371789447102453, 0.9388893319528453, 0.93174799929249, 0.952968359057935, 0.9577849337034665, 0.948219474312108, 0.9566548626096886, 0.9476674660236659, 0.9498665061013578, 0.9674651339342258, 0.9167546868396387, 0.9203829727749324] |
+| sigma_X | 4.362474573065851 |
+| sigma_Y | 0.2553174687832342 |
+
+## AFD_PREFLIGHT_ARTIFACT_HASHES
+
+| Artifact | SHA256 |
+|---|---|
+| runs/numerics/dtcheck.json | e5dc257018dac8a9104a36ecb58fed3d2f50f9d1a39e6590817587f2c6abeaa2 |
+| runs/numerics/twoscale_rate.json | 59b10863b2cf75f89c381ff2d7b67d18b64727cd18b823333b52ffb4c4f8dbba |
+| runs/twoscale/statecheck.json | 9b847eaa3db3f895b1a42cbbf563ea4dc5e030d8abd0f71802e7fc1af5a4bc85 |
+| runs/twoscale/fastlib.npz | 27066e0ed8bc68429519d086e23d29be4ac5833f2d29baa66fd4952654fa7bf6 |
+| runs/twoscale/sampler_raw.npz | d1dfa61e99b52921bab626ba139881b79b614df83e13e4f044c35db7f64b4caf |
+| runs/twoscale/sampler_check.json | 26cd64d5c81883e04fa0abf68337be36e5e70de85977e9f7630ffbd42dba3f4e |

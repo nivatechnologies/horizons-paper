@@ -94,7 +94,7 @@ def main():
         (HERE/"NUMBERS.md").write_text(render_numbers(measured))
     stored=json.loads((HERE/"step0_evidence.json").read_text())
     validate(stored, measured)
-    assert (HERE/"NUMBERS.md").read_text()==render_numbers(measured), "NUMBERS mismatch"
+    assert (HERE/"NUMBERS.md").read_text().startswith(render_numbers(measured)), "preflight NUMBERS mismatch"
     bad=copy.deepcopy(stored)
     bad["parameter_count"]+=1
     try:
@@ -107,4 +107,3 @@ def main():
 
 if __name__=="__main__":
     main()
-
