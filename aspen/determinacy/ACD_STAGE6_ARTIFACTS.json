@@ -1,0 +1,49 @@
+{
+  "base": "92d83355bb4b9c8f0a7205bfff341b3d55bd6b0d",
+  "post_hoc": true,
+  "licenses_frozen_route": false,
+  "registry_keys": 12002,
+  "new_stage6_keys": 5856,
+  "paper_and_abstract_unchanged": true,
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "resolution": "Stage6 is post hoc on confirmation; all comparisons, bounds and diagnostic statuses license no frozen route. No multiplicity/selection-adjusted inference is claimed."
+    },
+    {
+      "rule": "R-other",
+      "resolution": "Retain measured RK4 energy-budget residual as a third closure term; do not describe two discretized continuous-budget contributions as exactly summing to trajectory energy."
+    },
+    {
+      "rule": "R-other",
+      "resolution": "Last-confident tested lead is an observed-grid endpoint; both at the final grid point are tied, with no extrapolated loss time."
+    }
+  ],
+  "sha256": {
+    "ACD_STAGE6_READING.md": "009250c17ec000e522cbc9595de09cecedb83fba37a2970446f54568e217567f",
+    "R_Aspen-Counterfactual-Determinacy-Stage6-2026-10.md": "ebfaad4eecde983e62d72483332c29223aaae94f70dea772dfe02bbfb8e4c76d",
+    "acd_stage6_analysis.py": "c9fa8c1f9e211f8e7ea47ec63947bff3693258c738c377ce7874b425bba58cd8",
+    "acd_stage6_cnn.py": "7cc01d30602b040e8ba388a626fe81a10d1e1235376405837c57adf10ceebf63",
+    "acd_stage6_forward.py": "0a19fd6241604464a1d4aca8baaff6d4c60d47dc20eba64497963a942998612d",
+    "acd_stage6_render.py": "efde8d688b1eb20988546b29f8caeb4ffda38b3199a62ae4305f74dd7da3d833",
+    "acd_stage6_verify.py": "eff4ce088c1920c590ebc089e95fe82cc2267d3e34a5884b130f264461b6ff12",
+    "figures/F10_decision.pdf": "1ba16c1f42d602bd44d7999a528aa49b05534af001f1ff6a4a0fddfab9817c60",
+    "figures/F10_decision.png": "3e5abccbd643bcac256fcd08ad91b86f54a206b421bf8f6733bc6841f1af4066",
+    "figures/F10_decision_CAPTION.md": "f65971e2b67b7fb8c01f73b6d4b1eb1e020ff98f0d743c6c31b7efa6ab8c1f10",
+    "figures/F7_patterns.pdf": "fc313161037e68ef9c8938f0f5aff0be443182823d3de09b334db6be8d1b3e39",
+    "figures/F7_patterns.png": "68597009fd399ec79e4b5b6bcf5f03825b7a966650b6b5fb6577c595c907838d",
+    "figures/F7_patterns_CAPTION.md": "142462fe67f24d5ae2683462f9d7c8004d1ae53d28f3d327553a9ca420ccd014",
+    "figures/F8_mechanism.pdf": "13303480b5e63cfda300ff8536eda05272ccad4f0e50e33509c6af56e250709b",
+    "figures/F8_mechanism.png": "a39f3e47c59791c392fdd3ce792f7083ed24bb9805bac416f2d4c6b21a04c882",
+    "figures/F8_mechanism_CAPTION.md": "4ce60d91d86dd812032bf5e7fe1bc2e12656136d1ededdcb322ff5ba342149ca",
+    "figures/F9_block.pdf": "a1771b048f970ba1d7cf8629d67d2521d3a9f9712f1b35934fa419bb9636f18d",
+    "figures/F9_block.png": "91a4caecbf89b147c9f2fa624a981bd00b051cfa9a51ecf8503e661876736787",
+    "figures/F9_block_CAPTION.md": "11f4e7460f3a2d170e643908ec846a2116a2a1f06396cb4b62a1ae22fb704b57",
+    "receipts/acd_stage6.json": "fa4a0dc1da0d91b1e93fd4c9bee6dad42feeff5d17535058e590f900af24177d",
+    "receipts/acd_stage6_numbers_check.txt": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+    "receipts/acd_stage6_verification.json": "3554cf51a479d9ad08584c60427f5505811ae551d9063906b29af4ee18f77bb4",
+    "NUMBERS_ACD.md": "a784d1fa1a8eb7462f15031dd2d0e8da23013b371896127c74a7492fdd8b7e1b",
+    "acd_numbers.py": "49c5f90e0059bc198c12345e31e5a5915ec9ae2cc97fd80390a13a9c6023eee4",
+    "numbers_acd.json": "fce3fc8924036d11d0b38b332e4995fd86b27dc6a708ffecc225f8b72ab5d180"
+  }
+}

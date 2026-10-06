@@ -176,10 +176,22 @@ def build():
             row=next(j for j,x in enumerate(d['R1']) if x['type']==typ and x['lead']==t)
             add('ACD_R1_'+typ+'_NOT_CONFIDENT_POINT_'+lead(t),1-d['R1'][row]['confident']['point'],f'$.R1[{row}].confident.point',derivation='one minus saved confident share')
 
+    stage6_receipt='receipts/acd_stage6.json'
+    if (ROOT/stage6_receipt).exists():
+        stage6=json.loads((ROOT/stage6_receipt).read_text())
+        omitted=('records','case_records','source_hashes','output_hashes','members','rules','resolutions')
+        walk(stage6['A'],'ACD_POSTHOC_STAGE6_A','$.A',stage6_receipt,omit=omitted)
+        walk(stage6['B']['B1']['confirmation'],'ACD_POSTHOC_STAGE6_B1','$.B.B1.confirmation',stage6_receipt,omit=omitted)
+        walk(stage6['B']['B1']['development_amplitude_0p64'],'ACD_DEV_POSTHOC_STAGE6_B1_AMP0P64','$.B.B1.development_amplitude_0p64',stage6_receipt,omit=omitted)
+        for label in ['B2','B3']:
+            walk(stage6['B'][label],'ACD_POSTHOC_STAGE6_'+label,'$.B.'+label,stage6_receipt,omit=omitted)
+        walk(stage6['C'],'ACD_POSTHOC_STAGE6_C','$.C',stage6_receipt,omit=omitted)
+        walk(stage6['settings'],'ACD_POSTHOC_STAGE6_SETTINGS','$.settings',stage6_receipt)
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
+    if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
-    lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']
+    lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Stage 6 POSTHOC keys license no frozen route. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']
     for k,v in d['numbers'].items():lines.append(f"| {k} | {repr(v['value'])} | {v['receipt']} | {v['receipt_path']}"+(' ; '+v['derivation'] if 'derivation' in v else '')+' |')
     return '\n'.join(lines)+'\n'
 def write():
