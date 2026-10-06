@@ -17,27 +17,27 @@ def figures(d):
   r=[r for r in b if r['amplitude']==amp];x=[v['lead'] for v in r]
   axs[0].plot(x,[v['per_draw_sign_agreement'] for v in r],style,marker=marker,label=f'a={amp}')
   axs[1].plot(x,[v['median_z_G'] for v in r],style,marker=marker,label=f'G; a={amp}')
-  axs[1].plot(x,[v['median_z_D'] for v in r],':',marker='x' if amp==.04 else '+',label=f'D; a={amp}')
+  axs[1].plot(x,[v['median_z_D'] for v in r],'-.' if amp==.04 else ':',marker='x' if amp==.04 else '+',label=f'D; a={amp}')
  axs[0].set_ylabel('Per-draw sign agreement');axs[1].set_ylabel('Median posterior |mean| / SD')
  for ax in axs:ax.set_xlabel('Lead (LT)');ax.legend()
  fig.suptitle('Post hoc confirmation: tangent and finite response');savefig(fig,'F11_tangent')
  fig,axs=plt.subplots(1,2,figsize=(11,4))
- styles=[('-', 'o'),('--','s'),(':','^'),('-.','x'),('--','+'),(':','d')]
+ styles=[('-', 'o'),('--','s'),(':','^'),('-.','x'),((0,(5,1,1,1)),'+'),((0,(1,2,3,2)),'d'),((0,(6,2,2,2)),'v')]
  for ax,group in zip(axs,['uniform','seven_zero_mean']):
   rows=[r for r in d['B']['B1'] if r['patterns']==group]
-  for name,(style,marker) in zip(rows[0]['terms'],styles):
+  for band,(name,(style,marker)) in enumerate(zip(rows[0]['terms'],styles)):
    x=[r['lead'] for r in rows];y=[r['terms'][name]['median'] for r in rows]
-   ax.plot(x,y,style,marker=marker,label=name)
-   ax.fill_between(x,[r['terms'][name]['q25'] for r in rows],[r['terms'][name]['q75'] for r in rows],color='0.8',alpha=.12,hatch='/' if marker=='o' else '\\')
+   ax.plot(x,y,linestyle=style,marker=marker,label=name)
+   ax.fill_between(x,[r['terms'][name]['q25'] for r in rows],[r['terms'][name]['q75'] for r in rows],color='0.8',alpha=.16,hatch=['/','\\','x','-','+','o'][band])
   ax.set_title(group);ax.set_xlabel('Lead (LT)');ax.set_ylabel('Share of within-pair Var(D)');ax.legend(fontsize=7)
  fig.suptitle('Post hoc confirmation: descriptive variance decomposition (median, IQR)');savefig(fig,'F12_variance')
  fig,axs=plt.subplots(1,2,figsize=(11,4))
- for (name,model),(style,marker) in zip(d['C'].items(),styles):
+ for (name,model),(style,marker) in zip([(n,m) for n,m in d['C'].items() if 'reliability' in m],styles):
   if not isinstance(model,dict) or 'reliability' not in model:continue
   r=[r for r in model['reliability'] if r['questions']]
   axs[0].errorbar([v['mean_probability'] for v in r],[v['accuracy'] for v in r],yerr=np.array([[v['accuracy']-v['CP95'][0] for v in r],[v['CP95'][1]-v['accuracy'] for v in r]]),linestyle=style,marker=marker,label=name)
   r=[r for r in model['error_coverage'] if r['answers']]
-  axs[1].plot([v['coverage'] for v in r],[v['pooled_error'] for v in r],style,marker=marker,label=name)
+  axs[1].plot([v['coverage'] for v in r],[v['pooled_error'] for v in r],linestyle=style,marker=marker,label=name)
  axs[0].plot([.5,1],[.5,1],':',marker='+',color='0.6');axs[0].set_xlabel('Mean modal probability');axs[0].set_ylabel('Observed accuracy (descriptive pooled CP95)')
  axs[1].set_xlabel('Coverage');axs[1].set_ylabel('Pooled error')
  for ax in axs:ax.legend(fontsize=7)
@@ -51,7 +51,7 @@ def figures(d):
   x=[a for a,r in points]
   axs[0].plot(x,[r['all_S_share'] for a,r in points],style,marker=marker,label=f'S {lead} LT')
   axs[0].plot(x,[r['observation_S_share'] for a,r in points],':',marker='x' if lead==2 else '+',label=f'observation S {lead} LT')
-  axs[0].axhline(points[0][1]['Fc_share'],linestyle=style,color='0.6',label=f'Fc {lead} LT')
+  axs[0].plot(x,[points[0][1]['Fc_share']]*len(x),linestyle=style,marker='d' if lead==2 else 'v',color='0.6',label=f'Fc {lead} LT')
   axs[1].errorbar(x,[r['seven_minus_Fc']['point'] for a,r in points],yerr=np.array([[r['seven_minus_Fc']['point']-r['seven_minus_Fc']['lower'] for a,r in points],[r['seven_minus_Fc']['upper']-r['seven_minus_Fc']['point'] for a,r in points]]),linestyle=style,marker=marker,label=f'{lead} LT')
  for ax in axs:ax.set_xscale('log',base=2);ax.set_xlabel('Amplitude');ax.legend(fontsize=7)
  axs[0].set_ylabel('Confident share');axs[1].set_ylabel('Seven-pattern S − Fc (betting99%)')
@@ -78,6 +78,7 @@ def run():
  d['resolutions'].append(d['CNN_provenance']['CNNcost']['resolution'])
  for name in ['CNN-roll','CNN-resp']:
   if d['C'][name].get('status')=='UNAVAILABLE':d['resolutions'].append(d['C'][name]['resolution']+f' ({name})')
+ d['environment']=json.load(open(RUN/'execution_environment.json'))
  d['verification']=json.load(open(RUN/'verification.json'))
  d['jvp_check']=json.load(open(RUN/'jvp_implementation_check.json'))
  d['source_hashes']={p.name:sha(p) for p in ROOT.glob('acd_stage9*.py')}

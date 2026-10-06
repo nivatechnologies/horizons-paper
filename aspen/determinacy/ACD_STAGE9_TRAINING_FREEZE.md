@@ -30,3 +30,7 @@ Superseding code SHA256 (prior listed hashes are the discarded implementation):
 - acd_stage9_train.py: 9c36418c45ab0727d2c4294b96bed1102b85d65d269636f6c9b38e3573605269
 - acd_stage9_cnn.py: 3ca018b1dc35c5cb9734787e852240e7517d88007515692d27fd882f3c13d434
 - acd_stage9_cnn_metrics.py: 85afbef88254f8f7ad8180d216904cf7bdf28a6f5127b4cdec3e9d79e72b40c8
+
+## Additional matched-cohort descriptive reading, before trained-model evaluation
+
+Alongside the previously frozen model-specific lead0-eligible paired endpoint, also report the endpoint on the original posterior1332-pair cohort. This prevents a model-dependent eligibility change from silently altering a between-model comparison. Both are labelled post hoc and license no route; training and checkpoint selection remain unchanged. Superseding scoring code hash: 8b7d0509dbd521b021706a51a2afb34b44a0bc873394bb09ebf3dc21a0321f49.

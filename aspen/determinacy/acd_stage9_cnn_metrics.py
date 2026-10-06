@@ -46,8 +46,10 @@ def score(name,entries,summary,keep,means,costerrors,jbar):
    if mask.any():differences.append(float((p[c,mask]-right[c,mask]).mean()))
   interval=diff(differences)
   tests.append(dict(threshold=threshold,cases=len(differences),overconfidence_interval=interval,reject_mean_calibration=bool(not interval['empty'] and not interval['offset'] and (interval['lower']>0 or interval['upper']<0)),test='v2.3 two-sided99% case-level betting interval for case-mean modal probability minus correctness; necessary mean-calibration check, not a full conditional calibration test'))
+ original=json.load(open(DEST/'receipt_analyses.json'))['A']['A2']['records'];fixed_eligible=np.zeros((200,8),bool)
+ for c,k,_,_ in original:fixed_eligible[c,k]=True
  eligible=summary['observation'][:,:8,0]&summary['confident'][:,8,0,None]
- return dict(model=name,post_hoc=True,matched_cases=int(keep.sum()),matched_questions=int(keep.sum()*7),confidence_readings=rows,state_skill=skill,per_draw_cost_errors=costerrors,reliability=bins,error_coverage=curves,calibration_test=tests,comparisons=[r for r in comparisons(summary,keep) if r['lead'] in ([2] if name=='CNN-cost' else [2,3])],paired_endpoint=endpoint_fixed(summary,keep,eligible) if name!='CNN-cost' else None)
+ return dict(model=name,post_hoc=True,matched_cases=int(keep.sum()),matched_questions=int(keep.sum()*7),confidence_readings=rows,state_skill=skill,per_draw_cost_errors=costerrors,reliability=bins,error_coverage=curves,calibration_test=tests,comparisons=[r for r in comparisons(summary,keep) if r['lead'] in ([2] if name=='CNN-cost' else [2,3])],paired_endpoint=endpoint_fixed(summary,keep,eligible) if name!='CNN-cost' else None,paired_endpoint_fixed_posterior_cohort=endpoint_fixed(summary,keep,fixed_eligible) if name!='CNN-cost' else None)
 def run(name):
  frozen=json.load(open(ROOT/'receipts/acd_stage2.json'));jbar=frozen['null']['jbar'];null=np.array(frozen['null']['question_probabilities'])[np.r_[np.arange(8),37]]
  rows=[];keep=[];means=[];errs=[];invalid=[]
