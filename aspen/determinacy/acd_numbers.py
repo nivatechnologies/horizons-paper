@@ -187,6 +187,10 @@ def build():
             walk(stage6['B'][label],'ACD_POSTHOC_STAGE6_'+label,'$.B.'+label,stage6_receipt,omit=omitted)
         walk(stage6['C'],'ACD_POSTHOC_STAGE6_C','$.C',stage6_receipt,omit=omitted)
         walk(stage6['settings'],'ACD_POSTHOC_STAGE6_SETTINGS','$.settings',stage6_receipt)
+    stage9_receipt='receipts/acd_stage9.json'
+    if (ROOT/stage9_receipt).exists():
+        stage9=json.loads((ROOT/stage9_receipt).read_text())
+        walk(stage9,'ACD_POSTHOC_STAGE9','$',stage9_receipt,omit=('records','case_records','source_hashes','output_hashes','resolutions','data_sha256'))
     # Derived forcing extremes in the v4 pattern table; closed-form contract algebra.
     import math
     for name,peak in [('UNIFORM',1.0),('COSINE',math.sqrt(2)),('ALTERNATING',1.0),('SINGLE_SITE',math.sqrt(39))]:
@@ -231,6 +235,7 @@ def build():
             derivation='0.16 / 0.04: ratio of endpoints of the three-smallest-amplitude range; not the full five-amplitude range')
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
+    if (ROOT/'receipts/acd_stage9.json').exists():sources.append('receipts/acd_stage9.json')
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
     lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Stage 6 POSTHOC keys license no frozen route. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']

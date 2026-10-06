@@ -1,0 +1,236 @@
+# Stage 9 review-2 analyses
+
+Post hoc confirmation analyses; licenses no frozen route. Physics forward runs and truth scoring on sulaco CPU. GPU training/inference on locally authorized Spark NVIDIA GB10. Paper and abstract untouched.
+
+Machine-readable receipt: receipts/acd_stage9.json. Exact methods and code hashes: ACD_STAGE9_TRAINING_FREEZE.md and the receipt.
+
+## A — statistics
+
+A2: 1332 eligible pairs in 194 cases. Counts: {"earlier": 788, "later": 374, "same": 170, "S_beyond": 2, "Fc_beyond": 35, "both_beyond": 0}.
+Case-averaged versus pooled shares: {"case": {"earlier": 0.5909425625920471, "later": 0.28215513009327436, "same": 0.12690230731467844}, "pooled": {"earlier": 0.5915915915915916, "later": 0.2807807807807808, "same": 0.12762762762762764}}.
+A4 global forecast-horizon rule through3LT: {"instance_Fc_rule": {"answers": 8136, "correct": 7653, "accuracy": 0.9406342182890856}, "answers": 9600, "correct": 8965, "accuracy": 0.9338541666666667, "definition": "all eight S questions at tested leads 0 through 3 LT; global horizon rule"}.
+
+| Lead | Type | ESS median [IQR] | MC SE median | Within2SE of0.95 |
+|---|---|---|---|---|
+| 0.0 | S | 2000 [512, 2000] | 0.000353421 | 0.0015015 |
+| 0.0 | Fc | 2000 [512, 2000] | 0.000353421 | 0 |
+| 1.0 | S | 2000 [512, 2000] | 0.00137905 | 0.0142643 |
+| 1.0 | Fc | 2000 [512, 2000] | 0.00127144 | 0.0103093 |
+| 1.5 | S | 1796.2 [512, 2000] | 0.00137905 | 0.036036 |
+| 1.5 | Fc | 2000 [512, 2000] | 0.0013218 | 0.0206186 |
+| 2.0 | S | 1694.64 [512, 2000] | 0.00137905 | 0.0563063 |
+| 2.0 | Fc | 1954.27 [512, 2000] | 0.00137905 | 0.0154639 |
+| 2.5 | S | 1608.15 [528.783, 2000] | 0.0053762 | 0.0570571 |
+| 2.5 | Fc | 1885.04 [512, 2000] | 0.00137905 | 0.0309278 |
+| 3.0 | S | 1585.28 [531.277, 1970.49] | 0.00936273 | 0.0780781 |
+| 3.0 | Fc | 1693.47 [512, 2000] | 0.00302127 | 0.0515464 |
+| 4.0 | S | 1619.18 [527.443, 1958.21] | 0.0109618 | 0.0412913 |
+| 4.0 | Fc | 1661.04 [529.371, 2000] | 0.00922898 | 0.056701 |
+| 6.0 | S | 1721.51 [526.273, 1943.55] | 0.0116734 | 0.00525526 |
+| 6.0 | Fc | 1703.5 [533.999, 1952.79] | 0.011604 | 0.0103093 |
+
+Worst-case first-loss directions, fixed original cohort:
+- S_earlier_Fc_later: {"lower": -0.548, "upper": -0.18999999999999995, "empty": false, "point": -0.366593028964163, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}
+- S_later_Fc_earlier: {"lower": -0.44199999999999995, "upper": -0.07799999999999996, "empty": false, "point": -0.24877270495827195, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}
+
+Threshold sweep (.90,.95,.99): all same-lead contrasts and calibration readings in $.A.A3; first/last endpoint rows below.
+
+| Threshold | First loss delta [99%] | Last confident delta [99%] |
+|---|---|---|
+| 0.9 | -0.289824 [-0.47,-0.118] | -0.44102 [-0.568,-0.268] |
+| 0.95 | -0.308787 [-0.494,-0.128] | -0.487432 [-0.61,-0.322] |
+| 0.99 | -0.296573 [-0.49,-0.128] | -0.462106 [-0.614,-0.318] |
+
+Threshold sweep details (threshold also applies to climatological confidence):
+
+| Threshold | LT | All8 S−Fc point [99%] | Seven S−Fc point [99%] | Observation S accuracy [lower95] | Answers |
+|---|---|---|---|---|---|
+| 0.9 | 2.0 | -0.10375 [-0.20399999999999996,-0.0020000000000000018] | -0.12785714285714284 [-0.23399999999999999,-0.02200000000000002] | 0.9866281866281867 [0.968] | 1054 |
+| 0.9 | 3.0 | -0.20125 [-0.31799999999999995,-0.07599999999999996] | -0.2307142857142857 [-0.348,-0.10199999999999998] | 0.9707915057915059 [0.938] | 806 |
+| 0.95 | 2.0 | -0.12625 [-0.23399999999999999,-0.018000000000000016] | -0.15642857142857142 [-0.27,-0.04600000000000004] | 0.9952503052503053 [0.977] | 971 |
+| 0.95 | 3.0 | -0.26625 [-0.388,-0.15200000000000002] | -0.2978571428571428 [-0.42000000000000004,-0.18200000000000005] | 0.9830492424242423 [0.954] | 646 |
+| 0.99 | 2.0 | -0.145625 [-0.268,-0.03400000000000003] | -0.1878571428571429 [-0.31799999999999995,-0.07399999999999995] | 1.0 [0.982] | 1007 |
+| 0.99 | 3.0 | -0.21375 [-0.344,-0.09599999999999997] | -0.2507142857142857 [-0.384,-0.132] | 1.0 [0.976] | 458 |
+
+## B — descriptive mechanism and amplitude
+
+B1 includes the RK4 residual and all covariance terms; the six shares sum to1 within each case–action pair. Medians/IQRs are descriptive and are reported separately for uniform decrease and seven zero-mean patterns in $.B.B1 and F12.
+
+| Amplitude | Lead | Draw sign agreement | Draw correlation | Median relative difference | Three-class agreement | Kappa | median zG | median zD |
+|---|---|---|---|---|---|---|---|---|
+| 0.04 | 0.0 | 0.9941704445744369 | 0.9999995766938945 | 0.014782829299736885 | 0.994375 | 0.9891600058415524 | 62.28864283581969 | 61.90973077303201 |
+| 0.04 | 1.0 | 0.9931545225212051 | 0.999674341181293 | 0.016702540474258804 | 0.986875 | 0.9768794082229485 | 12.92977078847394 | 13.022746406269428 |
+| 0.04 | 1.5 | 0.9887850979818661 | 0.9958669768608147 | 0.02690387961597375 | 0.983125 | 0.9723228615085963 | 7.249173735855521 | 7.285072411246384 |
+| 0.04 | 2.0 | 0.9760602515355367 | 0.963820461007742 | 0.05193135016436723 | 0.966875 | 0.949407416467051 | 3.5074076647101666 | 3.51070380626366 |
+| 0.04 | 2.5 | 0.9513312554840596 | 0.8296276441062068 | 0.09725705562174067 | 0.958125 | 0.9341400764392882 | 1.7554696654967268 | 1.794290416288275 |
+| 0.04 | 3.0 | 0.9164357268207078 | 0.5561383747163298 | 0.17910329645133005 | 0.960625 | 0.923829214216733 | 0.8388260594838678 | 0.9527385650751958 |
+| 0.04 | 4.0 | 0.8112450643463001 | 0.18200803705938143 | 0.4709077399156722 | 0.97875 | 0.8724875476120716 | 0.2580959454003093 | 0.34964736407421154 |
+| 0.04 | 6.0 | 0.5995818404504241 | 0.011483718174004561 | 0.9887218618208968 | 0.999375 | 0.666458203043562 | 0.03537033572346626 | 0.11662258473679601 |
+| 0.64 | 0.0 | 0.9396607195086283 | 0.999893304733333 | 0.23604706993513663 | 0.93125 | 0.8669135823007165 | 62.28864283581969 | 64.48039310394735 |
+| 0.64 | 1.0 | 0.9070415326118748 | 0.9676323916567297 | 0.2575322696816093 | 0.835 | 0.7121811950204076 | 12.92977078847394 | 14.35383949051734 |
+| 0.64 | 1.5 | 0.8565433971921614 | 0.8007270044616034 | 0.42604576181677795 | 0.758125 | 0.6008269689345137 | 7.249173735855521 | 7.74650464350688 |
+| 0.64 | 2.0 | 0.7707484827434923 | 0.5136518383003836 | 0.6201285786046102 | 0.633125 | 0.43548532514290195 | 3.5074076647101666 | 4.673601370799906 |
+| 0.64 | 2.5 | 0.6943555315881836 | 0.27525084560633456 | 0.8261975124958308 | 0.56375 | 0.3490009134272642 | 1.7554696654967268 | 3.0602286210898493 |
+| 0.64 | 3.0 | 0.6271319281953788 | 0.11136890589102318 | 0.9570123962660653 | 0.563125 | 0.2984208195378259 | 0.8388260594838678 | 2.100367201824262 |
+| 0.64 | 4.0 | 0.5500155381690552 | 0.01974402756263274 | 1.0045035453420126 | 0.700625 | 0.17742203809145618 | 0.2580959454003093 | 1.073595061135515 |
+| 0.64 | 6.0 | 0.5039051074875694 | 0.00030643078875030233 | 1.000498850286565 | 0.955625 | -0.0011015642211981062 | 0.03537033572346626 | 0.4102382218800214 |
+
+B3 matched-null confidence, accuracy and endpoint readings:
+- a=0.04: {"comparisons": [{"lead": 2.0, "seven_S_share": 0.6792857142857143, "all_S_share": 0.71125, "observation_S_share": 0.594375, "Fc_share": 0.85, "seven_minus_Fc": {"lower": -0.28400000000000003, "upper": -0.05600000000000005, "empty": false, "point": -0.1707142857142857, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "all_minus_Fc": {"lower": -0.248, "upper": -0.028000000000000025, "empty": false, "point": -0.13875, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "observation_minus_Fc": {"lower": -0.364, "upper": -0.14600000000000002, "empty": false, "point": -0.255625, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}}, {"lead": 3.0, "seven_S_share": 0.3192857142857143, "all_S_share": 0.351875, "observation_S_share": 0.351875, "Fc_share": 0.67, "seven_minus_Fc": {"lower": -0.48, "upper": -0.23399999999999999, "empty": false, "point": -0.35071428571428576, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "all_minus_Fc": {"lower": -0.44599999999999995, "upper": -0.20399999999999996, "empty": false, "point": -0.318125, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "observation_minus_Fc": {"lower": -0.44599999999999995, "upper": -0.20399999999999996, "empty": false, "point": -0.318125, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}}], "accuracy": [{"lead": 2.0, "S": {"status": "PASS", "cases": 195, "answers": 951, "case_accuracy": 0.9941636141636143, "case_lower": 0.975, "case_upper": 1.0, "answer_accuracy": 0.9926393270241851, "fallback": false, "included_excluded": {"status": "PASS", "cases": 195, "answers": 951, "case_accuracy": 0.9941636141636143, "case_lower": 0.975, "case_upper": 1.0, "answer_accuracy": 0.9926393270241851, "fallback": false}}, "Fc_case_betting": {"status": "PASS", "cases": 170, "answers": 170, "case_accuracy": 1.0, "case_lower": 0.98, "case_upper": 1.0, "answer_accuracy": 1.0, "fallback": false}}, {"lead": 3.0, "S": {"status": "PASS", "cases": 153, "answers": 563, "case_accuracy": 0.9841269841269842, "case_lower": 0.962, "case_upper": 1.0, "answer_accuracy": 0.9875666074600356, "fallback": false, "included_excluded": {"status": "PASS", "cases": 153, "answers": 563, "case_accuracy": 0.9841269841269842, "case_lower": 0.962, "case_upper": 1.0, "answer_accuracy": 0.9875666074600356, "fallback": false}}, "Fc_case_betting": {"status": "PASS", "cases": 134, "answers": 134, "case_accuracy": 0.9925373134328358, "case_lower": 0.968, "case_upper": 1.0, "answer_accuracy": 0.9925373134328358, "fallback": false}}], "endpoint": {"lower": -0.534, "upper": -0.16000000000000003, "empty": false, "point": -0.34315169366715764, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}}
+- a=0.64: {"comparisons": [{"lead": 2.0, "seven_S_share": 0.77, "all_S_share": 0.7975, "observation_S_share": 0.67375, "Fc_share": 0.85, "seven_minus_Fc": {"lower": -0.17600000000000005, "upper": 0.010000000000000009, "empty": false, "point": -0.08, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "all_minus_Fc": {"lower": -0.14800000000000002, "upper": 0.038000000000000034, "empty": false, "point": -0.0525, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "observation_minus_Fc": {"lower": -0.27, "upper": -0.08599999999999997, "empty": false, "point": -0.17625, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}}, {"lead": 3.0, "seven_S_share": 0.5428571428571428, "all_S_share": 0.579375, "observation_S_share": 0.47625, "Fc_share": 0.67, "seven_minus_Fc": {"lower": -0.24, "upper": -0.014000000000000012, "empty": false, "point": -0.12714285714285714, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "all_minus_Fc": {"lower": -0.20199999999999996, "upper": 0.02200000000000002, "empty": false, "point": -0.090625, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "observation_minus_Fc": {"lower": -0.30400000000000005, "upper": -0.08199999999999996, "empty": false, "point": -0.19375, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}}], "accuracy": [{"lead": 2.0, "S": {"status": "PASS", "cases": 199, "answers": 1078, "case_accuracy": 0.997439578846614, "case_lower": 0.98, "case_upper": 1.0, "answer_accuracy": 0.9972170686456401, "fallback": false, "included_excluded": {"status": "PASS", "cases": 199, "answers": 1078, "case_accuracy": 0.997439578846614, "case_lower": 0.98, "case_upper": 1.0, "answer_accuracy": 0.9972170686456401, "fallback": false}}, "Fc_case_betting": {"status": "PASS", "cases": 170, "answers": 170, "case_accuracy": 1.0, "case_lower": 0.98, "case_upper": 1.0, "answer_accuracy": 1.0, "fallback": false}}, {"lead": 3.0, "S": {"status": "PASS", "cases": 190, "answers": 762, "case_accuracy": 0.9856140350877192, "case_lower": 0.957, "case_upper": 1.0, "answer_accuracy": 0.989501312335958, "fallback": false, "included_excluded": {"status": "PASS", "cases": 190, "answers": 762, "case_accuracy": 0.9856140350877192, "case_lower": 0.957, "case_upper": 1.0, "answer_accuracy": 0.989501312335958, "fallback": false}}, "Fc_case_betting": {"status": "PASS", "cases": 134, "answers": 134, "case_accuracy": 0.9925373134328358, "case_lower": 0.968, "case_upper": 1.0, "answer_accuracy": 0.9925373134328358, "fallback": false}}], "endpoint": {"lower": -0.37, "upper": -0.05400000000000005, "empty": false, "point": -0.2075355915562101, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}}
+
+B1 variance-share summaries (equal case/action weighting; median [IQR]):
+- 0.0 LT uniform: Var_M 0.13138978758698175 [0.10704513190904771, 0.16453828220847294]; Var_I 0.5311274130445923 [0.4724345024543841, 0.6086233123471325]; Var_Res 2.059292317741044e-12 [9.140434653434917e-13, 3.5047967426822933e-12]; 2Cov_M_I 0.33339253621354825 [0.27751388542869293, 0.38249300716207363]; 2Cov_M_Res 2.2362855344880434e-07 [-3.5576273529872518e-09, 4.789606936913314e-07]; 2Cov_I_Res 6.072752069963719e-07 [1.1003930265786797e-07, 1.0820824243076235e-06]
+- 0.0 LT seven_zero_mean: Var_M 0.2575702963169879 [0.15007687487169463, 0.50191551937339]; Var_I 0.8729912031440112 [0.5999871906434276, 1.2833908243565308]; Var_Res 5.227849945866608e-12 [2.3745119673561424e-12, 1.0986255077462175e-11]; 2Cov_M_I -0.1225558867711469 [-0.7371178561022467, 0.17020994056350008]; 2Cov_M_Res -1.1284530408243385e-07 [-9.078115514083355e-07, 4.892236877915171e-07]; 2Cov_I_Res 3.8138059264328687e-07 [-6.651738171826563e-07, 1.754610634664197e-06]
+- 1.0 LT uniform: Var_M 0.8893834222892505 [0.6734738605622002, 1.06001233704873]; Var_I 0.12936955563225372 [0.05772487122446843, 0.2541052418057712]; Var_Res 7.625091108657518e-12 [3.5739572638316395e-12, 1.9508287771297928e-11]; 2Cov_M_I -0.00047678546420697014 [-0.23028959333118876, 0.17040308072284763]; 2Cov_M_Res 5.708169549205707e-08 [-2.2073000262098417e-06, 1.6536639512735172e-06]; 2Cov_I_Res 1.7346193011541642e-07 [-2.1788148106411443e-07, 8.938820990451726e-07]
+- 1.0 LT seven_zero_mean: Var_M 0.9480244445015866 [0.7856040722191288, 1.1114755880226128]; Var_I 0.05496367462878249 [0.020000233912029507, 0.1277865297023697]; Var_Res 5.624197951420643e-12 [2.042223559524605e-12, 1.546417012875737e-11]; 2Cov_M_I 0.006817041116423364 [-0.18464834196344884, 0.13434760485879943]; 2Cov_M_Res -1.5696966305137406e-07 [-2.259952022037889e-06, 1.4392073363746472e-06]; 2Cov_I_Res 3.5180384541711247e-09 [-3.218050720512148e-07, 3.674365516950836e-07]
+- 1.5 LT uniform: Var_M 0.9510814694584026 [0.818855894272161, 1.0558503867685909]; Var_I 0.028389626909616418 [0.011564339631859535, 0.0770712684523896]; Var_Res 4.608767199437641e-12 [2.0409549876690055e-12, 1.1352051491933275e-11]; 2Cov_M_I 0.01765217976845513 [-0.09161829452471827, 0.13683391492101088]; 2Cov_M_Res -2.805456952655669e-07 [-2.005565579738656e-06, 1.073412831235668e-06]; 2Cov_I_Res 2.4099439007412793e-08 [-1.9443366967617068e-07, 2.53343794768875e-07]
+- 1.5 LT seven_zero_mean: Var_M 0.98274958541112 [0.8950841275962711, 1.064210795871832]; Var_I 0.013361576754677914 [0.0042420453520094475, 0.03798398315268606]; Var_Res 4.074185706280567e-12 [1.6121541290139094e-12, 1.1183071310134413e-11]; 2Cov_M_I 0.005656896541435477 [-0.08494465265531093, 0.08115233250235723]; 2Cov_M_Res -3.024483073231851e-07 [-1.9890687724385496e-06, 9.057317985665469e-07]; 2Cov_I_Res -4.352768495764422e-09 [-1.476256747738783e-07, 1.4176766663966238e-07]
+- 2.0 LT uniform: Var_M 0.9875950850381399 [0.9179646263285632, 1.033466978424171]; Var_I 0.009656167014915635 [0.002582425568311433, 0.025215836741669616]; Var_Res 3.5076310592078776e-12 [1.2717130502103161e-12, 7.709659456499942e-12]; 2Cov_M_I -0.0017708590320587034 [-0.04303373708081579, 0.06872458288166826]; 2Cov_M_Res -2.952217084571075e-07 [-1.450491444244332e-06, 8.068588285996104e-07]; 2Cov_I_Res 7.848680638745786e-10 [-1.048884162443111e-07, 7.586128431651073e-08]
+- 2.0 LT seven_zero_mean: Var_M 0.9950887395227465 [0.949360585930191, 1.0367510024715472]; Var_I 0.003564322789498189 [0.001175633587675397, 0.011304447039860832]; Var_Res 2.7750754724850613e-12 [1.121602832432525e-12, 6.654423763098324e-12]; 2Cov_M_I 0.0003214079734284401 [-0.04270511967243587, 0.042681078324916535]; 2Cov_M_Res -3.602986751487554e-07 [-1.4772677930526556e-06, 7.945897859660657e-07]; 2Cov_I_Res 1.513099709449162e-09 [-5.6563998882871264e-08, 5.511265746954629e-08]
+- 2.5 LT uniform: Var_M 1.0073601316322074 [0.9643738581128806, 1.0366262118386624]; Var_I 0.0032252443213995107 [0.0010098007069079163, 0.00927520726290185]; Var_Res 2.109715021038323e-12 [9.640221024229778e-13, 5.0824739818516704e-12]; 2Cov_M_I -0.0119376409366745 [-0.039641142922489284, 0.029509967384439187]; 2Cov_M_Res -4.5167161502924816e-07 [-1.459379089566099e-06, 2.934296970701688e-07]; 2Cov_I_Res -4.3745834176239886e-09 [-5.968741064619876e-08, 3.8027565666321656e-08]
+- 2.5 LT seven_zero_mean: Var_M 0.9970087268105243 [0.9696182892326599, 1.0205288443019627]; Var_I 0.0014131897353854492 [0.00045044421341855576, 0.004381979805343697]; Var_Res 2.2794075572574243e-12 [9.271511482597742e-13, 5.386440103032722e-12]; 2Cov_M_I 0.0017721095352130952 [-0.022289168610819917, 0.02789564727914011]; 2Cov_M_Res -3.701327784596965e-07 [-1.3785796848773883e-06, 5.876635717658661e-07]; 2Cov_I_Res -6.68443927796145e-11 [-3.0190303437600363e-08, 3.0649363294182085e-08]
+- 3.0 LT uniform: Var_M 1.0153424553445651 [0.9969385465075233, 1.0272334152274347]; Var_I 0.001370137777962303 [0.0005158335932284262, 0.0034174414477547376]; Var_Res 1.93127355592746e-12 [7.951345397603547e-13, 3.859042123366323e-12]; 2Cov_M_I -0.016944442479283492 [-0.028873183638869076, 0.001312140472791373]; 2Cov_M_Res -5.255251456592061e-07 [-1.3577057495336207e-06, 9.760002936878009e-08]; 2Cov_I_Res 5.7415487666570835e-09 [-1.3763352869662807e-08, 2.584588353383876e-08]
+- 3.0 LT seven_zero_mean: Var_M 0.9983342843442757 [0.9815574710912915, 1.0136703364512112]; Var_I 0.0007095154579240276 [0.00028956702250159175, 0.0018794650021000535]; Var_Res 1.898385468317891e-12 [8.312452711914673e-13, 4.093114832135699e-12]; 2Cov_M_I 0.0008220935055637676 [-0.015172017947529363, 0.01702634499417068]; 2Cov_M_Res -3.0055786018333685e-07 [-1.1023168389032225e-06, 4.445262498594498e-07]; 2Cov_I_Res 2.1071507823349353e-10 [-1.6754903478328e-08, 1.5320014586208526e-08]
+- 4.0 LT uniform: Var_M 1.0176288676397771 [1.012924521766815, 1.0235880941212006]; Var_I 0.00043803338919198105 [0.0002615957497321264, 0.0008085798771245486]; Var_Res 1.4625456774251972e-12 [8.717109444783451e-13, 2.329746656710675e-12]; 2Cov_M_I -0.01824209558881261 [-0.023836283545252912, -0.01323126299682522]; 2Cov_M_Res -3.380914346191766e-07 [-9.488638893080265e-07, 1.1407438403857413e-07]; 2Cov_I_Res 8.551525872344294e-10 [-5.849572026856472e-09, 1.135617855733177e-08]
+- 4.0 LT seven_zero_mean: Var_M 0.9992977726118539 [0.9913146223268141, 1.007622849882737]; Var_I 0.0003339801538149906 [0.00017871648213059184, 0.0006602183746882231]; Var_Res 1.4487630199347988e-12 [8.619174957759551e-13, 2.4355359557094284e-12]; 2Cov_M_I 0.00037601571397120014 [-0.00826933184468423, 0.00825811914753277]; 2Cov_M_Res -2.9333144856432263e-07 [-8.15040912091225e-07, 2.3560192731235538e-07]; 2Cov_I_Res 3.666839415046339e-11 [-7.3499378733025105e-09, 8.677297619603838e-09]
+- 6.0 LT uniform: Var_M 1.0195988828189158 [1.0178879972816879, 1.0211807487335078]; Var_I 0.0002287380832700503 [0.00019780721811182942, 0.00027918634178813865]; Var_Res 1.2520072253662452e-12 [9.515972051301319e-13, 1.5527177245625206e-12]; 2Cov_M_I -0.019880361565820834 [-0.021395003808992535, -0.01817424815314845]; 2Cov_M_Res -8.480759036360612e-08 [-3.201988730689506e-07, 9.792531791949042e-08]; 2Cov_I_Res 1.1892106839080216e-09 [-1.630840279360321e-09, 3.961408316712276e-09]
+- 6.0 LT seven_zero_mean: Var_M 0.9994053618814885 [0.996542647584834, 1.002688313331113]; Var_I 0.0002337038087098179 [0.00015744519517831834, 0.0004222570264803302]; Var_Res 1.328209808584034e-12 [1.0525341766649186e-12, 1.5875552333289402e-12]; 2Cov_M_I 0.0003833515541595868 [-0.0029395761664526582, 0.0031421926969863044]; 2Cov_M_Res -4.978361738365106e-08 [-2.613336720167057e-07, 1.2226348804595316e-07]; 2Cov_I_Res -1.4661611184905887e-11 [-2.606814261309508e-09, 2.7559850408907994e-09]
+
+## C — learned models
+
+Each inference uses the corresponding posterior draw history. Confidence-error and calibration are distinct: a lower accuracy among confident answers does not itself establish miscalibration. Calibration is checked by a case-level betting interval for predicted modal probability minus correctness; this is a necessary mean-calibration test, not a full conditional-calibration guarantee. CP reliability bars are descriptive because questions are clustered within cases.
+- posterior: {"confidence_readings": [{"lead": 2.0, "confident_Fc_share": 0.85, "Fc_accuracy": {"status": "PASS", "cases": 170, "answers": 170, "case_accuracy": 1.0, "case_lower": 0.98, "case_upper": 1.0, "answer_accuracy": 1.0, "fallback": false}, "Fc_case_error": 0.0, "Fc_error_lower": 0.0, "Fc_error_upper": 0.020000000000000018, "confident_S_share": 0.72375, "observation_S_share": 0.606875, "all_confident_accuracy": {"status": "PASS", "cases": 198, "answers": 1158, "case_accuracy": 0.9959054834054835, "case_lower": 0.978, "case_upper": 1.0, "answer_accuracy": 0.9956822107081175, "fallback": false}, "observation_confident_accuracy": {"status": "PASS", "cases": 195, "answers": 971, "case_accuracy": 0.9952503052503053, "case_lower": 0.977, "case_upper": 1.0, "answer_accuracy": 0.9948506694129763, "fallback": false}, "case_confident_error": 0.00409451659451654, "error_lower": 0.0, "error_upper": 0.02200000000000002}, {"lead": 3.0, "confident_Fc_share": 0.67, "Fc_accuracy": {"status": "PASS", "cases": 134, "answers": 134, "case_accuracy": 0.9925373134328358, "case_lower": 0.968, "case_upper": 1.0, "answer_accuracy": 0.9925373134328358, "fallback": false}, "Fc_case_error": 0.007462686567164201, "Fc_error_lower": 0.0, "Fc_error_upper": 0.03200000000000003, "confident_S_share": 0.40375, "observation_S_share": 0.40375, "all_confident_accuracy": {"status": "PASS", "cases": 176, "answers": 646, "case_accuracy": 0.9830492424242423, "case_lower": 0.954, "case_upper": 1.0, "answer_accuracy": 0.9907120743034056, "fallback": false}, "observation_confident_accuracy": {"status": "PASS", "cases": 176, "answers": 646, "case_accuracy": 0.9830492424242423, "case_lower": 0.954, "case_upper": 1.0, "answer_accuracy": 0.9907120743034056, "fallback": false}, "case_confident_error": 0.016950757575757702, "error_lower": 0.0, "error_upper": 0.04600000000000004}], "state_skill": [{"lead": 2.0, "window_mean_RMSE_over_sigma": 0.12019637061154363, "window_mean_anomaly_correlation": 0.9829294815032247}, {"lead": 3.0, "window_mean_RMSE_over_sigma": 0.26771328175038256, "window_mean_anomaly_correlation": 0.9276819520846222}], "calibration_test": [{"threshold": 0.5, "cases": 200, "overconfidence_interval": {"lower": -0.06399999999999995, "upper": 0.06000000000000005, "empty": false, "point": -0.0017596316964285685, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "reject_mean_calibration": false, "test": "v2.3 two-sided99% case-level betting interval for case-mean modal probability minus correctness; necessary mean-calibration check, not a full conditional calibration test"}, {"threshold": 0.95, "cases": 195, "overconfidence_interval": {"lower": -0.06399999999999995, "upper": 0.062000000000000055, "empty": false, "point": -0.0010706457951770412, "offset": false, "fallback": false, "scope": "POST HOC; no frozen route license"}, "reject_mean_calibration": false, "test": "v2.3 two-sided99% case-level betting interval for case-mean modal probability minus correctness; necessary mean-calibration check, not a full conditional calibration test"}]}
+- CNN-20k: {"status": "RUNNING"}
+- CNN-roll: {"status": "UNAVAILABLE"}
+- CNN-resp: {"status": "UNAVAILABLE"}
+- CNN-cost: {"status": "RUNNING"}
+- CNN-F: {"status": "RUNNING"}
+- CNN-F-resp: {"status": "RUNNING"}
+
+Training/checkpoint provenance (contract expectations separated from measured receipts):
+{
+  "CNN20k": {
+    "checkpoint": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/inputs/CNN-20k.pt",
+    "sha256": "3c67fc2cfc3a858613160cc81151c09ef45829f08bda67df00b9e78f35f5fe74",
+    "training_distribution": "F=8, 2048 training and64 validation trajectories; Gaussian starts then500 physical-time spinup; eight unit-RMS patterns and action amplitude U(-.32,.32); trajectory-disjoint validation; .02 sigma history noise during training/validation",
+    "updates": 20000,
+    "loss": "four-step autoregressive normalized-state MSE plus first-step MSE",
+    "architecture": "circular residual Conv1d 12\u2192256\u2192256\u2192256\u2192256\u21921; 999681 parameters",
+    "seed": "Torch0; inherited train role0/sub6 and val role0/sub6",
+    "selection": "minimum64-trajectory12-step nominal1LT validation rollout MSE at1000-update checkpoints; earliest tie",
+    "source": "/home/todd/work/aspen-horizon-20261004/aspen/horizon/train_l96.py and learned_l96_data.py"
+  },
+  "CNNroll_resp_contract": {
+    "status": "registered checkpoints not found in retained sulaco copy; measured completion/selection cannot be established",
+    "training_distribution": "paired starts from retained F8 training trajectories;4096 paired starts,28 unordered pairs, action a=8*U(-.04,.04), noisy .02 sigma histories; targets36 ticks",
+    "updates_contract": 10000,
+    "seed_contract": "Torch0; afd-train-recipe sub6 identical batches for roll and resp",
+    "loss": "roll:36-tick two-branch state MSE / initial roll mean; resp adds36-tick paired-state-difference MSE / initial difference mean; initial normalizers from64 batches128 at CNN20k",
+    "selection_contract": "final10000-update checkpoint after initialization from unchanged CNN20k; lr1e-4 wd1e-4 cosine clip1",
+    "source": "AFD_FREEZE.md; train.py; training_data.py in retained AFD code"
+  },
+  "CNNcost": {
+    "checkpoint": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/runs/selection_checkpoints/CNN-cost/checkpoint_002000.pt",
+    "sha256": "05ed6094e86c0f48e2b6bc2a8141daecb3120e0c257fffce4931371e8529da6f",
+    "training_distribution": "F8 retained base training trajectories,16384 noisy paired-observation/member starts; eight fixeda=.16 actions; no-action zero field absent from training actions",
+    "loss": "centered action-cost MSE / training variance_diff plus mean-cost MSE / variance_mean",
+    "seed": "Torch0; afd-train-recipe sub6 batches; labels afd-train-cost roles1,2,6",
+    "selection": {
+      "step": 2000,
+      "mean_normalized_regret": 0.06682921310605842,
+      "candidates": 23,
+      "selected_at": "2026-10-05T04:22:16.462183+00:00",
+      "isolation": "checkpoint choice computed inside validation-only bubblewrap namespace"
+    },
+    "updates_evidence": "23 saved candidates every2000 updates through46000; chosen2000; complete training-time receipt absent from retained copy",
+    "source": "training_data.py; train.py; runs/selection_checkpoints/CNN-cost/checkpoint_selection.json",
+    "resolution": "R-other: no-action cost is inference extrapolation beyond the eight training action fields; do not infer a validated no-action cost head from architecture alone"
+  }
+}
+
+## D — realized decisions
+
+| Lead | Policy | Improvement | Regret | Act share | Harms | Median harm | Max harm | Zero-harm CP upper | Actions0..8 |
+|---|---|---|---|---|---|---|---|---|---|
+| 2.0 | E | 0.2967507840677143 | 0.016973128981941178 | 1.0 | 1 | 1.633769248125735 | 1.633769248125735 | None | [140, 3, 3, 11, 16, 18, 4, 5, 0] |
+| 2.0 | no_action | 0.0 | 0.31372391304965547 | 0.0 | 0 | None | None | 0.014867039231272054 | [0, 0, 0, 0, 0, 0, 0, 0, 200] |
+| 2.0 | always_uniform_decrease | 0.2601323745312889 | 0.05359153851836664 | 1.0 | 6 | 0.0945245148102023 | 0.8176172355393181 | None | [200, 0, 0, 0, 0, 0, 0, 0, 0] |
+| 2.0 | C_delta_0 | 0.2927686278602339 | 0.02095528518942163 | 0.96 | 0 | None | None | 0.014867039231272054 | [137, 2, 3, 9, 16, 17, 3, 5, 8] |
+| 2.0 | C_delta_0.01 | 0.2927686278602339 | 0.02095528518942163 | 0.96 | 0 | None | None | 0.014867039231272054 | [137, 2, 3, 9, 16, 17, 3, 5, 8] |
+| 2.0 | C_delta_0.02 | 0.2927686278602339 | 0.02095528518942163 | 0.96 | 0 | None | None | 0.014867039231272054 | [137, 2, 3, 9, 16, 17, 3, 5, 8] |
+| 2.0 | C_delta_0.05 | 0.2927686278602339 | 0.02095528518942163 | 0.96 | 0 | None | None | 0.014867039231272054 | [137, 2, 3, 9, 16, 17, 3, 5, 8] |
+| 2.0 | C_delta_0.1 | 0.2927686278602339 | 0.02095528518942163 | 0.96 | 0 | None | None | 0.014867039231272054 | [137, 2, 3, 9, 16, 17, 3, 5, 8] |
+| 3.0 | E | 0.46242882477544883 | 0.07843000411084114 | 0.995 | 9 | 0.20591889357248228 | 1.438475902518503 | None | [84, 8, 10, 21, 20, 30, 12, 14, 1] |
+| 3.0 | no_action | 0.0 | 0.54085882888629 | 0.0 | 0 | None | None | 0.014867039231272054 | [0, 0, 0, 0, 0, 0, 0, 0, 200] |
+| 3.0 | always_uniform_decrease | 0.27522607037697827 | 0.26563275850931173 | 1.0 | 30 | 0.1997713799067169 | 1.4208782281263552 | None | [200, 0, 0, 0, 0, 0, 0, 0, 0] |
+| 3.0 | C_delta_0 | 0.369413617695791 | 0.171445211190499 | 0.705 | 0 | None | None | 0.014867039231272054 | [69, 5, 6, 9, 16, 23, 2, 11, 59] |
+| 3.0 | C_delta_0.01 | 0.369413617695791 | 0.171445211190499 | 0.705 | 0 | None | None | 0.014867039231272054 | [69, 5, 6, 9, 16, 23, 2, 11, 59] |
+| 3.0 | C_delta_0.02 | 0.36388009021356216 | 0.17697873867272784 | 0.695 | 0 | None | None | 0.014867039231272054 | [68, 5, 6, 9, 16, 23, 2, 10, 61] |
+| 3.0 | C_delta_0.05 | 0.35777561986286116 | 0.18308320902342884 | 0.68 | 0 | None | None | 0.014867039231272054 | [68, 5, 6, 8, 14, 23, 2, 10, 64] |
+| 3.0 | C_delta_0.1 | 0.3533248563928234 | 0.18753397249346665 | 0.665 | 0 | None | None | 0.014867039231272054 | [68, 5, 6, 8, 13, 22, 2, 9, 67] |
+
+## E — normalization provenance
+
+{
+  "sigma": 4.312600593723798,
+  "sigma_source": "/home/todd/work/aspen-horizon-20261004/aspen/horizon/results/l96_calibration.json $.system.sigma",
+  "sigma_estimator": "sqrt(mean(states**2)) over64 independent spun-up endpoint states x40sites; not centered standard deviation, not time average",
+  "sigma_states": 64,
+  "sigma_coordinates": 2560,
+  "sigma_spinup_steps": 50000,
+  "sigma_dt": 0.01,
+  "sigma_physical_spinup": 500,
+  "sigma_spinup_LT": 843.4126850229302,
+  "sigma_seed": "inherited lyapunov role0; lyapunov tangent runs use copies and do not change sigma endpoints",
+  "jbar": 9.361002090527514,
+  "jbar_source": "saved frozen null no-action J averaged over4096 starts and8 overlapping windows",
+  "jbar_states": 4096,
+  "jbar_windows": 8,
+  "jbar_window_sample_counts": [
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    12,
+    11
+  ],
+  "jbar_mean_energy_cells": 389120,
+  "jbar_spinup_LT": 50,
+  "jbar_forcing": 8,
+  "sigma_squared_over_two": 9.299261940493427,
+  "difference_jbar_minus_sigma_squared_over_two": 0.06174015003408684,
+  "relation": "For the same state sample, uncentered RMS squared/2 equals mean per-site energy exactly. These estimates use different independent samples and averages, so they need not agree.",
+  "post_hoc": true
+}
+
+## F — training
+
+{
+  "CNN-F": {
+    "status": "RUNNING",
+    "training_host": "spark-89d8",
+    "gpu": "NVIDIA GB10"
+  },
+  "CNN-F-resp": {
+    "status": "RUNNING",
+    "training_host": "spark-89d8",
+    "gpu": "NVIDIA GB10"
+  }
+}
+
+## Resolutions
+
+- R-other: initial training pair order biased the base action branch; corrected random orientation before scheduled checkpoints, fresh restart, discarded GPU duration charged to CNN-F cap.
+- R-other: all Stage9 readings are post hoc and license no frozen route; no familywise claim over the exploratory comparisons.
+- R-other: endpoint uncertainty flips retain the original1332 eligible pairs; no selection of a new cohort.
+- R-other: pooled Clopper–Pearson reliability intervals are descriptive with clustered questions; calibration test uses independent cases.
+- R-other: sigma is uncentered RMS on64 endpoint states; Jbar uses a different4096-state multi-window sample.
+- R-other: forcing-conditioned response loss preserves four-step base loss and uses the AFD paired-loss normalization principle; validation one LT is a nominal12-step grid rollout.
+- R-other: no-action cost is inference extrapolation beyond the eight training action fields; do not infer a validated no-action cost head from architecture alone
+- R-other: no registered sulaco checkpoint located; no substitute and no comparative claim (CNN-roll)
+- R-other: no registered sulaco checkpoint located; no substitute and no comparative claim (CNN-resp)
+
+Figures (PDF and PNG): F11_tangent, F12_variance, F13_reliability, F14_amplitude under figures/. All distinctions use grayscale plus markers/line styles; variance bands use hatching.
