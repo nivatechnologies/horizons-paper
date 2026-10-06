@@ -1,0 +1,648 @@
+{
+  "reviewer_role": "Independent reviewer who did not author the supplied draft",
+  "abstract_source": "paper/ABSTRACT_v4.txt",
+  "source_sha256": "e19aeb63656c4c23ef300487bfede9ac7c05078a6a274ec3212fdb65d7590d67",
+  "counts": {
+    "OK": 7,
+    "FIX": 2
+  },
+  "rows": [
+    {
+      "id": "A_V4_01",
+      "line": 1,
+      "text": "Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§11/Toddstandingruling"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "N/A for qualitative/algebraic claim; numeric definitions are contract/code constants where stated.",
+      "panel_lead_denominator": "Panel, lead and denominator as stated in the original claim. Confirmation by default; explicitly labelled development remains exploratory. Named values are semantic receipt/contract quantities, not matches to unrelated numbers. Defined forecast-sign shorthand is Todd licensed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "licensing": "Todd standing opening framing exception"
+    },
+    {
+      "id": "A_V4_02",
+      "line": 2,
+      "text": "We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the forecast sign, the sign of the unforced window-energy anomaly, than after.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R2B_POINT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_PAIR_SHARES_EARLIER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.pair_shares.earlier"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_PAIR_SHARES_LATER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.pair_shares.later"
+        }
+      ],
+      "full_precision": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        }
+      },
+      "rounding": "OK at stated precision; full named quantities retained. Structural constants do not enter statistical results.",
+      "panel_lead_denominator": "Panel, lead and denominator as stated in the original claim. Confirmation by default; explicitly labelled development remains exploratory. Named values are semantic receipt/contract quantities, not matches to unrelated numbers. Defined forecast-sign shorthand is Todd licensed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "licensing": "L3b, frozen R2b PRECEDES; conditional on this model and experiment"
+    },
+    {
+      "id": "A_V4_03",
+      "line": 3,
+      "text": "In Lorenz-96 (N = 40, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we sample the full posterior for 200 independent instances and score it against the realized truth.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§3–§14; frozen design and procedures"
+        },
+        {
+          "receipt": "ACD_FREEZE.md",
+          "path": "frozen compute settings and thresholds"
+        },
+        {
+          "receipt": "acd_protocol.py",
+          "path": "frozen inherited definitions"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_STATE_DIMENSION",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_FRAMES",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_OBSERVATION_SPAN_LT",
+          "receipt": "receipts/acd_step0.json",
+          "path": [
+            "$.OUT",
+            "$.LT"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_CASES",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.cases"
+        }
+      ],
+      "full_precision": {
+        "ACD_CONTRACT_STATE_DIMENSION": {
+          "value": 40,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_FRAMES": {
+          "value": 11,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_OBSERVATION_SPAN_LT": {
+          "value": 0.8434126850229302,
+          "receipt": "receipts/acd_step0.json",
+          "receipt_path": [
+            "$.OUT",
+            "$.LT"
+          ],
+          "derivation": "(11 snapshots - 1) * OUT / LT",
+          "additional_sources": [
+            {
+              "receipt": "sources/WO_v2.3.md",
+              "receipt_path": "§3–§4, 11 snapshots"
+            }
+          ]
+        },
+        "ACD_CASES": {
+          "value": 200,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.cases"
+        }
+      },
+      "rounding": "OK at stated precision; full named quantities retained. Structural constants do not enter statistical results.",
+      "panel_lead_denominator": "Confirmation unless explicitly labelled development. Algebraic/method statements checked statically against the frozen contract and actual code. Numerical values below are named semantic quantities from the stated receipt.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "licensing": "Frozen WO §§3–5 setup and posterior contract"
+    },
+    {
+      "id": "A_V4_04",
+      "line": 4,
+      "text": "At 2 LT, 966 of 971 confident intervention-sign answers that depend on the observations are right.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§3–§14; frozen design and procedures"
+        },
+        {
+          "receipt": "ACD_FREEZE.md",
+          "path": "frozen compute settings and thresholds"
+        },
+        {
+          "receipt": "acd_protocol.py",
+          "path": "frozen inherited definitions"
+        },
+        {
+          "NUMBERS_key": "ACD_R0_CORRECT_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R0[3].R0.answers",
+            "$.R0[3].R0.answer_accuracy"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R0_ANSWERS_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[3].R0.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0_ANSWER_ACCURACY_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[3].R0.answer_accuracy"
+        }
+      ],
+      "full_precision": {
+        "ACD_R0_CORRECT_2LT": {
+          "value": 966,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R0[3].R0.answers",
+            "$.R0[3].R0.answer_accuracy"
+          ],
+          "derivation": "integer correct-answer count reconstructed as answers * pooled answer accuracy; product checked within 1e-9 of an integer"
+        },
+        "ACD_R0_ANSWERS_2LT": {
+          "value": 971,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.answers"
+        },
+        "ACD_R0_ANSWER_ACCURACY_2LT": {
+          "value": 0.9948506694129763,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.answer_accuracy"
+        }
+      },
+      "rounding": "OK at stated precision; full named quantities retained. Structural constants do not enter statistical results.",
+      "panel_lead_denominator": "Confirmation unless explicitly labelled development. Algebraic/method statements checked statically against the frozen contract and actual code. Numerical values below are named semantic quantities from the stated receipt.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "licensing": "L2, R0 PASS at 2 LT; pooled 966/971 observation-confident S answers"
+    },
+    {
+      "id": "A_V4_05",
+      "line": 5,
+      "text": "Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59% of eligible actions and after it for 28% (99% interval for the difference [−0.49, −0.13]), although factual and counterfactual window energies have median posterior correlation 0.975 at 2 LT.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§3–§14; frozen design and procedures"
+        },
+        {
+          "receipt": "ACD_FREEZE.md",
+          "path": "frozen compute settings and thresholds"
+        },
+        {
+          "receipt": "acd_protocol.py",
+          "path": "frozen inherited definitions"
+        },
+        {
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.status = PRECEDES; primary frozen L3b license"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASES",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.cases"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_ACTIONS",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.actions"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASE_AVERAGED_SHARES_EARLIER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.case_averaged_shares.earlier"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASE_AVERAGED_SHARES_LATER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.case_averaged_shares.later"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASE_AVERAGED_SHARES_SAME",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.case_averaged_shares.same"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_INTERVAL_POINT",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.interval.point"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_INTERVAL_LOWER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.interval.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_INTERVAL_UPPER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A2.first_loss.interval.upper"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_RHO_MEDIAN_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.rho.median[3]"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_LOWER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_PAIR_SHARES_EARLIER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.pair_shares.earlier"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_PAIR_SHARES_LATER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.pair_shares.later"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_POINT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R2B_UPPER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.upper"
+        }
+      ],
+      "full_precision": {
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASES": {
+          "value": 194,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.cases"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_ACTIONS": {
+          "value": 1332,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.actions"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASE_AVERAGED_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.case_averaged_shares.earlier"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASE_AVERAGED_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.case_averaged_shares.later"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_CASE_AVERAGED_SHARES_SAME": {
+          "value": 0.12690230731467844,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.case_averaged_shares.same"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_INTERVAL_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.interval.point"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_INTERVAL_LOWER": {
+          "value": -0.494,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.interval.lower"
+        },
+        "ACD_POSTHOC_STAGE6_A_A2_FIRST_LOSS_INTERVAL_UPPER": {
+          "value": -0.128,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A2.first_loss.interval.upper"
+        },
+        "ACD_R1M_RHO_MEDIAN_2LT": {
+          "value": 0.9749533160639576,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.rho.median[3]"
+        },
+        "ACD_R2B_LOWER": {
+          "value": -0.494,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.lower"
+        },
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        },
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_UPPER": {
+          "value": -0.128,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.upper"
+        }
+      },
+      "rounding": "OK at stated precision; full named quantities retained. Structural constants do not enter statistical results.",
+      "panel_lead_denominator": "Confirmation unless explicitly labelled development. Algebraic/method statements checked statically against the frozen contract and actual code. Numerical values below are named semantic quantities from the stated receipt.",
+      "verdict": "FIX",
+      "proposed_fix": "Write 'for 59% and 28% of each instance’s eligible actions, averaged over eligible instances (99% interval for later minus earlier [−0.49, −0.13])'. The shares are case averaged, and the negative contrast is later minus earlier.",
+      "licensing": "L3b PRECEDES plus L4 descriptive median posterior correlation; fix averaging and later-minus-earlier direction"
+    },
+    {
+      "id": "A_V4_06",
+      "line": 6,
+      "text": "In post hoc analyses: at 3 LT, while the posterior-mean forecast still has anomaly correlation 0.93 with the truth, the sign of a small intervention's effect is confident for 37% of questions about the seven patterns whose sign climatology never gives, against 67% for the forecast sign (99% interval for the difference [−0.42, −0.18]); the loss tracks disagreement among posterior draws about the intervention's effect on the mean flow rather than its direct energy injection; the ordering holds for the energy of a 10-site block; and a deterministic CNN emulator given the posterior's own histories is confident about as often as the posterior, but its observation-dependent confident answers are right 93.7% of the time against 99.5%.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§3–§14; frozen design and procedures"
+        },
+        {
+          "receipt": "ACD_FREEZE.md",
+          "path": "frozen compute settings and thresholds"
+        },
+        {
+          "receipt": "acd_protocol.py",
+          "path": "frozen inherited definitions"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_B3_ROWS_5_WINDOW_MEAN_SPATIAL_ANOMALY_CORRELATION",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.B.B3.rows[5].window_mean_spatial_anomaly_correlation"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_SEVEN_S_SHARE",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A1.comparisons[5].seven_S_share"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_FC_SHARE",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A1.comparisons[5].Fc_share"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_SEVEN_MINUS_FC_LOWER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A1.comparisons[5].seven_minus_Fc.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_SEVEN_MINUS_FC_UPPER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A1.comparisons[5].seven_minus_Fc.upper"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_C_COMPARISONS_2LT_ALL_S_SHARE",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.C.comparisons_2LT.all_S_share"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_CASE_ACCURACY",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.C.calibration_2LT.S.case_accuracy"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_ANSWER_ACCURACY",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.C.calibration_2LT.S.answer_accuracy"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_CASE_LOWER",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.C.calibration_2LT.S.case_lower"
+        },
+        {
+          "NUMBERS_key": "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_3_ALL_S_SHARE",
+          "receipt": "receipts/acd_stage6.json",
+          "path": "$.A.A1.comparisons[3].all_S_share"
+        },
+        {
+          "NUMBERS_key": "ACD_R0_CASE_ACCURACY_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[3].R0.case_accuracy"
+        },
+        {
+          "NUMBERS_key": "ACD_R0_CASE_LOWER_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[3].R0.case_lower"
+        }
+      ],
+      "full_precision": {
+        "ACD_POSTHOC_STAGE6_B3_ROWS_5_WINDOW_MEAN_SPATIAL_ANOMALY_CORRELATION": {
+          "value": 0.9276819520846222,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.B.B3.rows[5].window_mean_spatial_anomaly_correlation"
+        },
+        "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_SEVEN_S_SHARE": {
+          "value": 0.37214285714285716,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A1.comparisons[5].seven_S_share"
+        },
+        "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_FC_SHARE": {
+          "value": 0.67,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A1.comparisons[5].Fc_share"
+        },
+        "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_SEVEN_MINUS_FC_LOWER": {
+          "value": -0.42000000000000004,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A1.comparisons[5].seven_minus_Fc.lower"
+        },
+        "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_5_SEVEN_MINUS_FC_UPPER": {
+          "value": -0.18200000000000005,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A1.comparisons[5].seven_minus_Fc.upper"
+        },
+        "ACD_POSTHOC_STAGE6_C_COMPARISONS_2LT_ALL_S_SHARE": {
+          "value": 0.7325,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.C.comparisons_2LT.all_S_share"
+        },
+        "ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_CASE_ACCURACY": {
+          "value": 0.9370316654580614,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.C.calibration_2LT.S.case_accuracy"
+        },
+        "ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_ANSWER_ACCURACY": {
+          "value": 0.9358452138492872,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.C.calibration_2LT.S.answer_accuracy"
+        },
+        "ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_CASE_LOWER": {
+          "value": 0.908,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.C.calibration_2LT.S.case_lower"
+        },
+        "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_3_ALL_S_SHARE": {
+          "value": 0.72375,
+          "receipt": "receipts/acd_stage6.json",
+          "receipt_path": "$.A.A1.comparisons[3].all_S_share"
+        },
+        "ACD_R0_CASE_ACCURACY_2LT": {
+          "value": 0.9952503052503053,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.case_accuracy"
+        },
+        "ACD_R0_CASE_LOWER_2LT": {
+          "value": 0.977,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.case_lower"
+        }
+      },
+      "rounding": "OK at stated precision; full named quantities retained. Structural constants do not enter statistical results.",
+      "panel_lead_denominator": "Confirmation unless explicitly labelled development. Algebraic/method statements checked statically against the frozen contract and actual code. Numerical values below are named semantic quantities from the stated receipt.",
+      "verdict": "FIX",
+      "proposed_fix": "Add 'averaged within each instance and then over instances' to the CNN/posterior accuracy comparison. The displayed 93.7% and 99.5% are case-averaged accuracies; pooled CNN answer accuracy is 93.58452138492872%, which rounds to 93.6%. Keep the post hoc label and specify that this comparison is at 2 LT.",
+      "licensing": "Todd labelled post hoc exception for Stage 6 A1/B1/B2/C; no frozen route licenses. L2 supplies case-averaged 99.5% reference at 2 LT"
+    },
+    {
+      "id": "A_V4_07",
+      "line": 7,
+      "text": "An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R2B_POINT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2b.point"
+        }
+      ],
+      "full_precision": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        }
+      },
+      "rounding": "OK at stated precision; full named quantities retained. Structural constants do not enter statistical results.",
+      "panel_lead_denominator": "Panel, lead and denominator as stated in the original claim. Confirmation by default; explicitly labelled development remains exploratory. Named values are semantic receipt/contract quantities, not matches to unrelated numbers. Defined forecast-sign shorthand is Todd licensed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "licensing": "§11 conditional world-model scope; no extrapolation to other tasks/models"
+    },
+    {
+      "id": "A_V4_TITLE",
+      "line": null,
+      "text": "**Title:** The forecast horizon is not the intervention horizon",
+      "sources": [
+        {
+          "receipt": "Todd standing ruling",
+          "path": "title"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "N/A",
+      "panel_lead_denominator": "Title; explicit Todd ruling.",
+      "licensing": "Todd standing exception",
+      "verdict": "OK",
+      "proposed_fix": ""
+    },
+    {
+      "id": "A_V4_ALTERNATIVE_TITLE",
+      "line": null,
+      "text": "**Alternative title:** An intervention's effect loses confidence before the forecast does",
+      "sources": [
+        {
+          "receipt": "Todd standing ruling",
+          "path": "title"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "N/A",
+      "panel_lead_denominator": "Title; explicit Todd ruling.",
+      "licensing": "Todd standing exception",
+      "verdict": "OK",
+      "proposed_fix": ""
+    },
+    {
+      "id": "A_OPTIONAL_M",
+      "line": null,
+      "text": "**M (mechanism, confirmation R1m, descriptive; would replace the CNN clause):** The intervention's median z, its effect over its posterior spread, starts at 3.6 times the forecast sign's just after the observation window and falls to 0.61 times it by 2 LT.",
+      "sources": [
+        {
+          "receipt": "ACD_ABSTRACT_DRAFT.md",
+          "path": "Optional historical sentence; not part of v4 abstract"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "Not part of current v4 abstract",
+      "panel_lead_denominator": "Optional historical text, outside L1–L10; licenses nothing in the current abstract.",
+      "licensing": "Needs explicit Todd selection and exact receipt-backed denominator wording. M needs descriptive mechanism permission; A needs development/exploratory label and matched-null provenance. Neither becomes a frozen route statement.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "verdict_scope": "Dormant/unselected historical text; inventory OK does not infer a current license."
+    },
+    {
+      "id": "A_OPTIONAL_A",
+      "line": null,
+      "text": "**A (amplitude, development and exploratory):** In development runs, varying the intervention's amplitude sixteenfold, from 0.5% to 8% of the forcing, keeps the confident intervention-sign share at 2 LT between 73.5% and 79.6%, against 84.5% for the forecast sign.",
+      "sources": [
+        {
+          "receipt": "ACD_ABSTRACT_DRAFT.md",
+          "path": "Optional historical sentence; not part of v4 abstract"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "Not part of current v4 abstract",
+      "panel_lead_denominator": "Optional historical text, outside L1–L10; licenses nothing in the current abstract.",
+      "licensing": "Needs explicit Todd selection and exact receipt-backed denominator wording. M needs descriptive mechanism permission; A needs development/exploratory label and matched-null provenance. Neither becomes a frozen route statement.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "verdict_scope": "Dormant/unselected historical text; inventory OK does not infer a current license."
+    }
+  ],
+  "standing_rulings": [
+    "Title",
+    "Opening framing sentence",
+    "Forecast-sign shorthand defined at first use",
+    "Labelled post hoc/development material in abstract and introduction"
+  ],
+  "rules_fired": [
+    {
+      "rule": "R-other",
+      "resolution": "Retain narrower denominator, chronology and selected-policy interpretations; retain universal novelty claim as unverified FIX."
+    }
+  ],
+  "scope": "Independent current v4 abstract review; optional historical sentences are recorded separately and not endorsed as selected abstract text.",
+  "inventory_counts": {
+    "OK": 9,
+    "FIX": 2
+  },
+  "historical_unselected_counts": {
+    "dormant_rows": 2,
+    "selected": 0,
+    "current_licenses_inferred": 0
+  }
+}

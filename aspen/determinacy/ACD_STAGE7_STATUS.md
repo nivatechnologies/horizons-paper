@@ -1,24 +1,14 @@
-# Aspen intervention horizon paper — Stage 7, v4
+# Stage 7 — paper v4 source verification and full audit
 
-V4 sources verified unchanged. Independent full paper audit: **502 OK / 8 FIX**; abstract audit: **7 OK / 2 FIX** for the current abstract and titles (historical optional sentences are unselected).
-Branch: paper/aspen-2026-10-determinacy. Base: f679cde7c6f3b6f861f745bc220ea64e116c6bd2.
+Base: f679cde7c6f3b6f861f745bc220ea64e116c6bd2. Sources remain byte-identical to the supplied v4 archive. Both source hashes and the abstract body hash match Todd's expected SHA-256 values. Titles and historical optional sentences are preserved.
 
-Sulaco directory: /home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/.
+Paper audit: 502 OK / 8 FIX. Abstract audit: 7 OK / 2 FIX for the current abstract and titles; two historical optional rows are unselected.
+Numeric registry: 12016 keys; regeneration PASS. De-TeXed paper and supplied abstract: zero unmatched literals, raw checker exit 0.
+Structural inventory: 38 at TeX line 66, 28 at TeX line 69, 512 at TeX line 95, 38 at TeX line 312; 36 document label/reference occurrences; 143 bibliography metadata fields.
 
-- [Paper source](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/main.tex)
-- [References](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/refs.bib)
-- [Full v4 paper audit](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_AUDIT.md)
-- [Verbatim v4 abstract and retained titles](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_DRAFT.md)
-- [Abstract audit and Todd's standing rulings](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_AUDIT.md)
-- [Numeric check and structural inventory](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_NUMERIC_CHECK.md)
-- [Receipt-backed numbers registry](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/NUMBERS_ACD.md)
-- [Post hoc Stage 6 reading](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE6_READING.md)
-- [V4 paper audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage7_paper_audit.json)
-- [V4 abstract audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage7_abstract_audit.json)
-- [Source hash verification](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage7_source.json)
-- [Stage 7 status and all proposed fixes](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE7_STATUS.md)
-
-Both numeric checks: **zero unmatched numbers**; registry regeneration PASS. Structural constants and bibliography metadata are separately inventoried. No TeX build attempted; the supplied archive includes no PDF. Sources and abstracts were not corrected by the auditor.
+Todd-licensed standing deviations: title, opening framing sentence, forecast-sign shorthand defined at first use, and labelled post hoc/development material in the abstract and introduction. No new frozen-route license is inferred from Stage 6.
+No build attempted; no PDF or build log was supplied. Sources use the existing receipt-derived figures; page count is not claimed.
+Receipts/static-source checks only, on sulaco CPU. No scientific forward runs, posterior/MAP/RML sampling, training, inference, cloud compute or service changes. Qwen services and Baccus close-out untouched.
 
 ## Open findings
 

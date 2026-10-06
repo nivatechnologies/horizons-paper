@@ -22,13 +22,15 @@ def run(stage="5b"):
     original=source.read_text().splitlines()
     visible=[]
     for i,line in enumerate(original,1):
-        visible.append(detex(line) if i>=26 else '')
+        visible.append(detex(line) if i>=next(j for j,l in enumerate(original,1) if l.strip()==r'\begin{abstract}') else '')
     output=ROOT/'paper/main.detex.txt';output.write_text('\n'.join(visible).rstrip()+'\n')
     from check_acd import tokens,match
     numbers=json.loads((ROOT/'numbers_acd.json').read_text())['numbers']
     structural=[];unmatched=[]
     for line,raw in tokens(output.read_text()):
-        if (line in (63,205) and raw=='38') or (line==66 and raw=='28') or (line==75 and raw=='512'):
+        context=original[line-1]
+        exempt=(raw=='38' and ('questions' in context or 'question types' in context)) or (raw=='28' and 'pairs' in context) or (raw=='512' and 'thinned' in context)
+        if exempt:
             structural.append(dict(line=line,token=raw,reason='Declared structural question/pair count or thin-draw count; explicitly exempted by Todd'))
         if not match(raw,numbers):unmatched.append(dict(line=line,token=raw,structural=any(r['line']==line and r['token']==raw for r in structural)))
     # Keep raw check output, including exempt unmatched literals; do not silently register exceptions.
@@ -45,5 +47,5 @@ def run(stage="5b"):
     return bool(manifest['empirical_unmatched'])
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--stage',choices=['5b','5c'],default='5b')
+    parser.add_argument('--stage',choices=['5b','5c','7'],default='5b')
     sys.exit(run(parser.parse_args().stage))

@@ -187,6 +187,48 @@ def build():
             walk(stage6['B'][label],'ACD_POSTHOC_STAGE6_'+label,'$.B.'+label,stage6_receipt,omit=omitted)
         walk(stage6['C'],'ACD_POSTHOC_STAGE6_C','$.C',stage6_receipt,omit=omitted)
         walk(stage6['settings'],'ACD_POSTHOC_STAGE6_SETTINGS','$.settings',stage6_receipt)
+    # Derived forcing extremes in the v4 pattern table; closed-form contract algebra.
+    import math
+    for name,peak in [('UNIFORM',1.0),('COSINE',math.sqrt(2)),('ALTERNATING',1.0),('SINGLE_SITE',math.sqrt(39))]:
+        paths=['§4: unit-RMS patterns, N=40','§4: action amplitude a=0.16','§3: true forcing F=8']
+        add('ACD_PATTERN_'+name+'_MAX_FORCING_CHANGE',constants['AMPLITUDE']*peak,paths,'sources/WO_v2.3.md',
+            derivation='a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern')
+        add('ACD_PATTERN_'+name+'_MAX_FRACTION_TRUE_FORCING',constants['AMPLITUDE']*peak/d['null']['F'],paths,'sources/WO_v2.3.md',
+            derivation='maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration')
+    # Stage 7 derived counts and error rates; no scientific execution.
+    r0_index=next(i for i,r in enumerate(d['R0']) if r['lead']==2)
+    r0=d['R0'][r0_index]['R0']
+    correct_float=r0['answers']*r0['answer_accuracy']
+    assert abs(correct_float-round(correct_float))<1e-9
+    add('ACD_R0_CORRECT_2LT',round(correct_float),
+        [f'$.R0[{r0_index}].R0.answers',f'$.R0[{r0_index}].R0.answer_accuracy'],
+        derivation='integer correct-answer count reconstructed as answers * pooled answer accuracy; product checked within 1e-9 of an integer')
+    add('ACD_R0_CASE_ERROR_RATE_2LT',1-r0['case_accuracy'],
+        f'$.R0[{r0_index}].R0.case_accuracy',derivation='one minus case-averaged accuracy; not pooled answer error rate')
+    if (ROOT/stage6_receipt).exists():
+        add('ACD_POSTHOC_STAGE6_C_CASE_ERROR_RATE_2LT',1-stage6['C']['calibration_2LT']['S']['case_accuracy'],
+            '$.C.calibration_2LT.S.case_accuracy',stage6_receipt,
+            derivation='one minus post hoc case-averaged accuracy of observation-confident S; not pooled answer error rate')
+    if (ROOT/stage6_receipt).exists():
+        row_index=next(i for i,r in enumerate(stage6['B']['B1']['confirmation']['rows']) if r['lead']==2)
+        terms=stage6['B']['B1']['confirmation']['rows'][row_index]['terms']
+        injection_index=next(i for i,r in enumerate(terms) if r['name']=='injection')
+        flow_index=next(i for i,r in enumerate(terms) if r['name']=='mean_flow')
+        paths=[f'$.B.B1.confirmation.rows[{row_index}].terms[{injection_index}].mean_posterior_mean',
+               f'$.B.B1.confirmation.rows[{row_index}].terms[{flow_index}].mean_posterior_sd']
+        injection_size=abs(terms[injection_index]['mean_posterior_mean'])
+        add('ACD_POSTHOC_STAGE6_B1_INJECTION_MEAN_MAGNITUDE_2LT',injection_size,paths[0],stage6_receipt,
+            derivation='absolute value of mean posterior mean injection contribution, equal case/action weighting')
+        add('ACD_POSTHOC_STAGE6_B1_FLOW_SD_OVER_INJECTION_MEAN_MAGNITUDE_2LT',terms[flow_index]['mean_posterior_sd']/injection_size,paths,stage6_receipt,
+            derivation='mean posterior SD of flow contribution divided by absolute mean injection contribution')
+    matched_receipt='receipts/acd_stage4b_amplitude_matched.json'
+    if (ROOT/matched_receipt).exists():
+        rows=json.loads((ROOT/matched_receipt).read_text())['rows']
+        low=next(i for i,r in enumerate(rows) if r['amplitude']==.04)
+        high=next(i for i,r in enumerate(rows) if r['amplitude']==.16)
+        add('ACD_DEV_AMPLITUDE_SMALL_RANGE_FACTOR',rows[high]['amplitude']/rows[low]['amplitude'],
+            [f'$.rows[{high}].amplitude',f'$.rows[{low}].amplitude'],matched_receipt,
+            derivation='0.16 / 0.04: ratio of endpoints of the three-smallest-amplitude range; not the full five-amplitude range')
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))

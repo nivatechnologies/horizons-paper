@@ -332,6 +332,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_DEV_AMPLITUDE_ROWS_4_SHARES_1_CONFIDENT_S | 0.563125 | receipts/acd_stage4_amplitude.json | $.rows[4].shares[1].confident_S |
 | ACD_DEV_AMPLITUDE_ROWS_4_SHARES_1_LEAD | 3 | receipts/acd_stage4_amplitude.json | $.rows[4].shares[1].lead |
 | ACD_DEV_AMPLITUDE_ROWS_4_SHARES_1_OBSERVATION_CONFIDENT_S_FROZEN_NULL_PROXY | 0.563125 | receipts/acd_stage4_amplitude.json | $.rows[4].shares[1].observation_confident_S_frozen_null_proxy |
+| ACD_DEV_AMPLITUDE_SMALL_RANGE_FACTOR | 4.0 | receipts/acd_stage4b_amplitude_matched.json | ['$.rows[2].amplitude', '$.rows[0].amplitude'] ; 0.16 / 0.04: ratio of endpoints of the three-smallest-amplitude range; not the full five-amplitude range |
 | ACD_DEV_AMP_A0P04_AMPLITUDE | 0.04 | receipts/acd_stage4b_amplitude_matched.json | $.rows[0].amplitude |
 | ACD_DEV_AMP_A0P04_CASES | 200 | receipts/acd_stage4b_amplitude_matched.json | $.rows[0].cases |
 | ACD_DEV_AMP_A0P04_FRACTION_TRUE_FORCING | 0.005 | receipts/acd_stage4b_amplitude_matched.json | $.rows[0].fraction_true_forcing |
@@ -6258,6 +6259,14 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_NUMERICAL_JAX_RELATIVE_MATCH | 5.426124519221623e-16 | receipts/acd_numerical.json | $.jax_relative_match |
 | ACD_NUMERICAL_JOINT_ADJOINT_ERROR | 1.685697414988141e-10 | receipts/acd_numerical.json | $.joint_adjoint_error |
 | ACD_PANEL_LAST_CASE | 199 | receipts/acd_stage2.json | $.cases ; cases minus one: last zero-based confirmation index |
+| ACD_PATTERN_ALTERNATING_MAX_FORCING_CHANGE | 0.16 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern |
+| ACD_PATTERN_ALTERNATING_MAX_FRACTION_TRUE_FORCING | 0.02 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration |
+| ACD_PATTERN_COSINE_MAX_FORCING_CHANGE | 0.22627416997969524 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern |
+| ACD_PATTERN_COSINE_MAX_FRACTION_TRUE_FORCING | 0.028284271247461905 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration |
+| ACD_PATTERN_SINGLE_SITE_MAX_FORCING_CHANGE | 0.9991996797437438 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern |
+| ACD_PATTERN_SINGLE_SITE_MAX_FRACTION_TRUE_FORCING | 0.12489995996796797 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration |
+| ACD_PATTERN_UNIFORM_MAX_FORCING_CHANGE | 0.16 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern |
+| ACD_PATTERN_UNIFORM_MAX_FRACTION_TRUE_FORCING | 0.02 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration |
 | ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_LOWER | -0.052000000000000046 | receipts/acd_stage6.json | $.A.A1.comparisons[0].all_minus_Fc.lower |
 | ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_POINT | 0.013125 | receipts/acd_stage6.json | $.A.A1.comparisons[0].all_minus_Fc.point |
 | ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_UPPER | 0.08400000000000007 | receipts/acd_stage6.json | $.A.A1.comparisons[0].all_minus_Fc.upper |
@@ -7238,6 +7247,8 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_POSTHOC_STAGE6_A_CASES | 200 | receipts/acd_stage6.json | $.A.cases |
 | ACD_POSTHOC_STAGE6_B1_AMPLITUDE | 0.16 | receipts/acd_stage6.json | $.B.B1.confirmation.amplitude |
 | ACD_POSTHOC_STAGE6_B1_BUDGET_CLOSURE_MAX_ABS | 1.0233483255815056e-05 | receipts/acd_stage6.json | $.B.B1.confirmation.budget_closure_max_abs |
+| ACD_POSTHOC_STAGE6_B1_FLOW_SD_OVER_INJECTION_MEAN_MAGNITUDE_2LT | 2.3788242638644794 | receipts/acd_stage6.json | ['$.B.B1.confirmation.rows[3].terms[0].mean_posterior_mean', '$.B.B1.confirmation.rows[3].terms[1].mean_posterior_sd'] ; mean posterior SD of flow contribution divided by absolute mean injection contribution |
+| ACD_POSTHOC_STAGE6_B1_INJECTION_MEAN_MAGNITUDE_2LT | 0.020132310695359056 | receipts/acd_stage6.json | $.B.B1.confirmation.rows[3].terms[0].mean_posterior_mean ; absolute value of mean posterior mean injection contribution, equal case/action weighting |
 | ACD_POSTHOC_STAGE6_B1_PROJECTION_CLOSURE_MAX_ABS | 1.4210854715202004e-14 | receipts/acd_stage6.json | $.B.B1.confirmation.projection_closure_max_abs |
 | ACD_POSTHOC_STAGE6_B1_ROWS_0_LEAD | 0.0 | receipts/acd_stage6.json | $.B.B1.confirmation.rows[0].lead |
 | ACD_POSTHOC_STAGE6_B1_ROWS_0_MEDIAN_WITHIN_POSTERIOR_CORRELATION_0_0 | 1.0 | receipts/acd_stage6.json | $.B.B1.confirmation.rows[0].median_within_posterior_correlation[0][0] |
@@ -9921,6 +9932,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_POSTHOC_STAGE6_C_CALIBRATION_2LT_S_INCLUDED_EXCLUDED_CASE_UPPER | 0.959 | receipts/acd_stage6.json | $.C.calibration_2LT.S.included_excluded.case_upper |
 | ACD_POSTHOC_STAGE6_C_CASES | 200 | receipts/acd_stage6.json | $.C.cases |
 | ACD_POSTHOC_STAGE6_C_CASES_WITH_ANY_INVALID | 0 | receipts/acd_stage6.json | $.C.cases_with_any_invalid |
+| ACD_POSTHOC_STAGE6_C_CASE_ERROR_RATE_2LT | 0.06296833454193862 | receipts/acd_stage6.json | $.C.calibration_2LT.S.case_accuracy ; one minus post hoc case-averaged accuracy of observation-confident S; not pooled answer error rate |
 | ACD_POSTHOC_STAGE6_C_COMPARISONS_2LT_ALL_MINUS_FC_LOWER | -0.242 | receipts/acd_stage6.json | $.C.comparisons_2LT.all_minus_Fc.lower |
 | ACD_POSTHOC_STAGE6_C_COMPARISONS_2LT_ALL_MINUS_FC_POINT | -0.1425 | receipts/acd_stage6.json | $.C.comparisons_2LT.all_minus_Fc.point |
 | ACD_POSTHOC_STAGE6_C_COMPARISONS_2LT_ALL_MINUS_FC_UPPER | -0.040000000000000036 | receipts/acd_stage6.json | $.C.comparisons_2LT.all_minus_Fc.upper |
@@ -10054,6 +10066,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_R0_CASE_ACCURACY_3LT | 0.9830492424242423 | receipts/acd_stage2.json | $.R0[5].R0.case_accuracy |
 | ACD_R0_CASE_ACCURACY_4LT | 0.9895066273932254 | receipts/acd_stage2.json | $.R0[6].R0.case_accuracy |
 | ACD_R0_CASE_ACCURACY_6LT | 0.75 | receipts/acd_stage2.json | $.R0[7].R0.case_accuracy |
+| ACD_R0_CASE_ERROR_RATE_2LT | 0.004749694749694666 | receipts/acd_stage2.json | $.R0[3].R0.case_accuracy ; one minus case-averaged accuracy; not pooled answer error rate |
 | ACD_R0_CASE_LOWER_0LT | 0.983 | receipts/acd_stage2.json | $.R0[0].R0.case_lower |
 | ACD_R0_CASE_LOWER_1LT | 0.981 | receipts/acd_stage2.json | $.R0[1].R0.case_lower |
 | ACD_R0_CASE_LOWER_1P5LT | 0.982 | receipts/acd_stage2.json | $.R0[2].R0.case_lower |
@@ -10070,6 +10083,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_R0_CASE_UPPER_3LT | 1.0 | receipts/acd_stage2.json | $.R0[5].R0.case_upper |
 | ACD_R0_CASE_UPPER_4LT | 1.0 | receipts/acd_stage2.json | $.R0[6].R0.case_upper |
 | ACD_R0_CASE_UPPER_6LT | 1.0 | receipts/acd_stage2.json | $.R0[7].R0.case_upper |
+| ACD_R0_CORRECT_2LT | 966 | receipts/acd_stage2.json | ['$.R0[3].R0.answers', '$.R0[3].R0.answer_accuracy'] ; integer correct-answer count reconstructed as answers * pooled answer accuracy; product checked within 1e-9 of an integer |
 | ACD_R0_INCLUDED_EXCLUDED_ANSWERS_0LT | 1373 | receipts/acd_stage2.json | $.R0[0].R0.included_excluded.answers |
 | ACD_R0_INCLUDED_EXCLUDED_ANSWERS_1LT | 1262 | receipts/acd_stage2.json | $.R0[1].R0.included_excluded.answers |
 | ACD_R0_INCLUDED_EXCLUDED_ANSWERS_1P5LT | 1153 | receipts/acd_stage2.json | $.R0[2].R0.included_excluded.answers |

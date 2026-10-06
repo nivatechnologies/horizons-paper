@@ -1,0 +1,82 @@
+{
+  "base": "f679cde7c6f3b6f861f745bc220ea64e116c6bd2",
+  "source_hashes": {
+    "paper/main.tex": "543895c7fb5a81c51f71bcd1139e4a0a9bef5b218847a63ca6d839910c0149ae",
+    "paper/refs.bib": "ab16d40f680e689faa0fc3346c0f6109f184b87d9176e8ff00f27ee403b89c6f",
+    "paper/ABSTRACT_v4.txt": "e19aeb63656c4c23ef300487bfede9ac7c05078a6a274ec3212fdb65d7590d67"
+  },
+  "source_hashes_verified": true,
+  "abstract_verbatim": true,
+  "titles_unchanged": true,
+  "numeric_raw_exit": 0,
+  "unmatched": [],
+  "prior_registry_unchanged": true,
+  "prior_receipts_unchanged": true,
+  "registry_keys": 12016,
+  "paper_counts": {
+    "OK": 502,
+    "FIX": 8
+  },
+  "abstract_counts": {
+    "OK": 7,
+    "FIX": 2
+  },
+  "current_abstract_counts": {
+    "OK": 7,
+    "FIX": 2
+  },
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "V4_027_05",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_027_06",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_035_02",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_042_01",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_240_01",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_279_07",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_317_09",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_317_10",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "A_V4_05",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "A_V4_06",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    }
+  ],
+  "scientific_runs": 0,
+  "build_attempted": false
+}

@@ -1745,6 +1745,15 @@
       "receipt": "receipts/acd_stage4_amplitude.json",
       "receipt_path": "$.rows[4].shares[1].observation_confident_S_frozen_null_proxy"
     },
+    "ACD_DEV_AMPLITUDE_SMALL_RANGE_FACTOR": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+      "receipt_path": [
+        "$.rows[2].amplitude",
+        "$.rows[0].amplitude"
+      ],
+      "derivation": "0.16 / 0.04: ratio of endpoints of the three-smallest-amplitude range; not the full five-amplitude range"
+    },
     "ACD_DEV_AMP_A0P04_AMPLITUDE": {
       "value": 0.04,
       "receipt": "receipts/acd_stage4b_amplitude_matched.json",
@@ -31553,6 +31562,86 @@
       "receipt_path": "$.cases",
       "derivation": "cases minus one: last zero-based confirmation index"
     },
+    "ACD_PATTERN_ALTERNATING_MAX_FORCING_CHANGE": {
+      "value": 0.16,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern"
+    },
+    "ACD_PATTERN_ALTERNATING_MAX_FRACTION_TRUE_FORCING": {
+      "value": 0.02,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration"
+    },
+    "ACD_PATTERN_COSINE_MAX_FORCING_CHANGE": {
+      "value": 0.22627416997969524,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern"
+    },
+    "ACD_PATTERN_COSINE_MAX_FRACTION_TRUE_FORCING": {
+      "value": 0.028284271247461905,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration"
+    },
+    "ACD_PATTERN_SINGLE_SITE_MAX_FORCING_CHANGE": {
+      "value": 0.9991996797437438,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern"
+    },
+    "ACD_PATTERN_SINGLE_SITE_MAX_FRACTION_TRUE_FORCING": {
+      "value": 0.12489995996796797,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration"
+    },
+    "ACD_PATTERN_UNIFORM_MAX_FORCING_CHANGE": {
+      "value": 0.16,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern"
+    },
+    "ACD_PATTERN_UNIFORM_MAX_FRACTION_TRUE_FORCING": {
+      "value": 0.02,
+      "receipt": "sources/WO_v2.3.md",
+      "receipt_path": [
+        "\u00a74: unit-RMS patterns, N=40",
+        "\u00a74: action amplitude a=0.16",
+        "\u00a73: true forcing F=8"
+      ],
+      "derivation": "maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration"
+    },
     "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_LOWER": {
       "value": -0.052000000000000046,
       "receipt": "receipts/acd_stage6.json",
@@ -36452,6 +36541,21 @@
       "value": 1.0233483255815056e-05,
       "receipt": "receipts/acd_stage6.json",
       "receipt_path": "$.B.B1.confirmation.budget_closure_max_abs"
+    },
+    "ACD_POSTHOC_STAGE6_B1_FLOW_SD_OVER_INJECTION_MEAN_MAGNITUDE_2LT": {
+      "value": 2.3788242638644794,
+      "receipt": "receipts/acd_stage6.json",
+      "receipt_path": [
+        "$.B.B1.confirmation.rows[3].terms[0].mean_posterior_mean",
+        "$.B.B1.confirmation.rows[3].terms[1].mean_posterior_sd"
+      ],
+      "derivation": "mean posterior SD of flow contribution divided by absolute mean injection contribution"
+    },
+    "ACD_POSTHOC_STAGE6_B1_INJECTION_MEAN_MAGNITUDE_2LT": {
+      "value": 0.020132310695359056,
+      "receipt": "receipts/acd_stage6.json",
+      "receipt_path": "$.B.B1.confirmation.rows[3].terms[0].mean_posterior_mean",
+      "derivation": "absolute value of mean posterior mean injection contribution, equal case/action weighting"
     },
     "ACD_POSTHOC_STAGE6_B1_PROJECTION_CLOSURE_MAX_ABS": {
       "value": 1.4210854715202004e-14,
@@ -49868,6 +49972,12 @@
       "receipt": "receipts/acd_stage6.json",
       "receipt_path": "$.C.cases_with_any_invalid"
     },
+    "ACD_POSTHOC_STAGE6_C_CASE_ERROR_RATE_2LT": {
+      "value": 0.06296833454193862,
+      "receipt": "receipts/acd_stage6.json",
+      "receipt_path": "$.C.calibration_2LT.S.case_accuracy",
+      "derivation": "one minus post hoc case-averaged accuracy of observation-confident S; not pooled answer error rate"
+    },
     "ACD_POSTHOC_STAGE6_C_COMPARISONS_2LT_ALL_MINUS_FC_LOWER": {
       "value": -0.242,
       "receipt": "receipts/acd_stage6.json",
@@ -50535,6 +50645,12 @@
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.R0[7].R0.case_accuracy"
     },
+    "ACD_R0_CASE_ERROR_RATE_2LT": {
+      "value": 0.004749694749694666,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R0[3].R0.case_accuracy",
+      "derivation": "one minus case-averaged accuracy; not pooled answer error rate"
+    },
     "ACD_R0_CASE_LOWER_0LT": {
       "value": 0.983,
       "receipt": "receipts/acd_stage2.json",
@@ -50614,6 +50730,15 @@
       "value": 1.0,
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.R0[7].R0.case_upper"
+    },
+    "ACD_R0_CORRECT_2LT": {
+      "value": 966,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": [
+        "$.R0[3].R0.answers",
+        "$.R0[3].R0.answer_accuracy"
+      ],
+      "derivation": "integer correct-answer count reconstructed as answers * pooled answer accuracy; product checked within 1e-9 of an integer"
     },
     "ACD_R0_INCLUDED_EXCLUDED_ANSWERS_0LT": {
       "value": 1373,

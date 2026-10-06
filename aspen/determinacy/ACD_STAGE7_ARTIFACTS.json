@@ -1,0 +1,81 @@
+{
+  "base": "f679cde7c6f3b6f861f745bc220ea64e116c6bd2",
+  "hashes": {
+    "paper/main.tex": "543895c7fb5a81c51f71bcd1139e4a0a9bef5b218847a63ca6d839910c0149ae",
+    "paper/refs.bib": "ab16d40f680e689faa0fc3346c0f6109f184b87d9176e8ff00f27ee403b89c6f",
+    "paper/main.detex.txt": "6e006247372fc8181a5ba176a72e79c98b10dc7af89641e7a02268b050e47847",
+    "paper/TEX_ENVIRONMENT.json": "a7d75fc1b4e5038596203a618e991a5f1acf912c608d819ca13b0118c6b00238",
+    "ACD_ABSTRACT_DRAFT.md": "836ba74eb03e86d7002960f760d91b24c7658dfa88be81c9e80f72f83aed23bf",
+    "ACD_PAPER_AUDIT.md": "73bc4d456884798b84ffa4e5b6875aa769a8f57fce43eadd33027eaba1ae356c",
+    "ACD_ABSTRACT_AUDIT.md": "9ae3341d9867b4f4dcdc9e97d9c6aee0999fcd556821d3da45a37b27011b349b",
+    "ACD_PAPER_NUMERIC_CHECK.md": "4da7d1f36581a4d711cad06344a4d7cf43beaf2596bf4ffa8bd0620ad9c20684",
+    "NUMBERS_ACD.md": "a0a668104472836bbf0f5fc3aae9a98609d3957311cf54268ea17fcd448fc373",
+    "numbers_acd.json": "b1f61723e9bdc083c2f8e60d7f2f54f2f280531bc1473ed5067155e7e06fa749",
+    "acd_numbers.py": "12a4142ca0ce37ff9ed18368e3a4a9209b16c4e16c644e942ef31c790417de92",
+    "acd_paper_check.py": "a5852c68ab410de48097cd78c7366d47c4b10da707d1f01be498c38fd635f236",
+    "acd_stage7_report.py": "fde7cc99edf2670f9de000d1427aad427170087e486b6955c8ccc89befca4edc",
+    "ACD_STAGE7_STATUS.md": "ae4bfbcef6768ed22a12b87ff87897d3847436cf1f3283a7c224b311ad5c8bcb",
+    "Draft_Aspen-Intervention-Horizon-Paper-2026-10.md": "15d557df87e27aad3f050675b3e08078644bd057a308ec95637a575cf68d7235",
+    "receipts/acd_stage7_abstract_audit.json": "1b0b494e6907476f37dce948a23fce964085338611701eb39d1e59e4a9dbeb84",
+    "receipts/acd_stage7_abstract_check.txt": "b5f5d472d588d8e0829d3b0f1a519beba3ff0b2bba7e6cb2d079a45c12a9ae98",
+    "receipts/acd_stage7_numbers_check.txt": "c26de83abdc9496cd1301470918ec39ecca1cf389ef0ae1c6504da1800d1c431",
+    "receipts/acd_stage7_numeric_check.json": "2d9882f68e3c63d436ffa856d09d9c5d8c58c841220ba85b6646d16a1e31ee51",
+    "receipts/acd_stage7_paper_audit.json": "c8638f29a9421aee9e9f36b5c964b8d22d42bffe5bfb751ce5b02dfa37dfa949",
+    "receipts/acd_stage7_paper_check.txt": "b69c0d41504e4b2ee9dd4f4446db9796f05d3401effd11cd6de4b0fdeb65cda3",
+    "receipts/acd_stage7_source.diff": "2f4786eb3f65ccc0a37cbf5edd77f8b70a3fd4758befe461830f255249f0e7ea",
+    "receipts/acd_stage7_source.json": "63f36f849ded8f9379be75c26ace653e4077806dc22627505a33b31ed0bf98d3",
+    "receipts/acd_stage7_verification.json": "254cd094bfc815e0ce55078d2eec4e2b3fc48b51165b4693bb857c94f99d2963"
+  },
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "V4_027_05",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_027_06",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_035_02",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_042_01",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_240_01",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_279_07",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_317_09",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "V4_317_10",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "A_V4_05",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "A_V4_06",
+      "resolution": "Keep the supplied draft unchanged, flag the proposed fix, and withhold any broader reading or claim that this finding would require."
+    }
+  ]
+}
