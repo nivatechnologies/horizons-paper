@@ -52,7 +52,7 @@ def score(name,entries,summary,keep,means,costerrors,jbar):
  return dict(model=name,post_hoc=True,matched_cases=int(keep.sum()),matched_questions=int(keep.sum()*7),confidence_readings=rows,state_skill=skill,per_draw_cost_errors=costerrors,reliability=bins,error_coverage=curves,calibration_test=tests,comparisons=[r for r in comparisons(summary,keep) if r['lead'] in ([2] if name=='CNN-cost' else [2,3])],paired_endpoint=endpoint_fixed(summary,keep,eligible) if name!='CNN-cost' else None,paired_endpoint_fixed_posterior_cohort=endpoint_fixed(summary,keep,fixed_eligible) if name!='CNN-cost' else None)
 def run(name):
  frozen=json.load(open(ROOT/'receipts/acd_stage2.json'));jbar=frozen['null']['jbar'];null=np.array(frozen['null']['question_probabilities'])[np.r_[np.arange(8),37]]
- rows=[];keep=[];means=[];errs=[];invalid=[]
+ rows=[];keep=[];means=[];errs=[];invalid=[];raw_errors={}
  directory=DEST/'inference'/name
  for c in range(200):
   with np.load(RAW/f'conf/case_{c:03d}.npz') as d:physicsJ=d['J'].copy();excluded=bool(d['excluded'])
@@ -67,6 +67,7 @@ def run(name):
   if name!='posterior':
    for t in ([3] if name=='CNN-cost' else [3,5]):
     for kind,error in [('J8',J[:,8,t]-physicsJ[:,8,t]),('Jk',J[:,:8,t]-physicsJ[:,:8,t]),('Dk',(J[:,:8,t]-J[:,8,None,t])-(physicsJ[:,:8,t]-physicsJ[:,8,None,t]))]:
+     raw_errors.setdefault((float(LEADS[t]),kind),[]).append(error.ravel())
      errs.append(dict(case=c,lead=float(LEADS[t]),quantity=kind,bias=float(error.mean()),RMSE=float(np.sqrt(np.mean(error**2))),MAE=float(np.abs(error).mean())))
  s=stack(rows);keep=np.array(keep)
  costs=[]
@@ -78,6 +79,7 @@ def run(name):
   for c in range(200):
    with np.load(OUT/f'conf_{c:03d}_0.16.npz') as d:means.append(d['factual_mean'])
  result=score(name,None,s,keep,np.array(means) if name!='CNN-cost' else None,costs,jbar);result['invalid_cases']=invalid
+ result['pooled_per_draw_errors']=[dict(lead=lead,quantity=kind,draw_action_values=len(np.concatenate(arrays)),bias=float(np.concatenate(arrays).mean()),RMSE=float(np.sqrt(np.mean(np.concatenate(arrays)**2))),MAE=float(np.abs(np.concatenate(arrays)).mean()),signed_error_distribution=dist(np.concatenate(arrays)),weighting='each saved draw/action equally; additional equal-case summaries are retained') for (lead,kind),arrays in raw_errors.items()]
  if name!='posterior':result['execution']=json.load(open(directory/'complete.json'))
  (DEST/f'metrics_{name}.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
 if __name__=='__main__':
