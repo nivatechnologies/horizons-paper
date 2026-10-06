@@ -88,7 +88,32 @@ def build():
         add('ACD_DEV_AMPLITUDE_RANGE_FACTOR',a[hi]['amplitude']/a[lo]['amplitude'],[f'$.rows[{hi}].amplitude',f'$.rows[{lo}].amplitude'],amplitude_receipt,derivation='maximum tested amplitude / minimum tested amplitude')
         for name,i in [('MIN',lo),('MAX',hi)]:
             add('ACD_DEV_AMPLITUDE_'+name+'_FRACTION_TRUE_FORCING',a[i]['amplitude']/d['null']['F'],f'$.rows[{i}].amplitude',amplitude_receipt,derivation='tested amplitude / true forcing ACD_NULL_FORCING',additional_sources=[dict(receipt='receipts/acd_stage2.json',receipt_path='$.null.F')])
-    sources=['receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json']
+    matched_receipt='receipts/acd_stage4b_amplitude_matched.json'
+    if (ROOT/matched_receipt).exists():
+        matched=json.loads((ROOT/matched_receipt).read_text())
+        for field in ['states','F','dt','cases','excluded','bootstrap_replicates','betting_interval_level','null_reproduction']:
+            walk(matched[field],'ACD_DEV_AMP_'+field,'$.'+field,matched_receipt)
+        for i,row in enumerate(matched['rows']):
+            token='A'+str(row['amplitude']).replace('.','P')
+            stem='ACD_DEV_AMP_'+token
+            add(stem+'_AMPLITUDE',row['amplitude'],f'$.rows[{i}].amplitude',matched_receipt)
+            add(stem+'_FRACTION_TRUE_FORCING',row['fraction_true_forcing'],f'$.rows[{i}].fraction_true_forcing',matched_receipt)
+            add(stem+'_CASES',row['cases'],f'$.rows[{i}].cases',matched_receipt)
+            for j,r in enumerate(row['shares']):
+                walk(r,stem+'_R1',f'$.rows[{i}].shares[{j}]',matched_receipt,'_'+lead(r['lead']))
+            for j,r in enumerate(row['R2a']):
+                walk(r,stem+'_R2A',f'$.rows[{i}].R2a[{j}]',matched_receipt,'_'+lead(r['lead']))
+            walk(row['R2b'],stem+'_R2B',f'$.rows[{i}].R2b',matched_receipt,omit=('case_values',))
+    null_receipt='receipts/acd_stage4b_null.json'
+    if (ROOT/null_receipt).exists():
+        null=json.loads((ROOT/null_receipt).read_text())
+        for field in ['states','F','dt','threads','spinup_LT','spinup_steps','seed','baseline_comparison']:
+            walk(null[field],'ACD_DEV_AMP_NULL_'+field,'$.'+field,null_receipt)
+        for amp,r in null['amplitudes'].items():
+            token='A'+amp.replace('.','P')
+            for i,share in enumerate(r['Fc_above_shares']):
+                add('ACD_DEV_AMP_NULL_'+token+'_FC_ABOVE_SHARE_'+lead(LEADS[i]),share,'$.amplitudes.'+amp+f'.Fc_above_shares[{i}]',null_receipt)
+    sources=['receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
     lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']

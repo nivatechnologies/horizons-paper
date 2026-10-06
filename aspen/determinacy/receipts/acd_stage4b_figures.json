@@ -1,0 +1,10 @@
+{
+  "source_hashes": {
+    "receipts/acd_stage4b_amplitude_matched.json": "9f2760b904c8f823edd053b40fda91dddefb6bd75a58ceb91f88ed9e82f80722"
+  },
+  "outputs": {
+    "figures/F6_amplitude.pdf": "5468210073b123f8ed8d20dca47f03d20827c8644e9fb560ad69d9a5a185b2e3",
+    "figures/F6_amplitude.png": "bd263b353d26cea4f95f7a04294e4d338e8b0f7917377d57eca1dfd568ffef7a"
+  },
+  "caption": "F6. DEVELOPMENT / EXPLORATORY, five tested amplitudes and 200 saved development posterior re-forecasts. Matched 4096-state climatological null at each amplitude. Confident S: dashed squares; observation-confident S: solid circles; the sign of the unforced window-energy anomaly: dash-dot triangles in grey. Loss difference: solid diamonds with v2.3 betting 99% intervals. These are case-ordered estimates, not confirmation evidence. Changed-amplitude R0 calibration has not been run, so their formal R2a/R2b routes are PREREQUISITE NOT MET; numerical margin/interval patterns do not license comparisons in the abstract. No interpolation claim across untested amplitudes."
+}

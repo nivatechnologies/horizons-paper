@@ -1,0 +1,38 @@
+{
+  "base": "bf614b6510960ccc706ea3e8ecae13797898f759",
+  "panel": "development",
+  "exploratory": true,
+  "outputs": {
+    "acd_amplitude_matched.py": "bac0f66349ed3aec4cc1874dd257aefec7ed2fff21d2b8e88ff685111a81e4de",
+    "acd_numbers.py": "9d1d366e771d518de614a216eba0a0e836c2158664f9ac2466f16dd369aa23a1",
+    "ACD_AMPLITUDE_MATCHED.md": "903905737ecf86d0a79acb1ae93ff1a0996b64a728e5f89f17de93df66492012",
+    "numbers_acd.json": "9a860a48236faa7df04be1d08d69b01245ee64340771df3d2fd1f7c5f9008315",
+    "NUMBERS_ACD.md": "98c70c335f5b09e351bd3d878056908f0108680910e53d1299910314eb666e54",
+    "receipts/acd_stage4b_null.json": "a07c153976f936a6e38ab22076c728501fefc796fdf11fca1a46bdb29f9ee418",
+    "receipts/acd_stage4b_amplitude_matched.json": "9f2760b904c8f823edd053b40fda91dddefb6bd75a58ceb91f88ed9e82f80722",
+    "receipts/acd_stage4b_figures.json": "daf4bde3b19b66befad10a85c4c01025e6e11dce078d116f7627184e3840133b",
+    "receipts/acd_stage4b_numbers_check.txt": "04583fba7c802fc799e865f5c65807cda111b9baa8b09f726391f31f848e0164",
+    "receipts/acd_stage4b_verification.json": "d0cbf97a5988aeb03bed4f01461a8e676c514dcf2fe4331bc8617912c7902939",
+    "figures/F6_amplitude.pdf": "5468210073b123f8ed8d20dca47f03d20827c8644e9fb560ad69d9a5a185b2e3",
+    "figures/F6_amplitude.png": "bd263b353d26cea4f95f7a04294e4d338e8b0f7917377d57eca1dfd568ffef7a",
+    "figures/F6_amplitude_CAPTION.md": "02e02e175f9bf32cafb1b9b808162b65dc4d581ce5cc77fd589c30faff997de8"
+  },
+  "raw_null_outputs": {
+    "runs/stage4b_null/null_0.16.npz": "3eee6184746483dcc4e2a9f4efb8d155521700b7f11fb49fd3b90548c9fab729",
+    "runs/stage4b_null/null_0.04.npz": "f015e9993bac31b2e59689000df0939b994beb710828dc7f3df2788302bb9fcc",
+    "runs/stage4b_null/null_0.08.npz": "0adb3b82398456efb3d855497f1fe388560f60dbce4ddb693030a957cbf480de",
+    "runs/stage4b_null/null_0.32.npz": "6cc65eec3940796e9c85bcb59d47732a9cd40a2691030b3c9fb27b313c5d0a2c",
+    "runs/stage4b_null/null_0.64.npz": "dc28a670faf2296ef8ef8756e1d562e23d3c8da8328b94becfd8ee49bb144db6"
+  },
+  "raw_states": {
+    "path": "runs/stage4b_null/states.npz",
+    "sha256": "0d7db6b75fc1f1a279e884a1c63205ba278a58726d676e41cb58d2aba5160b4d"
+  },
+  "resolution_rules": [
+    {
+      "rule": "R-other",
+      "trigger": "Changed-amplitude R0 calibration is unavailable and only null forward integrations are newly authorized",
+      "resolution": "Compute case-ordered R2a/R2b estimates and betting intervals, but formal route status is PREREQUISITE NOT MET for changed amplitudes. Report numerical margin/interval classification separately without a route license. Reuse baseline calibration only if the baseline question origin and classifications match. No realized-action forecast or posterior fit is run."
+    }
+  ]
+}
