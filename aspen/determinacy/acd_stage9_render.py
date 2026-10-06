@@ -79,6 +79,11 @@ def run():
  d['resolutions'].append('R-other: CNN-cost is a direct window-cost head; state RMSE and anomaly correlation are not defined, so only cost and question metrics are reported.')
  for name in ['CNN-roll','CNN-resp']:
   if d['C'][name].get('status')=='UNAVAILABLE':d['resolutions'].append(d['C'][name]['resolution']+f' ({name})')
+ for name,training in d['F'].items():
+  if training.get('capped'):
+   d['resolutions'].append(f"R-other: {name} reached its training budget and completed {training['step']} updates; selected checkpoint {training['selected_step']} by the frozen validation rule. No claim of a completed 20,000-update run.")
+ if all('step' in r for r in d['F'].values()) and len({r['step'] for r in d['F'].values()})>1:
+  d['resolutions'].append('R-other: the forcing-conditioned models completed different update counts under their separate time caps; their comparison does not isolate the paired-response loss effect.')
  d['environment']=json.load(open(RUN/'execution_environment.json'))
  d['verification']=json.load(open(RUN/'verification.json'))
  d['jvp_check']=json.load(open(RUN/'jvp_implementation_check.json'))

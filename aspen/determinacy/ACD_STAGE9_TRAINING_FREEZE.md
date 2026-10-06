@@ -38,3 +38,5 @@ Alongside the previously frozen model-specific lead0-eligible paired endpoint, a
 Cost-error reporting also retains pooled per-draw bias, RMSE, MAE and signed-error quartiles alongside equal-case summaries. This changes no input, model, checkpoint selection or primary statistical procedure. Scoring code SHA256 before trained-model evaluation: 0c7f05db09899247f198b75b16efb09a5b911ec9228448870be70af498d256cf.
 
 CNN-cost has no state output; its state-skill metrics are explicitly not defined, with no surrogate imputed. Latest scoring SHA256 before forcing-conditioned evaluation: 3631cd2f1124d272d7cba207673d936ebf6d441b5aebc4c589184bf6813f70cd.
+
+State-skill scoring aligns the identical time-zero/.05 grids over their common saved ticks and asserts that every requested window is present. The physics array has one unused terminal tick beyond the CNN array. No inference or window changes. Scoring SHA256 before forcing-conditioned evaluation: 471e2363945e25a1f8ee0920c3955bc1a3c41d899de5a164b4369e2299fe859d.

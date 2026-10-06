@@ -23,8 +23,14 @@ def score(name,entries,summary,keep,means,costerrors,jbar):
   fc=summary['confident'][:,8,t];fc_right=summary['modal'][:,8,t]==truth[:,8,t];fc_acc=r0(fc[keep].astype(int),(fc&fc_right)[keep].astype(int))
   rows.append(dict(lead=float(LEADS[t]),confident_Fc_share=float(fc[keep].mean()),Fc_accuracy=fc_acc,Fc_case_error=1-fc_acc['case_accuracy'] if fc_acc['case_accuracy'] is not None else None,Fc_error_lower=1-fc_acc['case_upper'],Fc_error_upper=1-fc_acc['case_lower'],confident_S_share=float(conf[keep].mean()),observation_S_share=float(obs[keep].mean()),all_confident_accuracy=acc,observation_confident_accuracy=obsacc,case_confident_error=1-acc['case_accuracy'] if acc['case_accuracy'] is not None else None,error_lower=1-acc['case_upper'],error_upper=1-acc['case_lower']))
   if means is not None:
-   err=np.sqrt(np.mean((means-states)**2,-1))/SIGMA
-   x=means-climate;y=states-climate;den=np.sqrt(np.sum(x*x,-1)*np.sum(y*y,-1));ac=np.sum(x*y,-1)/den
+   assert means.shape[0]==states.shape[0] and means.shape[2]==states.shape[2]
+   common=min(means.shape[1],states.shape[1])
+   assert all(int(np.max(w))<common for w in WINDOWS), 'requested window missing from saved state grid'
+   # Both grids start at action time zero and use the same .05 output ticks.
+   # Physics stores one additional terminal tick outside every scoring window.
+   factual_truth=states[:,:common];factual_mean=means[:,:common]
+   err=np.sqrt(np.mean((factual_mean-factual_truth)**2,-1))/SIGMA
+   x=factual_mean-climate;y=factual_truth-climate;den=np.sqrt(np.sum(x*x,-1)*np.sum(y*y,-1));ac=np.sum(x*y,-1)/den
    skill.append(dict(lead=float(LEADS[t]),window_mean_RMSE_over_sigma=float(err[keep][:,WINDOWS[t]].mean()),window_mean_anomaly_correlation=float(ac[keep][:,WINDOWS[t]].mean())))
  # Matched 1400 questions, seven zero-mean patterns at 2LT, same cases for all models.
  t=3;p=summary['p'][:,1:8,t];right=summary['modal'][:,1:8,t]==truth[:,1:8,t];bins=[]
