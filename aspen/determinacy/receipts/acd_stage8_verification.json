@@ -1,0 +1,31 @@
+{
+  "base": "5df47447c22fca97c0d55cf14b74240b7f0500fe",
+  "source_hashes_verified": true,
+  "abstract_verbatim": true,
+  "titles_unchanged": true,
+  "optional_text_unchanged": true,
+  "registry_unchanged": true,
+  "prior_receipts_unchanged": true,
+  "numeric_unmatched": [],
+  "paper_counts": {
+    "OK": 10,
+    "FIX": 0
+  },
+  "current_paper_counts": {
+    "OK": 510,
+    "FIX": 0
+  },
+  "abstract_counts": {
+    "OK": 9,
+    "FIX": 0
+  },
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "Supplied v5 main.tex retains its unchanged printed date label 'draft v4'.",
+      "resolution": "Preserve verified supplied bytes, identify the artifact as the supplied v5 source, and flag the printed-label discrepancy. It is outside the changed-passage audit."
+    }
+  ],
+  "scientific_runs": 0,
+  "build_attempted": false
+}

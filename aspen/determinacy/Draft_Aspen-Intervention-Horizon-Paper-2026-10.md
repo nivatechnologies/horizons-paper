@@ -1,38 +1,32 @@
-# Aspen intervention horizon paper — Stage 7, v4
+# Aspen intervention horizon paper — Stage 8, v5
 
-V4 sources verified unchanged. Independent full paper audit: **502 OK / 8 FIX**; abstract audit: **7 OK / 2 FIX** for the current abstract and titles (historical optional sentences are unselected).
-Branch: paper/aspen-2026-10-determinacy. Base: f679cde7c6f3b6f861f745bc220ea64e116c6bd2.
+Supplied v5 sources verified unchanged. Changed-paper audit: **10 OK / 0 FIX**; current abstract and titles: **9 OK / 0 FIX**.
+Current full-paper inventory: **510 OK / 0 FIX**; all ten Stage 7 findings are resolved.
+Branch: paper/aspen-2026-10-determinacy. Base: 5df47447c22fca97c0d55cf14b74240b7f0500fe.
+Sulaco: /home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/.
 
-Sulaco directory: /home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/.
-
-- [Paper source](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/main.tex)
+- [V5 paper source](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/main.tex)
 - [References](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/refs.bib)
-- [Full v4 paper audit](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_AUDIT.md)
-- [Verbatim v4 abstract and retained titles](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_DRAFT.md)
-- [Abstract audit and Todd's standing rulings](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_AUDIT.md)
-- [Numeric check and structural inventory](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_NUMERIC_CHECK.md)
-- [Receipt-backed numbers registry](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/NUMBERS_ACD.md)
-- [Post hoc Stage 6 reading](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE6_READING.md)
-- [V4 paper audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage7_paper_audit.json)
-- [V4 abstract audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage7_abstract_audit.json)
-- [Source hash verification](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage7_source.json)
-- [Stage 7 status and all proposed fixes](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE7_STATUS.md)
+- [Appended changed-passage audit and Stage 7 dispositions](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_AUDIT.md)
+- [Verbatim v5 abstract and retained titles](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_DRAFT.md)
+- [Full v5 abstract audit](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_AUDIT.md)
+- [Numeric checks and structural inventory](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_NUMERIC_CHECK.md)
+- [V5 paper audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage8_paper_audit.json)
+- [V5 abstract audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage8_abstract_audit.json)
+- [Source hash verification](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage8_source.json)
+- [Source diff inventory](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage8_diff.json)
+- [Stage 8 status](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_STAGE8_STATUS.md)
 
-Both numeric checks: **zero unmatched numbers**; registry regeneration PASS. Structural constants and bibliography metadata are separately inventoried. No TeX build attempted; the supplied archive includes no PDF. Sources and abstracts were not corrected by the auditor.
+Both numeric checks have zero unmatched numbers. Abstract: 1894 characters excluding final newline. No build attempted; no PDF supplied.
 
-## Open findings
+## Open audit rows
 
-| Audit | ID / line | Claim | Proposed fix |
-|---|---|---|---|
-| Paper | V4_027_05 / 27 | Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59\% of eligible actions and after it for 28\% (99\% interval for the difference $[-0.49, -0.13]$), although factual and counterfactual window energies have median posterior correlation 0.975 at 2~LT. | Write 'for 59% and 28% of each instance’s eligible actions, averaged over eligible instances (99% interval for later minus earlier [−0.49, −0.13])'. The shares are case averaged, and the negative contrast is later minus earlier. |
-| Paper | V4_027_06 / 27 | In post hoc analyses: at 3~LT, while the posterior-mean forecast still has anomaly correlation 0.93 with the truth, the sign of a small intervention's effect is confident for 37\% of questions about the seven patterns whose sign climatology never gives, against 67\% for the forecast sign (99\% interval for the difference $[-0.42, -0.18]$); the loss tracks disagreement among posterior draws about the intervention's effect on the mean flow rather than its direct energy injection; the ordering holds for the energy of a 10-site block; and a deterministic CNN emulator given the posterior's own histories is confident about as often as the posterior, but its observation-dependent confident answers are right 93.7\% of the time against 99.5\%. | Add 'averaged within each instance and then over instances' to the CNN/posterior accuracy comparison. The displayed 93.7% and 99.5% are case-averaged accuracies; pooled CNN answer accuracy is 93.58452138492872%, which rounds to 93.6%. Keep the post hoc label and specify that this comparison is at 2 LT. |
-| Paper | V4_035_02 / 35 | What has not been measured is how confidence in an intervention's effect relates to confidence in the forecast it acts on, for one observed instance and conditional on the same observations. | Replace the universal novelty assertion with 'We measure how confidence in an intervention’s effect relates to confidence in the forecast it acts on, for one observed instance and conditional on the same observations.' The saved receipts and bibliography do not establish that no previous work measured this relationship. |
-| Paper | V4_042_01 / 42 | \item Confidence in an intervention's sign is lost before confidence in the forecast sign more often than after (59\% against 28\% of eligible actions; pre-registered), although the factual and counterfactual window energies have median posterior correlation 0.975 at 2~LT. | Write '59% against 28% of each instance’s eligible actions, averaged over eligible instances'. These are equal-instance means, not pooled fractions of eligible actions. |
-| Paper | V4_240_01 / 240 | Global energy has an exact budget that a local quantity lacks, so we repeated the comparison for the energy of the 10-site block $i = 0,\dots,9$, chosen before any post hoc result was read, with its own climatological mean and realized answers. | Replace 'chosen before any post hoc result was read' with 'specified before the block-observable results were read'. Todd’s Stage 6 B2 request specifies sites 0–9; it does not establish the broader claim about every earlier post hoc result. |
-| Paper | V4_279_07 / 279 | Raising the margin to 0.1 of the climatological standard deviation leaves C unchanged at 2~LT and changes it little at 3~LT (acting 70.5\% to 66.5\%), so the confident effects are not concentrated near zero. | Replace the conclusion with 'so most actions selected by policy C at zero margin remain selected at the tested 0.1-standard-deviation margin'. The sensitivity concerns E-selected actions admitted by C, not all confident intervention effects. |
-| Paper | V4_317_09 / 317 | The frozen criterion required a margin of 0.10, $p \le 0.01$ against all three, at least 20 settled answers with an exact one-sided 95\% accuracy lower bound of at least 0.80, and post-measurement truth coverage of at least 0.85. | Replace 'at least 20 settled answers' with 'at least 20 confident answers'. This preserves the §10 settled-count gate while complying with §11’s explicit ban on the word 'settled'; the accuracy and coverage gates remain separate. |
-| Paper | V4_317_10 / 317 | Arm Q settled 15 (lower bound 0.82, coverage 91.7\%), so the margin, the paired tests and the count all fell short, and the advantage did not confirm. | Replace 'Arm Q settled 15' with 'Arm Q resolved 15 confidently and correctly'. The observed count is unchanged, and the wording complies with §11’s ban on 'settled'. |
-| Abstract | A_V4_05 / 5 | Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59% of eligible actions and after it for 28% (99% interval for the difference [−0.49, −0.13]), although factual and counterfactual window energies have median posterior correlation 0.975 at 2 LT. | Write 'for 59% and 28% of each instance’s eligible actions, averaged over eligible instances (99% interval for later minus earlier [−0.49, −0.13])'. The shares are case averaged, and the negative contrast is later minus earlier. |
-| Abstract | A_V4_06 / 6 | In post hoc analyses: at 3 LT, while the posterior-mean forecast still has anomaly correlation 0.93 with the truth, the sign of a small intervention's effect is confident for 37% of questions about the seven patterns whose sign climatology never gives, against 67% for the forecast sign (99% interval for the difference [−0.42, −0.18]); the loss tracks disagreement among posterior draws about the intervention's effect on the mean flow rather than its direct energy injection; the ordering holds for the energy of a 10-site block; and a deterministic CNN emulator given the posterior's own histories is confident about as often as the posterior, but its observation-dependent confident answers are right 93.7% of the time against 99.5%. | Add 'averaged within each instance and then over instances' to the CNN/posterior accuracy comparison. The displayed 93.7% and 99.5% are case-averaged accuracies; pooled CNN answer accuracy is 93.58452138492872%, which rounds to 93.6%. Keep the post hoc label and specify that this comparison is at 2 LT. |
+| Audit | ID | Proposed fix |
+|---|---|---|
+| Both | None | No open FIX rows |
 
-R-other fires for each open finding listed above: retain the supplied draft and flag the narrower proposed wording. Earlier R-other resolutions (corrected all-S denominator, exploratory scope/no frozen license, retained numerical energy-budget closure residual) continue to apply. No hard stop fired.
+## Resolution rules
+
+R-other: the supplied v5 source still prints 'October 2026 --- draft v4'. Preserve its verified bytes and flag this metadata discrepancy. The printed label was unchanged, so it is outside the requested changed-passage re-audit.
+Prior R-other scope rules remain: corrected all-S denominator, exploratory/post hoc readings license no frozen route, and numerical energy-budget closure residual retained. No hard stop fired.
+No build, sampling, integration, fitting, inference, training, cloud compute or Qwen service changes. All work uses static sources and receipts on sulaco CPU; Baccus close-out untouched.

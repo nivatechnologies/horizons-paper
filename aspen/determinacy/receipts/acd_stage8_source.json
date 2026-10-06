@@ -1,0 +1,14 @@
+{
+  "archive_sha256": "819a1f268a30fef12213ffe602bd387e63f3f5f97a5cb0674f8dccb6027e7e05",
+  "expected": {
+    "paper/main.tex": "bf0ccd7b16d9121c28be2070319645a73cecb38578fa3ca9a7fd70a5bff076bb",
+    "paper/refs.bib": "ab16d40f680e689faa0fc3346c0f6109f184b87d9176e8ff00f27ee403b89c6f",
+    "paper/ABSTRACT_v5.txt": "9bc2303b2dd8038b282ac3ade464a5a2ec46e23f661f1ee3c337a91e307d2476"
+  },
+  "actual": {
+    "paper/refs.bib": "ab16d40f680e689faa0fc3346c0f6109f184b87d9176e8ff00f27ee403b89c6f",
+    "paper/ABSTRACT_v5.txt": "9bc2303b2dd8038b282ac3ade464a5a2ec46e23f661f1ee3c337a91e307d2476",
+    "paper/main.tex": "bf0ccd7b16d9121c28be2070319645a73cecb38578fa3ca9a7fd70a5bff076bb"
+  },
+  "match": true
+}

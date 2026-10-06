@@ -1,0 +1,88 @@
+{
+  "base": "5df47447c22fca97c0d55cf14b74240b7f0500fe",
+  "changed_blocks": [
+    {
+      "tag": "replace",
+      "old_start": 27,
+      "old_end": 27,
+      "new_start": 27,
+      "new_end": 27,
+      "old_lines": [
+        "Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts. We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the forecast sign, the sign of the unforced window-energy anomaly, than after. In Lorenz-96 ($N = 40$, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we sample the full posterior for 200 independent instances and score it against the realized truth. At 2~LT, 966 of 971 confident intervention-sign answers that depend on the observations are right. Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59\\% of eligible actions and after it for 28\\% (99\\% interval for the difference $[-0.49, -0.13]$), although factual and counterfactual window energies have median posterior correlation 0.975 at 2~LT. In post hoc analyses: at 3~LT, while the posterior-mean forecast still has anomaly correlation 0.93 with the truth, the sign of a small intervention's effect is confident for 37\\% of questions about the seven patterns whose sign climatology never gives, against 67\\% for the forecast sign (99\\% interval for the difference $[-0.42, -0.18]$); the loss tracks disagreement among posterior draws about the intervention's effect on the mean flow rather than its direct energy injection; the ordering holds for the energy of a 10-site block; and a deterministic CNN emulator given the posterior's own histories is confident about as often as the posterior, but its observation-dependent confident answers are right 93.7\\% of the time against 99.5\\%. An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question."
+      ],
+      "new_lines": [
+        "Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts. We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the forecast sign, the sign of the unforced window-energy anomaly, than after. In Lorenz-96 ($N = 40$, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we sample the posterior for 200 independent instances and score it against the truth. At 2~LT, 966 of 971 observation-dependent confident intervention-sign answers are right. Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59\\% of eligible actions and after it for 28\\%, averaged over instances (99\\% interval for later minus earlier $[-0.49, -0.13]$), although factual and counterfactual window energies have median posterior correlation 0.975 at 2~LT. In post hoc analyses: at 3~LT, while the posterior-mean forecast still has anomaly correlation 0.93 with the truth, the sign of a small intervention's effect is confident for 37\\% of questions about the seven patterns climatology never answers, against 67\\% for the forecast sign (99\\% interval for the difference $[-0.42, -0.18]$); the loss tracks the draws' disagreement about the intervention's effect on the mean flow, not its direct energy injection; the ordering holds for the energy of a 10-site block; and a deterministic CNN emulator given the posterior's own histories is confident about as often as the posterior, but at 2~LT its observation-dependent confident answers are right 93.7\\% of the time against 99.5\\% (case-averaged). An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question."
+      ]
+    },
+    {
+      "tag": "replace",
+      "old_start": 35,
+      "old_end": 35,
+      "new_start": 35,
+      "new_end": 35,
+      "old_lines": [
+        "That a prediction objective and a decision objective can call for different things is well established \\citep{donti2017task}, and \\citet{aalaila2026chaotic} show that chaotic and complex dynamics limit counterfactual reasoning, leaving open the temporal windows within which it remains tractable. What has not been measured is how confidence in an intervention's effect relates to confidence in the forecast it acts on, for one observed instance and conditional on the same observations. Two intuitions pull in opposite directions. Whether action $k$ lowers a cost relative to taking no action is the sign of a difference between two futures that share one uncertain initial state, and uncertainty shared by the two futures cancels in their difference, the logic of common random numbers. That suggests an intervention's effect should stay answerable for longer than the forecast. Against that, the interventions worth weighing are often small, and the sign of a small difference is fragile. Climate response theory addresses a related but different question, the mean response over the attractor \\citep{leith1975climate,majda2010high,marconi2008fluctuation}, and Lorenz's distinction between predictability of the first kind (of a trajectory from its initial state) and of the second kind (of the response to a change in forcing) \\citep{lorenz1975climatic} frames the problem without settling it for one instance."
+      ],
+      "new_lines": [
+        "That a prediction objective and a decision objective can call for different things is well established \\citep{donti2017task}, and \\citet{aalaila2026chaotic} show that chaotic and complex dynamics limit counterfactual reasoning, leaving open the temporal windows within which it remains tractable. We are not aware of a measurement of how confidence in an intervention's effect relates to confidence in the forecast it acts on, for one observed instance and conditional on the same observations. Two intuitions pull in opposite directions. Whether action $k$ lowers a cost relative to taking no action is the sign of a difference between two futures that share one uncertain initial state, and uncertainty shared by the two futures cancels in their difference, the logic of common random numbers. That suggests an intervention's effect should stay answerable for longer than the forecast. Against that, the interventions worth weighing are often small, and the sign of a small difference is fragile. Climate response theory addresses a related but different question, the mean response over the attractor \\citep{leith1975climate,majda2010high,marconi2008fluctuation}, and Lorenz's distinction between predictability of the first kind (of a trajectory from its initial state) and of the second kind (of the response to a change in forcing) \\citep{lorenz1975climatic} frames the problem without settling it for one instance."
+      ]
+    },
+    {
+      "tag": "replace",
+      "old_start": 42,
+      "old_end": 42,
+      "new_start": 42,
+      "new_end": 42,
+      "old_lines": [
+        "\\item Confidence in an intervention's sign is lost before confidence in the forecast sign more often than after (59\\% against 28\\% of eligible actions; pre-registered), although the factual and counterfactual window energies have median posterior correlation 0.975 at 2~LT. In post hoc comparisons the intervention sign is confident less often than the forecast sign for each of the seven patterns whose sign climatology never gives, at 2 and 3~LT, while conventional forecast skill is still high (anomaly correlation 0.93 at 3~LT)."
+      ],
+      "new_lines": [
+        "\\item Confidence in an intervention's sign is lost before confidence in the forecast sign more often than after (59\\% against 28\\% of an instance's eligible actions, averaged over instances; pre-registered), although the factual and counterfactual window energies have median posterior correlation 0.975 at 2~LT. In post hoc comparisons the intervention sign is confident less often than the forecast sign for each of the seven patterns whose sign climatology never gives, at 2 and 3~LT, while conventional forecast skill is still high (anomaly correlation 0.93 at 3~LT)."
+      ]
+    },
+    {
+      "tag": "replace",
+      "old_start": 240,
+      "old_end": 240,
+      "new_start": 240,
+      "new_end": 240,
+      "old_lines": [
+        "Global energy has an exact budget that a local quantity lacks, so we repeated the comparison for the energy of the 10-site block $i = 0,\\dots,9$, chosen before any post hoc result was read, with its own climatological mean and realized answers. The single-site pattern acts inside this block. The result is the same (Figure~\\ref{fig:block}). Block intervention signs are confident for 70.25\\% of questions against 83.0\\% for the block forecast sign at 2~LT, and 41.6\\% against 64.0\\% at 3~LT. The seven-pattern differences are $-0.141$ ($[-0.242, -0.010]$) and $-0.235$ ($[-0.368, -0.168]$), and the paired difference is $-0.254$ ($[-0.444, -0.114]$), with earlier loss for 54.9\\% and later loss for 29.5\\% of eligible actions. Confident block intervention-sign answers are right 99.6\\% of the time at 2~LT (case-averaged; one-sided 95\\% lower bound 97.7\\%)."
+      ],
+      "new_lines": [
+        "Global energy has an exact budget that a local quantity lacks, so we repeated the comparison for the energy of the 10-site block $i = 0,\\dots,9$, specified before the block-observable results were read, with its own climatological mean and realized answers. The single-site pattern acts inside this block. The result is the same (Figure~\\ref{fig:block}). Block intervention signs are confident for 70.25\\% of questions against 83.0\\% for the block forecast sign at 2~LT, and 41.6\\% against 64.0\\% at 3~LT. The seven-pattern differences are $-0.141$ ($[-0.242, -0.010]$) and $-0.235$ ($[-0.368, -0.168]$), and the paired difference is $-0.254$ ($[-0.444, -0.114]$), with earlier loss for 54.9\\% and later loss for 29.5\\% of eligible actions. Confident block intervention-sign answers are right 99.6\\% of the time at 2~LT (case-averaged; one-sided 95\\% lower bound 97.7\\%)."
+      ]
+    },
+    {
+      "tag": "replace",
+      "old_start": 279,
+      "old_end": 279,
+      "new_start": 279,
+      "new_end": 279,
+      "old_lines": [
+        "Does the distinction matter when choosing an action? We compare two policies on the realized costs, each choosing among all nine options including no action (Table~\\ref{tab:decisions}). Policy E takes the option with the lowest posterior-mean window energy. Policy C takes E's choice only if the posterior is at least 95\\% confident that it lowers the energy by more than a margin $\\delta$ (a fraction of the climatological standard deviation of $D_k$), and otherwise does nothing. Acting on the posterior mean gives the lower average regret. Requiring confidence never made an instance worse than doing nothing, where E did so in 0.5\\% of instances at 2~LT and 4.5\\% at 3~LT, but it forgoes gains: at 3~LT C acts in 70.5\\% of instances and its regret is more than twice E's. Raising the margin to 0.1 of the climatological standard deviation leaves C unchanged at 2~LT and changes it little at 3~LT (acting 70.5\\% to 66.5\\%), so the confident effects are not concentrated near zero. These are results for these 200 instances; no harm in this panel is not a guarantee of none. The best of the nine options is confident for 65.0\\% of instances at 2~LT and 20.5\\% at 3~LT, and every confident choice is right."
+      ],
+      "new_lines": [
+        "Does the distinction matter when choosing an action? We compare two policies on the realized costs, each choosing among all nine options including no action (Table~\\ref{tab:decisions}). Policy E takes the option with the lowest posterior-mean window energy. Policy C takes E's choice only if the posterior is at least 95\\% confident that it lowers the energy by more than a margin $\\delta$ (a fraction of the climatological standard deviation of $D_k$), and otherwise does nothing. Acting on the posterior mean gives the lower average regret. Requiring confidence never made an instance worse than doing nothing, where E did so in 0.5\\% of instances at 2~LT and 4.5\\% at 3~LT, but it forgoes gains: at 3~LT C acts in 70.5\\% of instances and its regret is more than twice E's. Raising the margin to 0.1 of the climatological standard deviation leaves C unchanged at 2~LT and changes it little at 3~LT (acting 70.5\\% to 66.5\\%), so the improvements C acts on are mostly not near zero at these margins. These are results for these 200 instances; no harm in this panel is not a guarantee of none. The best of the nine options is confident for 65.0\\% of instances at 2~LT and 20.5\\% at 3~LT, and every confident choice is right."
+      ]
+    },
+    {
+      "tag": "replace",
+      "old_start": 317,
+      "old_end": 317,
+      "new_start": 317,
+      "new_end": 317,
+      "old_lines": [
+        "If an intervention's effect has its own horizon, measurements chosen for the forecast need not be the ones that resolve it. In the first 60 confirmation instances (by index) in which the comparison between the two interventions with the lowest posterior-mean cost was not confident at 2~LT, we added four precise point measurements of the state at time zero, with noise one tenth of the observation noise. The sites were chosen by one of four rules: (Q) greedily reducing the posterior variance of the decision difference, as in ensemble-sensitivity targeting \\citep{xie2013observing}; (F) the same rule for the unforced forecast; (V) largest posterior variance of the state, the family \\citet{lorenz1998optimal} found best for forecast error; and (R) random sites. We then resampled the posterior (Table~\\ref{tab:measure}). No arm produced a confident wrong answer. On the development panel, question-targeted measurement resolved 27 of 60 decisions against at most 13, with every McNemar $p < 0.001$. On the confirmation panel it resolved 15 against 10, 7 and 4. Against random sites it met the frozen 1\\% level ($p = 0.004$); against spread-targeted sites it narrowly missed it ($p = 0.011$), and against forecast-targeted sites it did not reach it ($p = 0.0625$). The frozen criterion required a margin of 0.10, $p \\le 0.01$ against all three, at least 20 settled answers with an exact one-sided 95\\% accuracy lower bound of at least 0.80, and post-measurement truth coverage of at least 0.85. Arm Q settled 15 (lower bound 0.82, coverage 91.7\\%), so the margin, the paired tests and the count all fell short, and the advantage did not confirm."
+      ],
+      "new_lines": [
+        "If an intervention's effect has its own horizon, measurements chosen for the forecast need not be the ones that resolve it. In the first 60 confirmation instances (by index) in which the comparison between the two interventions with the lowest posterior-mean cost was not confident at 2~LT, we added four precise point measurements of the state at time zero, with noise one tenth of the observation noise. The sites were chosen by one of four rules: (Q) greedily reducing the posterior variance of the decision difference, as in ensemble-sensitivity targeting \\citep{xie2013observing}; (F) the same rule for the unforced forecast; (V) largest posterior variance of the state, the family \\citet{lorenz1998optimal} found best for forecast error; and (R) random sites. We then resampled the posterior (Table~\\ref{tab:measure}). No arm produced a confident wrong answer. On the development panel, question-targeted measurement resolved 27 of 60 decisions against at most 13, with every McNemar $p < 0.001$. On the confirmation panel it resolved 15 against 10, 7 and 4. Against random sites it met the frozen 1\\% level ($p = 0.004$); against spread-targeted sites it narrowly missed it ($p = 0.011$), and against forecast-targeted sites it did not reach it ($p = 0.0625$). The frozen criterion required a margin of 0.10, $p \\le 0.01$ against all three, at least 20 confident answers with an exact one-sided 95\\% accuracy lower bound of at least 0.80, and post-measurement truth coverage of at least 0.85. Arm Q resolved 15 confidently and correctly (lower bound 0.82, coverage 91.7\\%), so the margin, the paired tests and the count all fell short, and the advantage did not confirm."
+      ]
+    }
+  ],
+  "old_lines": 362,
+  "new_lines": 362,
+  "abstract_characters_excluding_trailing_newline": 1894,
+  "abstract_bytes": 1903,
+  "printed_tex_date": "\\date{October 2026 --- draft v4}"
+}

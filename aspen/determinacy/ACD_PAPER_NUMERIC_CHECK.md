@@ -18,3 +18,10 @@ Document label/reference occurrences: 36. Bibliographic metadata fields: 143; ye
 Derived keys: ACD_R0_CORRECT_2LT (971 × answer accuracy = 966); ACD_R0_CASE_ERROR_RATE_2LT (1 − case accuracy); ACD_POSTHOC_STAGE6_C_CASE_ERROR_RATE_2LT (1 − post hoc CNN case accuracy). The pattern-table maximum forcing changes and fractions also have explicit closed-form contract derivations.
 
 No TeX build, scientific integration, sampling, fitting, training or inference. Prior Stage 5 check receipts remain unchanged.
+
+## Stage 8 — v5 numeric checks
+
+Both checks pass with zero unmatched numbers. Registry regeneration PASS; all 12016 keys and their sources remain unchanged.
+Raw outputs: receipts/acd_stage8_paper_check.txt and receipts/acd_stage8_abstract_check.txt. De-TeXed source retains original line numbers.
+Structural inventory: 38 at line 66, 28 at line 69, 512 at line 95, 38 at line 312; 36 label/reference occurrences and 143 bibliography metadata fields.
+No build or scientific runs.

@@ -47,5 +47,5 @@ def run(stage="5b"):
     return bool(manifest['empirical_unmatched'])
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--stage',choices=['5b','5c','7'],default='5b')
+    parser.add_argument('--stage',choices=['5b','5c','7','8'],default='5b')
     sys.exit(run(parser.parse_args().stage))
