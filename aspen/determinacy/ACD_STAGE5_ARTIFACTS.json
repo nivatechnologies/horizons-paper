@@ -1,0 +1,37 @@
+{
+  "base": "5298bb18d4248daaec77c7ca6108d4ed32647626",
+  "status": "incomplete_pending_paper_source",
+  "abstract_audit_counts": {
+    "OK": 5,
+    "FIX": 10
+  },
+  "abstract_unmatched_numbers": 0,
+  "paper_unmatched_numbers": null,
+  "page_count": null,
+  "outputs": {
+    "ACD_ABSTRACT_DRAFT.md": "bd7b18af14e3cf386e564f48cad43bc633428e0ba116a537aee439b4e1571f6a",
+    "ACD_ABSTRACT_AUDIT.md": "4f983aefbcb11cf97eb2a92df558f1a1ba17cb9c30b0d353bda20c9ab03f124a",
+    "ACD_STAGE5_ABSTRACT_REVIEW.md": "4f983aefbcb11cf97eb2a92df558f1a1ba17cb9c30b0d353bda20c9ab03f124a",
+    "CLAIM_LEDGER.md": "cbd388006381b85ee8af76f5bb8a25b473312070a06b2616075a38ba95a524e3",
+    "NUMBERS_ACD.md": "f11d5382c45533c1b8f3cf34ee001f3ba7569c8160ee33f8c04bebdb8b40b483",
+    "numbers_acd.json": "850b4c9ed36e9894dadc277231256109bda35e7c7738fbff026ea9201d3c7d3c",
+    "acd_numbers.py": "9f8eba640bd03cab9d2f5199093284197eb457e17b98d2fbd604d738eb34a398",
+    "receipts/acd_stage5_abstract_check.txt": "57d32769a8a1a34fbc1c714e24c7f62fd3d8f8f8a8ff0e063af7b722f49ffa3b",
+    "receipts/acd_stage5_abstract_review.json": "aff13c1694944f84bd9bd5b37948379378cc363cbd901687bb7717163d9304af",
+    "ACD_STAGE5_STATUS.md": "273da4a8e745203877404d5d121ce540cd55da4274c978b0fae8297ed063032e",
+    "paper/TEX_ENVIRONMENT.json": "b6413aec67c4e1058068d8aa1fba2fca313903658525268b5dc3f73cbcb679e8",
+    "Draft_Aspen-Intervention-Horizon-Paper-2026-10.md": "e1647f24303ab6dbb0353b79ce3d02d79fe553811328e8163583e7f9a08f0e3a"
+  },
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "Frozen L9 conditional-subset wording conflicts with R2c all-S denominator",
+      "resolution": "Correct wording to all S questions; retain original receipt and frozen reading unchanged."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Fc shorthand and outside-license wording",
+      "resolution": "Flag FIX; propose less expansive wording, grant no new license and assume no waiver."
+    }
+  ]
+}

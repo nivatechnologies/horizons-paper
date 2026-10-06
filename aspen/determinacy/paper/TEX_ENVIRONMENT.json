@@ -1,0 +1,18 @@
+{
+  "host": "sulaco",
+  "platform": "Linux-6.8.0-146-generic-x86_64-with-glibc2.39",
+  "commands": {
+    "latexmk": null,
+    "pdflatex": null,
+    "lualatex": null,
+    "xelatex": null,
+    "bibtex": null,
+    "kpsewhich": null,
+    "pdfinfo": null
+  },
+  "build_attempted": false,
+  "reason": "User-supplied main.tex and refs.bib are not accessible; TeX tools also absent",
+  "page_count": null,
+  "scientific_runs": 0,
+  "cloud_compute": false
+}

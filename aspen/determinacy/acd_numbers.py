@@ -91,6 +91,7 @@ def build():
     matched_receipt='receipts/acd_stage4b_amplitude_matched.json'
     if (ROOT/matched_receipt).exists():
         matched=json.loads((ROOT/matched_receipt).read_text())
+        add('ACD_DEV_AMP_TESTED_AMPLITUDES_COUNT',len(matched['rows']),'$.rows',matched_receipt,derivation='number of saved tested amplitude rows')
         for field in ['states','F','dt','cases','excluded','bootstrap_replicates','betting_interval_level','null_reproduction']:
             walk(matched[field],'ACD_DEV_AMP_'+field,'$.'+field,matched_receipt)
         for i,row in enumerate(matched['rows']):
@@ -113,7 +114,45 @@ def build():
             token='A'+amp.replace('.','P')
             for i,share in enumerate(r['Fc_above_shares']):
                 add('ACD_DEV_AMP_NULL_'+token+'_FC_ABOVE_SHARE_'+lead(LEADS[i]),share,'$.amplitudes.'+amp+f'.Fc_above_shares[{i}]',null_receipt)
-    sources=['receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
+    # Stage 5 paper quantities: existing receipts only; no scientific execution.
+    calibration=d['all_confident_calibration']
+    walk(calibration,'ACD_ALL_CONFIDENT_CALIBRATION','$.all_confident_calibration')
+    all_answers=sum(r['answers'] for r in calibration);all_correct=sum(r['correct'] for r in calibration)
+    add('ACD_ALL_CONFIDENT_ANSWERS',all_answers,'$.all_confident_calibration[*].answers',derivation='sum over S/Fc at all tested leads and P/B at 2 and 3 LT; repeated questions are not independent samples')
+    add('ACD_ALL_CONFIDENT_CORRECT',all_correct,'$.all_confident_calibration[*].correct',derivation='sum over the declared type/lead rows')
+    add('ACD_ALL_CONFIDENT_ACCURACY',all_correct/all_answers,['$.all_confident_calibration[*].correct','$.all_confident_calibration[*].answers'],derivation='pooled correct / pooled confident answers; descriptive, not R0 case accuracy')
+    selected=[i for i,r in enumerate(calibration) if r['type']=='S' and 0<=r['lead']<=3]
+    paths=[f'$.all_confident_calibration[{i}]' for i in selected]
+    add('ACD_S_CONFIDENT_ANSWERS_0_TO_3LT',sum(calibration[i]['answers'] for i in selected),paths,derivation='sum S confident answers at tested leads 0 through 3 LT inclusive')
+    add('ACD_S_CONFIDENT_WRONG_0_TO_3LT',sum(calibration[i]['answers']-calibration[i]['correct'] for i in selected),paths,derivation='sum S answers minus correct at tested leads 0 through 3 LT')
+    walk(d['true_F_rank']['uniformity_KS'],'ACD_TRUE_F_RANK_KS','$.true_F_rank.uniformity_KS')
+    close_receipt='receipts/acd_stage2_closeout.json'
+    close=json.loads((ROOT/close_receipt).read_text())
+    for field in ['ordinary_all_draw_forecasts','ordinary_warmup_retries','ordinary_exclusions','refits']:
+        add('ACD_CLOSEOUT_'+field,close[field],'$.'+field,close_receipt)
+    add('ACD_CONTRACT_FULL_DRAW_VOTE_THRESHOLD',__import__('math').ceil(.95*4*d['settings']['draws']),'$.settings.draws',derivation='ceil(confidence .95 * four chains * frozen draws per chain); only applies to full 2000-draw forecasts',additional_sources=[dict(receipt='sources/WO_v2.3.md',receipt_path='§5: four chains and §6: at least 0.95')])
+    horizon_receipt='../horizon/results/l96_calibration.json'
+    horizon=json.loads((ROOT/horizon_receipt).read_text())['system']
+    for key,field in [('LAMBDA1','lambda_mean'),('SIGMA','sigma')]:
+        add('ACD_HORIZON_'+key,horizon[field],'$.system.'+field,horizon_receipt,additional_sources=[dict(receipt='../horizon/NUMBERS.md',receipt_path='AAHLSYSTEM-1; rounded display')])
+    numerical_receipt='receipts/acd_numerical.json'
+    numerical=json.loads((ROOT/numerical_receipt).read_text())
+    for field in ['joint_adjoint_error','jax_relative_match','dtcheck']:
+        walk(numerical[field],'ACD_NUMERICAL_'+field,'$.'+field,numerical_receipt)
+    walk(numerical['implementation'],'ACD_NUMERICAL_GAUSSIAN','$.implementation',numerical_receipt,omit=('precision','mean','covariance'))
+    probabilities=d['null']['question_probabilities']
+    candidates=[]
+    for k in range(1,8):
+        for i,t in enumerate(LEADS):
+            answer=max(range(2),key=lambda j:probabilities[k][i][j])
+            path=f'$.null.question_probabilities[{k}][{i}][{answer}]'
+            value=probabilities[k][i][answer];candidates.append((value,path))
+            add(f'ACD_NULL_S_PATTERN_{k}_MODAL_PROBABILITY_'+lead(t),value,path,derivation='larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement')
+    for label,f in [('MIN',min),('MAX',max)]:
+        value,path=f(candidates)
+        add('ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_'+label,value,path,derivation='extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one')
+
+    sources=['receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
     lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']

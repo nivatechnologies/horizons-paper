@@ -4,7 +4,194 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 
 | Key | Full precision | Source | Receipt path / derivation |
 |---|---|---|---|
+| ACD_ALL_CONFIDENT_ACCURACY | 0.9958558084462571 | receipts/acd_stage2.json | ['$.all_confident_calibration[*].correct', '$.all_confident_calibration[*].answers'] ; pooled correct / pooled confident answers; descriptive, not R0 case accuracy |
+| ACD_ALL_CONFIDENT_ANSWERS | 15202 | receipts/acd_stage2.json | $.all_confident_calibration[*].answers ; sum over S/Fc at all tested leads and P/B at 2 and 3 LT; repeated questions are not independent samples |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[0].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_ANSWERS | 1573 | receipts/acd_stage2.json | $.all_confident_calibration[0].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_CORRECT | 1573 | receipts/acd_stage2.json | $.all_confident_calibration[0].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[0].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[0].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[0].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_LEAD | 0.0 | receipts/acd_stage2.json | $.all_confident_calibration[0].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_SPLIT_UNSTABLE | 2 | receipts/acd_stage2.json | $.all_confident_calibration[0].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_0_THRESHOLD_UNCERTAIN | 6 | receipts/acd_stage2.json | $.all_confident_calibration[0].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[10].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_ANSWERS | 130 | receipts/acd_stage2.json | $.all_confident_calibration[10].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_CORRECT | 130 | receipts/acd_stage2.json | $.all_confident_calibration[10].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[10].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[10].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[10].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_LEAD | 2.0 | receipts/acd_stage2.json | $.all_confident_calibration[10].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_SPLIT_UNSTABLE | 7 | receipts/acd_stage2.json | $.all_confident_calibration[10].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_10_THRESHOLD_UNCERTAIN | 14 | receipts/acd_stage2.json | $.all_confident_calibration[10].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[11].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_ANSWERS | 41 | receipts/acd_stage2.json | $.all_confident_calibration[11].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_CORRECT | 41 | receipts/acd_stage2.json | $.all_confident_calibration[11].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[11].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[11].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[11].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_LEAD | 3.0 | receipts/acd_stage2.json | $.all_confident_calibration[11].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_SPLIT_UNSTABLE | 2 | receipts/acd_stage2.json | $.all_confident_calibration[11].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_11_THRESHOLD_UNCERTAIN | 5 | receipts/acd_stage2.json | $.all_confident_calibration[11].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[12].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_ANSWERS | 194 | receipts/acd_stage2.json | $.all_confident_calibration[12].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_CORRECT | 194 | receipts/acd_stage2.json | $.all_confident_calibration[12].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[12].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[12].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[12].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_LEAD | 0.0 | receipts/acd_stage2.json | $.all_confident_calibration[12].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_SPLIT_UNSTABLE | 2 | receipts/acd_stage2.json | $.all_confident_calibration[12].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_12_THRESHOLD_UNCERTAIN | 1 | receipts/acd_stage2.json | $.all_confident_calibration[12].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[13].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_ANSWERS | 184 | receipts/acd_stage2.json | $.all_confident_calibration[13].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_CORRECT | 184 | receipts/acd_stage2.json | $.all_confident_calibration[13].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[13].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[13].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[13].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_LEAD | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[13].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_SPLIT_UNSTABLE | 0 | receipts/acd_stage2.json | $.all_confident_calibration[13].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_13_THRESHOLD_UNCERTAIN | 2 | receipts/acd_stage2.json | $.all_confident_calibration[13].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_ACCURACY | 0.9946236559139785 | receipts/acd_stage2.json | $.all_confident_calibration[14].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_ANSWERS | 186 | receipts/acd_stage2.json | $.all_confident_calibration[14].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_CORRECT | 185 | receipts/acd_stage2.json | $.all_confident_calibration[14].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_DESCRIPTIVE_INTERVAL_0 | 0.9835164835164835 | receipts/acd_stage2.json | $.all_confident_calibration[14].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[14].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[14].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_LEAD | 1.5 | receipts/acd_stage2.json | $.all_confident_calibration[14].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_SPLIT_UNSTABLE | 3 | receipts/acd_stage2.json | $.all_confident_calibration[14].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_14_THRESHOLD_UNCERTAIN | 4 | receipts/acd_stage2.json | $.all_confident_calibration[14].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[15].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_ANSWERS | 170 | receipts/acd_stage2.json | $.all_confident_calibration[15].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_CORRECT | 170 | receipts/acd_stage2.json | $.all_confident_calibration[15].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[15].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[15].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[15].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_LEAD | 2.0 | receipts/acd_stage2.json | $.all_confident_calibration[15].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_SPLIT_UNSTABLE | 0 | receipts/acd_stage2.json | $.all_confident_calibration[15].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_15_THRESHOLD_UNCERTAIN | 4 | receipts/acd_stage2.json | $.all_confident_calibration[15].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_ACCURACY | 0.9865771812080537 | receipts/acd_stage2.json | $.all_confident_calibration[16].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_ANSWERS | 149 | receipts/acd_stage2.json | $.all_confident_calibration[16].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_CORRECT | 147 | receipts/acd_stage2.json | $.all_confident_calibration[16].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_DESCRIPTIVE_INTERVAL_0 | 0.9657534246575342 | receipts/acd_stage2.json | $.all_confident_calibration[16].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[16].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[16].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_LEAD | 2.5 | receipts/acd_stage2.json | $.all_confident_calibration[16].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_SPLIT_UNSTABLE | 2 | receipts/acd_stage2.json | $.all_confident_calibration[16].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_16_THRESHOLD_UNCERTAIN | 6 | receipts/acd_stage2.json | $.all_confident_calibration[16].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_ACCURACY | 0.9925373134328358 | receipts/acd_stage2.json | $.all_confident_calibration[17].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_ANSWERS | 134 | receipts/acd_stage2.json | $.all_confident_calibration[17].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_CORRECT | 133 | receipts/acd_stage2.json | $.all_confident_calibration[17].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_DESCRIPTIVE_INTERVAL_0 | 0.9763779527559056 | receipts/acd_stage2.json | $.all_confident_calibration[17].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[17].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[17].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_LEAD | 3.0 | receipts/acd_stage2.json | $.all_confident_calibration[17].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_SPLIT_UNSTABLE | 6 | receipts/acd_stage2.json | $.all_confident_calibration[17].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_17_THRESHOLD_UNCERTAIN | 11 | receipts/acd_stage2.json | $.all_confident_calibration[17].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_ACCURACY | 0.9743589743589743 | receipts/acd_stage2.json | $.all_confident_calibration[18].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_ANSWERS | 78 | receipts/acd_stage2.json | $.all_confident_calibration[18].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_CORRECT | 76 | receipts/acd_stage2.json | $.all_confident_calibration[18].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_DESCRIPTIVE_INTERVAL_0 | 0.9333333333333333 | receipts/acd_stage2.json | $.all_confident_calibration[18].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[18].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[18].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_LEAD | 4.0 | receipts/acd_stage2.json | $.all_confident_calibration[18].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_SPLIT_UNSTABLE | 6 | receipts/acd_stage2.json | $.all_confident_calibration[18].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_18_THRESHOLD_UNCERTAIN | 11 | receipts/acd_stage2.json | $.all_confident_calibration[18].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_ACCURACY | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[19].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_ANSWERS | 10 | receipts/acd_stage2.json | $.all_confident_calibration[19].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_CORRECT | 10 | receipts/acd_stage2.json | $.all_confident_calibration[19].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_DESCRIPTIVE_INTERVAL_0 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[19].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[19].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_DESCRIPTIVE_REDRAWS | 1 | receipts/acd_stage2.json | $.all_confident_calibration[19].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_LEAD | 6.0 | receipts/acd_stage2.json | $.all_confident_calibration[19].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_SPLIT_UNSTABLE | 1 | receipts/acd_stage2.json | $.all_confident_calibration[19].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_19_THRESHOLD_UNCERTAIN | 2 | receipts/acd_stage2.json | $.all_confident_calibration[19].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_ACCURACY | 0.9986320109439124 | receipts/acd_stage2.json | $.all_confident_calibration[1].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_ANSWERS | 1462 | receipts/acd_stage2.json | $.all_confident_calibration[1].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_CORRECT | 1460 | receipts/acd_stage2.json | $.all_confident_calibration[1].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_DESCRIPTIVE_INTERVAL_0 | 0.9965588437715073 | receipts/acd_stage2.json | $.all_confident_calibration[1].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[1].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[1].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_LEAD | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[1].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_SPLIT_UNSTABLE | 15 | receipts/acd_stage2.json | $.all_confident_calibration[1].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_1_THRESHOLD_UNCERTAIN | 20 | receipts/acd_stage2.json | $.all_confident_calibration[1].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_ACCURACY | 0.9992592592592593 | receipts/acd_stage2.json | $.all_confident_calibration[2].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_ANSWERS | 1350 | receipts/acd_stage2.json | $.all_confident_calibration[2].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_CORRECT | 1349 | receipts/acd_stage2.json | $.all_confident_calibration[2].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_DESCRIPTIVE_INTERVAL_0 | 0.9977289931869796 | receipts/acd_stage2.json | $.all_confident_calibration[2].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[2].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[2].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_LEAD | 1.5 | receipts/acd_stage2.json | $.all_confident_calibration[2].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_SPLIT_UNSTABLE | 23 | receipts/acd_stage2.json | $.all_confident_calibration[2].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_2_THRESHOLD_UNCERTAIN | 49 | receipts/acd_stage2.json | $.all_confident_calibration[2].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_ACCURACY | 0.9956822107081175 | receipts/acd_stage2.json | $.all_confident_calibration[3].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_ANSWERS | 1158 | receipts/acd_stage2.json | $.all_confident_calibration[3].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_CORRECT | 1153 | receipts/acd_stage2.json | $.all_confident_calibration[3].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_DESCRIPTIVE_INTERVAL_0 | 0.9914602903501281 | receipts/acd_stage2.json | $.all_confident_calibration[3].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_DESCRIPTIVE_INTERVAL_1 | 0.9991334488734835 | receipts/acd_stage2.json | $.all_confident_calibration[3].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[3].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_LEAD | 2.0 | receipts/acd_stage2.json | $.all_confident_calibration[3].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_SPLIT_UNSTABLE | 30 | receipts/acd_stage2.json | $.all_confident_calibration[3].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_3_THRESHOLD_UNCERTAIN | 79 | receipts/acd_stage2.json | $.all_confident_calibration[3].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_ACCURACY | 0.9946062567421791 | receipts/acd_stage2.json | $.all_confident_calibration[4].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_ANSWERS | 927 | receipts/acd_stage2.json | $.all_confident_calibration[4].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_CORRECT | 922 | receipts/acd_stage2.json | $.all_confident_calibration[4].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_DESCRIPTIVE_INTERVAL_0 | 0.989440337909187 | receipts/acd_stage2.json | $.all_confident_calibration[4].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_DESCRIPTIVE_INTERVAL_1 | 0.9989118902871742 | receipts/acd_stage2.json | $.all_confident_calibration[4].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[4].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_LEAD | 2.5 | receipts/acd_stage2.json | $.all_confident_calibration[4].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_SPLIT_UNSTABLE | 36 | receipts/acd_stage2.json | $.all_confident_calibration[4].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_4_THRESHOLD_UNCERTAIN | 82 | receipts/acd_stage2.json | $.all_confident_calibration[4].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_ACCURACY | 0.9907120743034056 | receipts/acd_stage2.json | $.all_confident_calibration[5].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_ANSWERS | 646 | receipts/acd_stage2.json | $.all_confident_calibration[5].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_CORRECT | 640 | receipts/acd_stage2.json | $.all_confident_calibration[5].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_DESCRIPTIVE_INTERVAL_0 | 0.9812792511700468 | receipts/acd_stage2.json | $.all_confident_calibration[5].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_DESCRIPTIVE_INTERVAL_1 | 0.99842277503167 | receipts/acd_stage2.json | $.all_confident_calibration[5].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[5].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_LEAD | 3.0 | receipts/acd_stage2.json | $.all_confident_calibration[5].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_SPLIT_UNSTABLE | 54 | receipts/acd_stage2.json | $.all_confident_calibration[5].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_5_THRESHOLD_UNCERTAIN | 121 | receipts/acd_stage2.json | $.all_confident_calibration[5].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_ACCURACY | 0.9780701754385965 | receipts/acd_stage2.json | $.all_confident_calibration[6].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_ANSWERS | 228 | receipts/acd_stage2.json | $.all_confident_calibration[6].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_CORRECT | 223 | receipts/acd_stage2.json | $.all_confident_calibration[6].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_DESCRIPTIVE_INTERVAL_0 | 0.9552845528455285 | receipts/acd_stage2.json | $.all_confident_calibration[6].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_DESCRIPTIVE_INTERVAL_1 | 0.9957627118644068 | receipts/acd_stage2.json | $.all_confident_calibration[6].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[6].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_LEAD | 4.0 | receipts/acd_stage2.json | $.all_confident_calibration[6].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_SPLIT_UNSTABLE | 29 | receipts/acd_stage2.json | $.all_confident_calibration[6].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_6_THRESHOLD_UNCERTAIN | 71 | receipts/acd_stage2.json | $.all_confident_calibration[6].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_ACCURACY | 0.8181818181818182 | receipts/acd_stage2.json | $.all_confident_calibration[7].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_ANSWERS | 11 | receipts/acd_stage2.json | $.all_confident_calibration[7].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_CORRECT | 9 | receipts/acd_stage2.json | $.all_confident_calibration[7].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_DESCRIPTIVE_INTERVAL_0 | 0.4444444444444444 | receipts/acd_stage2.json | $.all_confident_calibration[7].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_DESCRIPTIVE_INTERVAL_1 | 1.0 | receipts/acd_stage2.json | $.all_confident_calibration[7].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_DESCRIPTIVE_REDRAWS | 5 | receipts/acd_stage2.json | $.all_confident_calibration[7].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_LEAD | 6.0 | receipts/acd_stage2.json | $.all_confident_calibration[7].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_SPLIT_UNSTABLE | 4 | receipts/acd_stage2.json | $.all_confident_calibration[7].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_7_THRESHOLD_UNCERTAIN | 9 | receipts/acd_stage2.json | $.all_confident_calibration[7].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_ACCURACY | 0.9971049457177322 | receipts/acd_stage2.json | $.all_confident_calibration[8].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_ANSWERS | 4145 | receipts/acd_stage2.json | $.all_confident_calibration[8].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_CORRECT | 4133 | receipts/acd_stage2.json | $.all_confident_calibration[8].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_DESCRIPTIVE_INTERVAL_0 | 0.994116168881847 | receipts/acd_stage2.json | $.all_confident_calibration[8].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_DESCRIPTIVE_INTERVAL_1 | 0.9992879183479706 | receipts/acd_stage2.json | $.all_confident_calibration[8].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[8].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_LEAD | 2.0 | receipts/acd_stage2.json | $.all_confident_calibration[8].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_SPLIT_UNSTABLE | 89 | receipts/acd_stage2.json | $.all_confident_calibration[8].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_8_THRESHOLD_UNCERTAIN | 209 | receipts/acd_stage2.json | $.all_confident_calibration[8].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_ACCURACY | 0.9921681780708986 | receipts/acd_stage2.json | $.all_confident_calibration[9].accuracy |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_ANSWERS | 2426 | receipts/acd_stage2.json | $.all_confident_calibration[9].answers |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_CORRECT | 2407 | receipts/acd_stage2.json | $.all_confident_calibration[9].correct |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_DESCRIPTIVE_INTERVAL_0 | 0.9863320780137355 | receipts/acd_stage2.json | $.all_confident_calibration[9].descriptive.interval[0] |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_DESCRIPTIVE_INTERVAL_1 | 0.9968525886837699 | receipts/acd_stage2.json | $.all_confident_calibration[9].descriptive.interval[1] |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_DESCRIPTIVE_REDRAWS | 0 | receipts/acd_stage2.json | $.all_confident_calibration[9].descriptive.redraws |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_LEAD | 3.0 | receipts/acd_stage2.json | $.all_confident_calibration[9].lead |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_SPLIT_UNSTABLE | 147 | receipts/acd_stage2.json | $.all_confident_calibration[9].split_unstable |
+| ACD_ALL_CONFIDENT_CALIBRATION_9_THRESHOLD_UNCERTAIN | 339 | receipts/acd_stage2.json | $.all_confident_calibration[9].threshold_uncertain |
+| ACD_ALL_CONFIDENT_CORRECT | 15139 | receipts/acd_stage2.json | $.all_confident_calibration[*].correct ; sum over the declared type/lead rows |
 | ACD_CASES | 200 | receipts/acd_stage2.json | $.cases |
+| ACD_CLOSEOUT_ORDINARY_ALL_DRAW_FORECASTS | 115 | receipts/acd_stage2_closeout.json | $.ordinary_all_draw_forecasts |
+| ACD_CLOSEOUT_ORDINARY_EXCLUSIONS | 0 | receipts/acd_stage2_closeout.json | $.ordinary_exclusions |
+| ACD_CLOSEOUT_ORDINARY_WARMUP_RETRIES | 11 | receipts/acd_stage2_closeout.json | $.ordinary_warmup_retries |
+| ACD_CLOSEOUT_REFITS | 240 | receipts/acd_stage2_closeout.json | $.refits |
 | ACD_CONTRACT_AMPLITUDE | 0.16 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_BOOTSTRAP_CI_PERCENT | 95 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_BOOTSTRAP_COUNT | 10000 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
@@ -22,6 +209,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_CONTRACT_FORCING_MIN | 6 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_FOUR | 4 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_FRAMES | 11 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
+| ACD_CONTRACT_FULL_DRAW_VOTE_THRESHOLD | 1900 | receipts/acd_stage2.json | $.settings.draws ; ceil(confidence .95 * four chains * frozen draws per chain); only applies to full 2000-draw forecasts |
 | ACD_CONTRACT_LT | 0.5928295944308761 | receipts/acd_step0.json | $.LT |
 | ACD_CONTRACT_MAP_START_HIGH | 9.5 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_MAP_START_LOW | 6.5 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
@@ -1284,6 +1472,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_DEV_AMP_NULL_STATES | 4096 | receipts/acd_stage4b_null.json | $.states |
 | ACD_DEV_AMP_NULL_THREADS | 16 | receipts/acd_stage4b_null.json | $.threads |
 | ACD_DEV_AMP_STATES | 4096 | receipts/acd_stage4b_amplitude_matched.json | $.states |
+| ACD_DEV_AMP_TESTED_AMPLITUDES_COUNT | 5 | receipts/acd_stage4b_amplitude_matched.json | $.rows ; number of saved tested amplitude rows |
 | ACD_DEV_CASES | 200 | receipts/acd_stage1.json | $.cases |
 | ACD_DEV_COVERAGE_COVERED | 192 | receipts/acd_stage1.json | $.coverage.covered |
 | ACD_DEV_COVERAGE_DESCRIPTIVE_INTERVAL_0 | 0.93 | receipts/acd_stage1.json | $.coverage.descriptive.interval[0] |
@@ -3808,6 +3997,8 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_F1_PROBE_VALUES_2 | 10.161569775597064 | receipts/acd_stage4_f1.json | $.probe_values[2] |
 | ACD_F1_PROBE_VALUES_3 | -3.826249491129098 | receipts/acd_stage4_f1.json | $.probe_values[3] |
 | ACD_FIT_FLAGS | 1 | receipts/acd_stage2.json | $.fit_flags |
+| ACD_HORIZON_LAMBDA1 | 1.6868253700458604 | ../horizon/results/l96_calibration.json | $.system.lambda_mean |
+| ACD_HORIZON_SIGMA | 4.312600593723798 | ../horizon/results/l96_calibration.json | $.system.sigma |
 | ACD_L5_CLIMATE_FRACTION_0LT | 0.12714558169103624 | receipts/acd_stage2.json | ['$.R1m.lead_relationship[0].confident_S_share', '$.R1m.lead_relationship[0].observation_S_share'] ; (all confident S - observation confident S) / all confident S |
 | ACD_L5_CLIMATE_FRACTION_1LT | 0.13679890560875513 | receipts/acd_stage2.json | ['$.R1m.lead_relationship[1].confident_S_share', '$.R1m.lead_relationship[1].observation_S_share'] ; (all confident S - observation confident S) / all confident S |
 | ACD_L5_CLIMATE_FRACTION_1P5LT | 0.145925925925926 | receipts/acd_stage2.json | ['$.R1m.lead_relationship[2].confident_S_share', '$.R1m.lead_relationship[2].observation_S_share'] ; (all confident S - observation confident S) / all confident S |
@@ -3820,6 +4011,91 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_L9_EXCEPTION_ACCURACY | 0.7520128824476651 | receipts/acd_stage2.json | $.R2c.readings ; exception-share weighted accuracy in answered range |
 | ACD_L9_REFUSED_CONFIDENT | 0.07468749999999999 | receipts/acd_stage2.json | $.R2c.readings ; mean over refused leads |
 | ACD_NULL_FORCING | 8.0 | receipts/acd_stage2.json | $.null.F ; true forcing specified in WO §3 and used by the saved climatological null |
+| ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MAX | 0.56201171875 | receipts/acd_stage2.json | $.null.question_probabilities[7][0][0] ; extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one |
+| ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MIN | 0.500244140625 | receipts/acd_stage2.json | $.null.question_probabilities[5][7][0] ; extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_0LT | 0.5234375 | receipts/acd_stage2.json | $.null.question_probabilities[1][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_1LT | 0.514404296875 | receipts/acd_stage2.json | $.null.question_probabilities[1][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_1P5LT | 0.51611328125 | receipts/acd_stage2.json | $.null.question_probabilities[1][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_2LT | 0.5078125 | receipts/acd_stage2.json | $.null.question_probabilities[1][3][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_2P5LT | 0.50341796875 | receipts/acd_stage2.json | $.null.question_probabilities[1][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_3LT | 0.5087890625 | receipts/acd_stage2.json | $.null.question_probabilities[1][5][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_4LT | 0.504150390625 | receipts/acd_stage2.json | $.null.question_probabilities[1][6][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_6LT | 0.5009765625 | receipts/acd_stage2.json | $.null.question_probabilities[1][7][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_0LT | 0.515869140625 | receipts/acd_stage2.json | $.null.question_probabilities[2][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_1LT | 0.50634765625 | receipts/acd_stage2.json | $.null.question_probabilities[2][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_1P5LT | 0.5009765625 | receipts/acd_stage2.json | $.null.question_probabilities[2][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_2LT | 0.501708984375 | receipts/acd_stage2.json | $.null.question_probabilities[2][3][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_2P5LT | 0.50537109375 | receipts/acd_stage2.json | $.null.question_probabilities[2][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_3LT | 0.506103515625 | receipts/acd_stage2.json | $.null.question_probabilities[2][5][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_4LT | 0.502685546875 | receipts/acd_stage2.json | $.null.question_probabilities[2][6][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_2_MODAL_PROBABILITY_6LT | 0.50830078125 | receipts/acd_stage2.json | $.null.question_probabilities[2][7][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_0LT | 0.518798828125 | receipts/acd_stage2.json | $.null.question_probabilities[3][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_1LT | 0.511474609375 | receipts/acd_stage2.json | $.null.question_probabilities[3][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_1P5LT | 0.50341796875 | receipts/acd_stage2.json | $.null.question_probabilities[3][2][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_2LT | 0.50634765625 | receipts/acd_stage2.json | $.null.question_probabilities[3][3][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_2P5LT | 0.50048828125 | receipts/acd_stage2.json | $.null.question_probabilities[3][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_3LT | 0.505615234375 | receipts/acd_stage2.json | $.null.question_probabilities[3][5][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_4LT | 0.509033203125 | receipts/acd_stage2.json | $.null.question_probabilities[3][6][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_3_MODAL_PROBABILITY_6LT | 0.500732421875 | receipts/acd_stage2.json | $.null.question_probabilities[3][7][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_0LT | 0.51171875 | receipts/acd_stage2.json | $.null.question_probabilities[4][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_1LT | 0.511962890625 | receipts/acd_stage2.json | $.null.question_probabilities[4][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_1P5LT | 0.502197265625 | receipts/acd_stage2.json | $.null.question_probabilities[4][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_2LT | 0.50390625 | receipts/acd_stage2.json | $.null.question_probabilities[4][3][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_2P5LT | 0.51513671875 | receipts/acd_stage2.json | $.null.question_probabilities[4][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_3LT | 0.510986328125 | receipts/acd_stage2.json | $.null.question_probabilities[4][5][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_4LT | 0.506103515625 | receipts/acd_stage2.json | $.null.question_probabilities[4][6][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_4_MODAL_PROBABILITY_6LT | 0.5048828125 | receipts/acd_stage2.json | $.null.question_probabilities[4][7][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_0LT | 0.528564453125 | receipts/acd_stage2.json | $.null.question_probabilities[5][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_1LT | 0.509765625 | receipts/acd_stage2.json | $.null.question_probabilities[5][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_1P5LT | 0.503662109375 | receipts/acd_stage2.json | $.null.question_probabilities[5][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_2LT | 0.5107421875 | receipts/acd_stage2.json | $.null.question_probabilities[5][3][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_2P5LT | 0.508544921875 | receipts/acd_stage2.json | $.null.question_probabilities[5][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_3LT | 0.501708984375 | receipts/acd_stage2.json | $.null.question_probabilities[5][5][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_4LT | 0.50732421875 | receipts/acd_stage2.json | $.null.question_probabilities[5][6][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_5_MODAL_PROBABILITY_6LT | 0.500244140625 | receipts/acd_stage2.json | $.null.question_probabilities[5][7][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_0LT | 0.511474609375 | receipts/acd_stage2.json | $.null.question_probabilities[6][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_1LT | 0.521240234375 | receipts/acd_stage2.json | $.null.question_probabilities[6][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_1P5LT | 0.5224609375 | receipts/acd_stage2.json | $.null.question_probabilities[6][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_2LT | 0.519775390625 | receipts/acd_stage2.json | $.null.question_probabilities[6][3][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_2P5LT | 0.514404296875 | receipts/acd_stage2.json | $.null.question_probabilities[6][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_3LT | 0.506591796875 | receipts/acd_stage2.json | $.null.question_probabilities[6][5][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_4LT | 0.503662109375 | receipts/acd_stage2.json | $.null.question_probabilities[6][6][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_6_MODAL_PROBABILITY_6LT | 0.504638671875 | receipts/acd_stage2.json | $.null.question_probabilities[6][7][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_0LT | 0.56201171875 | receipts/acd_stage2.json | $.null.question_probabilities[7][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_1LT | 0.545166015625 | receipts/acd_stage2.json | $.null.question_probabilities[7][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_1P5LT | 0.529541015625 | receipts/acd_stage2.json | $.null.question_probabilities[7][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_2LT | 0.523193359375 | receipts/acd_stage2.json | $.null.question_probabilities[7][3][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_2P5LT | 0.510986328125 | receipts/acd_stage2.json | $.null.question_probabilities[7][4][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_3LT | 0.501708984375 | receipts/acd_stage2.json | $.null.question_probabilities[7][5][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_4LT | 0.51025390625 | receipts/acd_stage2.json | $.null.question_probabilities[7][6][1] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NULL_S_PATTERN_7_MODAL_PROBABILITY_6LT | 0.51171875 | receipts/acd_stage2.json | $.null.question_probabilities[7][7][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_0 | 4.374300111982083e-06 | receipts/acd_numerical.json | $.dtcheck.answer_change[0] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_1 | 0.0 | receipts/acd_numerical.json | $.dtcheck.answer_change[1] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_2 | 1.458100037327361e-06 | receipts/acd_numerical.json | $.dtcheck.answer_change[2] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_3 | 8.748600223964166e-06 | receipts/acd_numerical.json | $.dtcheck.answer_change[3] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_4 | 7.290500186636805e-06 | receipts/acd_numerical.json | $.dtcheck.answer_change[4] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_5 | 1.603910041060097e-05 | receipts/acd_numerical.json | $.dtcheck.answer_change[5] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_6 | 5.103350130645763e-05 | receipts/acd_numerical.json | $.dtcheck.answer_change[6] |
+| ACD_NUMERICAL_DTCHECK_ANSWER_CHANGE_7 | 0.0004461786114221725 | receipts/acd_numerical.json | $.dtcheck.answer_change[7] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_0 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[0] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_1 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[1] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_2 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[2] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_3 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[3] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_4 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[4] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_5 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[5] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_6 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[6] |
+| ACD_NUMERICAL_DTCHECK_CLASSIFICATION_CHANGE_7 | 0.0 | receipts/acd_numerical.json | $.dtcheck.classification_change[7] |
+| ACD_NUMERICAL_DTCHECK_DT | 0.01 | receipts/acd_numerical.json | $.dtcheck.dt |
+| ACD_NUMERICAL_DTCHECK_FINE | 0.005 | receipts/acd_numerical.json | $.dtcheck.fine |
+| ACD_NUMERICAL_GAUSSIAN_DRAWS | 1000 | receipts/acd_numerical.json | $.implementation.draws |
+| ACD_NUMERICAL_GAUSSIAN_EXTREME_VARIANCE_RATIOS_0 | 1.0347592897856717 | receipts/acd_numerical.json | $.implementation.extreme_variance_ratios[0] |
+| ACD_NUMERICAL_GAUSSIAN_EXTREME_VARIANCE_RATIOS_1 | 0.9817957244623462 | receipts/acd_numerical.json | $.implementation.extreme_variance_ratios[1] |
+| ACD_NUMERICAL_GAUSSIAN_MAX_MEAN_MCSE | 1.905773656705045 | receipts/acd_numerical.json | $.implementation.max_mean_mcse |
+| ACD_NUMERICAL_GAUSSIAN_MAX_VARIANCE_MCSE | 3.1652294325661567 | receipts/acd_numerical.json | $.implementation.max_variance_mcse |
+| ACD_NUMERICAL_GAUSSIAN_SECONDS | 9.550950261997059 | receipts/acd_numerical.json | $.implementation.seconds |
+| ACD_NUMERICAL_GAUSSIAN_WARMUP | 1000 | receipts/acd_numerical.json | $.implementation.warmup |
+| ACD_NUMERICAL_JAX_RELATIVE_MATCH | 5.426124519221623e-16 | receipts/acd_numerical.json | $.jax_relative_match |
+| ACD_NUMERICAL_JOINT_ADJOINT_ERROR | 1.685697414988141e-10 | receipts/acd_numerical.json | $.joint_adjoint_error |
 | ACD_PANEL_LAST_CASE | 199 | receipts/acd_stage2.json | $.cases ; cases minus one: last zero-based confirmation index |
 | ACD_PROJECTION_AFTER_POPULATION_SECONDS_HOURS | 15.569634455279836 | receipts/acd_stage2.json | $.resolutions[0].detail.after_population_seconds ; saved seconds / 3600 |
 | ACD_PROJECTION_INITIAL_SECONDS_HOURS | 29.160530385199916 | receipts/acd_stage2.json | $.resolutions[0].detail.initial_seconds ; saved seconds / 3600 |
@@ -5849,3 +6125,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_SETTINGS_DT | 0.01 | receipts/acd_stage2.json | $.settings.dt |
 | ACD_SETTINGS_R5_POPULATION | 60 | receipts/acd_stage2.json | $.settings.r5_population |
 | ACD_SETTINGS_WARMUP | 1000 | receipts/acd_stage2.json | $.settings.warmup |
+| ACD_S_CONFIDENT_ANSWERS_0_TO_3LT | 7116 | receipts/acd_stage2.json | ['$.all_confident_calibration[0]', '$.all_confident_calibration[1]', '$.all_confident_calibration[2]', '$.all_confident_calibration[3]', '$.all_confident_calibration[4]', '$.all_confident_calibration[5]'] ; sum S confident answers at tested leads 0 through 3 LT inclusive |
+| ACD_S_CONFIDENT_WRONG_0_TO_3LT | 19 | receipts/acd_stage2.json | ['$.all_confident_calibration[0]', '$.all_confident_calibration[1]', '$.all_confident_calibration[2]', '$.all_confident_calibration[3]', '$.all_confident_calibration[4]', '$.all_confident_calibration[5]'] ; sum S answers minus correct at tested leads 0 through 3 LT |
+| ACD_TRUE_F_RANK_KS_P | 0.9929944372181302 | receipts/acd_stage2.json | $.true_F_rank.uniformity_KS.p |
+| ACD_TRUE_F_RANK_KS_STATISTIC | 0.0295 | receipts/acd_stage2.json | $.true_F_rank.uniformity_KS.statistic |
