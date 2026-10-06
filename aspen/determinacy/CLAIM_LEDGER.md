@@ -97,3 +97,7 @@ R-other retains the corrected all-S denominator for R2c U. Full disposition: ACD
 Independent paper audit: 332 OK and 15 open FIX rows. Sources remain immutable; proposed fixes are in ACD_PAPER_AUDIT.md and receipts/acd_stage5b_paper_audit.json. Current abstract: 13 OK, zero open FIX rows under Todd’s four standing rulings. These editorial rulings do not expand the frozen scientific licenses.
 
 Open paper rows: P033_05, P037_05, P043_01, P043_02, P094_03, P118_02, P118_03, P118_06, P166_06, P196_01, P205_01, P210_09, P231_03, P233_04, P247_02.
+
+## Stage 5c paper v3 — targeted audit
+
+Main.tex v3 is immutable at SHA-256 bf58a6d2e183d77d3f2f99fc4626c389770be12d6b83ef4ae4e6d71a314f3978. Thirteen revised prior FIX rows resolve; P033_05 and P043_01 remain FIX, declined, pending Todd. Current full-paper inventory: 347 OK / 2 FIX across 349 rows, comprising 17 changed/new OK rows and 332 carried rows (330 OK / 2 FIX). Sources and numerical values do not expand licenses; R-other continues to withhold changed-amplitude formal ordering without calibration prerequisites. Evidence: appended ACD_PAPER_AUDIT.md and receipts/acd_stage5c_paper_audit.json. Abstract artifacts and their prior standing rulings are unchanged.

@@ -1,0 +1,71 @@
+{
+  "base": "780a74724f9db61d3a63f0782b0e48b296ce361b",
+  "version": "v3",
+  "paper_counts": {
+    "OK": 347,
+    "FIX": 2
+  },
+  "changed_counts": {
+    "OK": 17,
+    "FIX": 0
+  },
+  "carried_counts": {
+    "OK": 330,
+    "FIX": 2
+  },
+  "open_rows": [
+    "P033_05",
+    "P043_01"
+  ],
+  "resolved_prior_fix_count": 13,
+  "empirical_unmatched": [],
+  "structural_unmatched": [
+    {
+      "line": 63,
+      "token": "38",
+      "structural": true
+    },
+    {
+      "line": 66,
+      "token": "28",
+      "structural": true
+    },
+    {
+      "line": 75,
+      "token": "512",
+      "structural": true
+    },
+    {
+      "line": 205,
+      "token": "38",
+      "structural": true
+    }
+  ],
+  "build_attempted": false,
+  "scientific_runs": 0,
+  "source_hashes_verified": true,
+  "prior_audit_prefix_preserved": true,
+  "audit_registry_values_verified": true,
+  "rules_fired": [
+    "R-other: unchanged P033_05/P043_01 retained as FIX, declined pending Todd; no additional wording license inferred",
+    "R-other carried: changed-amplitude intervals numerical only, no formal order license; corrected L9 denominator remains unchanged"
+  ],
+  "sha256": {
+    "receipts/acd_stage5c_diff.json": "efea4f336842b20ba274b683972f242448909ed1f826e39bf0a1b9bbcdfde1a0",
+    "receipts/acd_stage5c_numeric_check.json": "8746534ea4049ca882051abf2c007576a68d7df61554bbe2063ac3cd46a08fb0",
+    "receipts/acd_stage5c_paper_audit.json": "59153c1e8c537531fd3a672cf769b9b2b5ae7c7f2d15d9fed7b8e32c7606493a",
+    "receipts/acd_stage5c_paper_check.txt": "ab6ceae737add3d2c2a20e0263780f19bda8ceeb6caeac40afdcac717c71791f",
+    "receipts/acd_stage5c_source.diff": "0a6a10ff9acd791d45536d40b0fb259b3fb1ebec2c0efd5a241cf2cfddb88adf",
+    "receipts/acd_stage5c_source.json": "5daafa6db37fc7db5393dc7ee66644d9032c368b836700e088149ce551a1bfad",
+    "receipts/acd_stage5c_static_verification.json": "d5c886a9ed302bd92ff881471a720423a83f24edecf413f6d32f83eddcbade1a",
+    "ACD_PAPER_AUDIT.md": "bcb8cef012d97e7db77322283105a16f550a072c54650a9a9e77721bc59b4987",
+    "ACD_PAPER_NUMERIC_CHECK.md": "baa3260317d6376f0055bdd4b248ebffcd5a1aac07d420e8590d23dfd17267a4",
+    "ACD_STAGE5_STATUS.md": "8d9cbaa8386eae969a801abfca41abe7768bc083003ea7b984dcb4d0a94453d1",
+    "CLAIM_LEDGER.md": "973424441730b4ef7f6f0c7bfe96c99d3af7d2a4cf123c9032aa163b9a70d5a1",
+    "Draft_Aspen-Intervention-Horizon-Paper-2026-10.md": "a9b7f463f8912a6fdd37bc9b81f8793cb7857b5f1db9bda1e995baa60541e34a",
+    "acd_paper_check.py": "081379548ad0fbe8abb251137aa468c68b5bc697eae2bcc58b4145802c47a824",
+    "paper/TEX_ENVIRONMENT.json": "df70732f5f4da14e574f18bb8343bf524b276754357c073230b2ac4e2b03c4bb",
+    "paper/main.detex.txt": "c6de431a739d80d62b28187ae2958a6a4c26d97eee03966afc847e9b16cc0919",
+    "paper/main.tex": "bf58a6d2e183d77d3f2f99fc4626c389770be12d6b83ef4ae4e6d71a314f3978"
+  }
+}

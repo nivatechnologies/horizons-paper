@@ -21,3 +21,7 @@ python3 acd_paper_check.py
 ```
 
 The raw numeric-check transcript is receipts/acd_stage5b_paper_check.txt; the de-TeXed input is paper/main.detex.txt; sources remain unedited. No TeX build was attempted.
+
+## Stage 5c: immutable v3 sources
+
+Command: `python3 acd_paper_check.py --stage 5c` (de-TeXes v3 and executes check_acd.py --text paper/main.detex.txt). Number registry regeneration: PASS. Empirical unmatched numbers: **0**. Raw checker exits 1 for authorized structural constants: **38** questions at lines **63 and 205**, **28** pairs at line **66**, and **512** thinned draws at line **75**. These four occurrences are listed separately in receipts/acd_stage5c_numeric_check.json; section/equation/table/figure labels and 134 bibliography metadata fields remain separately inventoried. Historical Stage 5b check receipts are preserved. Numeric matching verifies rounding; the appended independent paper audit checks semantic quantity, panel, lead and denominator. No build or new scientific run.

@@ -1,52 +1,41 @@
-# Aspen intervention horizon paper — Stage 5b
+# Aspen intervention horizon paper — Stage 5c, v3
 
-Stage 5b source intake, numeric check and independent paper audit are complete. The draft remains unchanged; proposed paper corrections remain open.
+V3 sources are verified and unchanged. The independent targeted audit resolves all thirteen revised Stage 5b FIX rows. Two declined rows remain pending Todd.
 
-Branch: paper/aspen-2026-10-determinacy. Base: 77026bc25841c1b0b73899c1c6c493b137bcaca3.
+Branch: `paper/aspen-2026-10-determinacy`. Base: `780a74724f9db61d3a63f0782b0e48b296ce361b`.
 
 - [main.tex](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/main.tex)
 - [refs.bib](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/refs.bib)
-- [Independent paper audit](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_AUDIT.md)
+- [Paper audit, including appended v3 review](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_AUDIT.md)
 - [Abstract](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_DRAFT.md)
-- [Abstract standing-ruling disposition](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_AUDIT.md)
-- [Paper numeric check](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_NUMERIC_CHECK.md)
-- [Number registry](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/NUMBERS_ACD.md)
-- [TeX environment](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/paper/TEX_ENVIRONMENT.json)
+- [Abstract audit and standing rulings](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_ABSTRACT_AUDIT.md)
+- [Numeric check](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/ACD_PAPER_NUMERIC_CHECK.md)
+- [V3 audit receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage5c_paper_audit.json)
+- [V3 numeric receipt](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage5c_numeric_check.json)
+- [Source diff](https://github.com/nivatechnologies/horizons-paper/blob/paper/aspen-2026-10-determinacy/aspen/determinacy/receipts/acd_stage5c_source.diff)
 
-Working directory on sulaco: `/home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/`.
+Sulaco working directory: `/home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/`.
 
-Both source SHA-256 hashes match Todd's supplied values:
-- main.tex: `8dc6f207a0b8fc8abe4b12849e335d583df34231b8f4e9e66dd8f8ec8a78eb5e`
-- refs.bib: `dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84`
+SHA-256 verified:
 
-No TeX build was attempted, as instructed. Todd reports an off-sulaco pdflatex + bibtex build; the supplied archive contains only the two sources, not a PDF.
+- `paper/main.tex`: `bf58a6d2e183d77d3f2f99fc4626c389770be12d6b83ef4ae4e6d71a314f3978`
+- `paper/refs.bib`: `dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84`
 
-Numeric registry: 6146 keys, regeneration PASS. Paper empirical unmatched numbers: **0**. Raw unmatched structural constants: **38 questions (line 63), 28 pairs (line 66), 512 draws (line 75)**. Section/equation/table/figure labels and 134 bibliographic metadata fields are separately inventoried; they are not scientific failures.
+No build attempted. Todd reports the PDF is built off-sulaco; this archive supplies sources only.
 
-Independent paper audit: **332 OK / 15 FIX**, 347 rows, including methods checked against the frozen WO and code. Current abstract and retained titles: **13 OK / 0 FIX** under Todd's standing rulings. The only abstract text change is “In exploratory development runs”.
+Numeric registry regeneration: PASS (6146 keys). **Zero unmatched empirical numbers**. Raw unmatched structural constants: **38 questions at lines 63 and 205, 28 pairs at line 66, 512 thinned draws at line 75**. Document labels and 134 bibliographic metadata fields are separately inventoried.
 
-Todd-licensed deviations: title; opening framing sentence; forecast-sign shorthand defined at first use; labelled exploratory development amplitude sentence. These do not change route thresholds or turn development readings into confirmation evidence.
+Current paper audit: **347 OK / 2 FIX**, 349 rows. Targeted v3 review: **17 OK / 0 new FIX**; inherited inventory: 330 OK / 2 FIX. All 13 revised earlier FIX rows resolve. The diff replaces 12 lines without changing line positions of any unchanged sentence or number. Historical Stage 5b receipts are preserved.
 
-R-other: keep the corrected all-S denominator for R2c U; at changed amplitudes, report exploratory estimates and intervals without a formal ordering license when calibration prerequisites are unmet. No H1–H3 stop.
+## Open rows — declined, pending Todd
 
-## Paper FIX rows
+| ID / line | Finding | Proposed fix |
+|---|---|---|
+| P033_05 / 33 | Introduction attributes an implicit matching-horizon assumption to cited practice. Declined as a framing/register issue, pending Todd. | Present this as the research question: whether intervention-sign confidence and confidence in the sign of the unforced window-energy anomaly have matching horizons. |
+| P043_01 / 43 | Descriptive z-ratio interpretation remains in the introductory findings list, outside the frozen headline licenses. Declined, pending Todd. | Move the interpretation to Results/Discussion; retain licensed median correlation and cancellation findings in the introduction. |
 
-| ID / main.tex line | Proposed fix |
-|---|---|
-| P033_05 / 33 | Present this as the paper’s question: “We ask whether an intervention-sign confidence horizon matches the confidence horizon of the sign of the unforced window-energy anomaly.” |
-| P037_05 / 37 | “The protocol and development reading were frozen before confirmation observations and outcomes were generated.” |
-| P043_01 / 43 | Move this descriptive z-ratio interpretation to Results or Discussion. In the introduction retain the L4 median correlation and cancellation values. |
-| P043_02 / 43 | Replace the ordering claim with exploratory loss-difference point estimates −0.228, −0.220 and −0.210 at amplitudes 0.04, 0.08 and 0.16. State that calibration at changed amplitudes was not recomputed and their formal R2b prerequisites are unmet. At 0.32 and 0.64 the numerical intervals span zero. Move the linear-response hypothesis to Discussion. |
-| P094_03 / 94 | “Confident forecast-sign answers pass the separate R0-F criterion at every evaluable lead: at least 30 confident cases and an exact one-sided 95% lower bound of at least 0.90.” |
-| P118_02 / 118 | Give the observed shares without equivalence wording: “At 0 LT the shares are 98.3% and 97.0%; at 1 LT they are 91.4% and 92.0%.” |
-| P118_03 / 118 | Label the per-lead all-confidence shares descriptive. State the formal DIFFERS result using observation-confident S and confident Fc at 2 and 3 LT only. |
-| P118_06 / 118 | “For the other seven patterns the climatological modal sign has probability 0.50–0.56 at every lead, so neither sign is climate-confident.” |
-| P166_06 / 166 | “The exploratory loss-difference intervals span zero at amplitudes 0.32 and 0.64; their formal R2b status is PREREQUISITE NOT MET.” |
-| P196_01 / 196 | “We use a 128-member ensemble formed by perturbing the last observed frame with observation noise and using the forcing estimated from the observations.” |
-| P205_01 / 205 | Add: “Posterior, crude and development RML aggregate all 38 saved question types at all eight leads, including P/B at leads omitted from the confidence maps; CNN uses 2 LT only. Curves are descriptive and do not establish an ordering.” |
-| P210_09 / 210 | Add the frozen requirements: Q must settle at least 20 answers, its exact one-sided 95% accuracy lower bound must be at least 0.80, and its post-probe truth coverage must be at least 0.85. State that confirmation Q settled 15 of 60, below the 20-answer floor, as well as failing the margin and paired-test requirements. |
-| P231_03 / 231 | “The observed displacement-to-spread ratio is roughly stable after 1 LT, consistent with shared growth of displacement and spread; the mechanism was not identified.” |
-| P233_04 / 233 | “Under the linear-response approximation a positive amplitude scales mean and spread together. The three smallest tested development amplitudes have similar confident shares; realized calibration at changed amplitudes was not recomputed.” |
-| P247_02 / 247 | “At 0 LT the observed confidence shares are 98.3% and 97.0%. The calibrated observation-confident S/Fc comparison differs at 2 and 3 LT, and the paired loss reading is PRECEDES.” |
+The abstract artifacts are unchanged from Stage 5b: 13 OK / zero open FIX under Todd's four standing rulings (title, opening framing, defined forecast-sign shorthand, labelled exploratory development amplitude). These rulings do not grant the two pending paper exceptions.
 
-No new scientific runs, integration, sampling, MAP/RML, training or inference. Work used saved receipts and static code on sulaco CPU. No cloud compute, Qwen service changes or Baccus close-out changes.
+R-other carried forward: L9 U uses all S questions over answered leads; changed-amplitude formal ordering remains unlicensed where calibration prerequisites were not evaluated. Keep both declined paper findings pending rather than infer approval. No H1–H3 stop.
+
+Receipts and static sources only, on sulaco CPU. No new scientific runs, build, cloud compute, training, inference or service changes. Qwen services and Baccus close-out untouched.

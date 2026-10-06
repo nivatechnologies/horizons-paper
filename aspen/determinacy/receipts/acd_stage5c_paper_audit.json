@@ -1,0 +1,2437 @@
+{
+  "base": "780a747",
+  "source_main_sha256": "bf58a6d2e183d77d3f2f99fc4626c389770be12d6b83ef4ae4e6d71a314f3978",
+  "source_refs_sha256": "dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84",
+  "reviewer_role": "Independent reviewer; did not author supplied paper sources",
+  "scope": "Only changed/new sentences and moved numerical claims; no unchanged-neighbor re-audit. Static code and saved receipts only. No new scientificrun, build or source edit.",
+  "prior_audit": "receipts/acd_stage5b_paper_audit.json",
+  "rows": [
+    {
+      "id": "C037_05",
+      "line": 37,
+      "text": "Thresholds, readings and the rule for publication were set on a development panel whose outcomes we had seen, and frozen before a separate confirmation panel was generated; each confirmation instance was then sampled and hashed before its realized outcome was computed.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§4 development reused realized outcomes"
+        },
+        {
+          "receipt": "ACD_FREEZE.md",
+          "path": "Panel and blindorder"
+        },
+        {
+          "receipt": "ACD_STAGE2_ARTIFACTS.json",
+          "path": "blindorder verification"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Chronology matches frozen WO §4 and the committed freeze/code addendum. Reused development outcomes were known; confirmation inference outputs were hashed before realized outcomes. No claim of blindness to development truth remains.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P037_05"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C043_02",
+      "line": 43,
+      "text": "In exploratory development runs the paired loss difference changes little as the intervention's amplitude is quadrupled from 0.5\\% to 2\\% of the forcing ($-0.228$, $-0.220$, $-0.210$), and its 99\\% intervals include zero at 4\\% and 8\\%.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P04_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[0].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P04_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[0].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P08_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[1].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P08_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[1].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P16_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[2].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P16_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[2].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_R2B_LOWER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].R2b.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_R2B_UPPER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].R2b.upper"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R2B_LOWER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].R2b.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R2B_UPPER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].R2b.upper"
+        }
+      ],
+      "full_precision": {
+        "ACD_DEV_AMP_A0P04_FRACTION_TRUE_FORCING": {
+          "value": 0.005,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[0].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P04_R2B_POINT": {
+          "value": -0.22817460317460317,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[0].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P08_FRACTION_TRUE_FORCING": {
+          "value": 0.01,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P08_R2B_POINT": {
+          "value": -0.2201140873015873,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P16_FRACTION_TRUE_FORCING": {
+          "value": 0.02,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[2].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P16_R2B_POINT": {
+          "value": -0.2096974206349206,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[2].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P32_FRACTION_TRUE_FORCING": {
+          "value": 0.04,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P32_R2B_LOWER": {
+          "value": -0.352,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].R2b.lower"
+        },
+        "ACD_DEV_AMP_A0P32_R2B_UPPER": {
+          "value": 0.006000000000000005,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].R2b.upper"
+        },
+        "ACD_DEV_AMP_A0P64_FRACTION_TRUE_FORCING": {
+          "value": 0.08,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P64_R2B_LOWER": {
+          "value": -0.252,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].R2b.lower"
+        },
+        "ACD_DEV_AMP_A0P64_R2B_UPPER": {
+          "value": 0.08800000000000008,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].R2b.upper"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Development, exploratory. The three smallest tested amplitudes have numerical loss differences −0.22817460317460317,−0.2201140873015873,−0.2096974206349206. Changed-amplitude calibration is absent; numerical intervals crossing zero are not formal NO ORDER DETECTED. The new wording reports numbers only.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P043_02"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C094_03",
+      "line": 94,
+      "text": "Confident forecast-sign answers pass their own criterion (at least 30 confident instances and an exact one-sided 95\\% lower bound of at least 0.90) at every lead where it can be evaluated.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[0].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[1].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[2].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[3].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_2P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[4].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[5].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[6].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_ANSWERS_6LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[7].R0_F.answers"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[0].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[1].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[2].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[3].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_2P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[4].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[5].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[6].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R0F_LOWER_6LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R0[7].R0_F.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_R0_CI_LEVEL",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal one-sided R0 confidence level, §10"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_R0_FLOOR",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "acd_stats.py",
+          "path": "r0_f:NOT EVALUABLE ifn<30"
+        }
+      ],
+      "full_precision": {
+        "ACD_R0F_ANSWERS_0LT": {
+          "value": 194,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[0].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_1LT": {
+          "value": 184,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[1].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_1P5LT": {
+          "value": 186,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[2].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_2LT": {
+          "value": 170,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_2P5LT": {
+          "value": 149,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[4].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_3LT": {
+          "value": 134,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[5].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_4LT": {
+          "value": 78,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[6].R0_F.answers"
+        },
+        "ACD_R0F_ANSWERS_6LT": {
+          "value": 10,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[7].R0_F.answers"
+        },
+        "ACD_R0F_LOWER_0LT": {
+          "value": 0.9846766961612674,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[0].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_1LT": {
+          "value": 0.9838506679494344,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[1].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_1P5LT": {
+          "value": 0.9747506020921389,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[2].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_2LT": {
+          "value": 0.9825324040607073,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_2P5LT": {
+          "value": 0.9583513520627005,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[4].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_3LT": {
+          "value": 0.9650887538003086,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[5].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_4LT": {
+          "value": 0.9214789109261785,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[6].R0_F.lower"
+        },
+        "ACD_R0F_LOWER_6LT": {
+          "value": 0.7411344491069477,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[7].R0_F.lower"
+        },
+        "ACD_CONTRACT_R0_CI_LEVEL": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal one-sided R0 confidence level, §10"
+        },
+        "ACD_CONTRACT_R0_FLOOR": {
+          "value": 0.9,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "minimum_confident_Fc_cases": {
+          "value": 30,
+          "receipt": "acd_stats.py",
+          "receipt_path": "r0_f:NOT EVALUABLE ifn<30",
+          "interpretation": "Exact one-answer-per-case Fc criterion"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation Fc is one answer per case. Its separate evaluability floor is 30 confident cases and exact one-sided 95% Clopper–Pearson lower bound ≥0.90. It passes through 4 LT;6 LT is not evaluable. No S-specific 100 answerfloor is attributed to Fc.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P094_03"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C118_02",
+      "line": 118,
+      "text": "Immediately after the observation window 98.3\\% of intervention-sign questions and 97.0\\% of forecast signs are confident at lead 0, and 91.4\\% against 92.0\\% at 1~LT.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[12].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[13].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[0].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[1].confident.point"
+        }
+      ],
+      "full_precision": {
+        "ACD_R1_FC_CONFIDENT_POINT_0LT": {
+          "value": 0.97,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[12].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_1LT": {
+          "value": 0.92,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[13].confident.point"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_0LT": {
+          "value": 0.983125,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[0].confident.point"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_1LT": {
+          "value": 0.91375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[1].confident.point"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation S shares divide by 200×8 questions; Fc by 200 cases per lead. The new observed-share wording is descriptive, not a formal EQUIVALENT route at 0/1 or first-difference route at 1.5. Null range now explicitly refers to the more likely sign, not each binary probability.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P118_02",
+        "P118_03"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C118_03",
+      "line": 118,
+      "text": "The observed shares then separate: 84.4\\% against 93.0\\% at 1.5~LT, 72.4\\% against 85.0\\% at 2~LT, 40.4\\% against 67.0\\% at 3~LT, and 14.25\\% against 39.0\\% at 4~LT.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[14].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[15].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[17].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[18].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[2].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[3].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[5].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[6].confident.point"
+        }
+      ],
+      "full_precision": {
+        "ACD_R1_FC_CONFIDENT_POINT_1P5LT": {
+          "value": 0.93,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[14].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_2LT": {
+          "value": 0.85,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[15].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_3LT": {
+          "value": 0.67,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[17].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_4LT": {
+          "value": 0.39,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[18].confident.point"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_1P5LT": {
+          "value": 0.84375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[2].confident.point"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_2LT": {
+          "value": 0.72375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].confident.point"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_3LT": {
+          "value": 0.40375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[5].confident.point"
+        },
+        "ACD_R1_S_CONFIDENT_POINT_4LT": {
+          "value": 0.1425,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[6].confident.point"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation S shares divide by 200×8 questions; Fc by 200 cases per lead. The new observed-share wording is descriptive, not a formal EQUIVALENT route at 0/1 or first-difference route at 1.5. Null range now explicitly refers to the more likely sign, not each binary probability.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P118_02",
+        "P118_03"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C118_06",
+      "line": 118,
+      "text": "For the other seven patterns the climatological ensemble's more likely sign has probability between 0.50 and 0.56 at every lead, so no answer about them is climate-confident and every confident answer comes from the observations.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MIN",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.null.question_probabilities[5][7][0]"
+        },
+        {
+          "NUMBERS_key": "ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MAX",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.null.question_probabilities[7][0][0]"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_CONFIDENCE",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        }
+      ],
+      "full_precision": {
+        "ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MIN": {
+          "value": 0.500244140625,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.null.question_probabilities[5][7][0]",
+          "derivation": "extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one"
+        },
+        "ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MAX": {
+          "value": 0.56201171875,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.null.question_probabilities[7][0][0]",
+          "derivation": "extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one"
+        },
+        "ACD_CONTRACT_CONFIDENCE": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation S shares divide by 200×8 questions; Fc by 200 cases per lead. The new observed-share wording is descriptive, not a formal EQUIVALENT route at 0/1 or first-difference route at 1.5. Null range now explicitly refers to the more likely sign, not each binary probability.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P118_06"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C166_06",
+      "line": 166,
+      "text": "Climate-confident answers appear at 2.5~LT (and at 3~LT for 0.64), and the 99\\% intervals for the paired loss difference include zero (0.32: $-0.196$, $[-0.352, 0.006]$; 0.64: $-0.101$, $[-0.252, 0.088]$).",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_AMPLITUDE",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].amplitude"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_R1_CLIMATE_CONFIDENT_S_2P5LT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].shares[4].climate_confident_S"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_R2B_LOWER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].R2b.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P32_R2B_UPPER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[3].R2b.upper"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_AMPLITUDE",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].amplitude"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R1_CLIMATE_CONFIDENT_S_2P5LT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].shares[4].climate_confident_S"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R1_CLIMATE_CONFIDENT_S_3LT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].shares[5].climate_confident_S"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R2B_LOWER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].R2b.lower"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P64_R2B_UPPER",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[4].R2b.upper"
+        }
+      ],
+      "full_precision": {
+        "ACD_DEV_AMP_A0P32_AMPLITUDE": {
+          "value": 0.32,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].amplitude"
+        },
+        "ACD_DEV_AMP_A0P32_R1_CLIMATE_CONFIDENT_S_2P5LT": {
+          "value": 0.12125,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].shares[4].climate_confident_S"
+        },
+        "ACD_DEV_AMP_A0P32_R2B_LOWER": {
+          "value": -0.352,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].R2b.lower"
+        },
+        "ACD_DEV_AMP_A0P32_R2B_POINT": {
+          "value": -0.1960565476190476,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P32_R2B_UPPER": {
+          "value": 0.006000000000000005,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[3].R2b.upper"
+        },
+        "ACD_DEV_AMP_A0P64_AMPLITUDE": {
+          "value": 0.64,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].amplitude"
+        },
+        "ACD_DEV_AMP_A0P64_R1_CLIMATE_CONFIDENT_S_2P5LT": {
+          "value": 0.124375,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].shares[4].climate_confident_S"
+        },
+        "ACD_DEV_AMP_A0P64_R1_CLIMATE_CONFIDENT_S_3LT": {
+          "value": 0.120625,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].shares[5].climate_confident_S"
+        },
+        "ACD_DEV_AMP_A0P64_R2B_LOWER": {
+          "value": -0.252,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].R2b.lower"
+        },
+        "ACD_DEV_AMP_A0P64_R2B_POINT": {
+          "value": -0.1005704365079365,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P64_R2B_UPPER": {
+          "value": 0.08800000000000008,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].R2b.upper"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Matched development null, exploratory. At 0.32 and 0.64 the loss intervals span zero, a numerical statement. Formal statuses remain PREREQUISITE NOT MET at changed amplitudes. Climate shares use matched null and the sampler’s modal answer; no calibration claim is added.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P166_06"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C196_01",
+      "line": 196,
+      "text": "\\paragraph{A perturbed-last-frame ensemble.} We form a 128-member ensemble by perturbing the last observed frame with the observation noise and using the forcing estimated from the observations by a one-dimensional fit.",
+      "sources": [
+        {
+          "NUMBERS_key": null,
+          "receipt": "acd_confirmation.py",
+          "path": "infer:crude_theta,range(128)"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_FORCING_MIN",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_FORCING_MAX",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py",
+          "path": "identify(y,dt)"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "acd_confirmation.py",
+          "path": "infer:crude_theta,range(128)"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py",
+          "path": "identify(y,dt)"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "acd_confirmation.py",
+          "path": "infer:crude_theta,range(128)"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py",
+          "path": "identify(y,dt)"
+        },
+        {
+          "receipt": "acd_confirmation.py",
+          "path": "confirmation_fits/infer"
+        },
+        {
+          "receipt": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py",
+          "path": "identify(y,dt)"
+        }
+      ],
+      "full_precision": {
+        "crude_ensemble_members": {
+          "value": 128,
+          "receipt": "acd_confirmation.py",
+          "receipt_path": "infer:crude_theta,range(128)",
+          "interpretation": "Perturbed last observed frame; shared scalar forcing estimated by identify"
+        },
+        "ACD_CONTRACT_FORCING_MIN": {
+          "value": 6,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_FORCING_MAX": {
+          "value": 10,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "fit_parameter_dimension": {
+          "value": 1,
+          "receipt": "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py",
+          "receipt_path": "identify(y,dt)",
+          "interpretation": "One scalar uniform F searched by golden-section on[6,10]; firstobservedframe fixed, objective sums mean-squared residuals atframes1..10"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Static implementation check: physics.identify holds y[0] fixed and estimates only scalar uniform F with inherited golden-section search on[6,10], using observation residuals at frames 1–10. Crude members perturb y[-1] and share this Fhat. No new fit was executed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P196_01"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C205_01",
+      "line": 205,
+      "text": "\\caption{Reliability of answer probabilities, descriptive.",
+      "sources": [
+        {
+          "receipt": "acd_figures.py",
+          "path": "figures F4 aggregation"
+        },
+        {
+          "receipt": "acd_confirmation_analysis.py",
+          "path": "reliability"
+        },
+        {
+          "receipt": "acd_analysis.py",
+          "path": "reliability"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "F 4 code pools all 38 saved questions at all eight leads for posterior/crude/developmentRML; CNN only 2 LT. Caption now identifies descriptive mixed lead pools, their panels and P/B coverage outsideF 2. No comparator ordering is asserted.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P205_01"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C205_02",
+      "line": 205,
+      "text": "The posterior, the perturbed-last-frame ensemble and the ensemble smoother pool all 38 question types at all eight leads, including pairwise and best-action questions at leads not reported in Figure~\\ref{fig:confidence}; the CNN ensemble is at 2~LT only.",
+      "sources": [
+        {
+          "NUMBERS_key": null,
+          "receipt": "acd_questions.py",
+          "path": "labels/PAIRS"
+        },
+        {
+          "NUMBERS_key": null,
+          "receipt": "acd_protocol.py",
+          "path": "LEADS"
+        },
+        {
+          "NUMBERS_key": "ACD_R6_LEAD",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R6.lead"
+        },
+        {
+          "receipt": "acd_figures.py",
+          "path": "figures F4 aggregation"
+        },
+        {
+          "receipt": "acd_confirmation_analysis.py",
+          "path": "reliability"
+        },
+        {
+          "receipt": "acd_analysis.py",
+          "path": "reliability"
+        }
+      ],
+      "full_precision": {
+        "saved_question_types_count": {
+          "value": 38,
+          "receipt": "acd_questions.py",
+          "receipt_path": "labels/PAIRS",
+          "interpretation": "8S+28P+1B+1Fc"
+        },
+        "saved_lead_count": {
+          "value": 8,
+          "receipt": "acd_protocol.py",
+          "receipt_path": "LEADS",
+          "interpretation": "0,1,1.5,2,2.5,3,4,6 LT"
+        },
+        "ACD_R6_LEAD": {
+          "value": 2,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.lead"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "F 4 code pools all 38 saved questions at all eight leads for posterior/crude/developmentRML; CNN only 2 LT. Caption now identifies descriptive mixed lead pools, their panels and P/B coverage outsideF 2. No comparator ordering is asserted.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P205_01"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C210_09",
+      "line": 210,
+      "text": "The frozen criterion required a margin of 0.10, $p \\le 0.01$ against all three, at least 20 settled answers with an exact one-sided 95\\% accuracy lower bound of at least 0.80, and post-measurement truth coverage of at least 0.85.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_CONTRACT_R5_MARGIN",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_R5_ALPHA",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_R5_SETTLED_MIN",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_R0_CI_LEVEL",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal one-sided R0 confidence level, §10"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_CP_LOWER_FLOOR",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        },
+        {
+          "NUMBERS_key": "ACD_CONTRACT_COVERAGE_FLOOR",
+          "receipt": "sources/WO_v2.3.md",
+          "path": "literal §3–§14; contract, not an empirical result"
+        }
+      ],
+      "full_precision": {
+        "ACD_CONTRACT_R5_MARGIN": {
+          "value": 0.1,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_R5_ALPHA": {
+          "value": 0.01,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_R5_SETTLED_MIN": {
+          "value": 20,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_R0_CI_LEVEL": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal one-sided R0 confidence level, §10"
+        },
+        "ACD_CONTRACT_CP_LOWER_FLOOR": {
+          "value": 0.8,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_COVERAGE_FLOOR": {
+          "value": 0.85,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal §3–§14; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation R 5 common 60 qualifying cases. Q settles 15, allcorrect; one-sided 95%accuracy lower bound 0.8189637274779153, truthcoverage 0.9166666666666666. These two floors pass, while 20 settled-count, .10 margin andall three McNemar≤.01 requirements fail. Random-only comparison passes, as already stated separately.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P210_09"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C210_10",
+      "line": 210,
+      "text": "Arm Q settled 15 (lower bound 0.82, coverage 91.7\\%), so the margin, the paired tests and the count all fell short, and the advantage did not confirm.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R5_ARMS_Q_ACCURACY_LOWER",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.arms.Q.accuracy_lower"
+        },
+        {
+          "NUMBERS_key": "ACD_R5_ARMS_Q_COVERAGE",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.arms.Q.coverage"
+        },
+        {
+          "NUMBERS_key": "ACD_R5_ARMS_Q_SETTLED",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.arms.Q.settled"
+        },
+        {
+          "NUMBERS_key": "ACD_R5_MARGIN",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.margin"
+        },
+        {
+          "NUMBERS_key": "ACD_R5_MCNEMAR_F_P",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.McNemar.F.p"
+        },
+        {
+          "NUMBERS_key": "ACD_R5_MCNEMAR_R_P",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.McNemar.R.p"
+        },
+        {
+          "NUMBERS_key": "ACD_R5_MCNEMAR_V_P",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R5.McNemar.V.p"
+        }
+      ],
+      "full_precision": {
+        "ACD_R5_ARMS_Q_ACCURACY_LOWER": {
+          "value": 0.8189637274779153,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.arms.Q.accuracy_lower"
+        },
+        "ACD_R5_ARMS_Q_COVERAGE": {
+          "value": 0.9166666666666666,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.arms.Q.coverage"
+        },
+        "ACD_R5_ARMS_Q_SETTLED": {
+          "value": 15,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.arms.Q.settled"
+        },
+        "ACD_R5_MARGIN": {
+          "value": 0.08333333333333334,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.margin"
+        },
+        "ACD_R5_MCNEMAR_F_P": {
+          "value": 0.0625,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.McNemar.F.p"
+        },
+        "ACD_R5_MCNEMAR_R_P": {
+          "value": 0.003692626953125,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.McNemar.R.p"
+        },
+        "ACD_R5_MCNEMAR_V_P": {
+          "value": 0.0107421875,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R5.McNemar.V.p"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation R 5 common 60 qualifying cases. Q settles 15, allcorrect; one-sided 95%accuracy lower bound 0.8189637274779153, truthcoverage 0.9166666666666666. These two floors pass, while 20 settled-count, .10 margin andall three McNemar≤.01 requirements fail. Random-only comparison passes, as already stated separately.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P210_09"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C231_03",
+      "line": 231,
+      "text": "The intervention's displacement of the state keeps pace with the posterior spread: their ratio is roughly constant after 1~LT, consistent with both growing through the same instability.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_1_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[1].window_divergence_ratio"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_2_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[2].window_divergence_ratio"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_3_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[3].window_divergence_ratio"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_4_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[4].window_divergence_ratio"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_5_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[5].window_divergence_ratio"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_6_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[6].window_divergence_ratio"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_LEAD_RELATIONSHIP_7_WINDOW_DIVERGENCE_RATIO",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.lead_relationship[7].window_divergence_ratio"
+        }
+      ],
+      "full_precision": {
+        "ACD_R1M_LEAD_RELATIONSHIP_1_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.5445249888319945,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[1].window_divergence_ratio"
+        },
+        "ACD_R1M_LEAD_RELATIONSHIP_2_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.5087409616188587,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[2].window_divergence_ratio"
+        },
+        "ACD_R1M_LEAD_RELATIONSHIP_3_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.4582562487170598,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[3].window_divergence_ratio"
+        },
+        "ACD_R1M_LEAD_RELATIONSHIP_4_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.4428845334710596,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[4].window_divergence_ratio"
+        },
+        "ACD_R1M_LEAD_RELATIONSHIP_5_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.447021312342474,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[5].window_divergence_ratio"
+        },
+        "ACD_R1M_LEAD_RELATIONSHIP_6_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.4675426352621745,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[6].window_divergence_ratio"
+        },
+        "ACD_R1M_LEAD_RELATIONSHIP_7_WINDOW_DIVERGENCE_RATIO": {
+          "value": 1.4329721454262048,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.lead_relationship[7].window_divergence_ratio"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "R 1 m descriptive. Per-lead window-divergence medians range 1.4329721454262048–1.5445249888319945 forleads 1–6 LT. Revised “consistent with” wording is an interpretation, not an identified causal mechanism.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P231_03"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C233_02",
+      "line": 233,
+      "text": "Under this linear-response approximation the posterior mean and the posterior standard deviation of $D_k$ both scale with $a$, so $z_D$, and with it the confidence horizon of the sign, does not depend on how large the intervention is.",
+      "sources": [
+        {
+          "receipt": "paper/main.tex",
+          "path": "line233 explicit linear-response approximation and development/no-calibration caveat"
+        },
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§11 scope: interpretive conditional reasoning licenses no new calibrated empirical conclusion"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Discussion is expressly conditional on the linear-response approximation D≈a·g for positivea. Under that premise mean andSD scale together; the sign distribution and z_D are scale-invariant. The three smallest development settings are descriptive evidence only. Final paragraph caveat explicitly states no realized calibration at changed amplitudes; no universal calibrated knowability result is claimed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P233_02",
+        "P233_03",
+        "P233_04"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C233_03",
+      "line": 233,
+      "text": "The three smallest development amplitudes agree: from 0.5\\% to 2\\% of the forcing the confident share and the loss difference barely move.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P04_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[0].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P04_R1_CONFIDENT_S_2LT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[0].shares[3].confident_S"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P04_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[0].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P08_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[1].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P08_R1_CONFIDENT_S_2LT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[1].shares[3].confident_S"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P08_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[1].R2b.point"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P16_FRACTION_TRUE_FORCING",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[2].fraction_true_forcing"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P16_R1_CONFIDENT_S_2LT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[2].shares[3].confident_S"
+        },
+        {
+          "NUMBERS_key": "ACD_DEV_AMP_A0P16_R2B_POINT",
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "path": "$.rows[2].R2b.point"
+        }
+      ],
+      "full_precision": {
+        "ACD_DEV_AMP_A0P04_FRACTION_TRUE_FORCING": {
+          "value": 0.005,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[0].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P04_R1_CONFIDENT_S_2LT": {
+          "value": 0.738125,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[0].shares[3].confident_S"
+        },
+        "ACD_DEV_AMP_A0P04_R2B_POINT": {
+          "value": -0.22817460317460317,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[0].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P08_FRACTION_TRUE_FORCING": {
+          "value": 0.01,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P08_R1_CONFIDENT_S_2LT": {
+          "value": 0.735,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].shares[3].confident_S"
+        },
+        "ACD_DEV_AMP_A0P08_R2B_POINT": {
+          "value": -0.2201140873015873,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].R2b.point"
+        },
+        "ACD_DEV_AMP_A0P16_FRACTION_TRUE_FORCING": {
+          "value": 0.02,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[2].fraction_true_forcing"
+        },
+        "ACD_DEV_AMP_A0P16_R1_CONFIDENT_S_2LT": {
+          "value": 0.744375,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[2].shares[3].confident_S"
+        },
+        "ACD_DEV_AMP_A0P16_R2B_POINT": {
+          "value": -0.2096974206349206,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[2].R2b.point"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Discussion is expressly conditional on the linear-response approximation D≈a·g for positivea. Under that premise mean andSD scale together; the sign distribution and z_D are scale-invariant. The three smallest development settings are descriptive evidence only. Final paragraph caveat explicitly states no realized calibration at changed amplitudes; no universal calibrated knowability result is claimed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P233_02",
+        "P233_03",
+        "P233_04"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C233_04",
+      "line": 233,
+      "text": "In that range, making the intervention larger makes its effect larger, not more knowable.",
+      "sources": [
+        {
+          "receipt": "paper/main.tex",
+          "path": "line233 explicit linear-response approximation and development/no-calibration caveat"
+        },
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§11 scope: interpretive conditional reasoning licenses no new calibrated empirical conclusion"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Discussion is expressly conditional on the linear-response approximation D≈a·g for positivea. Under that premise mean andSD scale together; the sign distribution and z_D are scale-invariant. The three smallest development settings are descriptive evidence only. Final paragraph caveat explicitly states no realized calibration at changed amplitudes; no universal calibrated knowability result is claimed.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P233_02",
+        "P233_03",
+        "P233_04"
+      ],
+      "change_type": "replace"
+    },
+    {
+      "id": "C247_02",
+      "line": 247,
+      "text": "Just after the observations the sign of a small intervention's effect is confident for 98\\% of questions and the forecast sign for 97\\%; at 2 and 3~LT the observation-dependent intervention-sign share is lower by about a quarter of the questions.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R1_S_CONFIDENT_POINT_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[0].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R1_FC_CONFIDENT_POINT_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1[12].confident.point"
+        },
+        {
+          "NUMBERS_key": "ACD_R2A_0_POINT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2a[0].point"
+        },
+        {
+          "NUMBERS_key": "ACD_R2A_1_POINT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R2a[1].point"
+        }
+      ],
+      "full_precision": {
+        "ACD_R1_S_CONFIDENT_POINT_0LT": {
+          "value": 0.983125,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[0].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_0LT": {
+          "value": 0.97,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[12].confident.point"
+        },
+        "ACD_R2A_0_POINT": {
+          "value": -0.243125,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].point"
+        },
+        "ACD_R2A_1_POINT": {
+          "value": -0.26625,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[1].point"
+        }
+      },
+      "rounding": "OK at the stated precision; named semantic registry/receipt quantities only. N/A for qualitative or algebraic conditional claims.",
+      "panel_lead_denominator": "Confirmation: all-confident S/Fc at 0 LT .983125/.97; same-lead observation-confident S minus confidentFc is−.243125 at 2 LT and−.26625 at 3 LT, both DIFFERS with prerequisites met. “About a quarter” means these absolute shares/percentage-point differences, not a relative-quarter loss.",
+      "verdict": "OK",
+      "proposed_fix": "",
+      "supersedes": [
+        "P247_02"
+      ],
+      "change_type": "replace"
+    }
+  ],
+  "changed_counts": {
+    "OK": 17,
+    "FIX": 0
+  },
+  "carried_counts": {
+    "OK": 330,
+    "FIX": 2
+  },
+  "counts": {
+    "OK": 347,
+    "FIX": 2
+  },
+  "current_full_paper_rows": 349,
+  "replaced_prior_rows": [
+    "P037_05",
+    "P043_02",
+    "P094_03",
+    "P118_02",
+    "P118_03",
+    "P118_06",
+    "P166_06",
+    "P196_01",
+    "P205_01",
+    "P210_09",
+    "P231_03",
+    "P233_02",
+    "P233_03",
+    "P233_04",
+    "P247_02"
+  ],
+  "unchanged_carried_rows": [
+    "P017_01",
+    "P027_01",
+    "P027_02",
+    "P027_03",
+    "P027_04",
+    "P027_05",
+    "P027_06",
+    "P027_07",
+    "P027_08",
+    "P027_09",
+    "P027_10",
+    "P027_11",
+    "P033_01",
+    "P033_02",
+    "P033_03",
+    "P033_04",
+    "P033_05",
+    "P035_01",
+    "P035_02",
+    "P035_03",
+    "P035_04",
+    "P035_05",
+    "P035_06",
+    "P035_07",
+    "P037_01",
+    "P037_02",
+    "P037_03",
+    "P037_04",
+    "P037_06",
+    "P041_01",
+    "P042_01",
+    "P043_01",
+    "P044_01",
+    "P044_02",
+    "P052_01",
+    "P054_01",
+    "P056_01",
+    "P056_02",
+    "P056_03",
+    "P056_04",
+    "P056_05",
+    "P056_06",
+    "P059_01",
+    "P059_02",
+    "P059_03",
+    "P059_04",
+    "P061_01",
+    "P063_01",
+    "P063_02",
+    "P065_01",
+    "P066_01",
+    "P067_01",
+    "P068_01",
+    "P068_02",
+    "P070_01",
+    "P073_01",
+    "P073_02",
+    "P073_03",
+    "P075_01",
+    "P075_02",
+    "P075_03",
+    "P077_01",
+    "P077_02",
+    "P077_03",
+    "P077_04",
+    "P077_05",
+    "P077_06",
+    "P077_07",
+    "P077_08",
+    "P080_01",
+    "P080_02",
+    "P080_03",
+    "P080_04",
+    "P080_05",
+    "P080_06",
+    "P084_01",
+    "P084_02",
+    "P084_03",
+    "P086_01",
+    "P086_02",
+    "P086_03",
+    "P086_04",
+    "P086_05",
+    "P086_06",
+    "P086_07",
+    "P086_08",
+    "P088_01",
+    "P088_02",
+    "P094_01",
+    "P094_02",
+    "P094_04",
+    "P094_05",
+    "P094_06",
+    "P099_01",
+    "P118_01",
+    "P118_04",
+    "P118_05",
+    "P118_07",
+    "P118_08",
+    "P118_09",
+    "P123_01",
+    "P123_02",
+    "P123_03",
+    "P129_01",
+    "P129_02",
+    "P129_03",
+    "P129_04",
+    "P129_05",
+    "P129_06",
+    "P129_07",
+    "P133_01",
+    "P133_02",
+    "P135_01",
+    "P135_02",
+    "P135_03",
+    "P135_04",
+    "P135_05",
+    "P135_06",
+    "P135_07",
+    "P135_08",
+    "P140_01",
+    "P140_02",
+    "P140_03",
+    "P161_01",
+    "P161_02",
+    "P161_03",
+    "P161_04",
+    "P166_01",
+    "P166_02",
+    "P166_03",
+    "P166_04",
+    "P166_05",
+    "P166_07",
+    "P171_01",
+    "P171_02",
+    "P171_03",
+    "P171_04",
+    "P189_01",
+    "P189_02",
+    "P189_03",
+    "P194_01",
+    "P194_02",
+    "P194_03",
+    "P194_04",
+    "P196_02",
+    "P196_03",
+    "P198_01",
+    "P198_02",
+    "P198_03",
+    "P198_04",
+    "P198_05",
+    "P200_01",
+    "P200_02",
+    "P205_02",
+    "P205_03",
+    "P210_01",
+    "P210_02",
+    "P210_03",
+    "P210_04",
+    "P210_05",
+    "P210_06",
+    "P210_07",
+    "P210_08",
+    "P215_01",
+    "P231_01",
+    "P231_02",
+    "P231_04",
+    "P231_05",
+    "P231_06",
+    "P231_07",
+    "P233_01",
+    "P233_05",
+    "P233_06",
+    "P233_07",
+    "P233_08",
+    "P235_01",
+    "P235_02",
+    "P235_03",
+    "P235_04",
+    "P235_05",
+    "P235_06",
+    "P235_07",
+    "P239_01",
+    "P239_02",
+    "P240_01",
+    "P240_02",
+    "P241_01",
+    "P242_01",
+    "P242_02",
+    "P243_01",
+    "P247_01",
+    "P247_03",
+    "P247_04",
+    "P250_01",
+    "P250_02",
+    "P105_01",
+    "P105_02",
+    "P105_03",
+    "P105_04",
+    "P105_05",
+    "P105_06",
+    "P106_01",
+    "P106_02",
+    "P106_03",
+    "P106_04",
+    "P106_05",
+    "P106_06",
+    "P107_01",
+    "P107_02",
+    "P107_03",
+    "P107_04",
+    "P107_05",
+    "P107_06",
+    "P108_01",
+    "P108_02",
+    "P108_03",
+    "P108_04",
+    "P108_05",
+    "P108_06",
+    "P109_01",
+    "P109_02",
+    "P109_03",
+    "P109_04",
+    "P109_05",
+    "P109_06",
+    "P110_01",
+    "P110_02",
+    "P110_03",
+    "P110_04",
+    "P110_05",
+    "P110_06",
+    "P111_01",
+    "P111_02",
+    "P111_03",
+    "P111_04",
+    "P111_05",
+    "P111_06",
+    "P112_01",
+    "P112_02",
+    "P112_03",
+    "P146_01",
+    "P146_02",
+    "P146_03",
+    "P146_04",
+    "P146_05",
+    "P146_06",
+    "P147_01",
+    "P147_02",
+    "P147_03",
+    "P147_04",
+    "P147_05",
+    "P147_06",
+    "P148_01",
+    "P148_02",
+    "P148_03",
+    "P148_04",
+    "P148_05",
+    "P148_06",
+    "P149_01",
+    "P149_02",
+    "P149_03",
+    "P149_04",
+    "P149_05",
+    "P149_06",
+    "P150_01",
+    "P150_02",
+    "P150_03",
+    "P150_04",
+    "P150_05",
+    "P150_06",
+    "P151_01",
+    "P151_02",
+    "P151_03",
+    "P151_04",
+    "P151_05",
+    "P151_06",
+    "P152_01",
+    "P152_02",
+    "P152_03",
+    "P152_04",
+    "P152_05",
+    "P152_06",
+    "P153_01",
+    "P153_02",
+    "P153_03",
+    "P153_04",
+    "P153_05",
+    "P153_06",
+    "P177_01",
+    "P177_02",
+    "P177_03",
+    "P177_04",
+    "P177_05",
+    "P177_06",
+    "P178_01",
+    "P178_02",
+    "P178_03",
+    "P178_04",
+    "P178_05",
+    "P178_06",
+    "P179_01",
+    "P179_02",
+    "P179_03",
+    "P179_04",
+    "P179_05",
+    "P179_06",
+    "P180_01",
+    "P180_02",
+    "P180_03",
+    "P180_04",
+    "P180_05",
+    "P180_06",
+    "P181_01",
+    "P181_02",
+    "P181_03",
+    "P181_04",
+    "P181_05",
+    "P181_06",
+    "P221_01",
+    "P221_02",
+    "P221_03",
+    "P221_04",
+    "P221_05",
+    "P221_06",
+    "P221_07",
+    "P222_01",
+    "P222_02",
+    "P222_03",
+    "P222_04",
+    "P222_05",
+    "P222_06",
+    "P222_07"
+  ],
+  "unchanged_sentence_index_mapping": {
+    "P037_01": {
+      "line": 37,
+      "current_sentence_index": 1
+    },
+    "P037_02": {
+      "line": 37,
+      "current_sentence_index": 2
+    },
+    "P037_03": {
+      "line": 37,
+      "current_sentence_index": 3
+    },
+    "P037_04": {
+      "line": 37,
+      "current_sentence_index": 4
+    },
+    "P037_06": {
+      "line": 37,
+      "current_sentence_index": 6
+    },
+    "P043_01": {
+      "line": 43,
+      "current_sentence_index": 1
+    },
+    "P094_01": {
+      "line": 94,
+      "current_sentence_index": 1
+    },
+    "P094_02": {
+      "line": 94,
+      "current_sentence_index": 2
+    },
+    "P094_04": {
+      "line": 94,
+      "current_sentence_index": 4
+    },
+    "P094_05": {
+      "line": 94,
+      "current_sentence_index": 5
+    },
+    "P094_06": {
+      "line": 94,
+      "current_sentence_index": 6
+    },
+    "P118_01": {
+      "line": 118,
+      "current_sentence_index": 1
+    },
+    "P118_04": {
+      "line": 118,
+      "current_sentence_index": 4
+    },
+    "P118_05": {
+      "line": 118,
+      "current_sentence_index": 5
+    },
+    "P118_07": {
+      "line": 118,
+      "current_sentence_index": 7
+    },
+    "P118_08": {
+      "line": 118,
+      "current_sentence_index": 8
+    },
+    "P118_09": {
+      "line": 118,
+      "current_sentence_index": 9
+    },
+    "P166_01": {
+      "line": 166,
+      "current_sentence_index": 1
+    },
+    "P166_02": {
+      "line": 166,
+      "current_sentence_index": 2
+    },
+    "P166_03": {
+      "line": 166,
+      "current_sentence_index": 3
+    },
+    "P166_04": {
+      "line": 166,
+      "current_sentence_index": 4
+    },
+    "P166_05": {
+      "line": 166,
+      "current_sentence_index": 5
+    },
+    "P166_07": {
+      "line": 166,
+      "current_sentence_index": 7
+    },
+    "P196_02": {
+      "line": 196,
+      "current_sentence_index": 2
+    },
+    "P196_03": {
+      "line": 196,
+      "current_sentence_index": 3
+    },
+    "P205_02": {
+      "line": 205,
+      "current_sentence_index": 3
+    },
+    "P205_03": {
+      "line": 205,
+      "current_sentence_index": 4
+    },
+    "P210_01": {
+      "line": 210,
+      "current_sentence_index": 1
+    },
+    "P210_02": {
+      "line": 210,
+      "current_sentence_index": 2
+    },
+    "P210_03": {
+      "line": 210,
+      "current_sentence_index": 3
+    },
+    "P210_04": {
+      "line": 210,
+      "current_sentence_index": 4
+    },
+    "P210_05": {
+      "line": 210,
+      "current_sentence_index": 5
+    },
+    "P210_06": {
+      "line": 210,
+      "current_sentence_index": 6
+    },
+    "P210_07": {
+      "line": 210,
+      "current_sentence_index": 7
+    },
+    "P210_08": {
+      "line": 210,
+      "current_sentence_index": 8
+    },
+    "P231_01": {
+      "line": 231,
+      "current_sentence_index": 1
+    },
+    "P231_02": {
+      "line": 231,
+      "current_sentence_index": 2
+    },
+    "P231_04": {
+      "line": 231,
+      "current_sentence_index": 4
+    },
+    "P231_05": {
+      "line": 231,
+      "current_sentence_index": 5
+    },
+    "P231_06": {
+      "line": 231,
+      "current_sentence_index": 6
+    },
+    "P231_07": {
+      "line": 231,
+      "current_sentence_index": 7
+    },
+    "P233_01": {
+      "line": 233,
+      "current_sentence_index": 1
+    },
+    "P233_05": {
+      "line": 233,
+      "current_sentence_index": 5
+    },
+    "P233_06": {
+      "line": 233,
+      "current_sentence_index": 6
+    },
+    "P233_07": {
+      "line": 233,
+      "current_sentence_index": 7
+    },
+    "P233_08": {
+      "line": 233,
+      "current_sentence_index": 8
+    },
+    "P247_01": {
+      "line": 247,
+      "current_sentence_index": 1
+    },
+    "P247_03": {
+      "line": 247,
+      "current_sentence_index": 3
+    },
+    "P247_04": {
+      "line": 247,
+      "current_sentence_index": 4
+    }
+  },
+  "dispositions": [
+    {
+      "prior_id": "P037_05",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C037_05"
+      ],
+      "line": 37,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P043_02",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C043_02"
+      ],
+      "line": 43,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P094_03",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C094_03"
+      ],
+      "line": 94,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P118_02",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C118_02",
+        "C118_03"
+      ],
+      "line": 118,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P118_03",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C118_02",
+        "C118_03"
+      ],
+      "line": 118,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P118_06",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C118_06"
+      ],
+      "line": 118,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P166_06",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C166_06"
+      ],
+      "line": 166,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P196_01",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C196_01"
+      ],
+      "line": 196,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P205_01",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C205_01",
+        "C205_02"
+      ],
+      "line": 205,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P210_09",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C210_09",
+        "C210_10"
+      ],
+      "line": 210,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P231_03",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C231_03"
+      ],
+      "line": 231,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P233_04",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C233_02",
+        "C233_03",
+        "C233_04"
+      ],
+      "line": 233,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P247_02",
+      "status": "RESOLVED",
+      "prior_verdict": "FIX",
+      "current_verdict": "OK",
+      "current_rows": [
+        "C247_02"
+      ],
+      "line": 247,
+      "reason": "Revised wording addresses prior finding; see targeted semantic evidence and scope in current rows."
+    },
+    {
+      "prior_id": "P033_05",
+      "status": "DECLINED, PENDING TODD",
+      "prior_verdict": "FIX",
+      "current_verdict": "FIX",
+      "current_rows": [],
+      "line": 33,
+      "reason": "Sentence is unchanged and the requested correction was declined pending Todd. Standing rulings do not automatically dispose this independent finding.",
+      "text": "Implicit in both is that a decision made from a forecast can be trusted about as far ahead as the forecast it is made from.",
+      "proposed_fix": "Present this as the paper’s question: “We ask whether an intervention-sign confidence horizon matches the confidence horizon of the sign of the unforced window-energy anomaly.”"
+    },
+    {
+      "prior_id": "P043_01",
+      "status": "DECLINED, PENDING TODD",
+      "prior_verdict": "FIX",
+      "current_verdict": "FIX",
+      "current_rows": [],
+      "line": 43,
+      "reason": "Sentence is unchanged and the requested correction was declined pending Todd. Standing rulings do not automatically dispose this independent finding.",
+      "text": "\\item The shared uncertainty makes the intervention's effect much sharper than the forecast anomaly just after the observation window, but that advantage decays faster than the forecast's own signal.",
+      "proposed_fix": "Move this descriptive z-ratio interpretation to Results or Discussion. In the introduction retain the L4 median correlation and cancellation values."
+    }
+  ],
+  "open_rows": [
+    {
+      "id": "P033_05",
+      "line": 33,
+      "text": "Implicit in both is that a decision made from a forecast can be trusted about as far ahead as the forecast it is made from.",
+      "sources": [
+        {
+          "receipt": "sources/WO_v2.3.md",
+          "path": "§1,§17 conceptual/citedliterature summaries"
+        }
+      ],
+      "full_precision": null,
+      "rounding": "OK; full precision retained; semantic quantities checked at printed precision.",
+      "panel_lead_denominator": "The saved WO describes targeting and control goals, but does not document that the cited authors assume equal decision and forecast trust horizons.",
+      "verdict": "FIX",
+      "proposed_fix": "Present this as the paper’s question: “We ask whether an intervention-sign confidence horizon matches the confidence horizon of the sign of the unforced window-energy anomaly.”"
+    },
+    {
+      "id": "P043_01",
+      "line": 43,
+      "text": "\\item The shared uncertainty makes the intervention's effect much sharper than the forecast anomaly just after the observation window, but that advantage decays faster than the forecast's own signal.",
+      "sources": [
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[0]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[1]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[2]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[3]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_2P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[4]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[5]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[6]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_D_MEDIAN_6LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_D.median[7]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[0]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[1]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[2]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[3]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_2P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[4]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[5]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[6]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_Z_F_MEDIAN_6LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": "$.R1m.z_F.median[7]"
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_0LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[0]",
+            "$.R1m.z_F.median[0]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_1LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[1]",
+            "$.R1m.z_F.median[1]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_1P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[2]",
+            "$.R1m.z_F.median[2]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_2LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[3]",
+            "$.R1m.z_F.median[3]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_2P5LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[4]",
+            "$.R1m.z_F.median[4]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_3LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[5]",
+            "$.R1m.z_F.median[5]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_4LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[6]",
+            "$.R1m.z_F.median[6]"
+          ]
+        },
+        {
+          "NUMBERS_key": "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_6LT",
+          "receipt": "receipts/acd_stage2.json",
+          "path": [
+            "$.R1m.z_D.median[7]",
+            "$.R1m.z_F.median[7]"
+          ]
+        }
+      ],
+      "full_precision": {
+        "ACD_R1M_Z_D_MEDIAN_0LT": {
+          "value": 62.022866065642056,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[0]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_1LT": {
+          "value": 13.397800020247693,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[1]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_1P5LT": {
+          "value": 7.250980660397441,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[2]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_2LT": {
+          "value": 3.677818439498731,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[3]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_2P5LT": {
+          "value": 2.0652959962517166,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[4]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_3LT": {
+          "value": 1.208540571053619,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[5]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_4LT": {
+          "value": 0.5877756386252966,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[6]"
+        },
+        "ACD_R1M_Z_D_MEDIAN_6LT": {
+          "value": 0.2515927215526027,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_D.median[7]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_0LT": {
+          "value": 17.339724923331126,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[0]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_1LT": {
+          "value": 10.5331843014948,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[1]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_1P5LT": {
+          "value": 8.510898981649532,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[2]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_2LT": {
+          "value": 6.0520798595406395,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[3]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_2P5LT": {
+          "value": 3.7699123175103026,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[4]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_3LT": {
+          "value": 2.2846946885983077,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[5]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_4LT": {
+          "value": 1.2351710780915326,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[6]"
+        },
+        "ACD_R1M_Z_F_MEDIAN_6LT": {
+          "value": 0.3385278359556304,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.z_F.median[7]"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_0LT": {
+          "value": 3.576923298372998,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[0]",
+            "$.R1m.z_F.median[0]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_1LT": {
+          "value": 1.2719610363550145,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[1]",
+            "$.R1m.z_F.median[1]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_1P5LT": {
+          "value": 0.8519641316424248,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[2]",
+            "$.R1m.z_F.median[2]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_2LT": {
+          "value": 0.6076949618734677,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[3]",
+            "$.R1m.z_F.median[3]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_2P5LT": {
+          "value": 0.5478366132440088,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[4]",
+            "$.R1m.z_F.median[4]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_3LT": {
+          "value": 0.528972460558866,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[5]",
+            "$.R1m.z_F.median[5]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_4LT": {
+          "value": 0.4758657719977308,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[6]",
+            "$.R1m.z_F.median[6]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        },
+        "ACD_R1M_ZD_OVER_ZF_RATIO_OF_MEDIANS_6LT": {
+          "value": 0.7431965552917723,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": [
+            "$.R1m.z_D.median[7]",
+            "$.R1m.z_F.median[7]"
+          ],
+          "derivation": "ratio of saved medians; not median of per-question ratios"
+        }
+      },
+      "rounding": "OK; full precision retained; semantic quantities checked at printed precision.",
+      "panel_lead_denominator": "The introduction is limited to L1–L10 plus Setup. The descriptive z-ratio mechanism is outside L4 and the four standing rulings.",
+      "verdict": "FIX",
+      "proposed_fix": "Move this descriptive z-ratio interpretation to Results or Discussion. In the introduction retain the L4 median correlation and cancellation values."
+    }
+  ],
+  "number_moves": "No unchanged line or numeric-token moves; modified sentences themselves audited. F4/R5 added sentences shift subsequent local sentence row indices; carried mapping records them.",
+  "rules_fired": [
+    "R-other: unchanged P033_05/P043_01 retained as FIX, declined pending Todd; no additional wording license inferred",
+    "R-other carried: changed-amplitude intervals numerical only, no formal order license; corrected L9 denominator remains unchanged"
+  ],
+  "independence": "Targeted review applies the same prior scientific judgments and explicit Todd standing rulings; author-provided edits themselves are not approval of unresolved findings."
+}

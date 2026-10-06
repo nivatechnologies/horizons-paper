@@ -20,3 +20,11 @@ Source receipt: receipts/acd_stage5b_source.json.
 Numeric check: ACD_PAPER_NUMERIC_CHECK.md, paper/main.detex.txt and receipts/acd_stage5b_numeric_check.json.
 Independent audit receipt: receipts/acd_stage5b_paper_audit.json.
 Stage artifact hashes: ACD_STAGE5B_ARTIFACTS.json.
+
+## Stage 5c — v3 targeted audit
+
+Base: 780a74724f9db61d3a63f0782b0e48b296ce361b. V3 main.tex and unchanged refs.bib match the supplied hashes and are committed without source edits. Numeric registry regeneration passes. Empirical unmatched numbers: zero; authorized structural unmatched occurrences are 38 at lines 63/205, 28 at line 66, and 512 at line 75. No build attempted.
+
+The targeted independent audit appends to ACD_PAPER_AUDIT.md. All thirteen revised prior FIX rows resolve. P033_05 and P043_01 remain “declined, pending Todd”. Current paper inventory: 347 OK / 2 FIX across 349 rows; 17 changed/new sentences reviewed, 332 rows carried (330 OK / 2 FIX). No unchanged sentence or number moved lines. Stage 5b audit/check receipts remain historical and unchanged; current receipts use acd_stage5c_* names. Abstract artifacts remain unchanged from Stage 5b, with 13 OK / zero open FIX under standing rulings.
+
+R-other: retain corrected L9 all-S denominator and withhold formal changed-amplitude ordering where calibration prerequisites were not evaluated. Two declined editorial findings remain pending; no additional license inferred. No hard stop or new scientific run. V3 source/diff receipts: receipts/acd_stage5c_source.json and receipts/acd_stage5c_diff.json.
