@@ -1,0 +1,1439 @@
+{
+  "source_sha256": "8dc6f207a0b8fc8abe4b12849e335d583df34231b8f4e9e66dd8f8ec8a78eb5e",
+  "detex_sha256": "08381b3d4eec0be223e82397db3db5ec5dde3ae739fed0728d201440ee161e63",
+  "line_numbers": "same as original main.tex",
+  "raw_checker_exit": 1,
+  "unmatched": [
+    {
+      "line": 63,
+      "token": "38",
+      "structural": true
+    },
+    {
+      "line": 66,
+      "token": "28",
+      "structural": true
+    },
+    {
+      "line": 75,
+      "token": "512",
+      "structural": true
+    }
+  ],
+  "empirical_unmatched": [],
+  "structural_constants": [
+    {
+      "line": 63,
+      "token": "38",
+      "reason": "Declared structural question/pair count or thin-draw count; explicitly exempted by Todd"
+    },
+    {
+      "line": 66,
+      "token": "28",
+      "reason": "Declared structural question/pair count or thin-draw count; explicitly exempted by Todd"
+    },
+    {
+      "line": 75,
+      "token": "512",
+      "reason": "Declared structural question/pair count or thin-draw count; explicitly exempted by Todd"
+    },
+    {
+      "line": 43,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 49,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 83,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 86,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 94,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 100,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 118,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 124,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 128,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 132,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 133,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 135,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 141,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 162,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 166,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 172,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 190,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 198,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 206,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 210,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 216,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    },
+    {
+      "line": 229,
+      "token": null,
+      "reason": "Section/equation/table reference label; resolved numbers belong to document structure"
+    }
+  ],
+  "bibliographic_numbers": [
+    {
+      "line": 13,
+      "field": "volume",
+      "value": "16",
+      "numeric_literals": [
+        "16"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 14,
+      "field": "number",
+      "value": "1",
+      "numeric_literals": [
+        "1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 15,
+      "field": "pages",
+      "value": "16978",
+      "numeric_literals": [
+        "16978"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 16,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 17,
+      "field": "doi",
+      "value": "10.1038/s41598-026-52349-2",
+      "numeric_literals": [
+        "10.1038",
+        "41598",
+        "026",
+        "52349",
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 25,
+      "field": "volume",
+      "value": "107",
+      "numeric_literals": [
+        "107"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 26,
+      "field": "number",
+      "value": "2",
+      "numeric_literals": [
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 27,
+      "field": "pages",
+      "value": "581--586",
+      "numeric_literals": [
+        "581",
+        "586"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 28,
+      "field": "year",
+      "value": "2010",
+      "numeric_literals": [
+        "2010"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 29,
+      "field": "doi",
+      "value": "10.1073/pnas.0912997107",
+      "numeric_literals": [
+        "10.1073",
+        "0912997107"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 36,
+      "field": "volume",
+      "value": "32",
+      "numeric_literals": [
+        "32"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 37,
+      "field": "number",
+      "value": "10",
+      "numeric_literals": [
+        "10"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 38,
+      "field": "pages",
+      "value": "2022--2026",
+      "numeric_literals": [
+        "2022",
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 39,
+      "field": "year",
+      "value": "1975",
+      "numeric_literals": [
+        "1975"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 40,
+      "field": "doi",
+      "value": "10.1175/1520-0469(1975)032<2022:CRAFD>2.0.CO;2",
+      "numeric_literals": [
+        "10.1175",
+        "1520",
+        "0469",
+        "1975",
+        "032",
+        "2022",
+        "2.0",
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 50,
+      "field": "booktitle",
+      "value": "The Physical Basis of Climate and Climate Modelling",
+      "numeric_literals": [],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 52,
+      "field": "number",
+      "value": "16",
+      "numeric_literals": [
+        "16"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 55,
+      "field": "pages",
+      "value": "132--136",
+      "numeric_literals": [
+        "132",
+        "136"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 56,
+      "field": "year",
+      "value": "1975",
+      "numeric_literals": [
+        "1975"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 63,
+      "field": "booktitle",
+      "value": "Seminar on Predictability, 4--8 September 1995",
+      "numeric_literals": [
+        "4",
+        "8",
+        "1995"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 64,
+      "field": "volume",
+      "value": "1",
+      "numeric_literals": [
+        "1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 65,
+      "field": "pages",
+      "value": "1--18",
+      "numeric_literals": [
+        "1",
+        "18"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 68,
+      "field": "year",
+      "value": "1995",
+      "numeric_literals": [
+        "1995"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 75,
+      "field": "booktitle",
+      "value": "Predictability of Weather and Climate",
+      "numeric_literals": [],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 78,
+      "field": "pages",
+      "value": "40--58",
+      "numeric_literals": [
+        "40",
+        "58"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 79,
+      "field": "year",
+      "value": "2006",
+      "numeric_literals": [
+        "2006"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 80,
+      "field": "doi",
+      "value": "10.1017/CBO9780511617652.004",
+      "numeric_literals": [
+        "10.1017",
+        "9780511617652.004"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 87,
+      "field": "volume",
+      "value": "55",
+      "numeric_literals": [
+        "55"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 88,
+      "field": "number",
+      "value": "3",
+      "numeric_literals": [
+        "3"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 89,
+      "field": "pages",
+      "value": "399--414",
+      "numeric_literals": [
+        "399",
+        "414"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 90,
+      "field": "year",
+      "value": "1998",
+      "numeric_literals": [
+        "1998"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 91,
+      "field": "doi",
+      "value": "10.1175/1520-0469(1998)055<0399:OSFSWO>2.0.CO;2",
+      "numeric_literals": [
+        "10.1175",
+        "1520",
+        "0469",
+        "1998",
+        "055",
+        "0399",
+        "2.0",
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 98,
+      "field": "volume",
+      "value": "63",
+      "numeric_literals": [
+        "63"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 99,
+      "field": "number",
+      "value": "2",
+      "numeric_literals": [
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 100,
+      "field": "pages",
+      "value": "71--116",
+      "numeric_literals": [
+        "71",
+        "116"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 101,
+      "field": "year",
+      "value": "2000",
+      "numeric_literals": [
+        "2000"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 102,
+      "field": "doi",
+      "value": "10.1088/0034-4885/63/2/201",
+      "numeric_literals": [
+        "10.1088",
+        "0034",
+        "4885",
+        "63",
+        "2",
+        "201"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 113,
+      "field": "volume",
+      "value": "141",
+      "numeric_literals": [
+        "141"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 114,
+      "field": "number",
+      "value": "5",
+      "numeric_literals": [
+        "5"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 115,
+      "field": "pages",
+      "value": "1437--1453",
+      "numeric_literals": [
+        "1437",
+        "1453"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 116,
+      "field": "year",
+      "value": "2013",
+      "numeric_literals": [
+        "2013"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 117,
+      "field": "doi",
+      "value": "10.1175/MWR-D-12-00188.1",
+      "numeric_literals": [
+        "10.1175",
+        "12",
+        "00188.1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 123,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 124,
+      "field": "eprint",
+      "value": "2606.27267",
+      "numeric_literals": [
+        "2606.27267"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 132,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 133,
+      "field": "eprint",
+      "value": "2609.05307",
+      "numeric_literals": [
+        "2609.05307"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 146,
+      "field": "volume",
+      "value": "29",
+      "numeric_literals": [
+        "29"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 147,
+      "field": "number",
+      "value": "1",
+      "numeric_literals": [
+        "1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 148,
+      "field": "pages",
+      "value": "133--139",
+      "numeric_literals": [
+        "133",
+        "139"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 149,
+      "field": "year",
+      "value": "2022",
+      "numeric_literals": [
+        "2022"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 150,
+      "field": "doi",
+      "value": "10.5194/npg-29-133-2022",
+      "numeric_literals": [
+        "10.5194",
+        "29",
+        "133",
+        "2022"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 157,
+      "field": "volume",
+      "value": "30",
+      "numeric_literals": [
+        "30"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 158,
+      "field": "number",
+      "value": "2",
+      "numeric_literals": [
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 159,
+      "field": "pages",
+      "value": "117--128",
+      "numeric_literals": [
+        "117",
+        "128"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 160,
+      "field": "year",
+      "value": "2023",
+      "numeric_literals": [
+        "2023"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 161,
+      "field": "doi",
+      "value": "10.5194/npg-30-117-2023",
+      "numeric_literals": [
+        "10.5194",
+        "30",
+        "117",
+        "2023"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 168,
+      "field": "volume",
+      "value": "32",
+      "numeric_literals": [
+        "32"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 169,
+      "field": "number",
+      "value": "4",
+      "numeric_literals": [
+        "4"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 170,
+      "field": "pages",
+      "value": "457--469",
+      "numeric_literals": [
+        "457",
+        "469"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 171,
+      "field": "year",
+      "value": "2025",
+      "numeric_literals": [
+        "2025"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 172,
+      "field": "doi",
+      "value": "10.5194/npg-32-457-2025",
+      "numeric_literals": [
+        "10.5194",
+        "32",
+        "457",
+        "2025"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 183,
+      "field": "volume",
+      "value": "6",
+      "numeric_literals": [
+        "6"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 184,
+      "field": "pages",
+      "value": "120",
+      "numeric_literals": [
+        "120"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 185,
+      "field": "year",
+      "value": "2012",
+      "numeric_literals": [
+        "2012"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 186,
+      "field": "doi",
+      "value": "10.1186/1752-0509-6-120",
+      "numeric_literals": [
+        "10.1186",
+        "1752",
+        "0509",
+        "6",
+        "120"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 187,
+      "field": "eprint",
+      "value": "1107.0013",
+      "numeric_literals": [
+        "1107.0013"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 194,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 195,
+      "field": "eprint",
+      "value": "2606.20655",
+      "numeric_literals": [
+        "2606.20655"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 204,
+      "field": "volume",
+      "value": "14",
+      "numeric_literals": [
+        "14"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 205,
+      "field": "number",
+      "value": "1",
+      "numeric_literals": [
+        "1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 206,
+      "field": "pages",
+      "value": "19--47",
+      "numeric_literals": [
+        "19",
+        "47"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 207,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 208,
+      "field": "doi",
+      "value": "10.1137/24M1649344",
+      "numeric_literals": [
+        "10.1137",
+        "24",
+        "1649344"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 209,
+      "field": "eprint",
+      "value": "2403.18072",
+      "numeric_literals": [
+        "2403.18072"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 216,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 217,
+      "field": "eprint",
+      "value": "2605.26093",
+      "numeric_literals": [
+        "2605.26093"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 225,
+      "field": "year",
+      "value": "2026",
+      "numeric_literals": [
+        "2026"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 226,
+      "field": "eprint",
+      "value": "2607.27017",
+      "numeric_literals": [
+        "2607.27017"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 239,
+      "field": "volume",
+      "value": "26",
+      "numeric_literals": [
+        "26"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 240,
+      "field": "number",
+      "value": "1",
+      "numeric_literals": [
+        "1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 241,
+      "field": "pages",
+      "value": "217--239",
+      "numeric_literals": [
+        "217",
+        "239"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 242,
+      "field": "year",
+      "value": "2022",
+      "numeric_literals": [
+        "2022"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 243,
+      "field": "doi",
+      "value": "10.1007/s10596-021-10100-y",
+      "numeric_literals": [
+        "10.1007",
+        "10596",
+        "021",
+        "10100"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 244,
+      "field": "eprint",
+      "value": "2101.03612",
+      "numeric_literals": [
+        "2101.03612"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 252,
+      "field": "volume",
+      "value": "31",
+      "numeric_literals": [
+        "31"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 253,
+      "field": "number",
+      "value": "10",
+      "numeric_literals": [
+        "10"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 254,
+      "field": "pages",
+      "value": "2411--2419",
+      "numeric_literals": [
+        "2411",
+        "2419"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 255,
+      "field": "year",
+      "value": "1995",
+      "numeric_literals": [
+        "1995"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 256,
+      "field": "doi",
+      "value": "10.1029/95WR01945",
+      "numeric_literals": [
+        "10.1029",
+        "95",
+        "01945"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 262,
+      "field": "booktitle",
+      "value": "ECMOR V -- 5th European Conference on the Mathematics of Oil Recovery",
+      "numeric_literals": [
+        "5"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 266,
+      "field": "year",
+      "value": "1996",
+      "numeric_literals": [
+        "1996"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 267,
+      "field": "doi",
+      "value": "10.3997/2214-4609.201406884",
+      "numeric_literals": [
+        "10.3997",
+        "2214",
+        "4609.201406884"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 278,
+      "field": "volume",
+      "value": "15",
+      "numeric_literals": [
+        "15"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 279,
+      "field": "number",
+      "value": "47",
+      "numeric_literals": [
+        "47"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 280,
+      "field": "pages",
+      "value": "1593--1623",
+      "numeric_literals": [
+        "1593",
+        "1623"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 281,
+      "field": "year",
+      "value": "2014",
+      "numeric_literals": [
+        "2014"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 289,
+      "field": "volume",
+      "value": "16",
+      "numeric_literals": [
+        "16"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 290,
+      "field": "number",
+      "value": "2",
+      "numeric_literals": [
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 291,
+      "field": "pages",
+      "value": "667--718",
+      "numeric_literals": [
+        "667",
+        "718"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 292,
+      "field": "year",
+      "value": "2021",
+      "numeric_literals": [
+        "2021"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 293,
+      "field": "doi",
+      "value": "10.1214/20-BA1221",
+      "numeric_literals": [
+        "10.1214",
+        "20",
+        "1221"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 300,
+      "field": "volume",
+      "value": "86",
+      "numeric_literals": [
+        "86"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 301,
+      "field": "number",
+      "value": "1",
+      "numeric_literals": [
+        "1"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 302,
+      "field": "pages",
+      "value": "1--27",
+      "numeric_literals": [
+        "1",
+        "27"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 303,
+      "field": "year",
+      "value": "2024",
+      "numeric_literals": [
+        "2024"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 304,
+      "field": "doi",
+      "value": "10.1093/jrsssb/qkad009",
+      "numeric_literals": [
+        "10.1093",
+        "009"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 305,
+      "field": "eprint",
+      "value": "2010.09686",
+      "numeric_literals": [
+        "2010.09686"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 313,
+      "field": "volume",
+      "value": "26",
+      "numeric_literals": [
+        "26"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 314,
+      "field": "number",
+      "value": "4",
+      "numeric_literals": [
+        "4"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 315,
+      "field": "pages",
+      "value": "404--413",
+      "numeric_literals": [
+        "404",
+        "413"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 316,
+      "field": "year",
+      "value": "1934",
+      "numeric_literals": [
+        "1934"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 317,
+      "field": "doi",
+      "value": "10.1093/biomet/26.4.404",
+      "numeric_literals": [
+        "10.1093",
+        "26.4",
+        "404"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 324,
+      "field": "volume",
+      "value": "12",
+      "numeric_literals": [
+        "12"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 325,
+      "field": "number",
+      "value": "2",
+      "numeric_literals": [
+        "2"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 326,
+      "field": "pages",
+      "value": "153--157",
+      "numeric_literals": [
+        "153",
+        "157"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 327,
+      "field": "year",
+      "value": "1947",
+      "numeric_literals": [
+        "1947"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 328,
+      "field": "doi",
+      "value": "10.1007/BF02295996",
+      "numeric_literals": [
+        "10.1007",
+        "02295996"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 338,
+      "field": "year",
+      "value": "2019",
+      "numeric_literals": [
+        "2019"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 339,
+      "field": "eprint",
+      "value": "1912.11554",
+      "numeric_literals": [
+        "1912.11554"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 349,
+      "field": "version",
+      "value": "0.3.13",
+      "numeric_literals": [
+        "0.3",
+        "13"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 350,
+      "field": "year",
+      "value": "2018",
+      "numeric_literals": [
+        "2018"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 361,
+      "field": "volume",
+      "value": "27",
+      "numeric_literals": [
+        "27"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 362,
+      "field": "number",
+      "value": "3",
+      "numeric_literals": [
+        "3"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 363,
+      "field": "pages",
+      "value": "373--389",
+      "numeric_literals": [
+        "373",
+        "389"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 364,
+      "field": "year",
+      "value": "2020",
+      "numeric_literals": [
+        "2020"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 365,
+      "field": "doi",
+      "value": "10.5194/npg-27-373-2020",
+      "numeric_literals": [
+        "10.5194",
+        "27",
+        "373",
+        "2020"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 372,
+      "field": "volume",
+      "value": "382",
+      "numeric_literals": [
+        "382"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 373,
+      "field": "number",
+      "value": "6677",
+      "numeric_literals": [
+        "6677"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 374,
+      "field": "pages",
+      "value": "1416--1421",
+      "numeric_literals": [
+        "1416",
+        "1421"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 375,
+      "field": "year",
+      "value": "2023",
+      "numeric_literals": [
+        "2023"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 376,
+      "field": "doi",
+      "value": "10.1126/science.adi2336",
+      "numeric_literals": [
+        "10.1126",
+        "2336"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 382,
+      "field": "year",
+      "value": "2018",
+      "numeric_literals": [
+        "2018"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 383,
+      "field": "eprint",
+      "value": "1803.10122",
+      "numeric_literals": [
+        "1803.10122"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    },
+    {
+      "line": 392,
+      "field": "year",
+      "value": "2022",
+      "numeric_literals": [
+        "2022"
+      ],
+      "category": "bibliographic year/volume/page/identifier metadata; no empirical receipt"
+    }
+  ],
+  "scope": "Numeric matching checks stated rounding only; independent audit supplies semantic provenance. No TeX build."
+}

@@ -1,0 +1,22 @@
+{
+  "base": "77026bc25841c1b0b73899c1c6c493b137bcaca3",
+  "origin": "Todd supplied base64 gzip tar in Stage 5b instruction",
+  "archive_sha256": "98072ee2141a602b86e47aefa9d02216c69e7d87d5600aa8cc6e305fc5f59f40",
+  "archive_members": [
+    "paper",
+    "paper/refs.bib",
+    "paper/main.tex"
+  ],
+  "expected_sha256": {
+    "paper/main.tex": "8dc6f207a0b8fc8abe4b12849e335d583df34231b8f4e9e66dd8f8ec8a78eb5e",
+    "paper/refs.bib": "dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84"
+  },
+  "actual_sha256": {
+    "paper/main.tex": "8dc6f207a0b8fc8abe4b12849e335d583df34231b8f4e9e66dd8f8ec8a78eb5e",
+    "paper/refs.bib": "dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84"
+  },
+  "hashes_verified_before_use": true,
+  "scientific_runs": 0,
+  "build_attempted": false,
+  "reason": "No build authorized or attempted in Stage 5b"
+}

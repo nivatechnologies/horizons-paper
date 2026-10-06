@@ -1,0 +1,72 @@
+{
+  "stage": "5b",
+  "base_commit": "77026bc",
+  "paper_counts": {
+    "OK": 332,
+    "FIX": 15
+  },
+  "abstract_counts": {
+    "OK": 13,
+    "FIX": 0
+  },
+  "registry_keys": 6146,
+  "empirical_unmatched": [],
+  "structural_unmatched": [
+    {
+      "line": 63,
+      "token": "38",
+      "structural": true
+    },
+    {
+      "line": 66,
+      "token": "28",
+      "structural": true
+    },
+    {
+      "line": 75,
+      "token": "512",
+      "structural": true
+    }
+  ],
+  "rules_fired": [
+    "R-other: L9 U is a fraction of all S questions over answered leads, not conditional on posterior-open questions.",
+    "R-other: changed-amplitude R2b formal license withheld where calibration prerequisites were not recomputed."
+  ],
+  "hard_stops": [],
+  "standing_rulings": [
+    "title",
+    "opening framing",
+    "forecastsign shorthanddefined atfirstuse",
+    "labelled exploratorydevelopment amplitudesentence"
+  ],
+  "build_attempted": false,
+  "pdf_supplied": false,
+  "sha256": {
+    "ACD_PAPER_AUDIT.md": "b2291a8dc5065f4a638126773ed7fa15e88dc5d99cf6ecbf994e687da7cf2ca6",
+    "ACD_PAPER_NUMERIC_CHECK.md": "9365dab51117b08dd6ced3797bcad92d5a3aa15bdcb4be596ddb2753e94002f0",
+    "acd_paper_check.py": "3cf8dc8b6bd3838d578c53db7326f929fe50dbf9d1d5f520450cb8147d2c7038",
+    "paper/main.detex.txt": "08381b3d4eec0be223e82397db3db5ec5dde3ae739fed0728d201440ee161e63",
+    "paper/main.tex": "8dc6f207a0b8fc8abe4b12849e335d583df34231b8f4e9e66dd8f8ec8a78eb5e",
+    "paper/refs.bib": "dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84",
+    "receipts/acd_stage5b_abstract_audit.json": "a72132dde5b2f990d1d7798b92c7b9f8ba13b6371fbbb44e0b36956d3cbb4a6e",
+    "receipts/acd_stage5b_abstract_check.txt": "57d32769a8a1a34fbc1c714e24c7f62fd3d8f8f8a8ff0e063af7b722f49ffa3b",
+    "receipts/acd_stage5b_numeric_check.json": "ad5a07fca30aa3c48459784a1d9230fd4b356dada876e20b139b858c98606cfa",
+    "receipts/acd_stage5b_paper_audit.json": "5ff9fec1e103c7fb7fc3e3e53543ae8e5cb35d568ba71b5de672e179e6262bdf",
+    "receipts/acd_stage5b_paper_check.txt": "83a80e3d5db73428d98d1a80363696abae164cbde89088bb12bf1a210901fa53",
+    "receipts/acd_stage5b_source.json": "7433de3624119799c021e3f130792262569db0d72bb7251644a050bc083623a8",
+    "receipts/acd_stage5b_verification.json": "6170201bf66278e87c20666a27bce403be0334da51954e6c217ccb1b345f02f6",
+    "ACD_ABSTRACT_AUDIT.md": "765fc4e6a56ae56900f5beeb42bfdfc17b2cdd23f667a8ce9e06979b3bbba62b",
+    "ACD_ABSTRACT_DRAFT.md": "d1426c77c0fde651c3e632e63a933172c9aa699b16347854fe54b10ff9899446",
+    "ACD_STAGE5_STATUS.md": "c852fbc2755da68fbf8e3b94068accb03c66673351f963751a8c6ff42aacd79e",
+    "CLAIM_LEDGER.md": "435c8efe64a333e91fefb853c57b8694c566a13017f7f162045f06990e4e97ba",
+    "Draft_Aspen-Intervention-Horizon-Paper-2026-10.md": "be7f0076fcec1de6fe424c8653d154e8976acb73c178327b1746261fcd8e878b",
+    "NUMBERS_ACD.md": "81523d5f7282e8d3d94be298f67f7b9bfd18c0cff45b1b22cafb84eae3160f21",
+    "acd_numbers.py": "c091593c51f77016c4b829b9f886c0ae7607100d2e8ed5be6b4f2280a90653c7",
+    "numbers_acd.json": "0f6d50f03e2acc388f6ff3439040d8014efc142f2f6c1bbf5a022302a2802fb8",
+    "paper/TEX_ENVIRONMENT.json": "ad1a1f9947767d7b3515d9c8c5fb7e0ea4c5b7eacca3b96923ace4d1e17be242",
+    "figures/F2_confidence.pdf": "b9c9e1d2a4335ab6298269224c1f16f73362dcdeabb2b89b5f3610ffa645b5f4",
+    "figures/F3_mechanism.pdf": "70445efb102622321c0c19711d4f4dbf4c1ad65c1d6098e0bb019aaaeccb45f7",
+    "figures/F4_reliability.pdf": "c108c92664a5aa63b1d07e3a87f27638e54621b4c683d3906612ba9b80031c2d",
+    "figures/F6_amplitude.pdf": "5468210073b123f8ed8d20dca47f03d20827c8644e9fb560ad69d9a5a185b2e3"
+  }
+}

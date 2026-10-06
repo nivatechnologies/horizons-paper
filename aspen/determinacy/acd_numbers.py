@@ -152,7 +152,31 @@ def build():
         value,path=f(candidates)
         add('ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_'+label,value,path,derivation='extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one')
 
-    sources=['receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
+    binary_candidates=[(probabilities[k][i][j],f'$.null.question_probabilities[{k}][{i}][{j}]') for k in range(1,8) for i in range(len(LEADS)) for j in range(2)]
+    for label,f in [('MIN',min),('MAX',max)]:
+        value,path=f(binary_candidates)
+        add('ACD_NULL_S_PATTERNS_1_TO_7_SIGN_PROBABILITY_'+label,value,path,derivation='extremum of either binary answer probability over patterns 1–7 and all tested leads; unlike modal confidence this can be below one half')
+    # Stage 5b prose transforms of the frozen receipts and emulator architecture.
+    add('ACD_S_CONFIDENT_ANSWERS_PER_ERROR_0_TO_3LT',
+        sum(calibration[i]['answers'] for i in selected)/sum(calibration[i]['answers']-calibration[i]['correct'] for i in selected),
+        paths,derivation='pooled S confident answers / wrong S answers at tested leads 0–3 LT; descriptive reciprocal error frequency, not independent trials')
+    add('ACD_S_CONFIDENT_ACCURACY_0_TO_3LT',
+        sum(calibration[i]['correct'] for i in selected)/sum(calibration[i]['answers'] for i in selected),
+        paths,derivation='pooled correct / confident S answers at tested leads 0–3 LT; descriptive')
+    architecture='acd_cnn_ensemble.py'
+    import ast
+    tree=ast.parse((ROOT/architecture).read_text())
+    emulator=next(x for x in tree.body if isinstance(x,ast.ClassDef) and x.name=='Emulator')
+    init=next(x for x in emulator.body if isinstance(x,ast.FunctionDef) and x.name=='__init__')
+    sizes=ast.literal_eval(next(x.value for x in init.body if isinstance(x,ast.Assign) and any(isinstance(t,ast.Name) and t.id=='sizes' for t in x.targets)))
+    parameter_count=sum(sizes[i]*sizes[i+1]*(5 if i<4 else 1)+sizes[i+1] for i in range(5))
+    add('ACD_CNN_PARAMETER_COUNT',parameter_count,'Emulator.__init__: sizes and Conv1d kernel/bias defaults',architecture,derivation='sum input channels * output channels * kernel width + output-channel biases over the five frozen convolution layers; no model execution')
+    for i,t in enumerate(LEADS):
+        for typ in ['S','Fc']:
+            row=next(j for j,x in enumerate(d['R1']) if x['type']==typ and x['lead']==t)
+            add('ACD_R1_'+typ+'_NOT_CONFIDENT_POINT_'+lead(t),1-d['R1'][row]['confident']['point'],f'$.R1[{row}].confident.point',derivation='one minus saved confident share')
+
+    sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
     lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']

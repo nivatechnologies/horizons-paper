@@ -1,0 +1,255 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{mathptmx}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf}
+
+\newcommand{\LT}{\mathrm{LT}}
+\newcommand{\Jbar}{\bar J}
+
+\title{The forecast horizon is not the intervention horizon}
+\author{Todd Peterson\\
+Niva Platforms, Inc., Seattle, WA\\
+\texttt{todd@nivatech.io}}
+\date{October 2026 --- draft}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts. We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the forecast sign, the sign of the unforced window-energy anomaly, than after. In one-scale Lorenz-96 ($N = 40$, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we sample the full posterior for 200 independent instances and score it against each realized trajectory. At 2~LT the posterior answers the sign of a small intervention's effect on window energy with at least 95\% probability for 72\% of case--action questions and for 61\% beyond what climatology at the true forcing gives, against 85\% for the forecast sign; the 61\% share minus the 85\% share is $-0.24$ (99\% interval $[-0.35, -0.14]$). At 3~LT, 40\% against 67\%. At 2~LT, averaged over instances, confident intervention-sign answers that climatology alone does not give are right 99.5\% of the time (one-sided 95\% lower bound 97.7\%). Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59\% of an instance's eligible actions and after it for 28\%, averaged over instances (99\% interval for later minus earlier $[-0.49, -0.13]$), although at 2~LT the median posterior correlation between factual and counterfactual window energies is 0.975, so their difference carries 3\% of the summed uncertainty. In exploratory development runs at five amplitudes from 0.5\% to 8\% of the forcing, the confident intervention-sign share at 2~LT ranges from 73.5\% to 79.6\%, against 84.5\% for the forecast sign. A rule that answers every intervention-sign question through the last lead at which the forecast sign is confident for at least half the instances (3~LT), and none beyond, answers without posterior confidence 26\% of the intervention-sign questions in that range, and those answers are right 75\% of the time. At 2~LT, a deterministic CNN emulator's ensemble is confident on 22\% of the intervention-sign questions the posterior is not confident on, and right on 66\% of those. An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question.
+\end{abstract}
+
+%======================================================================
+\section{Introduction}
+
+``How far ahead can the model be trusted?'' is the question by which numerical weather prediction, data assimilation and, increasingly, learned world models \citep{ha2018world,lecun2022path} are judged. Skill is reported against lead time, and the lead at which it falls below a threshold is the model's forecast horizon \citep{palmer2000predicting,lam2023learning}. Many uses of a forecast are decisions. In control-simulation experiments on the Lorenz models, interventions are chosen from ensemble forecasts conditioned by data assimilation \citep{miyoshi2022control,sun2023control,mitsui2025bottomup}, and in observation targeting, measurements are placed to reduce forecast error \citep{lorenz1998optimal,xie2013observing,saito2026sparse,hashimoto2026forecast}. Implicit in both is that a decision made from a forecast can be trusted about as far ahead as the forecast it is made from.
+
+A decision question is a different kind of question. Whether action $k$ lowers a cost relative to taking no action is the sign of a difference between two futures of one system that share one uncertain initial state. Two intuitions pull in opposite directions. Uncertainty shared by the two futures cancels in their difference, the logic of common random numbers, which suggests that an intervention's effect should stay answerable for longer than the forecast. Against that, the interventions worth weighing are often small, and the sign of a small difference is fragile. Climate response theory answers a related but different question, about the mean response over the attractor \citep{leith1975climate,majda2010high}. Lorenz's distinction between predictability of the first kind (of a trajectory from its initial state) and of the second kind (of the response to a change in forcing) \citep{lorenz1975climatic} frames the problem but does not settle it for one observed instance. \citet{aalaila2026chaotic} show that chaotic and complex dynamics limit counterfactual reasoning, and leave open the temporal windows within which it remains tractable.
+
+We measure that window directly. In Lorenz-96 \citep{lorenz1995predictability,lorenz2006predictability} with a known law and an unknown forcing, observed with noise for 0.84~LT, we sample the Bayesian posterior over state and forcing for each of 200 independent instances. We forecast every posterior draw under eight small persistent interventions and under none, and ask at each lead whether the posterior is confident (probability $\ge 0.95$) of the sign of each intervention's effect on a window-energy cost, and of the sign of the unforced forecast's energy anomaly. Every confident answer is scored against the realized trajectory of the hidden true state. The protocol was written down and frozen before the evidence was generated: thresholds, readings and the rule for publication were set on a development panel, and a separate confirmation panel was then generated, sampled and hashed before any realized outcome was computed. All numbers below are from the confirmation panel unless labelled otherwise.
+
+The findings are these.
+\begin{enumerate}
+\item The posterior's confident answers are right: averaged over instances, confident intervention-sign answers not already given by climatology are right 99.5\% of the time at 2~LT (one-sided 95\% lower bound 97.7\%), and the true state and forcing fall inside the nominal 95\% likelihood-ratio region in 94.5\% of instances.
+\item Confidence in an intervention's sign is lost before confidence in the forecast sign more often than after (59\% against 28\% of eligible actions), although the factual and counterfactual futures share almost all their uncertainty: the median posterior correlation of their window energies at 2~LT is 0.975.
+\item The shared uncertainty makes the intervention's effect much sharper than the forecast anomaly just after the observation window, but that advantage decays faster than the forecast's own signal. In development runs the ordering changes little as the intervention's amplitude is quadrupled from 0.5\% to 2\% of the forcing, consistent with a linear-response argument (Section~\ref{sec:discussion}), and is no longer detected at 4\% and 8\%.
+\item Procedures that inherit the forecast's horizon answer questions the posterior cannot: a forecast-horizon rule answers all of them through 3~LT (26\% of the intervention-sign questions in that range) and is right on 75\% of those; a deterministic CNN emulator's ensemble is confident on 22\% at 2~LT and right on 66\%. Targeting four measurements at the decision question beat forecast-, spread-targeted and random measurements on the development panel; on the confirmation panel the advantage did not reach the frozen criterion.
+\end{enumerate}
+
+%======================================================================
+\section{Setup}
+\label{sec:setup}
+
+\subsection{System and observations}
+The Lorenz-96 system is
+\begin{equation}
+\frac{dx_i}{dt} = (x_{i+1} - x_{i-2})\,x_{i-1} - x_i + F_i, \qquad i = 1,\dots,N,
+\end{equation}
+with cyclic indices, $N = 40$ and true forcing $F_i = 8$. We integrate with fourth-order Runge--Kutta at $\Delta t = 0.01$ in double precision. The leading Lyapunov exponent is $\lambda_1 = 1.687$, so one Lyapunov time is $1\,\LT = 1/\lambda_1 = 0.593$ time units; the climatological root-mean-square of $x_i$ is $\sigma = 4.313$. Each instance starts from $8 + \mathcal N(0,1)$ at every site and is spun up for 50~LT. It is then observed at all 40 sites in 11 frames spaced 0.05 time units apart (0.84~LT in total), with independent Gaussian noise of standard deviation $0.02\,\sigma$. Time zero is the last frame.
+
+\subsection{Interventions, cost and questions}
+An intervention is a persistent change of the forcing from time zero, $F \to F + 0.16\,p_k$, where $p_k$ is one of eight fixed spatial patterns with unit root-mean-square: a uniform decrease, cosines of wavenumber 1, 2, 4, 8 and 10, the alternating pattern, and a zero-mean pattern concentrated at one site. The amplitude 0.16 is 2\% of the forcing. Index $k = 8$ denotes no action. The cost is the window energy
+\begin{equation}
+J_k(T) = \frac{1}{|W_T|}\sum_{t \in W_T} \frac{1}{2N}\sum_{i=1}^{N} x_i(t)^2,
+\end{equation}
+the mean over output times in the window $W_T = [T, T + 1\,\LT]$, at leads $T \in \{0, 1, 1.5, 2, 2.5, 3, 4, 6\}$~LT. For every instance and lead we pose 38 questions:
+\begin{itemize}
+\item $S_k$ ($k = 0,\dots,7$), the intervention sign: does action $k$ lower the window energy relative to no action, $D_k = J_k - J_8 < 0$?
+\item $P_{kl}$ (28 pairs): is $J_k < J_l$?
+\item $B$: which of the eight interventions has the lowest $J$?
+\item $F_c$, the forecast sign: is the unforced window energy above the climatological mean, $J_8 > \Jbar$? This is the sign of the unforced window-energy anomaly, with $\Jbar = 9.361$ from the climatological ensemble below.
+\end{itemize}
+The comparison at the centre of the paper is between $S_k$ and $F_c$: both are signs of a window-energy quantity computed from the same posterior draws, one for the difference between two futures and one for a single future relative to climatology.
+
+\subsection{Declared model and posterior}
+The declared model class is one-scale Lorenz-96 with unknown initial state $x \in \mathbb R^{40}$ at the first frame and unknown uniform forcing $F$. The prior is $x_i \sim \mathcal N(0, (10\sigma)^2)$ independently, which is flat relative to the likelihood, and $F \sim \mathcal U(6, 10)$. The likelihood treats each observation as the Runge--Kutta state at its frame plus independent Gaussian noise of standard deviation $0.02\,\sigma$.
+
+We sample the 41-dimensional posterior with the No-U-Turn Sampler \citep{hoffman2014nouturn} in NumPyro \citep{phan2019composable} on JAX \citep{bradbury2018jax}, in double precision, with a dense mass matrix adapted during warm-up and a target acceptance probability of 0.9. Each instance runs four chains of 1000 warm-up and 500 retained draws, initialized from multi-start maximum-likelihood fits, and the retained draws are thinned to 512 per instance. Each draw $(x_s, F_s)$ is integrated to time zero and then forecast under $F_s + 0.16\,p_k$ for every action and under $F_s$ alone, giving $J_{s,k}(T)$.
+
+We require split $\hat R \le 1.01$ and bulk effective sample size $\ge 400$ \citep{vehtari2021ranknormalization} for all 41 parameters and the log-likelihood, and also for the decision functionals $D_k$ and $J_8$ at 2 and 3~LT, since different functions of one chain can mix differently. Divergent transitions must not exceed 1\% of draws. When a decision functional falls short, the instance is rescored with all 2000 retained draws, and confidence then needs 1900 of them; this applied to 115 of the 200 confirmation instances. An instance that still falls short, or whose parameters fall short, is rerun with 2000 warm-up iterations (11 instances) and excluded if it fails again; no confirmation instance was excluded. Three numerical checks were passed before any panel was run. A NUTS run on a known 41-dimensional Gaussian (the Gauss--Newton approximation at a fitted mode) recovered all means and variances within four Monte Carlo standard errors, with variances along the extreme eigendirections within 4\%. The gradient of the misfit agreed with centred finite differences to $1.7 \times 10^{-10}$. Halving $\Delta t$ changed at most $1.6 \times 10^{-5}$ of draw-level answers up to 3~LT and no confidence classification.
+
+\subsection{Confidence and climatology}
+For each question the posterior probability $p$ is the share of draws giving the modal answer. An answer is \emph{confident} if $p \ge 0.95$. To separate what the observations contribute from what the attractor already implies, we run a climatological ensemble of 4096 states drawn from the attractor at the true forcing $F = 8$ under every action. An answer is \emph{climate-confident} if at least 95\% of these states give the posterior's modal answer, and \emph{observation-confident} if it is confident and not climate-confident. The climatological ensemble is given the true forcing, which the posterior must infer. The realized answer comes from the hidden true state integrated at $F = 8$ under each action.
+
+\subsection{Protocol and statistics}
+\label{sec:protocol}
+The design, every threshold, the readings and the rules for publishing or abandoning the result were fixed in a written protocol on a development panel of 200 instances. A confirmation panel of 200 new instances, with seeds disjoint from every earlier stream, was then generated. For each confirmation case the observations and every sampler's outputs were written and hashed before the realized outcomes were computed.
+
+The case is the statistical unit throughout. Case-averaged accuracies and paired differences carry betting confidence bounds \citep{waudbysmith2024estimating}, which are valid at finite sample size and remain valid when errors cluster within a case. One-answer-per-case accuracies use exact Clopper--Pearson bounds \citep{clopper1934use}, and paired comparisons of measurement arms use exact McNemar tests \citep{mcnemar1947note}. Accuracy is read as passing at a lead if the one-sided 95\% lower bound on case-averaged accuracy of observation-confident intervention-sign answers is at least 0.90 and the answer-level accuracy is at least 0.90, with at least 100 such answers from at least 30 instances; the reading must also pass with any excluded instances included. Five comparisons were pre-specified at the 1\% level: the same-lead difference at 2 and 3~LT, the paired order of confidence loss, and targeted measurement at 2 and 3~LT (the last later cut for compute). The same-lead difference, between the observation-confident $S$ share and the confident $F_c$ share, must be at least 0.15 in magnitude with its 99\% interval excluding zero. The paired order of confidence loss (Section~\ref{sec:order}) must be at least 0.20 in magnitude with its 99\% interval excluding zero. Bootstrap intervals appear only as descriptive summaries.
+
+A compute budget fixed in advance removed, in a pre-specified order, a two-scale model-error arm, an all-site measurement ceiling, the CNN comparison at 3~LT, an ensemble-smoother cross-check on the confirmation panel, the pairwise and best-action questions at leads other than 2 and 3~LT, and targeted measurement at 3~LT. It also reduced retained draws from 1000 to 500 per chain and the targeted-measurement population from 100 to 60 cases.
+
+%======================================================================
+\section{Results}
+
+\subsection{Confident answers are right}
+Table~\ref{tab:calibration} gives the case-averaged accuracy of observation-confident intervention-sign answers at every lead. Accuracy passes the 0.90 criterion at every lead with enough answers to evaluate (up to 4~LT); at 6~LT only 11 such answers remain. Confident forecast-sign answers pass the same criterion at every lead with enough answers to evaluate. Over the reported questions (intervention and forecast signs at every lead, pairwise and best-action questions at 2 and 3~LT), the 15,202 confident answers are right 99.6\% of the time, and lower probability bins track their nominal accuracy (Figure~\ref{fig:reliability}). The true state and forcing lie inside the nominal 95\% likelihood-ratio region, $\Delta\chi^2 \le \chi^2_{0.95}(41)$, in 189 of 200 instances (94.5\%; Wilson 95\% interval $[90.4\%, 96.9\%]$). The posterior rank of the true forcing is consistent with uniform (Kolmogorov--Smirnov $p = 0.99$), and one instance in 200 is flagged by the goodness-of-fit test, against about 1\% expected.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Accuracy of confident answers on the confirmation panel. $S$: case-averaged accuracy of observation-confident intervention-sign answers, with its one-sided 95\% betting lower bound, the number of such answers and of cases contributing. $F_c$: accuracy of confident forecast-sign answers (one per case) with its one-sided 95\% Clopper--Pearson lower bound.}
+\label{tab:calibration}
+\begin{tabular}{lccccc}
+\toprule
+Lead (LT) & $S$ accuracy & lower bound & answers & cases & $F_c$ accuracy [lower bound] \\
+\midrule
+0   & 1.000 & 0.983 & 1373 & 200 & 1.000 [0.985] \\
+1   & 0.998 & 0.981 & 1262 & 199 & 1.000 [0.984] \\
+1.5 & 0.999 & 0.982 & 1153 & 199 & 0.995 [0.975] \\
+2   & 0.995 & 0.977 & 971  & 195 & 1.000 [0.983] \\
+2.5 & 0.994 & 0.976 & 927  & 194 & 0.987 [0.958] \\
+3   & 0.983 & 0.954 & 646  & 176 & 0.993 [0.965] \\
+4   & 0.990 & 0.952 & 228  & 97  & 0.974 [0.921] \\
+6   & \multicolumn{5}{c}{too few answers to evaluate (11 answers in 8 cases)} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{The intervention sign is confident less often than the forecast sign}
+Figure~\ref{fig:confidence} shows the confident share of each question type against lead. Immediately after the observation window the two signs are confident about equally often (98.3\% of intervention-sign questions against 97.0\% of forecast signs at lead 0; 91.4\% against 92.0\% at 1~LT). From 1.5~LT the intervention sign falls behind: 72.4\% against 85.0\% at 2~LT, 40.4\% against 67.0\% at 3~LT, and 14.25\% against 39.0\% at 4~LT. Of the confident intervention-sign answers at 2~LT, 16.1\% are given by climatology at the true forcing. These all come from the uniform forcing decrease, whose sign the attractor supplies up to 2~LT. For the other seven patterns the climatological ensemble gives either sign with probability between 0.50 and 0.56 at every lead, so every confident answer about them comes from the observations. The pre-specified same-lead difference between the observation-confident $S$ share and the confident $F_c$ share is $-0.243$ at 2~LT (99\% interval $[-0.352, -0.136]$) and $-0.266$ at 3~LT ($[-0.388, -0.152]$); both meet the criterion. Pairwise orderings are confident for 74.0\% of pairs at 2~LT and 43.3\% at 3~LT, and the best action is confident for 65.0\% and 20.5\% of instances. The development panel gave the same pattern: $-0.221$ ($[-0.322, -0.106]$) at 2~LT.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{../figures/F2_confidence.pdf}
+\caption{Share of questions answered confidently against lead, confirmation panel. Solid circles: observation-confident; dashed squares: all confident. Panels: intervention sign $S$, pairwise order $P$, best action $B$, and the forecast sign $F_c$ (the sign of the unforced window-energy anomaly). $P$ and $B$ were evaluated at 2 and 3~LT only.}
+\label{fig:confidence}
+\end{figure}
+
+\subsection{Which is lost first}
+\label{sec:order}
+The same-lead comparison mixes instances. The paired reading asks, within each instance, which confidence is lost first. An action is eligible if its sign is observation-confident and the forecast sign is confident at lead 0. For each eligible action we record the first tested lead at which each answer is no longer confident, and average, within each instance and then over instances, the indicator that the intervention sign is lost later minus the indicator that it is lost earlier. On 1332 eligible actions in 194 instances, intervention-sign confidence is lost before forecast-sign confidence for 59.1\% of an instance's eligible actions, after it for 28.2\% and at the same lead for 12.7\%. The difference, later minus earlier, is $-0.309$ (99\% interval $[-0.494, -0.128]$), which meets the pre-specified criterion. On the development panel it was $-0.210$ ($[-0.384, -0.016]$).
+
+\subsection{Why near-total shared uncertainty does not protect the intervention}
+\label{sec:mechanism}
+For each instance, action and lead we compute the posterior correlation $\rho_k$ between $J_k$ and $J_8$, the share of the summed variance left in the difference, $c_k = \operatorname{Var}(D_k)/[\operatorname{Var}(J_k) + \operatorname{Var}(J_8)] = 1 - 2\operatorname{Cov}(J_k, J_8)/[\operatorname{Var}(J_k) + \operatorname{Var}(J_8)]$, and two signal-to-noise ratios, $z_D = |\mathbb E D_k| / \operatorname{sd}(D_k)$ for the intervention and $z_F = |\mathbb E J_8 - \Jbar| / \operatorname{sd}(J_8)$ for the forecast anomaly. Table~\ref{tab:mechanism} and Figure~\ref{fig:mechanism} give their medians over the panel.
+
+Just after the window the factual and counterfactual window energies are almost perfectly correlated (median $\rho = 0.99999$, median $c \approx 10^{-5}$), and the intervention's effect is resolved far more sharply than the forecast anomaly: the median $z_D$ is 3.6 times the median $z_F$. The correlation then decays only slightly, to 0.975 at 2~LT, but $c$ grows by more than three orders of magnitude, to 0.031, and the median $z_D$ falls below the median $z_F$ from 1.5~LT, to 0.61 times it at 2~LT. The intervention's footprint on the state does not shrink. From about 1~LT on, the posterior-mean RMS separation between factual and counterfactual trajectories stays between 1.43 and 1.54 times the posterior RMS spread of the factual state (window medians; Figure~\ref{fig:mechanism}, lower left). This is consistent with the loss lying in agreement among posterior draws about how that footprint projects onto the cost, which we did not measure directly. Confidence tracks $c$; the bins below pool instances, actions and leads and are descriptive. Among case--action--lead triples with $c < 0.1$, 86.9\% of intervention signs are confident, against 51.2\% for $0.1 \le c < 0.25$, 28.9\% for $0.25 \le c < 0.5$ and 9.3\% for $0.5 \le c < 1$. The median correlation first falls below 0.5 at 4~LT.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Mechanism readout, confirmation panel: panel medians of the posterior correlation $\rho$ between factual and counterfactual window energies, the variance share left in their difference $c$, and the signal-to-noise ratios of the intervention effect ($z_D$) and the forecast anomaly ($z_F$). The last column is the ratio of the two medians. These are descriptive.}
+\label{tab:mechanism}
+\begin{tabular}{lccccc}
+\toprule
+Lead (LT) & median $\rho$ & median $c$ & median $z_D$ & median $z_F$ & ratio \\
+\midrule
+0   & 1.000 & $1.1\times10^{-5}$ & 62.0 & 17.3 & 3.58 \\
+1   & 0.999 & $8.2\times10^{-4}$ & 13.4 & 10.5 & 1.27 \\
+1.5 & 0.995 & 0.006 & 7.25 & 8.51 & 0.85 \\
+2   & 0.975 & 0.031 & 3.68 & 6.05 & 0.61 \\
+2.5 & 0.913 & 0.102 & 2.07 & 3.77 & 0.55 \\
+3   & 0.778 & 0.244 & 1.21 & 2.28 & 0.53 \\
+4   & 0.348 & 0.669 & 0.59 & 1.24 & 0.48 \\
+6   & 0.064 & 0.937 & 0.25 & 0.34 & 0.74 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{../figures/F3_mechanism.pdf}
+\caption{Mechanism, confirmation panel; medians with interquartile bands. Top: posterior correlation between factual and counterfactual window energies, and the share of their summed variance left in the difference. Bottom left: posterior-mean RMS separation between factual and counterfactual states divided by the posterior RMS spread of the factual state, against time after the action. Bottom right: signal-to-noise ratio of the intervention effect ($z_D$, solid circles, hatched band) and of the forecast anomaly ($z_F$, dashed squares, cross-hatched band), log scale.}
+\label{fig:mechanism}
+\end{figure}
+
+\subsection{Amplitude (development panel, exploratory)}
+A natural objection is that the result reflects only the small size of the interventions. We re-forecast the saved development posterior draws at five amplitudes, 0.04, 0.08, 0.16, 0.32 and 0.64 (0.5\% to 8\% of the forcing), with the climatological ensemble re-run at each amplitude. No new sampling was done, and realized-outcome calibration was not recomputed at the changed amplitudes, so these are exploratory readings (Table~\ref{tab:amplitude}, Figure~\ref{fig:amplitude}). From 0.04 to 0.16 the confident intervention-sign share at 2~LT is essentially unchanged (73.8\%, 73.5\%, 74.4\%), as is the paired loss difference ($-0.228$, $-0.220$, $-0.210$, each with a 99\% interval below zero). At 0.32 and 0.64 the share rises, most at longer leads (at 4~LT from 18.0\% at 0.16 to 32.6\% at 0.64). Climate-confident answers appear at 2.5~LT (and at 3~LT for 0.64), and the paired ordering is no longer detected (0.64: $-0.101$, $[-0.252, 0.088]$). At every amplitude the confident intervention-sign share at 2 and 3~LT stays below the forecast sign's.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Development panel, exploratory: intervention amplitude. Confident and observation-confident intervention-sign shares at 2~LT, confident share at 3~LT, and the paired loss difference (later minus earlier) with its 99\% betting interval. The forecast sign is confident for 84.5\% of instances at 2~LT and 60.5\% at 3~LT at every amplitude. Climatology is re-run at each amplitude; realized calibration is not.}
+\label{tab:amplitude}
+\begin{tabular}{lcccccc}
+\toprule
+Amplitude & \% of $F$ & conf.\ $S$, 2 LT & obs.-conf.\ $S$, 2 LT & conf.\ $S$, 3 LT & loss difference [99\%] \\
+\midrule
+0.04 & 0.5 & 73.8\% & 61.9\% & 39.5\% & $-0.228$ [$-0.402$, $-0.024$] \\
+0.08 & 1   & 73.5\% & 61.6\% & 40.3\% & $-0.220$ [$-0.392$, $-0.010$] \\
+0.16 & 2   & 74.4\% & 62.4\% & 42.3\% & $-0.210$ [$-0.384$, $-0.016$] \\
+0.32 & 4   & 76.7\% & 64.5\% & 48.3\% & $-0.196$ [$-0.352$, $0.006$] \\
+0.64 & 8   & 79.6\% & 67.2\% & 56.3\% & $-0.101$ [$-0.252$, $0.088$] \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{../figures/F6_amplitude.pdf}
+\caption{Development panel, exploratory: intervention amplitude. Left and centre: confident (dashed squares) and observation-confident (solid circles) intervention-sign shares at 2 and 3~LT, with the forecast sign as a dash-dot reference. Right: paired loss difference with 99\% betting intervals.}
+\label{fig:amplitude}
+\end{figure}
+
+\subsection{What procedures that inherit the forecast's horizon would answer}
+\paragraph{A forecast-horizon rule.} Take the last lead at which the forecast sign is confident for at least half the instances, which is 3~LT, answer every intervention-sign question up to that lead with the posterior's modal answer, and abstain beyond it. Through 3~LT the rule therefore answers every question on which the posterior is not confident: 25.9\% of the intervention-sign questions in that range (27.6\% at 2~LT, 59.6\% at 3~LT). Those answers are right 75.2\% of the time (77.6\% at 2~LT, 73.6\% at 3~LT), against 99.7\% for the posterior's confident answers over the same leads (19 wrong of 7116). Beyond 3~LT the rule refuses every question, including those the posterior answers confidently (14.25\% of questions at 4~LT and 0.69\% at 6~LT).
+
+\paragraph{A perturbed-last-frame ensemble.} The 128-member ensemble formed by perturbing the last observed frame with the observation noise, with the forcing estimated from the observations, is a common way to start an ensemble from a short window. At 2~LT it is confident on 38.8\% of intervention signs, against the posterior's 72.4\%, and its confident observation-dependent answers are right 98.5\% of the time (lower bound 95.3\%). It is reliable but answers less; Cohen's $\kappa$ with the posterior's classifications is 0.48.
+
+\paragraph{A learned emulator.} Learned emulators of Lorenz-96 forecast it well from data \citep{chattopadhyay2020datadriven}. A deterministic convolutional emulator (about $10^6$ parameters, trained for 20,000 updates on trajectories that include random forcing perturbations, taking the 11-frame window and the action as input) was run as a 128-member ensemble of perturbed observation windows. At 2~LT it is confident on 66.2\% of intervention signs, and its confident observation-dependent answers are right 93.9\% of the time (one-sided 95\% betting bounds 0.902 and 0.962); $\kappa$ with the posterior is 0.71. On the 442 intervention-sign questions at 2~LT on which the posterior is not confident, the emulator's ensemble is confident on 97 (21.9\%) and right on 64 of those (66.0\%). Its answers with probability at least 0.95, across all question types at 2~LT, are right 96.4\% of the time, and its reliability curve lies below the diagonal (Figure~\ref{fig:reliability}).
+
+\paragraph{An ensemble smoother (development panel).} A randomized-maximum-likelihood ensemble smoother \citep{kitanidis1995quasilinear,oliver1996conditioning}, which is not an exact posterior sampler for a nonlinear model \citep{ba2022randomized}, was run as an independent cross-check on the development panel. It agrees with the posterior's intervention-sign classifications with $\kappa = 0.965$ at 2~LT and 0.934 at 3~LT, and gives the same confident shares to within two points.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.7\linewidth]{../figures/F4_reliability.pdf}
+\caption{Reliability of answer probabilities, all question types pooled. Posterior (solid circles), perturbed-last-frame ensemble (dashed squares) and CNN emulator ensemble (dash-dot triangles) on the confirmation panel; the ensemble smoother (dotted diamonds) on the development panel. The CNN ensemble is evaluated at 2~LT only.}
+\label{fig:reliability}
+\end{figure}
+
+\subsection{Measuring for the decision}
+If an intervention's effect has its own horizon, measurements chosen for the forecast need not be the ones that resolve it. In the first 60 confirmation instances (by index) in which the comparison between the two interventions with the lowest posterior-mean cost was not confident at 2~LT, we added four precise point measurements of the state at time zero, with noise one tenth of the observation noise. The sites were chosen by one of four rules: (Q) greedily reducing the posterior variance of the decision difference, as in ensemble-sensitivity targeting \citep{xie2013observing}; (F) the same rule for the unforced forecast; (V) largest posterior variance of the state, the family \citet{lorenz1998optimal} found best for forecast error; and (R) random sites. We then resampled the posterior (Table~\ref{tab:measure}). No arm produced a confident wrong answer. On the development panel, question-targeted measurement resolved 27 of 60 decisions against at most 13, with every McNemar $p < 0.001$. On the confirmation panel it resolved 15 against 10, 7 and 4. Against random sites it met the frozen 1\% level ($p = 0.004$); against spread-targeted sites it narrowly missed it ($p = 0.011$), and against forecast-targeted sites it did not reach it ($p = 0.0625$). The frozen criterion required a margin of 0.10 and $p \le 0.01$ against all three, so the advantage did not confirm.
+
+\begin{table}[t]
+\centering
+\small
+\caption{Targeted measurement at 2~LT: instances (of 60) in which the decision question became confident and correct after four added measurements. $p$: exact one-sided McNemar test of arm Q against each arm.}
+\label{tab:measure}
+\begin{tabular}{lcccc}
+\toprule
+ & Q (decision) & F (forecast) & V (spread) & R (random) \\
+\midrule
+Confirmation & 15 & 10 ($p = 0.0625$) & 7 ($p = 0.011$) & 4 ($p = 0.004$) \\
+Development  & 27 & 13 ($p = 2.6\times10^{-4}$) & 7 ($p = 1.8\times10^{-5}$) & 6 ($p = 4.8\times10^{-7}$) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%======================================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\paragraph{Two signs, two kinds of knowledge.} The forecast sign asks on which side of the climatological mean the posterior's window energies lie. The intervention sign asks whether the posterior's draws agree on the sign of a small difference, which each draw computes along its own trajectory. The intervention's displacement of the state grows with the same instability that spreads the posterior: the ratio of the two is nearly constant after 1~LT. We read the loss as a failure of agreement on how that displacement projects onto the cost; the projection itself was not measured. Shared uncertainty helps at first, and helps a great deal (the median $z_D$ is 3.6 times the median $z_F$ at lead 0), but the difference inherits the decorrelation of the draws at a rate the forecast anomaly does not. A correlation of 0.975 sounds like near-complete cancellation. It still leaves 3\% of the summed variance in the difference, and at the effect sizes of a 2\% forcing change that is enough to leave 28\% of intervention signs below 95\% confidence at 2~LT, against 15\% of forecast signs.
+
+\paragraph{Why amplitude does not help, until it does.} For a small amplitude $a$, $D_k \approx a\, g_k(x_0, F)$, where $g_k$ is the instance's linear response. Both the posterior mean and the posterior standard deviation of $D_k$ then scale with $a$, so $z_D$, and with it the confidence horizon of the sign, does not depend on how large the intervention is. The development readings agree: from 0.5\% to 2\% of the forcing the confident share and the loss ordering barely move. Within that range, making the intervention larger makes its effect larger, not more knowable. Only at 4--8\% of the forcing does the share rise, and there climate-confident answers appear at longer leads. In Lorenz's terms, a small intervention's effect is a question of predictability of the first kind and inherits the instability that limits the trajectory. A large one begins to acquire the forced, attractor-level response of the second kind \citep{lorenz1975climatic}, which fluctuation--dissipation theory describes \citep{leith1975climate,majda2010high}. We read the amplitude results as consistent with this picture; they are development readings without realized calibration at the changed amplitudes.
+
+\paragraph{What a world model would need to report.} A world model used to choose actions is asked interventional questions, and its forecast skill against lead time does not say how far ahead those can be answered. In this system a rule that trusts interventional answers out to the forecast horizon answers, without posterior confidence, a quarter of the intervention-sign questions within that horizon; one in four of those answers is wrong, against about one in 375 of the posterior's confident answers over the same leads. At 2~LT a learned emulator's ensemble is confident on a fifth of the questions the posterior leaves open, and a third of those answers are wrong. The quantity to report is confidence per question, computed for the question being asked. This echoes \citet{tan2026latent}, who find that what a latent world model can identify depends on its prediction target; here, what can be answered depends on the question. Goal-oriented experimental design \citep{zhong2026goaloriented,go2026goaldriven} and per-prediction observability \citep{kreutz2012likelihood} provide the machinery for asking it. Our measurement results suggest that the decision question can change which measurements help, but the confirmation panel did not establish an advantage over forecast-targeted sites.
+
+\section{Limitations}
+\begin{itemize}
+\item This is a perfect-model twin: the declared law is the true law, and only the state and a uniform forcing are unknown. A two-scale model-error arm was planned and cut for compute.
+\item One cost (window energy), one observation design (all sites, 0.84~LT, 2\% noise) and eight intervention patterns were tested. The ordering may differ for other costs, sparser observations or longer windows.
+\item The amplitude results are from the development panel, with climatology re-run but no realized-outcome calibration at the changed amplitudes.
+\item The ensemble-smoother cross-check ran on the development panel only. Truth coverage relies on Wilks' theorem and is approximate.
+\item The emulator is one deterministic CNN run as a perturbed-input ensemble; emulators trained to represent uncertainty may behave differently.
+\end{itemize}
+
+\section{Conclusion}
+For one observed instance of a chaotic system, the posterior can say how far ahead each question about it can be answered, and the answer differs by question. The sign of a small intervention's effect is confident about as often as the forecast sign just after the observations, and less often from 1.5~LT. In paired comparisons its confidence is lost first more often than not, despite factual and counterfactual futures that share almost all their uncertainty. In this setting, then, the forecast horizon is not the intervention horizon, and a model used to act would need to report the second.
+
+\section*{Reproducibility}
+The frozen protocol, code, hashed per-case receipts, figures and a registry of every reported number, with a checker that regenerates it from the receipts, are in the accompanying repository. Every number in this paper is traceable to that registry or to the receipts it indexes.
+
+\bibliographystyle{abbrvnat}
+\bibliography{refs}
+
+\end{document}

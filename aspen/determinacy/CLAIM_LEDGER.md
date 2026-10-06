@@ -68,3 +68,32 @@ Current revised abstract: 5 OK / 10 FIX. Historical Stage4 verdicts remain histo
 | A | In development runs, varying the intervention's amplitude sixteenfold, from 0.5% to 8% of the forcing, keeps the confident intervention-sign share at 2 LT between 73.5% and 79.6%, against 84.5% for the forecast sign. | Outside L1-L10 | ACD_DEV_AMPLITUDE_RANGE_FACTOR; ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING; ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING; ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_LEAD; ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_S; ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_S; ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_FC; ACD_NULL_FORCING; ACD_DEV_AMPLITUDE_ROWS_0_AMPLITUDE; ACD_DEV_AMPLITUDE_ROWS_1_AMPLITUDE; ACD_DEV_AMPLITUDE_ROWS_2_AMPLITUDE; ACD_DEV_AMPLITUDE_ROWS_3_AMPLITUDE; ACD_DEV_AMPLITUDE_ROWS_4_AMPLITUDE; ACD_DEV_AMPLITUDE_ROWS_0_SHARES_0_CONFIDENT_S; ACD_DEV_AMPLITUDE_ROWS_2_SHARES_0_CONFIDENT_S; ACD_DEV_AMPLITUDE_ROWS_3_SHARES_0_CONFIDENT_S; ACD_DEV_AMPLITUDE_ROWS_1_SHARES_0_CONFIDENT_FC; ACD_DEV_AMPLITUDE_ROWS_2_SHARES_0_CONFIDENT_FC; ACD_DEV_AMPLITUDE_ROWS_3_SHARES_0_CONFIDENT_FC; ACD_DEV_AMPLITUDE_ROWS_4_SHARES_0_CONFIDENT_FC | FIX |
 
 R-other corrects L9 all-S denominator wording; no new abstract license. Full audit: ACD_ABSTRACT_AUDIT.md and receipts/acd_stage5_abstract_review.json. S7 cancellation is a separately measured descriptive median, not a consequence of median correlation alone.
+
+
+## Stage 5b current abstract disposition (supersedes Stage 5 open rows)
+
+Todd licensed the title, opening framing, defined forecast-sign shorthand and labelled exploratory development amplitude sentence. Current abstract plus titles: 13 OK / 0 FIX. Frozen scientific routes and receipt numbers are unchanged. Optional M/A remain outside the current abstract and carry no new scientific license.
+
+| Row | License / standing deviation | NUMBERS keys | Verdict |
+|---|---|---|---|
+| T | L3b / PRECEDES; TD-title | ACD_R2B_POINT | OK |
+| T-alt | L3b / PRECEDES; TD-title | ACD_R2B_POINT | OK |
+| S1 | No L#; TD-opening |  | OK |
+| S2 | L3b / PRECEDES; TD-Fc | ACD_R2B_POINT; ACD_R2B_PAIR_SHARES_EARLIER; ACD_R2B_PAIR_SHARES_LATER | OK |
+| S3 | Setup;  | ACD_CONTRACT_MODEL_IDENTIFIER; ACD_CONTRACT_STATE_DIMENSION; ACD_CONTRACT_FRAMES; ACD_CONTRACT_OBSERVATION_SPAN_LT; ACD_CASES | OK |
+| S4 | L1 + L3a / DIFFERS; TD-Fc | ACD_R1_S_CONFIDENT_POINT_2LT; ACD_R1_S_OBSERVATION_POINT_2LT; ACD_R1_FC_CONFIDENT_POINT_2LT; ACD_R2A_0_POINT; ACD_R2A_0_LOWER; ACD_R2A_0_UPPER; ACD_CONTRACT_CONFIDENCE; ACD_CONTRACT_ROUTE_CI_PERCENT; ACD_R1_S_LEAD_2LT | OK |
+| S5 | L1;  | ACD_R1_S_CONFIDENT_POINT_3LT; ACD_R1_FC_CONFIDENT_POINT_3LT; ACD_R1_S_LEAD_3LT | OK |
+| S6 | L2 / R0 PASS;  | ACD_R0_CASE_ACCURACY_2LT; ACD_R0_CASE_LOWER_2LT; ACD_CONTRACT_R0_CI_LEVEL; ACD_R1_S_LEAD_2LT | OK |
+| S7 | L3b / PRECEDES + L4; TD-Fc | ACD_R2B_PAIR_SHARES_EARLIER; ACD_R2B_PAIR_SHARES_LATER; ACD_R2B_POINT; ACD_R2B_LOWER; ACD_R2B_UPPER; ACD_R1M_RHO_MEDIAN_2LT; ACD_R1M_CANCELLATION_MEDIAN_2LT; ACD_CONTRACT_ROUTE_CI_PERCENT; ACD_R1_S_LEAD_2LT | OK |
+| S8 | Outside L1-L10; TD-amplitude, TD-Fc | ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING; ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING; ACD_DEV_AMP_A0P08_R1_CONFIDENT_S_2LT; ACD_DEV_AMP_A0P64_R1_CONFIDENT_S_2LT; ACD_DEV_AMP_A0P08_R1_CONFIDENT_FC_2LT; ACD_DEV_AMP_TESTED_AMPLITUDES_COUNT; ACD_DEV_AMP_A0P08_R1_LEAD_2LT | OK |
+| S9 | L9 with mandated R-other denominator correction; TD-Fc | ACD_R2C_HORIZON; ACD_L9_ANSWERED_NOT_CONFIDENT; ACD_L9_EXCEPTION_ACCURACY; ACD_CONTRACT_R2C_HALF_CASES | OK |
+| S10 | L8 / posterior R0 PASS;  | ACD_R6_POSTERIOR_NOT_CONFIDENT_X; ACD_R6_POSTERIOR_NOT_CONFIDENT_Y; ACD_R6_POSTERIOR_NOT_CONFIDENT_QUESTIONS; ACD_R6_POSTERIOR_NOT_CONFIDENT_CNN_CONFIDENT; ACD_R6_POSTERIOR_NOT_CONFIDENT_CORRECT; ACD_R1_S_LEAD_2LT | OK |
+| S11 | Permitted world-model reporting desideratum;  | ACD_R2B_POINT | OK |
+
+R-other retains the corrected all-S denominator for R2c U. Full disposition: ACD_ABSTRACT_AUDIT.md and receipts/acd_stage5b_abstract_audit.json.
+
+## Stage 5b paper review
+
+Independent paper audit: 332 OK and 15 open FIX rows. Sources remain immutable; proposed fixes are in ACD_PAPER_AUDIT.md and receipts/acd_stage5b_paper_audit.json. Current abstract: 13 OK, zero open FIX rows under Todd’s four standing rulings. These editorial rulings do not expand the frozen scientific licenses.
+
+Open paper rows: P033_05, P037_05, P043_01, P043_02, P094_03, P118_02, P118_03, P118_06, P166_06, P196_01, P205_01, P210_09, P231_03, P233_04, P247_02.

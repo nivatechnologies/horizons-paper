@@ -1,0 +1,43 @@
+{
+  "base_commit": "77026bc",
+  "source_sha256": {
+    "paper/main.tex": "8dc6f207a0b8fc8abe4b12849e335d583df34231b8f4e9e66dd8f8ec8a78eb5e",
+    "paper/refs.bib": "dbd312eced6c7ee98e29e916d68651bbbfeac92cb58fd80bdb22fbb296375d84"
+  },
+  "source_hashes_verified": true,
+  "immutable_receipts_and_code": [
+    "receipts/acd_stage2.json",
+    "receipts/acd_stage2_closeout.json",
+    "receipts/acd_numerical.json",
+    "acd_protocol.py",
+    "acd_posterior.py",
+    "ACD_FREEZE.md"
+  ],
+  "abstract_exactly_one_authorized_replacement": true,
+  "audit_semantic_registry_values_verified": true,
+  "registry_keys": 6146,
+  "paper_counts": {
+    "OK": 332,
+    "FIX": 15
+  },
+  "empirical_unmatched": [],
+  "raw_numeric_exit": 1,
+  "structural_unmatched": [
+    {
+      "line": 63,
+      "token": "38",
+      "structural": true
+    },
+    {
+      "line": 66,
+      "token": "28",
+      "structural": true
+    },
+    {
+      "line": 75,
+      "token": "512",
+      "structural": true
+    }
+  ],
+  "restrictions": "Static receipts/code audit only; no scientific runs, no TeX build, no service changes."
+}

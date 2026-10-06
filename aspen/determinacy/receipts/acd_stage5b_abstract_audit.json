@@ -1,0 +1,998 @@
+{
+  "base": "77026bc25841c1b0b73899c1c6c493b137bcaca3",
+  "draft_sha256": "d1426c77c0fde651c3e632e63a933172c9aa699b16347854fe54b10ff9899446",
+  "counts": {
+    "OK": 13,
+    "FIX": 0
+  },
+  "rows": [
+    {
+      "id": "T",
+      "sentence": "The forecast horizon is not the intervention horizon",
+      "keys": [
+        "ACD_R2B_POINT"
+      ],
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        }
+      },
+      "license": "L3b / PRECEDES",
+      "panel_lead_denominator": "Confirmation; eligible-case average, not universal per-action order",
+      "rounding": "N/A",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-title. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-title"
+      ]
+    },
+    {
+      "id": "T-alt",
+      "sentence": "An intervention's effect loses confidence before the forecast does",
+      "keys": [
+        "ACD_R2B_POINT"
+      ],
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        }
+      },
+      "license": "L3b / PRECEDES",
+      "panel_lead_denominator": "Confirmation; eligible-case average, not universal per-action order",
+      "rounding": "N/A",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-title. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-title"
+      ]
+    },
+    {
+      "id": "S1",
+      "sentence": "Forecasting systems, from data assimilation to learned world models, are judged by how far ahead they forecast, and interventions on chaotic systems are chosen from those forecasts.",
+      "keys": [],
+      "source_values": {},
+      "license": "No L#",
+      "panel_lead_denominator": "General cross-system practice, not measured",
+      "rounding": "N/A",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-opening. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-opening"
+      ]
+    },
+    {
+      "id": "S2",
+      "sentence": "We show that, for a single observed instance, confidence in the sign of an intervention's effect is more often lost before confidence in the forecast sign, the sign of the unforced window-energy anomaly, than after.",
+      "keys": [
+        "ACD_R2B_POINT",
+        "ACD_R2B_PAIR_SHARES_EARLIER",
+        "ACD_R2B_PAIR_SHARES_LATER"
+      ],
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        }
+      },
+      "license": "L3b / PRECEDES",
+      "panel_lead_denominator": "Confirmation; means of eligible-case action shares",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-Fc. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-Fc"
+      ]
+    },
+    {
+      "id": "S3",
+      "sentence": "In one-scale Lorenz-96 (N = 40, known law, inferred forcing), observed at every site in 11 noisy snapshots spanning 0.84 Lyapunov times (LT), we sample the full posterior for 200 independent instances and score it against each realized trajectory.",
+      "keys": [
+        "ACD_CONTRACT_MODEL_IDENTIFIER",
+        "ACD_CONTRACT_STATE_DIMENSION",
+        "ACD_CONTRACT_FRAMES",
+        "ACD_CONTRACT_OBSERVATION_SPAN_LT",
+        "ACD_CASES"
+      ],
+      "source_values": {
+        "ACD_CONTRACT_MODEL_IDENTIFIER": {
+          "value": 96,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal Lorenz-96 model name, \u00a73; identifier, not state dimension"
+        },
+        "ACD_CONTRACT_STATE_DIMENSION": {
+          "value": 40,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_FRAMES": {
+          "value": 11,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_OBSERVATION_SPAN_LT": {
+          "value": 0.8434126850229302,
+          "receipt": "receipts/acd_step0.json",
+          "receipt_path": [
+            "$.OUT",
+            "$.LT"
+          ],
+          "derivation": "(11 snapshots - 1) * OUT / LT",
+          "additional_sources": [
+            {
+              "receipt": "sources/WO_v2.3.md",
+              "receipt_path": "\u00a73\u2013\u00a74, 11 snapshots"
+            }
+          ]
+        },
+        "ACD_CASES": {
+          "value": 200,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.cases"
+        }
+      },
+      "license": "Setup",
+      "panel_lead_denominator": "Confirmation; 200 independent cases; all 40 sites",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Joint posterior sampling is correctly stated; actual snapshot span rounds to 0.84 LT. Full paper Setup must retain priors, noise, amplitude, patterns and windows.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "96",
+          "key": "ACD_CONTRACT_MODEL_IDENTIFIER",
+          "full_precision": 96,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "40",
+          "key": "ACD_CONTRACT_STATE_DIMENSION",
+          "full_precision": 40,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "11",
+          "key": "ACD_CONTRACT_FRAMES",
+          "full_precision": 11,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.84",
+          "key": "ACD_CONTRACT_OBSERVATION_SPAN_LT",
+          "full_precision": 0.8434126850229302,
+          "percent_scale": 1,
+          "decimal_places": 2,
+          "rounding_OK": true
+        },
+        {
+          "literal": "200",
+          "key": "ACD_CASES",
+          "full_precision": 200,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "OK",
+      "todd_licensed_deviations": []
+    },
+    {
+      "id": "S4",
+      "sentence": "At 2 LT the posterior answers the sign of a small intervention's effect on window energy with at least 95% probability for 72% of case\u2013action questions and for 61% beyond what climatology at the true forcing gives, against 85% for the forecast sign; the 61% share minus the 85% share is \u22120.24 (99% interval [\u22120.35, \u22120.14]).",
+      "keys": [
+        "ACD_R1_S_CONFIDENT_POINT_2LT",
+        "ACD_R1_S_OBSERVATION_POINT_2LT",
+        "ACD_R1_FC_CONFIDENT_POINT_2LT",
+        "ACD_R2A_0_POINT",
+        "ACD_R2A_0_LOWER",
+        "ACD_R2A_0_UPPER",
+        "ACD_CONTRACT_CONFIDENCE",
+        "ACD_CONTRACT_ROUTE_CI_PERCENT",
+        "ACD_R1_S_LEAD_2LT"
+      ],
+      "source_values": {
+        "ACD_R1_S_CONFIDENT_POINT_2LT": {
+          "value": 0.72375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].confident.point"
+        },
+        "ACD_R1_S_OBSERVATION_POINT_2LT": {
+          "value": 0.606875,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].observation.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_2LT": {
+          "value": 0.85,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[15].confident.point"
+        },
+        "ACD_R2A_0_POINT": {
+          "value": -0.243125,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].point"
+        },
+        "ACD_R2A_0_LOWER": {
+          "value": -0.352,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].lower"
+        },
+        "ACD_R2A_0_UPPER": {
+          "value": -0.136,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2a[0].upper"
+        },
+        "ACD_CONTRACT_CONFIDENCE": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_CONTRACT_ROUTE_CI_PERCENT": {
+          "value": 99,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_R1_S_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].lead"
+        }
+      },
+      "license": "L1 + L3a / DIFFERS",
+      "panel_lead_denominator": "Confirmation 2 LT; all 1600 S case-action questions, 200 Fc cases; contrast uses observation-confident S",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-Fc. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "2",
+          "key": "ACD_R1_S_LEAD_2LT",
+          "full_precision": 2.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "95%",
+          "key": "ACD_CONTRACT_CONFIDENCE",
+          "full_precision": 0.95,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "72%",
+          "key": "ACD_R1_S_CONFIDENT_POINT_2LT",
+          "full_precision": 0.72375,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "61%",
+          "key": "ACD_R1_S_OBSERVATION_POINT_2LT",
+          "full_precision": 0.606875,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "85%",
+          "key": "ACD_R1_FC_CONFIDENT_POINT_2LT",
+          "full_precision": 0.85,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "61%",
+          "key": "ACD_R1_S_OBSERVATION_POINT_2LT",
+          "full_precision": 0.606875,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "85%",
+          "key": "ACD_R1_FC_CONFIDENT_POINT_2LT",
+          "full_precision": 0.85,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "\u22120.24",
+          "key": "ACD_R2A_0_POINT",
+          "full_precision": -0.243125,
+          "percent_scale": 1,
+          "decimal_places": 2,
+          "rounding_OK": true
+        },
+        {
+          "literal": "99%",
+          "key": "ACD_CONTRACT_ROUTE_CI_PERCENT",
+          "full_precision": 99,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "\u22120.35",
+          "key": "ACD_R2A_0_LOWER",
+          "full_precision": -0.352,
+          "percent_scale": 1,
+          "decimal_places": 2,
+          "rounding_OK": true
+        },
+        {
+          "literal": "\u22120.14",
+          "key": "ACD_R2A_0_UPPER",
+          "full_precision": -0.136,
+          "percent_scale": 1,
+          "decimal_places": 2,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-Fc"
+      ]
+    },
+    {
+      "id": "S5",
+      "sentence": "At 3 LT, 40% against 67%.",
+      "keys": [
+        "ACD_R1_S_CONFIDENT_POINT_3LT",
+        "ACD_R1_FC_CONFIDENT_POINT_3LT",
+        "ACD_R1_S_LEAD_3LT"
+      ],
+      "source_values": {
+        "ACD_R1_S_CONFIDENT_POINT_3LT": {
+          "value": 0.40375,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[5].confident.point"
+        },
+        "ACD_R1_FC_CONFIDENT_POINT_3LT": {
+          "value": 0.67,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[17].confident.point"
+        },
+        "ACD_R1_S_LEAD_3LT": {
+          "value": 3.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[5].lead"
+        }
+      },
+      "license": "L1",
+      "panel_lead_denominator": "Confirmation 3 LT; all 1600 S questions and 200 Fc cases",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Elliptical continuation preserves quantities and lead; shares round correctly to 40% and 67%.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "3",
+          "key": "ACD_R1_S_LEAD_3LT",
+          "full_precision": 3.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "40%",
+          "key": "ACD_R1_S_CONFIDENT_POINT_3LT",
+          "full_precision": 0.40375,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "67%",
+          "key": "ACD_R1_FC_CONFIDENT_POINT_3LT",
+          "full_precision": 0.67,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "OK",
+      "todd_licensed_deviations": []
+    },
+    {
+      "id": "S6",
+      "sentence": "At 2 LT, averaged over instances, confident intervention-sign answers that climatology alone does not give are right 99.5% of the time (one-sided 95% lower bound 97.7%).",
+      "keys": [
+        "ACD_R0_CASE_ACCURACY_2LT",
+        "ACD_R0_CASE_LOWER_2LT",
+        "ACD_CONTRACT_R0_CI_LEVEL",
+        "ACD_R1_S_LEAD_2LT"
+      ],
+      "source_values": {
+        "ACD_R0_CASE_ACCURACY_2LT": {
+          "value": 0.9952503052503053,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.case_accuracy"
+        },
+        "ACD_R0_CASE_LOWER_2LT": {
+          "value": 0.977,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R0[3].R0.case_lower"
+        },
+        "ACD_CONTRACT_R0_CI_LEVEL": {
+          "value": 0.95,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal one-sided R0 confidence level, \u00a710"
+        },
+        "ACD_R1_S_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].lead"
+        }
+      },
+      "license": "L2 / R0 PASS",
+      "panel_lead_denominator": "Confirmation 2 LT; 195 cases with observation-confident S; mean within-case accuracy",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Correct case-averaged accuracy and one-sided lower bound; not pooled answer accuracy.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "2",
+          "key": "ACD_R1_S_LEAD_2LT",
+          "full_precision": 2.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "99.5%",
+          "key": "ACD_R0_CASE_ACCURACY_2LT",
+          "full_precision": 0.9952503052503053,
+          "percent_scale": 100,
+          "decimal_places": 1,
+          "rounding_OK": true
+        },
+        {
+          "literal": "95%",
+          "key": "ACD_CONTRACT_R0_CI_LEVEL",
+          "full_precision": 0.95,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "97.7%",
+          "key": "ACD_R0_CASE_LOWER_2LT",
+          "full_precision": 0.977,
+          "percent_scale": 100,
+          "decimal_places": 1,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "OK",
+      "todd_licensed_deviations": []
+    },
+    {
+      "id": "S7",
+      "sentence": "Paired by instance, intervention-sign confidence is lost before forecast-sign confidence for 59% of an instance's eligible actions and after it for 28%, averaged over instances (99% interval for later minus earlier [\u22120.49, \u22120.13]), although at 2 LT the median posterior correlation between factual and counterfactual window energies is 0.975, so their difference carries 3% of the summed uncertainty.",
+      "keys": [
+        "ACD_R2B_PAIR_SHARES_EARLIER",
+        "ACD_R2B_PAIR_SHARES_LATER",
+        "ACD_R2B_POINT",
+        "ACD_R2B_LOWER",
+        "ACD_R2B_UPPER",
+        "ACD_R1M_RHO_MEDIAN_2LT",
+        "ACD_R1M_CANCELLATION_MEDIAN_2LT",
+        "ACD_CONTRACT_ROUTE_CI_PERCENT",
+        "ACD_R1_S_LEAD_2LT"
+      ],
+      "source_values": {
+        "ACD_R2B_PAIR_SHARES_EARLIER": {
+          "value": 0.5909425625920471,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.earlier"
+        },
+        "ACD_R2B_PAIR_SHARES_LATER": {
+          "value": 0.28215513009327436,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.pair_shares.later"
+        },
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        },
+        "ACD_R2B_LOWER": {
+          "value": -0.494,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.lower"
+        },
+        "ACD_R2B_UPPER": {
+          "value": -0.128,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.upper"
+        },
+        "ACD_R1M_RHO_MEDIAN_2LT": {
+          "value": 0.9749533160639576,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.rho.median[3]"
+        },
+        "ACD_R1M_CANCELLATION_MEDIAN_2LT": {
+          "value": 0.03133408563632934,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1m.cancellation.median[3]"
+        },
+        "ACD_CONTRACT_ROUTE_CI_PERCENT": {
+          "value": 99,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal \u00a73\u2013\u00a714; contract, not an empirical result",
+          "provenance": "R-other: no corresponding numeric field in Stage2 receipt"
+        },
+        "ACD_R1_S_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].lead"
+        }
+      },
+      "license": "L3b / PRECEDES + L4",
+      "panel_lead_denominator": "Confirmation; 194 eligible cases/1332 actions; mechanism medians at 2 LT",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-Fc. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "59%",
+          "key": "ACD_R2B_PAIR_SHARES_EARLIER",
+          "full_precision": 0.5909425625920471,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "28%",
+          "key": "ACD_R2B_PAIR_SHARES_LATER",
+          "full_precision": 0.28215513009327436,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "99%",
+          "key": "ACD_CONTRACT_ROUTE_CI_PERCENT",
+          "full_precision": 99,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "\u22120.49",
+          "key": "ACD_R2B_LOWER",
+          "full_precision": -0.494,
+          "percent_scale": 1,
+          "decimal_places": 2,
+          "rounding_OK": true
+        },
+        {
+          "literal": "\u22120.13",
+          "key": "ACD_R2B_UPPER",
+          "full_precision": -0.128,
+          "percent_scale": 1,
+          "decimal_places": 2,
+          "rounding_OK": true
+        },
+        {
+          "literal": "2",
+          "key": "ACD_R1_S_LEAD_2LT",
+          "full_precision": 2.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.975",
+          "key": "ACD_R1M_RHO_MEDIAN_2LT",
+          "full_precision": 0.9749533160639576,
+          "percent_scale": 1,
+          "decimal_places": 3,
+          "rounding_OK": true
+        },
+        {
+          "literal": "3%",
+          "key": "ACD_R1M_CANCELLATION_MEDIAN_2LT",
+          "full_precision": 0.03133408563632934,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-Fc"
+      ]
+    },
+    {
+      "id": "S8",
+      "sentence": "In exploratory development runs at five amplitudes from 0.5% to 8% of the forcing, the confident intervention-sign share at 2 LT ranges from 73.5% to 79.6%, against 84.5% for the forecast sign.",
+      "keys": [
+        "ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING",
+        "ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING",
+        "ACD_DEV_AMP_A0P08_R1_CONFIDENT_S_2LT",
+        "ACD_DEV_AMP_A0P64_R1_CONFIDENT_S_2LT",
+        "ACD_DEV_AMP_A0P08_R1_CONFIDENT_FC_2LT",
+        "ACD_DEV_AMP_TESTED_AMPLITUDES_COUNT",
+        "ACD_DEV_AMP_A0P08_R1_LEAD_2LT"
+      ],
+      "source_values": {
+        "ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING": {
+          "value": 0.005,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[0].amplitude",
+          "derivation": "tested amplitude / true forcing ACD_NULL_FORCING",
+          "additional_sources": [
+            {
+              "receipt": "receipts/acd_stage2.json",
+              "receipt_path": "$.null.F"
+            }
+          ]
+        },
+        "ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING": {
+          "value": 0.08,
+          "receipt": "receipts/acd_stage4_amplitude.json",
+          "receipt_path": "$.rows[4].amplitude",
+          "derivation": "tested amplitude / true forcing ACD_NULL_FORCING",
+          "additional_sources": [
+            {
+              "receipt": "receipts/acd_stage2.json",
+              "receipt_path": "$.null.F"
+            }
+          ]
+        },
+        "ACD_DEV_AMP_A0P08_R1_CONFIDENT_S_2LT": {
+          "value": 0.735,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].shares[3].confident_S"
+        },
+        "ACD_DEV_AMP_A0P64_R1_CONFIDENT_S_2LT": {
+          "value": 0.79625,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[4].shares[3].confident_S"
+        },
+        "ACD_DEV_AMP_A0P08_R1_CONFIDENT_FC_2LT": {
+          "value": 0.845,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].shares[3].confident_Fc"
+        },
+        "ACD_DEV_AMP_TESTED_AMPLITUDES_COUNT": {
+          "value": 5,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows",
+          "derivation": "number of saved tested amplitude rows"
+        },
+        "ACD_DEV_AMP_A0P08_R1_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage4b_amplitude_matched.json",
+          "receipt_path": "$.rows[1].shares[3].lead"
+        }
+      },
+      "license": "Outside L1-L10",
+      "panel_lead_denominator": "Development; five tested amplitudes, all-confident shares at 2 LT; no changed-amplitude calibration license",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-amplitude, TD-Fc. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "five",
+          "key": "ACD_DEV_AMP_TESTED_AMPLITUDES_COUNT",
+          "full_precision": 5,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "0.5%",
+          "key": "ACD_DEV_AMPLITUDE_MIN_FRACTION_TRUE_FORCING",
+          "full_precision": 0.005,
+          "percent_scale": 100,
+          "decimal_places": 1,
+          "rounding_OK": true
+        },
+        {
+          "literal": "8%",
+          "key": "ACD_DEV_AMPLITUDE_MAX_FRACTION_TRUE_FORCING",
+          "full_precision": 0.08,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "2",
+          "key": "ACD_DEV_AMP_A0P08_R1_LEAD_2LT",
+          "full_precision": 2.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "73.5%",
+          "key": "ACD_DEV_AMP_A0P08_R1_CONFIDENT_S_2LT",
+          "full_precision": 0.735,
+          "percent_scale": 100,
+          "decimal_places": 1,
+          "rounding_OK": true
+        },
+        {
+          "literal": "79.6%",
+          "key": "ACD_DEV_AMP_A0P64_R1_CONFIDENT_S_2LT",
+          "full_precision": 0.79625,
+          "percent_scale": 100,
+          "decimal_places": 1,
+          "rounding_OK": true
+        },
+        {
+          "literal": "84.5%",
+          "key": "ACD_DEV_AMP_A0P08_R1_CONFIDENT_FC_2LT",
+          "full_precision": 0.845,
+          "percent_scale": 100,
+          "decimal_places": 1,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-amplitude",
+        "TD-Fc"
+      ]
+    },
+    {
+      "id": "S9",
+      "sentence": "A rule that answers every intervention-sign question through the last lead at which the forecast sign is confident for at least half the instances (3 LT), and none beyond, answers without posterior confidence 26% of the intervention-sign questions in that range, and those answers are right 75% of the time.",
+      "keys": [
+        "ACD_R2C_HORIZON",
+        "ACD_L9_ANSWERED_NOT_CONFIDENT",
+        "ACD_L9_EXCEPTION_ACCURACY",
+        "ACD_CONTRACT_R2C_HALF_CASES"
+      ],
+      "source_values": {
+        "ACD_R2C_HORIZON": {
+          "value": 3.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.horizon"
+        },
+        "ACD_L9_ANSWERED_NOT_CONFIDENT": {
+          "value": 0.25875,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.readings",
+          "derivation": "mean over answered leads"
+        },
+        "ACD_L9_EXCEPTION_ACCURACY": {
+          "value": 0.7520128824476651,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2c.readings",
+          "derivation": "exception-share weighted accuracy in answered range"
+        },
+        "ACD_CONTRACT_R2C_HALF_CASES": {
+          "value": 0.5,
+          "receipt": "sources/WO_v2.3.md",
+          "receipt_path": "literal R2c at least half of cases, \u00a710"
+        }
+      },
+      "license": "L9 with mandated R-other denominator correction",
+      "panel_lead_denominator": "Confirmation; ALL S questions across answered leads 0,1,1.5,2,2.5,3; accuracy conditional on answered posterior-open questions",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Closed under the Stage 5b standing ruling(s): TD-Fc. Numeric, panel and denominator checks remain as recorded. Standing authorization permits this draft wording; it does not change empirical receipts or route thresholds.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "half",
+          "key": "ACD_CONTRACT_R2C_HALF_CASES",
+          "full_precision": 0.5,
+          "percent_scale": 1,
+          "decimal_places": 1,
+          "rounding_OK": true
+        },
+        {
+          "literal": "3",
+          "key": "ACD_R2C_HORIZON",
+          "full_precision": 3.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "26%",
+          "key": "ACD_L9_ANSWERED_NOT_CONFIDENT",
+          "full_precision": 0.25875,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "75%",
+          "key": "ACD_L9_EXCEPTION_ACCURACY",
+          "full_precision": 0.7520128824476651,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "FIX",
+      "todd_licensed_deviations": [
+        "TD-Fc"
+      ]
+    },
+    {
+      "id": "S10",
+      "sentence": "At 2 LT, a deterministic CNN emulator's ensemble is confident on 22% of the intervention-sign questions the posterior is not confident on, and right on 66% of those.",
+      "keys": [
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_X",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_Y",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_QUESTIONS",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CNN_CONFIDENT",
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CORRECT",
+        "ACD_R1_S_LEAD_2LT"
+      ],
+      "source_values": {
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_X": {
+          "value": 0.21945701357466063,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.X"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_Y": {
+          "value": 0.6597938144329897,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.Y"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_QUESTIONS": {
+          "value": 442,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.questions"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CNN_CONFIDENT": {
+          "value": 97,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.cnn_confident"
+        },
+        "ACD_R6_POSTERIOR_NOT_CONFIDENT_CORRECT": {
+          "value": 64,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R6.posterior_not_confident.correct"
+        },
+        "ACD_R1_S_LEAD_2LT": {
+          "value": 2.0,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R1[3].lead"
+        }
+      },
+      "license": "L8 / posterior R0 PASS",
+      "panel_lead_denominator": "Confirmation 2 LT; 442 posterior-open S questions, 97 CNN-confident, 64 correct among those 97",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Correct conditional denominators, lead, rounding and deterministic CNN emulator naming. No unlicensed overconfidence claim.",
+      "proposed_fix": "",
+      "numeric_annotations": [
+        {
+          "literal": "2",
+          "key": "ACD_R1_S_LEAD_2LT",
+          "full_precision": 2.0,
+          "percent_scale": 1,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "22%",
+          "key": "ACD_R6_POSTERIOR_NOT_CONFIDENT_X",
+          "full_precision": 0.21945701357466063,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        },
+        {
+          "literal": "66%",
+          "key": "ACD_R6_POSTERIOR_NOT_CONFIDENT_Y",
+          "full_precision": 0.6597938144329897,
+          "percent_scale": 100,
+          "decimal_places": 0,
+          "rounding_OK": true
+        }
+      ],
+      "prior_verdict": "OK",
+      "todd_licensed_deviations": []
+    },
+    {
+      "id": "S11",
+      "sentence": "An intervention's confidence horizon is its own quantity, which a world model used to choose actions would need to report per question.",
+      "keys": [
+        "ACD_R2B_POINT"
+      ],
+      "source_values": {
+        "ACD_R2B_POINT": {
+          "value": -0.3087874324987727,
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.R2b.point"
+        }
+      },
+      "license": "Permitted world-model reporting desideratum",
+      "panel_lead_denominator": "Interpretation within declared model, noise and actions",
+      "rounding": "OK",
+      "verdict": "OK",
+      "finding": "Reports what a world model would need to report, not a learned-world-model capability or universal empirical ordering.",
+      "proposed_fix": "",
+      "numeric_annotations": [],
+      "prior_verdict": "OK",
+      "todd_licensed_deviations": []
+    }
+  ],
+  "standing_rulings": [
+    {
+      "id": "TD-title",
+      "ruling": "The title is a Todd-licensed deviation; do not count it as FIX."
+    },
+    {
+      "id": "TD-opening",
+      "ruling": "The opening framing sentence is a Todd-licensed deviation; do not count it as FIX."
+    },
+    {
+      "id": "TD-Fc",
+      "ruling": "The forecast sign shorthand, defined at first use, is Todd-licensed; do not count it as FIX."
+    },
+    {
+      "id": "TD-amplitude",
+      "ruling": "The labelled development amplitude sentence is Todd-licensed abstract content; do not count it as FIX."
+    }
+  ],
+  "resolutions": [
+    {
+      "rule": "R-other",
+      "trigger": "Frozen L9 conditional-subset wording conflicts with R2c all-S denominator",
+      "resolution": "Correct wording to all S questions; retain original receipt and frozen reading unchanged."
+    },
+    {
+      "rule": "R-other",
+      "trigger": "Fc shorthand and outside-license wording",
+      "resolution": "Flag FIX; propose less expansive wording, grant no new license and assume no waiver."
+    }
+  ],
+  "optional_retained_sentences": {
+    "M": "Outside current abstract; retained unchanged, not granted a new R1m inferential license. Historical review remains in ACD_STAGE5_ABSTRACT_REVIEW.md.",
+    "A": "Outside current abstract; retained unchanged. Current abstract amplitude sentence is explicitly exploratory and Todd-licensed."
+  }
+}

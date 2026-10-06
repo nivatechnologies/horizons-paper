@@ -1,6 +1,7 @@
 {
   "schema": 1,
   "source_hashes": {
+    "acd_cnn_ensemble.py": "8222efb35c72149ca60379b9043ffa2d24d097f71d6227cad93660f5684ea478",
     "receipts/acd_stage2_closeout.json": "e29197e6be0699aca984a52a0f985c4f04b340743294ee7543c92e7adba9c5d5",
     "receipts/acd_numerical.json": "ded057d703ae17f06a54a16c3be322d1fa0cbf19ca1f86655438320bc6a6b7e3",
     "../horizon/results/l96_calibration.json": "908d52224800c0cbeb7d4a2a9dfc7e14063a9f22042bb3b0bda70725cf2ef8f6",
@@ -960,6 +961,12 @@
       "value": 240,
       "receipt": "receipts/acd_stage2_closeout.json",
       "receipt_path": "$.refits"
+    },
+    "ACD_CNN_PARAMETER_COUNT": {
+      "value": 999681,
+      "receipt": "acd_cnn_ensemble.py",
+      "receipt_path": "Emulator.__init__: sizes and Conv1d kernel/bias defaults",
+      "derivation": "sum input channels * output channels * kernel width + output-channel biases over the five frozen convolution layers; no model execution"
     },
     "ACD_CONTRACT_AMPLITUDE": {
       "value": 0.16,
@@ -20266,6 +20273,18 @@
       "receipt_path": "$.null.question_probabilities[5][7][0]",
       "derivation": "extremum over patterns 1\u20137 and all eight tested leads; both probabilities sum to one"
     },
+    "ACD_NULL_S_PATTERNS_1_TO_7_SIGN_PROBABILITY_MAX": {
+      "value": 0.56201171875,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.null.question_probabilities[7][0][0]",
+      "derivation": "extremum of either binary answer probability over patterns 1\u20137 and all tested leads; unlike modal confidence this can be below one half"
+    },
+    "ACD_NULL_S_PATTERNS_1_TO_7_SIGN_PROBABILITY_MIN": {
+      "value": 0.43798828125,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.null.question_probabilities[7][0][1]",
+      "derivation": "extremum of either binary answer probability over patterns 1\u20137 and all tested leads; unlike modal confidence this can be below one half"
+    },
     "ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_0LT": {
       "value": 0.5234375,
       "receipt": "receipts/acd_stage2.json",
@@ -25037,6 +25056,54 @@
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.R1[19].lead"
     },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_0LT": {
+      "value": 0.030000000000000027,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[12].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_1LT": {
+      "value": 0.07999999999999996,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[13].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_1P5LT": {
+      "value": 0.06999999999999995,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[14].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_2LT": {
+      "value": 0.15000000000000002,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[15].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_2P5LT": {
+      "value": 0.255,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[16].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_3LT": {
+      "value": 0.32999999999999996,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[17].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_4LT": {
+      "value": 0.61,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[18].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_FC_NOT_CONFIDENT_POINT_6LT": {
+      "value": 0.95,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[19].confident.point",
+      "derivation": "one minus saved confident share"
+    },
     "ACD_R1_FC_OBSERVATION_DESCRIPTIVE_INTERVAL_0_0LT": {
       "value": 0.945,
       "receipt": "receipts/acd_stage2.json",
@@ -26006,6 +26073,54 @@
       "value": 6.0,
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.R1[7].lead"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_0LT": {
+      "value": 0.016874999999999973,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[0].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_1LT": {
+      "value": 0.08625000000000005,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[1].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_1P5LT": {
+      "value": 0.15625,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[2].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_2LT": {
+      "value": 0.27625,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[3].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_2P5LT": {
+      "value": 0.420625,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[4].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_3LT": {
+      "value": 0.59625,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[5].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_4LT": {
+      "value": 0.8575,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[6].confident.point",
+      "derivation": "one minus saved confident share"
+    },
+    "ACD_R1_S_NOT_CONFIDENT_POINT_6LT": {
+      "value": 0.993125,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": "$.R1[7].confident.point",
+      "derivation": "one minus saved confident share"
     },
     "ACD_R1_S_OBSERVATION_DESCRIPTIVE_INTERVAL_0_0LT": {
       "value": 0.851875,
@@ -30919,6 +31034,19 @@
       "receipt": "receipts/acd_stage2.json",
       "receipt_path": "$.settings.warmup"
     },
+    "ACD_S_CONFIDENT_ACCURACY_0_TO_3LT": {
+      "value": 0.9973299606520517,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": [
+        "$.all_confident_calibration[0]",
+        "$.all_confident_calibration[1]",
+        "$.all_confident_calibration[2]",
+        "$.all_confident_calibration[3]",
+        "$.all_confident_calibration[4]",
+        "$.all_confident_calibration[5]"
+      ],
+      "derivation": "pooled correct / confident S answers at tested leads 0\u20133 LT; descriptive"
+    },
     "ACD_S_CONFIDENT_ANSWERS_0_TO_3LT": {
       "value": 7116,
       "receipt": "receipts/acd_stage2.json",
@@ -30931,6 +31059,19 @@
         "$.all_confident_calibration[5]"
       ],
       "derivation": "sum S confident answers at tested leads 0 through 3 LT inclusive"
+    },
+    "ACD_S_CONFIDENT_ANSWERS_PER_ERROR_0_TO_3LT": {
+      "value": 374.5263157894737,
+      "receipt": "receipts/acd_stage2.json",
+      "receipt_path": [
+        "$.all_confident_calibration[0]",
+        "$.all_confident_calibration[1]",
+        "$.all_confident_calibration[2]",
+        "$.all_confident_calibration[3]",
+        "$.all_confident_calibration[4]",
+        "$.all_confident_calibration[5]"
+      ],
+      "derivation": "pooled S confident answers / wrong S answers at tested leads 0\u20133 LT; descriptive reciprocal error frequency, not independent trials"
     },
     "ACD_S_CONFIDENT_WRONG_0_TO_3LT": {
       "value": 19,

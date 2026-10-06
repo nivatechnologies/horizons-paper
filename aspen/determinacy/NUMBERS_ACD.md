@@ -192,6 +192,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_CLOSEOUT_ORDINARY_EXCLUSIONS | 0 | receipts/acd_stage2_closeout.json | $.ordinary_exclusions |
 | ACD_CLOSEOUT_ORDINARY_WARMUP_RETRIES | 11 | receipts/acd_stage2_closeout.json | $.ordinary_warmup_retries |
 | ACD_CLOSEOUT_REFITS | 240 | receipts/acd_stage2_closeout.json | $.refits |
+| ACD_CNN_PARAMETER_COUNT | 999681 | acd_cnn_ensemble.py | Emulator.__init__: sizes and Conv1d kernel/bias defaults ; sum input channels * output channels * kernel width + output-channel biases over the five frozen convolution layers; no model execution |
 | ACD_CONTRACT_AMPLITUDE | 0.16 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_BOOTSTRAP_CI_PERCENT | 95 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
 | ACD_CONTRACT_BOOTSTRAP_COUNT | 10000 | sources/WO_v2.3.md | literal §3–§14; contract, not an empirical result |
@@ -4013,6 +4014,8 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_NULL_FORCING | 8.0 | receipts/acd_stage2.json | $.null.F ; true forcing specified in WO §3 and used by the saved climatological null |
 | ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MAX | 0.56201171875 | receipts/acd_stage2.json | $.null.question_probabilities[7][0][0] ; extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one |
 | ACD_NULL_S_PATTERNS_1_TO_7_MODAL_PROBABILITY_MIN | 0.500244140625 | receipts/acd_stage2.json | $.null.question_probabilities[5][7][0] ; extremum over patterns 1–7 and all eight tested leads; both probabilities sum to one |
+| ACD_NULL_S_PATTERNS_1_TO_7_SIGN_PROBABILITY_MAX | 0.56201171875 | receipts/acd_stage2.json | $.null.question_probabilities[7][0][0] ; extremum of either binary answer probability over patterns 1–7 and all tested leads; unlike modal confidence this can be below one half |
+| ACD_NULL_S_PATTERNS_1_TO_7_SIGN_PROBABILITY_MIN | 0.43798828125 | receipts/acd_stage2.json | $.null.question_probabilities[7][0][1] ; extremum of either binary answer probability over patterns 1–7 and all tested leads; unlike modal confidence this can be below one half |
 | ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_0LT | 0.5234375 | receipts/acd_stage2.json | $.null.question_probabilities[1][0][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
 | ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_1LT | 0.514404296875 | receipts/acd_stage2.json | $.null.question_probabilities[1][1][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
 | ACD_NULL_S_PATTERN_1_MODAL_PROBABILITY_1P5LT | 0.51611328125 | receipts/acd_stage2.json | $.null.question_probabilities[1][2][0] ; larger of two sign probabilities; climate-only modal confidence, not posterior-modal agreement |
@@ -4949,6 +4952,14 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_R1_FC_LEAD_3LT | 3.0 | receipts/acd_stage2.json | $.R1[17].lead |
 | ACD_R1_FC_LEAD_4LT | 4.0 | receipts/acd_stage2.json | $.R1[18].lead |
 | ACD_R1_FC_LEAD_6LT | 6.0 | receipts/acd_stage2.json | $.R1[19].lead |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_0LT | 0.030000000000000027 | receipts/acd_stage2.json | $.R1[12].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_1LT | 0.07999999999999996 | receipts/acd_stage2.json | $.R1[13].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_1P5LT | 0.06999999999999995 | receipts/acd_stage2.json | $.R1[14].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_2LT | 0.15000000000000002 | receipts/acd_stage2.json | $.R1[15].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_2P5LT | 0.255 | receipts/acd_stage2.json | $.R1[16].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_3LT | 0.32999999999999996 | receipts/acd_stage2.json | $.R1[17].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_4LT | 0.61 | receipts/acd_stage2.json | $.R1[18].confident.point ; one minus saved confident share |
+| ACD_R1_FC_NOT_CONFIDENT_POINT_6LT | 0.95 | receipts/acd_stage2.json | $.R1[19].confident.point ; one minus saved confident share |
 | ACD_R1_FC_OBSERVATION_DESCRIPTIVE_INTERVAL_0_0LT | 0.945 | receipts/acd_stage2.json | $.R1[12].observation.descriptive.interval[0] |
 | ACD_R1_FC_OBSERVATION_DESCRIPTIVE_INTERVAL_0_1LT | 0.88 | receipts/acd_stage2.json | $.R1[13].observation.descriptive.interval[0] |
 | ACD_R1_FC_OBSERVATION_DESCRIPTIVE_INTERVAL_0_1P5LT | 0.89 | receipts/acd_stage2.json | $.R1[14].observation.descriptive.interval[0] |
@@ -5143,6 +5154,14 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_R1_S_LEAD_3LT | 3.0 | receipts/acd_stage2.json | $.R1[5].lead |
 | ACD_R1_S_LEAD_4LT | 4.0 | receipts/acd_stage2.json | $.R1[6].lead |
 | ACD_R1_S_LEAD_6LT | 6.0 | receipts/acd_stage2.json | $.R1[7].lead |
+| ACD_R1_S_NOT_CONFIDENT_POINT_0LT | 0.016874999999999973 | receipts/acd_stage2.json | $.R1[0].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_1LT | 0.08625000000000005 | receipts/acd_stage2.json | $.R1[1].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_1P5LT | 0.15625 | receipts/acd_stage2.json | $.R1[2].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_2LT | 0.27625 | receipts/acd_stage2.json | $.R1[3].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_2P5LT | 0.420625 | receipts/acd_stage2.json | $.R1[4].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_3LT | 0.59625 | receipts/acd_stage2.json | $.R1[5].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_4LT | 0.8575 | receipts/acd_stage2.json | $.R1[6].confident.point ; one minus saved confident share |
+| ACD_R1_S_NOT_CONFIDENT_POINT_6LT | 0.993125 | receipts/acd_stage2.json | $.R1[7].confident.point ; one minus saved confident share |
 | ACD_R1_S_OBSERVATION_DESCRIPTIVE_INTERVAL_0_0LT | 0.851875 | receipts/acd_stage2.json | $.R1[0].observation.descriptive.interval[0] |
 | ACD_R1_S_OBSERVATION_DESCRIPTIVE_INTERVAL_0_1LT | 0.770625 | receipts/acd_stage2.json | $.R1[1].observation.descriptive.interval[0] |
 | ACD_R1_S_OBSERVATION_DESCRIPTIVE_INTERVAL_0_1P5LT | 0.69625 | receipts/acd_stage2.json | $.R1[2].observation.descriptive.interval[0] |
@@ -6125,7 +6144,9 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_SETTINGS_DT | 0.01 | receipts/acd_stage2.json | $.settings.dt |
 | ACD_SETTINGS_R5_POPULATION | 60 | receipts/acd_stage2.json | $.settings.r5_population |
 | ACD_SETTINGS_WARMUP | 1000 | receipts/acd_stage2.json | $.settings.warmup |
+| ACD_S_CONFIDENT_ACCURACY_0_TO_3LT | 0.9973299606520517 | receipts/acd_stage2.json | ['$.all_confident_calibration[0]', '$.all_confident_calibration[1]', '$.all_confident_calibration[2]', '$.all_confident_calibration[3]', '$.all_confident_calibration[4]', '$.all_confident_calibration[5]'] ; pooled correct / confident S answers at tested leads 0–3 LT; descriptive |
 | ACD_S_CONFIDENT_ANSWERS_0_TO_3LT | 7116 | receipts/acd_stage2.json | ['$.all_confident_calibration[0]', '$.all_confident_calibration[1]', '$.all_confident_calibration[2]', '$.all_confident_calibration[3]', '$.all_confident_calibration[4]', '$.all_confident_calibration[5]'] ; sum S confident answers at tested leads 0 through 3 LT inclusive |
+| ACD_S_CONFIDENT_ANSWERS_PER_ERROR_0_TO_3LT | 374.5263157894737 | receipts/acd_stage2.json | ['$.all_confident_calibration[0]', '$.all_confident_calibration[1]', '$.all_confident_calibration[2]', '$.all_confident_calibration[3]', '$.all_confident_calibration[4]', '$.all_confident_calibration[5]'] ; pooled S confident answers / wrong S answers at tested leads 0–3 LT; descriptive reciprocal error frequency, not independent trials |
 | ACD_S_CONFIDENT_WRONG_0_TO_3LT | 19 | receipts/acd_stage2.json | ['$.all_confident_calibration[0]', '$.all_confident_calibration[1]', '$.all_confident_calibration[2]', '$.all_confident_calibration[3]', '$.all_confident_calibration[4]', '$.all_confident_calibration[5]'] ; sum S answers minus correct at tested leads 0 through 3 LT |
 | ACD_TRUE_F_RANK_KS_P | 0.9929944372181302 | receipts/acd_stage2.json | $.true_F_rank.uniformity_KS.p |
 | ACD_TRUE_F_RANK_KS_STATISTIC | 0.0295 | receipts/acd_stage2.json | $.true_F_rank.uniformity_KS.statistic |

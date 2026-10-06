@@ -1,15 +1,22 @@
-# Stage 5 — receipt registry and revised abstract; paper source pending
+# Stage 5b — sources and draft audit complete
 
-Base: 5298bb18d4248daaec77c7ca6108d4ed32647626. Work performed on sulaco CPU using saved receipts only.
+Base: 77026bc25841c1b0b73899c1c6c493b137bcaca3. Todd's embedded archive was decoded on sulaco; paper/main.tex and paper/refs.bib were verified against the supplied SHA-256 values before use and remain unchanged.
 
-The supplied abstract has replaced only the Abstract section of ACD_ABSTRACT_DRAFT.md verbatim. Titles and optional sentences remain unchanged. Independent revised abstract audit: ACD_ABSTRACT_AUDIT.md. Numeric extraction: receipts/acd_stage5_abstract_check.txt. The registry contains 6125 keys; regeneration passes and the revised abstract's 60 visible numeric literals all match.
+Completed:
+- Independent ACD_PAPER_AUDIT.md: 332 OK / 15 FIX across 347 rows. All methods are checked against frozen WO and code. Proposed fixes are recorded; main.tex is not edited.
+- Paper de-TeX extraction and numeric check: zero empirical unmatched numbers. Authorized structural unmatched values are 38, 28 and 512 at lines 63, 66 and 75. Bibliographic metadata and document labels are inventoried separately.
+- NUMBERS registry: 6146 keys; regeneration passes.
+- ACD_ABSTRACT_DRAFT.md: only the abstract's amplitude sentence changes from “In development runs” to “In exploratory development runs”. Titles and optional text are unchanged.
+- ACD_ABSTRACT_AUDIT.md: 13 OK / 0 FIX for current abstract plus retained titles under Todd's four standing rulings. Prior independent findings remain historical artifacts.
+- Vault note: 02-Projects/Draft_Aspen-Intervention-Horizon-Paper-2026-10.md, with source/audit/abstract links and every proposed paper fix.
 
-R-other: frozen L9 misdescribes U's denominator. R2c's answered-not-confident shares are fractions of ALL S questions at each answered lead, not fractions conditional on posterior nonconfidence. ACD_L9_ANSWERED_NOT_CONFIDENT is the mean over the six answered leads; the corrected supplied text uses the all-question denominator. Original confirmation receipts and frozen licensed sentences are retained as historical records, not silently rewritten.
+R-other keeps R2c U's corrected ALL-S-question denominator and withholds formal changed-amplitude ordering licenses when realized calibration is unavailable. Standing deviations do not change any numerical threshold.
 
-The files main.tex and refs.bib described as attachments were not available through the conversation or found in the accessible workspace or sulaco work directories. No replacement draft or bibliography has been invented. Consequently paper/main.pdf, de-TeXed main.tex, the paper-wide numeric check, page count and the independent line-by-line paper audit are pending source availability. These are input dependencies, not a specification halt or an H1–H3 stop. The whole Stage 5 is not complete.
+No TeX build attempted, as instructed. The user reports an off-sulaco pdflatex + bibtex build; no PDF was included in the supplied archive. The current environment is paper/TEX_ENVIRONMENT.json. Page count is not claimed.
 
-The detected TeX environment is recorded in paper/TEX_ENVIRONMENT.json: latexmk, pdflatex, lualatex, xelatex, bibtex, kpsewhich and pdfinfo are absent. No build is claimed.
+No new scientific runs, integrations, sampling, MAP/RML, training or inference. CPU-only receipt/static-source checks on sulaco; no cloud compute; Qwen services and Baccus close-out untouched. Scientific receipts and frozen execution code remain byte-identical to the base commit.
 
-Once the exact files are accessible, place them in paper/, apply only the authorized includegraphics path changes to ../figures/F2_confidence, F3_mechanism, F4_reliability and F6_amplitude, build with latexmk, and preserve scientific prose for the independent audit. Audit missing or unsupported provenance as FIX rather than changing the paper.
-
-No new integrations, sampling, posterior/MAP/RML runs, training or inference. Qwen services and Baccus close-out untouched.
+Source receipt: receipts/acd_stage5b_source.json.
+Numeric check: ACD_PAPER_NUMERIC_CHECK.md, paper/main.detex.txt and receipts/acd_stage5b_numeric_check.json.
+Independent audit receipt: receipts/acd_stage5b_paper_audit.json.
+Stage artifact hashes: ACD_STAGE5B_ARTIFACTS.json.
