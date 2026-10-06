@@ -41,11 +41,11 @@ def run(stage="5b"):
         m=re.match(r'\s*(year|volume|number|pages|eprint|doi|version|booktitle)\s*=\s*\{(.*)\}',line)
         if m: bibliography.append(dict(line=i,field=m[1],value=m[2],numeric_literals=re.findall(r'\d+(?:\.\d+)?',m[2]),category='bibliographic year/volume/page/identifier metadata; no empirical receipt'))
     structural+= [dict(line=i,token=None,reason='Section/equation/table reference label; resolved numbers belong to document structure') for i,line in enumerate(original,1) if re.search(r'\\(?:ref|label)\{',line)]
-    manifest=dict(source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),detex_sha256=hashlib.sha256(output.read_bytes()).hexdigest(),line_numbers='same as original main.tex',raw_checker_exit=p.returncode,unmatched=unmatched,empirical_unmatched=[r for r in unmatched if not r['structural']],structural_constants=structural,bibliographic_numbers=bibliography,scope='Numeric matching checks stated rounding only; independent audit supplies semantic provenance. No TeX build.')
+    manifest=dict(source_version=('v6' if stage=='11' else stage),source_sha256=hashlib.sha256(source.read_bytes()).hexdigest(),detex_sha256=hashlib.sha256(output.read_bytes()).hexdigest(),line_numbers='same as original main.tex',raw_checker_exit=p.returncode,unmatched=unmatched,empirical_unmatched=[r for r in unmatched if not r['structural']],structural_constants=structural,bibliographic_numbers=bibliography,scope='Numeric matching checks stated rounding only; independent audit supplies semantic provenance. No TeX build.')
     (ROOT/f'receipts/acd_stage{stage}_numeric_check.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print('RAW EXIT',p.returncode,'UNMATCHED',json.dumps(unmatched),'STRUCTURAL explicit',len(structural),'BIB FIELDS',len(bibliography))
     return bool(manifest['empirical_unmatched'])
 if __name__=='__main__':
     parser=argparse.ArgumentParser()
-    parser.add_argument('--stage',choices=['5b','5c','7','8'],default='5b')
+    parser.add_argument('--stage',choices=['5b','5c','7','8','11'],default='5b')
     sys.exit(run(parser.parse_args().stage))

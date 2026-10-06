@@ -1,0 +1,595 @@
+{
+  "scope": "Post hoc climatological, descriptive; licenses no frozen route. Finite-ensemble estimates do not prove invariant-measure shift symmetry.",
+  "states": 4096,
+  "F": 8.0,
+  "dtype": "float64",
+  "dt": 0.01,
+  "source_states": "/home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/runs/stage4b_null/states.npz",
+  "source_states_sha256": "0d7db6b75fc1f1a279e884a1c63205ba278a58726d676e41cb58d2aba5160b4d",
+  "source_null_receipt": "receipts/acd_stage4b_null.json",
+  "source_code_hashes": {
+    "acd_stage11_clim_tangent.py": "2339197da2dd482e002f6db7eb866f09cd2e8d2b170f2c851099939a816b5e1d",
+    "acd_stage9_forward.py": "74241c217a34299094d4052df02debbda5ef79df28a1f348021b15f83b50a235",
+    "acd_protocol.py": "160eabe8ccee07d0de17576a441b6fef1a93e1d5dbb68f2df9eb118a1eaad000"
+  },
+  "rows": [
+    {
+      "pattern": 0,
+      "lead": 0.0,
+      "mean": -0.6633717846528909,
+      "standard_deviation": 0.06380963684087033,
+      "standard_error": 0.000997025575638599,
+      "mean_over_sd": -10.396106567840526,
+      "negative_share": 1.0
+    },
+    {
+      "pattern": 0,
+      "lead": 1.0,
+      "mean": -1.4826328052721904,
+      "standard_deviation": 0.22101289521372453,
+      "standard_error": 0.0034533264877144457,
+      "mean_over_sd": -6.708354296876888,
+      "negative_share": 1.0
+    },
+    {
+      "pattern": 0,
+      "lead": 1.5,
+      "mean": -1.582189709412925,
+      "standard_deviation": 0.41193422281920317,
+      "standard_error": 0.0064364722315500495,
+      "mean_over_sd": -3.8408794942665976,
+      "negative_share": 0.996826171875
+    },
+    {
+      "pattern": 0,
+      "lead": 2.0,
+      "mean": -1.645146726330069,
+      "standard_deviation": 0.7825986259272263,
+      "standard_error": 0.01222810353011291,
+      "mean_over_sd": -2.1021589762963,
+      "negative_share": 0.980224609375
+    },
+    {
+      "pattern": 0,
+      "lead": 2.5,
+      "mean": -1.7150689195456694,
+      "standard_deviation": 1.6969417345804583,
+      "standard_error": 0.02651471460281966,
+      "mean_over_sd": -1.0106822671608655,
+      "negative_share": 0.945068359375
+    },
+    {
+      "pattern": 0,
+      "lead": 3.0,
+      "mean": -1.7660307075907464,
+      "standard_deviation": 3.3171846372154254,
+      "standard_error": 0.05183100995649102,
+      "mean_over_sd": -0.5323884259494285,
+      "negative_share": 0.87451171875
+    },
+    {
+      "pattern": 0,
+      "lead": 4.0,
+      "mean": -1.770077905816953,
+      "standard_deviation": 11.766969543663375,
+      "standard_error": 0.18385889911974024,
+      "mean_over_sd": -0.15042767802268653,
+      "negative_share": 0.708740234375
+    },
+    {
+      "pattern": 0,
+      "lead": 6.0,
+      "mean": -0.7584103164404352,
+      "standard_deviation": 185.4677978196585,
+      "standard_error": 2.897934340932164,
+      "mean_over_sd": -0.004089175184890497,
+      "negative_share": 0.5283203125
+    },
+    {
+      "pattern": 1,
+      "lead": 0.0,
+      "mean": 0.0006097659220730996,
+      "standard_deviation": 0.06398273521668658,
+      "standard_error": 0.0009997302377607279,
+      "mean_over_sd": 0.009530163410614457,
+      "negative_share": 0.49658203125
+    },
+    {
+      "pattern": 1,
+      "lead": 1.0,
+      "mean": 0.005679504835826486,
+      "standard_deviation": 0.23204934241249517,
+      "standard_error": 0.003625770975195237,
+      "mean_over_sd": 0.024475418791450373,
+      "negative_share": 0.494140625
+    },
+    {
+      "pattern": 1,
+      "lead": 1.5,
+      "mean": 0.009774777317205935,
+      "standard_deviation": 0.45457363409018564,
+      "standard_error": 0.007102713032659151,
+      "mean_over_sd": 0.021503177008428645,
+      "negative_share": 0.497314453125
+    },
+    {
+      "pattern": 1,
+      "lead": 2.0,
+      "mean": 0.0071124163411853715,
+      "standard_deviation": 0.918516759548374,
+      "standard_error": 0.014351824367943343,
+      "mean_over_sd": 0.007743371329100712,
+      "negative_share": 0.4970703125
+    },
+    {
+      "pattern": 1,
+      "lead": 2.5,
+      "mean": 0.00950443784561405,
+      "standard_deviation": 2.153182886381557,
+      "standard_error": 0.03364348259971183,
+      "mean_over_sd": 0.004414134027224386,
+      "negative_share": 0.500244140625
+    },
+    {
+      "pattern": 1,
+      "lead": 3.0,
+      "mean": 0.02896005533859702,
+      "standard_deviation": 4.12891879389517,
+      "standard_error": 0.06451435615461203,
+      "mean_over_sd": 0.007013956143050339,
+      "negative_share": 0.503173828125
+    },
+    {
+      "pattern": 1,
+      "lead": 4.0,
+      "mean": 0.18142480810208553,
+      "standard_deviation": 14.394773798050192,
+      "standard_error": 0.22491834059453425,
+      "mean_over_sd": 0.012603519211025043,
+      "negative_share": 0.49560546875
+    },
+    {
+      "pattern": 1,
+      "lead": 6.0,
+      "mean": 4.319260046597528,
+      "standard_deviation": 221.04083216861787,
+      "standard_error": 3.453763002634654,
+      "mean_over_sd": 0.01954055277579955,
+      "negative_share": 0.499267578125
+    },
+    {
+      "pattern": 2,
+      "lead": 0.0,
+      "mean": -0.0003323771366961015,
+      "standard_deviation": 0.06390138044740856,
+      "standard_error": 0.0009984590694907588,
+      "mean_over_sd": -0.005201407768798532,
+      "negative_share": 0.50830078125
+    },
+    {
+      "pattern": 2,
+      "lead": 1.0,
+      "mean": -0.001267030939071244,
+      "standard_deviation": 0.2645480673697528,
+      "standard_error": 0.004133563552652387,
+      "mean_over_sd": -0.004789416727434806,
+      "negative_share": 0.502685546875
+    },
+    {
+      "pattern": 2,
+      "lead": 1.5,
+      "mean": -0.00951296518423093,
+      "standard_deviation": 0.5441177524848665,
+      "standard_error": 0.008501839882576039,
+      "mean_over_sd": -0.017483283978122943,
+      "negative_share": 0.50634765625
+    },
+    {
+      "pattern": 2,
+      "lead": 2.0,
+      "mean": -0.025601992892848962,
+      "standard_deviation": 1.082923668427278,
+      "standard_error": 0.01692068231917622,
+      "mean_over_sd": -0.023641548928402815,
+      "negative_share": 0.50732421875
+    },
+    {
+      "pattern": 2,
+      "lead": 2.5,
+      "mean": -0.025030596854383552,
+      "standard_deviation": 2.4432046026329726,
+      "standard_error": 0.038175071916140196,
+      "mean_over_sd": -0.010244985961228456,
+      "negative_share": 0.499267578125
+    },
+    {
+      "pattern": 2,
+      "lead": 3.0,
+      "mean": -0.04383129445220134,
+      "standard_deviation": 5.167499595341189,
+      "standard_error": 0.08074218117720608,
+      "mean_over_sd": -0.008482108927829985,
+      "negative_share": 0.497314453125
+    },
+    {
+      "pattern": 2,
+      "lead": 4.0,
+      "mean": -0.1634673015521816,
+      "standard_deviation": 18.03188028667011,
+      "standard_error": 0.28174812947922045,
+      "mean_over_sd": -0.009065460670400701,
+      "negative_share": 0.50048828125
+    },
+    {
+      "pattern": 2,
+      "lead": 6.0,
+      "mean": -0.8508807670865011,
+      "standard_deviation": 281.5678964291487,
+      "standard_error": 4.399498381705448,
+      "mean_over_sd": -0.003021938146633167,
+      "negative_share": 0.509521484375
+    },
+    {
+      "pattern": 3,
+      "lead": 0.0,
+      "mean": 3.9230551581805094e-06,
+      "standard_deviation": 0.06841378734696937,
+      "standard_error": 0.0010689654272963965,
+      "mean_over_sd": 5.7343048971755175e-05,
+      "negative_share": 0.502197265625
+    },
+    {
+      "pattern": 3,
+      "lead": 1.0,
+      "mean": -5.0443018235243886e-05,
+      "standard_deviation": 0.35859014485790675,
+      "standard_error": 0.005602971013404793,
+      "mean_over_sd": -0.0001406703975515897,
+      "negative_share": 0.494873046875
+    },
+    {
+      "pattern": 3,
+      "lead": 1.5,
+      "mean": -0.006257926297174047,
+      "standard_deviation": 0.772547035107034,
+      "standard_error": 0.012071047423547407,
+      "mean_over_sd": -0.008100382258676367,
+      "negative_share": 0.507568359375
+    },
+    {
+      "pattern": 3,
+      "lead": 2.0,
+      "mean": -0.010096893237820663,
+      "standard_deviation": 1.6363177239829132,
+      "standard_error": 0.02556746443723302,
+      "mean_over_sd": -0.006170496774455337,
+      "negative_share": 0.50732421875
+    },
+    {
+      "pattern": 3,
+      "lead": 2.5,
+      "mean": 0.027308012824986624,
+      "standard_deviation": 3.6696053604129997,
+      "standard_error": 0.05733758375645312,
+      "mean_over_sd": 0.007441675641631724,
+      "negative_share": 0.500732421875
+    },
+    {
+      "pattern": 3,
+      "lead": 3.0,
+      "mean": 0.0692454117202532,
+      "standard_deviation": 7.331107319048337,
+      "standard_error": 0.11454855186013027,
+      "mean_over_sd": 0.009445423277372245,
+      "negative_share": 0.49658203125
+    },
+    {
+      "pattern": 3,
+      "lead": 4.0,
+      "mean": -0.04838568140562559,
+      "standard_deviation": 27.16794582008564,
+      "standard_error": 0.42449915343883815,
+      "mean_over_sd": -0.001780984168845529,
+      "negative_share": 0.499267578125
+    },
+    {
+      "pattern": 3,
+      "lead": 6.0,
+      "mean": 3.270689574563782,
+      "standard_deviation": 427.16374284503263,
+      "standard_error": 6.674433481953635,
+      "mean_over_sd": 0.007656758396159876,
+      "negative_share": 0.505859375
+    },
+    {
+      "pattern": 4,
+      "lead": 0.0,
+      "mean": -0.00031097135256212094,
+      "standard_deviation": 0.10597639516488618,
+      "standard_error": 0.0016558811744513465,
+      "mean_over_sd": -0.0029343454462504403,
+      "negative_share": 0.5048828125
+    },
+    {
+      "pattern": 4,
+      "lead": 1.0,
+      "mean": -0.004330614389755138,
+      "standard_deviation": 0.3975406686356969,
+      "standard_error": 0.0062115729474327645,
+      "mean_over_sd": -0.010893512869053601,
+      "negative_share": 0.500244140625
+    },
+    {
+      "pattern": 4,
+      "lead": 1.5,
+      "mean": -0.0007596656994723547,
+      "standard_deviation": 0.9028477200804844,
+      "standard_error": 0.014106995626257569,
+      "mean_over_sd": -0.0008414106638100988,
+      "negative_share": 0.50830078125
+    },
+    {
+      "pattern": 4,
+      "lead": 2.0,
+      "mean": 0.016336769871791154,
+      "standard_deviation": 1.910292287122554,
+      "standard_error": 0.029848316986289907,
+      "mean_over_sd": 0.008551973947609346,
+      "negative_share": 0.500244140625
+    },
+    {
+      "pattern": 4,
+      "lead": 2.5,
+      "mean": 0.015391573101671854,
+      "standard_deviation": 4.124402362769816,
+      "standard_error": 0.06444378691827837,
+      "mean_over_sd": 0.0037318311231243134,
+      "negative_share": 0.491455078125
+    },
+    {
+      "pattern": 4,
+      "lead": 3.0,
+      "mean": 0.00838036526634734,
+      "standard_deviation": 8.317519444721189,
+      "standard_error": 0.12996124132376857,
+      "mean_over_sd": 0.0010075558370550054,
+      "negative_share": 0.487060546875
+    },
+    {
+      "pattern": 4,
+      "lead": 4.0,
+      "mean": 0.01619179832527938,
+      "standard_deviation": 34.199537989762035,
+      "standard_error": 0.5343677810900318,
+      "mean_over_sd": 0.0004734507913564959,
+      "negative_share": 0.500244140625
+    },
+    {
+      "pattern": 4,
+      "lead": 6.0,
+      "mean": 4.7647024424829825,
+      "standard_deviation": 516.9014487975787,
+      "standard_error": 8.076585137462168,
+      "mean_over_sd": 0.009217815994841339,
+      "negative_share": 0.492919921875
+    },
+    {
+      "pattern": 5,
+      "lead": 0.0,
+      "mean": 0.001921848668324499,
+      "standard_deviation": 0.10010259129657119,
+      "standard_error": 0.0015641029890089248,
+      "mean_over_sd": 0.019198790395252515,
+      "negative_share": 0.4892578125
+    },
+    {
+      "pattern": 5,
+      "lead": 1.0,
+      "mean": -0.007471715194556977,
+      "standard_deviation": 0.32307671739201604,
+      "standard_error": 0.005048073709250251,
+      "mean_over_sd": -0.023126752230464565,
+      "negative_share": 0.50927734375
+    },
+    {
+      "pattern": 5,
+      "lead": 1.5,
+      "mean": -0.017240492315610846,
+      "standard_deviation": 0.7744086332962601,
+      "standard_error": 0.012100134895254064,
+      "mean_over_sd": -0.022262784238634994,
+      "negative_share": 0.5068359375
+    },
+    {
+      "pattern": 5,
+      "lead": 2.0,
+      "mean": -0.021263373138935115,
+      "standard_deviation": 1.7281390918466502,
+      "standard_error": 0.02700217331010391,
+      "mean_over_sd": -0.012304202386981223,
+      "negative_share": 0.4873046875
+    },
+    {
+      "pattern": 5,
+      "lead": 2.5,
+      "mean": -0.007483632258839287,
+      "standard_deviation": 3.89969947015608,
+      "standard_error": 0.06093280422118875,
+      "mean_over_sd": -0.001919027944617426,
+      "negative_share": 0.495849609375
+    },
+    {
+      "pattern": 5,
+      "lead": 3.0,
+      "mean": 0.0671996920924792,
+      "standard_deviation": 8.168420905672278,
+      "standard_error": 0.12763157665112934,
+      "mean_over_sd": 0.008226766576856328,
+      "negative_share": 0.49853515625
+    },
+    {
+      "pattern": 5,
+      "lead": 4.0,
+      "mean": 0.7812473998075246,
+      "standard_deviation": 32.63766801324296,
+      "standard_error": 0.5099635627069212,
+      "mean_over_sd": 0.023936985923458994,
+      "negative_share": 0.489501953125
+    },
+    {
+      "pattern": 5,
+      "lead": 6.0,
+      "mean": -9.802838451955036,
+      "standard_deviation": 439.08059711395424,
+      "standard_error": 6.860634329905535,
+      "mean_over_sd": -0.022325829281431248,
+      "negative_share": 0.49609375
+    },
+    {
+      "pattern": 6,
+      "lead": 0.0,
+      "mean": 0.0005225766997827117,
+      "standard_deviation": 0.07957007900369682,
+      "standard_error": 0.0012432824844327629,
+      "mean_over_sd": 0.006567502587982007,
+      "negative_share": 0.50048828125
+    },
+    {
+      "pattern": 6,
+      "lead": 1.0,
+      "mean": 0.0032261887959129268,
+      "standard_deviation": 0.19998795506479888,
+      "standard_error": 0.0031248117978874826,
+      "mean_over_sd": 0.016131915518950112,
+      "negative_share": 0.4892578125
+    },
+    {
+      "pattern": 6,
+      "lead": 1.5,
+      "mean": 0.009160921987781288,
+      "standard_deviation": 0.38275023272887976,
+      "standard_error": 0.005980472386388746,
+      "mean_over_sd": 0.023934464840078638,
+      "negative_share": 0.482666015625
+    },
+    {
+      "pattern": 6,
+      "lead": 2.0,
+      "mean": 0.02448611387502329,
+      "standard_deviation": 0.8799697962173127,
+      "standard_error": 0.013749528065895512,
+      "mean_over_sd": 0.027826084463672122,
+      "negative_share": 0.48291015625
+    },
+    {
+      "pattern": 6,
+      "lead": 2.5,
+      "mean": 0.07591669909309176,
+      "standard_deviation": 2.2188447103568167,
+      "standard_error": 0.03466944859932526,
+      "mean_over_sd": 0.03421451656293849,
+      "negative_share": 0.485595703125
+    },
+    {
+      "pattern": 6,
+      "lead": 3.0,
+      "mean": 0.13047553800244632,
+      "standard_deviation": 4.133420064366982,
+      "standard_error": 0.0645846885057341,
+      "mean_over_sd": 0.03156600006063699,
+      "negative_share": 0.506103515625
+    },
+    {
+      "pattern": 6,
+      "lead": 4.0,
+      "mean": 0.15016335980609719,
+      "standard_deviation": 14.507313388599565,
+      "standard_error": 0.2266767716968682,
+      "mean_over_sd": 0.010350873093022284,
+      "negative_share": 0.491943359375
+    },
+    {
+      "pattern": 6,
+      "lead": 6.0,
+      "mean": 4.937299404348558,
+      "standard_deviation": 211.8542393437939,
+      "standard_error": 3.3102224897467796,
+      "mean_over_sd": 0.023305171610639247,
+      "negative_share": 0.49462890625
+    },
+    {
+      "pattern": 7,
+      "lead": 0.0,
+      "mean": -0.00234989941369315,
+      "standard_deviation": 0.08913810423961589,
+      "standard_error": 0.0013927828787439983,
+      "mean_over_sd": -0.02636245670399593,
+      "negative_share": 0.45361328125
+    },
+    {
+      "pattern": 7,
+      "lead": 1.0,
+      "mean": 0.006945979762058505,
+      "standard_deviation": 0.31579135317129736,
+      "standard_error": 0.004934239893301521,
+      "mean_over_sd": 0.02199547166920286,
+      "negative_share": 0.474365234375
+    },
+    {
+      "pattern": 7,
+      "lead": 1.5,
+      "mean": 0.020546284432721166,
+      "standard_deviation": 0.6705406356396933,
+      "standard_error": 0.010477197431870209,
+      "mean_over_sd": 0.03064137106786986,
+      "negative_share": 0.47607421875
+    },
+    {
+      "pattern": 7,
+      "lead": 2.0,
+      "mean": 0.024971293492345125,
+      "standard_deviation": 1.463072979315263,
+      "standard_error": 0.022860515301800985,
+      "mean_over_sd": 0.017067701916026096,
+      "negative_share": 0.48681640625
+    },
+    {
+      "pattern": 7,
+      "lead": 2.5,
+      "mean": -0.01421361008415508,
+      "standard_deviation": 3.6402693517456375,
+      "standard_error": 0.056879208621025586,
+      "mean_over_sd": -0.003904549007435165,
+      "negative_share": 0.49755859375
+    },
+    {
+      "pattern": 7,
+      "lead": 3.0,
+      "mean": -0.056904899484968005,
+      "standard_deviation": 6.667422616748994,
+      "standard_error": 0.10417847838670304,
+      "mean_over_sd": -0.008534767144056422,
+      "negative_share": 0.501220703125
+    },
+    {
+      "pattern": 7,
+      "lead": 4.0,
+      "mean": 0.14415529412024453,
+      "standard_deviation": 29.462411809697258,
+      "standard_error": 0.46035018452651966,
+      "mean_over_sd": 0.0048928544971595725,
+      "negative_share": 0.503662109375
+    },
+    {
+      "pattern": 7,
+      "lead": 6.0,
+      "mean": 6.6528710005191805,
+      "standard_deviation": 314.0340585775314,
+      "standard_error": 4.9067821652739285,
+      "mean_over_sd": 0.02118518937294396,
+      "negative_share": 0.5078125
+    }
+  ],
+  "elapsed_cpu_run_seconds": 7.003584646998206,
+  "truth_access": false
+}

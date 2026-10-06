@@ -1,0 +1,58 @@
+{
+  "scope": "Paper v6 receipt-only derivations; post hoc; no frozen route license",
+  "source_hashes": {
+    "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49",
+    "receipts/acd_stage2.json": "16b009b1bb3038866f7336a9217a9182b1ae5df27961cab91583760886fbcce1",
+    "acd_stage9_training_data.py": "0d821e33f48847c2c8ec7737640718fd1d0720909fc182d148f9b41d6731a5c4"
+  },
+  "quantities": {
+    "CNN-F_GPU_HOURS": {
+      "value": 1.6623143853188869,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.F.CNN-F.charged_gpu_seconds",
+      "derivation": "charged seconds / seconds per hour; discarded duration already included"
+    },
+    "CNN-F-resp_GPU_HOURS": {
+      "value": 4.109466532578049,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.F.CNN-F-resp.charged_gpu_seconds",
+      "derivation": "charged seconds / seconds per hour; discarded duration already included"
+    },
+    "CNN20K_TRAIN_TRAJECTORIES": {
+      "value": 2048,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.CNN_provenance.CNN20k.training_distribution",
+      "derivation": "parse retained training trajectory count; generating source recorded in provenance.source"
+    },
+    "CNNF_TRAIN_TRAJECTORIES": {
+      "value": 4096,
+      "source": "acd_stage9_training_data.py",
+      "source_path": "line 10, run trajectory loop",
+      "derivation": "literal_eval trajectory counts in generating code; training and validation use distinct roles"
+    },
+    "CNNF_VAL_TRAJECTORIES": {
+      "value": 512,
+      "source": "acd_stage9_training_data.py",
+      "source_path": "line 10, run trajectory loop",
+      "derivation": "literal_eval trajectory counts in generating code; training and validation use distinct roles"
+    },
+    "E_LARGEST_HARM_OVER_MEAN_IMPROVEMENT_2LT": {
+      "value": 5.5055263063868844,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.D[0].max_harm / $.D[0].mean_improvement",
+      "derivation": "largest realized harm / mean realized improvement, E at 2 LT"
+    },
+    "POSTERIOR_S_WRONG_SHARE_0_TO_3LT": {
+      "value": 0.0026700393479482856,
+      "source": "receipts/acd_stage2.json",
+      "source_path": "$.all_confident_calibration, S rows at leads 0 through 3",
+      "derivation": "sum wrong / sum confident answers; pooled descriptive"
+    },
+    "POSTERIOR_S_ANSWERS_PER_ERROR_0_TO_3LT": {
+      "value": 374.5263157894737,
+      "source": "receipts/acd_stage2.json",
+      "source_path": "$.all_confident_calibration, S rows at leads 0 through 3",
+      "derivation": "sum confident answers / sum wrong"
+    }
+  }
+}

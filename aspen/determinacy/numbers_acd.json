@@ -16,7 +16,9 @@
     "receipts/acd_stage4b_null.json": "a07c153976f936a6e38ab22076c728501fefc796fdf11fca1a46bdb29f9ee418",
     "receipts/acd_stage6.json": "fa4a0dc1da0d91b1e93fd4c9bee6dad42feeff5d17535058e590f900af24177d",
     "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49",
-    "receipts/acd_stage10_terminal_baseline.json": "9e49506be53233711b406ce759aef3c08407bdf979e820cfe65f118c65112333"
+    "receipts/acd_stage10_terminal_baseline.json": "9e49506be53233711b406ce759aef3c08407bdf979e820cfe65f118c65112333",
+    "receipts/acd_paper_v6_derived.json": "63b5defebe173a5299c2ffeb0dfce7e25111cb2c66a17f4d829107dc7156a61e",
+    "receipts/acd_stage11_clim_tangent.json": "daac9a040feafda811fffb90ae61dd1dd817058958ea77ae7defb125c15fff1d"
   },
   "numbers": {
     "ACD_ALL_CONFIDENT_ACCURACY": {
@@ -31644,6 +31646,102 @@
       ],
       "derivation": "maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration"
     },
+    "ACD_POSTHOC_PAPER_V6_CNN20K_TRAIN_TRAJECTORIES": {
+      "value": 2048,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.CNN20K_TRAIN_TRAJECTORIES.value",
+      "derivation": "parse retained training trajectory count; generating source recorded in provenance.source",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.CNN_provenance.CNN20k.training_distribution"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_CNNF_TRAIN_TRAJECTORIES": {
+      "value": 4096,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.CNNF_TRAIN_TRAJECTORIES.value",
+      "derivation": "literal_eval trajectory counts in generating code; training and validation use distinct roles",
+      "additional_sources": [
+        {
+          "receipt": "acd_stage9_training_data.py",
+          "receipt_path": "line 10, run trajectory loop"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_CNNF_VAL_TRAJECTORIES": {
+      "value": 512,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.CNNF_VAL_TRAJECTORIES.value",
+      "derivation": "literal_eval trajectory counts in generating code; training and validation use distinct roles",
+      "additional_sources": [
+        {
+          "receipt": "acd_stage9_training_data.py",
+          "receipt_path": "line 10, run trajectory loop"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_CNN_F_GPU_HOURS": {
+      "value": 1.6623143853188869,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.CNN-F_GPU_HOURS.value",
+      "derivation": "charged seconds / seconds per hour; discarded duration already included",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.F.CNN-F.charged_gpu_seconds"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_CNN_F_RESP_GPU_HOURS": {
+      "value": 4.109466532578049,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.CNN-F-resp_GPU_HOURS.value",
+      "derivation": "charged seconds / seconds per hour; discarded duration already included",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.F.CNN-F-resp.charged_gpu_seconds"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_E_LARGEST_HARM_OVER_MEAN_IMPROVEMENT_2LT": {
+      "value": 5.5055263063868844,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.E_LARGEST_HARM_OVER_MEAN_IMPROVEMENT_2LT.value",
+      "derivation": "largest realized harm / mean realized improvement, E at 2 LT",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.D[0].max_harm / $.D[0].mean_improvement"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_POSTERIOR_S_ANSWERS_PER_ERROR_0_TO_3LT": {
+      "value": 374.5263157894737,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.POSTERIOR_S_ANSWERS_PER_ERROR_0_TO_3LT.value",
+      "derivation": "sum confident answers / sum wrong",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.all_confident_calibration, S rows at leads 0 through 3"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V6_POSTERIOR_S_WRONG_SHARE_0_TO_3LT": {
+      "value": 0.0026700393479482856,
+      "receipt": "receipts/acd_paper_v6_derived.json",
+      "receipt_path": "$.quantities.POSTERIOR_S_WRONG_SHARE_0_TO_3LT.value",
+      "derivation": "sum wrong / sum confident answers; pooled descriptive",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage2.json",
+          "receipt_path": "$.all_confident_calibration, S rows at leads 0 through 3"
+        }
+      ]
+    },
     "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_BASE_LOSS": {
       "value": 0.0010686422001526807,
       "receipt": "receipts/acd_stage10_terminal_baseline.json",
@@ -31708,6 +31806,2261 @@
       "value": 0.03606934620814766,
       "receipt": "receipts/acd_stage10_terminal_baseline.json",
       "receipt_path": "$.weighted_difference_loss"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_DT": {
+      "value": 0.01,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.dt"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_F": {
+      "value": 8.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.F"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_MEAN": {
+      "value": -0.6633717846528909,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_MEAN_OVER_SD": {
+      "value": -10.396106567840526,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_NEGATIVE_SHARE": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_STANDARD_DEVIATION": {
+      "value": 0.06380963684087033,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_0_STANDARD_ERROR": {
+      "value": 0.000997025575638599,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[0].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_MEAN": {
+      "value": 0.009774777317205935,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_MEAN_OVER_SD": {
+      "value": 0.021503177008428645,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_NEGATIVE_SHARE": {
+      "value": 0.497314453125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_STANDARD_DEVIATION": {
+      "value": 0.45457363409018564,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_10_STANDARD_ERROR": {
+      "value": 0.007102713032659151,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[10].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_MEAN": {
+      "value": 0.0071124163411853715,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_MEAN_OVER_SD": {
+      "value": 0.007743371329100712,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_NEGATIVE_SHARE": {
+      "value": 0.4970703125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_STANDARD_DEVIATION": {
+      "value": 0.918516759548374,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_11_STANDARD_ERROR": {
+      "value": 0.014351824367943343,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[11].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_MEAN": {
+      "value": 0.00950443784561405,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_MEAN_OVER_SD": {
+      "value": 0.004414134027224386,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_NEGATIVE_SHARE": {
+      "value": 0.500244140625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_STANDARD_DEVIATION": {
+      "value": 2.153182886381557,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_12_STANDARD_ERROR": {
+      "value": 0.03364348259971183,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[12].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_MEAN": {
+      "value": 0.02896005533859702,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_MEAN_OVER_SD": {
+      "value": 0.007013956143050339,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_NEGATIVE_SHARE": {
+      "value": 0.503173828125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_STANDARD_DEVIATION": {
+      "value": 4.12891879389517,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_13_STANDARD_ERROR": {
+      "value": 0.06451435615461203,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[13].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_MEAN": {
+      "value": 0.18142480810208553,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_MEAN_OVER_SD": {
+      "value": 0.012603519211025043,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_NEGATIVE_SHARE": {
+      "value": 0.49560546875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_STANDARD_DEVIATION": {
+      "value": 14.394773798050192,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_14_STANDARD_ERROR": {
+      "value": 0.22491834059453425,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[14].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_MEAN": {
+      "value": 4.319260046597528,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_MEAN_OVER_SD": {
+      "value": 0.01954055277579955,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_NEGATIVE_SHARE": {
+      "value": 0.499267578125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_STANDARD_DEVIATION": {
+      "value": 221.04083216861787,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_15_STANDARD_ERROR": {
+      "value": 3.453763002634654,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[15].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_MEAN": {
+      "value": -0.0003323771366961015,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_MEAN_OVER_SD": {
+      "value": -0.005201407768798532,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_NEGATIVE_SHARE": {
+      "value": 0.50830078125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_STANDARD_DEVIATION": {
+      "value": 0.06390138044740856,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_16_STANDARD_ERROR": {
+      "value": 0.0009984590694907588,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[16].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_MEAN": {
+      "value": -0.001267030939071244,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_MEAN_OVER_SD": {
+      "value": -0.004789416727434806,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_NEGATIVE_SHARE": {
+      "value": 0.502685546875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_STANDARD_DEVIATION": {
+      "value": 0.2645480673697528,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_17_STANDARD_ERROR": {
+      "value": 0.004133563552652387,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[17].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_MEAN": {
+      "value": -0.00951296518423093,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_MEAN_OVER_SD": {
+      "value": -0.017483283978122943,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_NEGATIVE_SHARE": {
+      "value": 0.50634765625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_STANDARD_DEVIATION": {
+      "value": 0.5441177524848665,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_18_STANDARD_ERROR": {
+      "value": 0.008501839882576039,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[18].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_MEAN": {
+      "value": -0.025601992892848962,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_MEAN_OVER_SD": {
+      "value": -0.023641548928402815,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_NEGATIVE_SHARE": {
+      "value": 0.50732421875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_STANDARD_DEVIATION": {
+      "value": 1.082923668427278,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_19_STANDARD_ERROR": {
+      "value": 0.01692068231917622,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[19].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_MEAN": {
+      "value": -1.4826328052721904,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_MEAN_OVER_SD": {
+      "value": -6.708354296876888,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_NEGATIVE_SHARE": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_STANDARD_DEVIATION": {
+      "value": 0.22101289521372453,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_1_STANDARD_ERROR": {
+      "value": 0.0034533264877144457,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[1].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_MEAN": {
+      "value": -0.025030596854383552,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_MEAN_OVER_SD": {
+      "value": -0.010244985961228456,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_NEGATIVE_SHARE": {
+      "value": 0.499267578125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_STANDARD_DEVIATION": {
+      "value": 2.4432046026329726,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_20_STANDARD_ERROR": {
+      "value": 0.038175071916140196,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[20].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_MEAN": {
+      "value": -0.04383129445220134,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_MEAN_OVER_SD": {
+      "value": -0.008482108927829985,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_NEGATIVE_SHARE": {
+      "value": 0.497314453125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_STANDARD_DEVIATION": {
+      "value": 5.167499595341189,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_21_STANDARD_ERROR": {
+      "value": 0.08074218117720608,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[21].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_MEAN": {
+      "value": -0.1634673015521816,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_MEAN_OVER_SD": {
+      "value": -0.009065460670400701,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_NEGATIVE_SHARE": {
+      "value": 0.50048828125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_STANDARD_DEVIATION": {
+      "value": 18.03188028667011,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_22_STANDARD_ERROR": {
+      "value": 0.28174812947922045,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[22].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_MEAN": {
+      "value": -0.8508807670865011,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_MEAN_OVER_SD": {
+      "value": -0.003021938146633167,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_NEGATIVE_SHARE": {
+      "value": 0.509521484375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_PATTERN": {
+      "value": 2,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_STANDARD_DEVIATION": {
+      "value": 281.5678964291487,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_23_STANDARD_ERROR": {
+      "value": 4.399498381705448,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[23].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_MEAN": {
+      "value": 3.9230551581805094e-06,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_MEAN_OVER_SD": {
+      "value": 5.7343048971755175e-05,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_NEGATIVE_SHARE": {
+      "value": 0.502197265625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_STANDARD_DEVIATION": {
+      "value": 0.06841378734696937,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_24_STANDARD_ERROR": {
+      "value": 0.0010689654272963965,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[24].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_MEAN": {
+      "value": -5.0443018235243886e-05,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_MEAN_OVER_SD": {
+      "value": -0.0001406703975515897,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_NEGATIVE_SHARE": {
+      "value": 0.494873046875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_STANDARD_DEVIATION": {
+      "value": 0.35859014485790675,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_25_STANDARD_ERROR": {
+      "value": 0.005602971013404793,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[25].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_MEAN": {
+      "value": -0.006257926297174047,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_MEAN_OVER_SD": {
+      "value": -0.008100382258676367,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_NEGATIVE_SHARE": {
+      "value": 0.507568359375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_STANDARD_DEVIATION": {
+      "value": 0.772547035107034,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_26_STANDARD_ERROR": {
+      "value": 0.012071047423547407,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[26].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_MEAN": {
+      "value": -0.010096893237820663,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_MEAN_OVER_SD": {
+      "value": -0.006170496774455337,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_NEGATIVE_SHARE": {
+      "value": 0.50732421875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_STANDARD_DEVIATION": {
+      "value": 1.6363177239829132,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_27_STANDARD_ERROR": {
+      "value": 0.02556746443723302,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[27].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_MEAN": {
+      "value": 0.027308012824986624,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_MEAN_OVER_SD": {
+      "value": 0.007441675641631724,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_NEGATIVE_SHARE": {
+      "value": 0.500732421875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_STANDARD_DEVIATION": {
+      "value": 3.6696053604129997,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_28_STANDARD_ERROR": {
+      "value": 0.05733758375645312,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[28].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_MEAN": {
+      "value": 0.0692454117202532,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_MEAN_OVER_SD": {
+      "value": 0.009445423277372245,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_NEGATIVE_SHARE": {
+      "value": 0.49658203125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_STANDARD_DEVIATION": {
+      "value": 7.331107319048337,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_29_STANDARD_ERROR": {
+      "value": 0.11454855186013027,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[29].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_MEAN": {
+      "value": -1.582189709412925,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_MEAN_OVER_SD": {
+      "value": -3.8408794942665976,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_NEGATIVE_SHARE": {
+      "value": 0.996826171875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_STANDARD_DEVIATION": {
+      "value": 0.41193422281920317,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_2_STANDARD_ERROR": {
+      "value": 0.0064364722315500495,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[2].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_MEAN": {
+      "value": -0.04838568140562559,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_MEAN_OVER_SD": {
+      "value": -0.001780984168845529,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_NEGATIVE_SHARE": {
+      "value": 0.499267578125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_STANDARD_DEVIATION": {
+      "value": 27.16794582008564,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_30_STANDARD_ERROR": {
+      "value": 0.42449915343883815,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[30].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_MEAN": {
+      "value": 3.270689574563782,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_MEAN_OVER_SD": {
+      "value": 0.007656758396159876,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_NEGATIVE_SHARE": {
+      "value": 0.505859375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_PATTERN": {
+      "value": 3,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_STANDARD_DEVIATION": {
+      "value": 427.16374284503263,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_31_STANDARD_ERROR": {
+      "value": 6.674433481953635,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[31].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_MEAN": {
+      "value": -0.00031097135256212094,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_MEAN_OVER_SD": {
+      "value": -0.0029343454462504403,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_NEGATIVE_SHARE": {
+      "value": 0.5048828125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_STANDARD_DEVIATION": {
+      "value": 0.10597639516488618,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_32_STANDARD_ERROR": {
+      "value": 0.0016558811744513465,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[32].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_MEAN": {
+      "value": -0.004330614389755138,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_MEAN_OVER_SD": {
+      "value": -0.010893512869053601,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_NEGATIVE_SHARE": {
+      "value": 0.500244140625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_STANDARD_DEVIATION": {
+      "value": 0.3975406686356969,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_33_STANDARD_ERROR": {
+      "value": 0.0062115729474327645,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[33].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_MEAN": {
+      "value": -0.0007596656994723547,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_MEAN_OVER_SD": {
+      "value": -0.0008414106638100988,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_NEGATIVE_SHARE": {
+      "value": 0.50830078125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_STANDARD_DEVIATION": {
+      "value": 0.9028477200804844,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_34_STANDARD_ERROR": {
+      "value": 0.014106995626257569,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[34].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_MEAN": {
+      "value": 0.016336769871791154,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_MEAN_OVER_SD": {
+      "value": 0.008551973947609346,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_NEGATIVE_SHARE": {
+      "value": 0.500244140625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_STANDARD_DEVIATION": {
+      "value": 1.910292287122554,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_35_STANDARD_ERROR": {
+      "value": 0.029848316986289907,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[35].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_MEAN": {
+      "value": 0.015391573101671854,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_MEAN_OVER_SD": {
+      "value": 0.0037318311231243134,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_NEGATIVE_SHARE": {
+      "value": 0.491455078125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_STANDARD_DEVIATION": {
+      "value": 4.124402362769816,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_36_STANDARD_ERROR": {
+      "value": 0.06444378691827837,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[36].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_MEAN": {
+      "value": 0.00838036526634734,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_MEAN_OVER_SD": {
+      "value": 0.0010075558370550054,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_NEGATIVE_SHARE": {
+      "value": 0.487060546875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_STANDARD_DEVIATION": {
+      "value": 8.317519444721189,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_37_STANDARD_ERROR": {
+      "value": 0.12996124132376857,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[37].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_MEAN": {
+      "value": 0.01619179832527938,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_MEAN_OVER_SD": {
+      "value": 0.0004734507913564959,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_NEGATIVE_SHARE": {
+      "value": 0.500244140625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_STANDARD_DEVIATION": {
+      "value": 34.199537989762035,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_38_STANDARD_ERROR": {
+      "value": 0.5343677810900318,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[38].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_MEAN": {
+      "value": 4.7647024424829825,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_MEAN_OVER_SD": {
+      "value": 0.009217815994841339,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_NEGATIVE_SHARE": {
+      "value": 0.492919921875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_PATTERN": {
+      "value": 4,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_STANDARD_DEVIATION": {
+      "value": 516.9014487975787,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_39_STANDARD_ERROR": {
+      "value": 8.076585137462168,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[39].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_MEAN": {
+      "value": -1.645146726330069,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_MEAN_OVER_SD": {
+      "value": -2.1021589762963,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_NEGATIVE_SHARE": {
+      "value": 0.980224609375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_STANDARD_DEVIATION": {
+      "value": 0.7825986259272263,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_3_STANDARD_ERROR": {
+      "value": 0.01222810353011291,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[3].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_MEAN": {
+      "value": 0.001921848668324499,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_MEAN_OVER_SD": {
+      "value": 0.019198790395252515,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_NEGATIVE_SHARE": {
+      "value": 0.4892578125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_STANDARD_DEVIATION": {
+      "value": 0.10010259129657119,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_40_STANDARD_ERROR": {
+      "value": 0.0015641029890089248,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[40].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_MEAN": {
+      "value": -0.007471715194556977,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_MEAN_OVER_SD": {
+      "value": -0.023126752230464565,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_NEGATIVE_SHARE": {
+      "value": 0.50927734375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_STANDARD_DEVIATION": {
+      "value": 0.32307671739201604,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_41_STANDARD_ERROR": {
+      "value": 0.005048073709250251,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[41].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_MEAN": {
+      "value": -0.017240492315610846,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_MEAN_OVER_SD": {
+      "value": -0.022262784238634994,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_NEGATIVE_SHARE": {
+      "value": 0.5068359375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_STANDARD_DEVIATION": {
+      "value": 0.7744086332962601,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_42_STANDARD_ERROR": {
+      "value": 0.012100134895254064,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[42].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_MEAN": {
+      "value": -0.021263373138935115,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_MEAN_OVER_SD": {
+      "value": -0.012304202386981223,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_NEGATIVE_SHARE": {
+      "value": 0.4873046875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_STANDARD_DEVIATION": {
+      "value": 1.7281390918466502,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_43_STANDARD_ERROR": {
+      "value": 0.02700217331010391,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[43].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_MEAN": {
+      "value": -0.007483632258839287,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_MEAN_OVER_SD": {
+      "value": -0.001919027944617426,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_NEGATIVE_SHARE": {
+      "value": 0.495849609375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_STANDARD_DEVIATION": {
+      "value": 3.89969947015608,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_44_STANDARD_ERROR": {
+      "value": 0.06093280422118875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[44].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_MEAN": {
+      "value": 0.0671996920924792,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_MEAN_OVER_SD": {
+      "value": 0.008226766576856328,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_NEGATIVE_SHARE": {
+      "value": 0.49853515625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_STANDARD_DEVIATION": {
+      "value": 8.168420905672278,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_45_STANDARD_ERROR": {
+      "value": 0.12763157665112934,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[45].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_MEAN": {
+      "value": 0.7812473998075246,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_MEAN_OVER_SD": {
+      "value": 0.023936985923458994,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_NEGATIVE_SHARE": {
+      "value": 0.489501953125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_STANDARD_DEVIATION": {
+      "value": 32.63766801324296,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_46_STANDARD_ERROR": {
+      "value": 0.5099635627069212,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[46].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_MEAN": {
+      "value": -9.802838451955036,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_MEAN_OVER_SD": {
+      "value": -0.022325829281431248,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_NEGATIVE_SHARE": {
+      "value": 0.49609375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_PATTERN": {
+      "value": 5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_STANDARD_DEVIATION": {
+      "value": 439.08059711395424,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_47_STANDARD_ERROR": {
+      "value": 6.860634329905535,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[47].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_MEAN": {
+      "value": 0.0005225766997827117,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_MEAN_OVER_SD": {
+      "value": 0.006567502587982007,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_NEGATIVE_SHARE": {
+      "value": 0.50048828125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_STANDARD_DEVIATION": {
+      "value": 0.07957007900369682,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_48_STANDARD_ERROR": {
+      "value": 0.0012432824844327629,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[48].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_MEAN": {
+      "value": 0.0032261887959129268,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_MEAN_OVER_SD": {
+      "value": 0.016131915518950112,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_NEGATIVE_SHARE": {
+      "value": 0.4892578125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_STANDARD_DEVIATION": {
+      "value": 0.19998795506479888,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_49_STANDARD_ERROR": {
+      "value": 0.0031248117978874826,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[49].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_MEAN": {
+      "value": -1.7150689195456694,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_MEAN_OVER_SD": {
+      "value": -1.0106822671608655,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_NEGATIVE_SHARE": {
+      "value": 0.945068359375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_STANDARD_DEVIATION": {
+      "value": 1.6969417345804583,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_4_STANDARD_ERROR": {
+      "value": 0.02651471460281966,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[4].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_MEAN": {
+      "value": 0.009160921987781288,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_MEAN_OVER_SD": {
+      "value": 0.023934464840078638,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_NEGATIVE_SHARE": {
+      "value": 0.482666015625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_STANDARD_DEVIATION": {
+      "value": 0.38275023272887976,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_50_STANDARD_ERROR": {
+      "value": 0.005980472386388746,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[50].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_MEAN": {
+      "value": 0.02448611387502329,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_MEAN_OVER_SD": {
+      "value": 0.027826084463672122,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_NEGATIVE_SHARE": {
+      "value": 0.48291015625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_STANDARD_DEVIATION": {
+      "value": 0.8799697962173127,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_51_STANDARD_ERROR": {
+      "value": 0.013749528065895512,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[51].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_MEAN": {
+      "value": 0.07591669909309176,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_MEAN_OVER_SD": {
+      "value": 0.03421451656293849,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_NEGATIVE_SHARE": {
+      "value": 0.485595703125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_STANDARD_DEVIATION": {
+      "value": 2.2188447103568167,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_52_STANDARD_ERROR": {
+      "value": 0.03466944859932526,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[52].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_MEAN": {
+      "value": 0.13047553800244632,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_MEAN_OVER_SD": {
+      "value": 0.03156600006063699,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_NEGATIVE_SHARE": {
+      "value": 0.506103515625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_STANDARD_DEVIATION": {
+      "value": 4.133420064366982,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_53_STANDARD_ERROR": {
+      "value": 0.0645846885057341,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[53].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_MEAN": {
+      "value": 0.15016335980609719,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_MEAN_OVER_SD": {
+      "value": 0.010350873093022284,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_NEGATIVE_SHARE": {
+      "value": 0.491943359375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_STANDARD_DEVIATION": {
+      "value": 14.507313388599565,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_54_STANDARD_ERROR": {
+      "value": 0.2266767716968682,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[54].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_MEAN": {
+      "value": 4.937299404348558,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_MEAN_OVER_SD": {
+      "value": 0.023305171610639247,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_NEGATIVE_SHARE": {
+      "value": 0.49462890625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_PATTERN": {
+      "value": 6,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_STANDARD_DEVIATION": {
+      "value": 211.8542393437939,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_55_STANDARD_ERROR": {
+      "value": 3.3102224897467796,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[55].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_MEAN": {
+      "value": -0.00234989941369315,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_MEAN_OVER_SD": {
+      "value": -0.02636245670399593,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_NEGATIVE_SHARE": {
+      "value": 0.45361328125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_STANDARD_DEVIATION": {
+      "value": 0.08913810423961589,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_56_STANDARD_ERROR": {
+      "value": 0.0013927828787439983,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[56].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_MEAN": {
+      "value": 0.006945979762058505,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_MEAN_OVER_SD": {
+      "value": 0.02199547166920286,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_NEGATIVE_SHARE": {
+      "value": 0.474365234375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_STANDARD_DEVIATION": {
+      "value": 0.31579135317129736,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_57_STANDARD_ERROR": {
+      "value": 0.004934239893301521,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[57].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_LEAD": {
+      "value": 1.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_MEAN": {
+      "value": 0.020546284432721166,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_MEAN_OVER_SD": {
+      "value": 0.03064137106786986,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_NEGATIVE_SHARE": {
+      "value": 0.47607421875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_STANDARD_DEVIATION": {
+      "value": 0.6705406356396933,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_58_STANDARD_ERROR": {
+      "value": 0.010477197431870209,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[58].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_LEAD": {
+      "value": 2.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_MEAN": {
+      "value": 0.024971293492345125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_MEAN_OVER_SD": {
+      "value": 0.017067701916026096,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_NEGATIVE_SHARE": {
+      "value": 0.48681640625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_STANDARD_DEVIATION": {
+      "value": 1.463072979315263,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_59_STANDARD_ERROR": {
+      "value": 0.022860515301800985,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[59].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_MEAN": {
+      "value": -1.7660307075907464,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_MEAN_OVER_SD": {
+      "value": -0.5323884259494285,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_NEGATIVE_SHARE": {
+      "value": 0.87451171875,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_STANDARD_DEVIATION": {
+      "value": 3.3171846372154254,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_5_STANDARD_ERROR": {
+      "value": 0.05183100995649102,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[5].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_LEAD": {
+      "value": 2.5,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_MEAN": {
+      "value": -0.01421361008415508,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_MEAN_OVER_SD": {
+      "value": -0.003904549007435165,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_NEGATIVE_SHARE": {
+      "value": 0.49755859375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_STANDARD_DEVIATION": {
+      "value": 3.6402693517456375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_60_STANDARD_ERROR": {
+      "value": 0.056879208621025586,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[60].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_LEAD": {
+      "value": 3.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_MEAN": {
+      "value": -0.056904899484968005,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_MEAN_OVER_SD": {
+      "value": -0.008534767144056422,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_NEGATIVE_SHARE": {
+      "value": 0.501220703125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_STANDARD_DEVIATION": {
+      "value": 6.667422616748994,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_61_STANDARD_ERROR": {
+      "value": 0.10417847838670304,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[61].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_MEAN": {
+      "value": 0.14415529412024453,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_MEAN_OVER_SD": {
+      "value": 0.0048928544971595725,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_NEGATIVE_SHARE": {
+      "value": 0.503662109375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_STANDARD_DEVIATION": {
+      "value": 29.462411809697258,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_62_STANDARD_ERROR": {
+      "value": 0.46035018452651966,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[62].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_MEAN": {
+      "value": 6.6528710005191805,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_MEAN_OVER_SD": {
+      "value": 0.02118518937294396,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_NEGATIVE_SHARE": {
+      "value": 0.5078125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_PATTERN": {
+      "value": 7,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_STANDARD_DEVIATION": {
+      "value": 314.0340585775314,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_63_STANDARD_ERROR": {
+      "value": 4.9067821652739285,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[63].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_LEAD": {
+      "value": 4.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_MEAN": {
+      "value": -1.770077905816953,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_MEAN_OVER_SD": {
+      "value": -0.15042767802268653,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_NEGATIVE_SHARE": {
+      "value": 0.708740234375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_STANDARD_DEVIATION": {
+      "value": 11.766969543663375,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_6_STANDARD_ERROR": {
+      "value": 0.18385889911974024,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[6].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_LEAD": {
+      "value": 6.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_MEAN": {
+      "value": -0.7584103164404352,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_MEAN_OVER_SD": {
+      "value": -0.004089175184890497,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_NEGATIVE_SHARE": {
+      "value": 0.5283203125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_PATTERN": {
+      "value": 0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_STANDARD_DEVIATION": {
+      "value": 185.4677978196585,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_7_STANDARD_ERROR": {
+      "value": 2.897934340932164,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[7].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_LEAD": {
+      "value": 0.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_MEAN": {
+      "value": 0.0006097659220730996,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_MEAN_OVER_SD": {
+      "value": 0.009530163410614457,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_NEGATIVE_SHARE": {
+      "value": 0.49658203125,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_STANDARD_DEVIATION": {
+      "value": 0.06398273521668658,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_8_STANDARD_ERROR": {
+      "value": 0.0009997302377607279,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[8].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_LEAD": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].lead"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_MEAN": {
+      "value": 0.005679504835826486,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].mean"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_MEAN_OVER_SD": {
+      "value": 0.024475418791450373,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].mean_over_sd"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_NEGATIVE_SHARE": {
+      "value": 0.494140625,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].negative_share"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_PATTERN": {
+      "value": 1,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].pattern"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_STANDARD_DEVIATION": {
+      "value": 0.23204934241249517,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].standard_deviation"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_ROWS_9_STANDARD_ERROR": {
+      "value": 0.003625770975195237,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.rows[9].standard_error"
+    },
+    "ACD_POSTHOC_STAGE11_CLIM_TANGENT_STATES": {
+      "value": 4096,
+      "receipt": "receipts/acd_stage11_clim_tangent.json",
+      "receipt_path": "$.states"
     },
     "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_LOWER": {
       "value": -0.052000000000000046,
