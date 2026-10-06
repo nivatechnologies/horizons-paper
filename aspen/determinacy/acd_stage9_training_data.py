@@ -14,7 +14,7 @@ def run():
   x=physics.flow(x,np.repeat(F[:,None],40,1),round(50*LT/.01),.01)
   H=physics.simulate(x,np.repeat(F[:,None],40,1),.01,11)
   pairs=np.array([(k,l) for k in range(8) for l in range(k+1,8)])
-  ix=pairs[r.integers(28,size=n)];amp=r.uniform(-.32,.32,size=n)
+  ix=pairs[r.integers(28,size=n)];flip=r.integers(2,size=n).astype(bool);ix[flip]=ix[flip,::-1];amp=r.uniform(-.32,.32,size=n)
   A=amp[:,None,None]*PATTERNS[ix]
   T=np.empty((n,2,36,40),np.float32)
   for b in range(0,n,128):

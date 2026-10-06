@@ -11,10 +11,10 @@ class Emulator(nn.Module):
    if i<4:layers.append(nn.GELU())
   self.net=nn.Sequential(*layers)
  def forward(self,H,A,F):return H[:,-1]+self.net(torch.cat([H,A[:,None],F[:,None,None].expand(-1,1,40)],1))[:,0]
-def run(name,data,out,micro):
+def run(name,data,out,micro,prior_charge=0.):
  torch.set_num_threads(4);torch.manual_seed(61006);torch.backends.cuda.matmul.allow_tf32=False;torch.backends.cudnn.allow_tf32=False
  torch.backends.cudnn.deterministic=True;torch.backends.cudnn.benchmark=False
- out.mkdir(parents=True,exist_ok=True);begin=time.monotonic();cap=36000;model=Emulator().cuda();opt=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=.0001)
+ out.mkdir(parents=True,exist_ok=True);begin=time.monotonic();cap=36000-prior_charge;model=Emulator().cuda();opt=torch.optim.AdamW(model.parameters(),lr=.001,weight_decay=.0001)
  d=np.load(data/'train.npz');v=np.load(data/'val.npz');R=np.random.default_rng(6100601)
  def tensors(indices):
   return [torch.tensor(d[k][indices],device='cuda') for k in ['H','A','F','T']]
@@ -69,7 +69,7 @@ def run(name,data,out,micro):
  if chosen is None:
   score=validate();chosen=step;best=score;torch.save(dict(state_dict=model.state_dict(),step=step,validation_MSE=score,forcing_conditioned=True),out/'selected.pt')
  torch.cuda.synchronize()
- result=dict(model=name,step=step,selected_step=chosen,validation_MSE=best,parameter_count=sum(p.numel() for p in model.parameters()),charged_gpu_seconds=time.monotonic()-begin,cap_seconds=cap,capped=step<20000,gpu=torch.cuda.get_device_name(),torch=torch.__version__,normal_base=normalbase,normal_difference=normaldiff,microbatch=micro,data_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in data.glob('*.npz')},selected_sha256=hashlib.sha256((out/'selected.pt').read_bytes()).hexdigest())
+ result=dict(model=name,step=step,selected_step=chosen,validation_MSE=best,parameter_count=sum(p.numel() for p in model.parameters()),charged_gpu_seconds=time.monotonic()-begin+prior_charge,current_run_gpu_seconds=time.monotonic()-begin,discarded_gpu_seconds=prior_charge,cap_seconds=36000,capped=step<20000,gpu=torch.cuda.get_device_name(),torch=torch.__version__,normal_base=normalbase,normal_difference=normaldiff,microbatch=micro,data_sha256={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in data.glob('*.npz')},selected_sha256=hashlib.sha256((out/'selected.pt').read_bytes()).hexdigest())
  (out/'complete.json').write_text(json.dumps(result,indent=2)+'\n');print(result,flush=True)
 if __name__=='__main__':
- p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--data',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--micro',type=int,default=32);a=p.parse_args();run(a.name,a.data,a.out,a.micro)
+ p=argparse.ArgumentParser();p.add_argument('--name',required=True);p.add_argument('--data',type=Path,required=True);p.add_argument('--out',type=Path,required=True);p.add_argument('--micro',type=int,default=128);p.add_argument('--prior-charge',type=float,default=0.);a=p.parse_args();run(a.name,a.data,a.out,a.micro,a.prior_charge)
