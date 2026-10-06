@@ -17,6 +17,7 @@
     "receipts/acd_stage6.json": "fa4a0dc1da0d91b1e93fd4c9bee6dad42feeff5d17535058e590f900af24177d",
     "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49",
     "receipts/acd_stage10_terminal_baseline.json": "9e49506be53233711b406ce759aef3c08407bdf979e820cfe65f118c65112333",
+    "receipts/acd_paper_v7_derived.json": "8e568a1f04ea85d30359405e682f3f8be8f33d6674697900823ad4c4eb12c44c",
     "receipts/acd_paper_v6_derived.json": "63b5defebe173a5299c2ffeb0dfce7e25111cb2c66a17f4d829107dc7156a61e",
     "receipts/acd_stage11_clim_tangent.json": "daac9a040feafda811fffb90ae61dd1dd817058958ea77ae7defb125c15fff1d"
   },
@@ -31739,6 +31740,150 @@
         {
           "receipt": "receipts/acd_stage2.json",
           "receipt_path": "$.all_confident_calibration, S rows at leads 0 through 3"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_CNN_20K_POOLED_S_ERROR_2LT": {
+      "value": 0.05460750853242324,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.CNN-20k_POOLED_S_ERROR_2LT.value",
+      "derivation": "one minus pooled answer accuracy; all confident intervention-sign answers, main amplitude",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.CNN-20k.confidence_readings[0].all_confident_accuracy.answer_accuracy"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_CNN_20K_S_ANSWERS_2LT": {
+      "value": 1172,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.CNN-20k_S_ANSWERS_2LT.value",
+      "derivation": "retained pooled all-confident intervention-sign answer count",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.CNN-20k.confidence_readings[0].all_confident_accuracy.answers"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_CNN_20K_S_WRONG_2LT": {
+      "value": 64,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.CNN-20k_S_WRONG_2LT.value",
+      "derivation": "rounded integer reconstructed from (1 - answer_accuracy) * answers; integer identity checked within float round-off",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.CNN-20k.confidence_readings[0].all_confident_accuracy"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_CNN_F_POOLED_S_ERROR_2LT": {
+      "value": 0.008665511265164683,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.CNN-F_POOLED_S_ERROR_2LT.value",
+      "derivation": "one minus pooled answer accuracy; all confident intervention-sign answers, main amplitude",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.CNN-F.confidence_readings[0].all_confident_accuracy.answer_accuracy"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_CNN_F_S_ANSWERS_2LT": {
+      "value": 1154,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.CNN-F_S_ANSWERS_2LT.value",
+      "derivation": "retained pooled all-confident intervention-sign answer count",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.CNN-F.confidence_readings[0].all_confident_accuracy.answers"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_CNN_F_S_WRONG_2LT": {
+      "value": 10,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.CNN-F_S_WRONG_2LT.value",
+      "derivation": "rounded integer reconstructed from (1 - answer_accuracy) * answers; integer identity checked within float round-off",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.CNN-F.confidence_readings[0].all_confident_accuracy"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_POSTERIOR_POOLED_S_ERROR_2LT": {
+      "value": 0.0043177892918825345,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.posterior_POOLED_S_ERROR_2LT.value",
+      "derivation": "one minus pooled answer accuracy; all confident intervention-sign answers, main amplitude",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.posterior.confidence_readings[0].all_confident_accuracy.answer_accuracy"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_POSTERIOR_S_ANSWERS_2LT": {
+      "value": 1158,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.posterior_S_ANSWERS_2LT.value",
+      "derivation": "retained pooled all-confident intervention-sign answer count",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.posterior.confidence_readings[0].all_confident_accuracy.answers"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_POSTERIOR_S_WRONG_2LT": {
+      "value": 5,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.posterior_S_WRONG_2LT.value",
+      "derivation": "rounded integer reconstructed from (1 - answer_accuracy) * answers; integer identity checked within float round-off",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage9.json",
+          "receipt_path": "$.C.posterior.confidence_readings[0].all_confident_accuracy"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_ZERO_MEAN_MAX_ABS_MEAN_OVER_SD": {
+      "value": 0.03421451656293849,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.ZERO_MEAN_MAX_ABS_MEAN_OVER_SD.value",
+      "derivation": "maxabs over patterns one through seven and all retained leads; extremizing source row recorded",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage11_clim_tangent.json",
+          "receipt_path": "$.rows[52].mean_over_sd"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_ZERO_MEAN_MAX_NEGATIVE_SHARE": {
+      "value": 0.509521484375,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.ZERO_MEAN_MAX_NEGATIVE_SHARE.value",
+      "derivation": "max over patterns one through seven and all retained leads; extremizing source row recorded",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage11_clim_tangent.json",
+          "receipt_path": "$.rows[23].negative_share"
+        }
+      ]
+    },
+    "ACD_POSTHOC_PAPER_V7_ZERO_MEAN_MIN_NEGATIVE_SHARE": {
+      "value": 0.45361328125,
+      "receipt": "receipts/acd_paper_v7_derived.json",
+      "receipt_path": "$.quantities.ZERO_MEAN_MIN_NEGATIVE_SHARE.value",
+      "derivation": "min over patterns one through seven and all retained leads; extremizing source row recorded",
+      "additional_sources": [
+        {
+          "receipt": "receipts/acd_stage11_clim_tangent.json",
+          "receipt_path": "$.rows[56].negative_share"
         }
       ]
     },

@@ -1,0 +1,81 @@
+{
+  "scope": "Post hoc receipt-only v7 derivations; no frozen-route license",
+  "source_hashes": {
+    "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49",
+    "receipts/acd_stage11_clim_tangent.json": "daac9a040feafda811fffb90ae61dd1dd817058958ea77ae7defb125c15fff1d"
+  },
+  "quantities": {
+    "posterior_POOLED_S_ERROR_2LT": {
+      "value": 0.0043177892918825345,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.posterior.confidence_readings[0].all_confident_accuracy.answer_accuracy",
+      "derivation": "one minus pooled answer accuracy; all confident intervention-sign answers, main amplitude"
+    },
+    "posterior_S_WRONG_2LT": {
+      "value": 5,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.posterior.confidence_readings[0].all_confident_accuracy",
+      "derivation": "rounded integer reconstructed from (1 - answer_accuracy) * answers; integer identity checked within float round-off"
+    },
+    "posterior_S_ANSWERS_2LT": {
+      "value": 1158,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.posterior.confidence_readings[0].all_confident_accuracy.answers",
+      "derivation": "retained pooled all-confident intervention-sign answer count"
+    },
+    "CNN-20k_POOLED_S_ERROR_2LT": {
+      "value": 0.05460750853242324,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-20k.confidence_readings[0].all_confident_accuracy.answer_accuracy",
+      "derivation": "one minus pooled answer accuracy; all confident intervention-sign answers, main amplitude"
+    },
+    "CNN-20k_S_WRONG_2LT": {
+      "value": 64,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-20k.confidence_readings[0].all_confident_accuracy",
+      "derivation": "rounded integer reconstructed from (1 - answer_accuracy) * answers; integer identity checked within float round-off"
+    },
+    "CNN-20k_S_ANSWERS_2LT": {
+      "value": 1172,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-20k.confidence_readings[0].all_confident_accuracy.answers",
+      "derivation": "retained pooled all-confident intervention-sign answer count"
+    },
+    "CNN-F_POOLED_S_ERROR_2LT": {
+      "value": 0.008665511265164683,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-F.confidence_readings[0].all_confident_accuracy.answer_accuracy",
+      "derivation": "one minus pooled answer accuracy; all confident intervention-sign answers, main amplitude"
+    },
+    "CNN-F_S_WRONG_2LT": {
+      "value": 10,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-F.confidence_readings[0].all_confident_accuracy",
+      "derivation": "rounded integer reconstructed from (1 - answer_accuracy) * answers; integer identity checked within float round-off"
+    },
+    "CNN-F_S_ANSWERS_2LT": {
+      "value": 1154,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-F.confidence_readings[0].all_confident_accuracy.answers",
+      "derivation": "retained pooled all-confident intervention-sign answer count"
+    },
+    "ZERO_MEAN_MAX_ABS_MEAN_OVER_SD": {
+      "value": 0.03421451656293849,
+      "source": "receipts/acd_stage11_clim_tangent.json",
+      "source_path": "$.rows[52].mean_over_sd",
+      "derivation": "maxabs over patterns one through seven and all retained leads; extremizing source row recorded"
+    },
+    "ZERO_MEAN_MIN_NEGATIVE_SHARE": {
+      "value": 0.45361328125,
+      "source": "receipts/acd_stage11_clim_tangent.json",
+      "source_path": "$.rows[56].negative_share",
+      "derivation": "min over patterns one through seven and all retained leads; extremizing source row recorded"
+    },
+    "ZERO_MEAN_MAX_NEGATIVE_SHARE": {
+      "value": 0.509521484375,
+      "source": "receipts/acd_stage11_clim_tangent.json",
+      "source_path": "$.rows[23].negative_share",
+      "derivation": "max over patterns one through seven and all retained leads; extremizing source row recorded"
+    }
+  }
+}
