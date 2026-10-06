@@ -76,6 +76,7 @@ def run():
  'R-other: sigma is uncentered RMS on64 endpoint states; Jbar uses a different4096-state multi-window sample.',
  'R-other: forcing-conditioned response loss preserves four-step base loss and uses the AFD paired-loss normalization principle; validation one LT is a nominal12-step grid rollout.']
  d['resolutions'].append(d['CNN_provenance']['CNNcost']['resolution'])
+ d['resolutions'].append('R-other: CNN-cost is a direct window-cost head; state RMSE and anomaly correlation are not defined, so only cost and question metrics are reported.')
  for name in ['CNN-roll','CNN-resp']:
   if d['C'][name].get('status')=='UNAVAILABLE':d['resolutions'].append(d['C'][name]['resolution']+f' ({name})')
  d['environment']=json.load(open(RUN/'execution_environment.json'))
@@ -108,7 +109,7 @@ def run():
   lines.append('- '+str(r['lead'])+' LT '+r['patterns']+': '+ '; '.join(k+' '+str(v['median'])+' ['+str(v['q25'])+', '+str(v['q75'])+']' for k,v in r['terms'].items()))
  lines+=['','## C — learned models','', 'Each inference uses the corresponding posterior draw history. Confidence-error and calibration are distinct: a lower accuracy among confident answers does not itself establish miscalibration. Calibration is checked by a case-level betting interval for predicted modal probability minus correctness; this is a necessary mean-calibration test, not a full conditional-calibration guarantee. CP reliability bars are descriptive because questions are clustered within cases.']
  for name,r in d['C'].items():
-  lines.append('- '+name+': '+json.dumps({k:r[k] for k in ['status','confidence_readings','state_skill','calibration_test','execution'] if k in r}))
+  lines.append('- '+name+': '+json.dumps({k:({kk:vv for kk,vv in r[k].items() if kk!='records'} if k.startswith('paired_endpoint') and r[k] is not None else r[k]) for k in ['status','confidence_readings','state_skill','state_skill_status','pooled_per_draw_errors','calibration_test','comparisons','paired_endpoint','paired_endpoint_fixed_posterior_cohort','execution'] if k in r}))
  lines+=['','Training/checkpoint provenance (contract expectations separated from measured receipts):',json.dumps(d['CNN_provenance'],indent=2)]
  lines+=['','## D — realized decisions','', '| Lead | Policy | Improvement | Regret | Act share | Harms | Median harm | Max harm | Zero-harm CP upper | Actions0..8 |','|---|---|---|---|---|---|---|---|---|---|']
  for r in d['D']:lines.append('| '+' | '.join(str(r[k]) for k in ['lead','policy','mean_improvement','mean_regret','acting_share','harms','median_harm','max_harm','zero_harm_CP_upper','chosen_actions'])+' |')

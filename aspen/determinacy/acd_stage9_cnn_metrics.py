@@ -79,6 +79,7 @@ def run(name):
   for c in range(200):
    with np.load(OUT/f'conf_{c:03d}_0.16.npz') as d:means.append(d['factual_mean'])
  result=score(name,None,s,keep,np.array(means) if name!='CNN-cost' else None,costs,jbar);result['invalid_cases']=invalid
+ if name=='CNN-cost':result['state_skill_status']='NOT DEFINED: direct window-cost head has no state outputs; no decoded or surrogate state skill is imputed'
  result['pooled_per_draw_errors']=[dict(lead=lead,quantity=kind,draw_action_values=len(np.concatenate(arrays)),bias=float(np.concatenate(arrays).mean()),RMSE=float(np.sqrt(np.mean(np.concatenate(arrays)**2))),MAE=float(np.abs(np.concatenate(arrays)).mean()),signed_error_distribution=dist(np.concatenate(arrays)),weighting='each saved draw/action equally; additional equal-case summaries are retained') for (lead,kind),arrays in raw_errors.items()]
  if name!='posterior':result['execution']=json.load(open(directory/'complete.json'))
  (DEST/f'metrics_{name}.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')

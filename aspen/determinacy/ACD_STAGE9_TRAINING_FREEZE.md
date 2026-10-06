@@ -36,3 +36,5 @@ Superseding code SHA256 (prior listed hashes are the discarded implementation):
 Alongside the previously frozen model-specific lead0-eligible paired endpoint, also report the endpoint on the original posterior1332-pair cohort. This prevents a model-dependent eligibility change from silently altering a between-model comparison. Both are labelled post hoc and license no route; training and checkpoint selection remain unchanged. Superseding scoring code hash: 8b7d0509dbd521b021706a51a2afb34b44a0bc873394bb09ebf3dc21a0321f49.
 
 Cost-error reporting also retains pooled per-draw bias, RMSE, MAE and signed-error quartiles alongside equal-case summaries. This changes no input, model, checkpoint selection or primary statistical procedure. Scoring code SHA256 before trained-model evaluation: 0c7f05db09899247f198b75b16efb09a5b911ec9228448870be70af498d256cf.
+
+CNN-cost has no state output; its state-skill metrics are explicitly not defined, with no surrogate imputed. Latest scoring SHA256 before forcing-conditioned evaluation: 3631cd2f1124d272d7cba207673d936ebf6d441b5aebc4c589184bf6813f70cd.
