@@ -6267,6 +6267,19 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_PATTERN_SINGLE_SITE_MAX_FRACTION_TRUE_FORCING | 0.12489995996796797 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration |
 | ACD_PATTERN_UNIFORM_MAX_FORCING_CHANGE | 0.16 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; a * maximum absolute pattern value: 1 for uniform/alternating, sqrt(2) for cosine harmonics, sqrt(N-1) for localized pattern |
 | ACD_PATTERN_UNIFORM_MAX_FRACTION_TRUE_FORCING | 0.02 | sources/WO_v2.3.md | ['§4: unit-RMS patterns, N=40', '§4: action amplitude a=0.16', '§3: true forcing F=8'] ; maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_BASE_LOSS | 0.0010686422001526807 | receipts/acd_stage10_terminal_baseline.json | $.base_loss |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_COEFFICIENT | 6.476838759626863 | receipts/acd_stage10_terminal_baseline.json | $.difference_coefficient |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_LOSS | 0.005568973931076471 | receipts/acd_stage10_terminal_baseline.json | $.difference_loss |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_TO_BASE_RATIO | 33.75250032517367 | receipts/acd_stage10_terminal_baseline.json | $.difference_to_base_ratio |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_MULTIPLIER | 1.0 | receipts/acd_stage10_terminal_baseline.json | $.multiplier |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_NORMAL_BASE | 0.35864407243207097 | receipts/acd_stage10_terminal_baseline.json | $.normal_base |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_NORMAL_DIFFERENCE | 0.05537332111271098 | receipts/acd_stage10_terminal_baseline.json | $.normal_difference |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_PROBE_BATCHES | 64 | receipts/acd_stage10_terminal_baseline.json | $.probe_batches |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_PROBE_BATCH_SIZE | 128 | receipts/acd_stage10_terminal_baseline.json | $.probe_batch_size |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_PROBE_SEED | 6100602 | receipts/acd_stage10_terminal_baseline.json | $.probe_seed |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_TERMINAL_STEP | 20000 | receipts/acd_stage10_terminal_baseline.json | $.terminal_step |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_WEIGHTED_DIFFERENCE_FRACTION | 0.9712250919892624 | receipts/acd_stage10_terminal_baseline.json | $.weighted_difference_fraction |
+| ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_WEIGHTED_DIFFERENCE_LOSS | 0.03606934620814766 | receipts/acd_stage10_terminal_baseline.json | $.weighted_difference_loss |
 | ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_LOWER | -0.052000000000000046 | receipts/acd_stage6.json | $.A.A1.comparisons[0].all_minus_Fc.lower |
 | ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_POINT | 0.013125 | receipts/acd_stage6.json | $.A.A1.comparisons[0].all_minus_Fc.point |
 | ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_UPPER | 0.08400000000000007 | receipts/acd_stage6.json | $.A.A1.comparisons[0].all_minus_Fc.upper |

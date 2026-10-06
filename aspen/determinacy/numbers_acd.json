@@ -15,7 +15,8 @@
     "receipts/acd_stage4b_amplitude_matched.json": "9f2760b904c8f823edd053b40fda91dddefb6bd75a58ceb91f88ed9e82f80722",
     "receipts/acd_stage4b_null.json": "a07c153976f936a6e38ab22076c728501fefc796fdf11fca1a46bdb29f9ee418",
     "receipts/acd_stage6.json": "fa4a0dc1da0d91b1e93fd4c9bee6dad42feeff5d17535058e590f900af24177d",
-    "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49"
+    "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49",
+    "receipts/acd_stage10_terminal_baseline.json": "9e49506be53233711b406ce759aef3c08407bdf979e820cfe65f118c65112333"
   },
   "numbers": {
     "ACD_ALL_CONFIDENT_ACCURACY": {
@@ -31642,6 +31643,71 @@
         "\u00a73: true forcing F=8"
       ],
       "derivation": "maximum absolute forcing change / true forcing; closed-form pattern algebra, no integration"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_BASE_LOSS": {
+      "value": 0.0010686422001526807,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.base_loss"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_COEFFICIENT": {
+      "value": 6.476838759626863,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.difference_coefficient"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_LOSS": {
+      "value": 0.005568973931076471,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.difference_loss"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_TO_BASE_RATIO": {
+      "value": 33.75250032517367,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.difference_to_base_ratio"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_MULTIPLIER": {
+      "value": 1.0,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.multiplier"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_NORMAL_BASE": {
+      "value": 0.35864407243207097,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.normal_base"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_NORMAL_DIFFERENCE": {
+      "value": 0.05537332111271098,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.normal_difference"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_PROBE_BATCHES": {
+      "value": 64,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.probe_batches"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_PROBE_BATCH_SIZE": {
+      "value": 128,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.probe_batch_size"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_PROBE_SEED": {
+      "value": 6100602,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.probe_seed"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_TERMINAL_STEP": {
+      "value": 20000,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.terminal_step"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_WEIGHTED_DIFFERENCE_FRACTION": {
+      "value": 0.9712250919892624,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.weighted_difference_fraction"
+    },
+    "ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_WEIGHTED_DIFFERENCE_LOSS": {
+      "value": 0.03606934620814766,
+      "receipt": "receipts/acd_stage10_terminal_baseline.json",
+      "receipt_path": "$.weighted_difference_loss"
     },
     "ACD_POSTHOC_STAGE6_A_A1_COMPARISONS_0_ALL_MINUS_FC_LOWER": {
       "value": -0.052000000000000046,

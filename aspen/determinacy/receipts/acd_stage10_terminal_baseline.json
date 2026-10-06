@@ -1,0 +1,18 @@
+{
+  "multiplier": 1.0,
+  "normal_base": 0.35864407243207097,
+  "normal_difference": 0.05537332111271098,
+  "difference_coefficient": 6.476838759626863,
+  "base_loss": 0.0010686422001526807,
+  "difference_loss": 0.005568973931076471,
+  "weighted_difference_loss": 0.03606934620814766,
+  "difference_to_base_ratio": 33.75250032517367,
+  "weighted_difference_fraction": 0.9712250919892624,
+  "probe_seed": 6100602,
+  "probe_batches": 64,
+  "probe_batch_size": 128,
+  "scope": "training-only fixed probe; terminal model, not a checkpoint selection criterion",
+  "model": "CNN-F-resp",
+  "terminal_step": 20000,
+  "checkpoint_sha256": "d90baff7d378fd5161853296e290b548547705a5cd904cad60b8dc145eeb5982"
+}
