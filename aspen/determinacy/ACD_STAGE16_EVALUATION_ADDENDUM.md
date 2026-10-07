@@ -4,6 +4,8 @@ Post hoc on confirmation; licenses no frozen route. Training, seeds, data, optim
 
 The coverage adapter passes the full frozen null probability array to the existing summaries function, which performs its own question selection. Passing an already selected array would index it a second time. This coverage-only error was corrected before any new-seed coverage scoring.
 
+The observer persists terminal run markers and retries transport/scoring errors per run, allowing other runs to proceed. It does not alter training, inference or scoring definitions.
+
 Code hashes:
 
 {
@@ -14,5 +16,9 @@ Code hashes:
   "acd_stage16_coverage.py": {
     "frozen_sha256": null,
     "current_sha256": "ff32f1a24e8d88b2a2849ce9f70bf994605f8956063ce82333b75815c65b4a6f"
+  },
+  "acd_stage16_pipeline.py": {
+    "frozen_sha256": "84f924178799b98a72088462c96caef266c1cb7e6069db5cdc4f89741b8c9034",
+    "current_sha256": "d0e1d7908acf4297b9ba7580fca67597e3a4e52128db89852f422648ba07c3c5"
   }
 }
