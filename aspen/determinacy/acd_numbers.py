@@ -252,7 +252,9 @@ def build():
             else:
                 walk(record,prefix,'$',filename,omit=('source_code_hashes','source_states_sha256','elapsed_cpu_run_seconds'))
     # Stage 13: post hoc aggregate quantities, no frozen-route license.
-    stage13_receipts=[('receipts/acd_stage19_inference.json','ACD_FRESH_STAGE19_INFERENCE'),
+    stage13_receipts=[('receipts/acd_stage19_part3a.json','ACD_FRESH_STAGE19_PART3A'),
+                      ('receipts/acd_stage19_part3a_timing.json','ACD_FRESH_STAGE19_PART3A_TIMING'),
+                      ('receipts/acd_stage19_inference.json','ACD_FRESH_STAGE19_INFERENCE'),
                       ('receipts/acd_stage19_learned.json','ACD_FRESH_STAGE19_LEARNED'),
                       ('receipts/acd_stage19_original_learned.json','ACD_POSTHOC_STAGE19_ORIGINAL_LEARNED'),
                       ('receipts/acd_stage16_run_CNN-F.json','ACD_POSTHOC_STAGE16_RUN_CNN_F'),
@@ -275,7 +277,7 @@ def build():
     for filename,prefix in stage13_receipts:
         if (ROOT/filename).exists():
             walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
-                 omit=('source_hashes', 'case_records') if filename.endswith(('acd_stage15_sensitivity.json','acd_stage15_knownF.json')) else ('source_hashes',))
+                 omit=('source_hashes','case_records','first_panel','selected_case_action_ids','tie_order','case_actions','predicted_benefit_probabilities','acted_case_indices') if filename.endswith('acd_stage19_part3a.json') else ('source_hashes', 'case_records') if filename.endswith(('acd_stage15_sensitivity.json','acd_stage15_knownF.json')) else ('source_hashes',))
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
     if (ROOT/'receipts/acd_stage9.json').exists():sources.append('receipts/acd_stage9.json')

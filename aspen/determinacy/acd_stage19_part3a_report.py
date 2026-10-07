@@ -7,7 +7,7 @@ def interval(r):return f"{f(r['point'])} [{f(r['lower'])}, {f(r['upper'])}]"
 def run():
  r=json.loads((ROOT/'receipts/acd_stage19_part3a.json').read_text());old=r['first_panel'];timing=json.loads((ROOT/'receipts/acd_stage19_part3a_timing.json').read_text());k=r['known_forcing'];main=r['main_on_knownF_cohort'];at=lambda rows,l:next(x for x in rows if x['lead']==l)
  lines=['','## Part 3a — Freeze C','',
-'K and V readings use the pushed Freeze C. Descriptive replications use realized counts already reported in Part 2; they have no confirmatory criteria. No frozen route is licensed. Known-forcing and matched main readings use the retained known-forcing cohort; K4 uses all main-posterior instances. First-panel values retain their original populations.','',
+'K and V readings are confirmatory on the fresh panel under the pushed Freeze C. The unchanged Stage15/Stage6 interval helpers retain their original POST HOC scope string in the receipt; that string describes their first-panel origin, not the frozen fresh-panel reading. Descriptive replications use realized counts already reported in Part 2; they have no confirmatory criteria. No frozen route is licensed. Known-forcing and matched main readings use the retained known-forcing cohort; K4 uses all main-posterior instances. First-panel values retain their original populations.','',
 '| Reading | First panel | Fresh panel | Fresh population / bound | Result |','|---|---:|---:|---|---|']
  def row(key,o,n,p,b,status):lines.append(f'| {key} | {o} | {n} | {p}; {b} | {"PASS" if status else "FAIL"} |')
  row('K1',interval(old['known_forcing']['paired_first_loss']['interval']),interval(r['K1']),k['population'],'two-sided 99% case betting',r['K1']['confirmed'])
@@ -16,9 +16,10 @@ def run():
  o=at(old['known_forcing']['accuracy'],2)['S'];n=r['K3'];row('K3',f(o['case_accuracy'])+' lower '+f(o['case_lower']),f(n['case_accuracy'])+' lower '+f(n['case_lower']),str(k['population'])+' retained; '+str(n['cases'])+' contributing','original R0 one-sided 95%',n['confirmed'])
  o=at(old['known_forcing']['main_posterior_forcing_correlation'],2);n=r['K4'];row('K4 D / J8',f(o['D']['median'])+' / '+f(o['J8']['median']),f(n['D_median'])+' / '+f(n['J8_median']),n['population'],'median thresholds; no interval',n['confirmed'])
  for key in ['V1','V2']:row(key,'descriptive Stage15D; see ratio table','both ratios in range' if r[key] else 'criterion fails',r['variance']['population'],'median thresholds; no interval',r[key])
- lines+=['','| Lead | Fresh J8 ratio q25 / median / q75 | First J8 median | Fresh G ratio q25 / median / q75 | First G median |','|---|---:|---:|---:|---:|']
+ lines+=['',f"K1 eligibility: {k['paired_first_loss']['actions']} pairs in {k['paired_first_loss']['cases']} contributing instances, from {k['population']} retained known-forcing instances. First panel: {old['known_forcing']['paired_first_loss']['actions']} pairs in {old['known_forcing']['paired_first_loss']['cases']} contributing instances."]
+ lines+=['','| Lead | Fresh J8 ratio q25 / median / q75 | First J8 q25 / median / q75 | Fresh G ratio q25 / median / q75 | First G q25 / median / q75 |','|---|---:|---:|---:|---:|']
  for x in r['variance']['summary']:
-  o=at(old['variance']['summary'],x['lead']);trip=lambda v:' / '.join(f(v[q]) for q in ['q25','median','q75']);lines.append(f"| {f(x['lead'])} | {trip(x['J8_ratio'])} | {f(o['J8_ratio']['median'])} | {trip(x['G_ratio'])} | {f(o['G_ratio']['median'])} |")
+  o=at(old['variance']['summary'],x['lead']);trip=lambda v:' / '.join(f(v[q]) for q in ['q25','median','q75']);lines.append(f"| {f(x['lead'])} | {trip(x['J8_ratio'])} | {trip(o['J8_ratio'])} | {trip(x['G_ratio'])} | {trip(o['G_ratio'])} |")
  lines+=['','First tested breakdown leads: '+json.dumps(r['variance']['first_lead_median_outside_half_to_two'])+'.',f"Pilot projection {f(timing['projected_hours'])} hours on {len(timing['cores'])} cores; case set {timing['case_set']}. First-panel variance population: {len(old['variance']['cases'])}.",'',
 '| Lead | Known-F S8 / S7 / obs-S / Fc | Matched main S8 / S7 / obs-S / Fc | First known-F S8 / S7 / obs-S / Fc |','|---|---:|---:|---:|']
  for x in k['shares']:
@@ -32,10 +33,14 @@ def run():
  lines+=['','| Lead | Known-F rho / c / zD / zF medians | Matched main medians | First known-F medians |','|---|---:|---:|---:|']
  for x in k['shares']:
   fmt=lambda v:' / '.join(f(v[q]['median']) for q in ['rho','c','z_D','z_F']);lines.append(f"| {f(x['lead'])} | {fmt(x)} | {fmt(at(main['shares'],x['lead']))} | {fmt(at(old['known_forcing']['shares'],x['lead']))} |")
- lines+=['','Known-F minus matched main confidence-share differences (two-sided99% case betting; first-panel paired-share intervals were not reported and are unavailable):']
+ lines+=['','First-panel matched-main accuracy, confidence-share and mechanism-summary rows were not recorded on the exact retained known-forcing cohort; those exact first-panel counterparts are unavailable.','', 'Known-F minus matched main confidence-share differences (two-sided99% case betting; first-panel paired-share intervals were not reported and are unavailable):']
  for x in r['paired_share_differences']:lines.append(f"- {x['quantity']}, {f(x['lead'])} LT: {interval(x['interval'])}.")
  lines+=['','Main forcing SD, matched cohort: '+json.dumps(r['main_forcing_sd'])+'. First panel: '+json.dumps(old['known_forcing']['main_posterior_forcing_sd'])+'.','Main forcing correlations, all cases: '+json.dumps(r['main_all_forcing_correlations'])+'. Matched-cohort correlations: '+json.dumps(r['main_matched_forcing_correlations'])+'.','',
-'| Model | Lead | Patterns | Coverage | Fresh pooled error / case error / upper95 | First-panel pooled / case / upper95 |','|---|---:|---|---:|---:|---:|']
+'First-panel forcing SD and correlations use the original main panel; fresh descriptive forcing summaries use the matched known-forcing cohort.']
+ lines+=['','Main forcing correlation medians, first panel / fresh matched cohort (different panel populations):']
+ for x in r['main_matched_forcing_correlations']:
+  o=at(old['known_forcing']['main_posterior_forcing_correlation'],x['lead']);lines.append(f"- {f(x['lead'])} LT: F with J8 {f(o['J8']['median'])} / {f(x['J8']['median'])}; F with D {f(o['D']['median'])} / {f(x['D']['median'])}.")
+ lines+=['','| Model | Lead | Patterns | Coverage | Fresh pooled error / case error / upper95 | First-panel pooled / case / upper95 |','|---|---:|---|---:|---:|---:|']
  for m,rows in r['descriptive']['matching'].items():
   for x in rows:
    o=next(v for v in at(old['matching']['A'][m]['rows'],x['lead'])['matched_coverage'] if v['patterns']==x['patterns'] and v['target_coverage']==x['coverage']);fmt=lambda v:' / '.join(f(v[q]) for q in ['pooled_error','case_error','case_error_upper95']);lines.append(f"| {m} | {f(x['lead'])} | {x['patterns']} | {f(x['coverage'])} | {fmt(x)} | {fmt(o)} |")
