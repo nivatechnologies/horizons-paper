@@ -2,19 +2,19 @@
   "post_hoc": true,
   "presentation_only": true,
   "before_sha256": {
-    "figures/F13_main_paper.pdf": "6d7f7958816f1d5535ec7aa96046b4b66ec24341d9cc55ecd50bb908877e5963",
-    "figures/F13_main_paper.png": "45974ac4fed4a58a5a5599369ede43ee5a59a6d59c7370a3e59b7e218374e5bb",
-    "figures/F17_decisions_paper.pdf": "951594abe5a188365967df6b51319d438022801de96ae2326398488297b0eeea",
-    "figures/F17_decisions_paper.png": "bff955702b3e0e0c92c4244172eb1cdc6ffc15acb0db9f6a09fee07defaffa51",
-    "figures/F18_matching_paper.pdf": null,
-    "figures/F18_matching_paper.png": null
-  },
-  "after_sha256": {
     "figures/F13_main_paper.pdf": "4a8cfad8e7f6b77b35b86e56876e218c1c45f81c2ed880bcef1d8e30166fc1d5",
     "figures/F13_main_paper.png": "d0f52c06eae71c7c1cdc087593e84bfcf29e44f8b796c0078f6b7de8455da390",
     "figures/F17_decisions_paper.pdf": "ac6fdbda03ca335f95bc5d2e03e81256f7b54cf5e53f0d4867d07c2ca622bcb9",
     "figures/F17_decisions_paper.png": "76c9a0a3a816dfefbfea71bf24431bd23b5ba90eac1d987276ba5cc4a19b17c6",
     "figures/F18_matching_paper.pdf": "e96732ef0fecb40b497ec7539421c6b4b84c5709f034b4d20aad8a5f2ac05132",
+    "figures/F18_matching_paper.png": "dc23e1b17981edb000c33ac9bd6ec89f0e8165f3ebe9abb94759a138f9dd7148"
+  },
+  "after_sha256": {
+    "figures/F13_main_paper.pdf": "3449c7a16a3813bdb303e3264e5333fe7ead0b1d67f16d0e92ce3b688aacb892",
+    "figures/F13_main_paper.png": "d0f52c06eae71c7c1cdc087593e84bfcf29e44f8b796c0078f6b7de8455da390",
+    "figures/F17_decisions_paper.pdf": "7fe3279c6d1ea2c2d74369fce17f422892d7f9707291e45351a24a8251bdc1a5",
+    "figures/F17_decisions_paper.png": "76c9a0a3a816dfefbfea71bf24431bd23b5ba90eac1d987276ba5cc4a19b17c6",
+    "figures/F18_matching_paper.pdf": "7355c6c5287d541c497710e70239d817b24bc11e2897987bac407532e0874424",
     "figures/F18_matching_paper.png": "dc23e1b17981edb000c33ac9bd6ec89f0e8165f3ebe9abb94759a138f9dd7148"
   },
   "page_sizes_points": {
@@ -53,6 +53,6 @@
     "acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49",
     "acd_stage10b.json": "2532042ae294ca2938fe753dd67c28ec33087837c2fdf308b59e68d7dd246473",
     "acd_stage10b_decisions.json": "3434b4ddc8afd00dd6657ec9472e038e43bd31519bb7d78506ba583c9e2826b3",
-    "acd_stage15_matching.json": "bdd25069e3340e48c32bca5e174967cf92a786aebde183f97074be41ffc5e5d0"
+    "acd_stage15_matching.json": "187b795df34bf01792c306d9adc172a35e1e006b6653ce29418e051d7f60fd36"
   }
 }
