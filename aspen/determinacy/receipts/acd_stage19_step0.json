@@ -1,0 +1,68 @@
+{
+  "passed": true,
+  "environment": {
+    "host": "baccus",
+    "python": "3.13.11",
+    "jax": "0.11.2",
+    "numpyro": "0.22.0",
+    "numpy": "2.5.3",
+    "jax_x64": true,
+    "devices": [
+      "cpu:0"
+    ]
+  },
+  "checks": {
+    "forward_relative_difference": 0.0,
+    "gradient_relative_difference": 0.0,
+    "misfit_absolute_difference": 0.0,
+    "null_energy_max_absolute_difference": 0.0
+  },
+  "hashes": {
+    "acd_protocol.py": {
+      "sha256": "160eabe8ccee07d0de17576a441b6fef1a93e1d5dbb68f2df9eb118a1eaad000",
+      "expected": "160eabe8ccee07d0de17576a441b6fef1a93e1d5dbb68f2df9eb118a1eaad000",
+      "passed": true
+    },
+    "acd_fits.py": {
+      "sha256": "17e62ac36a1ff18bc93721dc828a77e079932f320423d3aa9e367432df9d13cd",
+      "expected": "17e62ac36a1ff18bc93721dc828a77e079932f320423d3aa9e367432df9d13cd",
+      "passed": true
+    },
+    "acd_posterior.py": {
+      "sha256": "0b80c61b2e7530dabec4f9c3f0e7fee51f2cfc1ad15745b729d3ddc227c6a60a",
+      "expected": "0b80c61b2e7530dabec4f9c3f0e7fee51f2cfc1ad15745b729d3ddc227c6a60a",
+      "passed": true
+    },
+    "acd_mechanism.py": {
+      "sha256": "886fea5d67b217e72829c4e07b469473e391cfb17b84d18f6bc0307606e40e9f",
+      "expected": "886fea5d67b217e72829c4e07b469473e391cfb17b84d18f6bc0307606e40e9f",
+      "passed": true
+    },
+    "protocol.py": {
+      "sha256": "e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d",
+      "expected": "e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d",
+      "passed": true
+    },
+    "physics.py": {
+      "sha256": "13ef98834e47bd667f53cce50af3e7d573a1bc4eb9c38987f389a05b1f2fc5d7",
+      "expected": "13ef98834e47bd667f53cce50af3e7d573a1bc4eb9c38987f389a05b1f2fc5d7",
+      "passed": true
+    }
+  },
+  "reference_sha256": "037ee8e8747306f77fb44a85a4aec9e7ebeb5b1297ec711cdfd7cab930c6469b",
+  "reference_sources": {
+    "host": "sulaco",
+    "reference": "first saved confirmation draw; factual RK4 history and misfit gradient; saved no-action window energies for first climatological states",
+    "source_hashes": {
+      "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs/conf/case_000.npz": "9f1c8495881652545682b2ff3249648e290243a33e95d2e9b6792722fe354466",
+      "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs/conf/input_000.npz": "c5816fefc6749a073fbecf3732247f24f588b0e389d54ccdd5330c70e5db2793",
+      "/home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/runs/stage4b_null/states.npz": "0d7db6b75fc1f1a279e884a1c63205ba278a58726d676e41cb58d2aba5160b4d",
+      "/home/todd/work/aspen-determinacy-stage4-20261005/aspen/determinacy/runs/stage4b_null/null_0.16.npz": "3eee6184746483dcc4e2a9f4efb8d155521700b7f11fb49fd3b90548c9fab729",
+      "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py": "13ef98834e47bd667f53cce50af3e7d573a1bc4eb9c38987f389a05b1f2fc5d7",
+      "/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision/protocol.py": "e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d",
+      "/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/acd_fits.py": "17e62ac36a1ff18bc93721dc828a77e079932f320423d3aa9e367432df9d13cd"
+    }
+  },
+  "mcmc_cross_host_bitwise_identity_expected": false,
+  "realized_outcome_accesses": []
+}
