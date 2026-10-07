@@ -1,0 +1,55 @@
+{
+  "post_hoc": true,
+  "licenses_frozen_route": false,
+  "status": "both queues running",
+  "hosts": [
+    {
+      "host": "192.168.88.4",
+      "hostname": "spark-89d8",
+      "observed_utc": "2026-10-07T19:59:14.504173+00:00",
+      "queue_pid": 1189481,
+      "freeze_commit": "160d02a",
+      "code_hashes": {
+        "acd_stage16_train.py": "cf35add3b06ce8323b82f290cb2da55efa1c08a17159e179945dfeaad7ca650f",
+        "acd_stage16_queue.py": "30edf32097addb68cac67e78ac6f890f2ea15009f38ddbe65b1897b0711f598b"
+      },
+      "data_hashes": {
+        "train.npz": "0eb4b167907fde9809da788ba41d9845fa7e60314c7e48efd5f3095ce3c62eb8",
+        "val.npz": "6e46c7754b18c487e8e0c59f5138f9cef0cba8bfabdb441e84f5cf43943a47e3"
+      },
+      "runs": [
+        "CNN-F-seed1",
+        "CNN-noF-seed1",
+        "CNN-F-seed2",
+        "CNN-noF-seed2"
+      ],
+      "gpu_process": "1189531, python",
+      "gpu": "NVIDIA GB10"
+    },
+    {
+      "host": "192.168.88.12",
+      "hostname": "gx10-5278",
+      "observed_utc": "2026-10-07T19:59:14.697173+00:00",
+      "queue_pid": 2771246,
+      "freeze_commit": "160d02a",
+      "code_hashes": {
+        "acd_stage16_train.py": "cf35add3b06ce8323b82f290cb2da55efa1c08a17159e179945dfeaad7ca650f",
+        "acd_stage16_queue.py": "30edf32097addb68cac67e78ac6f890f2ea15009f38ddbe65b1897b0711f598b"
+      },
+      "data_hashes": {
+        "train.npz": "0eb4b167907fde9809da788ba41d9845fa7e60314c7e48efd5f3095ce3c62eb8",
+        "val.npz": "6e46c7754b18c487e8e0c59f5138f9cef0cba8bfabdb441e84f5cf43943a47e3"
+      },
+      "runs": [
+        "CNN-F-seed3",
+        "CNN-noF-seed3",
+        "CNN-F-seed4",
+        "CNN-noF-seed4"
+      ],
+      "gpu_process": "2771298, python",
+      "gpu": "NVIDIA GB10"
+    }
+  ],
+  "matched_coverage": "pending committed Stage15A ranking definition; no training or evaluation dependency",
+  "transfer": "existing ring link from Spark1 10.77.0.1 to Spark2 10.77.0.2; no interface configuration changed"
+}
