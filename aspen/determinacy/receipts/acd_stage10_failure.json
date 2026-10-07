@@ -1,0 +1,21 @@
+{
+  "model": "CNN-F-resp-0.1",
+  "discarded": true,
+  "evaluated": false,
+  "last_logged": {
+    "step": 9200,
+    "loss": 0.028024019673466682,
+    "charged_gpu_seconds": 5841.136951338034
+  },
+  "exception": "RuntimeError: nonfinite loss",
+  "progress_mtime": 1791326460.5325418,
+  "failure_log_mtime": 1791326464.6559556,
+  "logged_gpu_seconds": 5841.136951338034,
+  "accounting_gpu_seconds": 5847,
+  "accounting_rule": "R-other: monotonic final runtime unavailable; charge ceil(last logged monotonic duration + progress-to-exception file-mtime gap + one second filesystem/logging allowance). This is conservative accounting, not an exact measured final GPU duration.",
+  "checkpoint_sha256": {
+    "checkpoint_008000.pt": "d36e59b2f0a80ef31e83e178b6bed70e56fa046b4e9408bd710b45233bef0f1b",
+    "checkpoint_009000.pt": "22ad0f4669c3f5db1fc1dccfb6868174713f6379b37579571634f4422119bf1a",
+    "selected.pt": "d44335650d55def53206156bdbc4737ac3be1e0469ee0f84db6128436a44bee8"
+  }
+}
