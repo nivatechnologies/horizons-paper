@@ -21,7 +21,7 @@ def main():
    q=ssh('sulaco','cd '+MOD+' && '+PY+' acd_stage16_metrics.py '+name)
    print(q.stdout,flush=True)
    ssh('sulaco','mkdir -p '+MOD+'/runs/stage16')
-   ssh('sulaco','cp '+MOD+'/runs/stage16/metrics_'+name+'.json '+MOD+'/receipts/acd_stage16_'+name+'.json')
+   print(json.dumps(dict(receipt_path='runs/stage16/metrics_'+name+'.json',training_path='runs/stage9_training/'+name+'/complete.json')),flush=True)
    print(json.dumps(dict(status='scored_ready_to_commit',model=name,host=host)),flush=True);done.add(name)
   time.sleep(30)
 if __name__=='__main__':main()
