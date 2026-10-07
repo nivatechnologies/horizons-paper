@@ -11,3 +11,5 @@
 - Lane 4 | step 2A | e217097 / 612bc0f | 2026-10-07T20:02:26.790625+00:00 | Forecast matching receipt and ranking definition complete; B presentation, C sampling and D sensitivity remain. Stage 17 B/D unblocked.
 - Lane 4 | step 2D | d627109 / 6c3b1fd | 2026-10-07T20:06:33.750461+00:00 | Linearized variance complete; both median ratios first leave the specified range at lead 4 LT. C sampling and corrected A remain.
 - Lane 4 | step 3 | 4d2af62 / 36da5c8 | 2026-10-07T20:08:02.354847+00:00 | Stage 17 event scores and transfer diagnostics complete; earlier A/C/E values unchanged. Stage 15C and presentation correction remain.
+- Lane 4 | step 2A correction | 843a116 / a87e48a | 2026-10-07T20:10:19.478771+00:00 | Exact coverage count corrected; earlier registry values preserved in superseded precheck receipt.
+- Lane 4 | step 2B | 71d092c | 2026-10-07T20:10:19.478771+00:00 | Control and matching paper figures rendered; C final results integration remains.
