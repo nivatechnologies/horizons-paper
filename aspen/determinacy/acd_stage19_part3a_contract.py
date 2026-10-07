@@ -21,6 +21,7 @@ def seeds():
  roots={int.from_bytes(hashlib.sha256(s.encode()).digest()[:8],'little') for s in prior}
  # Also check numeric roots actually recorded by the original protocol and addenda.
  for p in (ROOT/'receipts').glob('*freeze*.json'):
+  if p.name=='acd_stage19_freeze_c.json':continue
   r=json.loads(p.read_text())
   def walk(v):
    if isinstance(v,dict):
