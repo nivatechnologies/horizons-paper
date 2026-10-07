@@ -1,0 +1,112 @@
+{
+  "namespace": "acd-stage18-seeds",
+  "namespace_id": 1300663595214357452,
+  "seeds": [
+    {
+      "index": 1,
+      "torch_seed": 1973631741,
+      "batch_seed": 3521043623
+    },
+    {
+      "index": 2,
+      "torch_seed": 2799994744,
+      "batch_seed": 1378675625
+    },
+    {
+      "index": 3,
+      "torch_seed": 3320683030,
+      "batch_seed": 2120846709
+    },
+    {
+      "index": 4,
+      "torch_seed": 4208116273,
+      "batch_seed": 1552295955
+    },
+    {
+      "index": 5,
+      "torch_seed": 459775654,
+      "batch_seed": 666108171
+    }
+  ],
+  "code_hashes": {
+    "acd_stage18_charge.py": "521a957dd49bf7ddf21b2827a4e9847a0e732c4ca8ee2b7f9b4a658a823d4a50",
+    "acd_stage18_controller.py": "c869dbbc8393210a8b3a5e912a31e49f7fc29130930bec8d2942c12439817e6c",
+    "acd_stage18_data.py": "8ac51783c4346c9d5e69944706999b2e88e4fb6837e4d22648373f3f44790438",
+    "acd_stage18_derivative_readings.py": "88233dcee14c56eaf5b998060bea4b43c640e61aa248b520d0a11149e64b2c62",
+    "acd_stage18_derivatives.py": "14171011c76c7e169c2b9c99ccb0e358ce803f8f2af2288ac1471ed6bc157861",
+    "acd_stage18_estimators.py": "3e3d00143ecd874a3680378870683c0ccc875c3badbb098202b222de05eee4bc",
+    "acd_stage18_freeze.py": "b690e52a61070347fb3c19253fa2e9bd3f3f1481ddad25e406a1b827c0ab092f",
+    "acd_stage18_gpu_lease.py": "2cf41aa25d77c947f2e886d3e7303c51d526eeec8ce92696172ed6dbba456507",
+    "acd_stage18_inference.py": "a6ea2847438a23a3290fa12c91535423413f31e8f3b3bd578d93735fa4a0fcb7",
+    "acd_stage18_response_train.py": "9173c05d651d3339492d02147dec4d9b6f007f306b58bbbb7d8994abf18d88df",
+    "acd_stage18_score.py": "14b2e75612b0527973a13ff1d8cb051782660d321d935c607c431fa8f8a364df",
+    "acd_stage18_select.py": "e0e68bd34ec978a862e448a69595b99a10491ae1b2fc3ebf992b362717be9aa4",
+    "acd_stage9_cnn.py": "3ca018b1dc35c5cb9734787e852240e7517d88007515692d27fd882f3c13d434",
+    "acd_stage9_train.py": "9c36418c45ab0727d2c4294b96bed1102b85d65d269636f6c9b38e3573605269",
+    "acd_stage9_cnn_metrics.py": "471e2363945e25a1f8ee0920c3955bc1a3c41d899de5a164b4369e2299fe859d",
+    "acd_stage9_receipts.py": "966a21bc72ef4b3c8ede354a1246fb5d01c4b3df440ef19902ec032a688b456c",
+    "acd_stage6_analysis.py": "c9fa8c1f9e211f8e7ea47ec63947bff3693258c738c377ce7874b425bba58cd8",
+    "acd_stage13_analysis.py": "ffe50e4894aa97eb6de690abc996c1a8589ec8be926af0100f077b2220be289b",
+    "acd_protocol.py": "160eabe8ccee07d0de17576a441b6fef1a93e1d5dbb68f2df9eb118a1eaad000",
+    "acd_stats.py": "1c97d51262a7546b70320c1207de554eff6f9b6a58b00428a2640f5ead6f685a",
+    "acd_stage19_part2_gate.py": "518e5890d5ac88f210a47a304ae9fd7cb47986ff444b3d078dc13ffc76b1a001"
+  },
+  "training_data_sha256": {
+    "train.npz": "0eb4b167907fde9809da788ba41d9845fa7e60314c7e48efd5f3095ce3c62eb8",
+    "val.npz": "6e46c7754b18c487e8e0c59f5138f9cef0cba8bfabdb441e84f5cf43943a47e3"
+  },
+  "trajectory_counts": {
+    "train": 4096,
+    "val": 512
+  },
+  "retained_checkpoints": {
+    "CNN-F": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+    "CNN-noF": "4bfef787a80269dada0acd7ca74ef84eb6442a580c706a57333c55dc647b1f67",
+    "CNN-20k": "3c67fc2cfc3a858613160cc81151c09ef45829f08bda67df00b9e78f35f5fe74"
+  },
+  "parameter_counts": {
+    "E0": 998401,
+    "E1": 999681,
+    "CNN-noF": 999681,
+    "CNN-F": 1000961
+  },
+  "response_namespace": "acd-train-resp",
+  "estimator_updates": 5000,
+  "matched_estimator_stage16_indices": [
+    {
+      "estimator_run": 1,
+      "CNN_F_stored_index": 0
+    },
+    {
+      "estimator_run": 2,
+      "CNN_F_stored_index": 1
+    },
+    {
+      "estimator_run": 3,
+      "CNN_F_stored_index": 2
+    },
+    {
+      "estimator_run": 4,
+      "CNN_F_stored_index": 3
+    },
+    {
+      "estimator_run": 5,
+      "CNN_F_stored_index": 4
+    }
+  ],
+  "estimator_checkpoint_spacing": 500,
+  "response_updates": 20000,
+  "response_checkpoint_spacing": 1000,
+  "per_run_gpu_seconds_cap": 36000,
+  "response_weights": [
+    0.0,
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "extra_seed_trigger": "both pooled and equal-case confident S errors at 2 LT below retained CNN-noF",
+  "post_hoc": true,
+  "licenses_frozen_route": false
+}
