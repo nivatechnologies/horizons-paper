@@ -129,6 +129,7 @@ def metrics(name, costs, means, valid, summary, physical, actual, factual, jbar,
         harms = actual[np.arange(len(actual)), selected, t]-actual[:, 8, t]
         count = int(acting.sum())
         row['actions_taken'] = count
+        row['acted_zero_effect_ties'] = int(np.sum(acting & (harms == 0)))
         row['conditional_harm_CP95'] = list(cp_bounds(int(np.sum((harms > 0) & acting)), count)) if count else [0., 1.]
         row['uniform_decrease_every_case'] = bool(np.all(selected == 0))
     return dict(model=name, fresh_panel=True, descriptive=True, invalid_cases=np.flatnonzero(~valid).tolist(),
@@ -159,18 +160,22 @@ def score():
     truth = actual[:, :8, 3] < actual[:, 8, None, 3]
     contrasts = []
     contributing = []
+    case_records = []
     for c in range(len(actual)):
         fractions = []
+        counts = {}
         for name in ['CNN-F', 'CNN-noF']:
             summary = inputs[name][3]
             conf = summary['confident'][c, 1:8, 3]
             wrong = summary['modal'][c, 1:8, 3] != truth[c, 1:8]
             fractions.append(float(wrong[conf].mean()) if conf.any() else None)
+            counts[name] = dict(answers=int(conf.sum()), wrong=int(wrong[conf].sum()))
         if all(value is not None for value in fractions):
             contrasts.append(fractions[1]-fractions[0])
             contributing.append(c)
+            case_records.append(dict(case=c, counts=counts, difference=contrasts[-1]))
     interval = difference_interval(contrasts)
-    L1 = dict(interval=interval, cases=len(contrasts), case_indices=contributing,
+    L1 = dict(interval=interval, cases=len(contrasts), case_indices=contributing, case_records=case_records,
               confirmed=bool(not interval['empty'] and not interval['offset'] and interval['lower'] > 0))
     decision = next(r for r in results['CNN-noF']['decisions'] if r['lead'] == 3. and r['policy'] == 'C_delta_0')
     L2 = dict(actions_taken=decision['actions_taken'], harms=decision['harms'],
