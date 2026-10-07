@@ -13,3 +13,4 @@
 - Lane 4 | step 3 | 4d2af62 / 36da5c8 | 2026-10-07T20:08:02.354847+00:00 | Stage 17 event scores and transfer diagnostics complete; earlier A/C/E values unchanged. Stage 15C and presentation correction remain.
 - Lane 4 | step 2A correction | 843a116 / a87e48a | 2026-10-07T20:10:19.478771+00:00 | Exact coverage count corrected; earlier registry values preserved in superseded precheck receipt.
 - Lane 4 | step 2B | 71d092c | 2026-10-07T20:10:19.478771+00:00 | Control and matching paper figures rendered; C final results integration remains.
+- Lane 4 | step 2C | 8be3ca9 / deb52eb / 764b76d | 2026-10-07T20:13:58.160227+00:00 | Known-forcing panel complete: all case outputs hashed, one exclusion after retry; Stage 15 A–D complete.
