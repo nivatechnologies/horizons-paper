@@ -14,3 +14,4 @@
 - Lane 4 | step 2A correction | 843a116 / a87e48a | 2026-10-07T20:10:19.478771+00:00 | Exact coverage count corrected; earlier registry values preserved in superseded precheck receipt.
 - Lane 4 | step 2B | 71d092c | 2026-10-07T20:10:19.478771+00:00 | Control and matching paper figures rendered; C final results integration remains.
 - Lane 4 | step 2C | 8be3ca9 / deb52eb / 764b76d | 2026-10-07T20:13:58.160227+00:00 | Known-forcing panel complete: all case outputs hashed, one exclusion after retry; Stage 15 A–D complete.
+- Lane 3 | evaluation addendum | db1bf7e / 9692b19 | 2026-10-07T20:14:50.751701+00:00 | Matched coverage adapter uses corrected ranking; persistent observer isolates failures. Training unchanged and continuing.
