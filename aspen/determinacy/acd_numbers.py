@@ -187,6 +187,9 @@ def build():
             walk(stage6['B'][label],'ACD_POSTHOC_STAGE6_'+label,'$.B.'+label,stage6_receipt,omit=omitted)
         walk(stage6['C'],'ACD_POSTHOC_STAGE6_C','$.C',stage6_receipt,omit=omitted)
         walk(stage6['settings'],'ACD_POSTHOC_STAGE6_SETTINGS','$.settings',stage6_receipt)
+    stage10b_receipt='receipts/acd_stage10b.json'
+    if (ROOT/stage10b_receipt).exists():
+        walk(json.loads((ROOT/stage10b_receipt).read_text()),'ACD_POSTHOC_STAGE10B','$',stage10b_receipt,omit=('records','case_records','source_hashes','code_hashes','resolutions','data_sha256'))
     stage10_baseline='receipts/acd_stage10_terminal_baseline.json'
     if (ROOT/stage10_baseline).exists():
         walk(json.loads((ROOT/stage10_baseline).read_text()),'ACD_POSTHOC_STAGE10_TERMINAL_BASELINE','$',stage10_baseline)
@@ -253,6 +256,7 @@ def build():
     if (ROOT/'receipts/acd_stage9.json').exists():sources.append('receipts/acd_stage9.json')
     if (ROOT/'receipts/acd_stage10_terminal_baseline.json').exists():sources.append('receipts/acd_stage10_terminal_baseline.json')
     if (ROOT/'receipts/acd_stage10.json').exists():sources.append('receipts/acd_stage10.json')
+    if (ROOT/stage10b_receipt).exists():sources.append(stage10b_receipt)
     sources += [p for p in ['receipts/acd_paper_v7_derived.json','receipts/acd_paper_v6_derived.json','receipts/acd_stage11_clim_tangent.json'] if (ROOT/p).exists()]
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
