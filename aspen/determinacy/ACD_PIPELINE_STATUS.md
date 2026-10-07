@@ -26,3 +26,5 @@ Lane 1 | Stage 19 Part 3a Freeze C | b2289a5 | 2026-10-07T21:01:28.568733+00:00 
 Lane 1 | Stage 19 Part 3a variance timing | 5674349 | 2026-10-07T21:02:08.173671+00:00 | Projection 236.49535055737942 seconds; all 200 main instances frozen; ratios and scoring remain.
 
 Lane 1 | Stage 19 Part 3a scoring | 8a8370a | 2026-10-07T21:08:54.792400+00:00 | K1-K4 and V1-V2 PASS; paired endpoint -0.40536315536315537 interval [-0.5720000000000001, -0.268]; registry 355653 to 368351 prior values unchanged; Part 3b repairs remain deferred.
+
+Lane 1 | Stage 19 Freeze B L3 addendum | 0e8451c | 2026-10-07T21:34:36.942882+00:00 | Confirmation inference already partial for CNN-F seed1 and seed3; no new-seed fresh evaluation found. L3 scoring awaits every new Stage16 run commit; training and queues untouched.
