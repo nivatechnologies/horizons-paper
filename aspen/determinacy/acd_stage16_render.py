@@ -32,6 +32,7 @@ def main():
   mp=ROOT/f'runs/stage16/metrics_{name}.json'
   d=dict(model=model,name=name,baseline=name==model)
   if tr.exists():d['training']=json.loads(tr.read_text())
+  elif name=='CNN-F':d['training']=json.loads((ROOT/'receipts/acd_stage9.json').read_text())['F']['CNN-F']
   else:
    exit_path=tr.parent/'queue_exit.json'
    if exit_path.exists():d['failure']=json.loads(exit_path.read_text())
