@@ -1,0 +1,2769 @@
+{
+  "panel": "original confirmation; post hoc comparison",
+  "L1": {
+    "cases": 196,
+    "interval": {
+      "lower": -0.0020000000000000018,
+      "upper": 0.1279999999999999,
+      "empty": false,
+      "point": 0.06282798833819242,
+      "offset": false,
+      "fallback": false
+    },
+    "case_records": [
+      {
+        "case": 0,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 1,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 2,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 3,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 4,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 2
+          }
+        },
+        "difference": 0.2857142857142857
+      },
+      {
+        "case": 5,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 6,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 7,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 1
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 8,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 9,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 10,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 11,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 12,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 13,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 3
+          }
+        },
+        "difference": 0.5
+      },
+      {
+        "case": 14,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 15,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 16,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 17,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 18,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 19,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 20,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 21,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 22,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 23,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 24,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 25,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 26,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 27,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 28,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 1,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 29,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 30,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 31,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 32,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 33,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 34,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 1
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 35,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 36,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 37,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 38,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 39,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 40,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 41,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.023809523809523808
+      },
+      {
+        "case": 42,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 43,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 44,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 45,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 46,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 47,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 48,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 49,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 50,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 51,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.2
+      },
+      {
+        "case": 52,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 53,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 54,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 55,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": -0.04999999999999999
+      },
+      {
+        "case": 56,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 57,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 58,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 59,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 60,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 61,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 62,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 64,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 65,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 66,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 67,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 68,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 2
+          }
+        },
+        "difference": 0.1333333333333333
+      },
+      {
+        "case": 69,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 70,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 71,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 72,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 73,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 74,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 75,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 76,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 2
+          }
+        },
+        "difference": 0.4
+      },
+      {
+        "case": 77,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": -0.14285714285714285
+      },
+      {
+        "case": 78,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 79,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 80,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 81,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 1,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 82,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 1,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 83,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 84,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 85,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 86,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 2
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 87,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 88,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 1
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 89,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 90,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 91,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 92,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 93,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 94,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 95,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 96,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 97,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 98,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 99,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 100,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 101,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 102,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 103,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 104,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 105,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 106,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 107,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 108,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 109,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 110,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 111,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 112,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 113,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 114,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 115,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 116,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 117,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 118,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 119,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 2
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 120,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 121,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 2
+          }
+        },
+        "difference": 0.2857142857142857
+      },
+      {
+        "case": 122,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 123,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 124,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 125,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.2
+      },
+      {
+        "case": 126,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.2
+      },
+      {
+        "case": 127,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 128,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 1
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 129,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 130,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 1,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 132,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 133,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 2
+          }
+        },
+        "difference": 0.2857142857142857
+      },
+      {
+        "case": 134,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 135,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 136,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 137,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 138,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 139,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 140,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 141,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 142,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 143,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 144,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 145,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 146,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 1
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 147,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 148,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 1,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 149,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 150,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 151,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 152,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 153,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 154,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 156,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 157,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 1
+          }
+        },
+        "difference": 0.16666666666666666
+      },
+      {
+        "case": 158,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 159,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 160,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.033333333333333354
+      },
+      {
+        "case": 161,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 162,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 163,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.08333333333333334
+      },
+      {
+        "case": 164,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 165,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 166,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 167,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 168,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 2
+          }
+        },
+        "difference": 0.5
+      },
+      {
+        "case": 169,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 170,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 171,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.25
+      },
+      {
+        "case": 173,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 1
+          }
+        },
+        "difference": 0.14285714285714285
+      },
+      {
+        "case": 174,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 2,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 175,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 176,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 177,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 178,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 2
+          }
+        },
+        "difference": 0.4
+      },
+      {
+        "case": 179,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.2
+      },
+      {
+        "case": 180,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 181,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 182,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 1
+          }
+        },
+        "difference": 0.3333333333333333
+      },
+      {
+        "case": 183,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.2
+      },
+      {
+        "case": 184,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 1
+          }
+        },
+        "difference": 0.2
+      },
+      {
+        "case": 185,
+        "counts": {
+          "CNN-F": {
+            "answers": 7,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 7,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 186,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 187,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 1
+          }
+        },
+        "difference": 0.08333333333333334
+      },
+      {
+        "case": 188,
+        "counts": {
+          "CNN-F": {
+            "answers": 4,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 189,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 190,
+        "counts": {
+          "CNN-F": {
+            "answers": 2,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 191,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 192,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 1
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": -0.16666666666666666
+      },
+      {
+        "case": 193,
+        "counts": {
+          "CNN-F": {
+            "answers": 1,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 194,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 195,
+        "counts": {
+          "CNN-F": {
+            "answers": 3,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 4,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 196,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 2
+          }
+        },
+        "difference": 0.4
+      },
+      {
+        "case": 197,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 3,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 198,
+        "counts": {
+          "CNN-F": {
+            "answers": 6,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 6,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      },
+      {
+        "case": 199,
+        "counts": {
+          "CNN-F": {
+            "answers": 5,
+            "wrong": 0
+          },
+          "CNN-noF": {
+            "answers": 5,
+            "wrong": 0
+          }
+        },
+        "difference": 0.0
+      }
+    ]
+  },
+  "L2": {
+    "actions_taken": 199,
+    "harms": 29,
+    "conditional_harm_CP95": [
+      0.10625522608525657,
+      0.1933401423884958
+    ]
+  },
+  "code_sha256": "4a63343e2a8b119c82e1b2db678466abe9e5e078922f1b8e480a3823deba87eb"
+}
