@@ -18,3 +18,4 @@
 - Registry maintenance | serialization | 80a295e | 2026-10-07T20:17:15.228535+00:00 | Compact JSON serialization preserves all values and provenance; registry passes. GPU lanes remain running.
 - Lane 2 | Stage18 freeze | 2ee06a7 | 2026-10-07T20:28:45.022350+00:00 | Independently reviewed freeze pushed; A/B waits for Stage19 learned readings push.
 - Lane 3 | retained baseline reports and observer | 315a99c / 804a3eb / 4c6e485 | 2026-10-07T20:28:45.022350+00:00 | Baselines and registry pushed; eight new runs continue, per-run reporting enabled.
+- Lane 2 | steps 1–2 | fa9969c | 2026-10-07T20:31:55.135854+00:00 | All three fresh-panel inference manifests and learned readings pushed; L1/L2 pass; L3 waits for Stage16. Stage18 waiter unblocked.
