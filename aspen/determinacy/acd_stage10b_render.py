@@ -22,6 +22,9 @@ def main():
    assert tr['charged_gpu_seconds']<=tr['cap_seconds']
    assert tr['data_sha256']==stage9['F']['CNN-F']['data_sha256']
    assert tr['selected_sha256']==d['execution']['checkpoint_sha256']
+   skips=ROOT/'runs/stage9_training'/name/'skips.json'
+   tr['skip_records']=read(skips) if skips.exists() else []
+   assert len(tr['skip_records'])==tr['skipped_updates'], 'missing skip diagnostics'
    result['training'][name]=tr
   elif name in stage9['F']:result['training'][name]=stage9['F'][name]
   for row in d['confidence_readings']:
@@ -50,6 +53,11 @@ def main():
   for row in d['confidence_readings']:
    skill=next(x for x in d['state_skill'] if x['lead']==row['lead']);a=row['S_error_summary'];o=row['observation_S_error_summary']
    L.append(f"| {name} | {row['lead']} | {fmt(skill['window_mean_RMSE_over_sigma'])} | {fmt(skill['window_mean_anomaly_correlation'])} | {fmt(row['confident_S_share'])} | {fmt(row['observation_S_share'])} | {fmt(row['confident_Fc_share'])} | {fmt(a['case_error'])} [{fmt(a['case_error_lower'])}, {fmt(a['case_error_upper'])}] | {fmt(a['pooled_error'])} | {fmt(o['case_error'])} [{fmt(o['case_error_lower'])}, {fmt(o['case_error_upper'])}] | {fmt(o['pooled_error'])} |")
+ L+=['','| Model | Lead LT | S answers | Observation S answers | Fc answers | Case Fc error [bounds] | Pooled Fc error |','|---|---|---|---|---|---|---|']
+ for name,d in result['models'].items():
+  for row in d.get('confidence_readings',[]):
+   a=row['S_error_summary'];o=row['observation_S_error_summary'];f=row['Fc_error_summary']
+   L.append(f"| {name} | {row['lead']} | {a['answers']} | {o['answers']} | {f['answers']} | {fmt(f['case_error'])} [{fmt(f['case_error_lower'])}, {fmt(f['case_error_upper'])}] | {fmt(f['pooled_error'])} |")
  L+=['','## Per-draw cost errors','','Pooled weights every saved draw/action equally. Equal-case columns average the per-case metric, giving each case equal weight. The posterior is its own physics reference, so its per-draw model error is identically zero by definition.','','| Model | Lead | Quantity | Pooled bias | Pooled RMSE | Pooled MAE | Equal-case bias | Equal-case RMSE | Equal-case MAE |','|---|---|---|---|---|---|---|---|---|']
  for name,d in result['models'].items():
   for row in d.get('pooled_per_draw_errors',[]):
