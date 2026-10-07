@@ -22,3 +22,5 @@ Code hashes:
     "current_sha256": "d0e1d7908acf4297b9ba7580fca67597e3a4e52128db89852f422648ba07c3c5"
   }
 }
+
+The observer now writes an immutable per-run receipt and reading after saved-cost scoring; its SHA-256 is `a194e053bdff87c34100d7f6872ac6f450f031d74a6fdb9cafb762b141a2e675`. This reporting step uses saved metrics only and does not change training, selection, inference or scoring.

@@ -27,6 +27,8 @@ def main():
     if terminal['completed']:
      q=ssh('sulaco','cd '+MOD+' && '+PY+' acd_stage16_metrics.py '+name)
      print(q.stdout,flush=True)
+     report=ssh('sulaco','cd '+MOD+' && '+PY+' acd_stage16_report_run.py '+name)
+     print(report.stdout,flush=True)
      status='scored_ready_to_commit'
     else:status='failed_ready_to_commit'
     record=dict(status=status,model=name,host=host,terminal=terminal,receipt_path='runs/stage16/metrics_'+name+'.json',training_path='runs/stage9_training/'+name+'/complete.json')
