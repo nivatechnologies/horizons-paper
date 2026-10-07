@@ -1,16 +1,37 @@
 # Stage 15 recovery status
 
-Inspection UTC: 2026-10-07T19:49:50.500752+00:00.
+Inspection UTC: 2026-10-07T20:09:43.972724+00:00.
 
-Post hoc on the confirmation panel; licenses no frozen route. This status records observed files and processes; it does not infer completion from earlier conversation claims.
+Post hoc on confirmation; licenses no frozen route.
 
 | Part | Complete | Running | Remaining |
 |---|---|---|---|
-| A | No completion artifact located | No matching process located; no case counter or projection available | receipt, ranking definition and table; implementation queued under the newly supplied Stage 15 contract |
-| B | No completion artifact located | No matching process located; no case counter or projection available | F13_main and F17 including CNN-noF; F18; implementation queued under the newly supplied Stage 15 contract |
-| C | No completion artifact located | No matching process located; no case counter or projection available | known-forcing comparison; implementation queued under the newly supplied Stage 15 contract |
-| D | No completion artifact located | No matching process located; no case counter or projection available | linearized-variance check; implementation queued under the newly supplied Stage 15 contract |
+| A | Matched-coverage receipt, fixed ranking, four-model tables; exact count correction recorded | None | Serialized registry/push handled by recovery coordinator |
+| B | Three PDF/PNG figure pairs and computed hashes/page sizes | None | Serialized push handled by recovery coordinator |
+| C | 200 cases; 199 retained; 1 excluded after retry; all output hashes checked before scoring | None | Serialized registry/push handled by recovery coordinator |
+| D | Fixed-case full-covariance nested-JVP receipt and table | None | Serialized registry/push handled by recovery coordinator |
 
-Inspected all Aspen worktree top-level Stage 15 files and receipts on sulaco and current process arguments. Matching files: ['/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stage15_matching.py', '/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stage15_figures.py']. Matching processes: [].
+Timing gate: {
+  "pilot_wall_seconds": 44.680538551998325,
+  "pilot_mean_seconds": 40.94921441599727,
+  "workers": 30,
+  "cores_per_worker": 4,
+  "reserved_cpus": [
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127
+  ],
+  "projected_seconds": 444.9814633205036,
+  "projected_hours": 0.12360596203347322,
+  "limit_hours": 24,
+  "passed": true,
+  "original_retry_rate": 0.055,
+  "original_full_rescore_rate": 0.575
+}.
 
-R-other: no previous Stage 15 completion files or active jobs were located. The newly supplied recovery contract is authoritative; implement its parts independently. Stage 17 B/D retain their committed-Stage-15A gate.
+R-other: the initial missing Stage 15 contract was subsequently supplied by Todd. The floating-product truncation in the first matched-coverage receipt was corrected; the old receipt remains for registry history. Model factual outputs omit a physics terminal tick beyond all scored windows; every scored tick is asserted present in both sources.

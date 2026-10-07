@@ -1,0 +1,18 @@
+"""Render Stage 15C tables and recovery status from receipts only."""
+import json,datetime
+from pathlib import Path
+from acd_protocol import ROOT
+r=json.loads((ROOT/'receipts/acd_stage15_knownF.json').read_text())
+lines=['# Stage 15C known-forcing comparison','','Post hoc on the confirmation panel; licenses no frozen route. The fixed-forcing implementation is copied unchanged by hash; only the sampling namespace and original-panel observation source differ. Exclusion follows the retry gate.','','Gate summary: '+json.dumps(r['gate_summary'])+'.','','| Lead | S8 confident | S7 confident | Observation-confident S | Fc confident | S case accuracy | S lower95 | S answers | Fc accuracy | Fc CP lower95 |','|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|']
+for s,a in zip(r['shares'],r['accuracy']):
+ cp=a['Fc_CP_one_sided95'];v=[s['lead'],s['S8_confident_share'],s['S7_confident_share'],s['observation_S_share'],s['Fc_confident_share'],a['S']['case_accuracy'],a['S']['case_lower'],a['S']['answers'],cp['accuracy'],cp['bounds'][0] if cp['bounds'] else None];lines.append('| '+' | '.join(map(str,v))+' |')
+lines+=['','The S bound is the existing instance-level one-sided betting bound. Forecast-sign intervals are exact one-sided Clopper–Pearson bounds. All gate outcomes and file hashes are in the receipt.','','| Lead | Median rho | Median cancellation c | Median zD | Median zF |','|---|---:|---:|---:|---:|']
+for s in r['shares']:lines.append('| '+' | '.join(map(str,[s['lead'],s['rho']['median'],s['c']['median'],s['z_D']['median'],s['z_F']['median']]))+' |')
+lines+=['','| Lead | Comparison | Point | 99% lower | 99% upper |','|---|---|---:|---:|---:|']
+for s in r['comparisons']:
+ for name in ['seven_minus_Fc','all_minus_Fc','observation_minus_Fc']:
+  q=s[name];lines.append('| '+' | '.join(map(str,[s['lead'],name,q['point'],q['lower'],q['upper']]))+' |')
+p=r['paired_first_loss'];lines+=['','Own-eligibility paired endpoint: '+json.dumps({k:v for k,v in p.items() if k not in ['records','case_records']})+'.','','Original main-posterior forcing standard deviation: '+json.dumps(r['main_posterior_forcing_sd'])+'.','','Original main-posterior forcing correlations at the requested leads: '+json.dumps(r['main_posterior_forcing_correlation'])+'.','']
+(ROOT/'ACD_STAGE15_KNOWNF.md').write_text('\n'.join(lines))
+s=['# Stage 15 recovery status','', 'Inspection UTC: '+datetime.datetime.now(datetime.timezone.utc).isoformat()+'.','','Post hoc on confirmation; licenses no frozen route.','','| Part | Complete | Running | Remaining |','|---|---|---|---|','| A | Matched-coverage receipt, fixed ranking, four-model tables; exact count correction recorded | None | Serialized registry/push handled by recovery coordinator |','| B | Three PDF/PNG figure pairs and computed hashes/page sizes | None | Serialized push handled by recovery coordinator |',f"| C | {r['gate_summary']['cases']} cases; {r['gate_summary']['retained']} retained; {r['gate_summary']['excluded']} excluded after retry; all output hashes checked before scoring | None | Serialized registry/push handled by recovery coordinator |",'| D | Fixed-case full-covariance nested-JVP receipt and table | None | Serialized registry/push handled by recovery coordinator |','','Timing gate: '+(ROOT/'receipts/acd_stage15_knownF_timing.json').read_text().strip()+'.','','R-other: the initial missing Stage 15 contract was subsequently supplied by Todd. The floating-product truncation in the first matched-coverage receipt was corrected; the old receipt remains for registry history. Model factual outputs omit a physics terminal tick beyond all scored windows; every scored tick is asserted present in both sources.']
+(ROOT/'ACD_STAGE15_STATUS.md').write_text('\n'.join(s)+'\n')
