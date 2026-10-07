@@ -1,0 +1,19 @@
+{
+  "status": "fixed",
+  "code_path": "acd_stage16_coverage.py",
+  "function": "readings",
+  "code_sha256": "ff32f1a24e8d88b2a2849ce9f70bf994605f8956063ce82333b75815c65b4a6f",
+  "source_receipt": "receipts/acd_stage15_matching.json",
+  "source_receipt_sha256": "187b795df34bf01792c306d9adc172a35e1e006b6653ce29418e051d7f60fd36",
+  "ranking_namespace": "acd-stage15-ties",
+  "count_rule": "int(round(target coverage times eligible question count))",
+  "patterns": [
+    "all_eight",
+    "seven_zero_mean"
+  ],
+  "target_coverages": [
+    0.5,
+    0.7
+  ],
+  "ranking_order": "descending modal probability; ties by the single fixed namespace-seeded permutation, independent of outcomes; reused across models, leads and pattern subsets"
+}

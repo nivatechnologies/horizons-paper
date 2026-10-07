@@ -26,7 +26,7 @@ def score_decisions_and_coverage(name):
  d=json.loads((metrics.DEST/f'metrics_{name}.json').read_text())
  d['decisions']=[r for r in rows if r['policy'] in ['E','C_delta_0']]
  contract=ROOT/'receipts/acd_stage16_coverage_contract.json'
- d['matched_coverage']=score_coverage(costs,valid,keep,jbar,null[np.r_[np.arange(8),37]]) if contract.exists() else {'status':'pending committed Stage15A ranking definition'}
+ d['matched_coverage']=score_coverage(costs,valid,keep,jbar,null) if contract.exists() else {'status':'pending committed Stage15A ranking definition'}
  d['uniform_decrease_collapse']={str(r['lead']): bool(r['chosen_actions'][0]==r['cases']) for r in d['decisions'] if r['policy']=='E'}
  (ROOT/f'runs/stage16/metrics_{name}.json').write_text(json.dumps(d,indent=2,allow_nan=False)+'\n')
 
