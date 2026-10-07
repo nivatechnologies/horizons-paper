@@ -1,0 +1,182 @@
+{
+  "post_hoc": true,
+  "descriptive": true,
+  "readings": [
+    {
+      "lead": 2.0,
+      "patterns": "all_eight",
+      "groups": {
+        "confident": {
+          "questions": 1158,
+          "realized_absolute_effect": {
+            "q25": 0.0642874089943879,
+            "median": 0.12879805755226048,
+            "q75": 0.23731569552453458
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.07133699133555173,
+            "median": 0.13442127184270786,
+            "q75": 0.24081927577386175
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.36268699575240926,
+            "median": 0.7259710116540332,
+            "q75": 1.4110449332437016
+          }
+        },
+        "not_confident": {
+          "questions": 442,
+          "realized_absolute_effect": {
+            "q25": 0.013321540374752416,
+            "median": 0.042939964154182775,
+            "q75": 0.10825900838611835
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.011921098020088578,
+            "median": 0.03527268651721821,
+            "q75": 0.07932823212856197
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.07259840985775234,
+            "median": 0.2331140209022613,
+            "q75": 0.6487360060955283
+          }
+        }
+      },
+      "not_confident_exceeds_confident_median_share": 0.2171945701357466,
+      "not_confident_beneficial_share": 0.5248868778280543
+    },
+    {
+      "lead": 2.0,
+      "patterns": "seven_zero_mean",
+      "groups": {
+        "confident": {
+          "questions": 971,
+          "realized_absolute_effect": {
+            "q25": 0.05562970495951047,
+            "median": 0.10527836294879833,
+            "q75": 0.18627382406253767
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.06188514726889031,
+            "median": 0.11173700506054064,
+            "q75": 0.18727550753537364
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.3179543666151311,
+            "median": 0.586757096756719,
+            "q75": 1.0114356904044421
+          }
+        },
+        "not_confident": {
+          "questions": 429,
+          "realized_absolute_effect": {
+            "q25": 0.012835476108218558,
+            "median": 0.041340340086724936,
+            "q75": 0.0995935180026386
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.01187089781959549,
+            "median": 0.034496839050494874,
+            "q75": 0.07550487037859949
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.06918462022270973,
+            "median": 0.2276908339403976,
+            "q75": 0.6210220816447922
+          }
+        }
+      },
+      "not_confident_exceeds_confident_median_share": 0.2400932400932401,
+      "not_confident_beneficial_share": 0.5244755244755245
+    },
+    {
+      "lead": 3.0,
+      "patterns": "all_eight",
+      "groups": {
+        "confident": {
+          "questions": 646,
+          "realized_absolute_effect": {
+            "q25": 0.14427861717823287,
+            "median": 0.2800876996796182,
+            "q75": 0.46829180657952607
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.16073536148557377,
+            "median": 0.3003470282990141,
+            "q75": 0.46371382652119914
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.37068213300585523,
+            "median": 0.6918221253273251,
+            "q75": 1.2230527421851065
+          }
+        },
+        "not_confident": {
+          "questions": 954,
+          "realized_absolute_effect": {
+            "q25": 0.07276076439426049,
+            "median": 0.1851883158110903,
+            "q75": 0.40825984084992584
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.050361771978303216,
+            "median": 0.11550320172287498,
+            "q75": 0.22620560142856666
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.1776403308352223,
+            "median": 0.44471466680730676,
+            "q75": 0.9580981437185813
+          }
+        }
+      },
+      "not_confident_exceeds_confident_median_share": 0.3522012578616352,
+      "not_confident_beneficial_share": 0.5020964360587002
+    },
+    {
+      "lead": 3.0,
+      "patterns": "seven_zero_mean",
+      "groups": {
+        "confident": {
+          "questions": 521,
+          "realized_absolute_effect": {
+            "q25": 0.1292714684583096,
+            "median": 0.24996179294535636,
+            "q75": 0.49128364782867884
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.14096689690950134,
+            "median": 0.27820591661502425,
+            "q75": 0.48682954217559
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.32375470497860775,
+            "median": 0.5872981770816572,
+            "q75": 1.0870719324261826
+          }
+        },
+        "not_confident": {
+          "questions": 879,
+          "realized_absolute_effect": {
+            "q25": 0.07017983046802367,
+            "median": 0.17721385362559516,
+            "q75": 0.39771072639057703
+          },
+          "posterior_mean_absolute_effect": {
+            "q25": 0.049546095745251234,
+            "median": 0.11202853542555723,
+            "q75": 0.21949279505977093
+          },
+          "realized_absolute_effect_over_climate_sd": {
+            "q25": 0.16796000148365142,
+            "median": 0.42318718930853266,
+            "q75": 0.9046562824683211
+          }
+        }
+      },
+      "not_confident_exceeds_confident_median_share": 0.38794084186575656,
+      "not_confident_beneficial_share": 0.4926052332195677
+    }
+  ]
+}

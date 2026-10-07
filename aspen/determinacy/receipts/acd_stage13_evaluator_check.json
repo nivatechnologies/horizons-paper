@@ -1,0 +1,20 @@
+{
+  "model": "CNN-F",
+  "exact_fields": [
+    "matched_cases",
+    "matched_questions",
+    "confidence_readings",
+    "reliability",
+    "error_coverage",
+    "calibration_test",
+    "comparisons",
+    "paired_endpoint",
+    "paired_endpoint_fixed_posterior_cohort",
+    "invalid_cases"
+  ],
+  "differences": [],
+  "pass_exact": true,
+  "input_directory": "runs/stage9/inference/CNN-F",
+  "input_format": "case-indexed NPZ: J[draw,9,8], optional valid mask",
+  "scope": "Exact equality, including floating-point values, counts and bounds; factual-state skill not inferred from costs."
+}

@@ -251,6 +251,16 @@ def build():
                     add(prefix+'_'+key,row['value'],'$.quantities.'+key+'.value',filename,derivation=row['derivation'],additional_sources=[dict(receipt=row['source'],receipt_path=row['source_path'])])
             else:
                 walk(record,prefix,'$',filename,omit=('source_code_hashes','source_states_sha256','elapsed_cpu_run_seconds'))
+    # Stage 13: post hoc aggregate quantities, no frozen-route license.
+    stage13_receipts=[('receipts/acd_stage13_decisions.json','ACD_POSTHOC_STAGE13_A'),
+                      ('receipts/acd_stage13_dt.json','ACD_POSTHOC_STAGE13_B'),
+                      ('receipts/acd_stage13_instance.json','ACD_POSTHOC_STAGE13_C'),
+                      ('receipts/acd_stage13_withheld.json','ACD_POSTHOC_STAGE13_D'),
+                      ('receipts/acd_stage13_figures.json','ACD_POSTHOC_STAGE13_FIGURES')]
+    for filename,prefix in stage13_receipts:
+        if (ROOT/filename).exists():
+            walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
+                 omit=('source_hashes',))
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
     if (ROOT/'receipts/acd_stage9.json').exists():sources.append('receipts/acd_stage9.json')
@@ -258,6 +268,7 @@ def build():
     if (ROOT/'receipts/acd_stage10.json').exists():sources.append('receipts/acd_stage10.json')
     if (ROOT/stage10b_receipt).exists():sources.append(stage10b_receipt)
     sources += [p for p in ['receipts/acd_paper_v7_derived.json','receipts/acd_paper_v6_derived.json','receipts/acd_stage11_clim_tangent.json'] if (ROOT/p).exists()]
+    sources += [p for p,_ in stage13_receipts if (ROOT/p).exists()]
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):
     lines=['# Aspen determinacy numbers — receipt registry','', 'Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full precision is retained in JSON. Stage 6 POSTHOC keys license no frozen route. Empirical paths refer to receipts/acd_stage2.json; development to receipts/acd_stage1.json. Derived quantities list actual input paths and the operation. Contract constants have separately identified sources under R-other; no nonexistent numeric receipt path is asserted.','', '| Key | Full precision | Source | Receipt path / derivation |','|---|---|---|---|']
