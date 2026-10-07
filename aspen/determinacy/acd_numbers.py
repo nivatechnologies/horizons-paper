@@ -252,7 +252,9 @@ def build():
             else:
                 walk(record,prefix,'$',filename,omit=('source_code_hashes','source_states_sha256','elapsed_cpu_run_seconds'))
     # Stage 13: post hoc aggregate quantities, no frozen-route license.
-    stage13_receipts=[('receipts/acd_stage15_knownF.json','ACD_POSTHOC_STAGE15_C'),
+    stage13_receipts=[('receipts/acd_stage16_run_CNN-F.json','ACD_POSTHOC_STAGE16_RUN_CNN_F'),
+                      ('receipts/acd_stage16_run_CNN-noF.json','ACD_POSTHOC_STAGE16_RUN_CNN_NOF'),
+                      ('receipts/acd_stage15_knownF.json','ACD_POSTHOC_STAGE15_C'),
                       ('receipts/acd_stage15_knownF_timing.json','ACD_POSTHOC_STAGE15_C_TIMING'),
                       ('receipts/acd_stage15_sensitivity.json','ACD_POSTHOC_STAGE15_D'),
                       ('receipts/acd_stage15_matching_precheck.json','ACD_POSTHOC_STAGE15_A'),
