@@ -6287,6 +6287,7 @@ Confirmation keys use ACD_; every development quantity uses ACD_DEV_. Full preci
 | ACD_POSTHOC_PAPER_V7_ZERO_MEAN_MAX_ABS_MEAN_OVER_SD | 0.03421451656293849 | receipts/acd_paper_v7_derived.json | $.quantities.ZERO_MEAN_MAX_ABS_MEAN_OVER_SD.value ; maxabs over patterns one through seven and all retained leads; extremizing source row recorded |
 | ACD_POSTHOC_PAPER_V7_ZERO_MEAN_MAX_NEGATIVE_SHARE | 0.509521484375 | receipts/acd_paper_v7_derived.json | $.quantities.ZERO_MEAN_MAX_NEGATIVE_SHARE.value ; max over patterns one through seven and all retained leads; extremizing source row recorded |
 | ACD_POSTHOC_PAPER_V7_ZERO_MEAN_MIN_NEGATIVE_SHARE | 0.45361328125 | receipts/acd_paper_v7_derived.json | $.quantities.ZERO_MEAN_MIN_NEGATIVE_SHARE.value ; min over patterns one through seven and all retained leads; extremizing source row recorded |
+| ACD_POSTHOC_PAPER_V8_CNN_F_RESP_ERROR_UPPER_PERCENT_2LT | 13.5 | receipts/acd_paper_v8_derived.json | $.quantities.CNN_F_RESP_ERROR_UPPER_PERCENT_2LT.value ; one-sided betting upper bound multiplied by 100 for the percent-unit bracket in Table tab:resp |
 | ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_BASE_LOSS | 0.0010686422001526807 | receipts/acd_stage10_terminal_baseline.json | $.base_loss |
 | ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_COEFFICIENT | 6.476838759626863 | receipts/acd_stage10_terminal_baseline.json | $.difference_coefficient |
 | ACD_POSTHOC_STAGE10_TERMINAL_BASELINE_DIFFERENCE_LOSS | 0.005568973931076471 | receipts/acd_stage10_terminal_baseline.json | $.difference_loss |

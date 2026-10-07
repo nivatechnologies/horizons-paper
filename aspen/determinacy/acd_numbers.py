@@ -243,7 +243,7 @@ def build():
         add('ACD_DEV_AMPLITUDE_SMALL_RANGE_FACTOR',rows[high]['amplitude']/rows[low]['amplitude'],
             [f'$.rows[{high}].amplitude',f'$.rows[{low}].amplitude'],matched_receipt,
             derivation='0.16 / 0.04: ratio of endpoints of the three-smallest-amplitude range; not the full five-amplitude range')
-    for filename,prefix in [('receipts/acd_paper_v7_derived.json','ACD_POSTHOC_PAPER_V7'),('receipts/acd_paper_v6_derived.json','ACD_POSTHOC_PAPER_V6'),('receipts/acd_stage11_clim_tangent.json','ACD_POSTHOC_STAGE11_CLIM_TANGENT')]:
+    for filename,prefix in [('receipts/acd_paper_v8_derived.json','ACD_POSTHOC_PAPER_V8'),('receipts/acd_paper_v7_derived.json','ACD_POSTHOC_PAPER_V7'),('receipts/acd_paper_v6_derived.json','ACD_POSTHOC_PAPER_V6'),('receipts/acd_stage11_clim_tangent.json','ACD_POSTHOC_STAGE11_CLIM_TANGENT')]:
         if (ROOT/filename).exists():
             record=json.loads((ROOT/filename).read_text())
             if 'quantities' in record:
@@ -267,7 +267,7 @@ def build():
     if (ROOT/'receipts/acd_stage10_terminal_baseline.json').exists():sources.append('receipts/acd_stage10_terminal_baseline.json')
     if (ROOT/'receipts/acd_stage10.json').exists():sources.append('receipts/acd_stage10.json')
     if (ROOT/stage10b_receipt).exists():sources.append(stage10b_receipt)
-    sources += [p for p in ['receipts/acd_paper_v7_derived.json','receipts/acd_paper_v6_derived.json','receipts/acd_stage11_clim_tangent.json'] if (ROOT/p).exists()]
+    sources += [p for p in ['receipts/acd_paper_v8_derived.json','receipts/acd_paper_v7_derived.json','receipts/acd_paper_v6_derived.json','receipts/acd_stage11_clim_tangent.json'] if (ROOT/p).exists()]
     sources += [p for p,_ in stage13_receipts if (ROOT/p).exists()]
     return dict(schema=1,source_hashes={p:digest(ROOT/p) for p in sources if (ROOT/p).exists()},numbers=dict(sorted(registry.items())))
 def render(d):

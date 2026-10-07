@@ -1,0 +1,14 @@
+{
+  "scope": "Post hoc; no frozen-route license",
+  "source_hashes": {
+    "receipts/acd_stage9.json": "681011c62c37e265d3e07610802c2d61948a94e42f2657c16389bd2c30215c49"
+  },
+  "quantities": {
+    "CNN_F_RESP_ERROR_UPPER_PERCENT_2LT": {
+      "value": 13.5,
+      "source": "receipts/acd_stage9.json",
+      "source_path": "$.C.CNN-F-resp.confidence_readings[0].error_upper",
+      "derivation": "one-sided betting upper bound multiplied by 100 for the percent-unit bracket in Table tab:resp"
+    }
+  }
+}
