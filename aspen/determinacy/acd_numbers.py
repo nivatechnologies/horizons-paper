@@ -285,5 +285,5 @@ def render(d):
     for k,v in d['numbers'].items():lines.append(f"| {k} | {repr(v['value'])} | {v['receipt']} | {v['receipt_path']}"+(' ; '+v['derivation'] if 'derivation' in v else '')+' |')
     return '\n'.join(lines)+'\n'
 def write():
-    d=build();(ROOT/'numbers_acd.json').write_text(json.dumps(d,indent=2,allow_nan=False)+'\n');(ROOT/'NUMBERS_ACD.md').write_text(render(d));print('NUMBERS',len(d['numbers']))
+    d=build();(ROOT/'numbers_acd.json').write_text(json.dumps(d,separators=(',', ':'),allow_nan=False)+'\n');(ROOT/'NUMBERS_ACD.md').write_text(render(d));print('NUMBERS',len(d['numbers']))
 if __name__=='__main__':write()
