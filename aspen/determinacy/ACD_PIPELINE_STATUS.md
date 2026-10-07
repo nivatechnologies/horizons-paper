@@ -16,3 +16,5 @@
 - Lane 4 | step 2C | 8be3ca9 / deb52eb / 764b76d | 2026-10-07T20:13:58.160227+00:00 | Known-forcing panel complete: all case outputs hashed, one exclusion after retry; Stage 15 A–D complete.
 - Lane 3 | evaluation addendum | db1bf7e / 9692b19 | 2026-10-07T20:14:50.751701+00:00 | Matched coverage adapter uses corrected ranking; persistent observer isolates failures. Training unchanged and continuing.
 - Registry maintenance | serialization | 80a295e | 2026-10-07T20:17:15.228535+00:00 | Compact JSON serialization preserves all values and provenance; registry passes. GPU lanes remain running.
+- Lane 2 | Stage18 freeze | 2ee06a7 | 2026-10-07T20:28:45.022350+00:00 | Independently reviewed freeze pushed; A/B waits for Stage19 learned readings push.
+- Lane 3 | retained baseline reports and observer | 315a99c / 804a3eb / 4c6e485 | 2026-10-07T20:28:45.022350+00:00 | Baselines and registry pushed; eight new runs continue, per-run reporting enabled.
