@@ -18,6 +18,15 @@ def get_metrics(d):
     vals.update({r['quantity']+'_'+k:r[k] for k in ['RMSE','bias']})
   for r in d['comparisons']:
    if r['lead']==row['lead']:vals['seven_minus_Fc']=r['seven_minus_Fc']['point']
+  for matched in d['matched_readings']:
+   if matched['lead']==row['lead']:
+    for test in matched['calibration_test']:
+     vals['mean_calibration_error_threshold_'+str(test['threshold'])]=test['overconfidence_interval']['point']
+  for r in d['matched_coverage'].get('rows',[]):
+   if r['lead']==row['lead']:
+    prefix=r['patterns']+'_coverage_'+str(r['target_coverage'])
+    vals[prefix+'_pooled_error']=r['pooled_error']
+    vals[prefix+'_case_error']=r['case_error']
   for r in d['decisions']:
    if r['lead']==row['lead']:vals.update({r['policy']+'_'+k:r[k] for k in ['mean_regret','capture_fraction','harms','acting_share']})
   out[lead]=vals
