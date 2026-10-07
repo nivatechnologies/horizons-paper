@@ -1,0 +1,33 @@
+{
+  "part1_commit": "d90618973b0e40412a7ec8bd3c22e4b0afb86c41",
+  "part1_receipt_sha256": "3126cdc7dd54cbca7322d098fa8eaf64cd15fa9f79eee75d924c90567e3befe0",
+  "code_hashes": {
+    "acd_stats.py": "1c97d51262a7546b70320c1207de554eff6f9b6a58b00428a2640f5ead6f685a",
+    "acd_stage6_analysis.py": "c9fa8c1f9e211f8e7ea47ec63947bff3693258c738c377ce7874b425bba58cd8",
+    "acd_stage9_receipts.py": "966a21bc72ef4b3c8ede354a1246fb5d01c4b3df440ef19902ec032a688b456c",
+    "acd_stage9_forward_readings.py": "dafabb9c61a7bc5a8fec30344b524b3a5161b68fb8e67ce5cbe938d99190c969",
+    "acd_stage17.py": "354fff3254b441ba8c271c8d426525d7302d6f7b7e98d682bf37a6aa2733a4ae",
+    "acd_stage9_cnn.py": "3ca018b1dc35c5cb9734787e852240e7517d88007515692d27fd882f3c13d434",
+    "acd_stage9_cnn_metrics.py": "471e2363945e25a1f8ee0920c3955bc1a3c41d899de5a164b4369e2299fe859d",
+    "acd_stage13_analysis.py": "ffe50e4894aa97eb6de690abc996c1a8589ec8be926af0100f077b2220be289b",
+    "acd_stage19_part2_gate.py": "518e5890d5ac88f210a47a304ae9fd7cb47986ff444b3d078dc13ffc76b1a001",
+    "acd_stage19_gpu_lease.py": "5e09e6e6284bfb35df35a9431400caf2936973f3819657f80659360f3f4fcadc",
+    "acd_stage19_freeze_b.py": "2d915292ce7ec3776544f6505122b1d5af84282488d7da901e7daa3280808666",
+    "acd_stage19_inference.py": "591f6ce4989b19be4bbda36e6ffa39ecf34940bc513a1770e361b00ee1a7ef6d",
+    "acd_stage19_score.py": "87e0bc98e9352fdc532f842ac2b5f2eb335eb9f8ba8d613045bcc428cef73ecd",
+    "acd_stage19_learned.py": "63492818dd11bb5a4e294c515aaa462d9b1559fd32ee436fb69783f19e7dec26"
+  },
+  "checkpoints": {
+    "CNN-F": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+    "CNN-noF": "4bfef787a80269dada0acd7ca74ef84eb6442a580c706a57333c55dc647b1f67",
+    "CNN-20k": "3c67fc2cfc3a858613160cc81151c09ef45829f08bda67df00b9e78f35f5fe74"
+  },
+  "CNN_noF_provenance_sha256": "0b146f7c70bc1adff83db48c99eb32408915d8b8b62099ed5c86c068a33243e6",
+  "known_forcing_excluded_cases": [
+    8
+  ],
+  "known_forcing_excluded_count": 1,
+  "known_forcing_readings": "Deferred to Part 3; this exclusion does not remove a main-posterior case",
+  "realized_outcome_accesses": [],
+  "emulator_runs_before_freeze": []
+}
