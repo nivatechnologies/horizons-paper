@@ -26,10 +26,13 @@ def run():
  lines+=['','| Lead | Known-F obs-S case accuracy / lower95 | Matched main | First known-F |','|---|---:|---:|---:|']
  for x in k['accuracy']:
   fmt=lambda v:f(v['S']['case_accuracy'])+' / '+f(v['S']['case_lower']);lines.append(f"| {f(x['lead'])} | {fmt(x)} | {fmt(at(main['accuracy'],x['lead']))} | {fmt(at(old['known_forcing']['accuracy'],x['lead']))} |")
+ lines+=['','| Lead | Known-F pooled obs-S accuracy / Fc pooled accuracy / Fc CP95 | Matched main | First known-F |','|---|---:|---:|---:|']
+ for x in k['accuracy']:
+  fmt=lambda v:f(v['S']['answer_accuracy'])+' / '+f(v['Fc_CP_one_sided95']['accuracy'])+' / '+str(v['Fc_CP_one_sided95']['bounds']);lines.append(f"| {f(x['lead'])} | {fmt(x)} | {fmt(at(main['accuracy'],x['lead']))} | {fmt(at(old['known_forcing']['accuracy'],x['lead']))} |")
  lines+=['','| Lead | Known-F rho / c / zD / zF medians | Matched main medians | First known-F medians |','|---|---:|---:|---:|']
  for x in k['shares']:
   fmt=lambda v:' / '.join(f(v[q]['median']) for q in ['rho','c','z_D','z_F']);lines.append(f"| {f(x['lead'])} | {fmt(x)} | {fmt(at(main['shares'],x['lead']))} | {fmt(at(old['known_forcing']['shares'],x['lead']))} |")
- lines+=['','Known-F minus matched main confidence-share differences (two-sided99% case betting):']
+ lines+=['','Known-F minus matched main confidence-share differences (two-sided99% case betting; first-panel paired-share intervals were not reported and are unavailable):']
  for x in r['paired_share_differences']:lines.append(f"- {x['quantity']}, {f(x['lead'])} LT: {interval(x['interval'])}.")
  lines+=['','Main forcing SD, matched cohort: '+json.dumps(r['main_forcing_sd'])+'. First panel: '+json.dumps(old['known_forcing']['main_posterior_forcing_sd'])+'.','Main forcing correlations, all cases: '+json.dumps(r['main_all_forcing_correlations'])+'. Matched-cohort correlations: '+json.dumps(r['main_matched_forcing_correlations'])+'.','',
 '| Model | Lead | Patterns | Coverage | Fresh pooled error / case error / upper95 | First-panel pooled / case / upper95 |','|---|---:|---|---:|---:|---:|']
