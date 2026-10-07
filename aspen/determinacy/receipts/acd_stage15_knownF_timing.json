@@ -1,0 +1,22 @@
+{
+  "pilot_wall_seconds": 44.680538551998325,
+  "pilot_mean_seconds": 40.94921441599727,
+  "workers": 30,
+  "cores_per_worker": 4,
+  "reserved_cpus": [
+    120,
+    121,
+    122,
+    123,
+    124,
+    125,
+    126,
+    127
+  ],
+  "projected_seconds": 444.9814633205036,
+  "projected_hours": 0.12360596203347322,
+  "limit_hours": 24,
+  "passed": true,
+  "original_retry_rate": 0.055,
+  "original_full_rescore_rate": 0.575
+}
