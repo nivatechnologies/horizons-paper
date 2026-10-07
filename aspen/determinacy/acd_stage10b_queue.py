@@ -8,7 +8,7 @@ def container(mounts,command):
  return subprocess.run(['docker','run','--rm','--gpus','all','--network','none','--ipc=host']+[x for source,target,mode in mounts for x in ['-v',str(source)+':'+target+':'+mode]]+[IMAGE,'python','-u']+command).returncode
 def main():
  failure=json.loads((NEW/'code/acd_stage10_failure.json').read_text())
- models=[('CNN-noF',0.),('CNN-F-resp-0.01',.01),('CNN-F-resp-0.1',.1)]
+ models=[('CNN-noF',0.),('CNN-F-resp-0.01',.01)]
  for name,weight in models:
   out=NEW/'training'/name;out.mkdir(parents=True,exist_ok=True)
   prior=failure['accounting_gpu_seconds'] if name==failure['model'] else 0

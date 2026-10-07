@@ -11,6 +11,10 @@ def main():
  stage9=read(ROOT/'receipts/acd_stage9.json')
  result=dict(post_hoc=True,panel='confirmation',licenses_frozen_route=False,selection_among_models=False,models={},training={},failure=read(ROOT/'receipts/acd_stage10_failure.json'),resolutions=[],source_hashes={},code_hashes={})
  for name in MODELS:
+  if name=='CNN-F-resp-0.1':
+   result['models'][name]=dict(status='deferred by Todd on 2026-10-06; no guarded run or evaluation performed')
+   result['resolutions'].append('Todd deferred CNN-F-resp-0.1 on 2026-10-06. Removed from the pending queue on 2026-10-07 without interrupting CNN-F-resp-0.01. The earlier discarded unguarded run remains recorded and charged; its checkpoints are not evaluated.')
+   continue
   path=ROOT/'runs/stage9'/f'metrics_{name}.json'
   if not path.exists():
    result['models'][name]=dict(status='unavailable; no imputed metrics')
@@ -83,7 +87,7 @@ def main():
  for name,d in result['models'].items():
   for r in d.get('matched_readings',[]):
    for b in r['reliability']:L.append(f"| {name} | {r['lead']} | [{b['lower_edge']}, {b['upper_edge']}] | {b['questions']} | {b['correct']} | {fmt(b['mean_probability'])} | {fmt(b['accuracy'])} | {b['CP95']} |")
- L+=['','## Resolutions','']+['- '+x for x in result['resolutions']]
+ L+=['','## Deferral','','CNN-F-resp-0.1: deferred by Todd on 2026-10-06. No guarded training or evaluation is included. CNN-F-resp-0.01 continued uninterrupted.','','## Resolutions','']+['- '+x for x in result['resolutions']]
  L+=['','Full precision, Fc error summaries, distributions, execution hashes and all matched-question readings: receipts/acd_stage10b.json.']
  (ROOT/'ACD_STAGE10B_READING.md').write_text('\n'.join(L)+'\n')
  print('STAGE10B RECEIPT AND READING COMPLETE')

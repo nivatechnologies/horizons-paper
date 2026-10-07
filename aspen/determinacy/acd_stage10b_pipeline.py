@@ -4,7 +4,8 @@ ROOT="/home/todd/work/aspen-determinacy-stage10b-20261007"
 MOD=ROOT+'/aspen/determinacy'
 SPARK='/home/todd/work/aspen-stage9-20261006/stage10b'
 PY='/home/todd/work/aspen-determinacy-20261005/.venv/bin/python'
-MODELS=['CNN-noF','CNN-F-resp-0.01','CNN-F-resp-0.1']
+# Todd deferred the remaining guarded alpha-0.1 run on 2026-10-06.
+MODELS=['CNN-noF','CNN-F-resp-0.01']
 def remote(host,command,check=True,input=None):
  return subprocess.run(['ssh',host,command],text=True,input=input,stdout=subprocess.PIPE,stderr=subprocess.PIPE,check=check)
 def stream(source,destination):
