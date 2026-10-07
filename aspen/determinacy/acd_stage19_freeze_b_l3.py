@@ -56,11 +56,15 @@ For every stored index 0–4, report the L1 statistic with its two-sided 99% int
 
 ## Execution gate and code provenance
 
-Do not begin new-seed fresh-panel inference until this addendum is committed and pushed and all eight new Stage16 runs are committed. Resolve each selected checkpoint hash from its committed Stage16 receipt; pair by stored seed index. Use the Stage19 Part2 inference and Stage9 F5 scientific paths unchanged by the hashes below. Separate per-seed output directories must carry their checkpoint provenance, and completed per-case outputs must be written and hashed before scoring reads them. Any additional executable checkpoint/name adapter must be hashed and pushed before execution. Do not alter Stage16 or Stage18 training, checkpoints or queues.
+After this execution-gate amendment is committed and pushed, new-seed fresh-panel inference may begin for each Stage16 run as soon as that run's selected checkpoint is committed. Use only available resources without preempting Stage16 or Stage18 jobs. Resolve each selected checkpoint hash from its committed Stage16 receipt; pair by stored seed index. Use the Stage19 Part2 inference and Stage9 F5 scientific paths unchanged by the hashes below. Separate per-seed output directories must carry their checkpoint provenance, and completed per-case outputs must be written and hashed before scoring reads them. Any additional executable checkpoint/name adapter must be hashed and pushed before execution. Do not alter Stage16 or Stage18 training, checkpoints or queues.
 
 The current learned scorer includes the already committed additive audit diagnostics from commit 4613502: per-case L1 numerator/denominator records and exact zero-effect tie counts. Its L1 computation is unchanged. Its current hash is recorded here; the inference and betting implementation hashes match Freeze B.
 
-Realized outcomes enter only inside Stage19 scoring code from the existing fresh-panel scoring cache. After all eight new runs commit and inference completes, write receipts/acd_stage19_L3.json and the L3 section of ACD_STAGE19_READING.md. Register every reported number, retain every prior registry value, and push fast-forward. This addendum does not launch inference or scoring and does not edit the paper or abstract.
+No realized outcome may be opened and no L3 reading may be scored until all eight new runs are committed and their fresh-panel inference is complete. Only then do realized outcomes enter inside Stage19 scoring code from the existing fresh-panel scoring cache. After that gate is satisfied, write receipts/acd_stage19_L3.json and the L3 section of ACD_STAGE19_READING.md. Register every reported number, retain every prior registry value, and push fast-forward. This addendum does not launch inference or scoring and does not edit the paper or abstract.
+
+## Execution-gate amendment record
+
+Todd authorized this amendment after the original addendum was pushed. It replaces the all-runs-before-inference gate with a per-run committed-selected-checkpoint gate, while retaining the all-runs-committed and all-inference-complete gate before any realized outcome is opened or any L3 reading is scored. Every seed uses the unchanged Stage19 Part2 inference path, separate per-seed outputs and per-case hashes. Stage16 and Stage18 jobs must not be preempted. L3a, L3b, every criterion, the failed-run rule and the original descriptive L3 count remain unchanged. The original Step0 inventory remains the historical snapshot; this amendment does not revise it.
 
 ## Inventory and hashes
 
