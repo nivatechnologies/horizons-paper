@@ -22,3 +22,5 @@
 - Lane 1 | Part3a Step0 | 8d6ab56 | 2026-10-07T20:54:44.689580+00:00 | Known-forcing implementation byte comparison passes; Freeze C and scoring remain.
 
 Lane 1 | Stage 19 Part 3a Freeze C | b2289a5 | 2026-10-07T21:01:28.568733+00:00 | Implementation comparison passed; timing, case-list commitment and scoring remain.
+
+Lane 1 | Stage 19 Part 3a variance timing | 5674349 | 2026-10-07T21:02:08.173671+00:00 | Projection 236.49535055737942 seconds; all 200 main instances frozen; ratios and scoring remain.
