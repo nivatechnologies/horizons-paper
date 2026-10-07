@@ -1,0 +1,71 @@
+{
+  "timing_projection": {
+    "seconds": 3480.6509529766763,
+    "hours": 0.9668474869379656,
+    "limit_hours": 24,
+    "workers": 15,
+    "cores_per_worker": 4,
+    "reserved_cpus": [
+      60,
+      61,
+      62,
+      63
+    ],
+    "pilot_wall_seconds": 170.37903044105042,
+    "pilot_mean_seconds": 160.1526512105833,
+    "prior_retry_rate": 0.055,
+    "prior_rescore_rate": 0.575,
+    "component_seconds": {
+      "main": {
+        "fit_seconds": 2.210591170808766,
+        "forecast_seconds": 42.235434985603206
+      },
+      "knownF": {
+        "fit_seconds": 2.1100592459901235,
+        "forecast_seconds": 4.316625765210484
+      }
+    },
+    "passed": true
+  },
+  "mean_component_seconds": {
+    "main": {
+      "fit_seconds": 2.210591170808766,
+      "sampler_seconds": 55.660900134802795,
+      "diagnostics_and_gate_forecasts_seconds": 11.361805725796149,
+      "final_forecast_and_save_seconds": 42.235434985603206,
+      "global_block_budget_joint_seconds": 23.30071731779026,
+      "tangent_seconds": 18.45115689620143
+    },
+    "knownF": {
+      "fit_seconds": 2.1100592459901235,
+      "sampler_seconds": 34.03148910718737,
+      "diagnostics_and_gate_forecasts_seconds": 5.401061053806916,
+      "final_forecast_and_save_seconds": 4.316625765210484,
+      "block_seconds": 4.224721921805758
+    }
+  },
+  "gates": {
+    "main": {
+      "completed": 5,
+      "excluded": 0,
+      "rerun": 0,
+      "rescored": 5,
+      "divergences": 0
+    },
+    "knownF": {
+      "completed": 5,
+      "excluded": 0,
+      "rerun": 0,
+      "rescored": 2,
+      "divergences": 0
+    }
+  },
+  "pilot_case_receipts": {
+    "runs/stage19/case_000.json": "574d7ec0195732d35fef28eea492ad324fb55b41511d7441ba72f98e2d360ed1",
+    "runs/stage19/case_001.json": "40dfc6a8593da6fdc14fb696174a33323d5534fee8c683bfd94c366dafa1d9cc",
+    "runs/stage19/case_002.json": "95ec94060b00ce0adccca4c4a979246e7a56fcbaa497e5c0611a9e7c11e6d74e",
+    "runs/stage19/case_003.json": "d3dfe12dbf12d47b27a8e439a2f5fe8d426f6fde3dc89515855e32daf46da9d4",
+    "runs/stage19/case_004.json": "9a8e5d61d4f372c16a93a03ca904ff6932678d60b7a506d32488a815e6e38d68"
+  },
+  "realized_outcome_accesses": []
+}
