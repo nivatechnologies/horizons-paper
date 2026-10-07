@@ -4,13 +4,13 @@ from acd_stats import r0,difference_interval,log_capital_max
 import subprocess
 
 def committed_15a():
- files=subprocess.check_output(['git','ls-tree','-r','--name-only','HEAD'],cwd=ROOT,text=True).splitlines()
+ files=subprocess.check_output(['git','ls-tree','-r','--name-only','HEAD'],cwd=ROOT.parents[1],text=True).splitlines()
  candidates=[p for p in files if p.startswith('aspen/determinacy/receipts/') and 'stage15' in p.lower() and p.endswith('.json')]
  if not candidates:raise RuntimeError('Stage 15A receipt not committed; B and D await its receipt and ranking definitions')
  # Require an explicit A-specific receipt or an A section in the combined receipt.
  verified=[]
  for candidate in candidates:
-  content=json.loads(subprocess.check_output(['git','show','HEAD:'+candidate],cwd=ROOT,text=True))
+  content=json.loads(subprocess.check_output(['git','show','HEAD:'+candidate],cwd=ROOT.parents[1],text=True))
   if 'stage15a' in candidate.lower() or 'A' in content:
    verified.append(dict(path=candidate,sha256=sha(ROOT.parents[1]/candidate)))
  if not verified:raise RuntimeError('Stage 15 receipt exists but no committed A section')

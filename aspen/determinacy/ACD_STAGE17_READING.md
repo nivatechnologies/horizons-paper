@@ -463,9 +463,70 @@ Harm magnitudes, regret distributions and gate-threshold risk/coverage/regret cu
 
 See ACD_METHODS_WINDOWS_BETTING.md for every output tick, time and LT value, variance convention, running-maximum inversion and code hashes. No new interval uses fallback.
 
-B and D pending: the required Stage 15A committed receipt and ranking definitions are absent from the fetched branch. No outcomes were used to set a substitute equivalence margin.
+## B. Event scores
+
+CNN-F and CNN-noF have no development-panel runs; no equivalence margin independent of confirmation outcomes is available. This is a descriptive frontier, not an equivalence test.
+
+| Model | Lead | Forecast Brier | Seven-pattern benefit Brier | All-eight benefit Brier |
+|---|---:|---:|---:|---:|
+| posterior | 2 | 0.029449088 | 0.051515082 | 0.045874651 |
+| posterior | 3 | 0.055858831 | 0.11603625 | 0.10985506 |
+| CNN-20k | 2 | 0.026406606 | 0.10251811 | 0.09139019 |
+| CNN-20k | 3 | 0.061282288 | 0.15344421 | 0.14463509 |
+| CNN-F | 2 | 0.029275976 | 0.055370327 | 0.049641133 |
+| CNN-F | 3 | 0.05796523 | 0.12049514 | 0.11462876 |
+| CNN-noF | 2 | 0.029340535 | 0.1123077 | 0.10188134 |
+| CNN-noF | 3 | 0.060388037 | 0.14613789 | 0.1464625 |
+
+Signed probabilities are used for Brier scores and event reliability. Reliability CP intervals are pooled and descriptive. Risk gates depend only on predicted modal probability; cases without answers are omitted from case-error bounds.
+
+| Model | Lead | Event | Brier difference | Lower99 | Upper99 |
+|---|---:|---|---:|---:|---:|
+| CNN-20k | 2 | forecast | -0.0030424812 | -0.064 | 0.058 |
+| CNN-20k | 2 | seven_zero_mean | 0.051003033 | -0.012 | 0.114 |
+| CNN-20k | 2 | all_eight | 0.045515539 | -0.016 | 0.108 |
+| CNN-20k | 3 | forecast | 0.0054234565 | -0.056 | 0.068 |
+| CNN-20k | 3 | seven_zero_mean | 0.037407955 | -0.024 | 0.1 |
+| CNN-20k | 3 | all_eight | 0.034780032 | -0.026 | 0.096 |
+| CNN-F | 2 | forecast | -0.00017311121 | -0.06 | 0.06 |
+| CNN-F | 2 | seven_zero_mean | 0.0038552451 | -0.056 | 0.064 |
+| CNN-F | 2 | all_eight | 0.0037664823 | -0.056 | 0.064 |
+| CNN-F | 3 | forecast | 0.0021063988 | -0.058 | 0.062 |
+| CNN-F | 3 | seven_zero_mean | 0.0044588894 | -0.056 | 0.066 |
+| CNN-F | 3 | all_eight | 0.0047737004 | -0.056 | 0.066 |
+| CNN-noF | 2 | forecast | -0.00010855302 | -0.06 | 0.06 |
+| CNN-noF | 2 | seven_zero_mean | 0.060792621 | -0.002 | 0.122 |
+| CNN-noF | 2 | all_eight | 0.056006688 | -0.006 | 0.118 |
+| CNN-noF | 3 | forecast | 0.0045292057 | -0.056 | 0.066 |
+| CNN-noF | 3 | seven_zero_mean | 0.030101634 | -0.032 | 0.092 |
+| CNN-noF | 3 | all_eight | 0.036607446 | -0.024 | 0.098 |
+
+| Model | Lead | Draw J8 RMSE | Draw J8 bias | Ensemble J8 RMSE | Forecast Brier | Confident S pooled error | Seven-pattern benefit Brier |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| posterior | 2 | 0 | 0 | 0.14133955 | 0.029449088 | 0.0043177893 | 0.051515082 |
+| posterior | 3 | 0 | 0 | 0.30159974 | 0.055858831 | 0.0092879257 | 0.11603625 |
+| CNN-20k | 2 | 0.084889773 | -0.0032130652 | 0.13114063 | 0.026406606 | 0.054607509 | 0.10251811 |
+| CNN-20k | 3 | 0.18225514 | 0.00010536129 | 0.29916984 | 0.061282288 | 0.058122206 | 0.15344421 |
+| CNN-F | 2 | 0.026048317 | -0.0020890658 | 0.13645985 | 0.029275976 | 0.0086655113 | 0.055370327 |
+| CNN-F | 3 | 0.084093048 | 0.0010497361 | 0.30340327 | 0.05796523 | 0.0076687117 | 0.12049514 |
+| CNN-noF | 2 | 0.054277597 | 0.019119617 | 0.15118383 | 0.029340535 | 0.065822785 | 0.1123077 |
+| CNN-noF | 3 | 0.12550504 | 0.026546811 | 0.31181253 | 0.060388037 | 0.075675676 | 0.14613789 |
+
+## D. Transfer diagnostic
+
+P(|D|<=r)+mean_draw((Dhat-D)^2)/r^2; minimum over fixed log grid; bounds >=1 are vacuous
+
+| Model | Lead | Median gap | P90 gap | Median bound | Share below 0.05 | Share at least one |
+|---|---:|---:|---:|---:|---:|---:|
+| CNN-20k | 2 | 0.001 | 0.33017031 | 0.48498248 | 0.16875 | 0.285 |
+| CNN-20k | 3 | 0.050640625 | 0.288 | 0.95177412 | 0.0425 | 0.46 |
+| CNN-F | 2 | 0 | 0.06 | 0.057638191 | 0.4825 | 0.016875 |
+| CNN-F | 3 | 0.0115 | 0.0780125 | 0.35899949 | 0.16125 | 0.06 |
+| CNN-F-resp | 2 | 0.005859375 | 0.57255313 | 0.76479241 | 0.101875 | 0.40875 |
+| CNN-F-resp | 3 | 0.12075 | 0.53855625 | 1.0315512 | 0.02 | 0.690625 |
+| CNN-noF | 2 | 0.0015 | 0.31490781 | 0.64186576 | 0.108125 | 0.39125 |
+| CNN-noF | 3 | 0.037109375 | 0.27363281 | 0.9325829 | 0.031875 | 0.454375 |
 
 ## R-other and sequencing
 
-R-other: Stage 15A receipt and ranking definitions are not committed in the available branch; B and D remain pending until they land.
 Stage 15D is required after Stage 15 A–C by Todd; this task does not modify protected Stage 15 paths.
