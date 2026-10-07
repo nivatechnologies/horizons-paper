@@ -252,7 +252,9 @@ def build():
             else:
                 walk(record,prefix,'$',filename,omit=('source_code_hashes','source_states_sha256','elapsed_cpu_run_seconds'))
     # Stage 13: post hoc aggregate quantities, no frozen-route license.
-    stage13_receipts=[('receipts/acd_stage15_sensitivity.json','ACD_POSTHOC_STAGE15_D'),
+    stage13_receipts=[('receipts/acd_stage15_knownF.json','ACD_POSTHOC_STAGE15_C'),
+                      ('receipts/acd_stage15_knownF_timing.json','ACD_POSTHOC_STAGE15_C_TIMING'),
+                      ('receipts/acd_stage15_sensitivity.json','ACD_POSTHOC_STAGE15_D'),
                       ('receipts/acd_stage15_matching_precheck.json','ACD_POSTHOC_STAGE15_A'),
                       ('receipts/acd_stage15_matching.json','ACD_POSTHOC_STAGE15_A_CORRECTED'),
                       ('receipts/acd_stage15_figures.json','ACD_POSTHOC_STAGE15_B'),
@@ -268,7 +270,7 @@ def build():
     for filename,prefix in stage13_receipts:
         if (ROOT/filename).exists():
             walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
-                 omit=('source_hashes', 'case_records') if filename.endswith('acd_stage15_sensitivity.json') else ('source_hashes',))
+                 omit=('source_hashes', 'case_records') if filename.endswith(('acd_stage15_sensitivity.json','acd_stage15_knownF.json')) else ('source_hashes',))
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
     if (ROOT/'receipts/acd_stage9.json').exists():sources.append('receipts/acd_stage9.json')
