@@ -53,6 +53,8 @@
           },
           "confident_S": {
             "share": 0.72375,
+            "answers": 1158,
+            "pooled_error": 0.004317789291882556,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.051
@@ -2774,7 +2776,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -3754,9 +3756,10 @@
                 898,
                 234,
                 1138,
-                86
+                86,
+                769
               ],
-              "pooled_error": 0.006128702757916241,
+              "pooled_error": 0.006122448979591836,
               "pooled_error_bounds_one_sided95": [
                 0.0,
                 0.062
@@ -3767,11 +3770,11 @@
               "accuracy_receipt": {
                 "status": "PASS",
                 "cases": 195,
-                "answers": 979,
+                "answers": 980,
                 "case_accuracy": 0.9943956043956044,
                 "case_lower": 0.976,
                 "case_upper": 1.0,
-                "answer_accuracy": 0.9938712972420838,
+                "answer_accuracy": 0.9938775510204082,
                 "fallback": false
               }
             }
@@ -3825,6 +3828,8 @@
           },
           "confident_S": {
             "share": 0.40375,
+            "answers": 646,
+            "pooled_error": 0.009287925696594427,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.094
@@ -6546,7 +6551,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 1439,
                 877,
@@ -7526,24 +7531,25 @@
                 1561,
                 465,
                 915,
-                74
+                74,
+                1437
               ],
-              "pooled_error": 0.08273748723186926,
+              "pooled_error": 0.0836734693877551,
               "pooled_error_bounds_one_sided95": [
-                0.025,
+                0.026,
                 0.142
               ],
-              "case_error": 0.09444843263938751,
+              "case_error": 0.09516630772912171,
               "case_error_lower95": 0.06000000000000005,
               "case_error_upper95": 0.131,
               "accuracy_receipt": {
                 "status": "INSUFFICIENT",
                 "cases": 199,
-                "answers": 979,
-                "case_accuracy": 0.9055515673606125,
+                "answers": 980,
+                "case_accuracy": 0.9048336922708783,
                 "case_lower": 0.869,
                 "case_upper": 0.94,
-                "answer_accuracy": 0.9172625127681308,
+                "answer_accuracy": 0.9163265306122449,
                 "fallback": false
               }
             }
@@ -7602,6 +7608,8 @@
           },
           "confident_S": {
             "share": 0.7325,
+            "answers": 1172,
+            "pooled_error": 0.05460750853242321,
             "pooled_error_bounds_one_sided95": [
               0.007,
               0.102
@@ -10323,7 +10331,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -11303,9 +11311,10 @@
                 1383,
                 1350,
                 939,
-                761
+                761,
+                76
               ],
-              "pooled_error": 0.06435137895812053,
+              "pooled_error": 0.06428571428571428,
               "pooled_error_bounds_one_sided95": [
                 0.008,
                 0.121
@@ -11316,11 +11325,11 @@
               "accuracy_receipt": {
                 "status": "PASS",
                 "cases": 197,
-                "answers": 979,
+                "answers": 980,
                 "case_accuracy": 0.9370316654580614,
                 "case_lower": 0.908,
                 "case_upper": 0.959,
-                "answer_accuracy": 0.9356486210418795,
+                "answer_accuracy": 0.9357142857142857,
                 "fallback": false
               }
             }
@@ -11374,6 +11383,8 @@
           },
           "confident_S": {
             "share": 0.419375,
+            "answers": 671,
+            "pooled_error": 0.05812220566318927,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.141
@@ -14095,7 +14106,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -15075,24 +15086,25 @@
                 934,
                 1187,
                 1430,
-                366
+                366,
+                603
               ],
-              "pooled_error": 0.14198161389172625,
+              "pooled_error": 0.14183673469387756,
               "pooled_error_bounds_one_sided95": [
                 0.083,
                 0.202
               ],
-              "case_error": 0.1521416606843743,
+              "case_error": 0.1517229002153626,
               "case_error_lower95": 0.10699999999999998,
               "case_error_upper95": 0.17400000000000004,
               "accuracy_receipt": {
                 "status": "FAIL",
                 "cases": 199,
-                "answers": 979,
-                "case_accuracy": 0.8478583393156257,
+                "answers": 980,
+                "case_accuracy": 0.8482770997846374,
                 "case_lower": 0.826,
                 "case_upper": 0.893,
-                "answer_accuracy": 0.8580183861082737,
+                "answer_accuracy": 0.8581632653061224,
                 "fallback": false
               }
             }
@@ -15151,6 +15163,8 @@
           },
           "confident_S": {
             "share": 0.72125,
+            "answers": 1154,
+            "pooled_error": 0.008665511265164644,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.056
@@ -17872,7 +17886,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -18852,9 +18866,10 @@
                 844,
                 1546,
                 350,
-                233
+                233,
+                810
               ],
-              "pooled_error": 0.011235955056179775,
+              "pooled_error": 0.011224489795918367,
               "pooled_error_bounds_one_sided95": [
                 0.0,
                 0.067
@@ -18865,11 +18880,11 @@
               "accuracy_receipt": {
                 "status": "PASS",
                 "cases": 196,
-                "answers": 979,
+                "answers": 980,
                 "case_accuracy": 0.9906705539358601,
                 "case_lower": 0.972,
                 "case_upper": 1.0,
-                "answer_accuracy": 0.9887640449438202,
+                "answer_accuracy": 0.9887755102040816,
                 "fallback": false
               }
             }
@@ -18923,6 +18938,8 @@
           },
           "confident_S": {
             "share": 0.4075,
+            "answers": 652,
+            "pooled_error": 0.007668711656441718,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.091
@@ -21644,7 +21661,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 1439,
                 877,
@@ -22624,24 +22641,25 @@
                 1539,
                 1066,
                 1446,
-                1505
+                1505,
+                1194
               ],
-              "pooled_error": 0.0888661899897855,
+              "pooled_error": 0.08979591836734693,
               "pooled_error_bounds_one_sided95": [
-                0.031,
-                0.148
+                0.032,
+                0.149
               ],
-              "case_error": 0.10393634840871024,
-              "case_error_lower95": 0.06699999999999995,
+              "case_error": 0.10561139028475708,
+              "case_error_lower95": 0.06899999999999995,
               "case_error_upper95": 0.129,
               "accuracy_receipt": {
                 "status": "INSUFFICIENT",
                 "cases": 199,
-                "answers": 979,
-                "case_accuracy": 0.8960636515912898,
+                "answers": 980,
+                "case_accuracy": 0.8943886097152429,
                 "case_lower": 0.871,
-                "case_upper": 0.933,
-                "answer_accuracy": 0.9111338100102145,
+                "case_upper": 0.931,
+                "answer_accuracy": 0.9102040816326531,
                 "fallback": false
               }
             }
@@ -22700,6 +22718,8 @@
           },
           "confident_S": {
             "share": 0.740625,
+            "answers": 1185,
+            "pooled_error": 0.06582278481012659,
             "pooled_error_bounds_one_sided95": [
               0.019,
               0.113
@@ -25421,7 +25441,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -26401,24 +26421,25 @@
                 766,
                 1285,
                 587,
-                324
+                324,
+                1436
               ],
-              "pooled_error": 0.0735444330949949,
+              "pooled_error": 0.07346938775510205,
               "pooled_error_bounds_one_sided95": [
                 0.017,
                 0.131
               ],
-              "case_error": 0.07123519458544825,
+              "case_error": 0.0709813874788493,
               "case_error_lower95": 0.04800000000000004,
               "case_error_upper95": 0.09599999999999997,
               "accuracy_receipt": {
                 "status": "PASS",
                 "cases": 197,
-                "answers": 979,
-                "case_accuracy": 0.9287648054145518,
+                "answers": 980,
+                "case_accuracy": 0.9290186125211507,
                 "case_lower": 0.904,
                 "case_upper": 0.952,
-                "answer_accuracy": 0.9264555669050051,
+                "answer_accuracy": 0.926530612244898,
                 "fallback": false
               }
             }
@@ -26472,6 +26493,8 @@
           },
           "confident_S": {
             "share": 0.4625,
+            "answers": 740,
+            "pooled_error": 0.07567567567567568,
             "pooled_error_bounds_one_sided95": [
               0.001,
               0.151
@@ -29193,7 +29216,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 1439,
                 877,
@@ -30173,24 +30196,25 @@
                 1129,
                 601,
                 174,
-                1009
+                1009,
+                1387
               ],
-              "pooled_error": 0.12870275791624106,
+              "pooled_error": 0.12857142857142856,
               "pooled_error_bounds_one_sided95": [
-                0.071,
+                0.07,
                 0.188
               ],
-              "case_error": 0.12931697931697939,
+              "case_error": 0.12907647907647923,
               "case_error_lower95": 0.10199999999999998,
               "case_error_upper95": 0.16700000000000004,
               "accuracy_receipt": {
                 "status": "FAIL",
                 "cases": 198,
-                "answers": 979,
-                "case_accuracy": 0.8706830206830206,
+                "answers": 980,
+                "case_accuracy": 0.8709235209235208,
                 "case_lower": 0.833,
                 "case_upper": 0.898,
-                "answer_accuracy": 0.8712972420837589,
+                "answer_accuracy": 0.8714285714285714,
                 "fallback": false
               }
             }
@@ -30249,6 +30273,8 @@
           },
           "confident_S": {
             "share": 0.72125,
+            "answers": 1154,
+            "pooled_error": 0.09098786828422877,
             "pooled_error_bounds_one_sided95": [
               0.041,
               0.141
@@ -32970,7 +32996,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -33950,24 +33976,25 @@
                 1204,
                 1239,
                 529,
-                1365
+                1365,
+                469
               ],
-              "pooled_error": 0.11133810010214505,
+              "pooled_error": 0.11122448979591837,
               "pooled_error_bounds_one_sided95": [
                 0.053,
                 0.17
               ],
-              "case_error": 0.12798220298220297,
-              "case_error_lower95": 0.10499999999999998,
-              "case_error_upper95": 0.17700000000000005,
+              "case_error": 0.12722462722462713,
+              "case_error_lower95": 0.10399999999999998,
+              "case_error_upper95": 0.17500000000000004,
               "accuracy_receipt": {
                 "status": "FAIL",
                 "cases": 198,
-                "answers": 979,
-                "case_accuracy": 0.872017797017797,
-                "case_lower": 0.823,
-                "case_upper": 0.895,
-                "answer_accuracy": 0.8886618998978549,
+                "answers": 980,
+                "case_accuracy": 0.8727753727753729,
+                "case_lower": 0.825,
+                "case_upper": 0.896,
+                "answer_accuracy": 0.8887755102040816,
                 "fallback": false
               }
             }
@@ -34021,6 +34048,8 @@
           },
           "confident_S": {
             "share": 0.43125,
+            "answers": 690,
+            "pooled_error": 0.13623188405797101,
             "pooled_error_bounds_one_sided95": [
               0.054,
               0.219
@@ -36742,7 +36771,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 1033,
                 1439,
@@ -37722,24 +37751,25 @@
                 214,
                 1258,
                 470,
-                531
+                531,
+                1059
               ],
-              "pooled_error": 0.24412665985699694,
+              "pooled_error": 0.24489795918367346,
               "pooled_error_bounds_one_sided95": [
-                0.182,
-                0.303
+                0.183,
+                0.304
               ],
-              "case_error": 0.25468975468975463,
-              "case_error_lower95": 0.21199999999999997,
-              "case_error_upper95": 0.29900000000000004,
+              "case_error": 0.25595238095238093,
+              "case_error_lower95": 0.21299999999999997,
+              "case_error_upper95": 0.30000000000000004,
               "accuracy_receipt": {
                 "status": "FAIL",
                 "cases": 198,
-                "answers": 979,
-                "case_accuracy": 0.7453102453102454,
-                "case_lower": 0.701,
-                "case_upper": 0.788,
-                "answer_accuracy": 0.7558733401430031,
+                "answers": 980,
+                "case_accuracy": 0.7440476190476191,
+                "case_lower": 0.7,
+                "case_upper": 0.787,
+                "answer_accuracy": 0.7551020408163265,
                 "fallback": false
               }
             }
@@ -37798,6 +37828,8 @@
           },
           "confident_S": {
             "share": 0.74375,
+            "answers": 1190,
+            "pooled_error": 0.03361344537815126,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.079
@@ -40519,7 +40551,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 947,
                 1439,
@@ -41499,9 +41531,10 @@
                 385,
                 435,
                 233,
-                1514
+                1514,
+                433
               ],
-              "pooled_error": 0.03779366700715015,
+              "pooled_error": 0.03775510204081633,
               "pooled_error_bounds_one_sided95": [
                 0.0,
                 0.093
@@ -41512,11 +41545,11 @@
               "accuracy_receipt": {
                 "status": "PASS",
                 "cases": 197,
-                "answers": 979,
+                "answers": 980,
                 "case_accuracy": 0.9582306018854242,
                 "case_lower": 0.944,
                 "case_upper": 0.982,
-                "answer_accuracy": 0.9622063329928499,
+                "answer_accuracy": 0.9622448979591837,
                 "fallback": false
               }
             }
@@ -41570,6 +41603,8 @@
           },
           "confident_S": {
             "share": 0.43375,
+            "answers": 694,
+            "pooled_error": 0.05043227665706052,
             "pooled_error_bounds_one_sided95": [
               0.0,
               0.13
@@ -44291,7 +44326,7 @@
               "patterns": "seven_zero_mean",
               "target_coverage": 0.7,
               "questions": 1400,
-              "answers": 979,
+              "answers": 980,
               "selected_case_action_ids": [
                 1439,
                 924,
@@ -45271,24 +45306,25 @@
                 318,
                 812,
                 753,
-                628
+                628,
+                663
               ],
-              "pooled_error": 0.14606741573033707,
+              "pooled_error": 0.14591836734693878,
               "pooled_error_bounds_one_sided95": [
                 0.086,
                 0.207
               ],
-              "case_error": 0.14402356902356905,
+              "case_error": 0.14329983249581235,
               "case_error_lower95": 0.10799999999999998,
-              "case_error_upper95": 0.18400000000000005,
+              "case_error_upper95": 0.18300000000000005,
               "accuracy_receipt": {
                 "status": "FAIL",
-                "cases": 198,
-                "answers": 979,
-                "case_accuracy": 0.855976430976431,
-                "case_lower": 0.816,
+                "cases": 199,
+                "answers": 980,
+                "case_accuracy": 0.8567001675041876,
+                "case_lower": 0.817,
                 "case_upper": 0.892,
-                "answer_accuracy": 0.8539325842696629,
+                "answer_accuracy": 0.8540816326530613,
                 "fallback": false
               }
             }
@@ -47547,7 +47583,7 @@
     }
   },
   "source_hashes": {
-    "/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stage15_matching.py": "926cf7b8537ea693ad8117d8aa6b2dfa1bd2ca26ebd388ce813a7f4778831056",
+    "/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stage15_matching.py": "8ced0327ce4213c5be44462889537b40dfae1df2ea22c38f9e229fdb4264e132",
     "/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stage13_analysis.py": "ffe50e4894aa97eb6de690abc996c1a8589ec8be926af0100f077b2220be289b",
     "/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stats.py": "1c97d51262a7546b70320c1207de554eff6f9b6a58b00428a2640f5ead6f685a",
     "/home/todd/work/aspen-determinacy-recovery-lane4-20261007/aspen/determinacy/acd_stage17_events.py": "53e6e92781322338ccdf5d5fc48af654f6a475962137e145d5985c0d8dd427fa"
