@@ -48,3 +48,5 @@ Lane 3 | Stage16 CNN-F-seed4 confirmation scoring | 9b229f99f44ed3c5fbdbb44a8c7f
 Lane 3 | Stage16 CNN-noF-seed4 confirmation scoring | 20ab23d99e87bc7a54df09095f2c504edbff7aec | 2026-10-08T05:10:28.154954+00:00 | Run and selected checkpoint recorded; registry PASS, prior values unchanged; fresh L3 inference remains to run.
 
 Lane 2 | Stage19 L3 inference adapter | a13fbae832034f39916d6d161b90ef9ea48bddd1 | 2026-10-08T05:13:18.689267+00:00 | Committed seed checkpoint adapter prepared; unchanged Part2 inference; launch only after push, outcomes and scoring withheld until all inference complete.
+
+Lane 2 | Stage19 L3 startup synchronization | 30688447bcbf4202e13f6e62c502834aac4ad20f | 2026-10-08T05:16:03.830040+00:00 | Fresh inference active; initial concurrent FETCH_HEAD gate failures recorded, stable-ref and serialized-gate fix prepared; retry failed launches after active lanes, no outcome access or scoring.
