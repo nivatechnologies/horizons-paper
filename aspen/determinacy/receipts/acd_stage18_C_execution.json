@@ -1,0 +1,12 @@
+{
+  "utc": 1791457202.1384351,
+  "code_hashes": {
+    "acd_stage18_response_controller.py": "daab1f87ea100ce3f852ec3c245e3406aac8230826b98b2f293232f29451e746",
+    "acd_stage18_derivative_report.py": "1bb624559fd75bd8bfeea6364ca2de1bef7401de031b8dcb8caab69872dbd5b3",
+    "acd_stage18_select.py": "e0e68bd34ec978a862e448a69595b99a10491ae1b2fc3ebf992b362717be9aa4"
+  },
+  "criteria_unchanged": true,
+  "stage21_priority_preserved": true,
+  "generation_manifest_must_be_pushed_before_training": true,
+  "controller_implements_existing_freeze": true
+}
