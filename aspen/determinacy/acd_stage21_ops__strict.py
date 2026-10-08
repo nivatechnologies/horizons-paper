@@ -35,6 +35,11 @@ def install(f):
    raise RuntimeError(json.dumps(report))
   return report
  def manifests(phase,tasks):
+  if phase=='R34':
+   outcomes=json.loads((f.OUT/'spark_queue_outcomes.json').read_text())
+   for row in tasks:
+    name=row['name'];f.network(['scp',f.HOST+':'+str(f.REMOTE/(name+'.log')),f.OUT/'priority_logs'/('R34_'+name+'.log')])
+    if name in outcomes:(f.OUT/'priority_logs'/('R34_'+name+'.json')).write_text(json.dumps(dict(outcomes[name],model=name,phase=phase))+'\n')
   validate(phase,tasks)
   files=[]
   for row in tasks:files.extend(str(p.relative_to(f.ROOT)) for p in (f.OUT/'inference'/row['name']).glob('*.json'))
