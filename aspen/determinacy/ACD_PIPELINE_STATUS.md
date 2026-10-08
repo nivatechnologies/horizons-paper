@@ -141,3 +141,5 @@ Pipeline | stage21-multispark-resume | 10ca46f51809c4e8c32c054a28311f2dadf42199 
 Pipeline | stage21-parallel-capacity | 6673addb71f3f92bc42dc3a17cd5c6a699724924 | 2026-10-08T23:42:14Z | R34 retains priority on Sparks; independent descriptive GPU inference and sulaco CPU preparation run in parallel; Stage16 aggregate publishes without GPU wait. Criteria unchanged.
 
 Pipeline | stage16-combined | 6d7655a9ba2c4347684a2c86d301a8f9e3670ce2 | 2026-10-08T23:43:11Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage18-C-data-execution | abe6fc13e0681682a1fe9d1561f2af339c42134c | 2026-10-08T23:44:49Z | CPU preparation first attempt FAILED before generation: missing staged freeze marker. Existing marker copied, frozen hash guards PASS; retry on sulaco. Criteria unchanged.
