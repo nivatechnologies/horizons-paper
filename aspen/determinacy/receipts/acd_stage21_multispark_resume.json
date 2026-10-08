@@ -1,0 +1,9 @@
+{
+  "utc": 1791501335.8706417,
+  "code_hashes": {
+    "acd_stage21_ops_stage21_multispark.py": "9e434db18cef78c6a92e29a1af35bdd8f138f6e05e6239ec16f9eaf59912fb04"
+  },
+  "criteria_changed": false,
+  "execution_only": true,
+  "resume_rule": "Attach to a live matched task queue without changing its code or inputs, stopping a job or launching a duplicate. Persist actual previous process exit records for reused outputs."
+}
