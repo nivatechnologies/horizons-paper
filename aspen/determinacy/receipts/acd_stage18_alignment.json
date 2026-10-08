@@ -1,0 +1,80 @@
+{
+  "post_hoc": true,
+  "licenses_frozen_route": false,
+  "training_data_sha256": {
+    "train.npz": "0eb4b167907fde9809da788ba41d9845fa7e60314c7e48efd5f3095ce3c62eb8",
+    "val.npz": "6e46c7754b18c487e8e0c59f5138f9cef0cba8bfabdb441e84f5cf43943a47e3"
+  },
+  "context_frames": 11,
+  "future_frames_per_branch": 36,
+  "context_tick_offsets_from_onset": [
+    -10,
+    -9,
+    -8,
+    -7,
+    -6,
+    -5,
+    -4,
+    -3,
+    -2,
+    -1,
+    0
+  ],
+  "context_times_from_onset": [
+    -0.5,
+    -0.45,
+    -0.4,
+    -0.35000000000000003,
+    -0.30000000000000004,
+    -0.25,
+    -0.2,
+    -0.15000000000000002,
+    -0.1,
+    -0.05,
+    0.0
+  ],
+  "output_spacing": 0.05,
+  "LT": 0.5928295944308761,
+  "all_original_context_replaced_after_ticks": 11,
+  "all_original_context_replaced_after_time": 0.55,
+  "all_original_context_replaced_after_LT": 0.9277539535252233,
+  "training_context": "10 factual frames before onset and the cutoff state at onset; intervention begins for the next predicted step. The action field accompanies the full factual context, including frames generated before onset.",
+  "training_rollout": "The same action field and trajectory forcing accompany every autoregressive call as predicted frames replace factual frames.",
+  "evaluation": "Each draw supplies its own noise-free factual history at the cutoff; the selected action field accompanies the initial context and every subsequent rolling context. This matches the onset alignment of training.",
+  "E1": "Random offsets range from the pre-action context through the last complete context in each action branch. The branch action field is supplied even to a window entirely before onset.",
+  "evidence": {
+    "acd_stage9_training_data.py": {
+      "sha256": "0d821e33f48847c2c8ec7737640718fd1d0720909fc182d148f9b41d6731a5c4",
+      "lines": [
+        15,
+        18,
+        22
+      ]
+    },
+    "acd_stage9_train.py": {
+      "sha256": "9c36418c45ab0727d2c4294b96bed1102b85d65d269636f6c9b38e3573605269",
+      "lines": [
+        21,
+        24,
+        27,
+        48
+      ]
+    },
+    "acd_stage9_cnn.py": {
+      "sha256": "3ca018b1dc35c5cb9734787e852240e7517d88007515692d27fd882f3c13d434",
+      "lines": [
+        38,
+        52
+      ]
+    },
+    "acd_stage18_estimators.py": {
+      "sha256": "3e3d00143ecd874a3680378870683c0ccc875c3badbb098202b222de05eee4bc",
+      "lines": [
+        32,
+        33,
+        35
+      ]
+    }
+  },
+  "code_sha256": "3cd4a14ea866c3c69641b44dfc828dff6d91f86bbc22d95637eef42920e402f8"
+}

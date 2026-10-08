@@ -283,6 +283,8 @@ def build():
     stage13_receipts.append(('receipts/acd_stage16_run_CNN-F-seed4.json', 'ACD_POSTHOC_STAGE16_RUN_CNN_F_SEED4'))
     stage13_receipts.append(('receipts/acd_stage16_run_CNN-noF-seed4.json', 'ACD_POSTHOC_STAGE16_RUN_CNN_NOF_SEED4'))
     stage13_receipts.append(('receipts/acd_stage18_A.json', 'ACD_POSTHOC_STAGE18_A'))
+    stage13_receipts.append(('receipts/acd_stage18_B.json', 'ACD_POSTHOC_STAGE18_B'))
+    stage13_receipts.append(('receipts/acd_stage18_alignment.json', 'ACD_POSTHOC_STAGE18_ALIGNMENT'))
     for filename,prefix in stage13_receipts:
         if (ROOT/filename).exists():
             walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
