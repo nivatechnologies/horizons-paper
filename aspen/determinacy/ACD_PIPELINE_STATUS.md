@@ -119,3 +119,5 @@ Pipeline | stage19-part3b | 465a772eb0ba7f1b7d1b3ef14e05fd83be0de27a | 2026-10-0
 Pipeline | stage20-uniform | bc9b69972b173a22f2d68e2dd1ed8facb3fb2477 | 2026-10-08T21:14:11Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
 
 Pipeline | stage19-continuation-recovery | 297fd0a5ce360df71070d350cc067fd122bee766 | 2026-10-08T21:14:56Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage21-R12-execution-correction | 24245c50e5c42acde884a1b69da98d2fcf54bed8 | 2026-10-08T21:30:52Z | CORRECTION: original R12 FAILED at import: ModuleNotFoundError: No module named numba. Earlier completion line remains unchanged. Offline dependency repaired; criteria unchanged; recovery results pending.
