@@ -57,7 +57,7 @@ while True:
   fresh=SCI/'runs/stage19';repair=fresh/'part3b';twenty=SCI/'runs/stage20';uniform=SCI/'runs/stage20_uniform';eighteen=SCI/'runs/stage18';shift=Path('/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21')
   if not (fresh/'L3_pushed.json').exists():snapshot['jobs']['L3']='Awaiting scored receipt publication; see dedicated L3 publisher log'
   if not (repair/'inference_ready.json').exists():snapshot['jobs']['Part3b_inference']=ensure('part3b-inference',SCI/'acd_stage19_part3b_inference.py',GPU,'controller')
-  elif not (repair/'scoring_ready_for_publication.json').exists():snapshot['jobs']['Part3b_score']=ensure('part3b-score',SCI/'acd_stage19_part3b_score.py',CPU)
+  elif not (repair/'scoring_ready_for_publication.json').exists() and not alive('acd_stage19_part3b_inference.py','controller') and not alive('acd_stage19_part3b_score.py'):snapshot['jobs']['Part3b_score']=ensure('part3b-score',HOME/'acd_deadline_part3b_score.py',CPU)
   if not (repair/'published.json').exists():snapshot['jobs']['Part3b_publish']=ensure('part3b-publish',HOME/'acd_deadline_part3b_publish.py',CPU)
   if not (twenty/'C_published.json').exists():snapshot['jobs']['Stage20C']=ensure('stage20-C',HOME/'acd_deadline_stage20.py',GPU,cwd=Path('/mnt/niva-array/work/aspen-determinacy-stage20-20261008/aspen/determinacy'))
   if not (uniform/'published.json').exists():snapshot['jobs']['Stage20_uniform']=ensure('stage20-uniform',HOME/'acd_deadline_uniform.py',GPU,cwd=Path('/mnt/niva-array/work/aspen-determinacy-stage20-20261008/aspen/determinacy'))

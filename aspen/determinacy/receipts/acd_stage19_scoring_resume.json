@@ -1,0 +1,9 @@
+{
+  "operational_only": true,
+  "criteria_changed": false,
+  "code_hashes": {
+    "acd_deadline_part3b_score.py": "50131b257ae8c279bc33f9fb7cabe9f5886b95ef0afb5b5566df398d618f7c9a",
+    "acd_deadline_supervisor.py": "cefdffd8748fe078fb0b1f90d451f1327772c31fd08695e8e5c0e64d0bded183"
+  },
+  "rule": "Fallback CPU scorer starts only after the original inference controller and CPU scorer have exited; it writes publication-ready only after successful frozen scoring."
+}
