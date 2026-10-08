@@ -1,0 +1,561 @@
+{
+  "checks": [
+    {
+      "task": "CNN-F-ownF",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-constantF",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-meanF",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-noF",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-noF.pt",
+      "exists": true,
+      "expected": "4bfef787a80269dada0acd7ca74ef84eb6442a580c706a57333c55dc647b1f67",
+      "actual": "4bfef787a80269dada0acd7ca74ef84eb6442a580c706a57333c55dc647b1f67",
+      "matches": true
+    },
+    {
+      "task": "CNN-20k",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-20k.pt",
+      "exists": true,
+      "expected": "3c67fc2cfc3a858613160cc81151c09ef45829f08bda67df00b9e78f35f5fe74",
+      "actual": "3c67fc2cfc3a858613160cc81151c09ef45829f08bda67df00b9e78f35f5fe74",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed1",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed1",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E0-seed1.pt",
+      "exists": true,
+      "expected": "05b0c966567209037b87478b238939eeaa23f2202ae7148c06dd34797bdee3da",
+      "actual": "05b0c966567209037b87478b238939eeaa23f2202ae7148c06dd34797bdee3da",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed2",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed2",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E0-seed2.pt",
+      "exists": true,
+      "expected": "d461bae9dfd507b07955eda2342abe717900232af40cd5ac9e0b5981fb1fcd2f",
+      "actual": "d461bae9dfd507b07955eda2342abe717900232af40cd5ac9e0b5981fb1fcd2f",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed3",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed3",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E0-seed3.pt",
+      "exists": true,
+      "expected": "dc6fe8559093681cece7166443cd1a8d44bdf7f8e794e9f07bed42bf2bb876a3",
+      "actual": "dc6fe8559093681cece7166443cd1a8d44bdf7f8e794e9f07bed42bf2bb876a3",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed4",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed4",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E0-seed4.pt",
+      "exists": true,
+      "expected": "fc538e434c04df7ffa91fa9021f9bb64c6006700b95262772b5e139e492a195b",
+      "actual": "fc538e434c04df7ffa91fa9021f9bb64c6006700b95262772b5e139e492a195b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed5",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E0-fixed-seed5",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E0-seed5.pt",
+      "exists": true,
+      "expected": "6a7edd4aee91e81b7a272c6e9b2a7962e9a000ed44ab7378f478ad6657a38e2f",
+      "actual": "6a7edd4aee91e81b7a272c6e9b2a7962e9a000ed44ab7378f478ad6657a38e2f",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed1",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed1",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed1.pt",
+      "exists": true,
+      "expected": "68dd5417b6682455c260669fd1d027a9c88b9b79e977a633b05eefe21db7cbbf",
+      "actual": "68dd5417b6682455c260669fd1d027a9c88b9b79e977a633b05eefe21db7cbbf",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed2",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed2",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed2.pt",
+      "exists": true,
+      "expected": "f00b0e61f4711838771260d491561b98c13ece23a59013b42e02dc35d5c35af0",
+      "actual": "f00b0e61f4711838771260d491561b98c13ece23a59013b42e02dc35d5c35af0",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed3",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed3",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed3.pt",
+      "exists": true,
+      "expected": "2cb897095bd0947f93f437e57dd139d2aa9786da2047459ed3325326aa3307d6",
+      "actual": "2cb897095bd0947f93f437e57dd139d2aa9786da2047459ed3325326aa3307d6",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed4",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed4",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed4.pt",
+      "exists": true,
+      "expected": "4019cf5fa1fdcdb46c308c15ac120820df8e4fe1bab6c3cb67818ac429fb177b",
+      "actual": "4019cf5fa1fdcdb46c308c15ac120820df8e4fe1bab6c3cb67818ac429fb177b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed5",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-fixed-seed5",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed5.pt",
+      "exists": true,
+      "expected": "296e1b28883aa63fd58eb89ea619e0586a97537e1c576b25d01d9266670cf972",
+      "actual": "296e1b28883aa63fd58eb89ea619e0586a97537e1c576b25d01d9266670cf972",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed1",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed1",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed1.pt",
+      "exists": true,
+      "expected": "68dd5417b6682455c260669fd1d027a9c88b9b79e977a633b05eefe21db7cbbf",
+      "actual": "68dd5417b6682455c260669fd1d027a9c88b9b79e977a633b05eefe21db7cbbf",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed2",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed2",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed2.pt",
+      "exists": true,
+      "expected": "f00b0e61f4711838771260d491561b98c13ece23a59013b42e02dc35d5c35af0",
+      "actual": "f00b0e61f4711838771260d491561b98c13ece23a59013b42e02dc35d5c35af0",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed3",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed3",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed3.pt",
+      "exists": true,
+      "expected": "2cb897095bd0947f93f437e57dd139d2aa9786da2047459ed3325326aa3307d6",
+      "actual": "2cb897095bd0947f93f437e57dd139d2aa9786da2047459ed3325326aa3307d6",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed4",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed4",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed4.pt",
+      "exists": true,
+      "expected": "4019cf5fa1fdcdb46c308c15ac120820df8e4fe1bab6c3cb67818ac429fb177b",
+      "actual": "4019cf5fa1fdcdb46c308c15ac120820df8e4fe1bab6c3cb67818ac429fb177b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed5",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "exists": true,
+      "expected": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "actual": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-E1-rolling-seed5",
+      "kind": "estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/E1-seed5.pt",
+      "exists": true,
+      "expected": "296e1b28883aa63fd58eb89ea619e0586a97537e1c576b25d01d9266670cf972",
+      "actual": "296e1b28883aa63fd58eb89ea619e0586a97537e1c576b25d01d9266670cf972",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-seed1",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F-seed1.pt",
+      "exists": true,
+      "expected": "1c1e3a8c169cb1394fd01eb5237e49a198a82759f5be4f030ccfe57426e61e25",
+      "actual": "1c1e3a8c169cb1394fd01eb5237e49a198a82759f5be4f030ccfe57426e61e25",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-seed2",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F-seed2.pt",
+      "exists": true,
+      "expected": "e22c5e78c6508eea9916e93b55e1494cca31fbc2c17349610cf340fdab4ab8b2",
+      "actual": "e22c5e78c6508eea9916e93b55e1494cca31fbc2c17349610cf340fdab4ab8b2",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-seed3",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F-seed3.pt",
+      "exists": true,
+      "expected": "df39ee98a5e350f770eb684192fc819af985055eb6bf7c8d1c3b7d428cc87b78",
+      "actual": "df39ee98a5e350f770eb684192fc819af985055eb6bf7c8d1c3b7d428cc87b78",
+      "matches": true
+    },
+    {
+      "task": "CNN-F-seed4",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F-seed4.pt",
+      "exists": true,
+      "expected": "51a15aed19862c0c5d319346dbac5d9dc69de5420b86e24dc1a29b7e3f3a3500",
+      "actual": "51a15aed19862c0c5d319346dbac5d9dc69de5420b86e24dc1a29b7e3f3a3500",
+      "matches": true
+    },
+    {
+      "task": "CNN-noF-seed1",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-noF-seed1.pt",
+      "exists": true,
+      "expected": "28573bae5108de1babed24bc19fbf8056f89f8a4edfdf8f6036e49197d26f46c",
+      "actual": "28573bae5108de1babed24bc19fbf8056f89f8a4edfdf8f6036e49197d26f46c",
+      "matches": true
+    },
+    {
+      "task": "CNN-noF-seed2",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-noF-seed2.pt",
+      "exists": true,
+      "expected": "b07e5701b0f38543a74a09b498c596213e095d81530391e1c720d57084272c2d",
+      "actual": "b07e5701b0f38543a74a09b498c596213e095d81530391e1c720d57084272c2d",
+      "matches": true
+    },
+    {
+      "task": "CNN-noF-seed3",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-noF-seed3.pt",
+      "exists": true,
+      "expected": "b20d030cc458f28c6981ef2bd9c1cf0e930cb557a939da2a708a0225f68b5e5e",
+      "actual": "b20d030cc458f28c6981ef2bd9c1cf0e930cb557a939da2a708a0225f68b5e5e",
+      "matches": true
+    },
+    {
+      "task": "CNN-noF-seed4",
+      "kind": "checkpoint",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-noF-seed4.pt",
+      "exists": true,
+      "expected": "e8fa7f4ab019576d0eb51cd7658024ee0f84f51c8f300ab6cc398ffab7ea38fb",
+      "actual": "e8fa7f4ab019576d0eb51cd7658024ee0f84f51c8f300ab6cc398ffab7ea38fb",
+      "matches": true
+    },
+    {
+      "kind": "original_estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage18/training/E0-seed1/selected.pt",
+      "exists": false,
+      "expected": "05b0c966567209037b87478b238939eeaa23f2202ae7148c06dd34797bdee3da",
+      "actual": null,
+      "matches": false
+    },
+    {
+      "kind": "original_estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage18/training/E0-seed2/selected.pt",
+      "exists": false,
+      "expected": "d461bae9dfd507b07955eda2342abe717900232af40cd5ac9e0b5981fb1fcd2f",
+      "actual": null,
+      "matches": false
+    },
+    {
+      "kind": "original_estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage18/training/E0-seed3/selected.pt",
+      "exists": false,
+      "expected": "dc6fe8559093681cece7166443cd1a8d44bdf7f8e794e9f07bed42bf2bb876a3",
+      "actual": null,
+      "matches": false
+    },
+    {
+      "kind": "original_estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage18/training/E0-seed4/selected.pt",
+      "exists": false,
+      "expected": "fc538e434c04df7ffa91fa9021f9bb64c6006700b95262772b5e139e492a195b",
+      "actual": null,
+      "matches": false
+    },
+    {
+      "kind": "original_estimator",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage18/training/E0-seed5/selected.pt",
+      "exists": false,
+      "expected": "6a7edd4aee91e81b7a272c6e9b2a7962e9a000ed44ab7378f478ad6657a38e2f",
+      "actual": null,
+      "matches": false
+    }
+  ],
+  "original": [
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-F-E0-fixed-seed1.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-F-E0-fixed-seed1",
+        "gpu": {
+          "index": 1,
+          "uuid": "GPU-9a37c8ea-979a-4ddc-fbfe-2332c555302d",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.0989688890404068,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    },
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-F-E0-fixed-seed2.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-F-E0-fixed-seed2",
+        "gpu": {
+          "index": 2,
+          "uuid": "GPU-b30bd41b-4882-d525-083b-d929b9b9328a",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.10118029598379508,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    },
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-F-E0-fixed-seed3.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-F-E0-fixed-seed3",
+        "gpu": {
+          "index": 0,
+          "uuid": "GPU-82f40f34-974d-ab06-c2b3-a35e7ba766d3",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.10873346595326439,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    },
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-F-E0-fixed-seed4.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-F-E0-fixed-seed4",
+        "gpu": {
+          "index": 1,
+          "uuid": "GPU-9a37c8ea-979a-4ddc-fbfe-2332c555302d",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.09892031701747328,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    },
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-F-E0-fixed-seed5.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-F-E0-fixed-seed5",
+        "gpu": {
+          "index": 2,
+          "uuid": "GPU-b30bd41b-4882-d525-083b-d929b9b9328a",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.10958182404283434,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    },
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-F-constantF.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-F-constantF",
+        "gpu": {
+          "index": 0,
+          "uuid": "GPU-82f40f34-974d-ab06-c2b3-a35e7ba766d3",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.10848420998081565,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    },
+    {
+      "log": "runs/stage21/priority_logs/R12_CNN-noF.log",
+      "first_error": "ModuleNotFoundError: No module named 'numba'",
+      "execution": {
+        "model": "CNN-noF",
+        "gpu": {
+          "index": 0,
+          "uuid": "GPU-82f40f34-974d-ab06-c2b3-a35e7ba766d3",
+          "name": "NVIDIA CMP 170HX",
+          "processes": [],
+          "available": true
+        },
+        "seconds": 0.09781030396698043,
+        "returncode": 1,
+        "phase": "R12"
+      }
+    }
+  ],
+  "launcher_hashes": {
+    "acd_stage21_ops_.py": "cce779a1414640d66b6ea72406004c709de94eeeb754ab51f16855962565529b",
+    "acd_stage21_ops__R12_recovery.py": "fb900486f757c06a3f045843aaae12e5689fe2e21ea3efc25bb56af04bb4e166",
+    "acd_stage21_ops__strict.py": "f82ac6ca5fbeed03eb7e97a70a604a36230931a92597deced2f072d49e3fe620"
+  },
+  "frozen_code_hashes": {
+    "acd_stage21_inference.py": "94204cd91fd47759ffb21d6837d57ba2fcc4e7eb2a6697e52c828516246f2705",
+    "acd_stage21_score.py": "c5a2b073fed700672e7c2aa3cd18156ee1ec3581f3bd7e0d982305a94561f13b"
+  }
+}

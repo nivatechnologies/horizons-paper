@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/acd_stage21_inference.py", line 7, in <module>
+    from acd_protocol import ROOT,physics,PATTERNS,WINDOWS,SIGMA
+  File "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/acd_protocol.py", line 11, in <module>
+    import protocol,physics
+  File "/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py", line 3, in <module>
+    from numba import njit, prange
+ModuleNotFoundError: No module named 'numba'
