@@ -70,3 +70,5 @@ Stage20 | completion controller | 8493336 | 2026-10-08T06:49:22.330542+00:00 | S
 Stage20 | Spark2 recovery | 52bb56a | 2026-10-08T06:52:57.698971+00:00 | B and C inference both running; C first fixed pipeline has written hashed original-panel outputs.
 
 Stage20 | reporting setup | 340432f | 2026-10-08T06:54:24.397647+00:00 | Both Spark jobs active; registry PASS; B and C scoring and separate publication remain queued.
+
+Stage21 | contract | 1f90ea740a0c5312d44364e7da04160fb83091ef | 2026-10-08T07:05:19Z | No realized-outcome access; Freeze E and emulator/scoring work remain.
