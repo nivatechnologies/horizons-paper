@@ -127,3 +127,5 @@ Pipeline | stage20-B-step-times | 29cb70c7cec9c912d2c1d9b6077be5ea6e5085fb | 202
 Pipeline | stage21-Spark-log-gate | b0b2ae9830e7eb598402a326d568db8295b3e662 | 2026-10-08T21:37:45Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
 
 Pipeline | stage21-execution-handoff | 06a90ae056b735decb4aa4b5b52db642af04f2c6 | 2026-10-08T21:40:40Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage21-multispark-execution | d614d83f5501a637b51dba6e1c841fb179fe1ed3 | 2026-10-08T23:06:24Z | Execution amendment: matched E1 seed pairs split across three authorized local GB10 GPUs; criteria unchanged. R34 waits for successful R12 publication.
