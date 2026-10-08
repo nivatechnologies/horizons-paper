@@ -1,0 +1,73 @@
+"""Stage21 Freeze E: source/selected-checkpoint hashes before shifted-panel inference."""
+import json,shutil,subprocess
+from pathlib import Path
+from acd_protocol import ROOT
+from acd_stage21_contract import OUT,digest,assignments
+BASE=Path('/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy')
+
+def ready():
+ marker=json.loads((OUT/'freeze_e_pushed.json').read_text());d=json.loads((ROOT/'receipts/acd_stage21_freeze_e.json').read_text())
+ assert digest(ROOT/'ACD_STAGE21_FREEZE_E.md')==marker['sha256']
+ subprocess.run(['git','merge-base','--is-ancestor',marker['commit'],'origin/paper/aspen-2026-10-determinacy'],cwd=ROOT.parents[1],check=True)
+ for p,h in d['code_hashes'].items():assert digest(ROOT/p)==h,p
+ for row in d['tasks']:
+  for key in ['checkpoint','estimator']:
+   if row.get(key):assert digest(ROOT/row[key])==row[key+'_sha256']
+ return d
+
+def freeze():
+ for step in ['panel','climatology']:assert (OUT/(step+'_pushed.json')).exists(),step
+ panel=json.loads((ROOT/'receipts/acd_stage21_part1.json').read_text());assert len(panel['cases'])==len(assignments())
+ for case in panel['cases']:
+  assert digest(ROOT/case['observations']['path'])==case['observations']['sha256']
+  for p,h in case['arms']['main']['files'].items():assert digest(ROOT/p)==h,p
+ found=[str(p.relative_to(ROOT)) for folder in [OUT/'inference',OUT/'scoring'] if folder.exists() for p in folder.rglob('*') if p.is_file()]
+ assert not found,'Pre-freeze outputs exist: '+str(found)
+ selected=OUT/'checkpoints';selected.mkdir(exist_ok=True);tasks=[]
+ def copy(source,name):
+  target=selected/name;target.parent.mkdir(parents=True,exist_ok=True)
+  if not target.exists():shutil.copy2(source,target)
+  assert digest(target)==digest(source)
+  return str(target.relative_to(ROOT))
+ f=copy(BASE/'runs/stage19/checkpoints/CNN-F.pt','CNN-F.pt')
+ nof=copy(BASE/'runs/stage19/checkpoints/CNN-noF.pt','CNN-noF.pt')
+ cnn=copy(BASE/'runs/stage19/checkpoints/CNN-20k.pt','CNN-20k.pt')
+ retained=json.loads((ROOT/'receipts/acd_stage19_freeze_b.json').read_text())['checkpoints']
+ for name,path in [('CNN-F',f),('CNN-noF',nof),('CNN-20k',cnn)]:assert digest(ROOT/path)==retained[name]
+ for arm in ['ownF','constantF','meanF']:tasks.append(dict(name='CNN-F-'+arm,arm=arm,checkpoint=f,estimator=None))
+ tasks.extend([dict(name='CNN-noF',checkpoint=nof,estimator=None),dict(name='CNN-20k',checkpoint=cnn,estimator=None)])
+ for kind,rolling in [('E0',False),('E1',False),('E1',True)]:
+  for j in range(1,6):
+   est=copy(BASE/f'runs/stage18/training/{kind}-seed{j}/selected.pt',f'{kind}-seed{j}.pt')
+   completed=json.loads((BASE/f'runs/stage18/training/{kind}-seed{j}/complete.json').read_text())
+   assert digest(ROOT/est)==completed['selected_sha256']
+   tasks.append(dict(name=f'CNN-F-{kind}-{"rolling" if rolling else "fixed"}-seed{j}',checkpoint=f,estimator=est,kind=kind,rolling=rolling,seed=j))
+ for m in ['CNN-F','CNN-noF']:
+  for i in range(1,5):
+   p=ROOT/f'receipts/acd_stage16_run_{m}-seed{i}.json';assert p.exists()
+   assert subprocess.check_output(['git','show','HEAD:'+str(p.relative_to(ROOT.parents[1]))],cwd=ROOT.parents[1])==p.read_bytes()
+   ck=copy(BASE/f'runs/stage19/L3_checkpoints/{m}-seed{i}/selected.pt',f'{m}-seed{i}.pt')
+   assert digest(ROOT/ck)==json.loads(p.read_text())['training']['selected_sha256']
+   tasks.append(dict(name=f'{m}-seed{i}',checkpoint=ck,estimator=None))
+ for row in tasks:
+  for key in ['checkpoint','estimator']:row[key+'_sha256']=digest(ROOT/row[key]) if row.get(key) else None
+ code=['acd_stage21_freeze_e.py','acd_stage21_inference.py','acd_stage21_score.py','acd_stage21_continue.py','acd_stage9_cnn.py','acd_stage9_train.py','acd_stage18_inference.py','acd_stage18_estimators.py','acd_stage19_learned.py','acd_stage19_l3_statistic.py','acd_stage19_part3b_score.py','acd_stage6_analysis.py','acd_stage13_analysis.py','acd_stats.py','acd_protocol.py']
+ d=dict(stage=21,tasks=tasks,inventory=found,code_hashes={p:digest(ROOT/p) for p in code},panel_sha256=digest(ROOT/'receipts/acd_stage21_part1.json'),climatology_sha256=digest(ROOT/'receipts/acd_stage21_climatology.json'),forcing_by_case=assignments().tolist(),realized_outcome_accesses=[],hardware='All compared pipelines use the Baccus 170HX path, queued after L3, Part3b, Stage18 D/C and Stage20. No prior job is preempted.')
+ (ROOT/'receipts/acd_stage21_freeze_e.json').write_text(json.dumps(d,indent=2)+'\n')
+ text='''# Stage21 Freeze E — forcing-shift reference and repair readings
+
+Inventory: no Stage21 emulator output or realized outcome exists. Sampling and climatology were produced blind and pushed. Their hashes are recorded below. The question threshold and observation-dependence null use the instance's true-forcing climatology; those quantities are not supplied as model inputs. Excluded instances are withheld and not replaced.
+
+All listed pipelines use amplitude 0.16, nine options, all eight frozen leads and windows, each draw's own noise-free pre-action history and the unchanged Stage9 F5 rollout. CNN-F receives own, constant-eight, posterior-mean or estimator forcing as specified; CNN-noF and CNN-20k receive their frozen interfaces. An invalid draw invalidates the instance for that pipeline, with no survivor conditioning. E and C then take no action. Every run is reported; no seed selection occurs.
+
+G1: observation-confident intervention-sign accuracy at 2 LT, with the original R0 construction, one-sided 95% case bounds and original criterion. G2: paired first-loss later minus earlier, with original eligibility/censoring recomputed, confirmed only when the two-sided 99% v2.3 interval lies below zero.
+
+R1 primary: on seven zero-mean patterns at 2 LT, constant-eight CNN-F confident-error share minus E0-fixed confident-error share. Each seed/instance requires at least one confident answer from both pipelines. Average defined seed differences within instance; retain instances with at least one defined pair. Confirm only if the two-sided 99% v2.3 interval is wholly above zero. R2 substitutes retained CNN-noF for constant-eight CNN-F, otherwise identical. R3: E1 rolling minus E1 fixed confident-error share on seven patterns at 3 LT, same contributing and seed averaging rule; confirm only if the one-sided 95% lower betting bound is above zero.
+
+For every pipeline report pooled and by true forcing: forcing-estimate error, state skill, per-draw cost errors, confident shares/errors with bounds, calibration, same-lead comparisons, paired first-loss, E and C(delta=0) decisions with conditional-harm bounds/histograms/uniform-decrease flag, and posterior forcing standard deviation. These are descriptive. All confirmatory estimates use the instance as unit, pooled across retained instances from the complete assigned panel. Failed seeds make the affected repair reading not evaluable; available results remain descriptive.
+
+Realized outcomes may be generated/opened only by acd_stage21_score.py after this freeze is pushed. Inference writes and hashes outputs before scoring. GPU work queues behind the named stages; all compared arms share one hardware path.
+
+'''
+ (ROOT/'ACD_STAGE21_FREEZE_E.md').write_text(text+'```json\n'+json.dumps(d,indent=2)+'\n```\n')
+if __name__=='__main__':freeze()

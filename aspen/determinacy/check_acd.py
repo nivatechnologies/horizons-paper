@@ -26,8 +26,17 @@ def match(raw,rows):
     return matches
 def run():
     p=argparse.ArgumentParser();p.add_argument('--text',type=Path);a=p.parse_args();expected=build();errors=[]
-    if not (ROOT/'numbers_acd.json').exists() or json.loads((ROOT/'numbers_acd.json').read_text())!=expected:errors.append('numbers_acd.json differs from regenerated receipts')
-    if not (ROOT/'NUMBERS_ACD.md').exists() or (ROOT/'NUMBERS_ACD.md').read_text()!=render(expected):errors.append('NUMBERS_ACD.md differs from regenerated receipts')
+    primary=json.loads((ROOT/'numbers_acd.json').read_text())
+    loaded=dict(primary);loaded['numbers']=dict(primary['numbers'])
+    shards=loaded.pop('additional_registries',[])
+    for name in shards:
+        supplemental=json.loads((ROOT/name).read_text())
+        if set(loaded['numbers'])&set(supplemental['numbers']):errors.append('Duplicate supplemental registry keys')
+        loaded['numbers'].update(supplemental['numbers'])
+        markdown=ROOT/'NUMBERS_ACD_STAGE21.md'
+        if not markdown.exists() or markdown.read_text()!=render(supplemental):errors.append('Supplemental registry Markdown differs')
+    if loaded!=expected:errors.append('Receipt registries differ from regenerated receipts')
+    if not (ROOT/'NUMBERS_ACD.md').exists() or (ROOT/'NUMBERS_ACD.md').read_text()!=render(primary):errors.append('NUMBERS_ACD.md differs from regenerated receipts')
     if a.text:
         n=0
         for line,raw in tokens(a.text.read_text()):
