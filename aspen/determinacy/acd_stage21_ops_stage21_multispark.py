@@ -21,6 +21,8 @@ def transfer(host,source,dest,upload=True):
 def install(f,validate):
  def run_host(host,tasks,contract):
   root=f.OUT/'multispark';root.mkdir(exist_ok=True)
+  old_outcomes=execute(host,'cat '+REMOTE+'/queue_outcomes.json',False)
+  previous_records=json.loads(old_outcomes.stdout) if old_outcomes.returncode==0 else {}
   execute(host,'mkdir -p '+REMOTE+'/code '+REMOTE+'/models '+REMOTE+'/inputs')
   for name in contract['code_hashes']:transfer(host,f.ROOT/name,REMOTE+'/code/'+name)
   transfer(host,str(f.OUT/'spark_models')+'/',REMOTE+'/models/')
@@ -45,10 +47,10 @@ def install(f,validate):
    name=task['name'];dest=f.OUT/'inference'/name;dest.mkdir(parents=True,exist_ok=True)
    transfer(host,str(dest)+'/',REMOTE+'/inference/'+name+'/',False)
    logfile=f.OUT/'priority_logs'/('R34_'+name+'.log');transfer(host,logfile,REMOTE+'/'+name+'.log',False)
-   record=outcomes.get(name)
+   record=outcomes.get(name,previous_records.get(name))
    if record is None:
     # Reused completed output: preserve the original task log and record that no new launch occurred.
-    done=json.loads((dest/'complete.json').read_text());record=dict(returncode=0,complete=True,reused_complete_output=True,host=host)
+    raise RuntimeError('Completed output has no recorded process exit status: '+host+' '+name)
    record=dict(record,model=name,phase='R34',execution_host=host)
    logfile.with_suffix('.json').write_text(json.dumps(record)+'\n')
   if host.endswith('.248'):

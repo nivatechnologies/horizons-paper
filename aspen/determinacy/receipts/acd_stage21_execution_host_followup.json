@@ -1,0 +1,27 @@
+{
+  "utc": 1791501048.685255,
+  "code_hashes": {
+    "acd_stage21_ops_stage21_multispark.py": "80697d03e7d09f1fc278266733d09ca522f8ab57f64a1a7be057dd4004da4b00",
+    "acd_stage21_ops_stage21.py": "23410f18621c62b1ae4babb233428a3d37082ee35b3d43d7974ce218f7740dd5",
+    "acd_stage21_ops_stage21_sulaco_score.py": "9681428c3262d7839c3bc74933415f68010f08c84c4a5a8518247228525a7da5",
+    "stage21_sulaco_score_worker.py": "3d4e10f5d9c59a072f61b59120d5ae15c0010bd5879869125638156eb0bb6ed1"
+  },
+  "criteria_changed": false,
+  "scientific_sources_unchanged": true,
+  "CPU_scoring_host": "sulaco",
+  "applies_to": "R34 and subsequent Stage21 descriptive scoring; R12 already in flight",
+  "reused_exit_status_evidence": "Previously unrecorded fixed-seed2 Docker exit status read from /proc/507034/stat; raw exit status zero, parent 427676. Original queue outcomes now preserve it. No inferred exit code.",
+  "hosts": {
+    "192.168.88.4": [
+      1,
+      2
+    ],
+    "192.168.88.12": [
+      3,
+      4
+    ],
+    "192.168.88.248": [
+      5
+    ]
+  }
+}
