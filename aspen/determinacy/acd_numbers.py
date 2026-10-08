@@ -314,17 +314,19 @@ def render(d):
     return '\n'.join(lines)+'\n'
 def write():
     d=build()
-    stage21={k:v for k,v in d['numbers'].items() if k.startswith('ACD_21')}
-    continuation={k:v for k,v in d['numbers'].items() if k.startswith('ACD_FRESH_19_L3')}
-    core={k:v for k,v in d['numbers'].items() if not k.startswith(('ACD_21','ACD_FRESH_19_L3'))}
-    primary=dict(d,numbers=core,additional_registries=['numbers_acd_stage21.json','numbers_acd_continuation.json'])
-    supplemental=dict(schema=d['schema'],source_hashes={k:v for k,v in d['source_hashes'].items() if 'stage21' in k},numbers=stage21)
-    (ROOT/'numbers_acd.json').write_text(json.dumps(primary,separators=(',', ':'),allow_nan=False)+'\n')
-    (ROOT/'numbers_acd_stage21.json').write_text(json.dumps(supplemental,separators=(',', ':'),allow_nan=False)+'\n')
-    (ROOT/'NUMBERS_ACD.md').write_text(render(dict(d,numbers=core)))
-    (ROOT/'NUMBERS_ACD_STAGE21.md').write_text(render(supplemental))
-    continuation_registry=dict(schema=d['schema'],source_hashes={k:v for k,v in d['source_hashes'].items() if 'stage19_L3' in k},numbers=continuation)
-    (ROOT/'numbers_acd_continuation.json').write_text(json.dumps(continuation_registry,separators=(',', ':'),allow_nan=False)+'\n')
-    (ROOT/'NUMBERS_ACD_CONTINUATION.md').write_text(render(continuation_registry))
+    groups={'stage21': ('ACD_21',), 'continuation': ('ACD_FRESH_19_L3',), 'stage19_part3b': ('ACD_FRESH_19_3B',), 'stage20_followup': ('ACD_POSTHOC_20C', 'ACD_POSTHOC_20B_uniform'), 'stage18_followup': ('ACD_POSTHOC_18D', 'ACD_POSTHOC_18C')}
+    supplemental={}
+    selected=set()
+    for name,prefixes in groups.items():
+        values={k:v for k,v in d['numbers'].items() if k.startswith(prefixes)}
+        if values:
+            supplemental[name]=dict(schema=d['schema'],source_hashes={},numbers=values);selected.update(values)
+    core={k:v for k,v in d['numbers'].items() if k not in selected}
+    primary=dict(d,numbers=core,additional_registries=['numbers_acd_'+n+'.json' for n in supplemental])
+    (ROOT/'numbers_acd.json').write_text(json.dumps(primary,separators=(',',':'),allow_nan=False)+'\n')
+    (ROOT/'NUMBERS_ACD.md').write_text(render(primary))
+    for name,values in supplemental.items():
+        (ROOT/('numbers_acd_'+name+'.json')).write_text(json.dumps(values,separators=(',',':'),allow_nan=False)+'\n')
+        (ROOT/('NUMBERS_ACD_'+name.upper()+'.md')).write_text(render(values))
     print('NUMBERS',len(d['numbers']))
 if __name__=='__main__':write()
