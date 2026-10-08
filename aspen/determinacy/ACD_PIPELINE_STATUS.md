@@ -68,3 +68,5 @@ Stage20 | transfer/scoring setup | 1606c37 | 2026-10-08T06:48:58.904919+00:00 | 
 Stage20 | completion controller | 8493336 | 2026-10-08T06:49:22.330542+00:00 | Spark2 connectivity restored; C deployment starts. B running on Spark1; independent result publication queued.
 
 Stage20 | Spark2 recovery | 52bb56a | 2026-10-08T06:52:57.698971+00:00 | B and C inference both running; C first fixed pipeline has written hashed original-panel outputs.
+
+Stage20 | reporting setup | 340432f | 2026-10-08T06:54:24.397647+00:00 | Both Spark jobs active; registry PASS; B and C scoring and separate publication remain queued.
