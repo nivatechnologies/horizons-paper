@@ -74,3 +74,5 @@ Stage20 | reporting setup | 340432f | 2026-10-08T06:54:24.397647+00:00 | Both Sp
 Stage21 | contract | 1f90ea740a0c5312d44364e7da04160fb83091ef | 2026-10-08T07:05:19Z | No realized-outcome access; Freeze E and emulator/scoring work remain.
 
 Stage21 | timing | e5c0c2f3d6cb3d1fa2118ad8bb3d94ca8b5b240b | 2026-10-08T07:07:08Z | No realized-outcome access; Freeze E and emulator/scoring work remain.
+
+Stage21 | climatology | 7a1c69513f0fd4b28d5cc9cf65c75fcfa3c68914 | 2026-10-08T07:08:11Z | No realized-outcome access; Freeze E and emulator/scoring work remain.
