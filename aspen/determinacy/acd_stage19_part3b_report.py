@@ -19,7 +19,7 @@ def render():
     body = '\n## Part 3b — inferred-context repair\n\n'
     body += 'Fresh readings use pushed Freeze D; first-panel readings are post hoc. No frozen route is licensed. Every instance uses all its draws; an invalid draw invalidates that pipeline instance. Seed variation is separate from instance-level uncertainty. Realized counts were already computed in Part2; this scoring uses only its existing cache.\n\n'
     body += '| Reading | Fresh result | Outcome | Bound type |\n|---|---|---|---|\n'
-    for key in ['B1','B3']:
+    for key in ['B1','B3','B4']:
         row = data[key]
         body += f"| {key} | {interval(row['interval'])} | {'not evaluable' if not row['evaluable'] else 'PASS' if row['confirmed'] else 'FAIL'} | {row['interval']['bound_type'] if row['interval'] else 'none'} |\n"
     b2 = data['B2']
@@ -70,6 +70,10 @@ def render():
         old = data['first_panel'].get(name)
         body += f"| {name} | {json.dumps(old['paired_endpoint']) if old else 'pending'} / {json.dumps(model['paired_endpoint'])} | {json.dumps(model['calibration_test'])} |\n"
     body += '\nOwn-cohort paired and mean-calibration intervals are two-sided99% v2.3 instance betting intervals. Full reliability, coverage, counts, seed-level contrasts, unavailable-pipeline records and first-panel fields are in receipts/acd_stage19_part3b.json. First-panel matched Stage16/E0 pipelines not yet scored remain pending; no replacement value is supplied.\n'
+    body += '\n| Pipeline | Lead | Group | Confident share | Share wrong | Equal-case D bias | Pooled D bias |\n|---|---:|---|---:|---:|---:|---:|\n'
+    for name,model in data['models'].items():
+        for row in model.get('pattern_group_readings',[]):
+            body += '| '+name+' | '+' | '.join(f(row[k]) if isinstance(row[k],(int,float)) or row[k] is None else str(row[k]) for k in ['lead','population','confident_share','share_wrong','equal_case_Dk_bias','pooled_Dk_bias'])+' |\n'
     path = ROOT/'ACD_STAGE19_READING.md'
     previous = path.read_text()
     marker = '\n## Part 3b — inferred-context repair\n'
@@ -82,3 +86,4 @@ def render():
 
 if __name__ == '__main__':
     render()
+
