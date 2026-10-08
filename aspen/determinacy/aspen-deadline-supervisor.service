@@ -1,0 +1,15 @@
+[Unit]
+Description=Aspen authorized deadline continuation supervisor
+After=network-online.target
+[Service]
+Type=simple
+WorkingDirectory=/mnt/niva-array/work/aspen-deadline-20261008
+ExecStart=/mnt/niva-array/work/aspen-stage19-env-20261007/bin/python -u /mnt/niva-array/work/aspen-deadline-20261008/acd_deadline_supervisor.py
+Restart=always
+RestartSec=60
+KillMode=process
+Environment=OMP_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1
+StandardOutput=append:/mnt/niva-array/work/aspen-deadline-20261008/supervisor.log
+StandardError=append:/mnt/niva-array/work/aspen-deadline-20261008/supervisor.log
+[Install]
+WantedBy=default.target

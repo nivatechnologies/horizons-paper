@@ -1,0 +1,22 @@
+{
+  "operational_only": true,
+  "criteria_changed": false,
+  "service": "aspen-deadline-supervisor.service",
+  "sources": {
+    "acd_deadline_part3b_publish.py": "fb2cd9ee593e76b102a06a06c089eda1293f14792305079aea86dcdc7a3288e0",
+    "acd_deadline_stage20.py": "2ef280fac176d428a4d1e1b61105907dfa228b736db6ecddf12566c2d35dda76",
+    "acd_deadline_uniform.py": "7e1b4e0c8ed279cb846127a482a8851c5231b41186d3ab9c7d3c59918ce3ca2a",
+    "acd_stage18_after_B.py": "ba17c96478b80bfdd2f247badb15ab102df0bfd35853528f9d754c3efd18c643",
+    "acd_deadline_stage21.py": "2ea765b7b9dcbfbc74f1eba590cd9d1ce0d4eca0148e5e2b7451bc14c83fbd1d",
+    "acd_deadline_stage18_prepare.py": "6dd736518e1b06507a2d9adf1b1ccfc397f0dacd9766c85b29a86d0bd70b17cf",
+    "acd_deadline_stage18_publish.py": "6ad94a0ea3c84db32d578d4ea6174fc4a37116bf0d866e1556d2f38cdc871043",
+    "acd_deadline_supervisor.py": "ed0ace98c7a07daa171656ddb9ab29726e49cbf9a341544409204e586bd67449"
+  },
+  "publisher_sha256": "fc738b600c4fc27ab08767e3a8d593bc858e6a25f9042483982488dd69805231",
+  "l3_publication": {
+    "commit": "3f52f5313a14ed0f67615fb306319aa2dffbda32",
+    "registry_before": 477188,
+    "registry_after": 589163,
+    "utc": 1791456744.8194773
+  }
+}
