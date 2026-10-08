@@ -9,7 +9,11 @@ def ready():
  marker=json.loads((OUT/'freeze_e_pushed.json').read_text());d=json.loads((ROOT/'receipts/acd_stage21_freeze_e.json').read_text())
  assert digest(ROOT/'ACD_STAGE21_FREEZE_E.md')==marker['sha256']
  subprocess.run(['git','merge-base','--is-ancestor',marker['commit'],'origin/paper/aspen-2026-10-determinacy'],cwd=ROOT.parents[1],check=True)
- for p,h in d['code_hashes'].items():assert digest(ROOT/p)==h,p
+ amendment=json.loads((ROOT/'receipts/acd_stage21_freeze_e_amendment.json').read_text())
+ amarker=json.loads((OUT/'freeze_e_amendment_pushed.json').read_text())
+ assert digest(ROOT/'ACD_STAGE21_FREEZE_E_AMENDMENT.md')==amarker['sha256']
+ subprocess.run(['git','merge-base','--is-ancestor',amarker['commit'],'origin/paper/aspen-2026-10-determinacy'],cwd=ROOT.parents[1],check=True)
+ for p,h in dict(d['code_hashes'],**amendment['code_hashes']).items():assert digest(ROOT/p)==h,p
  for row in d['tasks']:
   for key in ['checkpoint','estimator']:
    if row.get(key):assert digest(ROOT/row[key])==row[key+'_sha256']
