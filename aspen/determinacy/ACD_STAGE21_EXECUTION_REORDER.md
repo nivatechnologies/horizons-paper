@@ -64,7 +64,7 @@ The original Freeze E documents remain unchanged. This explicitly supersedes the
   ],
   "code_hashes": {
     "acd_stage21_priority.py": "11011459b020e82cd72c50a8362a05d81a8c0e8cf5fe9bed3ec555d2ca69cca8",
-    "acd_stage21_reference.py": "4f9380c037c309f1d1f9700db44232f6b9965550f9bebd77535fcf65ac8da1cb",
+    "acd_stage21_reference.py": "48b891db168d718192d1d7fd7ecbe40aae4c130a7d1d8bbb87cba9408c7e558a",
     "acd_stage21_spark.py": "58f5143b630b4ae1ed8e18ea0ec22d985bc37208f56e975aee40bcbafef31a5d"
   },
   "publication": "Reference, R1/R2, R3/R4 and descriptive phases each pushed separately; manifests precede scoring; immutable per-phase receipts preserve registry values",
@@ -72,3 +72,5 @@ The original Freeze E documents remain unchanged. This explicitly supersedes the
   "fresh_outputs_before_reorder": []
 }
 ```
+
+Execution adapter correction: format climatology filenames using integer forcing levels. No reading or criterion changes.

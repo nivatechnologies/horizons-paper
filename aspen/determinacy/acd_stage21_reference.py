@@ -12,7 +12,7 @@ from acd_stage6_analysis import binary,stack,calibration,loss
 def score():
  ready();started=time.monotonic();actual,_=score_actual();levels=assignments();climates={}
  for f in np.unique(levels):
-  with np.load(OUT/'climatology'/f'F{f}.npz') as z:climates[int(f)]=(float(z['jbar']),z['prob'].copy())
+  with np.load(OUT/'climatology'/f'F{int(f)}.npz') as z:climates[int(f)]=(float(z['jbar']),z['prob'].copy())
  rows=[];keep=[];hashes={}
  for c,f in enumerate(levels):
   p=OUT/f'main_forecast_{c:03d}.npz'
