@@ -143,3 +143,5 @@ Pipeline | stage21-parallel-capacity | 6673addb71f3f92bc42dc3a17cd5c6a699724924 
 Pipeline | stage16-combined | 6d7655a9ba2c4347684a2c86d301a8f9e3670ce2 | 2026-10-08T23:43:11Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
 
 Pipeline | stage18-C-data-execution | abe6fc13e0681682a1fe9d1561f2af339c42134c | 2026-10-08T23:44:49Z | CPU preparation first attempt FAILED before generation: missing staged freeze marker. Existing marker copied, frozen hash guards PASS; retry on sulaco. Criteria unchanged.
+
+Pipeline | stage18-C-float64-execution | 34bd9d2391fd088d4862572ac6aabc663c57e22a | 2026-10-08T23:45:37Z | Stage18 C validation generation FAILED on mixed dtype; launcher promotes inputs to float64 at unchanged physics boundary, with existing data reused. Criteria unchanged.
