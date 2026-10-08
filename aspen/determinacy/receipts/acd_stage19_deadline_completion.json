@@ -1,0 +1,21 @@
+{
+  "operational_only": true,
+  "criteria_changed": false,
+  "code_hashes": {
+    "acd_deadline_part3b_publish.py": "fb2cd9ee593e76b102a06a06c089eda1293f14792305079aea86dcdc7a3288e0",
+    "acd_deadline_stage20.py": "2ef280fac176d428a4d1e1b61105907dfa228b736db6ecddf12566c2d35dda76",
+    "acd_deadline_uniform.py": "7e1b4e0c8ed279cb846127a482a8851c5231b41186d3ab9c7d3c59918ce3ca2a",
+    "acd_deadline_stage21.py": "2ea765b7b9dcbfbc74f1eba590cd9d1ce0d4eca0148e5e2b7451bc14c83fbd1d",
+    "acd_deadline_stage18_prepare.py": "6dd736518e1b06507a2d9adf1b1ccfc397f0dacd9766c85b29a86d0bd70b17cf",
+    "acd_deadline_stage18_publish.py": "d3ff629e777e3ca612fa15e4ab3dde18bfff6a930bb4578a46ab725eb393e53a",
+    "acd_deadline_supervisor.py": "66e4bf9459f4c4fbd6aa58acb638a765a423afad378df07b673ea69c0c827e0f",
+    "acd_deadline_stage18_selected_derivative.py": "c4f7209c803ce011d961798d3d78640ba5687e2d24fb26143e5a2f9cf6b17753",
+    "acd_stage18_after_B.py": "ba17c96478b80bfdd2f247badb15ab102df0bfd35853528f9d754c3efd18c643"
+  },
+  "notes": [
+    "Stage21 E1 queue waits for Stage20 uniform E0 completion on Spark1.",
+    "Stage18 selected-model derivative is queued after its C selection and publication, using the frozen derivative path.",
+    "Stage18 F21 renders scored receipts in the existing plotting environment.",
+    "Remote Spark queue recovery uses exact anchored command matching."
+  ]
+}
