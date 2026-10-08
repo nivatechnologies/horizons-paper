@@ -1,0 +1,11 @@
+{
+  "criteria_changed": false,
+  "execution": "R34 remains highest priority on three Sparks; independent Stage21 descriptive inference uses Baccus. Stage18 D/C can use Baccus after descriptive output publication, while R34 continues. Frozen Stage18 C data generation runs on sulaco CPU; C training waits for D publication. Stage16 saved-output aggregate publishes independently.",
+  "launcher_sha256": {
+    "acd_stage21_ops_parallel_acd_deadline_stage21.py": "5ff0cef495d1c66790643156df46b5a4fcd0c0aa175c704d1d8f2c781e8d9d33",
+    "acd_stage21_ops_parallel_acd_deadline_supervisor.py": "a525cd0fb539dfa6dcced2c168d4305bff827fee67651a342c04059402b7d13a",
+    "acd_stage21_ops_parallel_acd_deadline_stage21_sulaco_score.py": "db3dccec076409681c850929473294bade698b794813a50f4ff0ea1475e5f94c",
+    "acd_stage21_ops_parallel_acd_deadline_stage18_data_parallel.py": "ced059408855ac1d835aa22aaed1c654b432c065c7b4aa152492f54dfe042c32",
+    "acd_stage21_ops_parallel_publish_stage16_aggregate.py": "366d745fad292a6571e620f059a9fc78f87bbf96851cfd346bc6ca58e29d4a08"
+  }
+}
