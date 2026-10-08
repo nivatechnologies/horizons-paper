@@ -1,0 +1,16 @@
+{
+  "criteria_changed": false,
+  "operational_only": true,
+  "code_hashes": {
+    "acd_deadline_part3b_score.py": "2843c098aec2e7dfd78abeabc289f43214d498350de9f7ecb8b40a5b9cb1c03f",
+    "acd_deadline_supervisor.py": "b0278283ba2ac44504914174573562f97ef7fc24191c36aa63ba5b609c6f2501",
+    "acd_deadline_stage21.py": "9a8ce2da21a9cd6ed392a4c39953c453e68bd9b28d956c82332d9b1419fc2c29",
+    "acd_deadline_stage21_R12_recovery.py": "9d0cb4868dc75317d9bc045bf38d6384246568f7bf93a495846b72d1b85f477d"
+  },
+  "fixes": [
+    "Part3b report extracts the mean field from first-panel RMSE and bias summaries, reading the existing scored receipt.",
+    "Registry split matches uppercase uniform-extension keys.",
+    "GPU environment numba dependency restored from offline cache.",
+    "Stage21 R12 infrastructure retry preserves the previously published failure receipt under its original keys; recovered readings use new receipt and keys."
+  ]
+}
