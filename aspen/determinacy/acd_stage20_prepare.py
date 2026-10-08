@@ -11,7 +11,7 @@ def run(cmd):
         if attempt<3:print('Transfer failed; retry after sixty seconds',cmd[0],flush=True);time.sleep(60)
     raise RuntimeError('Transfer failed after retries: '+cmd[0])
 def digest(p):return hashlib.sha256(p.read_bytes()).hexdigest()
-def main():
+def main(part=None):
     if socket.gethostname()!='baccus':raise RuntimeError('Prepare on baccus')
     stage=ROOT/'runs/stage20';stage.mkdir(parents=True,exist_ok=True);models=stage/'models';models.mkdir(exist_ok=True)
     for name in ['CNN-F','CNN-noF']:
@@ -30,14 +30,19 @@ def main():
         inputs={p.name:digest(p) for p in (ROOT/'runs/stage18/confirmation_inputs').glob('*.npz')},
         physics='Same cyclic rhs and float64 RK4 stages, dt .01, five substeps per output; no action, own forcing; network FP32, TF32 off')
     cp=stage/'contract.json';cp.write_text(json.dumps(contract,indent=2)+'\n')
-    for host,part in [('192.168.88.4','B'),('192.168.88.12','C')]:
-        run(['ssh',host,'mkdir','-p',str(SPARK/'code'),str(SPARK/'models'),str(SPARK/part)])
+    hosts=[('192.168.88.4','B'),('192.168.88.12','C')]
+    for host,letter in hosts:
+        if part is not None and letter!=part:continue
+        part_label=letter
+        run(['ssh',host,'mkdir','-p',str(SPARK/'code'),str(SPARK/'models'),str(SPARK/part_label)])
         for n in files:run(['scp',str(ROOT/n),host+':'+str(SPARK/'code'/n)])
         run(['scp','-r',str(models)+'/.',host+':'+str(SPARK/'models')+'/'])
         run(['scp',str(cp),host+':'+str(SPARK/'contract.json')])
         snippet=f"import json,pathlib; pathlib.Path({str(SPARK/'A_pushed.json')!r}).write_text(json.dumps(dict(commit='5af2c1b')))"
         command=f'ln -sfn {OLD}/evaluation {SPARK}/inputs; python3 -c '+shlex.quote(snippet)
         run(['ssh',host,command])
-        (stage/(part+'_prepared.json')).write_text(json.dumps(dict(host=host,contract_sha256=digest(cp)))+'\n')
+        (stage/(part_label+'_prepared.json')).write_text(json.dumps(dict(host=host,contract_sha256=digest(cp)))+'\n')
     (ROOT/'receipts/acd_stage20_execution.json').write_text(json.dumps(contract,indent=2)+'\n')
-if __name__=='__main__':main()
+if __name__=='__main__':
+    import argparse
+    parser=argparse.ArgumentParser();parser.add_argument('--part',choices=['B','C']);main(parser.parse_args().part)

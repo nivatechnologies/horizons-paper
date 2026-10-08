@@ -60,3 +60,5 @@ Lane 2 | Stage19 Part3b Freeze D | 473372ac252acb64c934b139e138cba20f49e1ab | 20
 Lane 2 | Stage19 Freeze D implementation amendment | b5642c583382bcbbdddd0dc343605a82b8c9252b | 2026-10-08T06:12:19.506199+00:00 | First-panel CNN-noF decisions sourced from their separate receipt; criteria unchanged; no fresh repair inference yet. Queued scorer and receipt publisher prepared.
 
 Stage20 | A | 5af2c1b919ec612363404e848a2d64bec1426b4a | 2026-10-08T06:34:27.622347+00:00 | All-lead saved-output scoring pushed; B and C Spark inference remain.
+
+Stage20 | B/C setup | 5b6fe6d | 2026-10-08T06:45:35.024643+00:00 | B physics-floor inference running on Spark1; C awaits Spark2 connectivity, retrying after sixty seconds.

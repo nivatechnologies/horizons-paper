@@ -1,7 +1,7 @@
 """Original-panel E0 fixed/rolling scoring on Sulaco; hidden outcomes only in score()."""
 import os
 os.environ.update(OPENBLAS_NUM_THREADS='1',OMP_NUM_THREADS='1',NUMBA_NUM_THREADS='2',JAX_PLATFORMS='cpu')
-import argparse,hashlib,json,socket,sys
+import argparse,hashlib,json,socket,sys,shutil
 from pathlib import Path
 import numpy as np
 
@@ -15,6 +15,7 @@ def score(args):
     import numba
     numba.set_num_threads(2)
     out=args.outputs;inherited.DEST=out
+    if not (out/'receipt_analyses.json').exists():shutil.copyfile(args.science_root/'runs/stage9/receipt_analyses.json',out/'receipt_analyses.json')
     frozen=json.loads((args.science_root/'receipts/acd_stage2.json').read_text());jbar=frozen['null']['jbar'];null=np.asarray(frozen['null']['question_probabilities'])[np.r_[np.arange(8),37]]
     # This function alone reads realized original-panel outcomes.
     actual=np.asarray([np.load(inherited.RAW/f'conf/score_{c:03d}.npz')['actual_cost'] for c in range(200)])
