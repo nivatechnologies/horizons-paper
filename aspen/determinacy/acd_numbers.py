@@ -293,6 +293,7 @@ def build():
     stage13_receipts.append(('receipts/acd_stage21_R12.json', 'ACD_21R12'))
     stage13_receipts.append(('receipts/acd_stage21_R34.json', 'ACD_21R34'))
     stage13_receipts.append(('receipts/acd_stage21_descriptive.json', 'ACD_21DESC'))
+    stage13_receipts.append(('receipts/acd_stage20_B.json', 'ACD_POSTHOC_20B'))
     for filename,prefix in stage13_receipts:
         if (ROOT/filename).exists():
             walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
