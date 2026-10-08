@@ -1,0 +1,13 @@
+{
+  "status": "execution fix",
+  "cause": "Numba cannot unify float32 stored validation-state inputs with float64 RK4 intermediates",
+  "frozen_generator_sha256": "8ac51783c4346c9d5e69944706999b2e88e4fb6837e4d22648373f3f44790438",
+  "fix": "Launcher promotes the already formed initial-state and forcing arrays to float64 at the unchanged physics.simulate boundary; stored training and validation arrays are reused unchanged",
+  "criteria_changed": false,
+  "code_hashes": {
+    "acd_stage18_data_float64_launcher.py": "b5400b1dbb89a47fd510b28091cc80b0025e18a08174aca4158d35dbbde42fd1",
+    "acd_stage18_ops_acd_deadline_stage18_data_parallel.py": "a9a216cf2f3f8985c2ba60c7fda5081f8d836b5b19a82481906695ef2d3172eb",
+    "acd_stage18_ops_acd_stage18_after_B.py": "df0e8f29b79060a4bad6f51dcc9b7725dbbf2cb18f31cd66298518128091b55d"
+  },
+  "log": "runs/stage18/C_generation_dtype_failure.log"
+}

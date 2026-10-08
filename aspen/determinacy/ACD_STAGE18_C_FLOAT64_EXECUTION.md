@@ -1,0 +1,3 @@
+# Stage18 C validation generation execution
+
+The generator stopped in validation-reference generation: Numba could not unify the stored float32 initial-state array with float64 RK4 intermediates. The failure log is preserved. A launcher promotes the already formed state and forcing arrays to float64 at the physics.simulate boundary, as required for physics runs. It preserves the values of the supplied arrays, the unchanged RK4 map, and the unchanged frozen generator. Existing saved training and validation files are reused without rewriting. The launcher hashes are recorded in the execution receipt. No training or selection criterion changes. Criteria unchanged.
