@@ -1,0 +1,9 @@
+{
+  "first_attempt_status": "FAILED",
+  "cause": "Sulaco staging directory lacked the existing freeze_pushed.json publication marker",
+  "fix": "Copied the existing publication marker byte for byte from Baccus; all frozen Stage18 source guards pass on sulaco",
+  "marker_sha256": "bc467ed7c45409a8c68e1b78cfbefcf2c4baf40a9d2c332fdca69ef00c21dc9a",
+  "frozen_data_code_sha256": "8ac51783c4346c9d5e69944706999b2e88e4fb6837e4d22648373f3f44790438",
+  "criteria_changed": false,
+  "log": "runs/stage18/C_generation_first_attempt.log"
+}
