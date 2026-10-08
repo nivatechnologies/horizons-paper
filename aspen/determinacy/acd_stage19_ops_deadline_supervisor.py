@@ -40,6 +40,14 @@ def remote_queues():
   if not active:
    q=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10',host,f'nohup python3 -u {root}/code/{script} {part} >> {root}/{part}/queue.log 2>&1 < /dev/null &'],capture_output=True,text=True,timeout=20)
    result[host+':'+part]['restart_returncode']=q.returncode
+ shift=Path('/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21')
+ if (shift/'spark_started.json').exists() and not (shift/'R34_inference_complete.json').exists():
+  host='192.168.88.4';root='/home/todd/work/aspen-stage21-20261008'
+  command=f"test -f {root}/queue_complete.json && echo COMPLETE || pgrep -af '^python3 -u {root}/code/acd_stage21_spark.py queue$'"
+  p=subprocess.run(['ssh','-o','BatchMode=yes','-o','ConnectTimeout=10',host,command],capture_output=True,text=True,timeout=20)
+  result['Stage21-Spark']=dict(returncode=p.returncode,status=p.stdout.strip())
+  if p.returncode==1 and not p.stdout.strip():
+   subprocess.run(['ssh',host,f'nohup python3 -u {root}/code/acd_stage21_spark.py queue >> {root}/queue.log 2>&1 < /dev/null &'],timeout=20,check=True)
  return result
 while True:
  snapshot={'utc':time.time(),'jobs':{}}
@@ -60,6 +68,7 @@ while True:
   if (eighteen/'C_data_ready_for_commit.json').exists() and not (eighteen/'response_data/generation_pushed.json').exists():snapshot['jobs']['Stage18C_data_publish']=ensure('stage18-C-data',HOME/'acd_deadline_stage18_publish.py',CPU,'data')
   if (eighteen/'response_data/generation_pushed.json').exists() and not (eighteen/'C_reading_ready.json').exists():snapshot['jobs']['Stage18C_train']=ensure('stage18-C-train',SCI/'acd_stage18_response_controller.py',GPU)
   if (eighteen/'C_reading_ready.json').exists() and not (eighteen/'C_pushed.json').exists():snapshot['jobs']['Stage18C_publish']=ensure('stage18-C-publish',HOME/'acd_deadline_stage18_publish.py',GPU,'C')
+  if (eighteen/'C_pushed.json').exists() and not (eighteen/'D_selected_pushed.json').exists():snapshot['jobs']['Stage18_selected_derivative']=ensure('stage18-selected-D',HOME/'acd_deadline_stage18_selected_derivative.py',GPU)
   snapshot['remote_queues']=remote_queues()
  except Exception:snapshot['failure']=traceback.format_exc();print(snapshot['failure'],flush=True)
  pending=HOME/'status.tmp.json';pending.write_text(json.dumps(snapshot,indent=2)+'\n');pending.replace(HOME/'status.json')

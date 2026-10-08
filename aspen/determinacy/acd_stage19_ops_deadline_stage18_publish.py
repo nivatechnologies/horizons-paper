@@ -22,5 +22,31 @@ else:
  training={p.parent.name:json.loads(p.read_text()) for p in (out/'training').glob('CNN-noF-response-*/complete.json')}
  result=dict(post_hoc=True,licenses_frozen_route=False,models=models,training=training,execution=status,selection=json.loads((out/'C_selection.json').read_text()) if (out/'C_selection.json').exists() else None)
  (r/'receipts/acd_stage18_C.json').write_text(json.dumps(result,indent=2,allow_nan=False)+'\n')
- files=['receipts/acd_stage18_C.json','ACD_STAGE18_READING.md'];files += [f'receipts/acd_stage18_{n}.json' for n in names]
+ # Presentation uses existing scored receipts only.
+ import numpy as np
+ import matplotlib;matplotlib.use('Agg')
+ import matplotlib.pyplot as plt
+ first=json.loads((r/'receipts/acd_stage9.json').read_text())['C'];arms=dict(first)
+ decision_reference=json.loads((r/'receipts/acd_stage13_decisions.json').read_text())['models']
+ for n,m in arms.items():
+  if n in decision_reference:m['decisions']=decision_reference[n]['readings']
+ for filename in ['acd_stage10b.json','acd_stage18_A.json','acd_stage18_B.json']:
+  d=json.loads((r/'receipts'/filename).read_text());arms.update(d.get('models',{}))
+ arms.update(models)
+ wanted={k:v for k,v in arms.items() if k in ['CNN-F','CNN-noF'] or k.startswith(('CNN-F-E0-fixed','CNN-F-E1-fixed','CNN-F-E1-rolling','CNN-noF-response'))}
+ groups={}
+ for n,m in wanted.items():groups.setdefault(n.rsplit('-seed',1)[0],[]).append((n,m))
+ fig,axes=plt.subplots(1,2,figsize=(10,4));markers=['o','s','^','D','x','+','v','p']
+ for x,(arm,members) in enumerate(groups.items()):
+  for n,m in members:
+   conf=next(v for v in m['confidence_readings'] if v['lead']==2.)
+   regret=next(v['mean_regret'] for v in m['decisions'] if v['lead']==3. and v['policy']=='E')
+   for ax,y in zip(axes,[1-conf['all_confident_accuracy']['answer_accuracy'],regret]):ax.plot(x,y,marker=markers[x%len(markers)],color=str((x%4)/5),linestyle='none',markersize=5)
+ posterior=first['posterior'];reference=[1-next(v for v in posterior['confidence_readings'] if v['lead']==2.)['all_confident_accuracy']['answer_accuracy'],next(v['mean_regret'] for v in posterior['decisions'] if v['lead']==3. and v['policy']=='E')]
+ for ax,y,label in zip(axes,reference,['confident S error, 2 LT','E regret, 3 LT']):
+  ax.axhline(y,color='black',linestyle=':',linewidth=.8,label='posterior');ax.set_ylabel(label);ax.set_xticks(range(len(groups)),list(groups),rotation=60,ha='right',fontsize=6);ax.legend(fontsize=7)
+ fig.tight_layout();(r/'figures').mkdir(exist_ok=True)
+ for ext in ['pdf','png']:fig.savefig(r/'figures'/('F21_repair_paper.'+ext),dpi=150)
+ plt.close(fig)
+ files=['receipts/acd_stage18_C.json','ACD_STAGE18_READING.md','figures/F21_repair_paper.pdf','figures/F21_repair_paper.png'];files += [f'receipts/acd_stage18_{n}.json' for n in names]
  publish(r,'stage18-C',files,[('receipts/acd_stage18_C.json','ACD_POSTHOC_18C')],marker=out/'C_pushed.json')
