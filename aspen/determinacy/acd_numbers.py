@@ -294,10 +294,11 @@ def build():
     stage13_receipts.append(('receipts/acd_stage21_R34.json', 'ACD_21R34'))
     stage13_receipts.append(('receipts/acd_stage21_descriptive.json', 'ACD_21DESC'))
     stage13_receipts.append(('receipts/acd_stage20_B.json', 'ACD_POSTHOC_20B'))
+    stage13_receipts.append(('receipts/acd_stage19_L3.json', 'ACD_FRESH_19_L3'))
     for filename,prefix in stage13_receipts:
         if (ROOT/filename).exists():
             walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
-                 omit=('source_hashes','code_hashes','records','case_records','case_indices','case_mean_differences','per_seed') if 'acd_stage21' in filename else ('source_hashes','code_hashes','reproduction_checks','invalid_cases') if filename.endswith('acd_stage20_A.json') else ('source_hashes','code_hashes','records','case_records','selected_case_action_ids') if filename.endswith(('acd_stage18_A.json','acd_stage18_B.json')) else ('source_hashes','records','selected_case_action_ids') if filename.startswith('receipts/acd_stage16_run_') and filename.endswith(('-seed3.json','-seed4.json')) else ('source_hashes','case_records','first_panel','selected_case_action_ids','tie_order','case_actions','predicted_benefit_probabilities','acted_case_indices') if filename.endswith('acd_stage19_part3a.json') else ('source_hashes', 'case_records') if filename.endswith(('acd_stage15_sensitivity.json','acd_stage15_knownF.json')) else ('source_hashes',))
+                 omit=('source_hashes','code_hashes','case_differences','case_mean_differences','defined_pairs_per_case') if filename.endswith('acd_stage19_L3.json') else ('source_hashes','code_hashes','records','case_records','case_indices','case_mean_differences','per_seed') if 'acd_stage21' in filename else ('source_hashes','code_hashes','reproduction_checks','invalid_cases') if filename.endswith('acd_stage20_A.json') else ('source_hashes','code_hashes','records','case_records','selected_case_action_ids') if filename.endswith(('acd_stage18_A.json','acd_stage18_B.json')) else ('source_hashes','records','selected_case_action_ids') if filename.startswith('receipts/acd_stage16_run_') and filename.endswith(('-seed3.json','-seed4.json')) else ('source_hashes','case_records','first_panel','selected_case_action_ids','tie_order','case_actions','predicted_benefit_probabilities','acted_case_indices') if filename.endswith('acd_stage19_part3a.json') else ('source_hashes', 'case_records') if filename.endswith(('acd_stage15_sensitivity.json','acd_stage15_knownF.json')) else ('source_hashes',))
     sources=['acd_cnn_ensemble.py','receipts/acd_stage2_closeout.json','receipts/acd_numerical.json','../horizon/results/l96_calibration.json','../horizon/NUMBERS.md','receipts/acd_stage2.json','receipts/acd_stage1.json','receipts/acd_step0.json','sources/WO_v2.3.md','receipts/acd_stage4_f1.json','receipts/acd_stage4_amplitude.json','receipts/acd_stage4b_amplitude_matched.json','receipts/acd_stage4b_null.json']
     if (ROOT/'receipts/acd_stage6.json').exists():sources.append('receipts/acd_stage6.json')
     if (ROOT/'receipts/acd_stage9.json').exists():sources.append('receipts/acd_stage9.json')
@@ -314,12 +315,16 @@ def render(d):
 def write():
     d=build()
     stage21={k:v for k,v in d['numbers'].items() if k.startswith('ACD_21')}
-    core={k:v for k,v in d['numbers'].items() if not k.startswith('ACD_21')}
-    primary=dict(d,numbers=core,additional_registries=['numbers_acd_stage21.json'])
+    continuation={k:v for k,v in d['numbers'].items() if k.startswith('ACD_FRESH_19_L3')}
+    core={k:v for k,v in d['numbers'].items() if not k.startswith(('ACD_21','ACD_FRESH_19_L3'))}
+    primary=dict(d,numbers=core,additional_registries=['numbers_acd_stage21.json','numbers_acd_continuation.json'])
     supplemental=dict(schema=d['schema'],source_hashes={k:v for k,v in d['source_hashes'].items() if 'stage21' in k},numbers=stage21)
     (ROOT/'numbers_acd.json').write_text(json.dumps(primary,separators=(',', ':'),allow_nan=False)+'\n')
     (ROOT/'numbers_acd_stage21.json').write_text(json.dumps(supplemental,separators=(',', ':'),allow_nan=False)+'\n')
     (ROOT/'NUMBERS_ACD.md').write_text(render(dict(d,numbers=core)))
     (ROOT/'NUMBERS_ACD_STAGE21.md').write_text(render(supplemental))
+    continuation_registry=dict(schema=d['schema'],source_hashes={k:v for k,v in d['source_hashes'].items() if 'stage19_L3' in k},numbers=continuation)
+    (ROOT/'numbers_acd_continuation.json').write_text(json.dumps(continuation_registry,separators=(',', ':'),allow_nan=False)+'\n')
+    (ROOT/'NUMBERS_ACD_CONTINUATION.md').write_text(render(continuation_registry))
     print('NUMBERS',len(d['numbers']))
 if __name__=='__main__':write()

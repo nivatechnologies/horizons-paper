@@ -309,3 +309,19 @@ Stage17C counts non-lowering effects as harm; Part2 strict-positive harm counts 
 | CNN-noF | 0.721513 / 0.1025 / 0.396875 | 0.641866 / 0.108125 / 0.39125 |
 
 R-other resolutions: [].
+
+## L3 training-seed replication
+
+All eight new selected checkpoints are committed and all fresh inference manifests were verified before scoring. L3a and L3b use the unchanged frozen aggregation, case contribution rule and failed-run rule. Training-run variation is separate from case-level bounds.
+
+L3a: {'lower': 0.0040000000000000036, 'upper': 0.1299999999999999, 'empty': False, 'point': 0.06708841828188562, 'offset': False, 'fallback': False}. L3b positive new pair count: 4. Confirmed: True.
+
+| Seed | L1 estimate | 99% interval | CNN-F pooled S error | CNN-noF pooled S error |
+|---|---:|---|---:|---:|
+| 0 | 0.06874699374699375 | [0.0040000000000000036, 0.1319999999999999] | 0.0017391304347825765 | 0.06073211314475868 |
+| 1 | 0.07231990231990232 | [0.006000000000000005, 0.1359999999999999] | 0.0017559262510974394 | 0.062342038753159246 |
+| 2 | 0.06481481481481483 | [0.0, 0.1279999999999999] | 0.0034995625546806464 | 0.05901911886949296 |
+| 3 | 0.06550640560792845 | [0.0020000000000000018, 0.1299999999999999] | 0.0017528483786152238 | 0.061499578770008445 |
+| 4 | 0.06563771237138072 | [0.0020000000000000018, 0.1279999999999999] | 0.0026109660574412663 | 0.06120760959470639 |
+
+Full per-seed state skill, confident errors and bounds, gate harm bounds, uniform-decrease choices and other descriptive metrics are in receipts/acd_stage19_L3.json.
