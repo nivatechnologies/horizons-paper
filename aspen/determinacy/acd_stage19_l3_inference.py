@@ -5,6 +5,7 @@ import argparse
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 import hashlib
+import fcntl
 import json
 import os
 from pathlib import Path
@@ -30,7 +31,7 @@ def receipt(name):
     local = ROOT/'receipts'/path.name
     if data != local.read_bytes():raise RuntimeError('Receipt differs from committed file')
     commit = subprocess.check_output(['git','log','-1','--format=%H','--',str(path)],cwd=REPO,text=True).strip()
-    subprocess.run(['git','merge-base','--is-ancestor',commit,'FETCH_HEAD'],cwd=REPO,check=True)
+    subprocess.run(['git','merge-base','--is-ancestor',commit,'refs/remotes/origin/paper/aspen-2026-10-determinacy'],cwd=REPO,check=True)
     return json.loads(data),commit
 
 
@@ -50,6 +51,15 @@ def worker(name, checkpoint):
             value=dict(value,checkpoints=dict(value['checkpoints'],**{name:expected}))
         return value
     frozen.json=SimpleNamespace(loads=loads,dumps=json.dumps)
+    original_gate=frozen.freeze_ready
+    def serialized_gate():
+        # The inherited gate refreshes FETCH_HEAD. Serialize that metadata
+        # operation across seed workers; release before any network rollout.
+        lock=OUT/'L3_gate.lock'
+        with lock.open('a') as handle:
+            fcntl.flock(handle,fcntl.LOCK_EX)
+            return original_gate()
+    frozen.freeze_ready=serialized_gate
     target=OUT/'inference'/name
     target.mkdir(parents=True,exist_ok=True)
     provenance=dict(model=name,selected_checkpoint_sha256=expected,stage16_commit=commit,
