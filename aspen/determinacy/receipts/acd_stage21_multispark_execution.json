@@ -1,0 +1,29 @@
+{
+  "utc": 1791500598.2524362,
+  "authorization": "Todd authorizes three local Sparks and stopping Tensorfold on 192.168.88.248",
+  "hosts": {
+    "192.168.88.4": [
+      1,
+      2
+    ],
+    "192.168.88.12": [
+      3,
+      4
+    ],
+    "192.168.88.248": [
+      5
+    ]
+  },
+  "code_hashes": {
+    "acd_stage21_ops_stage21_multispark.py": "61f87676b62ecfed1c74650076b9832b9efa437be8a63302edd21bdf0aa4141b",
+    "acd_stage21_ops_stage21.py": "2b136578eb361e5f878ae6ea43e750fe70d05bc7be034df752f333ea1a973151",
+    "acd_stage21_ops_supervisor.py": "4d60440bc5a0e4ae5554d35f6bfec6e4b8c5754ce35ae587cadd5281039800f2"
+  },
+  "frozen_rollout_and_scorer_unchanged": true,
+  "criteria_unchanged": true,
+  "ssh_identity": "Explicit existing host-specific key for todd@192.168.88.248",
+  "service": "tensorfold-single.service",
+  "restore_service_after_host_queue": true,
+  "hardware_path": "GB10 CUDA, offline pytorch:26.07, network disabled; both fixed and rolling for each seed stay together",
+  "existing_outputs_reused": true
+}
