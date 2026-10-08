@@ -64,3 +64,5 @@ Stage20 | A | 5af2c1b919ec612363404e848a2d64bec1426b4a | 2026-10-08T06:34:27.622
 Stage20 | B/C setup | 5b6fe6d | 2026-10-08T06:45:35.024643+00:00 | B physics-floor inference running on Spark1; C awaits Spark2 connectivity, retrying after sixty seconds.
 
 Stage20 | transfer/scoring setup | 1606c37 | 2026-10-08T06:48:58.904919+00:00 | B runs on Spark1; controller retries Spark2 every sixty seconds and will score/publish B and C independently.
+
+Stage20 | completion controller | 8493336 | 2026-10-08T06:49:22.330542+00:00 | Spark2 connectivity restored; C deployment starts. B running on Spark1; independent result publication queued.
