@@ -137,3 +137,5 @@ Pipeline | stage21-R12-recovery | 81942ab802872a70c097fb6b21bdb46d8b46b6a3 | 202
 Pipeline | stage21-execution-host-followup | 36b6d0ca1c19b7faf9e466f39da9a4898a130896 | 2026-10-08T23:12:54Z | Criteria unchanged; matched R34 seeds use three GB10 GPUs, subsequent CPU scoring uses sulaco. Reused outputs retain actual process exit-status evidence.
 
 Pipeline | stage21-multispark-resume | 10ca46f51809c4e8c32c054a28311f2dadf42199 | 2026-10-08T23:17:23Z | Three GB10 queues run without preemption; controller resumes attach to live queues and retain actual exit-code records. Criteria unchanged.
+
+Pipeline | stage21-parallel-capacity | 6673addb71f3f92bc42dc3a17cd5c6a699724924 | 2026-10-08T23:42:14Z | R34 retains priority on Sparks; independent descriptive GPU inference and sulaco CPU preparation run in parallel; Stage16 aggregate publishes without GPU wait. Criteria unchanged.
