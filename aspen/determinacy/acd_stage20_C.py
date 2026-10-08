@@ -80,6 +80,15 @@ def score(args):
         d=r['rolling_minus_fixed'];lines.append(f"| {r['seed']} | {r['lead']:g} | {d['point']} | [{d['lower']}, {d['upper']}] | {r['cases']} |")
     lines+=['','| Fixed pipeline | Maximum cost difference from Stage18 | Classification changes |','|---|---:|---:|']
     for n,r in parity.items():lines.append(f"| {n} | {r['max_absolute_cost_difference']} | {r['confidence_classification_changes']} |")
+    lines += ['', '| Pipeline | Lead (LT) | Seven-pattern confident share | Pooled error | Case error | Case error bounds | D RMSE (equal case) | State RMSE/sigma | State ACC | E regret | C(0) regret | C(0) harms/actions |', '|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|---|']
+    for name,m in rows.items():
+        for r in m['primary_seven_readings']:
+            if r['population']!='seven':continue
+            lead=r['lead'];state=next(v for v in m['state_skill'] if v['lead']==lead)
+            er=next(v for v in m['decisions'] if v['lead']==lead and v['policy']=='E')
+            cr=next(v for v in m['decisions'] if v['lead']==lead and v['policy']=='C_delta_0')
+            values=[name,str(lead),str(r['confident_share']),str(r['pooled_error']),str(r['case_error']),str(r['error_bounds']),str(r['equal_case_Dk_RMSE']),str(state['window_mean_RMSE_over_sigma']),str(state['window_mean_anomaly_correlation']),str(er['mean_regret']),str(cr['mean_regret']),f"{cr['harms']}/{cr['actions_taken']}"]
+            lines.append('| '+' | '.join(values)+' |')
     args.reading.write_text(args.reading.read_text()+'\n'.join(lines)+'\n')
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--science-root',type=Path,required=True);p.add_argument('--stage18',type=Path,required=True);p.add_argument('--outputs',type=Path,required=True);p.add_argument('--inputs',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);p.add_argument('--reading',type=Path,required=True);score(p.parse_args())

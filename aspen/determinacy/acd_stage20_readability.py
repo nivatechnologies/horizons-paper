@@ -31,8 +31,20 @@ def run(args):
     for name,readings in rows.items():
         rmse=np.array([r['equal_case_RMSE'] for r in readings])
         departures[name]=dict(first_step_above_twice_physics=first(rmse,physics,2),first_step_above_CNN_F=first(rmse,control,1),first_step_above_twice_CNN_F=first(rmse,control,2))
+    for name,r in departures.items():
+        if name.startswith('CNN-noF'):
+            control_name=name.replace('CNN-noF','CNN-F',1)
+            own=np.asarray([v['equal_case_RMSE'] for v in rows[name]])
+            matched=np.asarray([v['equal_case_RMSE'] for v in rows[control_name]])
+            r['first_step_above_matched_CNN_F']=first(own,matched,1)
+            r['first_step_above_twice_matched_CNN_F']=first(own,matched,2)
+    range_summaries={}
+    for field in ['first_step_above_twice_physics','first_step_above_CNN_F','first_step_above_twice_CNN_F','first_step_above_matched_CNN_F','first_step_above_twice_matched_CNN_F']:
+        values=[departures[n][field] for n in departures if n.startswith('CNN-noF')]
+        finite=[v for v in values if v is not None]
+        range_summaries[field]=dict(min=min(finite) if finite else None,max=max(finite) if finite else None,no_crossing_runs=sum(v is None for v in values))
     result=dict(post_hoc=True,panel='original confirmation',licenses_frozen_route=False,rows=rows,departures=departures,
-        E0_seed_readings=case_values,executions=executions,
+        E0_seed_readings=case_values,executions=executions,training_run_departure_ranges=range_summaries,
         weighting='Five E0 estimates are averaged per draw before errors. Equal-case RMSE is the mean of per-instance RMSE; pooled RMSE pools squared errors across draws. Case median summarizes per-instance RMSE. Training-run ranges are separate from estimator variation.',
         interpretation='Physics is the floor and own-forcing CNN-F is the control. Twice-baseline departures are descriptive thresholds, not tests of a causal mechanism; complete step series are reported.',
         adapter_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
@@ -52,6 +64,11 @@ def run(args):
     plt.close(fig)
     lines=['','## B — forcing readability along each own rollout','','Physics is the floor and CNN-F with its own forcing is the control. All E0 estimators are unchanged. No realized outcomes are read. Hatched bands show training-run ranges, including the retained model.','','Equal-case RMSE averages instance RMSEs; pooled RMSE pools all squared draw errors. The receipt reports every step, biases and case medians. Departure below uses twice the comparator RMSE and is descriptive.','','| Model | First step above twice physics | First step above twice retained CNN-F |','|---|---:|---:|']
     for name,r in departures.items():lines.append(f"| {name} | {r['first_step_above_twice_physics']} | {r['first_step_above_twice_CNN_F']} |")
+    lines += ['', 'CNN-noF departure ranges over the retained run and every new training seed:', '', '| Comparator rule | Earliest step | Latest step | Runs without a crossing |', '|---|---:|---:|---:|']
+    for field,r in range_summaries.items():lines.append(f"| {field} | {r['min']} | {r['max']} | {r['no_crossing_runs']} |")
+    lines += ['', '| Model | Step | Equal-case RMSE | Pooled RMSE | Equal-case bias | Pooled bias | Case RMSE median |', '|---|---:|---:|---:|---:|---:|---:|']
+    for name,readings in rows.items():
+        for r in readings:lines.append('| '+name+' | '+' | '.join(str(r[k]) for k in ['step','equal_case_RMSE','pooled_RMSE','equal_case_bias','pooled_bias','case_RMSE_median'])+' |')
     args.reading.write_text(args.reading.read_text()+'\n'.join(lines)+'\n')
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--outputs',type=Path,required=True);p.add_argument('--inputs',type=Path,required=True);p.add_argument('--receipt',type=Path,required=True);p.add_argument('--reading',type=Path,required=True);p.add_argument('--figures',type=Path,required=True);run(p.parse_args())
