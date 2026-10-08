@@ -38,3 +38,5 @@ Lane 3 | Stage16 CNN-noF-seed1 confirmation scoring | 2e673e8504003473b0a1edfc91
 Lane 3 | Stage16 CNN-F-seed2 confirmation scoring | 94496c818f86d0d6502e832282efdb36ae3e5de5 | 2026-10-08T05:08:06.483480+00:00 | Run and selected checkpoint recorded; registry PASS, prior values unchanged; fresh L3 inference remains to run.
 
 Lane 3 | Stage16 CNN-noF-seed2 confirmation scoring | 5ff999879ebfc294c47da8df8538e84bfc8a2088 | 2026-10-08T05:08:35.483696+00:00 | Run and selected checkpoint recorded; registry PASS, prior values unchanged; fresh L3 inference remains to run.
+
+Lane 3 | Stage16 CNN-F-seed3 confirmation scoring | 679d2c18b8e2f248c5f3b9eab96ea86f4f72985d | 2026-10-08T05:09:04.960802+00:00 | Run and selected checkpoint recorded; registry PASS, prior values unchanged; fresh L3 inference remains to run.
