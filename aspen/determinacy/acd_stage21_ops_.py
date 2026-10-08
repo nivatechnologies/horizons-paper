@@ -48,5 +48,11 @@ def release():
  import time
  while not (f.OUT/'descriptive_pushed.json').exists():time.sleep(60)
  for phase,tasks in zip(('R12_recovery','R34','descriptive'),f.phases(f.ready())):validate(phase,tasks)
+ import json,time
+ (f.OUT/'Stage18_released.json').write_text(json.dumps(dict(utc=time.time(),criteria_changed=False))+'\n')
  f.release_stage18()
-remaining_controller() if a.mode=='controller' else f.score_worker(a.part) if a.mode=='score' else release()
+def score():
+ tasks=dict(zip(('R12','R34','descriptive'),f.phases(f.ready())))[a.part]
+ validate('R12_recovery' if a.part=='R12' else a.part,tasks)
+ f.score_worker(a.part)
+remaining_controller() if a.mode=='controller' else score() if a.mode=='score' else release()
