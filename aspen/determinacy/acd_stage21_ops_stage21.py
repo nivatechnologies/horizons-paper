@@ -27,6 +27,8 @@ def spark(tasks):
 f.spark=spark
 from acd_deadline_stage21_multispark import install as install_multispark
 install_multispark(f,validate)
+from acd_deadline_stage21_sulaco_score import install as install_sulaco_score
+install_sulaco_score(f)
 f.publish=guarded;f.call=call
 p=argparse.ArgumentParser();p.add_argument('mode',choices=['controller','score','release_stage18']);p.add_argument('--part');a=p.parse_args()
 def remaining_controller():
