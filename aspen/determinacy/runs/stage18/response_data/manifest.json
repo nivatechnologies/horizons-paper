@@ -1,0 +1,14 @@
+{
+  "namespace": "acd-train-resp",
+  "namespace_id": 10590280919149423341,
+  "host": "sulaco",
+  "source_sha256": "8ac51783c4346c9d5e69944706999b2e88e4fb6837e4d22648373f3f44790438",
+  "data_sha256": {
+    "train.npz": "a7fbc3ba8dd6a88cee34ce5d6d1fc2e54ebe7d16138966cc11173a08eb0a96e0",
+    "val.npz": "cb2d800d22c51ee9d9f7c13a89ec939eba9cebf5d97ea10ca4345fc05c097563"
+  },
+  "action_pattern": "uniformly sampled among eight frozen patterns; second branch no action",
+  "noise_free": true,
+  "trajectory_disjoint_validation": true,
+  "validation_reference_sha256": "67a0c826af8cf7a6bf8a97c4515bbb060995eb3f6da9a180395d46f2076a6b0c"
+}
