@@ -90,3 +90,5 @@ Stage21 | Freeze E amendment | b30b16787781a3278016d02b1ff10680070b85f2 | 2026-1
 Stage20 | B uniform amendment | f0787ebf37ba02fc47aec2f1f4a30bfcaa044c99 | 2026-10-08T08:09:07Z | Extension output inventory empty; queued behind both B and C; no fresh-panel or outcome access.
 
 Stage21 | Todd execution reorder | 3593f1f599694181da4140b1d023bb9a4478e260 | 2026-10-08T08:31:16Z | G1/G2 CPU now; after L3/Part3b, R1/R2 on 170HX, R3/R4 together on freed Spark, descriptive arms last; Stage18 D/C after Stage21 inference. All criteria unchanged.
+
+Stage21 | Todd execution reorder | 3b9a7cf29d5862ffe67ec906b3d457eda609d813 | 2026-10-08T08:35:25Z | G1/G2 CPU now; after L3/Part3b, R1/R2 on 170HX, R3/R4 together on freed Spark, descriptive arms last; Stage18 D/C after Stage21 inference. All criteria unchanged.
