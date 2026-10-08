@@ -53,3 +53,13 @@ Spark execution logs are copied alongside each task JSON before the R34 failure 
 A Stage18 release marker enables the saved-output Stage16 aggregation only after the requested GPU queue handoff. Remaining-wrapper SHA-256: 18ccc86dbacae977c13c121539681ee30e932044576533390311b122b623a9ca. criteria unchanged.
 
 Direct scoring entry points also check the phase gate. Final remaining-wrapper SHA-256: c064d50c8bca5e45e7658cc17a13dff7912a5def02b1fd7d88133af3aaacb2f1. criteria unchanged.
+
+## Handoff and publication-support hashes
+
+{
+  "acd_stage21_ops_acd_deadline_supervisor.py": "d5124271125d1080b72ed1b3f83dbf3036aed110e55174b628892e454a0970a7",
+  "acd_stage21_ops_resume_strict_R12.py": "6572918ec797e4de206ee93405e881fd2de58ed57319255b84968a4a5c1d6ff9",
+  "acd_stage21_ops_acd_guarded_publish.py": "4dd31368934a3f32eb764e02767a4c0c55db440a08ed8355965cc4b9cba80236"
+}
+
+Before replacing paused controllers, the handoff captures actual worker exit statuses, lets every active worker finish, and restores any serving units the previous controller leased. Final support hashes: {"acd_stage21_ops_acd_deadline_supervisor.py": "d5124271125d1080b72ed1b3f83dbf3036aed110e55174b628892e454a0970a7", "acd_stage21_ops_resume_strict_R12.py": "bccbd43d09e332c1b71587ba9f017566ed6ce537fd45e18f366182f9506aa222", "acd_stage21_ops_acd_guarded_publish.py": "4dd31368934a3f32eb764e02767a4c0c55db440a08ed8355965cc4b9cba80236"}. criteria unchanged.
