@@ -276,6 +276,7 @@ def build():
                       ('receipts/acd_stage13_figures.json','ACD_POSTHOC_STAGE13_FIGURES')]
     stage13_receipts.append(('receipts/acd_stage16_run_CNN-F-seed1.json', 'ACD_POSTHOC_STAGE16_RUN_CNN_F_SEED1'))
     stage13_receipts.append(('receipts/acd_stage16_run_CNN-noF-seed1.json', 'ACD_POSTHOC_STAGE16_RUN_CNN_NOF_SEED1'))
+    stage13_receipts.append(('receipts/acd_stage16_run_CNN-F-seed2.json', 'ACD_POSTHOC_STAGE16_RUN_CNN_F_SEED2'))
     for filename,prefix in stage13_receipts:
         if (ROOT/filename).exists():
             walk(json.loads((ROOT/filename).read_text()),prefix,'$',filename,
