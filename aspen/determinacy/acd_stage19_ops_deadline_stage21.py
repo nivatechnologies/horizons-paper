@@ -9,7 +9,9 @@ HERE=Path(__file__).resolve().parent
 prefixes={'reference':'ACD_21REF','R12':'ACD_21R12','R34':'ACD_21R34','descriptive':'ACD_21DESC'}
 def guarded(step,files,registered=False):
  receipts=[(f'receipts/acd_stage21_{step}.json',prefixes[step])] if registered else []
- result=publish(r,'stage21-'+step,files,receipts,marker=f.OUT/(step+'_pushed.json'))
+ import importlib,acd_guarded_publish
+ importlib.reload(acd_guarded_publish)
+ result=acd_guarded_publish.publish(r,'stage21-'+step,files,receipts,marker=f.OUT/(step+'_pushed.json'))
  return result['commit']
 def call(args,**kwargs):
  if len(args)>2 and Path(str(args[1])).name=='acd_stage21_priority.py' and str(args[2])=='score':
@@ -23,4 +25,15 @@ def spark(tasks):
 f.spark=spark
 f.publish=guarded;f.call=call
 p=argparse.ArgumentParser();p.add_argument('mode',choices=['controller','score','release_stage18']);p.add_argument('--part');a=p.parse_args()
-f.controller() if a.mode=='controller' else f.score_worker(a.part) if a.mode=='score' else f.release_stage18()
+def remaining_controller():
+ d=f.ready();a,b,c=f.phases(d)
+ failed=f.OUT/'R12_inference_complete.json'
+ import json
+ if failed.exists() and json.loads(failed.read_text()).get('failed'):
+  f.spark(b);f.call([f.PY,HERE/'acd_deadline_stage21.py','score','--part','R34'],cwd=r)
+  f.baccus(c,'descriptive')
+  from acd_stage21_inference import complete
+  (f.OUT/'inference_complete.json').write_text(json.dumps(dict(completed=[x['name'] for x in d['tasks'] if complete(x['name'])],failed=[x['name'] for x in d['tasks'] if not complete(x['name'])]))+'\n')
+  f.call([f.PY,HERE/'acd_deadline_stage21.py','score','--part','descriptive'],cwd=r)
+ else:f.controller()
+remaining_controller() if a.mode=='controller' else f.score_worker(a.part) if a.mode=='score' else f.release_stage18()

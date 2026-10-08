@@ -61,6 +61,9 @@ while True:
   if not (repair/'published.json').exists():snapshot['jobs']['Part3b_publish']=ensure('part3b-publish',HOME/'acd_deadline_part3b_publish.py',CPU)
   if not (twenty/'C_published.json').exists():snapshot['jobs']['Stage20C']=ensure('stage20-C',HOME/'acd_deadline_stage20.py',GPU,cwd=Path('/mnt/niva-array/work/aspen-determinacy-stage20-20261008/aspen/determinacy'))
   if not (uniform/'published.json').exists():snapshot['jobs']['Stage20_uniform']=ensure('stage20-uniform',HOME/'acd_deadline_uniform.py',GPU,cwd=Path('/mnt/niva-array/work/aspen-determinacy-stage20-20261008/aspen/determinacy'))
+  if (shift/'R12_inference_complete.json').exists() and not (shift/'R12_recovery_complete.json').exists():
+   prior=json.loads((shift/'R12_inference_complete.json').read_text())
+   if prior.get('failed'):snapshot['jobs']['Stage21_R12_recovery']=ensure('stage21-R12-recovery',HOME/'acd_deadline_stage21_R12_recovery.py',CPU,cwd=shift.parents[1])
   if not (shift/'descriptive_pushed.json').exists():snapshot['jobs']['Stage21']=ensure('stage21',HOME/'acd_deadline_stage21.py',CPU,'controller',cwd=shift.parents[1])
   if not (eighteen/'C_implementation_pushed.json').exists():snapshot['jobs']['Stage18_prepare']=ensure('stage18-prepare',HOME/'acd_deadline_stage18_prepare.py',CPU)
   if not (eighteen/'C_data_ready_for_commit.json').exists() and not alive('acd_stage18_after_B.py'):snapshot['jobs']['Stage18_after21']=ensure('stage18-release',HOME/'acd_deadline_stage21.py',CPU,'release_stage18',cwd=shift.parents[1])
