@@ -32,3 +32,5 @@ Lane 1 | Stage 19 Freeze B L3 addendum | 0e8451c | 2026-10-07T21:34:36.942882+00
 Lane 1 | Stage 19 L3 execution-gate amendment | c02be50 | 2026-10-07T21:40:14.968987+00:00 | Per-run fresh inference permitted after selected checkpoint commit without preempting Stage16 or Stage18; outcome access and L3 scoring await every new run commit and complete inference; criteria unchanged.
 
 Lane 3 | Stage16 CNN-F-seed1 confirmation scoring | ad6437e4da9e2092b67887685d0ba1df95b82987 | 2026-10-08T05:07:07.956992+00:00 | Run and selected checkpoint recorded; registry PASS, prior values unchanged; fresh L3 inference remains to run.
+
+Lane 3 | Stage16 CNN-noF-seed1 confirmation scoring | 2e673e8504003473b0a1edfc91133b3d454a0056 | 2026-10-08T05:07:36.449137+00:00 | Run and selected checkpoint recorded; registry PASS, prior values unchanged; fresh L3 inference remains to run.
