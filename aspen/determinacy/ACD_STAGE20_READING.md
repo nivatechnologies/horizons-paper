@@ -431,6 +431,9 @@ Case error bounds use the unchanged v2.3 one-sided case betting construction; ca
 
 ## B — forcing readability along each own rollout
 
+Each learned rollout step is 0.05 model-time units, or 0.084341 reference LT. CNN-noF's first departures above twice physics range from 28 to 36 steps across the retained run and training seeds: 2.361556 to 3.036286 reference LT. These are descriptive conversions of the saved departure steps.
+
+
 Physics is the floor and CNN-F with its own forcing is the control. All E0 estimators are unchanged. No realized outcomes are read. Hatched bands show training-run ranges, including the retained model.
 
 Equal-case RMSE averages instance RMSEs; pooled RMSE pools all squared draw errors. The receipt reports every step, biases and case medians. Departure below uses twice the comparator RMSE and is descriptive.

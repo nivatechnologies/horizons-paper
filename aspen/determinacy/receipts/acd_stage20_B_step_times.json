@@ -1,0 +1,42 @@
+{
+  "post_hoc": true,
+  "definition": "first step above twice physics equal-case RMSE; conversion only, no inference or scoring",
+  "step_model_time": 0.05,
+  "step_LT": 0.08434126850229302,
+  "LT_model_time": 0.5928295944308761,
+  "departures": {
+    "CNN-noF": {
+      "step": 28,
+      "model_time": 1.4000000000000001,
+      "LT": 2.361555518064205
+    },
+    "CNN-noF-seed1": {
+      "step": 28,
+      "model_time": 1.4000000000000001,
+      "LT": 2.361555518064205
+    },
+    "CNN-noF-seed2": {
+      "step": 30,
+      "model_time": 1.5,
+      "LT": 2.5302380550687906
+    },
+    "CNN-noF-seed3": {
+      "step": 36,
+      "model_time": 1.8,
+      "LT": 3.036285666082549
+    },
+    "CNN-noF-seed4": {
+      "step": 35,
+      "model_time": 1.75,
+      "LT": 2.951944397580256
+    }
+  },
+  "range_LT": {
+    "min": 2.361555518064205,
+    "max": 3.036285666082549
+  },
+  "source_hashes": {
+    "/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision/protocol.py": "e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d",
+    "/mnt/niva-array/work/aspen-publication-stage21-R12-execution-correction/aspen/determinacy/receipts/acd_stage20_B.json": "7ed4ad41f158b359acc2d6eae969b8720adb0363f00f8dfaec159e7d0e9e90f2"
+  }
+}
