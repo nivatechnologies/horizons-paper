@@ -23,24 +23,34 @@ def install(f,validate):
   root=f.OUT/'multispark';root.mkdir(exist_ok=True)
   old_outcomes=execute(host,'cat '+REMOTE+'/queue_outcomes.json',False)
   previous_records=json.loads(old_outcomes.stdout) if old_outcomes.returncode==0 else {}
-  execute(host,'mkdir -p '+REMOTE+'/code '+REMOTE+'/models '+REMOTE+'/inputs')
-  for name in contract['code_hashes']:transfer(host,f.ROOT/name,REMOTE+'/code/'+name)
-  transfer(host,str(f.OUT/'spark_models')+'/',REMOTE+'/models/')
-  transfer(host,str(f.OUT/'inference_inputs')+'/',REMOTE+'/inputs/')
-  selected=dict(contract,tasks=tasks,hardware='DGX Spark GB10; fixed and rolling for each seed on same host; criteria unchanged')
-  file=root/(host+'.contract.json');file.write_text(json.dumps(selected,indent=2)+'\n')
-  transfer(host,file,REMOTE+'/contract.json');transfer(host,f.OUT/'reorder_pushed.json',REMOTE+'/reorder_pushed.json')
-  # Original dispatch parent is stopped between tasks; completed outputs are reused.
-  if host.endswith('.4'):
-   old=f.OUT/'spark_started.json'
-   if old.exists():
-    pid=json.loads(old.read_text())['pid'];execute(host,'kill -TERM '+str(pid)+'; kill -CONT '+str(pid),False)
-  if host.endswith('.248'):
-   before=execute(host,'systemctl --user is-active tensorfold-single.service',False)
-   execute(host,'systemctl --user stop tensorfold-single.service')
-   (root/'tensorfold_lease.json').write_text(json.dumps(dict(host=host,service='tensorfold-single.service',previous_state=before.stdout.strip(),authorized_by='Todd',utc=time.time(),restore_after_queue=True))+'\n')
-  # No other job is stopped. The unchanged offline queue itself waits for a free GPU.
-  execute(host,'rm -f '+REMOTE+'/queue_complete.json; nohup python3 -u '+REMOTE+'/code/acd_stage21_spark.py queue >> '+REMOTE+'/queue.log 2>&1 < /dev/null &')
+  preserved=root/(host+'.prior_outcomes.json')
+  if preserved.exists():previous_records=dict(json.loads(preserved.read_text()),**previous_records)
+  preserved.write_text(json.dumps(previous_records,indent=2)+'\n')
+  active=execute(host,"pgrep -af '^python3 -u "+REMOTE+"/code/acd_stage21_spark.py queue$'",False)
+  reuse=False
+  if active.returncode==0:
+   actual=json.loads(execute(host,'cat '+REMOTE+'/contract.json').stdout)
+   if {t['name'] for t in actual['tasks']}!={t['name'] for t in tasks}:raise RuntimeError('Different live queue on '+host+'; no preemption')
+   reuse=True
+  if not reuse:
+   execute(host,'mkdir -p '+REMOTE+'/code '+REMOTE+'/models '+REMOTE+'/inputs')
+   for name in contract['code_hashes']:transfer(host,f.ROOT/name,REMOTE+'/code/'+name)
+   transfer(host,str(f.OUT/'spark_models')+'/',REMOTE+'/models/')
+   transfer(host,str(f.OUT/'inference_inputs')+'/',REMOTE+'/inputs/')
+   selected=dict(contract,tasks=tasks,hardware='DGX Spark GB10; fixed and rolling for each seed on same host; criteria unchanged')
+   file=root/(host+'.contract.json');file.write_text(json.dumps(selected,indent=2)+'\n')
+   transfer(host,file,REMOTE+'/contract.json');transfer(host,f.OUT/'reorder_pushed.json',REMOTE+'/reorder_pushed.json')
+   # Original dispatch parent is stopped between tasks; completed outputs are reused.
+   if host.endswith('.4'):
+    old=f.OUT/'spark_started.json'
+    if old.exists():
+     pid=json.loads(old.read_text())['pid'];execute(host,'kill -TERM '+str(pid)+'; kill -CONT '+str(pid),False)
+   if host.endswith('.248'):
+    before=execute(host,'systemctl --user is-active tensorfold-single.service',False)
+    execute(host,'systemctl --user stop tensorfold-single.service')
+    (root/'tensorfold_lease.json').write_text(json.dumps(dict(host=host,service='tensorfold-single.service',previous_state=before.stdout.strip(),authorized_by='Todd',utc=time.time(),restore_after_queue=True))+'\n')
+   # No other job is stopped. The unchanged offline queue itself waits for a free GPU.
+   execute(host,'rm -f '+REMOTE+'/queue_complete.json; nohup python3 -u '+REMOTE+'/code/acd_stage21_spark.py queue >> '+REMOTE+'/queue.log 2>&1 < /dev/null &')
   while execute(host,'test -f '+REMOTE+'/queue_complete.json',False).returncode:time.sleep(60)
   q=execute(host,'cat '+REMOTE+'/queue_outcomes.json');outcomes=json.loads(q.stdout)
   for task in tasks:
