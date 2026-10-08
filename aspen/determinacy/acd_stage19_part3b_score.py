@@ -125,6 +125,8 @@ def score():
     original = {row['name']:first.get(row['first_panel_name']) for row in freeze['tasks']}
     original['CNN-F'] = first['CNN-F-ownF']
     original['CNN-noF'] = json.loads((ROOT/'receipts/acd_stage10b.json').read_text())['models']['CNN-noF']
+    original['CNN-noF'] = dict(original['CNN-noF'], decisions=json.loads(
+        (ROOT/'receipts/acd_stage10b_decisions.json').read_text())['models']['CNN-noF']['readings'])
     result = dict(part='3b', fresh_panel=True, licenses_frozen_route=False,
         freeze_d=json.loads((OUT/'freeze_d_pushed.json').read_text()),
         B1=seed_average(b1), B2=b2, B3=seed_average(b3,alpha=.05,lower_only=True),

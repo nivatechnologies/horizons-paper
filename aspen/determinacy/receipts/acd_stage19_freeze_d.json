@@ -259,7 +259,7 @@
   "code_hashes": {
     "acd_stage19_part3b_contract.py": "0728290e9db1c4ca65d8dac5f2cb8804fb898c9a831dabe764e32cc57c532142",
     "acd_stage19_part3b_inference.py": "509c68f9705047443df929b3ea29000465c07b9586792e805c1dc501977465a2",
-    "acd_stage19_part3b_score.py": "f61a892630f3d7dbec34e20b3ba386fc5913373fe618970ac9675dbbf5df4a4d",
+    "acd_stage19_part3b_score.py": "64443cfef0da77367bda769a1791955f1b47703a463e46d33a0922b3ff180a79",
     "acd_stage19_part3b_report.py": "98929e45793ca9dd3a1ea7f5f915f31cd0309200f9ccc9ca5b046ff184208d80",
     "acd_stage18_inference.py": "a6ea2847438a23a3290fa12c91535423413f31e8f3b3bd578d93735fa4a0fcb7",
     "acd_stage18_estimators.py": "3e3d00143ecd874a3680378870683c0ccc875c3badbb098202b222de05eee4bc",
@@ -302,5 +302,6 @@
   ],
   "no_preemption": true,
   "fresh_panel": true,
-  "licenses_frozen_route": false
+  "licenses_frozen_route": false,
+  "implementation_amendment": "Before any fresh repair inference: join retained CNN-noF first-panel decision readings from the separate committed Stage10b decisions receipt. Criteria and inference unchanged."
 }
