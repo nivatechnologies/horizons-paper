@@ -133,3 +133,5 @@ Pipeline | stage21-multispark-execution | d614d83f5501a637b51dba6e1c841fb179fe1e
 Pipeline | stage21-R12_recovery_inference-recovery | a51648f4fc0df5fc2fc130666d3ddca4b3ed647b | 2026-10-08T23:08:37Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
 
 Pipeline | stage21-R12-recovery | 81942ab802872a70c097fb6b21bdb46d8b46b6a3 | 2026-10-08T23:10:22Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage21-execution-host-followup | 36b6d0ca1c19b7faf9e466f39da9a4898a130896 | 2026-10-08T23:12:54Z | Criteria unchanged; matched R34 seeds use three GB10 GPUs, subsequent CPU scoring uses sulaco. Reused outputs retain actual process exit-status evidence.
