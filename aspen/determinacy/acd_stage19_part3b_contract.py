@@ -69,7 +69,12 @@ def ready():
         raise RuntimeError('Freeze D changed')
     subprocess.run(['git', 'merge-base', '--is-ancestor', record['commit'],
                     'refs/remotes/origin/paper/aspen-2026-10-determinacy'], cwd=REPO, check=True)
-    for name, expected in contract['code_hashes'].items():
+    amendment=json.loads((ROOT/'receipts/acd_stage19_freeze_d_amendment.json').read_text())
+    marker=json.loads((OUT/'freeze_d_amendment_pushed.json').read_text())
+    if digest(ROOT/'ACD_STAGE19_FREEZE_D_AMENDMENT.md')!=marker['sha256']:raise RuntimeError('Freeze D amendment changed')
+    subprocess.run(['git','merge-base','--is-ancestor',marker['commit'],'refs/remotes/origin/paper/aspen-2026-10-determinacy'],cwd=REPO,check=True)
+    hashes=dict(contract['code_hashes'],**amendment['code_hashes'])
+    for name, expected in hashes.items():
         if digest(ROOT/name) != expected:
             raise RuntimeError('Freeze D code changed: '+name)
     return contract

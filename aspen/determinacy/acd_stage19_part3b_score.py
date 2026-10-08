@@ -55,6 +55,28 @@ def forcing_error(name):
                 population='each retained draw/action at cutoff equally')
 
 
+def all_pattern_pair(fixed, rolling, truth, tick):
+    masks=[s['confident'][:,:8,tick] for s in (fixed,rolling)]
+    wrong=[s['modal'][:,:8,tick]!=truth[:,:8,tick] for s in (fixed,rolling)]
+    counts=[m.sum(1) for m in masks]
+    defined=(counts[0]>0)&(counts[1]>0)
+    rates=[np.divide((m&w).sum(1),n,out=np.zeros(len(n)),where=n>0) for m,w,n in zip(masks,wrong,counts)]
+    values=rates[1]-rates[0]
+    return dict(case_differences=[float(v) if ok else None for v,ok in zip(values,defined)],contributing_cases=int(defined.sum()),interval=difference_interval(values[defined]) if defined.any() else None)
+
+def pattern_group_rows(costs, physical, summary, truth, keep, leads):
+    from acd_stats import r0
+    rows=[]
+    for t,lead in enumerate(leads):
+        for group,sl in [('uniform_decrease',slice(0,1)),('seven_zero_mean',slice(1,8))]:
+            conf=summary['confident'][:,sl,t];right=summary['modal'][:,sl,t]==truth[:,sl,t]
+            accuracy=r0(conf[keep].sum(1),(conf&right)[keep].sum(1))
+            errors=[((j[:,:8]-j[:,8,None])-(p[:,:8]-p[:,8,None]))[:,sl,t].ravel() for j,p,k in zip(costs,physical,keep) if k]
+            finite=all(np.isfinite(x).all() for x in errors)
+            pooled=np.concatenate(errors) if errors and finite else None
+            rows.append(dict(lead=float(lead),population=group,confident_share=float(conf[keep].mean()),share_wrong=None if accuracy['answer_accuracy'] is None else 1-accuracy['answer_accuracy'],accuracy=accuracy,equal_case_Dk_bias=float(np.mean([x.mean() for x in errors])) if pooled is not None else None,pooled_Dk_bias=float(pooled.mean()) if pooled is not None else None,equal_case_Dk_RMSE=float(np.mean([np.sqrt(np.mean(x*x)) for x in errors])) if pooled is not None else None,pooled_Dk_RMSE=float(np.sqrt(np.mean(pooled*pooled))) if pooled is not None else None,invalid_errors=not finite))
+    return rows
+
 def score():
     freeze = ready()
     from acd_stage19_part3b_inference import complete
@@ -99,9 +121,11 @@ def score():
             row.update(strict_positive_harms=harms, actions_taken=acted,
                        zero_effect_ties=int(np.sum(acting & (effect==0))),
                        conditional_harm_CP95=list(cp_bounds(harms,acted)) if acted else [0.,1.])
+        from acd_protocol import LEADS
+        result['pattern_group_readings']=pattern_group_rows(inputs[0],inputs[4],inputs[3],realized_signs,np.ones(len(actual),dtype=bool),LEADS)
         models[name] = result
         del inputs
-    b1, b3, descriptive, risks = [], [], [], []
+    b1, b3, b4, descriptive, risks = [], [], [], [], []
     for j in range(1,6):
         p0 = f'CNN-F-E0-fixed-seed{j}'
         f1, r1 = f'CNN-F-E1-fixed-seed{j}', f'CNN-F-E1-rolling-seed{j}'
@@ -116,6 +140,7 @@ def score():
             descriptive.append(pair_statistic(summaries['CNN-F'],summaries[p0],realized_signs,3))
         if f1 in summaries and r1 in summaries:
             b3.append(pair_statistic(summaries[f1],summaries[r1],realized_signs,5))
+            b4.append(all_pattern_pair(summaries[f1],summaries[r1],realized_signs,5))
     b2 = dict(evaluable=len(risks)==5, per_seed=risks,
               bound_type='exact one-sided95% Clopper-Pearson upper',
               confirmed=all(r['confirmed'] for r in risks) if len(risks)==5 else None)
@@ -130,6 +155,7 @@ def score():
     result = dict(part='3b', fresh_panel=True, licenses_frozen_route=False,
         freeze_d=json.loads((OUT/'freeze_d_pushed.json').read_text()),
         B1=seed_average(b1), B2=b2, B3=seed_average(b3,alpha=.05,lower_only=True),
+        B4=seed_average(b4,alpha=.05,lower_only=True),
         P0_minus_CNN_F_descriptive=seed_average(descriptive), models=models,
         first_panel=original, failed_pipelines=failed,
         resolutions=['Matched Stage16 first-panel pipelines not yet scored are recorded as pending, without substitution.'],
