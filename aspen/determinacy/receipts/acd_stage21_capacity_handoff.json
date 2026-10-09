@@ -1,0 +1,7 @@
+{
+  "criteria_changed": false,
+  "launcher_sha256": "94f73a555d6a3d983553c412596558ea215e188604dcd6b5d39b91aacd4b8fc3",
+  "scoring_transfer_failure": "rsync could not create the per-model directory because runs/stage21/inference was absent on sulaco",
+  "fix": "Create the missing parent directory; supervisor retries existing frozen scoring",
+  "GPU_handoff": "Stage18 D starts after hashed descriptive inference publication; descriptive CPU scoring can run concurrently, and R34 remains highest priority on its Spark"
+}
