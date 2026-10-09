@@ -323,7 +323,7 @@ def render(d):
     return '\n'.join(lines)+'\n'
 def write():
     d=build()
-    groups={'posthoc_menu': ('ACD_POSTHOC_RESTRICTED_MENU',), 'stage21': ('ACD_21',), 'continuation': ('ACD_FRESH_19_L3',), 'stage19_part3b': ('ACD_FRESH_19_3B',), 'stage20_followup': ('ACD_POSTHOC_20C', 'ACD_POSTHOC_20B_UNIFORM'), 'stage18_followup': ('ACD_POSTHOC_18D', 'ACD_POSTHOC_18C')}
+    groups={'posthoc_menu': ('ACD_POSTHOC_RESTRICTED_MENU',), 'stage16_aggregate': ('ACD_POSTHOC_STAGE16_AGGREGATE',), 'stage21': ('ACD_21',), 'continuation': ('ACD_FRESH_19_L3',), 'stage19_part3b': ('ACD_FRESH_19_3B',), 'stage20_followup': ('ACD_POSTHOC_20C', 'ACD_POSTHOC_20B_UNIFORM'), 'stage18_followup': ('ACD_POSTHOC_18D', 'ACD_POSTHOC_18C')}
     supplemental={}
     selected=set()
     for name,prefixes in groups.items():
