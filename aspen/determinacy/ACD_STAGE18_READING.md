@@ -516,3 +516,53 @@ Extra-seed trigger: pending confirmation scoring.
 |---|---|
 | weight zero | CNN-noF-response-0-seed1 |
 | selected | CNN-noF-response-0-seed1 |
+
+## Part C saved training logs
+
+POST HOC, descriptive only; criteria unchanged. These readings extract existing logs, without training, inference, outcome access or loss recomputation. Base and raw paired losses are logged microbatch component means, weighted by saved microbatch size. Plot: figures/F_stage18_C_training_losses.pdf (both losses on a logarithmic scale; solid circles for base, dashed squares for paired; dotted vertical lines mark skips). Nonfinite logged loss points cannot be placed on a log axis and remain explicit in the receipt.
+
+| Weight | Measured initial base | Measured initial paired | Base / paired | Every skipped update |
+|---:|---:|---:|---:|---|
+| 0 | 0.35999706 | 0.035720789 | 10.078083 | none |
+| 0.01 | 0.35999706 | 0.035720789 | 10.078083 | 8360, 8362, 8368, 8371, 8372, 8376, 8477, 8490, 8504 |
+| 0.03 | 0.35999706 | 0.035720789 | 10.078083 | 5492, 5515, 5564, 6492, 6493, 6494 |
+| 0.1 | 0.35999706 | 0.035720789 | 10.078083 | 3398, 11411, 11412, 11417, 11418, 11420, 11424, 11433, 11440 |
+| 0.3 | 0.35999706 | 0.035720789 | 10.078083 | none |
+| 1 | 0.35999706 | 0.035720789 | 10.078083 | 4410, 4413, 4414, 4415 |
+
+The normalizer ratio is measured before response weighting. The loss plot uses raw paired components rather than the normalized weighted contribution.
+
+Preclip gradient norms were saved every hundredth update and at skips, not at every update. The table lists every available sample in the preceding half-open 500-update window, and the skip’s own norm separately. Missing norms are not reconstructed.
+
+| Weight | Skip update | Reason | Norm at skip | Recorded preceding update:norm samples | Unrecorded updates in window |
+|---:|---:|---|---|---|---:|
+| 0.01 | 8360 | nonfinite gradient norm | inf | 7900:0.23879386, 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049 | 495 |
+| 0.01 | 8362 | nonfinite gradient norm | inf | 7900:0.23879386, 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf | 494 |
+| 0.01 | 8368 | nonfinite gradient norm | inf | 7900:0.23879386, 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf | 493 |
+| 0.01 | 8371 | nonfinite gradient norm | inf | 7900:0.23879386, 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf, 8368:inf | 492 |
+| 0.01 | 8372 | nonfinite gradient norm | inf | 7900:0.23879386, 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf, 8368:inf, 8371:inf | 491 |
+| 0.01 | 8376 | nonfinite gradient norm | inf | 7900:0.23879386, 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf, 8368:inf, 8371:inf, 8372:inf | 490 |
+| 0.01 | 8477 | nonfinite gradient norm | inf | 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf, 8368:inf, 8371:inf, 8372:inf, 8376:inf, 8400:0.78065825 | 489 |
+| 0.01 | 8490 | nonfinite gradient norm | inf | 8000:0.44636938, 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf, 8368:inf, 8371:inf, 8372:inf, 8376:inf, 8400:0.78065825, 8477:inf | 488 |
+| 0.01 | 8504 | nonfinite gradient norm | inf | 8100:0.13173082, 8200:0.30491579, 8300:0.33459049, 8360:inf, 8362:inf, 8368:inf, 8371:inf, 8372:inf, 8376:inf, 8400:0.78065825, 8477:inf, 8490:inf, 8500:0.14966151 | 487 |
+| 0.03 | 5492 | nonfinite gradient norm | inf | 5000:0.45687082, 5100:0.46965072, 5200:0.39583236, 5300:0.0935857, 5400:0.27430609 | 495 |
+| 0.03 | 5515 | nonfinite microbatch loss | None | 5100:0.46965072, 5200:0.39583236, 5300:0.0935857, 5400:0.27430609, 5492:inf, 5500:0.18699116 | 494 |
+| 0.03 | 5564 | nonfinite gradient norm | inf | 5100:0.46965072, 5200:0.39583236, 5300:0.0935857, 5400:0.27430609, 5492:inf, 5500:0.18699116, 5515:None | 493 |
+| 0.03 | 6492 | nonfinite microbatch loss | None | 6000:0.21217734, 6100:0.3947615, 6200:0.25218549, 6300:0.99539167, 6400:0.15094 | 495 |
+| 0.03 | 6493 | nonfinite microbatch loss | None | 6000:0.21217734, 6100:0.3947615, 6200:0.25218549, 6300:0.99539167, 6400:0.15094, 6492:None | 494 |
+| 0.03 | 6494 | nonfinite microbatch loss | None | 6000:0.21217734, 6100:0.3947615, 6200:0.25218549, 6300:0.99539167, 6400:0.15094, 6492:None, 6493:None | 493 |
+| 0.1 | 3398 | nonfinite gradient norm | inf | 2900:0.37498698, 3000:0.56660944, 3100:0.34537828, 3200:2.6063416, 3300:0.322384 | 495 |
+| 0.1 | 11411 | nonfinite gradient norm | inf | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248 | 495 |
+| 0.1 | 11412 | nonfinite gradient norm | inf | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf | 494 |
+| 0.1 | 11417 | nonfinite microbatch loss | None | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf, 11412:inf | 493 |
+| 0.1 | 11418 | nonfinite microbatch loss | None | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf, 11412:inf, 11417:None | 492 |
+| 0.1 | 11420 | nonfinite gradient norm | inf | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf, 11412:inf, 11417:None, 11418:None | 491 |
+| 0.1 | 11424 | nonfinite gradient norm | inf | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf, 11412:inf, 11417:None, 11418:None, 11420:inf | 490 |
+| 0.1 | 11433 | nonfinite microbatch loss | None | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf, 11412:inf, 11417:None, 11418:None, 11420:inf, 11424:inf | 489 |
+| 0.1 | 11440 | nonfinite gradient norm | inf | 11000:1.0223908, 11100:0.8264448, 11200:1.8000251, 11300:1.9896604, 11400:1.0092248, 11411:inf, 11412:inf, 11417:None, 11418:None, 11420:inf, 11424:inf, 11433:None | 488 |
+| 1 | 4410 | nonfinite gradient norm | inf | 4000:2.2419746, 4100:3.8973625, 4200:2.0556073, 4300:0.81398278, 4400:1.444303 | 495 |
+| 1 | 4413 | nonfinite gradient norm | inf | 4000:2.2419746, 4100:3.8973625, 4200:2.0556073, 4300:0.81398278, 4400:1.444303, 4410:inf | 494 |
+| 1 | 4414 | nonfinite gradient norm | inf | 4000:2.2419746, 4100:3.8973625, 4200:2.0556073, 4300:0.81398278, 4400:1.444303, 4410:inf, 4413:inf | 493 |
+| 1 | 4415 | nonfinite gradient norm | inf | 4000:2.2419746, 4100:3.8973625, 4200:2.0556073, 4300:0.81398278, 4400:1.444303, 4410:inf, 4413:inf, 4414:inf | 492 |
+
+All hundred-update base and paired loss values, microbatch records, skip records and source hashes are retained in receipts/acd_stage18_C_training_logs.json.
