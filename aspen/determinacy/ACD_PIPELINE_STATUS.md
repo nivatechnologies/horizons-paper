@@ -171,3 +171,5 @@ Pipeline | stage18-D | f627cc9a026696b7688548af57613808fe725c5d | 2026-10-09T06:
 Pipeline | stage18-C-execution-reading | 156549324e82ccbee82f5d10f99093dd0f1ea5c4 | 2026-10-09T21:21:12Z | R-other: selected weight zero shares training and reporting identities; criteria unchanged. Descriptive validation rows registered for every weight; confirmation inference and frozen trigger scoring continue.
 
 Pipeline | stage18-C-training-logs | 004b9e459646f3f3af71f41dee81b06cc9f4d06f | 2026-10-09T21:30:18Z | Descriptive saved training-log normalizers, losses, all skip indices and available preclip norms published. Norms between logged samples unavailable. Criteria unchanged; C inference/scoring continues.
+
+Pipeline | stage23-freeze-G | 65821e2f03f3be2db2dea11389655092fe2d0781 | 2026-10-09T21:43:51Z | Freeze G document only, pushed before Stage22 outcomes. Stage23 training waits for complete published Stage22; implementation hashes and panel hash must be pushed before training. All current jobs continue; no preemption.
