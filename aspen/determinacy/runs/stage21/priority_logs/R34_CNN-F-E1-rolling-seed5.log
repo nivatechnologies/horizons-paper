@@ -1,0 +1,232 @@
+
+=============
+== PyTorch ==
+=============
+
+NVIDIA Release 26.07 (build 373437299)
+PyTorch Version 2.13.0a0+9186a08
+Container image Copyright (c) 2026, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+Copyright (c) 2014-2024 Facebook Inc.
+Copyright (c) 2011-2014 Idiap Research Institute (Ronan Collobert)
+Copyright (c) 2012-2014 Deepmind Technologies    (Koray Kavukcuoglu)
+Copyright (c) 2011-2012 NEC Laboratories America (Koray Kavukcuoglu)
+Copyright (c) 2011-2013 NYU                      (Clement Farabet)
+Copyright (c) 2006-2010 NEC Laboratories America (Ronan Collobert, Leon Bottou, Iain Melvin, Jason Weston)
+Copyright (c) 2006      Idiap Research Institute (Samy Bengio)
+Copyright (c) 2001-2004 Idiap Research Institute (Ronan Collobert, Samy Bengio, Johnny Mariethoz)
+Copyright (c) 2015      Google Inc.
+Copyright (c) 2015      Yangqing Jia
+Copyright (c) 2013-2016 The Caffe contributors
+All rights reserved.
+
+Various files include modifications (c) NVIDIA CORPORATION & AFFILIATES.  All rights reserved.
+
+GOVERNING TERMS: The software and materials are governed by the NVIDIA Software License Agreement
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/nvidia-software-license-agreement/)
+and the Product-Specific Terms for NVIDIA AI Products
+(found at https://www.nvidia.com/en-us/agreements/enterprise-software/product-specific-terms-for-ai-products/).
+
+NOTE: CUDA Forward Compatibility mode ENABLED.
+  Using CUDA 13.3 driver version 610.43.02 with kernel driver version 580.178.04.
+  See https://docs.nvidia.com/deploy/cuda-compatibility/ for details.
+
+CNN-F-E1-rolling-seed5 0 512 256 8.05
+CNN-F-E1-rolling-seed5 1 512 256 7.76
+CNN-F-E1-rolling-seed5 2 512 256 7.77
+CNN-F-E1-rolling-seed5 3 512 256 7.81
+CNN-F-E1-rolling-seed5 4 512 256 7.85
+CNN-F-E1-rolling-seed5 5 512 256 7.83
+CNN-F-E1-rolling-seed5 6 2000 256 30.61
+CNN-F-E1-rolling-seed5 7 2000 256 30.6
+CNN-F-E1-rolling-seed5 8 2000 256 30.54
+CNN-F-E1-rolling-seed5 9 2000 256 30.59
+CNN-F-E1-rolling-seed5 10 2000 256 30.55
+CNN-F-E1-rolling-seed5 11 512 256 7.82
+CNN-F-E1-rolling-seed5 12 2000 256 30.61
+CNN-F-E1-rolling-seed5 13 512 256 7.83
+CNN-F-E1-rolling-seed5 14 512 256 7.83
+CNN-F-E1-rolling-seed5 15 2000 256 30.65
+CNN-F-E1-rolling-seed5 16 512 256 7.83
+CNN-F-E1-rolling-seed5 17 2000 256 30.62
+CNN-F-E1-rolling-seed5 18 512 256 7.82
+CNN-F-E1-rolling-seed5 19 2000 256 30.61
+CNN-F-E1-rolling-seed5 20 2000 256 30.55
+CNN-F-E1-rolling-seed5 21 2000 256 30.6
+CNN-F-E1-rolling-seed5 22 2000 256 30.57
+CNN-F-E1-rolling-seed5 23 2000 256 30.57
+CNN-F-E1-rolling-seed5 24 2000 256 30.6
+CNN-F-E1-rolling-seed5 25 2000 256 30.58
+CNN-F-E1-rolling-seed5 26 2000 256 30.58
+CNN-F-E1-rolling-seed5 27 2000 256 30.6
+CNN-F-E1-rolling-seed5 28 512 256 7.82
+CNN-F-E1-rolling-seed5 29 2000 256 30.59
+CNN-F-E1-rolling-seed5 30 512 256 7.82
+CNN-F-E1-rolling-seed5 31 2000 256 30.58
+CNN-F-E1-rolling-seed5 32 512 256 7.81
+CNN-F-E1-rolling-seed5 33 512 256 7.82
+CNN-F-E1-rolling-seed5 34 512 256 7.83
+CNN-F-E1-rolling-seed5 35 2000 256 30.57
+CNN-F-E1-rolling-seed5 36 2000 256 30.59
+CNN-F-E1-rolling-seed5 37 2000 256 30.63
+CNN-F-E1-rolling-seed5 38 2000 256 30.64
+CNN-F-E1-rolling-seed5 39 2000 256 30.58
+CNN-F-E1-rolling-seed5 40 2000 256 30.62
+CNN-F-E1-rolling-seed5 41 2000 256 30.6
+CNN-F-E1-rolling-seed5 42 2000 256 30.6
+CNN-F-E1-rolling-seed5 43 2000 256 30.58
+CNN-F-E1-rolling-seed5 44 2000 256 30.58
+CNN-F-E1-rolling-seed5 45 2000 256 30.6
+CNN-F-E1-rolling-seed5 46 2000 256 30.62
+CNN-F-E1-rolling-seed5 47 512 256 7.83
+CNN-F-E1-rolling-seed5 48 512 256 7.83
+CNN-F-E1-rolling-seed5 49 512 256 7.83
+CNN-F-E1-rolling-seed5 50 512 256 7.83
+CNN-F-E1-rolling-seed5 51 2000 256 30.66
+CNN-F-E1-rolling-seed5 52 512 256 7.83
+CNN-F-E1-rolling-seed5 53 2000 256 30.62
+CNN-F-E1-rolling-seed5 54 2000 256 30.6
+CNN-F-E1-rolling-seed5 55 2000 256 30.61
+CNN-F-E1-rolling-seed5 56 512 256 7.82
+CNN-F-E1-rolling-seed5 57 2000 256 30.64
+CNN-F-E1-rolling-seed5 58 2000 256 30.58
+CNN-F-E1-rolling-seed5 59 512 256 7.82
+CNN-F-E1-rolling-seed5 60 2000 256 30.58
+CNN-F-E1-rolling-seed5 61 512 256 7.82
+CNN-F-E1-rolling-seed5 62 2000 256 30.61
+CNN-F-E1-rolling-seed5 63 2000 256 30.61
+CNN-F-E1-rolling-seed5 64 2000 256 30.62
+CNN-F-E1-rolling-seed5 65 2000 256 30.6
+CNN-F-E1-rolling-seed5 66 2000 256 30.6
+CNN-F-E1-rolling-seed5 67 2000 256 30.6
+CNN-F-E1-rolling-seed5 68 512 256 7.82
+CNN-F-E1-rolling-seed5 69 512 256 7.82
+CNN-F-E1-rolling-seed5 70 512 256 7.84
+CNN-F-E1-rolling-seed5 71 2000 256 30.63
+CNN-F-E1-rolling-seed5 72 2000 256 30.59
+CNN-F-E1-rolling-seed5 73 2000 256 30.58
+CNN-F-E1-rolling-seed5 74 512 256 7.82
+CNN-F-E1-rolling-seed5 75 512 256 7.82
+CNN-F-E1-rolling-seed5 76 2000 256 30.64
+CNN-F-E1-rolling-seed5 77 2000 256 30.59
+CNN-F-E1-rolling-seed5 78 512 256 7.82
+CNN-F-E1-rolling-seed5 79 2000 256 30.6
+CNN-F-E1-rolling-seed5 80 512 256 7.83
+CNN-F-E1-rolling-seed5 81 512 256 7.83
+CNN-F-E1-rolling-seed5 82 512 256 7.83
+CNN-F-E1-rolling-seed5 83 2000 256 30.65
+CNN-F-E1-rolling-seed5 84 2000 256 30.63
+CNN-F-E1-rolling-seed5 85 2000 256 30.65
+CNN-F-E1-rolling-seed5 86 512 256 7.83
+CNN-F-E1-rolling-seed5 87 2000 256 30.63
+CNN-F-E1-rolling-seed5 88 512 256 7.83
+CNN-F-E1-rolling-seed5 89 512 256 7.84
+CNN-F-E1-rolling-seed5 90 2000 256 30.62
+CNN-F-E1-rolling-seed5 91 2000 256 30.62
+CNN-F-E1-rolling-seed5 92 512 256 7.82
+CNN-F-E1-rolling-seed5 93 2000 256 30.6
+CNN-F-E1-rolling-seed5 94 512 256 7.83
+CNN-F-E1-rolling-seed5 95 512 256 7.83
+CNN-F-E1-rolling-seed5 96 2000 256 30.59
+CNN-F-E1-rolling-seed5 97 2000 256 30.6
+CNN-F-E1-rolling-seed5 98 2000 256 30.59
+CNN-F-E1-rolling-seed5 99 512 256 7.82
+CNN-F-E1-rolling-seed5 100 2000 256 30.62
+CNN-F-E1-rolling-seed5 101 2000 256 30.59
+CNN-F-E1-rolling-seed5 102 2000 256 30.61
+CNN-F-E1-rolling-seed5 103 2000 256 30.59
+CNN-F-E1-rolling-seed5 104 512 256 7.82
+CNN-F-E1-rolling-seed5 105 2000 256 30.64
+CNN-F-E1-rolling-seed5 106 2000 256 30.62
+CNN-F-E1-rolling-seed5 107 2000 256 30.61
+CNN-F-E1-rolling-seed5 108 2000 256 30.58
+CNN-F-E1-rolling-seed5 109 512 256 7.82
+CNN-F-E1-rolling-seed5 110 2000 256 30.61
+CNN-F-E1-rolling-seed5 111 512 256 7.83
+CNN-F-E1-rolling-seed5 112 2000 256 30.64
+CNN-F-E1-rolling-seed5 113 512 256 7.84
+CNN-F-E1-rolling-seed5 114 512 256 7.83
+CNN-F-E1-rolling-seed5 115 2000 256 30.64
+CNN-F-E1-rolling-seed5 116 2000 256 30.62
+CNN-F-E1-rolling-seed5 117 2000 256 30.62
+CNN-F-E1-rolling-seed5 118 2000 256 30.63
+CNN-F-E1-rolling-seed5 119 2000 256 30.6
+CNN-F-E1-rolling-seed5 120 512 256 7.82
+CNN-F-E1-rolling-seed5 121 2000 256 30.61
+CNN-F-E1-rolling-seed5 122 512 256 7.82
+CNN-F-E1-rolling-seed5 123 512 256 7.82
+CNN-F-E1-rolling-seed5 124 2000 256 30.61
+CNN-F-E1-rolling-seed5 125 2000 256 30.58
+CNN-F-E1-rolling-seed5 126 512 256 7.84
+CNN-F-E1-rolling-seed5 127 512 256 7.83
+CNN-F-E1-rolling-seed5 128 2000 256 30.62
+CNN-F-E1-rolling-seed5 129 512 256 7.83
+CNN-F-E1-rolling-seed5 130 512 256 7.83
+CNN-F-E1-rolling-seed5 131 2000 256 30.64
+CNN-F-E1-rolling-seed5 132 2000 256 30.6
+CNN-F-E1-rolling-seed5 133 512 256 7.84
+CNN-F-E1-rolling-seed5 134 2000 256 30.62
+CNN-F-E1-rolling-seed5 135 2000 256 30.61
+CNN-F-E1-rolling-seed5 136 2000 256 30.6
+CNN-F-E1-rolling-seed5 137 2000 256 30.6
+CNN-F-E1-rolling-seed5 138 512 256 7.83
+CNN-F-E1-rolling-seed5 139 2000 256 30.62
+CNN-F-E1-rolling-seed5 140 2000 256 30.61
+CNN-F-E1-rolling-seed5 141 2000 256 30.6
+CNN-F-E1-rolling-seed5 142 512 256 7.82
+CNN-F-E1-rolling-seed5 143 2000 256 30.59
+CNN-F-E1-rolling-seed5 144 512 256 7.81
+CNN-F-E1-rolling-seed5 145 2000 256 30.57
+CNN-F-E1-rolling-seed5 146 2000 256 30.58
+CNN-F-E1-rolling-seed5 147 512 256 7.82
+CNN-F-E1-rolling-seed5 148 512 256 7.82
+CNN-F-E1-rolling-seed5 149 2000 256 30.63
+CNN-F-E1-rolling-seed5 150 512 256 7.83
+CNN-F-E1-rolling-seed5 151 512 256 7.83
+CNN-F-E1-rolling-seed5 152 2000 256 30.63
+CNN-F-E1-rolling-seed5 153 2000 256 30.62
+CNN-F-E1-rolling-seed5 154 512 256 7.83
+CNN-F-E1-rolling-seed5 155 2000 256 30.6
+CNN-F-E1-rolling-seed5 156 2000 256 30.59
+CNN-F-E1-rolling-seed5 157 2000 256 30.6
+CNN-F-E1-rolling-seed5 158 512 256 7.82
+CNN-F-E1-rolling-seed5 159 2000 256 30.58
+CNN-F-E1-rolling-seed5 160 2000 256 30.62
+CNN-F-E1-rolling-seed5 161 512 256 7.83
+CNN-F-E1-rolling-seed5 162 2000 256 30.66
+CNN-F-E1-rolling-seed5 163 2000 256 30.64
+CNN-F-E1-rolling-seed5 164 2000 256 30.65
+CNN-F-E1-rolling-seed5 165 512 256 7.83
+CNN-F-E1-rolling-seed5 166 2000 256 30.65
+CNN-F-E1-rolling-seed5 167 2000 256 30.65
+CNN-F-E1-rolling-seed5 168 2000 256 30.61
+CNN-F-E1-rolling-seed5 169 512 256 7.83
+CNN-F-E1-rolling-seed5 170 2000 256 30.63
+CNN-F-E1-rolling-seed5 171 512 256 7.82
+CNN-F-E1-rolling-seed5 172 512 256 7.83
+CNN-F-E1-rolling-seed5 173 2000 256 30.62
+CNN-F-E1-rolling-seed5 174 512 256 7.82
+CNN-F-E1-rolling-seed5 175 512 256 7.83
+CNN-F-E1-rolling-seed5 176 512 256 7.84
+CNN-F-E1-rolling-seed5 177 512 256 7.82
+CNN-F-E1-rolling-seed5 178 2000 256 30.59
+CNN-F-E1-rolling-seed5 179 2000 256 30.57
+CNN-F-E1-rolling-seed5 180 2000 256 30.58
+CNN-F-E1-rolling-seed5 181 2000 256 30.6
+CNN-F-E1-rolling-seed5 182 512 256 7.82
+CNN-F-E1-rolling-seed5 183 512 256 7.83
+CNN-F-E1-rolling-seed5 184 2000 256 30.59
+CNN-F-E1-rolling-seed5 185 2000 256 30.56
+CNN-F-E1-rolling-seed5 186 2000 256 30.58
+CNN-F-E1-rolling-seed5 187 2000 256 30.6
+CNN-F-E1-rolling-seed5 188 2000 256 30.61
+CNN-F-E1-rolling-seed5 189 512 256 7.83
+CNN-F-E1-rolling-seed5 190 2000 256 30.63
+CNN-F-E1-rolling-seed5 191 2000 256 30.63
+CNN-F-E1-rolling-seed5 192 512 256 7.83
+CNN-F-E1-rolling-seed5 193 2000 256 30.63
+CNN-F-E1-rolling-seed5 194 2000 256 30.6
+CNN-F-E1-rolling-seed5 195 2000 256 30.63
+CNN-F-E1-rolling-seed5 196 2000 256 30.61
+CNN-F-E1-rolling-seed5 197 512 256 7.83
+CNN-F-E1-rolling-seed5 198 512 256 7.83
+CNN-F-E1-rolling-seed5 199 512 256 7.85
