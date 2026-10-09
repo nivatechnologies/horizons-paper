@@ -155,3 +155,5 @@ Pipeline | stage21-descriptive_inference | 3f3bc9fb529589c2503e61ed0e6901b1e648c
 Pipeline | stage21-capacity-handoff | f63642a470c6e471094600cfc0c4e09d3bb3c983 | 2026-10-09T02:52:13Z | Descriptive inference complete; scoring transfer FAILED on missing sulaco parent directory, now created. Released GPUs can run Stage18 D while frozen CPU scoring resumes. Criteria unchanged.
 
 Pipeline | stage21-descriptive | f25e214dfe02e04d5b738a3bece2b68f417a7ecc | 2026-10-09T02:53:47Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage21-R34_inference | cc446eab9762f17058fbd9bde87d0490b1c9f68f | 2026-10-09T02:57:15Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
