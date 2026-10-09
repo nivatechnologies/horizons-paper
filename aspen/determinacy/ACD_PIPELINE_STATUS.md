@@ -165,3 +165,5 @@ Pipeline | posthoc-definition-presentation | 8ad1ee947255d58aa99b2f12516a0112460
 Pipeline | posthoc-restricted-menu | 30a8086374561a576ada6c21bad6d3f59f065458 | 2026-10-09T04:10:19Z | POST HOC restricted/full menu scoring complete on saved costs for all requested panels and pipelines; existing full-menu rows reproduced; Stage18 GPU queue untouched.
 
 Pipeline | stage18-safe-handoff | 4ec240bc08cd520a849cae5d0ccfbd645c79e4d1 | 2026-10-09T04:55:11Z | Criteria unchanged; unattended D publication and C start guarded; committed C data reused; no GPU worker preempted.
+
+Pipeline | stage18-D | f627cc9a026696b7688548af57613808fe725c5d | 2026-10-09T06:21:27Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
