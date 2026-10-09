@@ -454,3 +454,43 @@ Alignment record: 10 factual frames before onset and the cutoff state at onset; 
 
 All factual-context frames have been replaced after 11 output ticks (0.55 model-time units; 0.927754 LT). Source code hashes and line evidence are in receipts/acd_stage18_alignment.json.
 
+## Part D
+
+Forward-mode derivatives pass through the actual FP32 learned rollout; window energies accumulate in float64. Sulaco compares saved derivatives against each draw’s saved physics tangent response. No realized outcome is required.
+
+| Model | LT | Sign agreement | Normalized RMS error | Three-class agreement | Kappa | Median z | Pooled squared error |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| CNN-20k | 0 | 0.915468 | 0.341359 | 0.89625 | 0.79794 | 64.602 | 0.0071899 |
+| CNN-20k | 1 | 0.910923 | 0.194007 | 0.865 | 0.760565 | 13.0794 | 0.014187 |
+| CNN-20k | 1.5 | 0.914669 | 0.297712 | 0.855625 | 0.76265 | 7.28691 | 0.0680203 |
+| CNN-20k | 2 | 0.897977 | 0.490093 | 0.8475 | 0.766654 | 3.5822 | 0.532937 |
+| CNN-20k | 2.5 | 0.877498 | 0.831474 | 0.848125 | 0.759828 | 1.69226 | 5.17608 |
+| CNN-20k | 3 | 0.839362 | 1.21105 | 0.881875 | 0.770137 | 0.83687 | 49.7537 |
+| CNN-20k | 4 | 0.735944 | 1.5481 | 0.944375 | 0.65833 | 0.247766 | 1691.79 |
+| CNN-20k | 6 | 0.555771 | 1.72278 | 0.999375 | 0 | 0.0376747 | 679152 |
+| CNN-F-E0-fixed-seed1 | 0 | 0.980779 | 0.0300863 | 0.969375 | 0.94062 | 62.6354 | 5.5852e-05 |
+| CNN-F-E0-fixed-seed1 | 1 | 0.983499 | 0.0692732 | 0.9725 | 0.951564 | 13.3557 | 0.00180878 |
+| CNN-F-E0-fixed-seed1 | 1.5 | 0.98066 | 0.0916879 | 0.9575 | 0.930375 | 7.4273 | 0.00645162 |
+| CNN-F-E0-fixed-seed1 | 2 | 0.974917 | 0.19319 | 0.9675 | 0.950316 | 3.55116 | 0.0828111 |
+| CNN-F-E0-fixed-seed1 | 2.5 | 0.960287 | 0.476164 | 0.956875 | 0.931992 | 1.73142 | 1.69753 |
+| CNN-F-E0-fixed-seed1 | 3 | 0.930421 | 0.865188 | 0.966875 | 0.936298 | 0.848458 | 25.3936 |
+| CNN-F-E0-fixed-seed1 | 4 | 0.835839 | 1.289 | 0.984375 | 0.903954 | 0.257833 | 1172.89 |
+| CNN-F-E0-fixed-seed1 | 6 | 0.617502 | 1.52611 | 1 | 1 | 0.0360298 | 532941 |
+| CNN-F | 0 | 0.980943 | 0.0299612 | 0.969375 | 0.940583 | 62.6332 | 5.53884e-05 |
+| CNN-F | 1 | 0.983795 | 0.068891 | 0.970625 | 0.948279 | 13.3652 | 0.00178888 |
+| CNN-F | 1.5 | 0.980725 | 0.0867081 | 0.96375 | 0.940655 | 7.48455 | 0.00576986 |
+| CNN-F | 2 | 0.975626 | 0.170396 | 0.963125 | 0.943636 | 3.54171 | 0.0644226 |
+| CNN-F | 2.5 | 0.961938 | 0.41603 | 0.959375 | 0.935966 | 1.72295 | 1.29585 |
+| CNN-F | 3 | 0.931776 | 0.800746 | 0.965625 | 0.933886 | 0.848413 | 21.7516 |
+| CNN-F | 4 | 0.838701 | 1.19011 | 0.986875 | 0.920385 | 0.254589 | 999.825 |
+| CNN-F | 6 | 0.617671 | 1.51 | 0.999375 | 0 | 0.0357771 | 521753 |
+| CNN-noF | 0 | 0.957526 | 0.373173 | 0.946875 | 0.896777 | 62.0544 | 0.00859254 |
+| CNN-noF | 1 | 0.909407 | 1.50547 | 0.86125 | 0.753928 | 15.1655 | 0.854284 |
+| CNN-noF | 1.5 | 0.903867 | 1.76247 | 0.85125 | 0.754731 | 7.92792 | 2.38389 |
+| CNN-noF | 2 | 0.900697 | 1.52087 | 0.84875 | 0.768633 | 3.68037 | 5.13217 |
+| CNN-noF | 2.5 | 0.892087 | 1.26043 | 0.856875 | 0.776166 | 1.91107 | 11.8944 |
+| CNN-noF | 3 | 0.86618 | 1.19916 | 0.86625 | 0.745906 | 0.984572 | 48.7818 |
+| CNN-noF | 4 | 0.775394 | 1.42855 | 0.906875 | 0.567797 | 0.325503 | 1440.6 |
+| CNN-noF | 6 | 0.578171 | 1.7888 | 0.990625 | 0.116608 | 0.0420514 | 732203 |
+
+RMS errors divide by the pooled physics tangent RMS at the same lead. Near-zero posterior masses, per-pair squared-error quartiles and probability-transfer errors are retained in the receipt. The selected response-control derivative is added after its frozen validation selection. All readings are post hoc and license no frozen route.
