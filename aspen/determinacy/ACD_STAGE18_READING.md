@@ -494,3 +494,25 @@ Forward-mode derivatives pass through the actual FP32 learned rollout; window en
 | CNN-noF | 6 | 0.578171 | 1.7888 | 0.990625 | 0.116608 | 0.0420514 | 732203 |
 
 RMS errors divide by the pooled physics tangent RMS at the same lead. Near-zero posterior masses, per-pair squared-error quartiles and probability-transfer errors are retained in the receipt. The selected response-control derivative is added after its frozen validation selection. All readings are post hoc and license no frozen route.
+
+## Part C execution reading
+
+R-other execution reading: Selected weight is zero. Selected and weight-zero labels refer to the same model. If the frozen extra-seed trigger fires, train each further seed once and report that run under both labels; no duplicate training, inference, scoring or GPU charge. Criteria unchanged. Frozen training, validation selection, extra-seed trigger, populations and scoring are unchanged. Shared labels do not represent independent runs.
+
+| Weight | Checkpoint step | Guard abort | Validation state MSE / weight zero | Validation effect RMSE |
+|---:|---:|---|---:|---:|
+| 0 | 20000 | none | 1 | 0.36154961 |
+| 0.01 | 20000 | none | 21.118794 | 0.20251311 |
+| 0.03 | 6000 | skip limit exceeded | 291.45724 | 0.23927088 |
+| 0.1 | 20000 | none | 45.180112 | 0.21196242 |
+| 0.3 | 20000 | none | 81.022389 | 0.24039685 |
+| 1 | 4000 | skip limit exceeded | 649.28469 | 0.24056081 |
+
+All validation rows are descriptive only. Guard-aborted rows use the last saved checkpoint, verified tensor-for-tensor to equal the validation-selected model, with identical step and validation MSE; container SHA-256s differ because the trainer serializes the two files separately. Other rows use the validation-selected checkpoint. These additions do not rerun selection. Source values, checkpoint identities and reporting-label aliases are in receipts/acd_stage18_C_execution_reading.json.
+
+Extra-seed trigger: pending confirmation scoring.
+
+| Reporting label | Shared run identities |
+|---|---|
+| weight zero | CNN-noF-response-0-seed1 |
+| selected | CNN-noF-response-0-seed1 |
