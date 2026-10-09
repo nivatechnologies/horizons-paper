@@ -1,0 +1,8 @@
+{
+  "criteria_changed": false,
+  "execution": "Start the frozen CNN-noF derivative task on the released Baccus card while remaining Stage21 inference continues on other cards. The existing Stage18 D dispatcher waits for a card with no non-serving process before launching; resumable outputs prevent duplicate calculation.",
+  "code_hashes": {
+    "acd_stage18_ops_free_card_acd_stage18_after_B.py": "8e55fc4701e5e43e63fc7732bb4a304cddc9132fc5926ab5037342794bc494e7",
+    "acd_stage18_ops_free_card_stage18_D_free_card.py": "fd32ba2f76307d2709e027d9b87ccdaceb9e81067cb67ac624dfcf2e3d9792f2"
+  }
+}
