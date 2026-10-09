@@ -1,0 +1,120 @@
+{
+  "post_hoc": true,
+  "licenses_frozen_route": false,
+  "criteria_unchanged": true,
+  "R_other": "Selected weight is zero. Selected and weight-zero labels refer to the same model. If the frozen extra-seed trigger fires, train each further seed once and report that run under both labels; no duplicate training, inference, scoring or GPU charge.",
+  "code_hashes": {
+    "acd_stage18_response_controller.py": "daab1f87ea100ce3f852ec3c245e3406aac8230826b98b2f293232f29451e746",
+    "acd_stage18_C_execution_reading.py": "30a2e127fb52d4a3a4a6759f6e3fc3cf22c8907b3a97de0cc36b049bb97adef3"
+  },
+  "selection_source": "runs/stage18/C_selection.json",
+  "selection_source_sha256": "00b57862d0fe62fd845f805c73bead8d330daf8664a5f889a63452cd97644159",
+  "validation_rows": [
+    {
+      "weight": 0.0,
+      "model": "CNN-noF-response-0-seed1",
+      "validation_state_MSE": 5.006587643426504e-05,
+      "validation_effect_RMSE": 0.3615496098284943,
+      "checkpoint_sha256": "f4479d5520d1e0f810192b0a287c6b6683df2b14dea537f56f8bd215a19f62c3",
+      "validation_state_MSE_ratio_to_weight_zero": 1.0,
+      "selected_step": 20000,
+      "guard_abort": null,
+      "scope": "descriptive validation only",
+      "training_receipt_path": "runs/stage18/training/CNN-noF-response-0-seed1/complete.json",
+      "checkpoint_scope": "validation-selected checkpoint"
+    },
+    {
+      "weight": 0.01,
+      "model": "CNN-noF-response-0.01-seed1",
+      "validation_state_MSE": 0.0010573309175091101,
+      "validation_effect_RMSE": 0.20251310926178442,
+      "checkpoint_sha256": "ae3f9065529b67cd5cd3ec85f5736de375a0976cc5cade676e1dea039e4a614c",
+      "validation_state_MSE_ratio_to_weight_zero": 21.11879373363918,
+      "selected_step": 20000,
+      "guard_abort": null,
+      "scope": "descriptive validation only",
+      "training_receipt_path": "runs/stage18/training/CNN-noF-response-0.01-seed1/complete.json",
+      "checkpoint_scope": "validation-selected checkpoint"
+    },
+    {
+      "weight": 0.03,
+      "model": "CNN-noF-response-0.03-seed1",
+      "validation_state_MSE": 0.014592062085891184,
+      "validation_effect_RMSE": 0.23927087568163202,
+      "checkpoint_sha256": "16621c9d07b267b4edeed0e0a63c75e627f58ccbc61c53394127d29a9a12720f",
+      "validation_state_MSE_ratio_to_weight_zero": 291.457238445633,
+      "selected_step": 6000,
+      "guard_abort": "skip limit exceeded",
+      "scope": "descriptive validation only",
+      "training_receipt_path": "runs/stage18/training/CNN-noF-response-0.03-seed1/complete.json",
+      "last_saved_identity": {
+        "selected_step": 6000,
+        "last_saved_step": 6000,
+        "state_equal": true,
+        "validation_equal": true,
+        "selected_sha256": "16621c9d07b267b4edeed0e0a63c75e627f58ccbc61c53394127d29a9a12720f",
+        "last_saved_sha256": "316fb892a35bf9cb6ea21ce39991aed1e6561ea961e488452c5c337024f2d130"
+      },
+      "checkpoint_scope": "last saved checkpoint; also validation-selected",
+      "last_saved_checkpoint_path": "runs/stage18/training/CNN-noF-response-0.03-seed1/checkpoint_006000.pt"
+    },
+    {
+      "weight": 0.1,
+      "model": "CNN-noF-response-0.1-seed1",
+      "validation_state_MSE": 0.0022619818870831913,
+      "validation_effect_RMSE": 0.2119624195386749,
+      "checkpoint_sha256": "74e91fab707709087af1d521b7fd0bc81808ed2b25589175109d0ebbdf70336b",
+      "validation_state_MSE_ratio_to_weight_zero": 45.18011164856175,
+      "selected_step": 20000,
+      "guard_abort": null,
+      "scope": "descriptive validation only",
+      "training_receipt_path": "runs/stage18/training/CNN-noF-response-0.1-seed1/complete.json",
+      "checkpoint_scope": "validation-selected checkpoint"
+    },
+    {
+      "weight": 0.3,
+      "model": "CNN-noF-response-0.3-seed1",
+      "validation_state_MSE": 0.004056456911105972,
+      "validation_effect_RMSE": 0.24039685420471937,
+      "checkpoint_sha256": "a074e24faf8d42878212f0ff4774adc5da14efd8646cfa28d0e9a44c655c5cab",
+      "validation_state_MSE_ratio_to_weight_zero": 81.02238890059131,
+      "selected_step": 20000,
+      "guard_abort": null,
+      "scope": "descriptive validation only",
+      "training_receipt_path": "runs/stage18/training/CNN-noF-response-0.3-seed1/complete.json",
+      "checkpoint_scope": "validation-selected checkpoint"
+    },
+    {
+      "weight": 1.0,
+      "model": "CNN-noF-response-1-seed1",
+      "validation_state_MSE": 0.032507006873250546,
+      "validation_effect_RMSE": 0.2405608083555013,
+      "checkpoint_sha256": "1417e78646ec2bc49b0731647e24354cf41f4a2728a74e2b79494e5ea50bd3c7",
+      "validation_state_MSE_ratio_to_weight_zero": 649.284686265929,
+      "selected_step": 4000,
+      "guard_abort": "skip limit exceeded",
+      "scope": "descriptive validation only",
+      "training_receipt_path": "runs/stage18/training/CNN-noF-response-1-seed1/complete.json",
+      "last_saved_identity": {
+        "selected_step": 4000,
+        "last_saved_step": 4000,
+        "state_equal": true,
+        "validation_equal": true,
+        "selected_sha256": "1417e78646ec2bc49b0731647e24354cf41f4a2728a74e2b79494e5ea50bd3c7",
+        "last_saved_sha256": "ba8d4aff6a7438179a2fd792d2412214e83ae35601842c5610f2f3d3274d8738"
+      },
+      "checkpoint_scope": "last saved checkpoint; also validation-selected",
+      "last_saved_checkpoint_path": "runs/stage18/training/CNN-noF-response-1-seed1/checkpoint_004000.pt"
+    }
+  ],
+  "extra_seed_trigger": null,
+  "extra_seed_trigger_status": "pending confirmation scoring",
+  "reporting_labels": {
+    "weight zero": [
+      "CNN-noF-response-0-seed1"
+    ],
+    "selected": [
+      "CNN-noF-response-0-seed1"
+    ]
+  }
+}
