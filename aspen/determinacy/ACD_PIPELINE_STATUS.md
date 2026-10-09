@@ -149,3 +149,5 @@ Pipeline | stage18-C-float64-execution | 34bd9d2391fd088d4862572ac6aabc663c57e22
 Pipeline | stage18-C-data | 278d85d831d46c011b9e74d5e67d093d9e75ac56 | 2026-10-08T23:48:17Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
 
 Pipeline | stage18-D-free-card-execution | cfc2205e20d7b78320bc92c801cf6cb7a48efdfa | 2026-10-09T02:07:11Z | Use released Baccus card for frozen CNN-noF derivatives alongside remaining Stage21 inference; wait for occupied cards, never preempt. Criteria unchanged.
+
+Pipeline | stage21-descriptive_inference | 3f3bc9fb529589c2503e61ed0e6901b1e648cd74 | 2026-10-09T02:12:23Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
