@@ -167,3 +167,5 @@ Pipeline | posthoc-restricted-menu | 30a8086374561a576ada6c21bad6d3f59f065458 | 
 Pipeline | stage18-safe-handoff | 4ec240bc08cd520a849cae5d0ccfbd645c79e4d1 | 2026-10-09T04:55:11Z | Criteria unchanged; unattended D publication and C start guarded; committed C data reused; no GPU worker preempted.
 
 Pipeline | stage18-D | f627cc9a026696b7688548af57613808fe725c5d | 2026-10-09T06:21:27Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage18-C-execution-reading | 156549324e82ccbee82f5d10f99093dd0f1ea5c4 | 2026-10-09T21:21:12Z | R-other: selected weight zero shares training and reporting identities; criteria unchanged. Descriptive validation rows registered for every weight; confirmation inference and frozen trigger scoring continue.
