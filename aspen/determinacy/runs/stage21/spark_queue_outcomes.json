@@ -1,0 +1,56 @@
+{
+  "192.168.88.4": {
+    "CNN-F-E1-rolling-seed1": {
+      "returncode": 0,
+      "seconds": 4379.860092666,
+      "host": "spark-89d8",
+      "complete": true
+    },
+    "CNN-F-E1-rolling-seed2": {
+      "returncode": 0,
+      "seconds": 4381.213094355015,
+      "host": "spark-89d8",
+      "complete": true
+    }
+  },
+  "192.168.88.12": {
+    "CNN-F-E1-fixed-seed3": {
+      "returncode": 0,
+      "seconds": 2274.500081787999,
+      "host": "gx10-5278",
+      "complete": true
+    },
+    "CNN-F-E1-fixed-seed4": {
+      "returncode": 0,
+      "seconds": 2293.9276254430006,
+      "host": "gx10-5278",
+      "complete": true
+    },
+    "CNN-F-E1-rolling-seed3": {
+      "returncode": 0,
+      "seconds": 4445.251272114001,
+      "host": "gx10-5278",
+      "complete": true
+    },
+    "CNN-F-E1-rolling-seed4": {
+      "returncode": 0,
+      "seconds": 4455.911697243006,
+      "host": "gx10-5278",
+      "complete": true
+    }
+  },
+  "192.168.88.248": {
+    "CNN-F-E1-fixed-seed5": {
+      "returncode": 0,
+      "seconds": 2249.547897577002,
+      "host": "gx10-7048",
+      "complete": true
+    },
+    "CNN-F-E1-rolling-seed5": {
+      "returncode": 0,
+      "seconds": 4347.682446521001,
+      "host": "gx10-7048",
+      "complete": true
+    }
+  }
+}
