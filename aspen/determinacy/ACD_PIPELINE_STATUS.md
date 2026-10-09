@@ -161,3 +161,5 @@ Pipeline | stage21-R34_inference | cc446eab9762f17058fbd9bde87d0490b1c9f68f | 20
 Pipeline | stage21-R34 | 40909a72af1487c66823312d3c793bfe98db35e5 | 2026-10-09T02:59:31Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
 
 Pipeline | posthoc-definition-presentation | 8ad1ee947255d58aa99b2f12516a0112460a36d8 | 2026-10-09T04:06:51Z | POST HOC definition notes and presentation complete; restricted-menu CPU scoring continues; Stage18 GPU queue untouched.
+
+Pipeline | posthoc-restricted-menu | 30a8086374561a576ada6c21bad6d3f59f065458 | 2026-10-09T04:10:19Z | POST HOC restricted/full menu scoring complete on saved costs for all requested panels and pipelines; existing full-menu rows reproduced; Stage18 GPU queue untouched.
