@@ -1,0 +1,299 @@
+{
+  "post_hoc": true,
+  "retained": 198,
+  "contributing": {
+    "R1": 188,
+    "R2": 189
+  },
+  "rows": [
+    {
+      "reading": "R1",
+      "model": "CNN-F-constantF",
+      "population": "pooled",
+      "case_error": 0.24563082965144822,
+      "pooled_error": 0.22371134020618555,
+      "receipt_path": "$.models.CNN-F-constantF.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-constantF",
+      "population": "F7",
+      "case_error": 0.19827502429543242,
+      "pooled_error": 0.18271119842829076,
+      "receipt_path": "$.models.CNN-F-constantF.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-constantF",
+      "population": "F9",
+      "case_error": 0.2939732142857142,
+      "pooled_error": 0.26898047722342733,
+      "receipt_path": "$.models.CNN-F-constantF.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed1",
+      "population": "pooled",
+      "case_error": 0.008383458646616604,
+      "pooled_error": 0.006230529595015577,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed1.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed1",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037174721189591198,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed1.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed1",
+      "population": "F9",
+      "case_error": 0.012903225806451535,
+      "pooled_error": 0.009411764705882342,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed1.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed2",
+      "population": "pooled",
+      "case_error": 0.008082706766917247,
+      "pooled_error": 0.006211180124223614,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed2.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed2",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.003731343283582045,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed2.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed2",
+      "population": "F9",
+      "case_error": 0.01228878648233478,
+      "pooled_error": 0.009302325581395321,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed2.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed3",
+      "population": "pooled",
+      "case_error": 0.008383458646616604,
+      "pooled_error": 0.006211180124223614,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed3.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed3",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037174721189591198,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed3.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed3",
+      "population": "F9",
+      "case_error": 0.012903225806451646,
+      "pooled_error": 0.009345794392523366,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed3.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed4",
+      "population": "pooled",
+      "case_error": 0.008427815570672736,
+      "pooled_error": 0.006198347107438051,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed4.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed4",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037174721189591198,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed4.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed4",
+      "population": "F9",
+      "case_error": 0.013043478260869601,
+      "pooled_error": 0.009302325581395321,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed4.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed5",
+      "population": "pooled",
+      "case_error": 0.008427815570672736,
+      "pooled_error": 0.006256517205422307,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed5.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed5",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037383177570093906,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed5.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R1",
+      "model": "CNN-F-E0-fixed-seed5",
+      "population": "F9",
+      "case_error": 0.013043478260869601,
+      "pooled_error": 0.009433962264150941,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed5.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-noF",
+      "population": "pooled",
+      "case_error": 0.06331845238095235,
+      "pooled_error": 0.06066734074823055,
+      "receipt_path": "$.models.CNN-noF.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-noF",
+      "population": "F7",
+      "case_error": 0.07410106899902802,
+      "pooled_error": 0.07400722021660655,
+      "receipt_path": "$.models.CNN-noF.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-noF",
+      "population": "F9",
+      "case_error": 0.052077001013171254,
+      "pooled_error": 0.04367816091954024,
+      "receipt_path": "$.models.CNN-noF.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed1",
+      "population": "pooled",
+      "case_error": 0.008383458646616604,
+      "pooled_error": 0.006230529595015577,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed1.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed1",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037174721189591198,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed1.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed1",
+      "population": "F9",
+      "case_error": 0.012903225806451535,
+      "pooled_error": 0.009411764705882342,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed1.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed2",
+      "population": "pooled",
+      "case_error": 0.008082706766917247,
+      "pooled_error": 0.006211180124223614,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed2.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed2",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.003731343283582045,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed2.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed2",
+      "population": "F9",
+      "case_error": 0.01228878648233478,
+      "pooled_error": 0.009302325581395321,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed2.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed3",
+      "population": "pooled",
+      "case_error": 0.008383458646616604,
+      "pooled_error": 0.006211180124223614,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed3.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed3",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037174721189591198,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed3.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed3",
+      "population": "F9",
+      "case_error": 0.012903225806451646,
+      "pooled_error": 0.009345794392523366,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed3.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed4",
+      "population": "pooled",
+      "case_error": 0.008427815570672736,
+      "pooled_error": 0.006198347107438051,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed4.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed4",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037174721189591198,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed4.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed4",
+      "population": "F9",
+      "case_error": 0.013043478260869601,
+      "pooled_error": 0.009302325581395321,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed4.F9.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed5",
+      "population": "pooled",
+      "case_error": 0.008427815570672736,
+      "pooled_error": 0.006256517205422307,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed5.pooled.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed5",
+      "population": "F7",
+      "case_error": 0.004050073637702489,
+      "pooled_error": 0.0037383177570093906,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed5.F7.pattern_group_readings[7].accuracy"
+    },
+    {
+      "reading": "R2",
+      "model": "CNN-F-E0-fixed-seed5",
+      "population": "F9",
+      "case_error": 0.013043478260869601,
+      "pooled_error": 0.009433962264150941,
+      "receipt_path": "$.models.CNN-F-E0-fixed-seed5.F9.pattern_group_readings[7].accuracy"
+    }
+  ],
+  "source_receipt": "receipts/acd_stage21_R12_recovery.json"
+}

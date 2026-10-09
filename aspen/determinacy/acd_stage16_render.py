@@ -66,10 +66,7 @@ def main():
  for model,s in summaries.items():
   for lead in ['2.0','3.0']:
    for key,row in s.get(lead,{}).items():L.append(f"| {model} | {lead} | {key} | {row['mean']} | {row['min']} | {row['max']} |")
- L+=['','## Individual runs','']
- for r in runs:
-  if 'metrics' in r:
-   L += ['### '+r['name'],'', 'Uniform-decrease E collapse by lead: '+json.dumps(r['metrics']['uniform_decrease_collapse']), '', 'Full readings (including confidence bounds, calibration test, coverage and histograms):',json.dumps(r['metrics'],indent=2),'']
+ L+=['','Per-run readings, bounds, calibration and action histograms: receipts/acd_stage16.json.','']
  (ROOT/'ACD_STAGE16_READING.md').write_text('\n'.join(L)+'\n')
  posterior=json.loads((ROOT/'runs/stage9/metrics_posterior.json').read_text())
  fig,axes=plt.subplots(1,2,figsize=(10,4))
@@ -82,7 +79,7 @@ def main():
  axes[0].axhline(1-p['all_confident_accuracy']['case_accuracy'],color='black',linestyle='--',label='posterior')
  pr=json.loads((ROOT/'receipts/acd_stage13_decisions.json').read_text())['models']['posterior']['readings']
  axes[1].axhline(next(r['mean_regret'] for r in pr if r['lead']==3 and r['policy']=='E'),color='black',linestyle='--',label='posterior')
- axes[0].set_ylabel('case-averaged confident S error, 3 LT');axes[1].set_ylabel('E mean regret, 3 LT')
+ axes[0].set_ylabel('share of confident intervention answers wrong (all eight patterns)');axes[1].set_ylabel('E mean regret, 3 LT')
  for ax in axes:ax.legend();ax.grid(axis='y',color='.85')
  fig.tight_layout()
  for ext in ['pdf','png']:fig.savefig(ROOT/f'figures/F19_seeds_paper.{ext}',dpi=180)

@@ -246,3 +246,54 @@ State skill, forcing errors against both draw and true forcing, cost errors, bou
 | CNN-F-E1-rolling-seed5 | F9 | 3.0 | 0.29292929292929293 | 0.06465517241379315 | 0.0874485596707818 | 0.19334668262597152 | 0.45162073349636667 |
 
 State skill, forcing errors against both draw and true forcing, cost errors, bounds, calibration, same-lead differences, endpoints and decision action/harm records are retained in receipts/acd_stage21.json. Every invalid draw invalidates its pipeline instance. Excluded posterior cases are withheld.
+## POST HOC — R1 and R2 definition note
+
+R1 and R2 concern the seven zero-mean patterns at 2 LT. Each instance/seed pair contributes only when both pipelines give at least one confident answer. Defined seed differences are averaged within each instance, then those instance means are averaged across contributing instances. This differs from pooling individual answers.
+
+R1: 188 contributing instances out of 198 retained. Comparator: CNN-F-constantF; comparison: comparator error minus E0-fixed error. Estimate 0.2304305977710233; two-sided 99% instance betting interval [0.1519999999999999, 0.31400000000000006]. Source: receipts/acd_stage21_R12_recovery.json $.confirmatory.R1.
+
+| POST HOC R1 pipeline | Population | Case-averaged seven-pattern confident error | Pooled seven-pattern confident error | Receipt key |
+|---|---|---:|---:|---|
+| CNN-F-constantF | pooled | 0.24563082965144822 | 0.22371134020618555 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-constantF.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-constantF | F7 | 0.19827502429543242 | 0.18271119842829076 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-constantF.F7.pattern_group_readings[7].accuracy |
+| CNN-F-constantF | F9 | 0.2939732142857142 | 0.26898047722342733 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-constantF.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed1 | pooled | 0.008383458646616604 | 0.006230529595015577 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed1.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed1 | F7 | 0.004050073637702489 | 0.0037174721189591198 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed1.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed1 | F9 | 0.012903225806451535 | 0.009411764705882342 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed1.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed2 | pooled | 0.008082706766917247 | 0.006211180124223614 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed2.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed2 | F7 | 0.004050073637702489 | 0.003731343283582045 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed2.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed2 | F9 | 0.01228878648233478 | 0.009302325581395321 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed2.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed3 | pooled | 0.008383458646616604 | 0.006211180124223614 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed3.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed3 | F7 | 0.004050073637702489 | 0.0037174721189591198 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed3.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed3 | F9 | 0.012903225806451646 | 0.009345794392523366 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed3.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed4 | pooled | 0.008427815570672736 | 0.006198347107438051 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed4.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed4 | F7 | 0.004050073637702489 | 0.0037174721189591198 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed4.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed4 | F9 | 0.013043478260869601 | 0.009302325581395321 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed4.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed5 | pooled | 0.008427815570672736 | 0.006256517205422307 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed5.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed5 | F7 | 0.004050073637702489 | 0.0037383177570093906 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed5.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed5 | F9 | 0.013043478260869601 | 0.009433962264150941 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed5.F9.pattern_group_readings[7].accuracy |
+
+R2: 189 contributing instances out of 198 retained. Comparator: CNN-noF; comparison: comparator error minus E0-fixed error. Estimate 0.055956160241874525; two-sided 99% instance betting interval [-0.010000000000000009, 0.12200000000000011]. Source: receipts/acd_stage21_R12_recovery.json $.confirmatory.R2.
+
+| POST HOC R2 pipeline | Population | Case-averaged seven-pattern confident error | Pooled seven-pattern confident error | Receipt key |
+|---|---|---:|---:|---|
+| CNN-noF | pooled | 0.06331845238095235 | 0.06066734074823055 | receipts/acd_stage21_R12_recovery.json $.models.CNN-noF.pooled.pattern_group_readings[7].accuracy |
+| CNN-noF | F7 | 0.07410106899902802 | 0.07400722021660655 | receipts/acd_stage21_R12_recovery.json $.models.CNN-noF.F7.pattern_group_readings[7].accuracy |
+| CNN-noF | F9 | 0.052077001013171254 | 0.04367816091954024 | receipts/acd_stage21_R12_recovery.json $.models.CNN-noF.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed1 | pooled | 0.008383458646616604 | 0.006230529595015577 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed1.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed1 | F7 | 0.004050073637702489 | 0.0037174721189591198 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed1.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed1 | F9 | 0.012903225806451535 | 0.009411764705882342 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed1.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed2 | pooled | 0.008082706766917247 | 0.006211180124223614 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed2.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed2 | F7 | 0.004050073637702489 | 0.003731343283582045 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed2.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed2 | F9 | 0.01228878648233478 | 0.009302325581395321 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed2.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed3 | pooled | 0.008383458646616604 | 0.006211180124223614 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed3.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed3 | F7 | 0.004050073637702489 | 0.0037174721189591198 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed3.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed3 | F9 | 0.012903225806451646 | 0.009345794392523366 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed3.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed4 | pooled | 0.008427815570672736 | 0.006198347107438051 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed4.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed4 | F7 | 0.004050073637702489 | 0.0037174721189591198 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed4.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed4 | F9 | 0.013043478260869601 | 0.009302325581395321 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed4.F9.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed5 | pooled | 0.008427815570672736 | 0.006256517205422307 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed5.pooled.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed5 | F7 | 0.004050073637702489 | 0.0037383177570093906 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed5.F7.pattern_group_readings[7].accuracy |
+| CNN-F-E0-fixed-seed5 | F9 | 0.013043478260869601 | 0.009433962264150941 | receipts/acd_stage21_R12_recovery.json $.models.CNN-F-E0-fixed-seed5.F9.pattern_group_readings[7].accuracy |
+
+The earlier reading table’s S columns cover all eight patterns. The tables in this definition note cover the seven zero-mean patterns only. “pooled” in the population column combines forcing levels; the pooled-error column averages individual confident answers, while case-averaged error weights contributing instances equally.
