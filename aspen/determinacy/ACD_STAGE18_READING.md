@@ -495,28 +495,6 @@ Forward-mode derivatives pass through the actual FP32 learned rollout; window en
 
 RMS errors divide by the pooled physics tangent RMS at the same lead. Near-zero posterior masses, per-pair squared-error quartiles and probability-transfer errors are retained in the receipt. The selected response-control derivative is added after its frozen validation selection. All readings are post hoc and license no frozen route.
 
-## Part C execution reading
-
-R-other execution reading: Selected weight is zero. Selected and weight-zero labels refer to the same model. If the frozen extra-seed trigger fires, train each further seed once and report that run under both labels; no duplicate training, inference, scoring or GPU charge. Criteria unchanged. Frozen training, validation selection, extra-seed trigger, populations and scoring are unchanged. Shared labels do not represent independent runs.
-
-| Weight | Checkpoint step | Guard abort | Validation state MSE / weight zero | Validation effect RMSE |
-|---:|---:|---|---:|---:|
-| 0 | 20000 | none | 1 | 0.36154961 |
-| 0.01 | 20000 | none | 21.118794 | 0.20251311 |
-| 0.03 | 6000 | skip limit exceeded | 291.45724 | 0.23927088 |
-| 0.1 | 20000 | none | 45.180112 | 0.21196242 |
-| 0.3 | 20000 | none | 81.022389 | 0.24039685 |
-| 1 | 4000 | skip limit exceeded | 649.28469 | 0.24056081 |
-
-All validation rows are descriptive only. Guard-aborted rows use the last saved checkpoint, verified tensor-for-tensor to equal the validation-selected model, with identical step and validation MSE; container SHA-256s differ because the trainer serializes the two files separately. Other rows use the validation-selected checkpoint. These additions do not rerun selection. Source values, checkpoint identities and reporting-label aliases are in receipts/acd_stage18_C_execution_reading.json.
-
-Extra-seed trigger: pending confirmation scoring.
-
-| Reporting label | Shared run identities |
-|---|---|
-| weight zero | CNN-noF-response-0-seed1 |
-| selected | CNN-noF-response-0-seed1 |
-
 ## Part C saved training logs
 
 POST HOC, descriptive only; criteria unchanged. These readings extract existing logs, without training, inference, outcome access or loss recomputation. Base and raw paired losses are logged microbatch component means, weighted by saved microbatch size. Plot: figures/F_stage18_C_training_losses.pdf (both losses on a logarithmic scale; solid circles for base, dashed squares for paired; dotted vertical lines mark skips). Nonfinite logged loss points cannot be placed on a log axis and remain explicit in the receipt.
@@ -566,3 +544,104 @@ Preclip gradient norms were saved every hundredth update and at skips, not at ev
 | 1 | 4415 | nonfinite gradient norm | inf | 4000:2.2419746, 4100:3.8973625, 4200:2.0556073, 4300:0.81398278, 4400:1.444303, 4410:inf, 4413:inf, 4414:inf | 492 |
 
 All hundred-update base and paired loss values, microbatch records, skip records and source hashes are retained in receipts/acd_stage18_C_training_logs.json.
+
+## Part C
+
+Every arm uses the original confirmation instances and retained draws. These readings are post hoc and license no frozen route. Outcome arrays are opened only by the Sulaco scorer. Training-run variation remains distinct from case-level uncertainty.
+
+| Arm | LT | State RMSE/sigma | State ACC | Confident S share | Pooled confident S error | Case confident S error | Case error bounds |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| CNN-noF-response-0-seed1 | 2 | 0.125302 | 0.981659 | 0.723125 | 0.0630942 | 0.0608393 | [0.039, 0.083] |
+| CNN-noF-response-0-seed1 | 3 | 0.277576 | 0.923174 | 0.456875 | 0.0820793 | 0.113903 | [0.07, 0.155] |
+| CNN-noF-response-0-seed2 | 2 | 0.123678 | 0.98202 | 0.740625 | 0.0649789 | 0.0633095 | [0.041, 0.085] |
+| CNN-noF-response-0-seed2 | 3 | 0.273676 | 0.924469 | 0.46 | 0.080163 | 0.111327 | [0.068, 0.154] |
+| CNN-noF-response-0-seed3 | 2 | 0.125273 | 0.981715 | 0.74125 | 0.0699831 | 0.0671845 | [0.045, 0.09] |
+| CNN-noF-response-0-seed3 | 3 | 0.274906 | 0.924006 | 0.461875 | 0.0852503 | 0.113502 | [0.071, 0.141] |
+| CNN-noF-response-0-seed4 | 2 | 0.123008 | 0.982578 | 0.74375 | 0.0613445 | 0.0598869 | [0.039, 0.082] |
+| CNN-noF-response-0-seed4 | 3 | 0.272423 | 0.92561 | 0.458125 | 0.0818554 | 0.113011 | [0.069, 0.132] |
+| CNN-noF-response-0-seed5 | 2 | 0.123749 | 0.982036 | 0.739375 | 0.0591716 | 0.0570893 | [0.036, 0.079] |
+| CNN-noF-response-0-seed5 | 3 | 0.272095 | 0.925598 | 0.46125 | 0.0772358 | 0.110373 | [0.064, 0.123] |
+
+Each direction of the case-error bounds uses the v2.3 one-sided 95% instance betting construction; pooled error is descriptive.
+
+| Arm | LT | Quantity | Equal-case RMSE | Equal-case bias |
+|---|---:|---|---:|---:|
+| CNN-noF-response-0-seed1 | 2 | J8 | 0.0307804 | 0.0118658 |
+| CNN-noF-response-0-seed1 | 2 | Jk | 0.350956 | -0.104974 |
+| CNN-noF-response-0-seed1 | 2 | Dk | 0.353896 | -0.11684 |
+| CNN-noF-response-0-seed1 | 3 | J8 | 0.0789681 | 0.018767 |
+| CNN-noF-response-0-seed1 | 3 | Jk | 0.590622 | -0.162433 |
+| CNN-noF-response-0-seed1 | 3 | Dk | 0.599484 | -0.1812 |
+| CNN-noF-response-0-seed2 | 2 | J8 | 0.0304965 | 0.0117011 |
+| CNN-noF-response-0-seed2 | 2 | Jk | 0.346575 | -0.102619 |
+| CNN-noF-response-0-seed2 | 2 | Dk | 0.349133 | -0.11432 |
+| CNN-noF-response-0-seed2 | 3 | J8 | 0.081569 | 0.0152413 |
+| CNN-noF-response-0-seed2 | 3 | Jk | 0.586903 | -0.159452 |
+| CNN-noF-response-0-seed2 | 3 | Dk | 0.594564 | -0.174693 |
+| CNN-noF-response-0-seed3 | 2 | J8 | 0.0333459 | 0.0119574 |
+| CNN-noF-response-0-seed3 | 2 | Jk | 0.351764 | -0.104377 |
+| CNN-noF-response-0-seed3 | 2 | Dk | 0.354242 | -0.116334 |
+| CNN-noF-response-0-seed3 | 3 | J8 | 0.0873639 | 0.0166892 |
+| CNN-noF-response-0-seed3 | 3 | Jk | 0.592922 | -0.162895 |
+| CNN-noF-response-0-seed3 | 3 | Dk | 0.60289 | -0.179584 |
+| CNN-noF-response-0-seed4 | 2 | J8 | 0.0346516 | 0.0130697 |
+| CNN-noF-response-0-seed4 | 2 | Jk | 0.347024 | -0.10244 |
+| CNN-noF-response-0-seed4 | 2 | Dk | 0.349716 | -0.11551 |
+| CNN-noF-response-0-seed4 | 3 | J8 | 0.0865209 | 0.0227052 |
+| CNN-noF-response-0-seed4 | 3 | Jk | 0.586896 | -0.158253 |
+| CNN-noF-response-0-seed4 | 3 | Dk | 0.597324 | -0.180959 |
+| CNN-noF-response-0-seed5 | 2 | J8 | 0.0302828 | 0.0115473 |
+| CNN-noF-response-0-seed5 | 2 | Jk | 0.336613 | -0.0996501 |
+| CNN-noF-response-0-seed5 | 2 | Dk | 0.339457 | -0.111197 |
+| CNN-noF-response-0-seed5 | 3 | J8 | 0.0824568 | 0.0196638 |
+| CNN-noF-response-0-seed5 | 3 | Jk | 0.570363 | -0.153454 |
+| CNN-noF-response-0-seed5 | 3 | Dk | 0.580887 | -0.173118 |
+
+Errors compare each emulator draw with the same draw’s physics forecast.
+
+| Arm | LT | Policy | Regret | Capture | Actions taken | Harms | Conditional harm CP95 | Uniform decrease in every instance |
+|---|---:|---|---:|---:|---:|---:|---:|---|
+| CNN-noF-response-0-seed1 | 2 | E | 0.0535915 | 0.829176 | 200 | 6 | [0.013144, 0.0583498] | True |
+| CNN-noF-response-0-seed1 | 2 | C_delta_0 | 0.0495035 | 0.842207 | 199 | 5 | [0.00995126, 0.0521002] | False |
+| CNN-noF-response-0-seed1 | 3 | E | 0.265633 | 0.508869 | 200 | 30 | [0.110081, 0.197911] | True |
+| CNN-noF-response-0-seed1 | 3 | C_delta_0 | 0.258528 | 0.522004 | 199 | 29 | [0.106255, 0.19334] | False |
+| CNN-noF-response-0-seed2 | 2 | E | 0.0535915 | 0.829176 | 200 | 6 | [0.013144, 0.0583498] | True |
+| CNN-noF-response-0-seed2 | 2 | C_delta_0 | 0.0495035 | 0.842207 | 199 | 5 | [0.00995126, 0.0521002] | False |
+| CNN-noF-response-0-seed2 | 3 | E | 0.265633 | 0.508869 | 200 | 30 | [0.110081, 0.197911] | True |
+| CNN-noF-response-0-seed2 | 3 | C_delta_0 | 0.258528 | 0.522004 | 199 | 29 | [0.106255, 0.19334] | False |
+| CNN-noF-response-0-seed3 | 2 | E | 0.0535915 | 0.829176 | 200 | 6 | [0.013144, 0.0583498] | True |
+| CNN-noF-response-0-seed3 | 2 | C_delta_0 | 0.0535915 | 0.829176 | 200 | 6 | [0.013144, 0.0583498] | True |
+| CNN-noF-response-0-seed3 | 3 | E | 0.265633 | 0.508869 | 200 | 30 | [0.110081, 0.197911] | True |
+| CNN-noF-response-0-seed3 | 3 | C_delta_0 | 0.258528 | 0.522004 | 199 | 29 | [0.106255, 0.19334] | False |
+| CNN-noF-response-0-seed4 | 2 | E | 0.0535915 | 0.829176 | 200 | 6 | [0.013144, 0.0583498] | True |
+| CNN-noF-response-0-seed4 | 2 | C_delta_0 | 0.0495035 | 0.842207 | 199 | 5 | [0.00995126, 0.0521002] | False |
+| CNN-noF-response-0-seed4 | 3 | E | 0.265633 | 0.508869 | 200 | 30 | [0.110081, 0.197911] | True |
+| CNN-noF-response-0-seed4 | 3 | C_delta_0 | 0.258528 | 0.522004 | 199 | 29 | [0.106255, 0.19334] | False |
+| CNN-noF-response-0-seed5 | 2 | E | 0.0535915 | 0.829176 | 200 | 6 | [0.013144, 0.0583498] | True |
+| CNN-noF-response-0-seed5 | 2 | C_delta_0 | 0.0495035 | 0.842207 | 199 | 5 | [0.00995126, 0.0521002] | False |
+| CNN-noF-response-0-seed5 | 3 | E | 0.265633 | 0.508869 | 200 | 30 | [0.110081, 0.197911] | True |
+| CNN-noF-response-0-seed5 | 3 | C_delta_0 | 0.258528 | 0.522004 | 199 | 29 | [0.106255, 0.19334] | False |
+
+Conditional harm bounds are exact one-sided 95% Clopper–Pearson bounds. Action histograms and the full calibration, coverage, paired-endpoint and confidence readings are in the receipt.
+
+## Part C execution reading
+
+R-other execution reading: Selected weight is zero. Selected and weight-zero labels refer to the same model. If the frozen extra-seed trigger fires, train each further seed once and report that run under both labels; no duplicate training, inference, scoring or GPU charge. Criteria unchanged. Frozen training, validation selection, extra-seed trigger, populations and scoring are unchanged. Shared labels do not represent independent runs.
+
+| Weight | Checkpoint step | Guard abort | Validation state MSE / weight zero | Validation effect RMSE |
+|---:|---:|---|---:|---:|
+| 0 | 20000 | none | 1 | 0.36154961 |
+| 0.01 | 20000 | none | 21.118794 | 0.20251311 |
+| 0.03 | 6000 | skip limit exceeded | 291.45724 | 0.23927088 |
+| 0.1 | 20000 | none | 45.180112 | 0.21196242 |
+| 0.3 | 20000 | none | 81.022389 | 0.24039685 |
+| 1 | 4000 | skip limit exceeded | 649.28469 | 0.24056081 |
+
+All validation rows are descriptive only. Guard-aborted rows use the last saved checkpoint, verified tensor-for-tensor to equal the validation-selected model, with identical step and validation MSE; container SHA-256s differ because the trainer serializes the two files separately. Other rows use the validation-selected checkpoint. These additions do not rerun selection. Source values, checkpoint identities and reporting-label aliases are in receipts/acd_stage18_C_execution_reading.json.
+
+Extra-seed trigger: True.
+
+| Reporting label | Shared run identities |
+|---|---|
+| weight zero | CNN-noF-response-0-seed1, CNN-noF-response-0-seed2, CNN-noF-response-0-seed3, CNN-noF-response-0-seed4, CNN-noF-response-0-seed5 |
+| selected | CNN-noF-response-0-seed1, CNN-noF-response-0-seed2, CNN-noF-response-0-seed3, CNN-noF-response-0-seed4, CNN-noF-response-0-seed5 |

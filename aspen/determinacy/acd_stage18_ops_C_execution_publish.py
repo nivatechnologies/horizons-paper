@@ -35,6 +35,10 @@ else:
  for filename in ['acd_stage10b.json','acd_stage18_A.json','acd_stage18_B.json']:
   d=json.loads((r/'receipts'/filename).read_text());arms.update(d.get('models',{}))
  arms.update(models)
+ # Original noF/F metrics and decision records are stored separately.
+ saved_decisions=json.loads((r/'receipts/acd_stage10b_decisions.json').read_text())['models']
+ for n,m in arms.items():
+  if 'decisions' not in m and n in saved_decisions:m['decisions']=saved_decisions[n]['readings']
  wanted={k:v for k,v in arms.items() if k in ['CNN-F','CNN-noF'] or k.startswith(('CNN-F-E0-fixed','CNN-F-E1-fixed','CNN-F-E1-rolling','CNN-noF-response'))}
  groups={}
  for n,m in wanted.items():groups.setdefault(n.rsplit('-seed',1)[0],[]).append((n,m))
@@ -50,5 +54,5 @@ else:
  fig.tight_layout();(r/'figures').mkdir(exist_ok=True)
  for ext in ['pdf','png']:fig.savefig(r/'figures'/('F21_repair_paper.'+ext),dpi=150)
  plt.close(fig)
- files=['receipts/acd_stage18_C.json','receipts/acd_stage18_C_execution_reading.json','acd_stage18_C_execution_reading.py','ACD_STAGE18_READING.md','figures/F21_repair_paper.pdf','figures/F21_repair_paper.png'];files += [f'receipts/acd_stage18_{n}.json' for n in names]
+ files=['ACD_STAGE18_C_PUBLICATION_FIX.md','acd_stage18_ops_C_execution_publish.py','runs/stage18/C_publication_failure.log','receipts/acd_stage18_C.json','receipts/acd_stage18_C_execution_reading.json','acd_stage18_C_execution_reading.py','ACD_STAGE18_READING.md','figures/F21_repair_paper.pdf','figures/F21_repair_paper.png'];files += [f'receipts/acd_stage18_{n}.json' for n in names]
  publish(r,'stage18-C',files,[('receipts/acd_stage18_C.json','ACD_POSTHOC_18C')],marker=out/'C_pushed.json')

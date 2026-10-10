@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/mnt/niva-array/work/aspen-deadline-20261008/acd_deadline_stage18_publish.py", line 45, in <module>
+    regret=next(v['mean_regret'] for v in m['decisions'] if v['lead']==3. and v['policy']=='E')
+                                          ~^^^^^^^^^^^^^
+KeyError: 'decisions'

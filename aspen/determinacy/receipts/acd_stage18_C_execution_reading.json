@@ -107,14 +107,22 @@
       "last_saved_checkpoint_path": "runs/stage18/training/CNN-noF-response-1-seed1/checkpoint_004000.pt"
     }
   ],
-  "extra_seed_trigger": null,
-  "extra_seed_trigger_status": "pending confirmation scoring",
+  "extra_seed_trigger": true,
+  "extra_seed_trigger_status": "scored",
   "reporting_labels": {
     "weight zero": [
-      "CNN-noF-response-0-seed1"
+      "CNN-noF-response-0-seed1",
+      "CNN-noF-response-0-seed2",
+      "CNN-noF-response-0-seed3",
+      "CNN-noF-response-0-seed4",
+      "CNN-noF-response-0-seed5"
     ],
     "selected": [
-      "CNN-noF-response-0-seed1"
+      "CNN-noF-response-0-seed1",
+      "CNN-noF-response-0-seed2",
+      "CNN-noF-response-0-seed3",
+      "CNN-noF-response-0-seed4",
+      "CNN-noF-response-0-seed5"
     ]
   }
 }
