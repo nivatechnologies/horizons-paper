@@ -185,3 +185,5 @@ Pipeline | stage22-count-reproduction | 7a1d56688edee7cdc98626824847c78f1ef593c7
 Pipeline | stage22-freeze-F | d21bdb27c217d0f11b8ce73611169bcb8600c984 | 2026-10-10T23:12:07Z | Stage22 Freeze F pushed after exact count gate; panel contract required before sampling; criteria unchanged.
 
 Pipeline | stage22-panel-launcher | f975252672c00ffb53ca6bf4f3e93751afaf22b1 | 2026-10-10T23:15:07Z | Stage22 panel-path/namespace launcher hashed before sampling; panel contract next; criteria unchanged.
+
+Pipeline | stage22-panel-contract | 6a7cbea1d710ee99d59da499055ded5d1eef0f5c | 2026-10-10T23:16:04Z | Stage22 blind contract pushed; exact software verified; starting first-five cost pilot on sulaco CPU, no realized outcomes.
