@@ -183,3 +183,5 @@ Pipeline | stage18-selected-D | ca9fd96134300616bd596a0f7eb585e55da2188e | 2026-
 Pipeline | stage22-count-reproduction | 7a1d56688edee7cdc98626824847c78f1ef593c7 | 2026-10-10T23:11:17Z | Stage22 N=200 reproduction PASS: every value exact in all three Stage21 receipts; Freeze F and panel contract next; no Stage22 sampling yet.
 
 Pipeline | stage22-freeze-F | d21bdb27c217d0f11b8ce73611169bcb8600c984 | 2026-10-10T23:12:07Z | Stage22 Freeze F pushed after exact count gate; panel contract required before sampling; criteria unchanged.
+
+Pipeline | stage22-panel-launcher | f975252672c00ffb53ca6bf4f3e93751afaf22b1 | 2026-10-10T23:15:07Z | Stage22 panel-path/namespace launcher hashed before sampling; panel contract next; criteria unchanged.
