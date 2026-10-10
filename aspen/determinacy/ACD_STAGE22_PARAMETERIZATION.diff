@@ -1,0 +1,127 @@
+--- FreezeE/acd_stage21_contract.py
++++ Stage22/acd_stage21_contract.py
+@@ -13,7 +13,7 @@
+ def rng(name,sub=0,case=0,member=0,action=0):
+  return np.random.default_rng(np.random.SeedSequence([IDS[name],0,sub,case,member,action]))
+ def assignments():
+- return rng(NAMES[0]).permutation(np.repeat([7.,9.],100))
++ return rng(NAMES[0]).permutation(np.repeat([7.,9.],N//2))
+ def configure():
+  # Adapter globals implement Todd's explicit Stage21 sigma without editing inherited files.
+  import acd_fits,acd_posterior
+@@ -55,7 +55,7 @@
+  oldroots=set(protocol.AAH_IDS)|set(protocol.IDS.values())|{int.from_bytes(hashlib.sha256(n.encode()).digest()[:8],'little') for n in oldnames}
+  assert not set(IDS.values())&oldroots and len(set(IDS.values()))==len(IDS)
+  leaves=[(IDS[NAMES[0]],0,0,0,0,0)]
+- for c in range(200):
++ for c in range(N):
+   leaves.extend([(IDS[NAMES[1]],0,0,c,0,0),(IDS[NAMES[2]],0,1,c,0,0)])
+   leaves.extend((IDS[NAMES[3]],0,0,c,m,0) for m in range(128))
+   leaves.extend((IDS[NAMES[3]],0,s,c,m,0) for s in [1,2] for m in range(4))
+--- FreezeE/acd_stage21_inference.py
++++ Stage22/acd_stage21_inference.py
+@@ -12,7 +12,7 @@
+  d=ready();target=OUT/'inference_inputs';target.mkdir(exist_ok=True)
+  settings=dict(sigma=float(SIGMA),patterns=PATTERNS.tolist(),windows=[w.tolist() for w in WINDOWS])
+  (target/'settings.json').write_text(json.dumps(settings,indent=2)+'\n')
+- for c in range(200):
++ for c in range(N):
+   output=target/f'{c:03d}.npz';source=OUT/f'main_forecast_{c:03d}.npz'
+   if not output.exists():
+    with np.load(source) as z:theta=z['theta'].copy()
+@@ -22,7 +22,7 @@
+  for arm in ['meanF','constantF']:
+   folder=OUT/'A_inputs'/arm;folder.mkdir(parents=True,exist_ok=True)
+   (folder/'settings.json').write_bytes((target/'settings.json').read_bytes())
+-  for c in range(200):
++  for c in range(N):
+    output=folder/f'{c:03d}.npz'
+    if output.exists():continue
+    with np.load(target/f'{c:03d}.npz') as z:h,f=z['H'].copy(),z['F'].copy()
+@@ -33,7 +33,7 @@
+  folder=OUT/'inference'/name
+  if not (folder/'complete.json').exists():return False
+  d=json.loads((folder/'complete.json').read_text());hashes=json.loads((folder/'hashes.json').read_text())
+- return d['cases']==200 and len(hashes)==200 and all(digest(folder/p)==h for p,h in hashes.items())
++ return d['cases']==N and len(hashes)==N and all(digest(folder/p)==h for p,h in hashes.items())
+ 
+ def worker(name):
+  d=ready();r=next(x for x in d['tasks'] if x['name']==name)
+--- FreezeE/acd_stage21_score.py
++++ Stage22/acd_stage21_score.py
+@@ -59,7 +59,7 @@
+  for f in [7,9]:
+   with np.load(OUT/'climatology'/f'F{f}.npz') as z:
+    j=z['J'].copy();climates[f]=dict(jbar=float(z['jbar']),null=z['prob'].copy(),sd=(j[:,:8]-j[:,8,None]).std(0,ddof=1),mean=z['states'].mean(0))
+- for c in range(200):
++ for c in range(N):
+   with np.load(OUT/f'main_forecast_{c:03d}.npz') as z:
+    physical.append(z['J'].copy());posterior_means.append(z['factual_mean'].copy());keep.append(not bool(z['excluded']));post_f.append(z['theta'][:,40].copy());fstdev.append(float(post_f[-1].std(ddof=1)))
+  keep=np.array(keep);summaries={};results={};missing=[]
+--- FreezeE/acd_stage19_part3b_score.py
++++ Stage22/acd_stage19_part3b_score.py
+@@ -38,7 +38,7 @@
+ 
+ def forcing_error(name):
+     values = []
+-    for case in range(200):
++    for case in range(N):
+         with np.load(OUT/'inference'/name/f'{case:03d}.npz') as data:
+             if 'estimated_F_at_cutoff' not in data:
+                 return None
+--- FreezeE/acd_stage21_part1.py
++++ Stage22/acd_stage21_part1.py
+@@ -138,7 +138,7 @@
+  prior=[json.loads(p.read_text()) for p in (Path(os.environ['ACD_STAGE21_PRIOR_CONF'])).glob('case_*.json')]
+  retry=sum(r['diagnostics'].get('attempt',0)>0 for r in prior)/len(prior)
+  full=sum(r['diagnostics'].get('full_forecast',False) for r in prior)/len(prior)
+- mean=float(np.mean([r['seconds'] for r in rows]));projected=200*mean/len(groups)*(1+retry+full)
++ mean=float(np.mean([r['seconds'] for r in rows]));projected=N*mean/len(groups)*(1+retry+full)
+  projection=dict(seconds=projected,hours=projected/3600,limit_hours=24,workers=len(groups),cores_per_worker=len(groups[0]),reserved_cpus=reserved,pilot_wall_seconds=time.monotonic()-started,pilot_mean_seconds=mean,prior_retry_rate=retry,prior_rescore_rate=full,component_seconds={a:{k:float(np.mean([r['arms'][a][k] for r in rows])) for k in ['fit_seconds','forecast_seconds']} for a in ['main']},passed=bool(projected<=24*3600))
+  summarize('timing_passed' if projection['passed'] else 'timing_gate_stopped',projection)
+  from acd_stage21_publish import publish
+@@ -146,7 +146,7 @@
+  if not projection['passed']:return
+  # One persistent worker per affinity group avoids overlap as case durations vary.
+  def queue(index):
+-  for c in range(5+index,200,len(groups)):job(c,groups[index]);summarize('blind_sampling_running',projection)
++  for c in range(5+index,N,len(groups)):job(c,groups[index]);summarize('blind_sampling_running',projection)
+  with concurrent.futures.ThreadPoolExecutor(max_workers=len(groups)) as pool:list(pool.map(queue,range(len(groups))))
+  result=summarize('blind_sampling_complete',projection);result['wall_seconds']=time.monotonic()-started;write(RECEIPT,result)
+  publish('panel')
+--- FreezeE/acd_stage19_learned.py
++++ Stage22/acd_stage19_learned.py
+@@ -20,9 +20,9 @@
+     directory = OUT / 'inference' / name
+     if name != 'posterior':
+         execution = json.loads((directory / 'complete.json').read_text())
+-        if execution['cases'] != 200:
++        if execution['cases'] != N:
+             raise RuntimeError('Model inference incomplete')
+-    for case in range(200):
++    for case in range(N):
+         with np.load(OUT / f'main_forecast_{case:03d}.npz') as data:
+             physical = data['J'].copy()
+             mean = data['factual_mean'].copy()
+--- FreezeE/acd_stage9_cnn.py
++++ Stage22/acd_stage9_cnn.py
+@@ -25,7 +25,7 @@
+  ck=torch.load(checkpoint,map_location='cpu',weights_only=True);conditioned=name.startswith('CNN-F');cost=name=='CNN-cost'
+  model=ForcingModel() if conditioned else CostModel() if cost else Emulator()
+  model.load_state_dict(ck['state_dict']);model.cuda().eval();out.mkdir(parents=True,exist_ok=True)
+- for c in range(200):
++ for c in range(N):
+   target=out/f'{c:03d}.npz'
+   if target.exists():continue
+   start=time.monotonic()
+--- FreezeE/acd_stage18_inference.py
++++ Stage22/acd_stage18_inference.py
+@@ -32,7 +32,7 @@
+         target = OUT/'A_inputs'/arm
+         target.mkdir(parents=True, exist_ok=True)
+         (target/'settings.json').write_bytes((source/'settings.json').read_bytes())
+-        for case in range(200):
++        for case in range(N):
+             path = target/f'{case:03d}.npz'
+             if path.exists():
+                 continue
