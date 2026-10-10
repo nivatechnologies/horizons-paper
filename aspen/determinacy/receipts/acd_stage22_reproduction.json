@@ -1,0 +1,132 @@
+{
+  "N": 200,
+  "namespaces": [
+    "acd-stage21-assign",
+    "acd-stage21-instances",
+    "acd-stage21-observation",
+    "acd-stage21-sampler",
+    "acd-stage21-climatology"
+  ],
+  "results": [
+    {
+      "receipt": "/home/todd/work/aspen-stage22-prerequisites-20261010/expected/acd_stage21_R12_recovery.json",
+      "sha256": "d268819d30b774450a2ba516f6320fcd78956ecfe144b72496ad63c19fa38bdf",
+      "different_values": 0,
+      "N": 200,
+      "exact": true
+    },
+    {
+      "receipt": "/home/todd/work/aspen-stage22-prerequisites-20261010/expected/acd_stage21_R34.json",
+      "sha256": "5499288b63ed14def18c4206c9a084ccaebd635ff5ee4b353b2d95824d3f2877",
+      "different_values": 0,
+      "N": 200,
+      "exact": true
+    },
+    {
+      "receipt": "/home/todd/work/aspen-stage22-prerequisites-20261010/expected/acd_stage21_descriptive.json",
+      "sha256": "7241c5874fa0bb60e3aee4d2742a61f84d29b2891b617a6c3b652ee0d2f536e3",
+      "different_values": 0,
+      "N": 200,
+      "exact": true
+    }
+  ],
+  "all_exact": true,
+  "outcome_access_log": "runs/stage22/reproduction/outcome_access.jsonl",
+  "code": {
+    "adapter_sha256": "5febec5bf6abfb304bc75ea8de8543e60a867c93af67f9dfe9220df86712f98b",
+    "modules": [
+      {
+        "path": "stage22_parameterized/acd_stage21_contract.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage21_contract.py",
+        "baseline_sha256": "b483029f3b7ac4990e496c143de5dc1d5c8ca5d719722e7198873608e0b9ace3",
+        "sha256": "8abc7692b321bec07796e7828cbd95b0f3b2dbdc299cc8fa1e35ddc491a8f7ff",
+        "changed_lines": [
+          16,
+          58
+        ],
+        "remaining_literal_200": []
+      },
+      {
+        "path": "stage22_parameterized/acd_stage21_inference.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage21_inference.py",
+        "baseline_sha256": "94204cd91fd47759ffb21d6837d57ba2fcc4e7eb2a6697e52c828516246f2705",
+        "sha256": "e31de05e4ad497eedbaea58677c1450bbbaad2eba7c7880e62fcccb21cb6bf79",
+        "changed_lines": [
+          15,
+          25,
+          36
+        ],
+        "remaining_literal_200": []
+      },
+      {
+        "path": "stage22_parameterized/acd_stage21_score.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage21_score.py",
+        "baseline_sha256": "c5a2b073fed700672e7c2aa3cd18156ee1ec3581f3bd7e0d982305a94561f13b",
+        "sha256": "f99dc69e6bcc9a0ce986361640a531e0e9b7662840e1aa30c55a509cb7af8cba",
+        "changed_lines": [
+          62
+        ],
+        "remaining_literal_200": []
+      },
+      {
+        "path": "stage22_parameterized/acd_stage19_part3b_score.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage19_part3b_score.py",
+        "baseline_sha256": "2d4f05bb0fe22375819af70519aef28d4f21eefcbe0eb434295a9e929ba853d6",
+        "sha256": "9d097f5e333a19a8d51613ab43e49df83dcb2dd74a6dc853352e9751e945c29b",
+        "changed_lines": [
+          41
+        ],
+        "remaining_literal_200": []
+      },
+      {
+        "path": "stage22_parameterized/acd_stage21_part1.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage21_part1.py",
+        "baseline_sha256": "758635e34729ef217fa3223080b9ea7193762fe0acbed61a80e3264a383c51cf",
+        "sha256": "8d9b07fa86716f27c5425ec57d166335da56d59efde4b8cee21008822816d29d",
+        "changed_lines": [
+          141,
+          149
+        ],
+        "remaining_literal_200": [
+          {
+            "line": 85,
+            "text": "    theta,sreport=posterior.sample(y,fit['starts'],'r3',c,.01,sub=attempt,warmup=1000 if attempt==0 else 2000,draws=500)"
+          }
+        ]
+      },
+      {
+        "path": "stage22_parameterized/acd_stage19_learned.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage19_learned.py",
+        "baseline_sha256": "9319e768f5d211472d6c52fe0b7c4cef975d878be242b14807a43178e7e85930",
+        "sha256": "c3485f3db7d92b6f8ed2fd055ab0b04fe945fd3e9331c9cf9ec2a77c1e6119fd",
+        "changed_lines": [
+          23,
+          25
+        ],
+        "remaining_literal_200": []
+      },
+      {
+        "path": "stage22_parameterized/acd_stage9_cnn.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage9_cnn.py",
+        "baseline_sha256": "3ca018b1dc35c5cb9734787e852240e7517d88007515692d27fd882f3c13d434",
+        "sha256": "297635929df3f4f09c5d667d90cc4d8efa8f3d82ccd836f183332e8d643c097b",
+        "changed_lines": [
+          28
+        ],
+        "remaining_literal_200": []
+      },
+      {
+        "path": "stage22_parameterized/acd_stage18_inference.py",
+        "baseline_path": "/home/todd/work/aspen-stage21-scoring-20261008/aspen/determinacy/acd_stage18_inference.py",
+        "baseline_sha256": "a6ea2847438a23a3290fa12c91535423413f31e8f3b3bd578d93735fa4a0fcb7",
+        "sha256": "d6cb0ab577f1aeba3568a64e5febd1c3d3d9fbbe420a4eefecdceb1b626b0704",
+        "changed_lines": [
+          35
+        ],
+        "remaining_literal_200": []
+      }
+    ],
+    "criteria": "unchanged",
+    "change_scope": "Assigned case count; balanced half-count derives as N//2. No statistic or rollout change."
+  }
+}
