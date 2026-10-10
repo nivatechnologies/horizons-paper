@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/mnt/niva-array/work/aspen-deadline-20261008/acd_deadline_stage18_selected_derivative.py", line 12, in <module>
+    result=batch([(name+'-derivatives',[r/'acd_stage18_derivatives.py','--name',name,'--checkpoint',checkpoint,'--inputs',o/'confirmation_inputs','--micro','128'])])
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/niva-array/work/aspen-determinacy-stage19-l3-20261008/aspen/determinacy/acd_stage18_controller.py", line 26, in batch
+    jobs = [(name, command(i, name, args)) for i, (name, args) in enumerate(tasks[b:b+3])]
+                   ^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/niva-array/work/aspen-determinacy-stage19-l3-20261008/aspen/determinacy/acd_stage18_controller.py", line 15, in command
+    log = (OUT/(name+'.log')).open('a')
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/mnt/niva-array/work/aspen-determinacy-stage19-l3-20261008/aspen/determinacy/runs/stage18/CNN-noF-response-0-seed1-derivatives.log'
