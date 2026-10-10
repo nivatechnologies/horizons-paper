@@ -187,3 +187,5 @@ Pipeline | stage22-freeze-F | d21bdb27c217d0f11b8ce73611169bcb8600c984 | 2026-10
 Pipeline | stage22-panel-launcher | f975252672c00ffb53ca6bf4f3e93751afaf22b1 | 2026-10-10T23:15:07Z | Stage22 panel-path/namespace launcher hashed before sampling; panel contract next; criteria unchanged.
 
 Pipeline | stage22-panel-contract | 6a7cbea1d710ee99d59da499055ded5d1eef0f5c | 2026-10-10T23:16:04Z | Stage22 blind contract pushed; exact software verified; starting first-five cost pilot on sulaco CPU, no realized outcomes.
+
+Pipeline | stage22-path-alias | 01c92adfcc5b79389202ffb49f49034fc6479425 | 2026-10-10T23:18:46Z | Stage22 first-five blind pilot running on sulaco; panel-path alias documented; no realized outcome computed or opened; timing gate pending.
