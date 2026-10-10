@@ -454,3 +454,18 @@ The panel contract must be pushed before the first observation is generated. No 
              if path.exists():
                  continue
 ```
+
+## Panel-launcher execution record
+
+Criteria unchanged. No sampling or outcome access preceded this record.
+
+```json
+{
+  "panel_launcher_sha256": "01a8d5f1e7f75419a9825b49f7b841df867f5eb88d10c577e926a1c504c7e36d",
+  "publisher_sha256": "fedd3ac8bcc9c64640ce734408857fd45b427d8c5d2111ba37f10a2c6971c83e",
+  "purpose": "Panel paths and fresh namespaces; unchanged count-parameterized Stage21 blind sampler. Criteria unchanged.",
+  "case_count_source": "receipts/acd_stage22_freeze_f.json $.N",
+  "source_freeze_commit": "d21bdb27c217d0f11b8ce73611169bcb8600c984",
+  "realized_outcome_accesses": []
+}
+```
