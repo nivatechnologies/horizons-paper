@@ -179,3 +179,5 @@ Pipeline | stage18-C | 0b637e71b78913454995b955f7f5fb2599338a24 | 2026-10-10T05:
 Pipeline | stage18-selected-D-execution-fix | e4c24b9342470c830c3da9bc335d06a3c2b019ff | 2026-10-10T20:46:14Z | Selected-model derivative launcher failed before GPU work due to wrong import checkout. Execution path repaired; frozen science and criteria unchanged. Supervisor retries after this note; Stage22 remains gated on derivative publication.
 
 Pipeline | stage18-selected-D | ca9fd96134300616bd596a0f7eb585e55da2188e | 2026-10-10T22:26:59Z | Completed, registry PASS, every prior value unchanged; downstream controllers continue.
+
+Pipeline | stage22-count-reproduction | 7a1d56688edee7cdc98626824847c78f1ef593c7 | 2026-10-10T23:11:17Z | Stage22 N=200 reproduction PASS: every value exact in all three Stage21 receipts; Freeze F and panel contract next; no Stage22 sampling yet.
