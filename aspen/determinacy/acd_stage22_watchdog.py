@@ -191,7 +191,9 @@ def tick(state):
                 unit='aspen-stage22-gpu-'+str(gpu)
                 if not active(unit):
                     restore_interrupted_lease(gpu)
-                    start_local(unit,[ 'env','ACD_STAGE22_BASE='+BASE,GPU,'-u',str(ROOT/'acd_stage22_runtime.py'),'slot','--gpu',str(gpu)])
+                    start_local(unit,[ 'env','ACD_STAGE22_BASE='+BASE,
+                        'ACD_INHERITED_ROOT=/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision',
+                        GPU,'-u',str(ROOT/'acd_stage22_runtime.py'),'slot','--gpu',str(gpu)])
             gpu_progress(claims,state)
     elif not health['scoring_complete']:
         phase='scoring'
