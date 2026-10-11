@@ -1,0 +1,17 @@
+[Unit]
+Description=Aspen Stage22 progress and recovery watchdog
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/mnt/niva-array/work/aspen-determinacy-stage22-20261010/aspen/determinacy
+Environment=ACD_STAGE22_BASE=/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy
+ExecStart=/mnt/niva-array/work/aspen-stage19-env-20261007/bin/python -u /mnt/niva-array/work/aspen-determinacy-stage22-20261010/aspen/determinacy/acd_stage22_watchdog.py
+Restart=on-failure
+RestartSec=60
+StandardOutput=append:/mnt/niva-array/work/aspen-determinacy-stage22-20261010/aspen/determinacy/runs/stage22/watchdog.log
+StandardError=append:/mnt/niva-array/work/aspen-determinacy-stage22-20261010/aspen/determinacy/runs/stage22/watchdog.log
+
+[Install]
+WantedBy=default.target
