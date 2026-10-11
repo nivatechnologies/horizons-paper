@@ -2,7 +2,7 @@
   "code_hashes": {
     "acd_stage22_runtime.py": "ebb2b10d73e5c7f100ec05c6a2a62f1fc37abc09220ad89de810c3a2111c6028",
     "acd_stage22_probe.py": "72302ac846abf543f9ca2f98d12b66f83e45da7ce666330ee42d2f61a0f36666",
-    "acd_stage22_watchdog.py": "f1756105f858599a5bbf28dcb59d911cee6d31e5348cdbc6247faf6ea83f247d",
+    "acd_stage22_watchdog.py": "8f6b683c4d5ee510fe090a05cc27058f94868da5dc66d62071fd7555fa64a961",
     "acd_stage22_watchdog_publish.py": "4857f03af353d059cbf1b26b820846eb4282af680e0e8a79f6ddd9303f416573",
     "acd_stage22_watchdog_test.py": "ca2b0ad464e1ab06fe881231ab16fee9460f807ba44871a4dd77ede784417628",
     "aspen-stage22-watchdog.service": "997b3df70102b47d891a50c0a1e766b9f4a0bc2e45aa99da17488526f8bee499"
@@ -40,5 +40,6 @@
     },
     "passed": true
   },
-  "gpu_environment_execution_fix": "Explicit inherited source root on Baccus GPU worker subprocesses; no rollout, statistic, criterion or checkpoint change. No Stage22 inference preceded this correction."
+  "gpu_environment_execution_fix": "Explicit inherited source root on Baccus GPU worker subprocesses; no rollout, statistic, criterion or checkpoint change. No Stage22 inference preceded this correction.",
+  "operational_recovery_hardening": "Event timestamps remain serializable; interrupted GPU leases wait for unrelated compute before restoring serving. Criteria unchanged."
 }
