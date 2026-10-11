@@ -191,3 +191,5 @@ Pipeline | stage22-panel-contract | 6a7cbea1d710ee99d59da499055ded5d1eef0f5c | 2
 Pipeline | stage22-path-alias | 01c92adfcc5b79389202ffb49f49034fc6479425 | 2026-10-10T23:18:46Z | Stage22 first-five blind pilot running on sulaco; panel-path alias documented; no realized outcome computed or opened; timing gate pending.
 
 Pipeline | stage22-timing | c4265d6b72ed786c6a9c7a63c257a76ef6149c56 | 2026-10-11T00:02:34Z | Stage22 first-five timing gate PASS; blind sampling continues.
+
+Pipeline | stage22-connectivity | 80d777fc0ed5bd505f0beea73860452a0ac65380 | 2026-10-11T00:03:28Z | Stage22 pilot publication callback restored using existing SSH identities; criteria unchanged; blind timing gate passed.
