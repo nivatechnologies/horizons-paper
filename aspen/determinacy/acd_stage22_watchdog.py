@@ -18,14 +18,16 @@ ENV=['env','ACD_STAGE22_BASE=/home/todd/work/aspen-stage21-scoring-20261008/aspe
      'ACD_INHERITED_ROOT=/home/todd/work/aspen-forecast-decision-20261005/aspen/forecast_decision',
      'ACD_STAGE21_PRIOR_CONF=/home/todd/work/aspen-determinacy-20261005/aspen/determinacy/runs/conf']
 BASE='/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy'
+sys.path.append(BASE)
 
 def write(path,value):
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
     tmp=path.with_suffix(path.suffix+'.pending');tmp.write_text(json.dumps(value,indent=2)+'\n');tmp.replace(path)
 
 def event(kind,**fields):
+    row=dict(utc=time.time(),kind=kind);row.update(fields)
     with (OUT/'watchdog_events.jsonl').open('a') as stream:
-        stream.write(json.dumps(dict(utc=time.time(),kind=kind,**fields))+'\n')
+        stream.write(json.dumps(row)+'\n')
     print(kind,json.dumps(fields),flush=True)
 
 def call(args,timeout=120):
@@ -70,6 +72,10 @@ def restore_interrupted_lease(gpu):
     data=json.loads(record.read_text())
     expected={0:'qwen3.8-vllm-mtp@card-a.service',1:'qwen3.8-vllm-mtp@card-b.service',2:'qwen3.8-vllm-mtp@card-c.service'}
     assert data['unit']==expected[gpu]
+    from acd_stage19_part2_gate import gpu_inventory
+    card=next(c for c in gpu_inventory() if c['index']==gpu)
+    if any('VLLM' not in p['process'].upper() for p in card['processes']):
+        raise RuntimeError('Interrupted lease restoration waits for unrelated GPU compute; no process disturbed')
     if data['was_active']:
         result=call(['systemctl','--user','start',data['unit']])
         if result.returncode:raise RuntimeError('Authorized GPU service restoration failed: '+result.stderr)
