@@ -1,0 +1,933 @@
+{
+  "seconds": 1.1960428450256586,
+  "valid": 128,
+  "members": [
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.01290442104191592,
+      "chi2": 763.0839050483052,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012595466963625634,
+      "chi2": 744.8143613177831,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.01389422945010271,
+      "chi2": 821.6147653569891,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012640733950386073,
+      "chi2": 747.491157813707,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.012481551773684,
+      "chi2": 738.0781545788191,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01241607202559336,
+      "chi2": 734.2061062542733,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01389348906581516,
+      "chi2": 821.5709838241683,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012584854326731947,
+      "chi2": 744.186798688093,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013506656115428508,
+      "chi2": 798.6961878590035,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.013779857690037405,
+      "chi2": 814.851560017176,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012713821226960034,
+      "chi2": 751.8130661144548,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.011864547203511483,
+      "chi2": 701.5924993672785,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.012944147058059541,
+      "chi2": 765.4330444194106,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01320996640016793,
+      "chi2": 781.1518791470261,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01244433147238115,
+      "chi2": 735.87718695904,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013554042792895675,
+      "chi2": 801.4983291384501,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.012447816006276324,
+      "chi2": 736.0832397314477,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013355939692772201,
+      "chi2": 789.7837945031208,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01209721961918969,
+      "chi2": 715.3512394902208,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.012336581116646275,
+      "chi2": 729.5055285981234,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013847739149722533,
+      "chi2": 818.865630014478,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01206292197773706,
+      "chi2": 713.3230990499322,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 46,
+      "value": 0.013599161657684307,
+      "chi2": 804.1663666600423,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01222288396229254,
+      "chi2": 722.7822150720601,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012307397325655977,
+      "chi2": 727.779788162295,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013226854008236562,
+      "chi2": 782.1505029419317,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.0129933018805623,
+      "chi2": 768.3397423476265,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01342099313716768,
+      "chi2": 793.6306339874264,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.013894709832086523,
+      "chi2": 821.6431720370665,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.012870716686159621,
+      "chi2": 761.0908476826074,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012482798722230282,
+      "chi2": 738.1518910419275,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.01277461379291871,
+      "chi2": 755.4079448369463,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.011925039792216647,
+      "chi2": 705.1696393773323,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.012824383064218188,
+      "chi2": 758.35097728848,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012325234767188695,
+      "chi2": 728.8345789581505,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.013414643172620595,
+      "chi2": 793.2551381997604,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013519120043705903,
+      "chi2": 799.4332238741231,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013206157523040291,
+      "chi2": 780.9266468159539,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.014451433833900545,
+      "chi2": 854.5642247490362,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.015192348643096494,
+      "chi2": 898.3771291848807,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012804198390153211,
+      "chi2": 757.15738635886,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 46,
+      "value": 0.013313163058732478,
+      "chi2": 787.2542613422122,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013416470345761489,
+      "chi2": 793.3631853884737,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.013578216964676842,
+      "chi2": 802.9278331312416,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 43,
+      "value": 0.012849619106328779,
+      "chi2": 759.8432734170054,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013553139324219888,
+      "chi2": 801.4449038508708,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.015307376291255333,
+      "chi2": 905.1791194997083,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.013280372856057387,
+      "chi2": 785.3152610706495,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.012740004952346172,
+      "chi2": 753.3614020957024,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012685951703310168,
+      "chi2": 750.1650429393355,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.013786571887214393,
+      "chi2": 815.2485941641896,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.013048852877798714,
+      "chi2": 771.6246686347337,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013538787958738507,
+      "chi2": 800.5962570205531,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013510293846208908,
+      "chi2": 798.9112997032628,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.013617072997513241,
+      "chi2": 805.2255273226489,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.01392036968154482,
+      "chi2": 823.1605293880076,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01259666452714271,
+      "chi2": 744.8851774700294,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013303047180640307,
+      "chi2": 786.6560738115594,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012756412288181,
+      "chi2": 754.3316257004353,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01322669153048118,
+      "chi2": 782.1408950595123,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.014191755096250761,
+      "chi2": 839.2085056090482,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012575377036895912,
+      "chi2": 743.6263731320864,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.012298921994694907,
+      "chi2": 727.278611966529,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.01193302097821835,
+      "chi2": 705.641595039761,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.013581719268182219,
+      "chi2": 803.1349366833394,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01352870488369928,
+      "chi2": 800.0000092500536,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013445915837431138,
+      "chi2": 795.1044011079823,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.015365022232992367,
+      "chi2": 908.5879272399393,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013795387277380305,
+      "chi2": 815.7698792594665,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012694799302101465,
+      "chi2": 750.6882326441687,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.01266179988025875,
+      "chi2": 748.7368605057145,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.011532345612539371,
+      "chi2": 681.9482482630366,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012922664080406506,
+      "chi2": 764.1626802220325,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012957098100423673,
+      "chi2": 766.1988852075845,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.013448641466123014,
+      "chi2": 795.2655771405339,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.014502401503287143,
+      "chi2": 857.5781227038848,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 46,
+      "value": 0.013233980581066158,
+      "chi2": 782.5719223149322,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.012513155138140471,
+      "chi2": 739.9469729228407,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.011610399604943119,
+      "chi2": 686.563855978764,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 46,
+      "value": 0.012829621736513886,
+      "chi2": 758.6607584479513,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.013280423350153286,
+      "chi2": 785.3182469645346,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012684192267324628,
+      "chi2": 750.0610012873956,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.012756165988419894,
+      "chi2": 754.3170611273401,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.012393558263871377,
+      "chi2": 732.8747881613241,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01357290755100845,
+      "chi2": 802.6138687850355,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01478601361890399,
+      "chi2": 874.3491068496239,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.014665226746470746,
+      "chi2": 867.206553301848,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.013497641842342579,
+      "chi2": 798.1631421155922,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013698868871186088,
+      "chi2": 810.0624056681688,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 45,
+      "value": 0.013567806924267824,
+      "chi2": 802.3122507458544,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013137527667241885,
+      "chi2": 776.8683215183337,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013139148312579731,
+      "chi2": 776.9641559900302,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.014188750554472059,
+      "chi2": 839.0308364624879,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013666681131406174,
+      "chi2": 808.1590311513149,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013519836345979372,
+      "chi2": 799.4755813525608,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.014875453095742142,
+      "chi2": 879.637978394457,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.013247019338307778,
+      "chi2": 783.342949993012,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.012827311579714633,
+      "chi2": 758.5241507329735,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.012799071021460742,
+      "chi2": 756.8541869737993,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013754038302721549,
+      "chi2": 813.3247686303373,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012882456071803059,
+      "chi2": 761.7850389377257,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012974539128440585,
+      "chi2": 767.2302346748694,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 52,
+      "value": 0.013309685245982156,
+      "chi2": 787.0486060147921,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013352320598827537,
+      "chi2": 789.5697847206548,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013669973695065918,
+      "chi2": 808.3537320469953,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.013722162242302636,
+      "chi2": 811.4398248127874,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013039803337382673,
+      "chi2": 771.0895374097732,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013147628896510166,
+      "chi2": 777.4656428123918,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013173556250412393,
+      "chi2": 778.9988186440713,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.013302028173825134,
+      "chi2": 786.5958163465195,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013064892866782507,
+      "chi2": 772.5731697252457,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.0125532928716303,
+      "chi2": 742.3204585919551,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012581398094242299,
+      "chi2": 743.982419477558,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.013604276466336338,
+      "chi2": 804.4688233256369,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.012819328746950026,
+      "chi2": 758.0520976916494,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012540292115602484,
+      "chi2": 741.5516780596041,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01336237817066128,
+      "chi2": 790.1645243967137,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.013115739309722239,
+      "chi2": 775.5798991329608,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 50,
+      "value": 0.014166267408730096,
+      "chi2": 837.7013288003603,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013522439543620146,
+      "chi2": 799.6295176054838,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.01257621011167189,
+      "chi2": 743.6756357802274,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 53,
+      "value": 0.01448798744499881,
+      "chi2": 856.7257686268961,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 51,
+      "value": 0.012119365532480057,
+      "chi2": 716.6608054087213,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 47,
+      "value": 0.012319782318112885,
+      "chi2": 728.5121564240955,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013707797459908189,
+      "chi2": 810.5903845931047,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013932562780651147,
+      "chi2": 823.881550319553,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.012806654116209244,
+      "chi2": 757.3026020971313,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 49,
+      "value": 0.013257471566545873,
+      "chi2": 783.9610270934471,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    }
+  ],
+  "maps": [
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.006345969370230567,
+      "chi2": 375.25953877536426,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 48,
+      "value": 0.006345969370443727,
+      "chi2": 375.25953878796923,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 54,
+      "value": 0.0063459693692271574,
+      "chi2": 375.2595387160292,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    },
+    {
+      "success": true,
+      "iterations": 45,
+      "value": 0.006345969369467408,
+      "chi2": 375.25953873023605,
+      "message": "CONVERGENCE: RELATIVE REDUCTION OF F <= FACTR*EPSMCH"
+    }
+  ],
+  "boundary_contacts": 0
+}
