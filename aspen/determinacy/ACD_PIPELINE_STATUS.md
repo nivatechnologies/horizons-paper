@@ -197,3 +197,5 @@ Pipeline | stage22-connectivity | 80d777fc0ed5bd505f0beea73860452a0ac65380 | 202
 Pipeline | stage22-watchdog | 45e84932add39e2ac7cd2540c1df0fa8447514f1 | 2026-10-11T02:00:43Z | Persistent Stage22 watchdog and frozen phase handoffs hashed; network/job recovery enabled, integrity failures block scoring; criteria unchanged.
 
 Pipeline | stage22-watchdog-env | 16276c356a79e94a0d723c91a5deda66c69c28e7 | 2026-10-11T02:02:09Z | Stage22 GPU handoff environment explicitly uses verified inherited source root; criteria unchanged, no inference preceded fix.
+
+Pipeline | stage22-watchdog-stability | 1d9f7829584536ae6f532e270bb7cab46bf12e54 | 2026-10-11T02:04:41Z | Stage22 watchdog recovery logging and GPU lease restoration checked; persistent monitoring active, all frozen definitions unchanged.
