@@ -193,3 +193,5 @@ Pipeline | stage22-path-alias | 01c92adfcc5b79389202ffb49f49034fc6479425 | 2026-
 Pipeline | stage22-timing | c4265d6b72ed786c6a9c7a63c257a76ef6149c56 | 2026-10-11T00:02:34Z | Stage22 first-five timing gate PASS; blind sampling continues.
 
 Pipeline | stage22-connectivity | 80d777fc0ed5bd505f0beea73860452a0ac65380 | 2026-10-11T00:03:28Z | Stage22 pilot publication callback restored using existing SSH identities; criteria unchanged; blind timing gate passed.
+
+Pipeline | stage22-watchdog | 45e84932add39e2ac7cd2540c1df0fa8447514f1 | 2026-10-11T02:00:43Z | Persistent Stage22 watchdog and frozen phase handoffs hashed; network/job recovery enabled, integrity failures block scoring; criteria unchanged.
