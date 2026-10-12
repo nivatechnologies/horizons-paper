@@ -1,0 +1,10 @@
+{
+  "adapter_sha256": "3ef2795cd1a166cf58f7bfe931b6d96990e9fdc76277717ec007487844243060",
+  "kernel_sha256": {
+    "acd_stage18_inference.py": "a6ea2847438a23a3290fa12c91535423413f31e8f3b3bd578d93735fa4a0fcb7",
+    "acd_stage18_derivatives.py": "14171011c76c7e169c2b9c99ccb0e358ce803f8f2af2288ac1471ed6bc157861"
+  },
+  "checkpoint_sha256": "5e308dad4185f7d0a74d1e7c3326016d83292351e7de8966c6980a6cb2fa8b3b",
+  "scope": "Frozen descriptive Part3b and original-panel JVP readings only; no model or criterion selection",
+  "utc": 1791849133.639278
+}
