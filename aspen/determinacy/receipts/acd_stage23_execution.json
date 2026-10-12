@@ -46,11 +46,13 @@
     "acd_stage23_freeze.py": "c56a25d28e4a37c8e45f313e2abae8a2158dc568a4e7ef8b16db41b122a92613",
     "acd_stage23_train.py": "c20d533df67ed2360ad5731fe9a6c3b9a476dae238527fe15a7541c273d4e19e",
     "acd_stage23_common.py": "f9277f61e3a7b6ab551ef40b2d9f2441548923148072c20d64662e93a8e6c578",
-    "acd_stage23_select.py": "996640aa0a09c888128a7bf3471803319c8392a83047d9349c0dc2afd6df4d03",
+    "acd_stage23_select.py": "81eebf67c0f7e8415e0b1bf69d3dba6ac3ac56c348ee8c48736493a7a5f5199c",
     "acd_stage23_panel.py": "c411648b137fd695b6b9e3648b5acbd1801074f6773a959902df5fc4afbb2de7",
     "acd_stage23_score.py": "3405277b18872e48c6ab8acc191ddfe764eedface69e9d8bc67030bad0daa70d",
     "acd_stage23_controller.py": "61a63a1675a962454b016b601f64c4df486163156d632e97a138028d652cf04d",
-    "acd_stage23_resume_services.py": "8245595890091a8643d85fff81d8b231e01a8ad2943ad1f88c773412c3fbe07d"
+    "acd_stage23_resume_services.py": "8245595890091a8643d85fff81d8b231e01a8ad2943ad1f88c773412c3fbe07d",
+    "acd_stage23_cap12_train.py": "9a41cb55e6401cb656bb080f6f4910379f965794016eba6d0c9f9d27aabc1ce0",
+    "acd_stage23_cap12_watch.py": "186a6098186376084a4d49c8c91385603823ad88787ca561d5dc3ec6dc48abbb"
   },
   "frozen18_code_hashes": {
     "ACD_STAGE18_FREEZE.md": "ea910927c1689cb22a691166330b369f07f6e1dd78ad46128020b885fbb4b754",
@@ -91,5 +93,42 @@
   "microbatch": 128,
   "training_started": false,
   "utc": 1791778582.6905155,
-  "launcher_sha256": "867c969ce5eb563e0c0c29ead3f173be81c28e822923a0056c328482c9b54341"
+  "launcher_sha256": "867c969ce5eb563e0c0c29ead3f173be81c28e822923a0056c328482c9b54341",
+  "budget_amendment": {
+    "authorization": "Todd: can we extend the cap on 0.1 to 12 hours?",
+    "scope": "Current weight 0.1 seed-one run only; every other weight and any later seed keeps its original cap",
+    "model": "CNN-noF-response-0.1-seed1",
+    "weight": 0.1,
+    "old_cap_seconds": 36000,
+    "new_cap_seconds": 43200,
+    "additional_budget_seconds": 7200,
+    "scientific_criteria_unchanged": true,
+    "budget_changed": true,
+    "unchanged": [
+      "data",
+      "initialization and batch seeds",
+      "optimizer and schedule",
+      "gradient balancing and four-tick truncation",
+      "nonfinite guard and abort rule",
+      "checkpoint eligibility and validation selection",
+      "Q1 and Q2 populations, thresholds and bounds"
+    ],
+    "partial_training_at_amendment": {
+      "step": 3600,
+      "charged_gpu_seconds": 9615.947486607009,
+      "completed_updates": 3600,
+      "skipped_updates": 0
+    },
+    "original_gpu_index": 2,
+    "original_trainer_sha256": "c20d533df67ed2360ad5731fe9a6c3b9a476dae238527fe15a7541c273d4e19e",
+    "execution_code_hashes": {
+      "acd_stage23_select.py": "81eebf67c0f7e8415e0b1bf69d3dba6ac3ac56c348ee8c48736493a7a5f5199c",
+      "acd_stage23_cap12_train.py": "9a41cb55e6401cb656bb080f6f4910379f965794016eba6d0c9f9d27aabc1ce0",
+      "acd_stage23_cap12_watch.py": "186a6098186376084a4d49c8c91385603823ad88787ca561d5dc3ec6dc48abbb"
+    },
+    "cap_only_source_diff_test": "PASS: reversing the two budget substitutions reproduces the original run source exactly",
+    "application": "Continue original job to its cap; resume latest scheduled optimizer/RNG checkpoint, all previous and replayed work charged against total 12-hour cap; no guard-aborted run is resumed",
+    "selection_gate": "Wait for this one continuation completion; fail loudly on any nonzero return or missing complete.json",
+    "utc": 1791788550.6192055
+  }
 }

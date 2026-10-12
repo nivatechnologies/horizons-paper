@@ -3,7 +3,14 @@ from acd_stage23_common import *
 import argparse
 sys.path.insert(0,str(FROZEN18))
 def select():
- cfg=ready();import acd_stage18_select as frozen
+ cfg=ready()
+ amendment=OUT/'cap_amendment_pushed.json'
+ if amendment.exists():
+  import time
+  while not (OUT/'cap12_completed.json').exists():
+   if (OUT/'cap12_FAILED.json').exists():raise RuntimeError('Authorized cap continuation failed; selection blocked')
+   time.sleep(60)
+ import acd_stage18_select as frozen
  frozen.OUT=OUT
  training=OUT/'training';training.mkdir(parents=True,exist_ok=True)
  baseline=FROZEN18/cfg['weight_zero']['checkpoint_path'];assert digest(baseline)==cfg['weight_zero']['checkpoint_sha256']
