@@ -205,3 +205,5 @@ Pipeline | stage22-panel | 08603a6d201ac4f19cf269e5c1e16f69a14032ec | 2026-10-11
 Pipeline | stage22-inference | c3cd716c7fe5906d1b29260bbdcfb3d6aa7ee33f | 2026-10-12T00:01:54Z | All Stage22 required GPU tasks completed, exact assigned-case coverage and hashes verified; frozen scoring next.
 
 Pipeline | stage22-failure-eef91683b851 | b47b852032a0c9f63a22c18e4be5dda736cf67f4 | 2026-10-12T00:18:27Z | FAILED: Repeated frozen scoring failure; no publication; dependent scoring/publication blocked, criteria unchanged.
+
+Pipeline | stage22-results | a69f3dd0115128411a7293de986cc3ff0530044e | 2026-10-12T00:37:39Z | Stage22 fixed-panel readings published; registry PASS with all prior values unchanged; Stage23 prerequisites now satisfied.
