@@ -1,0 +1,10 @@
+{
+  "code_hashes": {
+    "acd_stage23_controller.py": "44dea1c49d5b30720b30c53d16f38a62603e5b97dbd5b02748ef303fd7041dd7",
+    "acd_stage23_cap12_watch.py": "fb27cb529c8ae5d345c428ed82a200f1a2e01cfa6bfdc78b4fa9b01c8905bf21"
+  },
+  "scope": "Idempotent cap-watcher restart and suppress original ten-hour relaunch while the twelve-hour continuation is pending",
+  "budget_and_scientific_criteria_unchanged": true,
+  "training_source_unchanged": true,
+  "utc": 1791788653.9125323
+}

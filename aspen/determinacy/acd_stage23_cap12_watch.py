@@ -6,8 +6,11 @@ sys.path.insert(0,str(FROZEN18))
 def main():
  cfg=ready();amend=json.loads((ROOT/'receipts/acd_stage23_cap_amendment.json').read_text());model=amend['model'];directory=OUT/'training'/model;complete=directory/'complete.json'
  if (OUT/'cap12_completed.json').exists():return
- while not complete.exists():time.sleep(30)
- previous=json.loads(complete.read_text())
+ initial=directory/'complete_initial_cap.json'
+ while not complete.exists() and not initial.exists():time.sleep(30)
+ if complete.exists() and json.loads(complete.read_text()).get('cap_seconds')==amend['new_cap_seconds']:
+  write(OUT/'cap12_completed.json',dict(model=model,status='Resumed watcher found completed authorized continuation',final=json.loads(complete.read_text())));return
+ previous=json.loads((initial if initial.exists() else complete).read_text())
  if previous.get('abort') or previous.get('step',0)>=20000 or not previous.get('capped'):
   write(OUT/'cap12_completed.json',dict(model=model,status='No continuation: frozen guard abort or completed schedule',previous=previous));return
  # Let the original serving lease finish before acquiring a second lease for the same run.
@@ -18,7 +21,7 @@ def main():
  saved=torch.load(resume,map_location='cpu',weights_only=False);step=saved['step'];del saved
  record=dict(model=model,previous_terminal_step=previous['step'],resumed_checkpoint_step=step,unsaved_updates_replayed=previous['step']-step,previous_charged_gpu_seconds=previous['charged_gpu_seconds'],resume_sha256=digest(resume),criteria_unchanged=True,budget_changed=True)
  write(OUT/'cap12_resume_record.json',record)
- complete.rename(directory/'complete_initial_cap.json')
+ if complete.exists() and not initial.exists():complete.rename(initial)
  # Existing completed metadata is retained and all time remains charged by the frozen Charge class.
  import acd_stage18_gpu_lease as lease
  from acd_stage19_part2_gate import gpu_inventory

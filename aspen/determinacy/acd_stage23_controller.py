@@ -17,6 +17,10 @@ def slots(tasks):
     if not pending:return
     task=pending.popleft()
    model=task['name'];directory=OUT/'training'/model;complete=directory/'complete.json';record=OUT/'task_logs'/f'{model}.json';record.parent.mkdir(parents=True,exist_ok=True)
+   if model=='CNN-noF-response-0.1-seed1' and (directory/'complete_initial_cap.json').exists():
+    while not (OUT/'cap12_completed.json').exists():
+     if (OUT/'cap12_FAILED.json').exists():raise RuntimeError('Authorized cap continuation failed')
+     time.sleep(30)
    if complete.exists():
     meta=json.loads(complete.read_text());outcomes[model]=dict(returncode=0,complete=True,selected_step=meta.get('selected_step'));continue
    while True:
