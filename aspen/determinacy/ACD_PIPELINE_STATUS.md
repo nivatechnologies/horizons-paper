@@ -209,3 +209,5 @@ Pipeline | stage22-failure-eef91683b851 | b47b852032a0c9f63a22c18e4be5dda736cf67
 Pipeline | stage22-results | a69f3dd0115128411a7293de986cc3ff0530044e | 2026-10-12T00:37:39Z | Stage22 fixed-panel readings published; registry PASS with all prior values unchanged; Stage23 prerequisites now satisfied.
 
 Pipeline | stage22-registry-completion | c784735224491aed5e592682eb3a2f6e0a7dad9b | 2026-10-12T00:58:28Z | Stage22 numbers registered from the correct receipt path; prior values unchanged; scores and criteria unchanged. History cleanup required before Stage23 training.
+
+Repository | history cleanup | 11abba5fc5609924685bfbfea5e9addafc665927 | 2026-10-12T04:06:56Z | Cleanup verified; publishers released with array and size guards; Stage23 execution identities next.
