@@ -1,0 +1,93 @@
+{
+  "stage": 23,
+  "criteria_unchanged": true,
+  "seeds": [
+    {
+      "index": 1,
+      "torch_seed": 1973631741,
+      "batch_seed": 3521043623
+    },
+    {
+      "index": 2,
+      "torch_seed": 2799994744,
+      "batch_seed": 1378675625
+    },
+    {
+      "index": 3,
+      "torch_seed": 3320683030,
+      "batch_seed": 2120846709
+    },
+    {
+      "index": 4,
+      "torch_seed": 4208116273,
+      "batch_seed": 1552295955
+    },
+    {
+      "index": 5,
+      "torch_seed": 459775654,
+      "batch_seed": 666108171
+    }
+  ],
+  "weights": [
+    0.01,
+    0.03,
+    0.1,
+    0.3,
+    1.0
+  ],
+  "weight_zero": {
+    "model": "CNN-noF-response-0-seed1",
+    "checkpoint_path": "runs/stage18/training/CNN-noF-response-0-seed1/selected.pt",
+    "checkpoint_sha256": "f4479d5520d1e0f810192b0a287c6b6683df2b14dea537f56f8bd215a19f62c3",
+    "selected_step": 20000,
+    "validation_state_MSE": 5.006587643426504e-05
+  },
+  "code_hashes": {
+    "acd_stage23_freeze.py": "c56a25d28e4a37c8e45f313e2abae8a2158dc568a4e7ef8b16db41b122a92613",
+    "acd_stage23_train.py": "c20d533df67ed2360ad5731fe9a6c3b9a476dae238527fe15a7541c273d4e19e",
+    "acd_stage23_common.py": "f9277f61e3a7b6ab551ef40b2d9f2441548923148072c20d64662e93a8e6c578",
+    "acd_stage23_select.py": "996640aa0a09c888128a7bf3471803319c8392a83047d9349c0dc2afd6df4d03",
+    "acd_stage23_panel.py": "c411648b137fd695b6b9e3648b5acbd1801074f6773a959902df5fc4afbb2de7",
+    "acd_stage23_score.py": "3405277b18872e48c6ab8acc191ddfe764eedface69e9d8bc67030bad0daa70d",
+    "acd_stage23_controller.py": "61a63a1675a962454b016b601f64c4df486163156d632e97a138028d652cf04d"
+  },
+  "frozen18_code_hashes": {
+    "ACD_STAGE18_FREEZE.md": "ea910927c1689cb22a691166330b369f07f6e1dd78ad46128020b885fbb4b754",
+    "acd_stage18_response_train.py": "9173c05d651d3339492d02147dec4d9b6f007f306b58bbbb7d8994abf18d88df",
+    "acd_stage18_select.py": "e0e68bd34ec978a862e448a69595b99a10491ae1b2fc3ebf992b362717be9aa4",
+    "acd_stage18_response_controller.py": "daab1f87ea100ce3f852ec3c245e3406aac8230826b98b2f293232f29451e746",
+    "acd_stage18_charge.py": "521a957dd49bf7ddf21b2827a4e9847a0e732c4ca8ee2b7f9b4a658a823d4a50",
+    "acd_stage18_gpu_lease.py": "2cf41aa25d77c947f2e886d3e7303c51d526eeec8ce92696172ed6dbba456507",
+    "acd_stage18_inference.py": "a6ea2847438a23a3290fa12c91535423413f31e8f3b3bd578d93735fa4a0fcb7",
+    "acd_stage18_score.py": "14b2e75612b0527973a13ff1d8cb051782660d321d935c607c431fa8f8a364df",
+    "acd_stats.py": "1c97d51262a7546b70320c1207de554eff6f9b6a58b00428a2640f5ead6f685a",
+    "acd_protocol.py": "160eabe8ccee07d0de17576a441b6fef1a93e1d5dbb68f2df9eb118a1eaad000",
+    "acd_stage19_l3_statistic.py": "72da9641cfa8341a50b85514e42f0f15be1e5886e79348c9870c345cee5ce33b",
+    "acd_stage19_part3b_score.py": "2d4f05bb0fe22375819af70519aef28d4f21eefcbe0eb434295a9e929ba853d6",
+    "acd_stage19_learned.py": "9319e768f5d211472d6c52fe0b7c4cef975d878be242b14807a43178e7e85930"
+  },
+  "data_sha256": {
+    "train.npz": "a7fbc3ba8dd6a88cee34ce5d6d1fc2e54ebe7d16138966cc11173a08eb0a96e0",
+    "val.npz": "cb2d800d22c51ee9d9f7c13a89ec939eba9cebf5d97ea10ca4345fc05c097563"
+  },
+  "generation_manifest_sha256": "5b7e8071f8f230a0c58098250b65d8d376d5a2f40976f14bcd1e41b55d24f886",
+  "generation_commit_original": "278d85d831d46c011b9e74d5e67d093d9e75ac56",
+  "generation_commit_after_rewrite": "e71b994dd35b902de752d31d265440ddc2fa3de0",
+  "cleanup_marker": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/cleanup_complete.json",
+  "cleanup_commit": "11abba5fc5609924685bfbfea5e9addafc665927",
+  "Stage22_completion_commit_original": "c784735224491aed5e592682eb3a2f6e0a7dad9b",
+  "Stage22_completion_commit_after_rewrite": "7416a15c11a29c6944268794607543e4e5eae4c6",
+  "Stage22_panel_contract_sha256": "ed0ea3d1c0def662f765a4bcd6c1fd0a489e11c777e3cdd183840f61a25bbfbd",
+  "Stage22_receipt_sha256": "387dbe8fd53a7a72c4891265d9c820b5c282115120dad4fc12a9845dca9535f9",
+  "tests": {
+    "full_batch_gradient_scaling": true,
+    "zero_and_nonfinite_norms_rejected": true,
+    "truncation_forward_identical_and_graph_cut": true,
+    "frozen_architecture_seed_identity": true,
+    "all_stage23_code_compiles": true
+  },
+  "budget_rule": "36,000 seconds per model, inherited durable conservative charge",
+  "microbatch": 128,
+  "training_started": false,
+  "utc": 1791778582.6905155
+}
