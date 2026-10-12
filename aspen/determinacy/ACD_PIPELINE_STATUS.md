@@ -213,3 +213,5 @@ Pipeline | stage22-registry-completion | c784735224491aed5e592682eb3a2f6e0a7dad9
 Repository | history cleanup | 11abba5fc5609924685bfbfea5e9addafc665927 | 2026-10-12T04:06:56Z | Cleanup verified; publishers released with array and size guards; Stage23 execution identities next.
 
 Stage23 | training launch | d30c2bbd2012e09eb5b02ccd12f27a2d9611595f | 2026-10-12T04:20:00Z | Cleanup complete; three 170HX jobs active, weights 0.01/0.03/0.1; remaining weights start on the next free card; frozen criteria unchanged.
+
+Stage23 | first-500 timing | d0f98ce89a5eb75767b49a3967b7141b2d99b02f | 2026-10-12T06:54:45Z | Measured projection recorded; three training jobs continue within unchanged per-run caps; remaining weights queued.
