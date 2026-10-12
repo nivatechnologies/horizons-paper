@@ -1,0 +1,659 @@
+{
+  "force_push": "1c50bc2866776c16a06f7989e0d66c62bef10289",
+  "clones": [
+    {
+      "host": "baccus",
+      "clones": 65,
+      "results": [
+        {
+          "path": "/mnt/niva-array/work/aspen-evidence-20261004",
+          "before": "a2bfe4567245de106349704121747218835f2790",
+          "after": "a2bfe4567245de106349704121747218835f2790",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-forecast-decision-20261005",
+          "before": "9f86d2969e1b09acacf25936d396ef77cf57a3d1",
+          "after": "9f86d2969e1b09acacf25936d396ef77cf57a3d1",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-determinacy-20261005",
+          "before": "c1d692a06483dd57e4d6159f43333d53fa0ab8ca",
+          "after": "c1d692a06483dd57e4d6159f43333d53fa0ab8ca",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-determinacy-stage19-20261007",
+          "before": "c6cf728adcc4e2e853f8649b8c2fb18f76348f5b",
+          "after": "c6cf728adcc4e2e853f8649b8c2fb18f76348f5b",
+          "arrays_retained": 0,
+          "working_changes_preserved": 2,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-determinacy-stage16-recovery-20261007",
+          "before": "7c736b39451397555f7f323bdb431be28f465db2",
+          "after": "7c736b39451397555f7f323bdb431be28f465db2",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-determinacy-stage20-20261008",
+          "before": "6afa42cd1e32e0e91e71be43ba0615ec938c083d",
+          "after": "6afa42cd1e32e0e91e71be43ba0615ec938c083d",
+          "arrays_retained": 0,
+          "working_changes_preserved": 3,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008",
+          "before": "878f3488854dffe63446ca80d5da6a7f3550eb69",
+          "after": "878f3488854dffe63446ca80d5da6a7f3550eb69",
+          "arrays_retained": 0,
+          "working_changes_preserved": 1,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-determinacy-stage19-l3-20261008",
+          "before": "419934876a0bceb1456afa4e56e74b6e5b86afc0",
+          "after": "419934876a0bceb1456afa4e56e74b6e5b86afc0",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-execution",
+          "before": "b61436f637061246c07112daec1cc640c005f19a",
+          "after": "b61436f637061246c07112daec1cc640c005f19a",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage19-unattended-operations",
+          "before": "16ab67750c0d1eccb55b5b37eb8d0c021d21553f",
+          "after": "16ab67750c0d1eccb55b5b37eb8d0c021d21553f",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage19-continuation-completion",
+          "before": "acfd0896cd41e8b9ce7f3a5a04152ee6a3f46ae7",
+          "after": "acfd0896cd41e8b9ce7f3a5a04152ee6a3f46ae7",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage19-scoring-resume",
+          "before": "c7e487209c3a2da0e7991df63f28976ecacaad92",
+          "after": "c7e487209c3a2da0e7991df63f28976ecacaad92",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R12_inference",
+          "before": "93375cbeabcd818568676a8d4a7d6a069382b0c0",
+          "after": "93375cbeabcd818568676a8d4a7d6a069382b0c0",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R12",
+          "before": "54077545acce82c01b3814aaca02b183c40a14f5",
+          "after": "54077545acce82c01b3814aaca02b183c40a14f5",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage20-C",
+          "before": "b961a8a5418c94585c516bcb2cd5bd073786ca31",
+          "after": "b961a8a5418c94585c516bcb2cd5bd073786ca31",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage20-uniform",
+          "before": "82ea6c32e9217468a6062ed4a29ac7544a91a2ee",
+          "after": "82ea6c32e9217468a6062ed4a29ac7544a91a2ee",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage19-part3b",
+          "before": "2c346fa9924a36a6a2e55713e6b999b948725a78",
+          "after": "2c346fa9924a36a6a2e55713e6b999b948725a78",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage19-continuation-recovery",
+          "before": "ae08809e9c1a074e01f60d7328efc24947a9e3dc",
+          "after": "ae08809e9c1a074e01f60d7328efc24947a9e3dc",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R12-execution-correction",
+          "before": "27d3bca8c727bbe1b725cf6ebe29c45216955467",
+          "after": "27d3bca8c727bbe1b725cf6ebe29c45216955467",
+          "arrays_retained": 0,
+          "working_changes_preserved": 1,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage20-B-step-times",
+          "before": "de64bdd22a6e615713e77d872a1a8609e586ca4d",
+          "after": "de64bdd22a6e615713e77d872a1a8609e586ca4d",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-Spark-log-gate",
+          "before": "1cd93998d56ed2d921574efe673c50e7fcfa8af1",
+          "after": "1cd93998d56ed2d921574efe673c50e7fcfa8af1",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-execution-handoff",
+          "before": "ec50f44ee1a25151e09fbab2aee8a44ce903f5c7",
+          "after": "ec50f44ee1a25151e09fbab2aee8a44ce903f5c7",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-multispark-execution",
+          "before": "567099d55e516e2e068a92db83b5dacccdeac356",
+          "after": "567099d55e516e2e068a92db83b5dacccdeac356",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R12_recovery_inference-recovery",
+          "before": "466f431ac50b20b863242276895d75dbcb268d0e",
+          "after": "466f431ac50b20b863242276895d75dbcb268d0e",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R12-recovery",
+          "before": "55cbff6b4c04bfadf5a915a0a4c560d312b6baea",
+          "after": "55cbff6b4c04bfadf5a915a0a4c560d312b6baea",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-execution-host-followup",
+          "before": "f52b746e4e6ba7fd18231093441f745c9cadfd70",
+          "after": "f52b746e4e6ba7fd18231093441f745c9cadfd70",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-multispark-resume",
+          "before": "94bdd74cbf01170c16e5d1f004ee31c7f47fe4d6",
+          "after": "94bdd74cbf01170c16e5d1f004ee31c7f47fe4d6",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-parallel-capacity",
+          "before": "f368ee051c44c70a9473104511064efe44813ce1",
+          "after": "f368ee051c44c70a9473104511064efe44813ce1",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage16-combined",
+          "before": "c7f7d7680ce14ad05635072256780e05eade4ef8",
+          "after": "c7f7d7680ce14ad05635072256780e05eade4ef8",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-C-data-execution",
+          "before": "57cf06ac356ccc0827071fb169ec560821e5f0c7",
+          "after": "57cf06ac356ccc0827071fb169ec560821e5f0c7",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-C-float64-execution",
+          "before": "a19551df08ffda55f2875b851191ac83c2976aa0",
+          "after": "a19551df08ffda55f2875b851191ac83c2976aa0",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-C-data",
+          "before": "1b14760661a882dac438cd0a6a98d647d1c02e0a",
+          "after": "1b14760661a882dac438cd0a6a98d647d1c02e0a",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-D-free-card-execution",
+          "before": "6895b3b10341ebb20430689fffe29056eb9d9be0",
+          "after": "6895b3b10341ebb20430689fffe29056eb9d9be0",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-descriptive_inference",
+          "before": "fff6e981255f894572c15fa94a0e52479300bf91",
+          "after": "fff6e981255f894572c15fa94a0e52479300bf91",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-capacity-handoff",
+          "before": "9a7b8ad39a169a2fd00afad4ba21312f221a5797",
+          "after": "9a7b8ad39a169a2fd00afad4ba21312f221a5797",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-descriptive",
+          "before": "19d6529e0fd54a2a32e8383d9d565a764edc2931",
+          "after": "19d6529e0fd54a2a32e8383d9d565a764edc2931",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R34_inference",
+          "before": "cbc373624f0f8adbb5d93b4e288fe61c23f377a7",
+          "after": "cbc373624f0f8adbb5d93b4e288fe61c23f377a7",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage21-R34",
+          "before": "afe35098d686fb4a94e063c8b51c0fe68acbca18",
+          "after": "afe35098d686fb4a94e063c8b51c0fe68acbca18",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-posthoc-menu-20261009",
+          "before": "afe35098d686fb4a94e063c8b51c0fe68acbca18",
+          "after": "afe35098d686fb4a94e063c8b51c0fe68acbca18",
+          "arrays_retained": 0,
+          "working_changes_preserved": 5,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-posthoc-definition-presentation",
+          "before": "4e28e92812ea6ee9a1ed007a6298444055880cd7",
+          "after": "4e28e92812ea6ee9a1ed007a6298444055880cd7",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-posthoc-restricted-menu",
+          "before": "fe875fda548c654e4e829d1a9d24a65931c4d3ad",
+          "after": "fe875fda548c654e4e829d1a9d24a65931c4d3ad",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-safe-handoff",
+          "before": "90667a871f7901c6a88e56ab27a1fde29d98233d",
+          "after": "90667a871f7901c6a88e56ab27a1fde29d98233d",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-D",
+          "before": "e5ddfee7ddbd14e9fc3ffcc79198982aaea4a2e1",
+          "after": "e5ddfee7ddbd14e9fc3ffcc79198982aaea4a2e1",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-C-execution-reading",
+          "before": "02f33e527d2e4cc455dd1e0ed12c015fb4a5f43c",
+          "after": "02f33e527d2e4cc455dd1e0ed12c015fb4a5f43c",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-C-training-logs",
+          "before": "32192a35ac74761f1c0c16476365454c061cc897",
+          "after": "32192a35ac74761f1c0c16476365454c061cc897",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage23-freeze-G",
+          "before": "db14214da02f901e59016a9ef5b893436157e894",
+          "after": "db14214da02f901e59016a9ef5b893436157e894",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-C",
+          "before": "8e2627c417104ba40258b139f89e514e45d846c3",
+          "after": "8e2627c417104ba40258b139f89e514e45d846c3",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-selected-D-execution-fix",
+          "before": "3cf9d73210e1d4bbaddb53daa1edc1d8e932dc32",
+          "after": "3cf9d73210e1d4bbaddb53daa1edc1d8e932dc32",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage18-selected-D",
+          "before": "20141e8d2eeb69457641c88956b326b1840cba0b",
+          "after": "20141e8d2eeb69457641c88956b326b1840cba0b",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-count-reproduction",
+          "before": "f94fdbe74d87832eef6f41691a833f8e91133bc4",
+          "after": "f94fdbe74d87832eef6f41691a833f8e91133bc4",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-freeze-F",
+          "before": "c148a762706176042bc85e14409d65d7c490a5c3",
+          "after": "c148a762706176042bc85e14409d65d7c490a5c3",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-panel-launcher",
+          "before": "6e0c6dcb861856c03ddb022da78ccdd2954d5b2e",
+          "after": "6e0c6dcb861856c03ddb022da78ccdd2954d5b2e",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-panel-contract",
+          "before": "9242c2bec7a75a8ea096fe5a58719798519f8dbc",
+          "after": "9242c2bec7a75a8ea096fe5a58719798519f8dbc",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-path-alias",
+          "before": "2df6597ead92ed5df6a4fadf5e2e65926f8d144e",
+          "after": "2df6597ead92ed5df6a4fadf5e2e65926f8d144e",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-timing",
+          "before": "339335d96070ce110719ef31b54eb26eadac86d3",
+          "after": "339335d96070ce110719ef31b54eb26eadac86d3",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-connectivity",
+          "before": "f5891f87d5506f1ff1130fc8dc3b23d871ac9126",
+          "after": "f5891f87d5506f1ff1130fc8dc3b23d871ac9126",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-watchdog",
+          "before": "737e907dd1183807b56e3b9224c5e6ba29397526",
+          "after": "737e907dd1183807b56e3b9224c5e6ba29397526",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-watchdog-env",
+          "before": "505d2a564a91ceb6a8d05460684f1caff667314a",
+          "after": "505d2a564a91ceb6a8d05460684f1caff667314a",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-watchdog-stability",
+          "before": "d0576a9fe6d9a60eeeb2f3bdd28354d79386da98",
+          "after": "d0576a9fe6d9a60eeeb2f3bdd28354d79386da98",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-panel",
+          "before": "5da99b7efe50c96554bf1a644ad2c8f20b7d35cb",
+          "after": "5da99b7efe50c96554bf1a644ad2c8f20b7d35cb",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-inference",
+          "before": "4044c8545ce6ad2b1a247b7eae93ae7e7072c8b5",
+          "after": "4044c8545ce6ad2b1a247b7eae93ae7e7072c8b5",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-failure-eef91683b851",
+          "before": "cf7916931cffad5e62935f4b9217d3fae4e66d9f",
+          "after": "cf7916931cffad5e62935f4b9217d3fae4e66d9f",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-results",
+          "before": "508308b2e52bc4c20b966457ac35e08401cf6951",
+          "after": "508308b2e52bc4c20b966457ac35e08401cf6951",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/work/aspen-publication-stage22-registry-completion",
+          "before": "8ee44ced0d5c7c72e3dafd5f04e8e49735e81ffc",
+          "after": "8ee44ced0d5c7c72e3dafd5f04e8e49735e81ffc",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        },
+        {
+          "path": "/mnt/niva-array/horizons-paper",
+          "before": "1cd0ab701b5e663eb7e0304b1d705ddeabe80617",
+          "after": "1cd0ab701b5e663eb7e0304b1d705ddeabe80617",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/mnt/niva-array/archive/horizons-paper-rewrite-20261012/clone-backups/hooks"
+        }
+      ]
+    },
+    {
+      "host": "sulaco",
+      "clones": 12,
+      "results": [
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage17-20261007",
+          "before": "4a0babc0565732f3bcad052ebfd0abcfdb39ab93",
+          "after": "4a0babc0565732f3bcad052ebfd0abcfdb39ab93",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-recovery-lane4-20261007",
+          "before": "0b7038796db5d70a0fb13e8c8a2d903fdabecad1",
+          "after": "0b7038796db5d70a0fb13e8c8a2d903fdabecad1",
+          "arrays_retained": 0,
+          "working_changes_preserved": 3,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage10b-20261007",
+          "before": "a1a5c5c6caac0d9b6a9bc268501ed26568b0f71e",
+          "after": "a1a5c5c6caac0d9b6a9bc268501ed26568b0f71e",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-stage21-scoring-20261008",
+          "before": "9bf279e082b742e2bccd664ee185c6e2405470dc",
+          "after": "9bf279e082b742e2bccd664ee185c6e2405470dc",
+          "arrays_retained": 0,
+          "working_changes_preserved": 3,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage13-20261007",
+          "before": "a6bd155aba79a9255404820a3657a3d5ac121527",
+          "after": "a6bd155aba79a9255404820a3657a3d5ac121527",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage4-20261005",
+          "before": "9bf279e082b742e2bccd664ee185c6e2405470dc",
+          "after": "9bf279e082b742e2bccd664ee185c6e2405470dc",
+          "arrays_retained": 0,
+          "working_changes_preserved": 1,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage16-20261007",
+          "before": "e8a40771df119e75b502ff2f4139f9e2a14ee4d4",
+          "after": "e8a40771df119e75b502ff2f4139f9e2a14ee4d4",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-nof-decisions-20261007",
+          "before": "5ad7cbcc62e296e3b0a2951d468845081e9fd35b",
+          "after": "5ad7cbcc62e296e3b0a2951d468845081e9fd35b",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage18-20261007",
+          "before": "2ee06a7dacb922e3565e1eab32056766abb05c2a",
+          "after": "2ee06a7dacb922e3565e1eab32056766abb05c2a",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage11-20261006",
+          "before": "cdcfba3180365ce9617695d9c0890981fe13b4bc",
+          "after": "cdcfba3180365ce9617695d9c0890981fe13b4bc",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage12-20261006",
+          "before": "349a54f1f611fdeca5ea4d3a2b5d7169e4fde699",
+          "after": "349a54f1f611fdeca5ea4d3a2b5d7169e4fde699",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        },
+        {
+          "path": "/home/todd/work/aspen-determinacy-stage14-20261007",
+          "before": "aab84f97319c57f4fc0bc8336a52edb0141e64a7",
+          "after": "aab84f97319c57f4fc0bc8336a52edb0141e64a7",
+          "arrays_retained": 0,
+          "working_changes_preserved": 0,
+          "hooks": "/home/todd/work/horizons-rewrite-backups-20261012/hooks"
+        }
+      ]
+    },
+    {
+      "host": "192.168.88.4",
+      "clones": 0,
+      "results": []
+    },
+    {
+      "host": "192.168.88.12",
+      "clones": 0,
+      "results": []
+    },
+    {
+      "host": "192.168.88.248",
+      "clones": 0,
+      "results": []
+    }
+  ],
+  "arrays_reverified": true,
+  "github_before_KB": 10735530,
+  "github_after_KB": 10735530,
+  "github_size_dropped": false,
+  "stale_remote_branches_deleted": [],
+  "no_old_rewritten_refs_with_push_access": true,
+  "guard_tests": {
+    "npz_rejected": true,
+    "oversize_rejected": true
+  },
+  "utc": 1791778004.939981
+}

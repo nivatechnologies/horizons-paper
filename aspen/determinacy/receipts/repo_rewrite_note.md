@@ -4798,3 +4798,22 @@ No remote tags or open pull requests exist. No stale remote branches need deleti
 ## Prevention
 
 The versioned pre-commit guard rejects every staged .npz and every staged file larger than 25 MB. The same hook is configured for every publisher, including future clones through the host Git configuration. The pre-push guard rejects histories containing removed arrays. Publishers must stage manifests containing path, bytes and sha256; arrays remain on niva-array. Existing frozen publisher sources are byte-unchanged; enforcement is at their Git staging/commit boundary.
+
+## Completion
+
+{
+  "force_push": "1c50bc2866776c16a06f7989e0d66c62bef10289",
+  "arrays_reverified": true,
+  "github_before_KB": 10735530,
+  "github_after_KB": 10735530,
+  "github_size_dropped": false,
+  "stale_remote_branches_deleted": [],
+  "no_old_rewritten_refs_with_push_access": true,
+  "guard_tests": {
+    "npz_rejected": true,
+    "oversize_rejected": true
+  },
+  "utc": 1791778004.939981
+}
+
+The complete clone inventory and re-pointing results are in receipts/repo_rewrite_completion.json. Publishers are released after this record is pushed. Completed watchdogs remain inactive; Stage23 training may begin once its implementation hashes are pushed.
