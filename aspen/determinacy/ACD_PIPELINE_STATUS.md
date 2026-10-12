@@ -201,3 +201,5 @@ Pipeline | stage22-watchdog-env | 16276c356a79e94a0d723c91a5deda66c69c28e7 | 202
 Pipeline | stage22-watchdog-stability | 1d9f7829584536ae6f532e270bb7cab46bf12e54 | 2026-10-11T02:04:41Z | Stage22 watchdog recovery logging and GPU lease restoration checked; persistent monitoring active, all frozen definitions unchanged.
 
 Pipeline | stage22-panel | 08603a6d201ac4f19cf269e5c1e16f69a14032ec | 2026-10-11T05:47:09Z | Stage22 blind assigned panel complete and hashed; inference next, scoring blocked until every required task completes.
+
+Pipeline | stage22-inference | c3cd716c7fe5906d1b29260bbdcfb3d6aa7ee33f | 2026-10-12T00:01:54Z | All Stage22 required GPU tasks completed, exact assigned-case coverage and hashes verified; frozen scoring next.
