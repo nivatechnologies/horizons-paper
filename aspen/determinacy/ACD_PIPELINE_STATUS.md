@@ -203,3 +203,5 @@ Pipeline | stage22-watchdog-stability | 1d9f7829584536ae6f532e270bb7cab46bf12e54
 Pipeline | stage22-panel | 08603a6d201ac4f19cf269e5c1e16f69a14032ec | 2026-10-11T05:47:09Z | Stage22 blind assigned panel complete and hashed; inference next, scoring blocked until every required task completes.
 
 Pipeline | stage22-inference | c3cd716c7fe5906d1b29260bbdcfb3d6aa7ee33f | 2026-10-12T00:01:54Z | All Stage22 required GPU tasks completed, exact assigned-case coverage and hashes verified; frozen scoring next.
+
+Pipeline | stage22-failure-eef91683b851 | b47b852032a0c9f63a22c18e4be5dda736cf67f4 | 2026-10-12T00:18:27Z | FAILED: Repeated frozen scoring failure; no publication; dependent scoring/publication blocked, criteria unchanged.
