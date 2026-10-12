@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+import subprocess,sys
+paths=subprocess.check_output(['git','diff','--cached','--name-only','--diff-filter=ACMR','-z']).decode().split('\0')
+errors=[]
+for path in filter(None,paths):
+ if path.lower().endswith('.npz'):errors.append(path+': scientific arrays must remain local; stage a manifest')
+ size=int(subprocess.check_output(['git','cat-file','-s',':'+path]))
+ if size>25_000_000:errors.append(path+': staged file exceeds 25 MB; publish a manifest')
+if errors:print('\n'.join(errors),file=sys.stderr);sys.exit(1)
