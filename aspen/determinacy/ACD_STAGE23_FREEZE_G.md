@@ -224,3 +224,14 @@ Criteria unchanged. No Stage23 training preceded this pushed identity. Original 
   "utc": 1791778582.6905155
 }
 ```
+
+## Durable launcher execution identity
+
+Before training, add the serving-state recovery hook and systemd launcher below. Scientific criteria and trainer source are unchanged. Recovery waits for other compute holders and restores the recorded serving state before resuming.
+
+```json
+{
+  "service_sha256": "867c969ce5eb563e0c0c29ead3f173be81c28e822923a0056c328482c9b54341",
+  "resume_hook_sha256": "8245595890091a8643d85fff81d8b231e01a8ad2943ad1f88c773412c3fbe07d"
+}
+```

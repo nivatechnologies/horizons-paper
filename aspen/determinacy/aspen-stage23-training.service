@@ -1,0 +1,15 @@
+[Unit]
+Description=Stage23 frozen gradient-balanced response training queue
+[Service]
+Type=simple
+WorkingDirectory=/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy
+Environment=OPENBLAS_NUM_THREADS=4
+Environment=OMP_NUM_THREADS=4
+ExecStartPre=/mnt/niva-array/niva-platform/.venv-cu130/bin/python -u /mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/acd_stage23_resume_services.py
+ExecStart=/mnt/niva-array/niva-platform/.venv-cu130/bin/python -u /mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/acd_stage23_controller.py
+Restart=on-failure
+RestartSec=60
+StandardOutput=append:/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/controller.log
+StandardError=append:/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/controller.log
+[Install]
+WantedBy=default.target
