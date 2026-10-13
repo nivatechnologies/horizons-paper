@@ -219,3 +219,5 @@ Stage23 | first-500 timing | d0f98ce89a5eb75767b49a3967b7141b2d99b02f | 2026-10-
 Stage23 | authorized cap amendment | 24fdc58787e5c8fa81bfb8f47e4b788adeb1bc3e | 2026-10-12T07:02:33Z | Current weight 0.1 seed-one cap extended to 12 GPU-hours; every other cap and scientific criterion unchanged; continuation watcher active, no current GPU job interrupted.
 
 Stage23 | final results | fe0173b9cdd740a3020e3897bc916633d830e2a7 | 2026-10-13T03:27:33Z | Training, validation, primary and descriptive scoring, derivatives, figures and registry complete; Q1 and Q2 FAIL under unchanged criteria; no extra seeds triggered; nothing remains queued for Stage23.
+
+Stage23 | implementation closeout | 498a9acd4ba5e7dbdffb5be6572617eb9ed113ab | 2026-10-13T06:38:25Z | A1-A5 PASS for initial and selected states; exclusion records accounted for with unavailable seeds and diagnostics explicitly reported; no training, optimizer run, panel rescoring or realized-outcome access; existing registry and closeout supplement PASS; frozen hashes unchanged.
