@@ -1,0 +1,22 @@
+{
+  "returncode": 0,
+  "complete": true,
+  "gpu": {
+    "index": 2,
+    "uuid": "GPU-b30bd41b-4882-d525-083b-d929b9b9328a",
+    "name": "NVIDIA CMP 170HX",
+    "processes": [],
+    "available": true
+  },
+  "resume_record": {
+    "model": "CNN-noF-response-0.1-seed1",
+    "previous_terminal_step": 13460,
+    "resumed_checkpoint_step": 13000,
+    "unsaved_updates_replayed": 460,
+    "previous_charged_gpu_seconds": 35878.27261386998,
+    "resume_sha256": "fff622c68bb3eacc0105e7cc44a0d93ff5c05d4d1b352007707ede21859b368f",
+    "criteria_unchanged": true,
+    "budget_changed": true
+  },
+  "utc": 1791821768.4043071
+}

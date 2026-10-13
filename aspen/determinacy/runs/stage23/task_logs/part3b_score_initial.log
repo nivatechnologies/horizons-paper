@@ -1,0 +1,9 @@
+Traceback (most recent call last):
+  File "/home/todd/work/aspen-stage23-scoring-20261012/acd_stage23_descriptive_score.py", line 60, in <module>
+    p=argparse.ArgumentParser();p.add_argument('--part',choices=['part3b','menus'],required=True);a=p.parse_args();fresh() if a.part=='part3b' else shifted_menus()
+                                                                                                                   ^^^^^^^
+  File "/home/todd/work/aspen-stage23-scoring-20261012/acd_stage23_descriptive_score.py", line 20, in fresh
+    import acd_stage19_learned as learned
+  File "/home/todd/work/aspen-stage23-scoring-20261012/frozen18/acd_stage19_learned.py", line 8, in <module>
+    from acd_stage19_part2_gate import ROOT, OUT, digest, freeze_ready
+ModuleNotFoundError: No module named 'acd_stage19_part2_gate'

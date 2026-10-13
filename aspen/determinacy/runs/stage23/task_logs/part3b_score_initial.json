@@ -1,0 +1,5 @@
+{
+  "returncode": 1,
+  "cause": "ModuleNotFoundError: No module named 'acd_stage19_part2_gate'",
+  "fix": "Copy exact unchanged frozen dependency modules into the private CPU scoring directory; frozen scoring code and criteria unchanged"
+}

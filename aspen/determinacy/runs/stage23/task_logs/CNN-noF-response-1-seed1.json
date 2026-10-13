@@ -1,0 +1,23 @@
+{
+  "task": {
+    "name": "CNN-noF-response-1-seed1",
+    "weight": 1.0,
+    "seed": {
+      "index": 1,
+      "torch_seed": 1973631741,
+      "batch_seed": 3521043623
+    }
+  },
+  "gpu": {
+    "index": 0,
+    "uuid": "GPU-82f40f34-974d-ab06-c2b3-a35e7ba766d3",
+    "name": "NVIDIA CMP 170HX",
+    "processes": [],
+    "available": true
+  },
+  "returncode": 0,
+  "complete": true,
+  "seconds": 28732.072617747006,
+  "selected_step": 19000,
+  "utc": 1791836016.1133697
+}

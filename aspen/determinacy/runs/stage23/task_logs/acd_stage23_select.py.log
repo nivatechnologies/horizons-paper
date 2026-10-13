@@ -1,0 +1,58 @@
+{
+  "rows": [
+    {
+      "weight": 0.0,
+      "model": "CNN-noF-response-0-seed1",
+      "validation_state_MSE": 5.006587643426504e-05,
+      "validation_effect_RMSE": 0.3615496098284943,
+      "checkpoint_sha256": "f4479d5520d1e0f810192b0a287c6b6683df2b14dea537f56f8bd215a19f62c3"
+    },
+    {
+      "weight": 0.01,
+      "model": "CNN-noF-response-0.01-seed1",
+      "validation_state_MSE": 4.845064306024936e-05,
+      "validation_effect_RMSE": 0.35929604676131077,
+      "checkpoint_sha256": "52e57889aca5c26c5692182f6d9ce91bad84706853a52e4f50cadb788759ce9c"
+    },
+    {
+      "weight": 0.03,
+      "model": "CNN-noF-response-0.03-seed1",
+      "validation_state_MSE": 4.869745928696526e-05,
+      "validation_effect_RMSE": 0.3537084645073617,
+      "checkpoint_sha256": "5e308dad4185f7d0a74d1e7c3326016d83292351e7de8966c6980a6cb2fa8b3b"
+    },
+    {
+      "weight": 0.1,
+      "model": "CNN-noF-response-0.1-seed1",
+      "validation_state_MSE": 7.01707611672949e-05,
+      "validation_effect_RMSE": 0.3171451782911247,
+      "checkpoint_sha256": "d3fddcd2ba037ec6af55e97acef8912b90459d72cd84f4677f3fb8c01d346d1d"
+    },
+    {
+      "weight": 0.3,
+      "model": "CNN-noF-response-0.3-seed1",
+      "validation_state_MSE": 0.00011046381694039077,
+      "validation_effect_RMSE": 0.34991162575641405,
+      "checkpoint_sha256": "6be83e7031b0fb054f9b148375ec708a27d1a418a7af020b2c8b2b9c15869383"
+    },
+    {
+      "weight": 1.0,
+      "model": "CNN-noF-response-1-seed1",
+      "validation_state_MSE": 0.0171361193448926,
+      "validation_effect_RMSE": 0.6375626834362088,
+      "checkpoint_sha256": "a9108f07a19c00350fd58c020b25556e41219679ebdbb1de035bc74451a8d6d2"
+    }
+  ],
+  "selected": {
+    "weight": 0.03,
+    "model": "CNN-noF-response-0.03-seed1",
+    "validation_state_MSE": 4.869745928696526e-05,
+    "validation_effect_RMSE": 0.3537084645073617,
+    "checkpoint_sha256": "5e308dad4185f7d0a74d1e7c3326016d83292351e7de8966c6980a6cb2fa8b3b"
+  },
+  "validation_amplitude": 0.16,
+  "lead": 2.0,
+  "validation_cases": 512,
+  "patterns": "all eight",
+  "rule": "minimum effect RMSE among state MSE at most 1.1 times w=0; smallest weight on ties"
+}

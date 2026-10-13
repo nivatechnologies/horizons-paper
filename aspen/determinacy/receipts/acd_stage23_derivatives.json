@@ -1,0 +1,642 @@
+{
+  "model": "CNN-noF-response-corrected-selected",
+  "rows": [
+    {
+      "lead": 0.0,
+      "per_draw_sign_agreement": 0.9608141086575022,
+      "normalized_RMS_error": 0.3775730723510315,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.944375,
+      "three_class_kappa": 0.891402494082046,
+      "median_z": 61.422051695673616,
+      "pooled_MSE": 0.008796357388991025,
+      "pair_MSE_quartiles": [
+        5.868664114937309e-05,
+        0.0002815431540938045,
+        0.0010107199063152394
+      ],
+      "probability_error_quartiles": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            1.0
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 1.0,
+      "per_draw_sign_agreement": 0.9030399970751681,
+      "normalized_RMS_error": 1.5322292833922693,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.8575,
+      "three_class_kappa": 0.7486053731466711,
+      "median_z": 15.398880274607762,
+      "pooled_MSE": 0.8849174353207597,
+      "pair_MSE_quartiles": [
+        0.0023137401134130267,
+        0.012378950862360873,
+        0.054633927128467916
+      ],
+      "probability_error_quartiles": [
+        0.0,
+        0.0,
+        0.0005
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.033203125
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.0,
+            0.001,
+            0.998046875
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 1.5,
+      "per_draw_sign_agreement": 0.9001270473822756,
+      "normalized_RMS_error": 1.7924384486719152,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.8325,
+      "three_class_kappa": 0.724022348526049,
+      "median_z": 7.952245207465819,
+      "pooled_MSE": 2.4656645064081095,
+      "pair_MSE_quartiles": [
+        0.006631251484345331,
+        0.03631952308382194,
+        0.14555197624426752
+      ],
+      "probability_error_quartiles": [
+        0.0,
+        0.0,
+        0.032
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.0078125
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.028
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0,
+            0.16623046875
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.0,
+            0.137609375,
+            0.9960234375
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 2.0,
+      "per_draw_sign_agreement": 0.8964038278736473,
+      "normalized_RMS_error": 1.5242147154969536,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.82875,
+      "three_class_kappa": 0.7380044713744188,
+      "median_z": 3.6575740394994387,
+      "pooled_MSE": 5.154788716312024,
+      "pair_MSE_quartiles": [
+        0.018305693935375962,
+        0.08773836299197141,
+        0.4538475836351075
+      ],
+      "probability_error_quartiles": [
+        0.0,
+        0.001953125,
+        0.076
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0,
+            0.0005,
+            0.04659375
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.0,
+            0.004,
+            0.106125
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.0,
+            0.032,
+            0.33324609375
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.0085,
+            0.441453125,
+            0.996
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 2.5,
+      "per_draw_sign_agreement": 0.8941699875694648,
+      "normalized_RMS_error": 1.2114437433953118,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.851875,
+      "three_class_kappa": 0.768740017307907,
+      "median_z": 1.9671872837973612,
+      "pooled_MSE": 10.987783220265806,
+      "pair_MSE_quartiles": [
+        0.06259022270312352,
+        0.3318584028461197,
+        2.2461329816238687
+      ],
+      "probability_error_quartiles": [
+        0.0,
+        0.017000000000000008,
+        0.09375
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0,
+            0.021484375,
+            0.083
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.001953125,
+            0.0560703125,
+            0.19921875
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.017375,
+            0.17375,
+            0.55
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.23194140625,
+            0.7145,
+            0.9995
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 3.0,
+      "per_draw_sign_agreement": 0.8677071146534074,
+      "normalized_RMS_error": 1.1185482458856417,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.865,
+      "three_class_kappa": 0.7450774725493581,
+      "median_z": 0.9793809485857411,
+      "pooled_MSE": 42.44354718203191,
+      "pair_MSE_quartiles": [
+        0.25660526163441777,
+        1.5107602831776308,
+        22.54228361353868
+      ],
+      "probability_error_quartiles": [
+        0.0050000000000000044,
+        0.03600000000000002,
+        0.11307031249999999
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0125,
+            0.048,
+            0.12925
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.03515625,
+            0.11328125,
+            0.30078125
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.103515625,
+            0.285328125,
+            0.68873828125
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.42830859374999997,
+            0.8125,
+            0.9995
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 4.0,
+      "per_draw_sign_agreement": 0.7797510236911378,
+      "normalized_RMS_error": 1.4225366764089975,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.9075,
+      "three_class_kappa": 0.5630182008086376,
+      "median_z": 0.32844108862056753,
+      "pooled_MSE": 1428.4878367377698,
+      "pair_MSE_quartiles": [
+        7.780244816201161,
+        85.08702027853029,
+        488.77363325477864
+      ],
+      "probability_error_quartiles": [
+        0.015625,
+        0.03949999999999998,
+        0.10167187500000001
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.0625,
+            0.118,
+            0.226515625
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.12698828125,
+            0.24525,
+            0.466796875
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.275390625,
+            0.496046875,
+            0.8204843749999999
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.62825,
+            0.892,
+            0.99609375
+          ]
+        }
+      ]
+    },
+    {
+      "lead": 6.0,
+      "per_draw_sign_agreement": 0.5805466693477626,
+      "normalized_RMS_error": 1.7800263298629848,
+      "normalization": "physics tangent pooled RMS at this lead",
+      "three_class_agreement": 0.99,
+      "three_class_kappa": 0.11006048807619913,
+      "median_z": 0.04129995797841285,
+      "pooled_MSE": 725039.3392530276,
+      "pair_MSE_quartiles": [
+        5858.191190812156,
+        35300.3272689044,
+        259137.9216267145
+      ],
+      "probability_error_quartiles": [
+        0.009765625,
+        0.0234375,
+        0.05019531250000003
+      ],
+      "near_zero": [
+        {
+          "gamma": 0.05,
+          "pair_mass_quartiles": [
+            0.180875,
+            0.31990625,
+            0.51425
+          ]
+        },
+        {
+          "gamma": 0.1,
+          "pair_mass_quartiles": [
+            0.337890625,
+            0.542234375,
+            0.7617890625
+          ]
+        },
+        {
+          "gamma": 0.2,
+          "pair_mass_quartiles": [
+            0.549,
+            0.76953125,
+            0.92159375
+          ]
+        },
+        {
+          "gamma": 0.5,
+          "pair_mass_quartiles": [
+            0.8066054687499999,
+            0.9375,
+            0.9875
+          ]
+        }
+      ]
+    }
+  ],
+  "output_hashes": {
+    "000.npz": "2f584594124256f8f5cbc571ce0803bce7e9ab1455c2e6453c2090fce57f64ab",
+    "001.npz": "0a46a27eb89e44d9b2f8582b69e5ab5a9cfbdb2ac63dff17c954847c2bd60229",
+    "002.npz": "d58e2576c0cad29b3a4689ae1a1ff9435a95cd37c4594151330056cb7fe9d0d2",
+    "003.npz": "4ffec6e7c28385c8c807177ff9f98c794c99e24742caf0b8cac64472fa995a26",
+    "004.npz": "73202f710b476332e43d4deb4adb5b90f6cc89e213e24231713b3acae2516615",
+    "005.npz": "046283b26d9b69afb79b1cc75ce87d091f542deb05351852737feb0fadb752bd",
+    "006.npz": "8d6ce55aa59620079fe695846d4147263f0b5b13773881af9775522d630e50e5",
+    "007.npz": "d4e3a6899dd76037956cbadd6b1c75d3e0c4d512c2660b4324d09bd8c68a2d22",
+    "008.npz": "a62de30fa885d6d306e647be370c6a6d96679cce55b377d9597a354a0bb80fc4",
+    "009.npz": "652aaaa431f16e6297b890f5c4ea97a6758540fa1c0ce73ed9da38bb1a8e4bfa",
+    "010.npz": "c8b489058eb49b81f6bff467817debb1363c8e6b04cb5a03e6bb1a5aba500c8d",
+    "011.npz": "e141e3a00412f8a30a0a554a106a8b1b78563e27f94e5e35006bba140278fe57",
+    "012.npz": "6f23a61a90428c7993d62708f03085731db78f8e80864eaad82d8036a2c6c146",
+    "013.npz": "e2e9da55dd928122e9ff28f3d73268ccf8436c58ef38f0c1d76bbcdbfa721217",
+    "014.npz": "3fcb0cce364ed4a688ec69fbfac15cd3a54baa5a37928f09d0f0e833887326ad",
+    "015.npz": "49e07cfa3da014ef2e7470698876b0aaf6fcdf4130443ea587878482761f7307",
+    "016.npz": "168e4ca746325d677259577f3ef9909b0cc4fc1a28067d0da2fb4f5f7d970c26",
+    "017.npz": "2702d7d88a8adacfaef43b32ca19ca61ac17832ec6be4a51313a52794dc42fc8",
+    "018.npz": "31f223a8710947f25a9d0b958ad61772cef357ef77c9e56f078e7c1967cf41d5",
+    "019.npz": "9e697782735729cbe3d8d796cc7f2b1e960244495ba3495ee9edf88fa8821d70",
+    "020.npz": "24bb001a0e3686357db87ba5bce8a04d57826c3877f9e8e2596ea8dc5bff56ed",
+    "021.npz": "4022206fe8894e2b5445c4772e1b85430417b00db39795568fa2265b80a5f19b",
+    "022.npz": "8d5d956d9d5d28955ee5d379883c1a84c22b214d579bf78ed3ec6ef15d683e38",
+    "023.npz": "fd349194142c8533ef71a66ccc407a5964eee6839c848cc3ebe50dcc89439e1b",
+    "024.npz": "2656a9300c6b6b4064e81a8ed0a859dc94b19bda9662be25df01d1336e80f28d",
+    "025.npz": "62ae7c5ec5e7e5c3ddae7be3e4424665e52e7abba2608cf8dd99c432f5892c90",
+    "026.npz": "26a6b78470c31436e6656e37db45fcda13bdae5cba235b1b119daefba748735e",
+    "027.npz": "d75a4ce4345e14afbbacca4a7fbd1df496e616cedaf5834c85f994c000f4b274",
+    "028.npz": "92541cbac1c3ebc5095d924e9ef6a814e2ccfd60a5c79285833a0c057815fc36",
+    "029.npz": "f9c65beea06b7bb06f79459a583eb694e57f1a27f6c5eef1acce92153f7c6342",
+    "030.npz": "398789db10a7aa002b976b0932fb4a884326cd5e75b597b4231792de3246c00c",
+    "031.npz": "9430fca79ba929e94621074fc04b7e18d53dd5e55894d278542defbdc78b9aa5",
+    "032.npz": "a83f92e12a90f7a90927d032ae83e2aa30d3c64312bd0504ed16bf38cdcaf3a1",
+    "033.npz": "a18aaa957b8ee56bbf86ee1c89dd74abaf317acc785c0e966f6d4f3b2533514a",
+    "034.npz": "760a989a1ff8fc2e6a48c0e93fe3debe402206408c9f7c49ec9b8091298832a5",
+    "035.npz": "3d8ea7bab124928350fa4ec9363a490864814674ab821b0cab3cc08a137aade4",
+    "036.npz": "9a3931255154f5ff022d74295db1fca0a752dc31c93e9e4c60dac1dc81d6dd48",
+    "037.npz": "8fbd2e1e314e5e9dcd6c3b10143b8bbfe7e073d838968e0302681e4276a04b6e",
+    "038.npz": "b964576147de9e0b9fc10f90fbb5adac8239cd74f492b4f98aae9e85264dfe40",
+    "039.npz": "48432c75a9dd96ad9825f62c26be804b3204a32828522880c9062ac97723e995",
+    "040.npz": "72de876fa3c882f2259c578bba00e40e82293bf5b8bd0d1a2405e3d5e0729403",
+    "041.npz": "4d94f5ff174ac3766a24d5cd0aed47e0362300ae048ddac8e53c99723192eba4",
+    "042.npz": "d72a852143887e8dd8b6193e8dbfb97454c11274dd0822c9fe74c3b4ada2c263",
+    "043.npz": "f64885632de5a27c8076e5038b3c9accfb937ee226525f291cf1627fd649eba6",
+    "044.npz": "df5bae2aaf510e1808f70cf75a72c373972c2fa9942ade6b3cfce43a31866d48",
+    "045.npz": "2e788439dbbb5c123cba4d07d7e2ff215c83d965ed1e450c53ef3c5006100d66",
+    "046.npz": "39ccd2931beee0a543a5ef7b999a4cf8f1119d0058d096bff06e6ac09e56fc73",
+    "047.npz": "e337e755edbc404fc6533a1124627e369ea3b595fd1d83b026286fb0aa834d94",
+    "048.npz": "1cf1a2aec51a767e7fadb30a35e433b026b8bfe725c1d3fac240975bc345a055",
+    "049.npz": "9a59bd0eadf0b440e880288400d3f89dfc5f9ace5e5f5103e1e100b803ddd060",
+    "050.npz": "5f153fccabdc01e0f984698588d8ddd040d0f6deee3878074d97e08d9341985c",
+    "051.npz": "6b83643f1cb9eb43f608cc8c5f309f8b30c54f405defd002ad01827d447d87ce",
+    "052.npz": "a72681e0f8d91b8a9685d03fb878e2099b674ea7f65dfad0558ca3b4929deb64",
+    "053.npz": "30d6a731ff85e5b5c3a738e0598ef3afc94f882e1d5c9ca2473a9900fa402573",
+    "054.npz": "79258234f6a217acb326003b75f3e0e9509223390ade84cc5cb1cd1754366223",
+    "055.npz": "cc5b95e64e45d43b5afa9087c39f5ca51f7e078b9126ca13ef09d4efae0d680a",
+    "056.npz": "0a0a37ae08b72f75f005e52911da0699934bd9bd9ef9c9d4c7e83165cf98997e",
+    "057.npz": "387851b3e54fa32d068874bd4ef0af3f7b7267deac24b9abe6dfd9ecfb2f4290",
+    "058.npz": "322b08b47af92388383aca73710db0b029244c0dafe40233a7acc619a589c2b8",
+    "059.npz": "f2f4c2b3ccf2069401904efb9a32c9a8300142d23dc893a1defede5e784ed43a",
+    "060.npz": "824f62eba904296e0396c1898048a3a2320d1d2100697f0705822576beb4995e",
+    "061.npz": "b6b59fea3395b40e06e7d5f541775b325bfa65daae74a90dc933cf5f9671f5ad",
+    "062.npz": "defc29763086f56e593dfd17e1fc3ba845d161ffd8098f4ad0567ba1e1552c58",
+    "063.npz": "a2d5f2eec0197cf0c6cae89989b6c598bc2aa6862c560ed1e649c45ee4246386",
+    "064.npz": "a8ce2d5ff9f459dd2ca17e1611cf54c3db78d842e9845e0dd586d41d04045cc6",
+    "065.npz": "c6491e441b5680b79397fbce3e4ad9cec0a259b8e466a7e2a3351fab2768260f",
+    "066.npz": "d938c728558a6fba3a968454c4718ed839995c68b6b8916d2ba34b290d5d82be",
+    "067.npz": "556c9f483d54ae6adee48e22c12a3c53c936dddf1d256bc42f755b2aa5a8ac8c",
+    "068.npz": "5d6507da37154688ba08d1917d903e9533dfc513506cf613c4b2896e0ffa77d9",
+    "069.npz": "8fb188d43bfdae186e248845bb6c1ecbbbbff689df15f0780cc93b7f74b1dacd",
+    "070.npz": "60c86012d0db5162a4c9acb1ef8f3cf6f8236c6bfc3a560d5133428300dec6b5",
+    "071.npz": "6cb870119c1815267335d2a487c7d5bb299887f715ddf2c676bc6647d73554b6",
+    "072.npz": "0143cd17cc6a6f54b0e13b27a4b85285817ad17fa17ea685c2b6c4f75427e76a",
+    "073.npz": "2e9dcb959c9389e81c5abdcdeee053380644e82fd73b8b450105e168f460d513",
+    "074.npz": "7328d74643ddc96092ed4e041153436a6fd79c1c49c0e0ed6f471a8c1fd8b5b8",
+    "075.npz": "e8788f6bbc14e100adf667d994f2922841d69fdf7acc277a6ab542c5ff2cc36e",
+    "076.npz": "dd64728fd761de98902577dc8368caffb70db474aade5eeb81daee68e805e289",
+    "077.npz": "9b6a7569ef1e3ee3e4f887a1e489fce8c7a18baa956a83d41eed3c27fecfa13d",
+    "078.npz": "822809d2512ec3398a2a37d093b4d7818ded7b9bbfa1330027e210171a7d932f",
+    "079.npz": "b75b2aad3a0e36a3456e9efd6b401db543d0fb55986cdf1b5acbcdaf335f5634",
+    "080.npz": "8acf0e58d46802a2aaa8264564153bc351e9564b10c65869c62f3a75f00e80ff",
+    "081.npz": "22f969ce9d22c28e8ed954c060cb07dbd166f46a44030317401586ab88df3444",
+    "082.npz": "695a04f5fc936e679d05198318a8e0f2b879ced3c14e4081aa21f216eefcf377",
+    "083.npz": "7a92534af84df2110f81405247a16c030789a8b6920617ac6059c122779c7151",
+    "084.npz": "fa19fe8bc8dcbfa4a2ff885ab3c01c36c1084b409b35b7df1af61ebb8b864a56",
+    "085.npz": "d59dcafdf97105c1496265303f050cddc728476de3539c248f40b4a0949bbad7",
+    "086.npz": "955e4f85fc7e8ac83052a3231231f641a462f8f390d7970fb39b0ee618a08a1c",
+    "087.npz": "3a6170e28673a8ce4ed7255b892924a84ba7b2de1e9c068391517337dadef262",
+    "088.npz": "6a6a0dc1a0c285c8d10bae7e9671adc97a98483ba351ad6960f18d7998dd6bc8",
+    "089.npz": "65de53aa812ff8decc07bc6d47c6bcf9477485bc698aae1b60cc4bf4270f55fe",
+    "090.npz": "f4941551ee619e39c17884f49be7f91b98c6134956194b2a66bb49128ec076ed",
+    "091.npz": "3d623da228127fa68c187c9a5115b640ffde19b2b3f4636a4e5c637c124476ab",
+    "092.npz": "af6e1ac2cd570b9979ff8349abb904e5d78198b64401c481a313584491b7a760",
+    "093.npz": "5df98e948424f170570227843be7cbb1a593aa0b26845b2322363210e74ec9ed",
+    "094.npz": "e6980889e8a1384deda4c9e5db899c8799615d0147bb7ff33c2365937f16bec1",
+    "095.npz": "8d1bb07b193579731292dd60b397c8833cae736db5d5fbe72749559993a72f8d",
+    "096.npz": "ed09753ca83dab509362b15d0bbee05c4a40932847f1397f663808a2049e4f02",
+    "097.npz": "8822311ad42dcb34c29bf144cfa25346e10a782f5bc8a5fb8c594fb031d12bfe",
+    "098.npz": "bd0e79af83d7b24a5cc88415d11dde40684e0ca50dc6ec9ff11e3d8302662f42",
+    "099.npz": "51c79c1ebcf5bb5352b43878379bbd9e79a35ea576303608c549386a69d58c87",
+    "100.npz": "5fa6c2dd0123440c6cb2108af36e5bf93fb527b23d9b9f1423a08d57f67a5f2e",
+    "101.npz": "632743bc8f4530c671bc558adab122494d3960518da6a8c20bfa007ed3c67c68",
+    "102.npz": "4ec0dd655605b79d9e91001605033b958a4a15a3aac1f9daa3d5e6bfe9f1551f",
+    "103.npz": "886521e395d640e387168b4a94a710c04f89d50040429ef3b2df1c4df983d8a5",
+    "104.npz": "e7c7d2fe4a0037a159e8e33148766d47dfc5a05d90db1b8bb49c99b0e6313dc2",
+    "105.npz": "13f7a23578b81e5808d47298490c2537af795cbb4f78ee64fb74394e47cc5284",
+    "106.npz": "094673ee9ad8a0533770ed26e6b815cdb9fefde046839e7134dec5bd84c38d64",
+    "107.npz": "9a3d5f038d71df1d9965325c1ad67636ab1ac3852b812abd1566204d7737f44f",
+    "108.npz": "d047dfb52992a0cd3ee495627c2de7799f89ea394ff43b0bb82e1ca07f600f06",
+    "109.npz": "b5223e710b98c55b004cb06503793101ba0a3b846a28c03ce5346e1c1a978bb1",
+    "110.npz": "6db11c0ad50e1970bd5f493e75dfb163742cf42b042d418fdd4582b88ab614b3",
+    "111.npz": "93d4db44dfbd7ef30ec86e406f1e10fa0c8b3ee2bc65ec9f137b9100ebb5ae76",
+    "112.npz": "203053e2c106f960d62b50af324c559ebb346e0b3e125a6c9386a08e4bb3c77e",
+    "113.npz": "b83b896aad76ad3c1a7114ee05326adcf0ffc610178dc52781f5eff45bb1e495",
+    "114.npz": "b0b86f898f7744fed261546f13bfa2f993a0980a56a104ef8401fc4fd2619e3c",
+    "115.npz": "aae456bfc1e00deb4118713516a8662d9c9add0146f1f17bb3448ceca6766167",
+    "116.npz": "180657d3a59a6305fa6b2c82ed1f00b08cee61be81ea19b8825bbbd66758e73f",
+    "117.npz": "ea896846ed91660659fa5c2c78a485d78250eded88e4ca37c1acc5c5dbd5c17b",
+    "118.npz": "5448afcc5e3fa837d51fe28af848f1254bf5993283d256cc5b2264aea7d2c392",
+    "119.npz": "c3bd9c6c868ac9e8cfb02f8ac693765a2e9d9ffe28afa827ca889bf19a1ddca0",
+    "120.npz": "70340474735833858fd3922317ac553b3cdc76deee832ecf7b3bf55be239fe3a",
+    "121.npz": "d0b5675a50c09049caa6a01af4ee3605550487b3e1e4baedbf1e8d5d57c028fc",
+    "122.npz": "0f34bf24e32a44b98a6315f028491244157f90aee6b85039f571c3aed49bafd6",
+    "123.npz": "191259b923c124a4e9ba85ef81db8cf70da94783a5857f6b599c04fcec367d5e",
+    "124.npz": "315d23deb4aaac1cbe1507d4fb0a6ce837d374de2c6be7569cb38352156f9e98",
+    "125.npz": "c7f278714da5bf44c804f248ef43c3a36a63529f88a04921998257ed62e6bbf2",
+    "126.npz": "be7f52d1c8f6d794e940c06918a6a861146e63efbd33521ad026aaa974c61dc2",
+    "127.npz": "7c6a88a46dfc841185ad54d15904159bea4ed86b419df1cc18e3879d40a90720",
+    "128.npz": "3cee9f5dd3d872fccd00b3afd7c695b9b9a7131355c87daad3826da0772cd184",
+    "129.npz": "e07548fd0a271028844742d43f3c72259bf6f64fed1797796a97a147dba41123",
+    "130.npz": "84ad73bff80f00063a2052fada1142d5ac41ffe660b143f5bf42a7d1506e5d68",
+    "131.npz": "fa6758a44cd627fc52291289a3781324adfb42122d111aae5cbc7b4342fedd9b",
+    "132.npz": "2dc1339324f14d0f438e6f6c47a5bcf4c2d367a232638477041eab616993454c",
+    "133.npz": "55bfb5d41881dfd0f5aea8683524672be66dbf5ecc094bda6bee7e79f19d1cf6",
+    "134.npz": "1e7c1bafbd7ba70d0b0645e124cb0caa46127e3979688f7ade165c7ff05ab74b",
+    "135.npz": "6d7253cd9b729e0fcace60030e9e26b6b616651317871c02d06df32464ea988f",
+    "136.npz": "f5004e35a956f6f53a5c81af15a776362b6eb7df5cccd90a0c6f3e060c4eced7",
+    "137.npz": "63a2dd54447e2269b7733fe0f93d331e1bfdf150e231fff811f13feeea5f3a16",
+    "138.npz": "2ac2225e7a745dea87ec458c62407dd564c16f657c730885b00709779be1262f",
+    "139.npz": "98bf7f5d8985d7a15363d40a2e9cf07413dd3ba553d4bdb5af3152002651524b",
+    "140.npz": "e501198e6f1292b5889344f7e78bc1d5c8fdb5eda6e787fa445a97d7176c41d4",
+    "141.npz": "62cc1183337a903591e914cbeb5dad8524975a66793031f9e433e2ba6e912d26",
+    "142.npz": "ea3e52af1c15a973a429e950b7a5c795a7af9f94fe3db7c84cd25a0c04f2e906",
+    "143.npz": "e9e2b06d3954b9fb492e2a051c1c3a129b35baf504331f96ad0ade04e30cfd44",
+    "144.npz": "1a11e4b8162914db0c000c39d0a881d33fa5e6c3de0183d53308a3ed342699ee",
+    "145.npz": "a60297739419b5503ecbb1e576bd52e948e72ffd04e041dab3292167aa41ba6d",
+    "146.npz": "ced0b5f2797a1f34355e199e06f9cda3e6a47d0c4c8ebcc5c8b68b2f84453fd2",
+    "147.npz": "4109e2e7a5a07ff78d52dca083572be9c0679ffdcfc59748d25be68540159923",
+    "148.npz": "b692e8bf1c02c5da3cab75d89f50e3ab42ec1d83f20ab1f0958584daf5346ac8",
+    "149.npz": "7e9c055f91d721a5621f8c7848e5e4cc48428511a12ebda03a38fd814c908eb0",
+    "150.npz": "2a19a7a3fcb46013493cce7db91f3254fc1f7f4d044a2f475e69338a4c16eb16",
+    "151.npz": "fc2bcadd9f11d9cd0c13a18dfff98246152b725ab4f295088997fb14bf1e1589",
+    "152.npz": "db34f0c76648347cec16c8ba99e8b3e95e2d733a528a1e346dd6e6f32c44094e",
+    "153.npz": "a97a17df6a3e10b3974158751a86f8d717c25a79c161394dea3c780e03a6f242",
+    "154.npz": "5ed7b5ac0d059dec155083c00b175117bad37cc444e228fd0d9b4e68bd1cb009",
+    "155.npz": "372c008dfe7b448012e8f6cd62c3b63009cede02573f42acb02145b1fc3cd241",
+    "156.npz": "72dd16c4d8dd11efb0e034448f08ca6d30af26910d9d306de5806655106bffb1",
+    "157.npz": "27562ac6a657301e76e7f3fc33ae64c572dccad0ef971e7011db5779e0c90ffc",
+    "158.npz": "1cbd52277250b01d328df8b8a94c27f08fbf4c11560b0cf87da394e4284dee91",
+    "159.npz": "78df4289f3c32157c594e77a48e2ada87d9e0906433cab06c083b9363652690d",
+    "160.npz": "4b6c0b99a8faf27229d1066682caad463221f5c2e367027c22ebeee06af51802",
+    "161.npz": "3b4e913684e2f67194002f951945f207450cec70461ea5f300240b87ea0d0e08",
+    "162.npz": "a4d3359492e664baccb7b8af40db0a15c254665af56c98515046583eeb1cc439",
+    "163.npz": "e0321b8c4405a882c7fee2676e4d5ff8e6b23d133b9dd6b22006eb03ea1fdcaa",
+    "164.npz": "c7ad1e4e8968e2f6ba2cf422e141bf60fb89e4035e36b1df6967bebf0760c5e0",
+    "165.npz": "2a9c228c0930e12998e1a8d89d1e6e7fcbdff71fd9931c0a64ad1d4628184d81",
+    "166.npz": "b5d8fc4cb9154c1971e08c1a2dd0c3658c5f80ba7acca597650eefda43807886",
+    "167.npz": "7e50dfc4f85a80e88eb1794431b1a12870fdaba115de30f0e223301c56d734d4",
+    "168.npz": "46afafbd9cea8b8b5d1663befe51e120fc9324af33b4f42fc62cab9dc1b53ed3",
+    "169.npz": "4f1d96ab83169d63fdcd3b848d237c65fd6df59eb8f4bd7e9517f02d59f21c01",
+    "170.npz": "812763f7918533e986e71a06ce7a3408c2ac36bce5f45a35233911600b7fb0ee",
+    "171.npz": "c011bdaec8b1c2f5de7d501fd5182420183746c0939fdd08718d2dc1cd6ccc65",
+    "172.npz": "a00d8c4c8efa6c6e67f968dac7c1944d7b20f2162143680901bef4dc4a8c2792",
+    "173.npz": "e56b64c1b22f03b272ae213bdbd2bf7a43a308a36a5e37e9af81ebfc23ba824f",
+    "174.npz": "e7129565c801f541adc5f1e7a35ccaf425b41d66f7b38d0ce9675c1bb5a05641",
+    "175.npz": "a8658ce687f24d11970d9857675d9b9cd13f3162d53cd1899e1f1b1989bdef7e",
+    "176.npz": "02a94b903a5389da1f98cc41aa9828af342999ba71e1f0bd44dce8ded5858551",
+    "177.npz": "74bb91a47aec6402850f9b7da81bf38469a424ba96d2b337d284c9c35079e55e",
+    "178.npz": "6c29643f52b8a91ef7e295aaab2be1ac4f5d6c3d360395954bf225445a2484fe",
+    "179.npz": "f5f78bfe191803a56f2a79179ba023bab76a1220d18c607d6c714f17dac59ad3",
+    "180.npz": "33c7eb150b8d5f9447000805a55f8a4d5587130b65194394e5b923c67f5b8463",
+    "181.npz": "ce2f63e28da68f65f8ba21578f15373aaf4f5aa3ff9f995218885d92d27d3b02",
+    "182.npz": "b28403f11ced818b89808617fce3b49d20933f4ad99e0bc011e76ff58bae518d",
+    "183.npz": "2d1ea446f8e655ed8f733f00ed4f15593a37659752e13e8b96f55b53ecbc033c",
+    "184.npz": "7082d5614cbead3a47a9df9b14a6a0c424f14dfa0da23d3c96718244ef6b1c44",
+    "185.npz": "bbac7e15fb9e0a37009d244ee76465c8c21759eab160caabf6b12f8c9fe55525",
+    "186.npz": "e717cdd6563eab66af4e2697d16fc491a083800af7d875e0c9e0bc9faeeccccb",
+    "187.npz": "e6f6b55c3b424e05a06754c471aaa3a117566a248b0680ce5cac7bff9c049579",
+    "188.npz": "7b26521214961cf1be5f42b49892109f9e4ec560d531dc26f7809021c72a8a2d",
+    "189.npz": "ec7b318f84c08e88abaa9ea3a29b49a115e763d2079e2ac3588a1326b1a4f1f1",
+    "190.npz": "6c91255bf32e0cb0b6dad25e6a85995a067ece2009e30fd979c7c38caffea324",
+    "191.npz": "267db3331a5ee372f3e85afbdbdf36ea79918572ff502c033ab850ba74285455",
+    "192.npz": "3d24a0c0184c0afe3f1469a5b3dbf817edbde5f1c30d3827b3bdad26505f5112",
+    "193.npz": "935ce75b5fb34e56b0ef6e84db2b3a5859a03489279dfea3683a93dd816a3770",
+    "194.npz": "829d9e06b28b8b8c12e21a6fbc65b78604537cadbe6a51f542734aee343fa21d",
+    "195.npz": "589f1d779307633779e4cb0d253afed5cd3dc37b1ccd84cf4afd5f344160fc8a",
+    "196.npz": "a5ad8ad433f79b94f22795367e7c3ad49a35029d7c899bbe12dd58e2d55644cf",
+    "197.npz": "48bf25356e4f523389119841680785aec3f84bc2b3a20919e4d84a71cad2b47a",
+    "198.npz": "febc91c67eafd8163774ee948944c2fb07cde34300d822d6d9e86ed1c7424c7a",
+    "199.npz": "dc078e7a5ddfab86d436358567b95d850d57ac531f456d9ff9585ed84c0da537"
+  },
+  "code_sha256": "88233dcee14c56eaf5b998060bea4b43c640e61aa248b520d0a11149e64b2c62",
+  "post_hoc": true,
+  "licenses_frozen_route": false
+}
