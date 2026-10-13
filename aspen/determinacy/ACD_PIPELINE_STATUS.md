@@ -221,3 +221,5 @@ Stage23 | authorized cap amendment | 24fdc58787e5c8fa81bfb8f47e4b788adeb1bc3e | 
 Stage23 | final results | fe0173b9cdd740a3020e3897bc916633d830e2a7 | 2026-10-13T03:27:33Z | Training, validation, primary and descriptive scoring, derivatives, figures and registry complete; Q1 and Q2 FAIL under unchanged criteria; no extra seeds triggered; nothing remains queued for Stage23.
 
 Stage23 | implementation closeout | 498a9acd4ba5e7dbdffb5be6572617eb9ed113ab | 2026-10-13T06:38:25Z | A1-A5 PASS for initial and selected states; exclusion records accounted for with unavailable seeds and diagnostics explicitly reported; no training, optimizer run, panel rescoring or realized-outcome access; existing registry and closeout supplement PASS; frozen hashes unchanged.
+
+2026-10-13T21:00:12.659680+00:00 | Stage 23 | per-pattern effect breakdown | 5cfd26798c48997d348a7b6c2093888835856c64 | Complete; exact closeout and validation reproduction; registry PASS; no remaining task work.
