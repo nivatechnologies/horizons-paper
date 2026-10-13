@@ -1,0 +1,2398 @@
+{
+  "label": "POST HOC, descriptive; no pass rules or confirmations",
+  "realized_outcome_accesses": [],
+  "models": [
+    {
+      "name": "initial",
+      "initial": true,
+      "conditioned": false,
+      "tensor_sha256": "8fe19941844395a2caf99ea1f39433316ea2d5e65ac7e951ab626ffa8e3bf7a1"
+    },
+    {
+      "name": "CNN-noF-response-0-seed1",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/training/CNN-noF-response-0-seed1/selected.pt",
+      "sha256": "f4479d5520d1e0f810192b0a287c6b6683df2b14dea537f56f8bd215a19f62c3",
+      "conditioned": false,
+      "validation_effect_RMSE": 0.3615496098284943
+    },
+    {
+      "name": "CNN-noF-response-0.01-seed1",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/training/CNN-noF-response-0.01-seed1/selected.pt",
+      "sha256": "52e57889aca5c26c5692182f6d9ce91bad84706853a52e4f50cadb788759ce9c",
+      "conditioned": false,
+      "validation_effect_RMSE": 0.35929604676131077
+    },
+    {
+      "name": "CNN-noF-response-0.03-seed1",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/training/CNN-noF-response-0.03-seed1/selected.pt",
+      "sha256": "5e308dad4185f7d0a74d1e7c3326016d83292351e7de8966c6980a6cb2fa8b3b",
+      "conditioned": false,
+      "validation_effect_RMSE": 0.3537084645073617
+    },
+    {
+      "name": "CNN-noF-response-0.1-seed1",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/training/CNN-noF-response-0.1-seed1/selected.pt",
+      "sha256": "d3fddcd2ba037ec6af55e97acef8912b90459d72cd84f4677f3fb8c01d346d1d",
+      "conditioned": false,
+      "validation_effect_RMSE": 0.3171451782911247
+    },
+    {
+      "name": "CNN-noF-response-0.3-seed1",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/training/CNN-noF-response-0.3-seed1/selected.pt",
+      "sha256": "6be83e7031b0fb054f9b148375ec708a27d1a418a7af020b2c8b2b9c15869383",
+      "conditioned": false,
+      "validation_effect_RMSE": 0.34991162575641405
+    },
+    {
+      "name": "CNN-noF-response-1-seed1",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/runs/stage23/training/CNN-noF-response-1-seed1/selected.pt",
+      "sha256": "a9108f07a19c00350fd58c020b25556e41219679ebdbb1de035bc74451a8d6d2",
+      "conditioned": false,
+      "validation_effect_RMSE": 0.6375626834362088
+    },
+    {
+      "name": "CNN-noF",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-noF.pt",
+      "sha256": "4bfef787a80269dada0acd7ca74ef84eb6442a580c706a57333c55dc647b1f67",
+      "conditioned": false
+    },
+    {
+      "name": "CNN-F (true forcing supplied)",
+      "path": "/mnt/niva-array/work/aspen-determinacy-stage21-20261008/aspen/determinacy/runs/stage21/checkpoints/CNN-F.pt",
+      "sha256": "f883730e8df0798c07effbb1d51b05a646bea6f688b2a4bc74b9edf4ca104e8b",
+      "conditioned": true
+    }
+  ],
+  "data_hashes": {
+    "/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy/runs/stage18/response_data/train.npz": "a7fbc3ba8dd6a88cee34ce5d6d1fc2e54ebe7d16138966cc11173a08eb0a96e0",
+    "/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy/runs/stage18/response_data/val.npz": "cb2d800d22c51ee9d9f7c13a89ec939eba9cebf5d97ea10ca4345fc05c097563",
+    "/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy/runs/stage18/response_data/validation_reference.npz": "67a0c826af8cf7a6bf8a97c4515bbb060995eb3f6da9a180395d46f2076a6b0c"
+  },
+  "fixed_batch": {
+    "batch_order_seed": 3521043623,
+    "start_indices": [
+      1448,
+      2505,
+      1738,
+      1510,
+      574,
+      3848,
+      1568,
+      77,
+      1715,
+      865,
+      1146,
+      3197,
+      417,
+      454,
+      2309,
+      2265,
+      861,
+      150,
+      1875,
+      2545,
+      1083,
+      1238,
+      4038,
+      1721,
+      3379,
+      769,
+      2980,
+      4068,
+      1807,
+      2747,
+      3569,
+      1804,
+      2381,
+      175,
+      3893,
+      3210,
+      3846,
+      1589,
+      3369,
+      1078,
+      1941,
+      267,
+      3591,
+      984,
+      459,
+      1226,
+      2400,
+      3895,
+      3687,
+      3285,
+      114,
+      3051,
+      622,
+      3857,
+      433,
+      604,
+      154,
+      456,
+      1450,
+      2601,
+      3293,
+      352,
+      2852,
+      1836,
+      1679,
+      1389,
+      1170,
+      694,
+      1483,
+      3593,
+      1878,
+      2345,
+      2263,
+      504,
+      973,
+      3983,
+      2226,
+      527,
+      277,
+      1300,
+      2070,
+      2528,
+      1600,
+      3694,
+      1989,
+      2429,
+      2104,
+      1438,
+      3396,
+      172,
+      812,
+      3322,
+      1060,
+      1947,
+      2729,
+      2281,
+      4089,
+      512,
+      1919,
+      491,
+      3683,
+      1787,
+      3207,
+      1425,
+      535,
+      2473,
+      2310,
+      2295,
+      3340,
+      796,
+      1339,
+      3321,
+      247,
+      1084,
+      1958,
+      1165,
+      2250,
+      612,
+      2079,
+      3474,
+      2601,
+      3685,
+      2484,
+      735,
+      527,
+      114,
+      1031,
+      1078
+    ],
+    "per_start_amplitudes": [
+      -0.10787277329042688,
+      0.07244624754148565,
+      0.24670746821566475,
+      0.06436572540694463,
+      0.003991121335967018,
+      -0.010577319056428114,
+      0.25823638765598994,
+      -0.18948354265087652,
+      -0.07669998296547406,
+      -0.2135475121989419,
+      -0.1815215323807084,
+      0.31731185861634953,
+      0.17357703475135355,
+      0.13012796523629128,
+      -0.2910906492441428,
+      0.021113970387147796,
+      0.033865203404739364,
+      -0.22546048312417177,
+      -0.06780187395959636,
+      -0.15889507367475225,
+      -0.318601123960098,
+      0.15795897446249946,
+      -0.1854312141860663,
+      0.20228140238684483,
+      -0.2445470526942757,
+      0.12830573896355502,
+      -0.17571108838392824,
+      -0.22587670886373154,
+      0.12425383518492028,
+      0.23694081512766746,
+      0.2615561376741054,
+      0.16503769317655148,
+      -0.16748505606270073,
+      -0.1769884728119404,
+      -0.13628703126623337,
+      -0.1758303381169546,
+      -0.13694464183184807,
+      -0.3108431489134327,
+      0.1244046831531812,
+      0.007441280095180358,
+      -0.2786392030324531,
+      0.12084442771525411,
+      0.09498244464966044,
+      -0.3168844542293551,
+      0.18713299004517642,
+      -0.23779634346303816,
+      0.11519018172033813,
+      0.15709145210123837,
+      -0.31010789769740527,
+      0.1109185110875246,
+      -0.1640491338804381,
+      0.2945637839100759,
+      -0.1522622348433569,
+      -0.08574420835345273,
+      0.024106814124896958,
+      0.2360742789906976,
+      0.16394787588388843,
+      0.0826863654399102,
+      -0.2661525878836523,
+      0.19715146098645148,
+      -0.18588096741923374,
+      -0.2141507182193872,
+      0.05634854241681808,
+      -0.22533462135133187,
+      0.2885488022323022,
+      -0.2807732920961803,
+      0.017353222393850065,
+      0.2843834432729974,
+      -0.14680746594020924,
+      -0.005961259465114999,
+      -0.23462145170535892,
+      -0.1298867234531698,
+      0.0015842022510624831,
+      0.17095152478551667,
+      0.03969714364557525,
+      -0.15836651252058034,
+      0.17138650868530664,
+      -0.03999356157950068,
+      0.13074511264678423,
+      -0.19593430719931249,
+      -0.24473714043933625,
+      0.08408634072234411,
+      -0.21102167556186124,
+      0.31834121361588824,
+      -0.048929047388645175,
+      -0.07368546789349814,
+      -0.09551410775539168,
+      0.3164887940709335,
+      0.3199810329415033,
+      0.29212071408126977,
+      0.16785907952225726,
+      -0.31390746576660045,
+      -0.24057003282335465,
+      -0.0508341453945389,
+      0.17305350760231342,
+      0.0001707232291493499,
+      0.24828449759309662,
+      -0.14320117854953623,
+      -0.08723775732525846,
+      -0.12387598061820548,
+      0.23814772645849286,
+      -0.23777431446669317,
+      0.1923984101670983,
+      0.2921353266158509,
+      0.19881885045390596,
+      -0.24214058682491285,
+      0.12797934161996816,
+      0.045529028346774414,
+      -0.08520063399019201,
+      -0.286939258131637,
+      -0.18220781447074494,
+      0.1418756261216476,
+      0.29077932155411274,
+      0.03284259221398422,
+      0.06588435253182195,
+      0.09540844560386225,
+      -0.06324493784580215,
+      -0.22108190546606146,
+      -0.11094642945693031,
+      -0.052901474370470325,
+      0.19715146098645148,
+      0.07876809488418962,
+      0.24602717306321026,
+      -0.18430395655065682,
+      -0.03999356157950068,
+      -0.1640491338804381,
+      -0.22385446634603184,
+      0.007441280095180358
+    ],
+    "expanded_rows": 1024,
+    "patterns_per_start": 8,
+    "tensor_shapes": {
+      "H": [
+        1024,
+        11,
+        40
+      ],
+      "A": [
+        1024,
+        2,
+        40
+      ],
+      "F": [
+        1024
+      ],
+      "T": [
+        1024,
+        2,
+        36,
+        40
+      ]
+    },
+    "tensor_dtypes": {
+      "H": "float32",
+      "A": "float32",
+      "F": "float32",
+      "T": "float32"
+    },
+    "canonical_tensor_sha256": "48b2968a04634295194a5b4fbf498b26588954dffe78619f48c12b2aa0ff017b",
+    "expansion": "Each recorded first-batch start retains its original recorded amplitude, expanded in frozen pattern order with an action/no-action twin."
+  },
+  "code_hashes": {
+    "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/acd_stage23_pattern_breakdown.py": "9a44b24df3dbbe6f6209e0cc110e031f0b48ead4952d7a564865d2827b7203e0",
+    "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/acd_stage23_train.py": "c20d533df67ed2360ad5731fe9a6c3b9a476dae238527fe15a7541c273d4e19e",
+    "/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy/acd_stage18_select.py": "e0e68bd34ec978a862e448a69595b99a10491ae1b2fc3ebf992b362717be9aa4",
+    "/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy/acd_stage9_cnn.py": "3ca018b1dc35c5cb9734787e852240e7517d88007515692d27fd882f3c13d434",
+    "/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision/physics.py": "13ef98834e47bd667f53cce50af3e7d573a1bc4eb9c38987f389a05b1f2fc5d7",
+    "/mnt/niva-array/work/aspen-forecast-decision-20261005/aspen/forecast_decision/protocol.py": "e6d002264a8000ac88d15db41b76cd69bf17c5472de04b29f51b56408841412d"
+  },
+  "datasets": {
+    "D1": {
+      "initial": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.3512695673180058,
+            "mean_bias": -0.005431157450065081,
+            "sign_agreement": 0.2109375,
+            "correlation": -0.5483773228253179,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.19158026986567758,
+            "mean_bias": 0.04347731500774418,
+            "sign_agreement": 0.5703125,
+            "correlation": 0.2124761549534321,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.20821476930205726,
+            "mean_bias": -0.027998994021012212,
+            "sign_agreement": 0.53125,
+            "correlation": -0.058885492554009954,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.31304538140995075,
+            "mean_bias": -0.0016108965931090034,
+            "sign_agreement": 0.421875,
+            "correlation": -0.11681756697220298,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.35855248628011105,
+            "mean_bias": 0.034323643175539285,
+            "sign_agreement": 0.515625,
+            "correlation": -0.04300443205673286,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.2711049428637406,
+            "mean_bias": 0.0505281736726271,
+            "sign_agreement": 0.5078125,
+            "correlation": -0.10298953397947386,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.22510245949145274,
+            "mean_bias": 0.002378806608033055,
+            "sign_agreement": 0.4921875,
+            "correlation": 0.18848917174361451,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.30714200190587454,
+            "mean_bias": 0.03008741519270295,
+            "sign_agreement": 0.515625,
+            "correlation": 0.004476949395953031,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.3512695673180058,
+            "mean_bias": -0.005431157450065081,
+            "sign_agreement": 0.2109375,
+            "correlation": -0.5483773228253179,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.2738922892687319,
+            "mean_bias": 0.01874078043464648,
+            "sign_agreement": 0.5078125,
+            "correlation": 0.006693570990628497,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.2847167916917278,
+            "mean_bias": 0.015719288199057532,
+            "sign_agreement": 0.470703125,
+            "correlation": -0.0941679844341548,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF-response-0-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": true,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.2192431077320618,
+            "mean_bias": 0.09524174042984675,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9357672638715683,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.1510628651767603,
+            "mean_bias": 0.03226703950242792,
+            "sign_agreement": 0.8046875,
+            "correlation": 0.8442529180895391,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.13644798450676904,
+            "mean_bias": 0.01872204419625506,
+            "sign_agreement": 0.84375,
+            "correlation": 0.8903220485334515,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.07058341693158247,
+            "mean_bias": -0.003167851945314562,
+            "sign_agreement": 0.921875,
+            "correlation": 0.9870851380755484,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.08776370845839485,
+            "mean_bias": 0.015478258066270005,
+            "sign_agreement": 0.90625,
+            "correlation": 0.9718270922793736,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.11223074282267846,
+            "mean_bias": 0.007313413222638614,
+            "sign_agreement": 0.8515625,
+            "correlation": 0.9122365477051011,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.0565223127705862,
+            "mean_bias": -0.004306937468064528,
+            "sign_agreement": 0.9375,
+            "correlation": 0.9739051036807264,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06767391446765877,
+            "mean_bias": 0.005934366021462439,
+            "sign_agreement": 0.84375,
+            "correlation": 0.9771394049627301,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.2192431077320618,
+            "mean_bias": 0.09524174042984675,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9357672638715683,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.10315923831929617,
+            "mean_bias": 0.010320047370810706,
+            "sign_agreement": 0.8727678571428571,
+            "correlation": 0.9425060170592318,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.4417361422425238,
+            "mean_bias": 0.02093525900319021,
+            "sign_agreement": 0.8857421875,
+            "correlation": 0.7541697962358799,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF-response-0.01-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": true,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.2133528807993452,
+            "mean_bias": 0.09621217447442261,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9358074893443792,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.15144738544585806,
+            "mean_bias": 0.03281223479475771,
+            "sign_agreement": 0.8046875,
+            "correlation": 0.8405200969529083,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.13147041449618238,
+            "mean_bias": 0.016687462361913423,
+            "sign_agreement": 0.84375,
+            "correlation": 0.8914603301783565,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06809463196148935,
+            "mean_bias": -0.004501338306142279,
+            "sign_agreement": 0.9140625,
+            "correlation": 0.9889642313927031,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.09433668207837705,
+            "mean_bias": 0.01706127408122434,
+            "sign_agreement": 0.90625,
+            "correlation": 0.9676034623412627,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.1092890818312161,
+            "mean_bias": 0.006209653669997289,
+            "sign_agreement": 0.8515625,
+            "correlation": 0.9162292545816105,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06012310897437256,
+            "mean_bias": -0.0034717471826428217,
+            "sign_agreement": 0.9453125,
+            "correlation": 0.9705120922391071,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06948655670203349,
+            "mean_bias": 0.006148745083588793,
+            "sign_agreement": 0.8515625,
+            "correlation": 0.9758662492207482,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.2133528807993452,
+            "mean_bias": 0.09621217447442261,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9358074893443792,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.10291768009729999,
+            "mean_bias": 0.010135183500385208,
+            "sign_agreement": 0.8738839285714286,
+            "correlation": 0.9423487905537431,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.4396546308581802,
+            "mean_bias": 0.020894807372139883,
+            "sign_agreement": 0.88671875,
+            "correlation": 0.7544208456584209,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF-response-0.03-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": true,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1956605983087503,
+            "mean_bias": 0.09268865034715601,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.935810116796216,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.14571866817959486,
+            "mean_bias": 0.03191068248978936,
+            "sign_agreement": 0.8125,
+            "correlation": 0.8436705610597796,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.12311775206333848,
+            "mean_bias": 0.013617905205454521,
+            "sign_agreement": 0.8359375,
+            "correlation": 0.8968580623105827,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06356793442315874,
+            "mean_bias": -0.007604199376180974,
+            "sign_agreement": 0.90625,
+            "correlation": 0.9888695278700163,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.09017590795372707,
+            "mean_bias": 0.011482853117802727,
+            "sign_agreement": 0.90625,
+            "correlation": 0.9705582055891347,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.10577695608094365,
+            "mean_bias": 0.0020324015869448153,
+            "sign_agreement": 0.859375,
+            "correlation": 0.9209204731962697,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.056840512111376716,
+            "mean_bias": -0.0034224604958543042,
+            "sign_agreement": 0.9453125,
+            "correlation": 0.972372219107779,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06846219072447746,
+            "mean_bias": 0.00600536659674783,
+            "sign_agreement": 0.828125,
+            "correlation": 0.9756842735237434,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1956605983087503,
+            "mean_bias": 0.09268865034715601,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.935810116796216,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.09832247788701567,
+            "mean_bias": 0.007717507017814853,
+            "sign_agreement": 0.8705357142857143,
+            "correlation": 0.9456521594345171,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.4326192659187951,
+            "mean_bias": 0.0183388999339825,
+            "sign_agreement": 0.8837890625,
+            "correlation": 0.755520204960403,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF-response-0.1-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": true,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.048572952839072,
+            "mean_bias": 0.08077166841040087,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9356825231882792,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.13651597825580591,
+            "mean_bias": 0.028714871731486166,
+            "sign_agreement": 0.8203125,
+            "correlation": 0.8402894335301838,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.10493221698195124,
+            "mean_bias": -0.0025033790409401124,
+            "sign_agreement": 0.8828125,
+            "correlation": 0.8969137370202814,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.11819236776518263,
+            "mean_bias": -0.005040990025395521,
+            "sign_agreement": 0.8984375,
+            "correlation": 0.9690942839708224,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.08180250632070236,
+            "mean_bias": 0.002236844164576715,
+            "sign_agreement": 0.875,
+            "correlation": 0.9750838728206435,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.11209158876554329,
+            "mean_bias": -0.0030865125258161957,
+            "sign_agreement": 0.8515625,
+            "correlation": 0.910250300073609,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.06773553672287,
+            "mean_bias": -0.005986979778603907,
+            "sign_agreement": 0.9140625,
+            "correlation": 0.9573927920380766,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.0778763176109234,
+            "mean_bias": 0.006807507136487312,
+            "sign_agreement": 0.8359375,
+            "correlation": 0.9677468376620235,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.048572952839072,
+            "mean_bias": 0.08077166841040087,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9356825231882792,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.10248750193485759,
+            "mean_bias": 0.003020194523113494,
+            "sign_agreement": 0.8683035714285714,
+            "correlation": 0.9352314727539776,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.382921508568594,
+            "mean_bias": 0.012739128759024417,
+            "sign_agreement": 0.8818359375,
+            "correlation": 0.7664124691726745,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF-response-0.3-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": true,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1199191081784057,
+            "mean_bias": 0.08716870128904572,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9337976801993357,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.14657546643430625,
+            "mean_bias": 0.038789134944793136,
+            "sign_agreement": 0.828125,
+            "correlation": 0.8305442059772411,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.15108056948221238,
+            "mean_bias": -0.0008517003455765434,
+            "sign_agreement": 0.8359375,
+            "correlation": 0.8122770031972348,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.11851720107990384,
+            "mean_bias": 0.008126449181532013,
+            "sign_agreement": 0.8984375,
+            "correlation": 0.9526213885270761,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.09226605786900784,
+            "mean_bias": 0.0034536183355934405,
+            "sign_agreement": 0.8671875,
+            "correlation": 0.9660011678302478,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.10639971251002345,
+            "mean_bias": -0.004543816231889909,
+            "sign_agreement": 0.859375,
+            "correlation": 0.9239962609078402,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.0931719587002314,
+            "mean_bias": -0.010360819484304,
+            "sign_agreement": 0.8828125,
+            "correlation": 0.9202333870432531,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.08460614539218345,
+            "mean_bias": 0.008293145762206577,
+            "sign_agreement": 0.8125,
+            "correlation": 0.9613619373020337,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1199191081784057,
+            "mean_bias": 0.08716870128904572,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9337976801993357,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.11589969232695638,
+            "mean_bias": 0.006129430308907816,
+            "sign_agreement": 0.8549107142857143,
+            "correlation": 0.9197329205364534,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.4105252701773512,
+            "mean_bias": 0.016259339181425053,
+            "sign_agreement": 0.8701171875,
+            "correlation": 0.7518419540760364,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF-response-1-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": true,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.5707092024391254,
+            "mean_bias": 0.039815297132869645,
+            "sign_agreement": 0.75,
+            "correlation": 0.5084406925035264,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.5297259958190922,
+            "mean_bias": -0.05973853666783024,
+            "sign_agreement": 0.59375,
+            "correlation": 0.1715764099683338,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.6176872132808257,
+            "mean_bias": -0.051449202721958937,
+            "sign_agreement": 0.5625,
+            "correlation": -0.04023568936445522,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.8139829671921245,
+            "mean_bias": -0.009212503351755275,
+            "sign_agreement": 0.4921875,
+            "correlation": 0.14937040075989888,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1280874789772726,
+            "mean_bias": 0.009353985760523265,
+            "sign_agreement": 0.5,
+            "correlation": -0.01703393917301444,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.132109920465854,
+            "mean_bias": 0.09452149795304948,
+            "sign_agreement": 0.546875,
+            "correlation": 0.05925440615222999,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.6033344884083639,
+            "mean_bias": -0.005441273009456203,
+            "sign_agreement": 0.5,
+            "correlation": -0.13771405613924853,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.8704216318654012,
+            "mean_bias": -0.11254955937214506,
+            "sign_agreement": 0.484375,
+            "correlation": -0.06704432081036833,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.5707092024391254,
+            "mean_bias": 0.039815297132869645,
+            "sign_agreement": 0.75,
+            "correlation": 0.5084406925035264,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.8452063103459894,
+            "mean_bias": -0.019216513058510427,
+            "sign_agreement": 0.5256696428571429,
+            "correlation": 0.01927701812278147,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.8159599364467496,
+            "mean_bias": -0.011837536784587918,
+            "sign_agreement": 0.5537109375,
+            "correlation": 0.08288870399818254,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-noF": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1738410582441787,
+            "mean_bias": 0.08054712942643466,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9365332180036587,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.1649914586349667,
+            "mean_bias": 0.026241846546026237,
+            "sign_agreement": 0.8125,
+            "correlation": 0.8276439696495546,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.12936512471928174,
+            "mean_bias": 0.010189621498577876,
+            "sign_agreement": 0.8671875,
+            "correlation": 0.8639501931962679,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.16878734400016765,
+            "mean_bias": -0.01488541458466764,
+            "sign_agreement": 0.890625,
+            "correlation": 0.8625253286098823,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.22743605122894145,
+            "mean_bias": -0.005833367522955872,
+            "sign_agreement": 0.890625,
+            "correlation": 0.7718917326111018,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.1229943500572879,
+            "mean_bias": 0.00967419340081805,
+            "sign_agreement": 0.84375,
+            "correlation": 0.8921633638799707,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.05608807599924502,
+            "mean_bias": -0.0038760049889900866,
+            "sign_agreement": 0.9609375,
+            "correlation": 0.9694732751055768,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.05900679054225936,
+            "mean_bias": 0.008427441500359747,
+            "sign_agreement": 0.84375,
+            "correlation": 0.9815792701153274,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 1.1738410582441787,
+            "mean_bias": 0.08054712942643466,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9365332180036587,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.1443849643709402,
+            "mean_bias": 0.004276902264166902,
+            "sign_agreement": 0.8727678571428571,
+            "correlation": 0.8607239087097696,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.4364389928120821,
+            "mean_bias": 0.013810680659450372,
+            "sign_agreement": 0.8857421875,
+            "correlation": 0.7045684783654188,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      },
+      "CNN-F (true forcing supplied)": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "training batch",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.0503798153256153,
+            "mean_bias": -0.003005007346657561,
+            "sign_agreement": 0.9921875,
+            "correlation": 0.9933269012228266,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.027035261323235492,
+            "mean_bias": 0.002781129453913851,
+            "sign_agreement": 0.984375,
+            "correlation": 0.9897439679018817,
+            "predict_zero_RMSE": 0.19239940852474005
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.038200904154493225,
+            "mean_bias": -0.006515202893585592,
+            "sign_agreement": 0.9609375,
+            "correlation": 0.9858417051917778,
+            "predict_zero_RMSE": 0.20786312252512465
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.13347335735541296,
+            "mean_bias": 0.020016150503504193,
+            "sign_agreement": 0.953125,
+            "correlation": 0.9317626851647689,
+            "predict_zero_RMSE": 0.31265958893449985
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.055695773878853785,
+            "mean_bias": -0.0028584408970796713,
+            "sign_agreement": 0.9921875,
+            "correlation": 0.9884474961318878,
+            "predict_zero_RMSE": 0.3582480045438263
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.04459609494341035,
+            "mean_bias": 0.007308431465869618,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9865341956254332,
+            "predict_zero_RMSE": 0.2708575644769284
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.028998567292958435,
+            "mean_bias": -0.0007591096957647175,
+            "sign_agreement": 0.9609375,
+            "correlation": 0.9920723296659362,
+            "predict_zero_RMSE": 0.226115546348819
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.026831930907241796,
+            "mean_bias": 0.003588040686891003,
+            "sign_agreement": 0.921875,
+            "correlation": 0.997164978261637,
+            "predict_zero_RMSE": 0.30709628137681083
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 128,
+            "effect_RMSE": 0.0503798153256153,
+            "mean_bias": -0.003005007346657561,
+            "sign_agreement": 0.9921875,
+            "correlation": 0.9933269012228266,
+            "predict_zero_RMSE": 0.34834796477502616
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 896,
+            "effect_RMSE": 0.06171021204003608,
+            "mean_bias": 0.003365856946249812,
+            "sign_agreement": 0.9642857142857143,
+            "correlation": 0.97442531302155,
+            "predict_zero_RMSE": 0.2738932138076945
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 1024,
+            "effect_RMSE": 0.06041024093896106,
+            "mean_bias": 0.0025694989096363904,
+            "sign_agreement": 0.9677734375,
+            "correlation": 0.9776660503086791,
+            "predict_zero_RMSE": 0.2842685245837673
+          }
+        }
+      }
+    },
+    "D2": {
+      "initial": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.30187976234639574,
+            "mean_bias": 0.2584029092863763,
+            "sign_agreement": 0.185546875,
+            "correlation": -0.006454410039712078,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.1635773204095497,
+            "mean_bias": -0.012338048041221596,
+            "sign_agreement": 0.46875,
+            "correlation": -0.018272308964695613,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.21748467347657155,
+            "mean_bias": -0.002262926190785838,
+            "sign_agreement": 0.494140625,
+            "correlation": 0.01714285968147195,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.2839810152212186,
+            "mean_bias": -0.009303309416551046,
+            "sign_agreement": 0.501953125,
+            "correlation": 0.004533017804984462,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.3108385570524592,
+            "mean_bias": 0.02188747765463027,
+            "sign_agreement": 0.521484375,
+            "correlation": -0.006874444250138698,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.3140580772622785,
+            "mean_bias": 0.021670430048784026,
+            "sign_agreement": 0.466796875,
+            "correlation": -0.06464149121972297,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.17713173782101013,
+            "mean_bias": 0.016382071046937213,
+            "sign_agreement": 0.5390625,
+            "correlation": -0.00856188437183068,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.19355321368924056,
+            "mean_bias": 0.001233588759278998,
+            "sign_agreement": 0.46875,
+            "correlation": -0.015049884256349663,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.30187976234639574,
+            "mean_bias": 0.2584029092863763,
+            "sign_agreement": 0.185546875,
+            "correlation": -0.006454410039712078,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.24459702237199152,
+            "mean_bias": 0.0053241834087245764,
+            "sign_agreement": 0.49441964285714285,
+            "correlation": -0.010223186869125083,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.25246913533812104,
+            "mean_bias": 0.03695902414343104,
+            "sign_agreement": 0.455810546875,
+            "correlation": -0.09509538389718568,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF-response-0-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9811729301141057,
+            "mean_bias": -0.966455262766362,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.7309266403954335,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.14457146039187171,
+            "mean_bias": 0.016449198194419375,
+            "sign_agreement": 0.849609375,
+            "correlation": 0.8304787223102444,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.12867681841586573,
+            "mean_bias": 0.00479594123704029,
+            "sign_agreement": 0.884765625,
+            "correlation": 0.8935427617854623,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08629756237131382,
+            "mean_bias": 0.005063075218752374,
+            "sign_agreement": 0.939453125,
+            "correlation": 0.965143521782057,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10831320001429245,
+            "mean_bias": -0.0009592430753341367,
+            "sign_agreement": 0.8828125,
+            "correlation": 0.9386483319634026,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10409170661065038,
+            "mean_bias": 0.006687564131746213,
+            "sign_agreement": 0.896484375,
+            "correlation": 0.9436795838090153,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.0845753964943144,
+            "mean_bias": -0.0016141049211294747,
+            "sign_agreement": 0.91015625,
+            "correlation": 0.8820707198503465,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.09175463882043662,
+            "mean_bias": 0.003727147879599246,
+            "sign_agreement": 0.87109375,
+            "correlation": 0.9043440711812476,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9811729301141057,
+            "mean_bias": -0.966455262766362,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.7309266403954335,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.10891978971990098,
+            "mean_bias": 0.004878511237870554,
+            "sign_agreement": 0.890625,
+            "correlation": 0.9140026490754455,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.3615496098284943,
+            "mean_bias": -0.11653821051265853,
+            "sign_agreement": 0.901123046875,
+            "correlation": 0.7413684237108977,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF-response-0.01-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9756044830726311,
+            "mean_bias": -0.9606576207593907,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.734829738335309,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.14525814521102226,
+            "mean_bias": 0.014993585113022718,
+            "sign_agreement": 0.849609375,
+            "correlation": 0.837677377379711,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.12796715729708555,
+            "mean_bias": 0.004341988199288844,
+            "sign_agreement": 0.880859375,
+            "correlation": 0.8975699040904849,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08596594054703684,
+            "mean_bias": 0.0029808149645577254,
+            "sign_agreement": 0.943359375,
+            "correlation": 0.9659933440266811,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.09910732031022788,
+            "mean_bias": -0.0028027955466168337,
+            "sign_agreement": 0.88671875,
+            "correlation": 0.9487031610562487,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10375844252573475,
+            "mean_bias": 0.00676288616497229,
+            "sign_agreement": 0.890625,
+            "correlation": 0.9439808321147194,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08520454195867146,
+            "mean_bias": -0.003389244500020424,
+            "sign_agreement": 0.908203125,
+            "correlation": 0.8831003471569207,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.09072779077672277,
+            "mean_bias": 0.0026916696603832765,
+            "sign_agreement": 0.873046875,
+            "correlation": 0.9074955772871629,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9756044830726311,
+            "mean_bias": -0.9606576207593907,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.734829738335309,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.10753410512486075,
+            "mean_bias": 0.003654129150798228,
+            "sign_agreement": 0.8903459821428571,
+            "correlation": 0.9171491641461657,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.35929604676131077,
+            "mean_bias": -0.11688483958797538,
+            "sign_agreement": 0.90087890625,
+            "correlation": 0.7456667018911212,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF-response-0.03-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.960868109897948,
+            "mean_bias": -0.9468261919420863,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.7480552994469757,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.14775846133998063,
+            "mean_bias": 0.014440857346600907,
+            "sign_agreement": 0.853515625,
+            "correlation": 0.8427459596627119,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.12331921574596658,
+            "mean_bias": 0.0031663389700014727,
+            "sign_agreement": 0.8828125,
+            "correlation": 0.9052266527898769,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08209422672437268,
+            "mean_bias": -0.0012779498556383523,
+            "sign_agreement": 0.94140625,
+            "correlation": 0.9675506748989288,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.09332527209230522,
+            "mean_bias": -0.0068418268992608815,
+            "sign_agreement": 0.892578125,
+            "correlation": 0.9544159958514231,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10154030971672022,
+            "mean_bias": 0.0036934476736599844,
+            "sign_agreement": 0.8984375,
+            "correlation": 0.946077670388084,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.083903419187325,
+            "mean_bias": -0.0036523178243672277,
+            "sign_agreement": 0.908203125,
+            "correlation": 0.8890491562413344,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08814998413705798,
+            "mean_bias": 0.0023275185628372913,
+            "sign_agreement": 0.876953125,
+            "correlation": 0.9114280332129656,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.960868109897948,
+            "mean_bias": -0.9468261919420863,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.7480552994469757,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.10529543355611347,
+            "mean_bias": 0.001693723996261885,
+            "sign_agreement": 0.8934151785714286,
+            "correlation": 0.9199951206166335,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.3537084645073617,
+            "mean_bias": -0.11687126549603163,
+            "sign_agreement": 0.903564453125,
+            "correlation": 0.7497279473777912,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF-response-0.1-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.8389386623753307,
+            "mean_bias": -0.8248543101397795,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.6707554829733149,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.15671367273017844,
+            "mean_bias": 0.015661821820938185,
+            "sign_agreement": 0.845703125,
+            "correlation": 0.7157274493428698,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.13193436769352498,
+            "mean_bias": 0.00638240931664473,
+            "sign_agreement": 0.87109375,
+            "correlation": 0.8635574686397539,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10161916688551866,
+            "mean_bias": 0.003499163108491639,
+            "sign_agreement": 0.931640625,
+            "correlation": 0.9413620442050271,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.11780384764758764,
+            "mean_bias": -0.0004604387590914343,
+            "sign_agreement": 0.876953125,
+            "correlation": 0.9257967066187992,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.13924013840393237,
+            "mean_bias": 0.0052438518877393064,
+            "sign_agreement": 0.88671875,
+            "correlation": 0.8962688814217012,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08839314018360594,
+            "mean_bias": -0.000485817482782782,
+            "sign_agreement": 0.880859375,
+            "correlation": 0.8743901834369774,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.08636675347461956,
+            "mean_bias": 0.002347833178388648,
+            "sign_agreement": 0.865234375,
+            "correlation": 0.905890879713519,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.8389386623753307,
+            "mean_bias": -0.8248543101397795,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.6707554829733149,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.12001811391759949,
+            "mean_bias": 0.004598403295761185,
+            "sign_agreement": 0.8797433035714286,
+            "correlation": 0.8856121399112324,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.3171451782911247,
+            "mean_bias": -0.0990831858836814,
+            "sign_agreement": 0.8916015625,
+            "correlation": 0.7417482806561908,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF-response-0.3-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9101003619415307,
+            "mean_bias": -0.8907234334094177,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.5441092659594211,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.17697120056772916,
+            "mean_bias": 0.010414925014006872,
+            "sign_agreement": 0.81640625,
+            "correlation": 0.6541696594738761,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.15501474078447455,
+            "mean_bias": 0.0035352091404574904,
+            "sign_agreement": 0.86328125,
+            "correlation": 0.8271568397693304,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.13825259140131688,
+            "mean_bias": 0.012160150517574698,
+            "sign_agreement": 0.8984375,
+            "correlation": 0.8951687457051932,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.14188202693464777,
+            "mean_bias": 0.006058474332185088,
+            "sign_agreement": 0.87890625,
+            "correlation": 0.8936341827058064,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.1827902377527317,
+            "mean_bias": 0.005949513867406756,
+            "sign_agreement": 0.875,
+            "correlation": 0.8237385254010355,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.11214970310368994,
+            "mean_bias": 0.005317567190205558,
+            "sign_agreement": 0.857421875,
+            "correlation": 0.8069159539644546,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10315040813684773,
+            "mean_bias": 0.007795604917294014,
+            "sign_agreement": 0.837890625,
+            "correlation": 0.8600428157632826,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9101003619415307,
+            "mean_bias": -0.8907234334094177,
+            "sign_agreement": 0.974609375,
+            "correlation": 0.5441092659594211,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.14698031836652198,
+            "mean_bias": 0.007318777854161496,
+            "sign_agreement": 0.8610491071428571,
+            "correlation": 0.8345150036169418,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.34991162575641405,
+            "mean_bias": -0.10493649855378591,
+            "sign_agreement": 0.875244140625,
+            "correlation": 0.7044638298513971,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF-response-1-seed1": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.4415630941770569,
+            "mean_bias": -0.015854724510146447,
+            "sign_agreement": 0.810546875,
+            "correlation": 0.05143634524737213,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.4240901031994122,
+            "mean_bias": -0.04162353266888823,
+            "sign_agreement": 0.521484375,
+            "correlation": 0.05423819058158749,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.4958531899755687,
+            "mean_bias": 0.03891149935744778,
+            "sign_agreement": 0.5234375,
+            "correlation": -0.00595681101720348,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.7571385943621165,
+            "mean_bias": -0.027279978152611867,
+            "sign_agreement": 0.498046875,
+            "correlation": -0.005339874082234903,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.8798193448198277,
+            "mean_bias": -0.012863969984070585,
+            "sign_agreement": 0.52734375,
+            "correlation": -0.04580641778151304,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.7872205971445349,
+            "mean_bias": 0.07058133783963988,
+            "sign_agreement": 0.5234375,
+            "correlation": 0.00216795546283717,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.42723661365867394,
+            "mean_bias": 0.02033362826170005,
+            "sign_agreement": 0.537109375,
+            "correlation": 0.02787687073572214,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.6939742873422773,
+            "mean_bias": -0.1311487210006578,
+            "sign_agreement": 0.525390625,
+            "correlation": -0.004253797985898887,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.4415630941770569,
+            "mean_bias": -0.015854724510146447,
+            "sign_agreement": 0.810546875,
+            "correlation": 0.05143634524737213,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.660834044040864,
+            "mean_bias": -0.011869962335348686,
+            "sign_agreement": 0.5223214285714286,
+            "correlation": -0.008591845610610993,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.6375626834362088,
+            "mean_bias": -0.012368057607198406,
+            "sign_agreement": 0.558349609375,
+            "correlation": 0.042013477768960306,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-noF": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9417166835924015,
+            "mean_bias": -0.9277936131828756,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.7327789716056505,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.1456934625813313,
+            "mean_bias": 0.0201646775202598,
+            "sign_agreement": 0.859375,
+            "correlation": 0.8224538053549854,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.1414202650951129,
+            "mean_bias": 0.006803916214119075,
+            "sign_agreement": 0.888671875,
+            "correlation": 0.8571045139563802,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.11526692125971859,
+            "mean_bias": 0.012779269938799291,
+            "sign_agreement": 0.9375,
+            "correlation": 0.9219252046919584,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10482376307888357,
+            "mean_bias": 0.0068078820685786075,
+            "sign_agreement": 0.900390625,
+            "correlation": 0.941475510391483,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.11917789535716226,
+            "mean_bias": 0.016754998447232623,
+            "sign_agreement": 0.87890625,
+            "correlation": 0.9263000473382176,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.14975071601221743,
+            "mean_bias": 0.016053211573947197,
+            "sign_agreement": 0.9140625,
+            "correlation": 0.6588326470510115,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.10546051333567036,
+            "mean_bias": 0.008015858563508884,
+            "sign_agreement": 0.869140625,
+            "correlation": 0.8704515915836889,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.9417166835924015,
+            "mean_bias": -0.9277936131828756,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.7327789716056505,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.12719575937572958,
+            "mean_bias": 0.01248283061806364,
+            "sign_agreement": 0.892578125,
+            "correlation": 0.8758782627667289,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.3535678224503841,
+            "mean_bias": -0.10505172485705377,
+            "sign_agreement": 0.903076171875,
+            "correlation": 0.7220613562190872,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      },
+      "CNN-F (true forcing supplied)": {
+        "label": "POST HOC, descriptive",
+        "in_sample": false,
+        "data_usage": "validation set used for checkpoint/weight selection by response models",
+        "per_pattern": {
+          "0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.05811830194507575,
+            "mean_bias": -0.01961563351216835,
+            "sign_agreement": 0.98828125,
+            "correlation": 0.9380537794059235,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "1": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.049265981678659455,
+            "mean_bias": 0.004028210758221212,
+            "sign_agreement": 0.958984375,
+            "correlation": 0.9551800348782451,
+            "predict_zero_RMSE": 0.16349927234329226
+          },
+          "2": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.04720926347110746,
+            "mean_bias": 0.004384345237762698,
+            "sign_agreement": 0.966796875,
+            "correlation": 0.9764650880954742,
+            "predict_zero_RMSE": 0.2175184130096347
+          },
+          "3": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.06839038873489675,
+            "mean_bias": 0.004980681134576255,
+            "sign_agreement": 0.9765625,
+            "correlation": 0.9717878972849143,
+            "predict_zero_RMSE": 0.28397136965177533
+          },
+          "4": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.07161012692623182,
+            "mean_bias": 0.004759296064324164,
+            "sign_agreement": 0.96875,
+            "correlation": 0.9731425582027234,
+            "predict_zero_RMSE": 0.31078870359890337
+          },
+          "5": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.12211861907448245,
+            "mean_bias": 0.005808208148916786,
+            "sign_agreement": 0.96875,
+            "correlation": 0.9243690000456638,
+            "predict_zero_RMSE": 0.31390003487967366
+          },
+          "6": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.0766923770110282,
+            "mean_bias": 0.00737230121027445,
+            "sign_agreement": 0.951171875,
+            "correlation": 0.9016875368803032,
+            "predict_zero_RMSE": 0.1770425933079269
+          },
+          "7": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.0398777261220309,
+            "mean_bias": 0.0037013856126192936,
+            "sign_agreement": 0.966796875,
+            "correlation": 0.9787649712227573,
+            "predict_zero_RMSE": 0.19347217662343102
+          }
+        },
+        "pooled": {
+          "pattern_0": {
+            "label": "POST HOC, descriptive",
+            "count": 512,
+            "effect_RMSE": 0.05811830194507575,
+            "mean_bias": -0.01961563351216835,
+            "sign_agreement": 0.98828125,
+            "correlation": 0.9380537794059235,
+            "predict_zero_RMSE": 0.29945351544867455
+          },
+          "seven_zero_mean": {
+            "label": "POST HOC, descriptive",
+            "count": 3584,
+            "effect_RMSE": 0.07255147720743992,
+            "mean_bias": 0.005004918309527837,
+            "sign_agreement": 0.9654017857142857,
+            "correlation": 0.9558550801682666,
+            "predict_zero_RMSE": 0.24453583552508873
+          },
+          "all_eight": {
+            "label": "POST HOC, descriptive",
+            "count": 4096,
+            "effect_RMSE": 0.07090817560042946,
+            "mean_bias": 0.0019273493318158134,
+            "sign_agreement": 0.96826171875,
+            "correlation": 0.9597872177551529,
+            "predict_zero_RMSE": 0.2520557557134538
+          }
+        }
+      }
+    }
+  },
+  "reproduction": [
+    {
+      "dataset": "D1",
+      "model": "initial",
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D2",
+      "model": "CNN-noF-response-0-seed1",
+      "stored_RMSE": 0.3615496098284943,
+      "recomputed_RMSE": 0.3615496098284943,
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D2",
+      "model": "CNN-noF-response-0.01-seed1",
+      "stored_RMSE": 0.35929604676131077,
+      "recomputed_RMSE": 0.35929604676131077,
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D1",
+      "model": "CNN-noF-response-0.03-seed1",
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D2",
+      "model": "CNN-noF-response-0.03-seed1",
+      "stored_RMSE": 0.3537084645073617,
+      "recomputed_RMSE": 0.3537084645073617,
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D2",
+      "model": "CNN-noF-response-0.1-seed1",
+      "stored_RMSE": 0.3171451782911247,
+      "recomputed_RMSE": 0.3171451782911247,
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D2",
+      "model": "CNN-noF-response-0.3-seed1",
+      "stored_RMSE": 0.34991162575641405,
+      "recomputed_RMSE": 0.34991162575641405,
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    },
+    {
+      "dataset": "D2",
+      "model": "CNN-noF-response-1-seed1",
+      "stored_RMSE": 0.6375626834362088,
+      "recomputed_RMSE": 0.6375626834362088,
+      "maximum_absolute_difference": 0.0,
+      "exact": true
+    }
+  ],
+  "gpu": {
+    "index": 2,
+    "uuid": "GPU-b30bd41b-4882-d525-083b-d929b9b9328a",
+    "name": "NVIDIA CMP 170HX",
+    "processes": [],
+    "available": true
+  },
+  "provenance_hashes": {
+    "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/receipts/acd_stage23_closeout.json": "caaba01615b7ad122560b824c6661c279545f7f15cf5fc0b32928eae27e885e0",
+    "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/receipts/acd_stage23.json": "0ce56031b6efc3fe709c20a9a952d4ae5051e84c5f21b56e79751e6f56bf20c3",
+    "/mnt/niva-array/work/aspen-determinacy-stage23-20261012/aspen/determinacy/ACD_STAGE23_FREEZE_G.md": "ac7e71048c8b4885d2df237459089a3ee4bdc35ca914352227bd423e4e41fb5b",
+    "/mnt/niva-array/work/aspen-determinacy-stage19-20261007/aspen/determinacy/acd_stage9_train.py": "9c36418c45ab0727d2c4294b96bed1102b85d65d269636f6c9b38e3573605269"
+  }
+}
